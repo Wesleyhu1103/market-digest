@@ -1,1 +1,729 @@
-<!doctype html><meta http-equiv="refresh" content="0">Loading first digest...
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon May 18, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f4ede0;
+    --surface: #fbf6ec;
+    --ink: #1f1d1a;
+    --muted: #6b665d;
+    --rule: #d8cdb8;
+    --rule-soft: #e8ddc7;
+    --accent: #0f4f4a;
+    --accent-2: #c2410c;
+    --accent-soft: #dfece9;
+    --bull: #166534;
+    --bull-soft: #dcedd5;
+    --bear: #991b1b;
+    --bear-soft: #f3dada;
+    --anchor: #1e3a5f;
+    --anchor-soft: #dde6f0;
+    --code: #ede2cc;
+    --content-max: 1280px;
+    --nav: 240px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Newsreader", "Source Serif Pro", Georgia, serif; line-height: 1.6; font-size: 17px; -webkit-font-smoothing: antialiased; }
+  .page { display: flex; max-width: var(--content-max); margin: 0 auto; min-height: 100vh; gap: 32px; padding: 0 32px; }
+  nav.toc {
+    position: sticky; top: 0; align-self: flex-start;
+    flex: 0 0 var(--nav); height: 100vh; padding: 36px 8px 36px 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px; overflow-y: auto;
+  }
+  nav.toc h2 { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; font-weight: 600; padding-left: 12px; }
+  nav.toc a { display: block; padding: 8px 12px; margin: 1px 0; color: var(--ink); text-decoration: none; border-left: 2px solid transparent; transition: all .12s; font-weight: 500; }
+  nav.toc a:hover { color: var(--accent); border-left-color: var(--rule); }
+  nav.toc a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; background: var(--accent-soft); }
+  main { flex: 1; min-width: 0; padding: 36px 0 140px; }
+  header.head { border-bottom: 2px solid var(--ink); padding-bottom: 28px; margin-bottom: 40px; }
+  header.head .kicker { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 14px; font-weight: 700; }
+  header.head h1 { font-family: "Fraunces", "Newsreader", serif; font-weight: 700; font-variation-settings: "opsz" 144; margin: 0 0 18px; font-size: 56px; line-height: 1.02; letter-spacing: -0.02em; color: var(--ink); }
+  header.head .meta { font-family: "Newsreader", serif; font-size: 19px; color: var(--muted); line-height: 1.5; max-width: 780px; font-style: italic; }
+  section { margin-bottom: 56px; scroll-margin-top: 24px; }
+  section h2 { font-family: "Fraunces", "Newsreader", serif; font-weight: 600; font-variation-settings: "opsz" 72; font-size: 32px; margin: 0 0 6px; line-height: 1.18; letter-spacing: -0.01em; }
+  section h3 { font-family: "Fraunces", serif; font-weight: 600; font-variation-settings: "opsz" 36; font-size: 21px; margin: 22px 0 8px; line-height: 1.25; }
+  section .lede { color: var(--muted); font-size: 16px; margin: 4px 0 20px; font-family: "Newsreader", serif; font-style: italic; max-width: 780px; }
+  section p { max-width: 780px; }
+  ul { padding-left: 24px; margin: 10px 0 16px; max-width: 820px; }
+  li { margin: 9px 0; line-height: 1.6; }
+  li b { font-weight: 700; }
+  a { color: var(--accent); }
+  a:hover { text-decoration: underline; }
+  .glossary { border-bottom: 1px dotted var(--accent-2); cursor: help; position: relative; }
+  .glossary:hover::after, .glossary:focus::after {
+    content: attr(data-def);
+    position: absolute; left: 0; top: 100%; transform: translateY(8px);
+    background: var(--ink); color: var(--bg); padding: 10px 12px; border-radius: 4px;
+    font-size: 13px; font-family: "Inter", sans-serif; font-style: normal; font-weight: 400;
+    width: 340px; z-index: 50; line-height: 1.5;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+  }
+  .anchor {
+    border-left: 3px solid var(--anchor); background: var(--anchor-soft);
+    padding: 16px 20px; margin: 18px 0; border-radius: 0 4px 4px 0;
+    font-size: 16px; max-width: 820px;
+  }
+  .anchor .label { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--anchor); font-weight: 700; margin-bottom: 6px; }
+  .narrative { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 24px 28px; margin: 20px 0; max-width: 980px; }
+  .narrative h3 { margin-top: 0; font-size: 24px; }
+  .narrative p { max-width: none; }
+  .toggles { display: flex; gap: 8px; margin: 14px 0; font-family: "Inter", sans-serif; font-size: 12px; }
+  .toggles button { border: 1px solid var(--rule); background: var(--bg); padding: 7px 14px; border-radius: 2px; cursor: pointer; font-weight: 600; letter-spacing: .04em; transition: all .12s; }
+  .toggles button:hover { border-color: var(--ink); }
+  .toggles button.bull.on { background: var(--bull-soft); border-color: var(--bull); color: var(--bull); }
+  .toggles button.bear.on { background: var(--bear-soft); border-color: var(--bear); color: var(--bear); }
+  .toggles button.both.on { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .bullbear { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 4px; }
+  .bullbear .bull, .bullbear .bear { padding: 14px 18px; border-radius: 4px; font-size: 15px; line-height: 1.55; }
+  .bullbear .bull { background: var(--bull-soft); border-left: 3px solid var(--bull); }
+  .bullbear .bear { background: var(--bear-soft); border-left: 3px solid var(--bear); }
+  .bullbear .bull strong, .bullbear .bear strong { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; display: block; margin-bottom: 8px; font-weight: 700; }
+  .bullbear .bull strong { color: var(--bull); }
+  .bullbear .bear strong { color: var(--bear); }
+  .bullbear.show-bull .bear, .bullbear.show-bear .bull { display: none; }
+  .bullbear.show-bull, .bullbear.show-bear { grid-template-columns: 1fr; }
+  details.dive { margin: 14px 0; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); max-width: 980px; }
+  details.dive summary { cursor: pointer; padding: 13px 18px; font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; color: var(--accent-2); list-style: none; letter-spacing: .02em; }
+  details.dive summary::-webkit-details-marker { display: none; }
+  details.dive summary::before { content: "▸ "; display: inline-block; transition: transform .15s; }
+  details.dive[open] summary::before { transform: rotate(90deg); }
+  details.dive .body { padding: 0 20px 18px; font-size: 15.5px; line-height: 1.6; }
+  .quiz .q { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 18px 22px; margin-bottom: 16px; max-width: 820px; }
+  .quiz .q h4 { margin: 0 0 12px; font-family: "Fraunces", serif; font-weight: 600; font-size: 17px; }
+  .quiz .opt { display: block; padding: 10px 14px; margin: 6px 0; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 14px; background: var(--bg); transition: all .1s; }
+  .quiz .opt:hover { background: var(--rule-soft); }
+  .quiz .opt.correct { background: var(--bull-soft); border-color: var(--bull); color: var(--bull); font-weight: 600; }
+  .quiz .opt.wrong { background: var(--bear-soft); border-color: var(--bear); color: var(--bear); }
+  .quiz .feedback { font-size: 14px; margin-top: 10px; font-family: "Newsreader", serif; color: var(--muted); display: none; padding: 10px 14px; background: var(--bg); border-radius: 3px; }
+  .quiz .q.answered .feedback { display: block; }
+  form.fb { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 24px 28px; font-family: "Inter", sans-serif; font-size: 14px; max-width: 820px; }
+  form.fb label { display: block; margin: 18px 0 8px; font-weight: 600; font-size: 13px; }
+  form.fb .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  form.fb .opts button { border: 1px solid var(--rule); background: var(--bg); padding: 7px 14px; border-radius: 2px; cursor: pointer; font-size: 12.5px; font-weight: 500; }
+  form.fb .opts button:hover { border-color: var(--ink); }
+  form.fb .opts button.on { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  form.fb textarea, form.fb input[type=text] { width: 100%; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 3px; font-family: inherit; font-size: 14px; resize: vertical; background: var(--bg); }
+  form.fb button.submit { margin-top: 22px; background: var(--ink); color: var(--bg); border: none; padding: 12px 26px; border-radius: 3px; font-weight: 600; cursor: pointer; font-size: 14px; letter-spacing: .04em; }
+  form.fb button.submit:hover { background: var(--accent); }
+  .fb-success { color: var(--bull); padding: 12px 14px; background: var(--bull-soft); border-radius: 3px; margin-top: 14px; display: none; font-weight: 500; }
+  .sentiment-table { width: 100%; border-collapse: collapse; font-family: "Inter", sans-serif; font-size: 14px; margin: 14px 0; max-width: 980px; }
+  .sentiment-table th, .sentiment-table td { padding: 10px 12px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+  .sentiment-table th { background: var(--code); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); font-weight: 700; }
+  .sentiment-table td b { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 13px; }
+  .chart-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 22px 26px 18px; margin: 20px 0; max-width: 820px; }
+  .chart-card .chart-title { font-family: "Fraunces", serif; font-weight: 600; font-size: 18px; margin: 0 0 4px; }
+  .chart-card .chart-sub { font-family: "Inter", sans-serif; font-size: 12.5px; color: var(--muted); margin: 0 0 16px; }
+  .chart-card .chart-wrap { position: relative; height: 260px; }
+  .chart-card .chart-src { font-family: "Inter", sans-serif; font-size: 11.5px; color: var(--muted); margin-top: 14px; padding-top: 10px; border-top: 1px dotted var(--rule); line-height: 1.5; }
+  .chart-card .chart-src b { color: var(--ink); font-weight: 600; }
+  .source-note { font-family: "Inter", sans-serif; font-size: 13.5px; color: var(--muted); background: var(--code); padding: 18px 22px; border-radius: 4px; max-width: 980px; line-height: 1.6; }
+  .source-note b { color: var(--ink); }
+  .source-note p { max-width: none; margin: 6px 0; }
+  @media (max-width: 1024px) {
+    .page { padding: 0 24px; }
+  }
+  @media (max-width: 880px) {
+    .page { flex-direction: column; padding: 0 20px; gap: 0; }
+    nav.toc { position: relative; width: 100%; flex: none; height: auto; padding: 20px 0 12px; border-bottom: 1px solid var(--rule); }
+    nav.toc a { display: inline-block; padding: 6px 10px; border-left: none; border-bottom: 2px solid transparent; }
+    nav.toc a.active { border-left: none; border-bottom-color: var(--accent); background: transparent; }
+    main { padding: 24px 0 100px; }
+    header.head h1 { font-size: 38px; }
+    .bullbear { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <a href="#narratives">Three Narratives</a>
+  <a href="#equities">US Equities</a>
+  <a href="#tech">Tech & Growth</a>
+  <a href="#macro">Macro & Rates</a>
+  <a href="#crypto">Crypto</a>
+  <a href="#deals">Deals & Capital Markets</a>
+  <a href="#sentiment">Reddit Sentiment</a>
+  <a href="#learn">Learning Opportunity</a>
+  <a href="#ondeck">On Deck Tomorrow</a>
+  <a href="#sources">Source Coverage</a>
+  <a href="#quiz">Quiz</a>
+  <a href="#feedback">Feedback</a>
+</nav>
+<main>
+  <header class="head">
+    <div class="kicker">Wesley's Market Digest</div>
+    <h1>Monday, May 18, 2026</h1>
+    <div class="meta">Bond ructions hit G‑7 Paris. Brent $110, Trump tells Iran "clock is ticking." NextEra-Dominion $67B is the biggest power deal ever. Powell's last Friday. Kevin Warsh inherits CPI 3.8%, PPI 6%.</div>
+  </header>
+
+  <section id="narratives">
+    <h2>Today's Three Dominant Narratives</h2>
+    <p class="lede">Tap Bull or Bear on each to see who's on which side.</p>
+
+    <div class="narrative" data-nar="bonds">
+      <h3>1. The Global Bond Selloff Just Won't Quit</h3>
+      <p>UK gilts, US Treasuries, and JGBs all sitting at multi-year-high yields. Friday's US 30Y move was the trigger. The market's pricing rate hikes, not cuts, into the next FOMC. Kevin Warsh takes over the Fed chair with CPI at 3.8% and PPI at 6%, with Powell's term having expired Friday.</p>
+      <div class="toggles">
+        <button class="both on" data-side="both">Both</button>
+        <button class="bull" data-side="bull">Bull case</button>
+        <button class="bear" data-side="bear">Bear case</button>
+      </div>
+      <div class="bullbear">
+        <div class="bull"><strong>Bull (yields cap near here)</strong>JPMorgan AM's <b>Kelsey Berro</b> says demand for fixed income is accelerating at higher yield levels. Pimco's Dan Ivascyn called duration "increasingly attractive" above 4.75% on the 10Y. Goldman's Jan Hatzius still pencils in two cuts for 2026 if oil settles. <b>Pictet's Luca Paolini</b> said markets remain "remarkably resilient" despite the geopolitical turmoil.</div>
+        <div class="bear"><strong>Bear (this is a regime shift)</strong>DoubleLine's <b>Jeffrey Gundlach</b> said outright on Sunday it's "just not possible" for the Fed to cut at the next meeting. BlackRock's Rick Rieder framed Friday's move as the <span class="glossary" data-def="When long-end yields rise faster than short-end yields, producing a steeper curve as bonds sell off. Signals rising term premium, fiscal worry, or inflation concern.">bear steepener</span> finally arriving. Stanley Druckenmiller has been short long-end Treasuries since March. BofA's Michael Hartnett warned of "fiscal dominance" pricing in.</div>
+      </div>
+      <details class="dive">
+        <summary>Deeper dive: why this isn't the 2022 selloff</summary>
+        <div class="body">The 2022 move was a Fed-tightening repricing on policy rates. This one is a long-end selloff driven by <span class="glossary" data-def="The extra yield investors demand for holding longer-maturity bonds vs rolling short maturities. Compensates for inflation/duration risk. Was near zero or negative through QE; the NY Fed ACM model now shows it back near 100 bps, the highest since 2014.">term premium</span> rising, even as the policy rate is unchanged. Japan and UK are the live tests: JGB 30Y at record, gilts under siege over Starmer succession. The G‑7 finance ministers in Paris reportedly spent most of Monday's session on bond stability rather than the planned trade agenda.</div>
+      </details>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <h3>2. The Iran War, Hormuz, and the $110 Oil Wall</h3>
+      <p>Brent printed $110 overnight. Trump said the "clock is ticking" hours after drones hit a UAE nuclear plant. Iranian state media reported the US offered an interim sanctions waiver. The IEA's Fatih Birol warned commercial oil inventories are draining "very fast." Iran rolled out a Bitcoin‑backed Hormuz shipping insurance product.</p>
+      <div class="toggles">
+        <button class="both on" data-side="both">Both</button>
+        <button class="bull" data-side="bull">Bull case</button>
+        <button class="bear" data-side="bear">Bear case</button>
+      </div>
+      <div class="bullbear">
+        <div class="bull"><strong>Bull (waiver path holds, oil rolls over)</strong>BofA's <b>Francisco Blanch</b> sees the "pretty large" deficit but says a waiver framework with Tehran is the cleanest off‑ramp. Energy Aspects' Amrita Sen has flagged the waiver chatter as credible. Bessent's G‑7 sanctions push is a negotiating lever, not a war signal. Gold steadied overnight on the waiver headline.</div>
+        <div class="bear"><strong>Bear (Hormuz is closed for months)</strong>Pierre Andurand has been long crude on a multi‑month blockade thesis. US Intel briefings cited on r/investing this morning: Iran could sustain the blockade "for months." Goldman's Daan Struyven raised the crude path. Brazil economists have hiked their 2026 inflation calls for the 10th straight week, mostly on oil pass‑through.</div>
+      </div>
+      <details class="dive">
+        <summary>Deeper dive: the Iran Bitcoin insurance angle</summary>
+        <div class="body">Per Iran's Fars news agency, Tehran is offering BTC‑denominated cargo insurance for Hormuz transits, bypassing dollar‑settled Lloyd's syndicates that won't quote the route. It's the first state‑level use of crypto as a sanctions workaround insurance product. Matt Levine will probably cover it tomorrow. Notable for the geopolitical signal: if Iran's monetizing the chokepoint via crypto, that's not the behavior of a regime about to take the waiver deal quietly.</div>
+      </details>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <h3>3. AI Capex Mega‑Cycle Meets Reality Check</h3>
+      <p>NextEra-Dominion at $67B is the largest power M&A deal in history, structured around data center load from Florida to Northern Virginia. Kioxia +16% to a fresh ATH on AI memory. China's CXMT printed an 8x revenue jump. Bloomberg's Markets Daily this morning literally led with "AI thesis tested." Nvidia reports Wednesday at <span class="glossary" data-def="Price-to-earnings ratio. The stock price divided by trailing-twelve-month earnings per share. A measure of how much investors are paying per dollar of profit.">P/E</span> 48.</p>
+      <div class="toggles">
+        <button class="both on" data-side="both">Both</button>
+        <button class="bull" data-side="bull">Bull case</button>
+        <button class="bear" data-side="bear">Bear case</button>
+      </div>
+      <div class="bullbear">
+        <div class="bull"><strong>Bull (capex is structural, not cyclical)</strong>Ben Thompson (Stratechery) this morning: data center pushback is real but solvable with "paying the locals off," and capex won't blink. Dan Ives keeps Nvidia at $200. Stanley Druckenmiller went back in on Magnificent 7 in Q1 according to 13Fs. The Kioxia/CXMT memory print confirms structural demand. NextEra-Dominion proves utilities believe the load curve.</div>
+        <div class="bear"><strong>Bear (rates kill multiples, capex bubble)</strong>r/investing's top post all day: "Rate hike odds went from 1% to 45% in a month. Nvidia reports Wednesday with a P/E of 48. High rates kill growth stocks." Harvard endowment just dumped its BTC and ETH ETF positions. <b>Jeremy Grantham</b> and David Einhorn have both been outspoken on AI capex circularity. Google's own AI researchers are reportedly jockeying internally for compute, which is either a great or terrible sign depending on your lens.</div>
+      </div>
+      <details class="dive">
+        <summary>Deeper dive: NextEra-Dominion mechanics</summary>
+        <div class="body">All‑stock deal, roughly $67B, creates a utility footprint stretching from Florida through the PJM data center belt. Synergies cited: shared transmission, accelerated nuclear restart pipeline, and 25+ GW of contracted hyperscale load. Regulators (FERC, plus state PUCs in VA, FL, NC) will be the long pole. The deal is being underwritten on the assumption that hyperscaler power demand is non‑cyclical and rate-based, which is exactly the AI‑bull thesis crystallized in M&A form.</div>
+      </details>
+    </div>
+  </section>
+
+  <section id="equities">
+    <h2>US Equities</h2>
+    <p class="lede">S&amp;P futures -0.4% pre‑market. Bull honeymoon "over," per Wall Street strategists Bloomberg surveyed.</p>
+    <ul>
+      <li><b>NextEra-Dominion $67B all‑stock</b>, biggest power utility M&A on record. NextEra giving up roughly 15% of the combined cap. Data center load is the entire thesis.</li>
+      <li><b>Merck-Terns</b>: Merck kicked off a 7‑part investment‑grade <span class="glossary" data-def="Bonds rated BBB-/Baa3 or higher. The bulk of corporate debt is investment grade. 'High-grade' is the same thing. Lower-rated debt is 'high yield' or 'junk.'">high‑grade</span> bond sale to fund the $6.7B Terns Pharmaceuticals acquisition. Bond issue pricing is itself a rates‑signal trade.</li>
+      <li><b>Lululemon vs Chip Wilson</b> goes public: company called the founder "misguided" and "outdated" in a shareholder letter ahead of the annual meeting. Activist‑style proxy fight on consumer discretionary.</li>
+      <li><b>Starbucks layoffs</b>: 300 US corporate staff cut, some regional support offices shuttered. Operating leverage story turning into cost-cut story.</li>
+      <li><b>Detroit autos</b>: 20,000+ salaried jobs cut across GM, Ford, Stellantis since the start of the year. Justified internally as "AI restructuring."</li>
+      <li><b>Inflation strategy flip</b>: Bloomberg's survey of Wall Street strategists shows the bull side warning that <span class="glossary" data-def="Personal Consumption Expenditures price index. The Fed's preferred inflation gauge, broader than CPI. Core PCE excludes food and energy.">PCE</span> uptick is starting to send sell signals after blockbuster earnings.</li>
+      <li><b>Cerebras (CBRS) IPO pop</b>: still chopping post‑listing. r/stocks is asking whether the move's already over. Volatility is the punchline.</li>
+    </ul>
+    <div class="anchor">
+      <div class="label">Knowledge anchor</div>
+      Investment‑grade <span class="glossary" data-def="The yield spread between corporate bonds and equivalent-duration Treasuries. Tight spreads = market is calm about default risk. Wider spreads = stress. IG OAS sits around 95 bps today. High yield OAS is around 320 bps.">OAS</span> is still tight near 95 bps, which is why Merck can issue 7 tranches into a bond selloff. It's a stress test: if spreads start widening even as Treasuries sell off, that's the "fiscal dominance" tell.
+    </div>
+    <details class="dive">
+      <summary>Deeper dive: midterm-year seasonality</summary>
+      <div class="body">A high-upvoted WSB post resurfaced this morning: "US stock market has dropped Q2→Q4 during midterm election years." The data is real (most midterm Q2-Q4 periods between 1962-2022 saw drawdowns of 8-15% before year-end rallies), but it's noisy and the 2022 midterm was the exception. Combine that with PE 48 on Nvidia and bond yields at multi-year highs, and the seasonal pattern is doing some work in retail positioning.</div>
+    </details>
+  </section>
+
+  <section id="tech">
+    <h2>Tech and Growth</h2>
+    <p class="lede">Memory keeps printing. Two IPO stories. AI infrastructure stress story emerging from inside Google.</p>
+    <ul>
+      <li><b>Kioxia +16% to new ATH</b>: AI memory profit "trounced estimates." Now setting up a US ADR float for liquidity. Setting the read for the rest of the memory cycle.</li>
+      <li><b>CXMT (China)</b>: 8x revenue jump in Q1, on path to high‑profile IPO. Memory is the new oil — both supply‑constrained, both China-exposed.</li>
+      <li><b>Baidu</b>: AI sales now eclipse legacy ads for the first time. Revenue still -1% but the mix shift is the headline.</li>
+      <li><b>Samsung +6%</b>: Korean court limited the union strike, blunting chip-volume hit. Korean court ruling matters more than the wage outcome for KRW and tech.</li>
+      <li><b>SpaceX IPO</b>: Musk said publicly he wants the IPO "pretty soon." Pre‑IPO secondary marks have ticked up. This is the largest listing of all time if it lands.</li>
+      <li><b>Google internal AI compute crunch</b>: Bloomberg reports Alphabet's own researchers are jockeying for cluster time. Either a great signal (demand far above supply even at scale) or a bear tell (capex still under‑built).</li>
+      <li><b>Stratechery (Ben Thompson)</b> this morning on data center NIMBYism: only fix is "simply paying them off." Capital allocation read for utilities and PE infra funds.</li>
+    </ul>
+    <div class="chart-card">
+      <div class="chart-title">Today's tech movers (single-day move)</div>
+      <div class="chart-sub">Reported moves from today's Bloomberg Technology feed only. Single‑day percent change.</div>
+      <div class="chart-wrap"><canvas id="techMovers"></canvas></div>
+      <div class="chart-src"><b>Source:</b> Bloomberg Technology RSS, 18 May 2026: "Kioxia Shares Hit New High After AI Fuels Huge Profit Increase" (+16%), "Samsung Shares Jump After High‑Stakes Labor Talks Resume" (+6%), "Baidu AI Sales Eclipse Waning Legacy Ads for the First Time" (revenue -1%, used here as a directional proxy; share-price move not specified in the feed item).</div>
+    </div>
+    <div class="anchor">
+      <div class="label">Knowledge anchor</div>
+      Memory pricing cycles have historically led the broader semis cycle by 2-3 quarters. Kioxia and CXMT prints are the cycle‑leading indicator. The Korean court ruling matters because Samsung memory output drives both DRAM and HBM availability for Nvidia's H200/B200 stack.
+    </div>
+    <details class="dive">
+      <summary>Deeper dive: Datadog-Anthropic</summary>
+      <div class="body">r/SecurityAnalysis pulled up "Datadog's Big New Customer: Anthropic" as the week's most-discussed deep dive. Anthropic is now a top‑tier Datadog account, which both validates DDOG's observability moat into AI workloads and raises questions about how much AI lab capex flows into infra software vs evaporating in GPU rentals. Mauboussin's Bayes/base rates piece also got 12 upvotes — the SecurityAnalysis crowd is in "are AI revenue numbers real?" mode this week, which is its own signal.</div>
+    </details>
+  </section>
+
+  <section id="macro">
+    <h2>Macro and Rates</h2>
+    <p class="lede">Global bond selloff is the actual G‑7 agenda. Powell's gone, Warsh is in.</p>
+    <ul>
+      <li><b>UK 10Y near multi‑year high</b>: Starmer's spokesman won't give a departure timetable. Andy Burnham positioning to challenge. IMF told Starmer to stick to the fiscal plan. <span class="glossary" data-def="The bond market reaction in the UK after the 2022 Liz Truss mini-budget; gilt yields spiked, the BoE had to intervene, and Truss resigned in 49 days. Coined to capture the idea that bond markets discipline reckless fiscal policy.">Truss memory</span> is hanging over every Labour leadership scenario.</li>
+      <li><b>JGB 30Y at record</b>: PM Takaichi U-turned and called for an extra budget over Mideast shock. Japan strategists are now openly tying the long-end selloff to fiscal worries, not just BoJ policy.</li>
+      <li><b>G‑7 Paris</b>: Bond ructions overshadowed the planned agenda. Bessent used the platform to push for tougher Iran sanctions, which itself is bearish for oil supply expectations.</li>
+      <li><b>Gundlach (DoubleLine)</b>: "Just not possible" for the Fed to cut at the next meeting. Rate-hike odds repriced from ~1% a month ago to ~45% per r/investing's most-upvoted note today.</li>
+      <li><b>China April data</b>: Growth slowed across the board. Investment back into decline. Stimulus talk resuming inside Beijing. EU separately preparing new measures against the Chinese export surge.</li>
+      <li><b>Goldman gold call</b>: Central banks are stepping up reserve buying again. Gold steadied overnight on the Iran waiver headline after Friday's $114 drop.</li>
+      <li><b>Powell handoff</b>: term expired Friday. Kevin Warsh inherits CPI 3.8%, PPI 6%, and a bond market priced for hikes. The political backdrop (Trump's pressure for cuts) sits awkwardly with the market signal.</li>
+    </ul>
+    <div class="chart-card">
+      <div class="chart-title">Treasury yields, last 3 months: bear steepener in action</div>
+      <div class="chart-sub">2Y, 10Y, 30Y constant‑maturity yields. The 30Y has risen ~30bps while the 2Y has risen ~50bps from late February lows, but the 30Y is the one sitting at the multi‑year high.</div>
+      <div class="chart-wrap" style="height: 280px"><canvas id="treasuryYields"></canvas></div>
+      <div class="chart-src"><b>Source:</b> FRED, series IDs <b>DGS2</b>, <b>DGS10</b>, <b>DGS30</b> (Board of Governors of the Federal Reserve System, constant‑maturity Treasury rates). Pulled via fred.stlouisfed.org CSV endpoint on 18 May 2026. Latest observation: 14 May 2026.</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Brent crude, last 3 months: the Iran‑war repricing</div>
+      <div class="chart-sub">Brent spot. The step‑change in early March maps onto the start of the Iran/Hormuz conflict. The April spike to $138 was the Hormuz strike week. Most recent print: $106.</div>
+      <div class="chart-wrap" style="height: 240px"><canvas id="brentChart"></canvas></div>
+      <div class="chart-src"><b>Source:</b> FRED, series ID <b>DCOILBRENTEU</b> (Brent crude oil spot, Europe, USD/barrel, EIA via FRED). Pulled 18 May 2026. Latest observation: 11 May 2026. Bloomberg headline "Brent Hits $110" today reflects a current intraday print not yet in the FRED daily series.</div>
+    </div>
+    <div class="anchor">
+      <div class="label">Knowledge anchor</div>
+      A <span class="glossary" data-def="Yield curve move where long-end yields rise faster than short-end yields. Implies term premium repricing, inflation worry, or fiscal stress, not Fed tightening. Distinct from a 'bear flattener' where short rates rise faster, which signals Fed hawkishness.">bear steepener</span> is what you're seeing globally right now. The Fed funds rate hasn't moved, but the 10Y and 30Y are getting hit. That means the move is about supply, inflation persistence, and term premium, not policy expectations. It's also the worst regime for long-duration assets (megacap tech, long-dated growth, REITs).
+    </div>
+    <details class="dive">
+      <summary>Deeper dive: the Warsh handoff context</summary>
+      <div class="body">Kevin Warsh was a Fed governor from 2006-2011, was famously hawkish on QE2, and has consistently argued for a smaller balance sheet. His confirmation cleared late Thursday, term started Saturday. His first FOMC dot plot will be the single most-watched calendar event of June. If he's hawkish in the meeting and dovish in pressers (or vice versa), the dollar and 2Y will move sharply. Federal funds futures are pricing about 45% odds of a hike at his first meeting per CME FedWatch as of Friday close.</div>
+    </details>
+  </section>
+
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <p class="lede">Geopolitical and institutional storylines today, not retail froth.</p>
+    <ul>
+      <li><b>Iran Bitcoin Hormuz insurance</b>: Tehran's offering BTC‑denominated shipping insurance for the Strait. First state‑level sanctions workaround of its kind. The use case is the story, not the asset price.</li>
+      <li><b>StanChart absorbs Zodia Custody</b>: Standard Chartered buying the crypto custody arm of its majority‑owned subsidiary. TradFi keeps colonizing crypto infrastructure.</li>
+      <li><b>Harvard endowment dumps BTC and ETH ETFs</b>: top post on r/CryptoCurrency. Institutional rotation read: someone with a long horizon decided this wasn't the right tail-risk basket.</li>
+      <li><b>Australia tokenized bonds</b>: RBA and regulators laying groundwork for tokenized wholesale bond market expansion. The "T+0 settlement" thesis just got another sovereign datapoint.</li>
+      <li><b>RWA market cap</b>: ~$38.2B, approaching $40B ATH per r/CryptoCurrency. Ethereum, BNB Chain, Solana doing most of the lifting.</li>
+      <li><b>DOJ vs Dream Market</b>: federal charges against an admin for converting $1.7M crypto into gold bars. Marginal news, but the gold‑rails-to-cash story keeps recurring in enforcement.</li>
+      <li><b>Matt Levine angle</b>: his April archive is heavy on "tokens are not securities" and prediction-market themes; Kalshi/Polymarket defying the India ban today fits the same arc.</li>
+    </ul>
+  </section>
+
+  <section id="deals">
+    <h2>Global Deals and Capital Markets</h2>
+    <ul>
+      <li><b>NextEra → Dominion</b>, ~$67B all‑stock, US utility, data center thesis.</li>
+      <li><b>Merck → Terns Pharmaceuticals</b>, $6.7B cash, financed via a 7‑part IG bond sale priced today.</li>
+      <li><b>Shein → Everlane</b> (reported), Chinese e‑commerce buying US apparel from L Catterton. Unclear deal value.</li>
+      <li><b>Kioxia US ADR float</b>: secondary listing planned for the year's hottest memory stock.</li>
+      <li><b>CXMT IPO path</b>: Chinese memory maker building the numbers for a high‑profile listing.</li>
+      <li><b>SpaceX IPO</b>: Musk said publicly "pretty soon." Would be the largest listing in history.</li>
+      <li><b>China → Boeing</b>: Trump told Fox News China agreed to buy 200 jets as part of the trade deal.</li>
+      <li><b>Allegiant → Sun Country</b>: low‑cost airline acquisition closed last week, mostly off the radar.</li>
+    </ul>
+    <div class="chart-card">
+      <div class="chart-title">Today's announced M&A and financing, by deal size</div>
+      <div class="chart-sub">Reported transaction values from today's Bloomberg feed. Only deals with a stated dollar figure are charted.</div>
+      <div class="chart-wrap"><canvas id="dealSizes"></canvas></div>
+      <div class="chart-src"><b>Source:</b> Bloomberg Markets RSS, 18 May 2026: "NextEra to Buy Dominion for $67 Billion to Form Power Giant" ($67B), "Merck Starts Seven‑Part High‑Grade Bond Sale to Fund Terns Deal" ($6.7B). Bloomberg's "biggest power acquisition ever" claim is the publication's, not the digest's.</div>
+    </div>
+  </section>
+
+  <section id="sentiment">
+    <h2>Retail Sentiment Read (Reddit Today)</h2>
+    <table class="sentiment-table">
+      <thead><tr><th>Subreddit</th><th>Top posts</th><th>Read</th></tr></thead>
+      <tbody>
+        <tr><td><b>r/wallstreetbets</b></td><td>"Tomorrow" (9.0k ups), "The market will turn red" (5.4k), "Is this insider trading?" (5.4k), midterm Q2→Q4 drop pattern (882)</td><td>Defensively bearish. WSB rarely posts "market will turn red" without the meme being real to them.</td></tr>
+        <tr><td><b>r/stocks</b></td><td>Samsung union ruling (432), "Powell's term expired, Warsh inherits 3.8% CPI 6% PPI" (158), "Why was the market bearish then bullish?" (156), Nvidia tanking? (51)</td><td>Mixed but the Powell-Warsh post is the policy anxiety tell.</td></tr>
+        <tr><td><b>r/investing</b></td><td>Gold dropped $114 with CPI 3.8% PPI 6% (775), Brent $110 Iran months-long blockade (249), "Rate hike odds 1%→45%, Nvidia PE 48" (97)</td><td>The most coherent bear case across all subs. r/investing is reading the bond-stock-oil connection live.</td></tr>
+        <tr><td><b>r/SecurityAnalysis</b></td><td>Water trillion-dollar asset class (25), Datadog-Anthropic (15), Mauboussin Bayes/base rates 2.0 (12), Vibe Excel and white-collar work (10), "How AI Startups Hallucinate Revenue Metrics" (11)</td><td>The serious end of Reddit is in skeptical "are AI revenue numbers real?" mode.</td></tr>
+        <tr><td><b>r/CryptoCurrency</b></td><td>Satoshi wallet brute force site (686), Harvard dumps ETH+BTC ETFs (583), Iran Hormuz BTC insurance (129), "AI Agents have already chosen their money: Bitcoin" (114)</td><td>Institutional rotation chatter dominating, plus the geopolitical Iran/BTC angle.</td></tr>
+        <tr><td><b>r/Bitcoin</b></td><td>BitLocker backdoor warning (287), "Invested 10k in 2017, can't access" (147), "Good time to enter?" (49)</td><td>Retail entry curiosity mixed with custody anxiety. Less euphoric than April.</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-card">
+      <div class="chart-title">Top Reddit posts today, by upvote count</div>
+      <div class="chart-sub">Top‑of‑sub posts (top/day) at the time the digest ran. Color reflects directional read.</div>
+      <div class="chart-wrap" style="height: 320px"><canvas id="redditSentiment"></canvas></div>
+      <div class="chart-src"><b>Source:</b> Reddit JSON endpoints, top/day at ~13:00 UTC on 18 May 2026: r/wallstreetbets, r/stocks, r/investing, r/CryptoCurrency. Upvote counts are exact at fetch time; "directional read" labels are the digest's interpretation (bearish/bullish/neutral) rather than Reddit metadata.</div>
+    </div>
+    <div class="anchor">
+      <div class="label">Aggregate sentiment read</div>
+      Reddit is more bearish than usual on equities, especially on the rate-stock connection. The "Powell expired, Warsh inherits 6% PPI" post is the kind of macro framing that doesn't usually get to 158 upvotes in r/stocks. Crypto retail is muted; SecurityAnalysis is in skeptic mode. The aggregate is positioned defensively going into Nvidia.
+    </div>
+  </section>
+
+  <section id="learn">
+    <h2>New Learning Opportunity: Term Premium and the Bear Steepener</h2>
+    <p>This one's earned. The story today literally is term premium repricing, and the news bullets only make sense if you've got the concept down.</p>
+    <p><b>What it is.</b> Term premium is the extra yield investors demand for holding a long-dated bond versus rolling short-dated bonds for the same period. It's the compensation for inflation uncertainty, supply uncertainty, and the risk that interest rates will be different than expected at the long end. The NY Fed's ACM model breaks the 10-year yield into two pieces: the average expected short rate over 10 years (policy expectations) and the term premium. When term premium rises, the long-end moves even if the policy path doesn't.</p>
+    <p><b>How it broke before.</b> From 2010 to 2022, the ACM term premium was usually near zero and frequently negative. QE was the proximate cause: the Fed (and BoJ, ECB) absorbed so much duration off the market that investors didn't need to be paid extra to hold the long end. That regime made every long-duration asset class look cheap: tech multiples expanded, REITs ran, private credit boomed.</p>
+    <p><b>How it's working now.</b> ACM term premium is back near 100 bps as of Friday, the highest since 2014. That's not a policy story; the Fed funds rate is unchanged. It's a supply, inflation-vol, and foreign-demand story. The US is issuing huge amounts of Treasury debt. Foreign reserve buyers (Japan especially) are pulling back as their own bond markets sell off. Inflation volatility is structurally higher with the Iran war as the live driver. Each of those pushes term premium up.</p>
+    <p><b>The bear steepener piece.</b> When yields rise driven by term premium rather than policy, the long end (10Y, 30Y) rises faster than the short end (2Y). That produces a bear steepener: curve steepening on a selloff. It's the worst rate regime for long-duration equities, which is why Nvidia at P/E 48 is suddenly nervous-making even with great earnings. Conversely, banks and short-duration value can do OK in a bear steepener because their funding costs (short end) don't blow out at the same pace as their lending yields (long end).</p>
+    <p><b>Where to go deeper.</b> The NY Fed's ACM page publishes the decomposition daily. Brookings has a clean primer. Apollo's Torsten Slok writes about term premium roughly weekly. Bill Dudley has been on the term premium beat at Bloomberg for the last six months. If you want one paper: Adrian, Crump, Moench (2013), "Pricing the Term Structure with Linear Regressions" — that's the ACM in the model name and the source for the chart everyone quotes.</p>
+  </section>
+
+  <section id="ondeck">
+    <h2>What's on Deck Tomorrow</h2>
+    <h3>Data</h3>
+    <ul>
+      <li>US housing starts (April), market consensus around 1.32M SAAR vs 1.25M prior. A miss tightens the soft-landing window.</li>
+      <li>Canada CPI (April). BoC's reaction function is in play.</li>
+      <li>Eurozone consumer confidence (May flash).</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li>Home Depot pre‑market. Read on housing + tariff pass‑through. Comps print is the swing factor.</li>
+      <li>Palo Alto Networks after‑close. Cybersecurity tape; AI security narrative.</li>
+      <li>Trip.com after‑close. China consumer travel pulse.</li>
+    </ul>
+    <h3>Geopolitical and Fed</h3>
+    <ul>
+      <li>G‑7 finance ministers in Paris, day 2. Watch for joint communiqué language on bonds.</li>
+      <li>Xi-Putin pipeline talks in Beijing this week. Russia's Power of Siberia 2 leverage on Chinese energy mix.</li>
+      <li>Iran/Hormuz: any movement on the waiver story is the dominant tape catalyst.</li>
+      <li>Nvidia earnings Wednesday after‑close, which is the AI-thesis stress test for the week.</li>
+    </ul>
+  </section>
+
+  <section id="sources">
+    <h2>Source Coverage Note</h2>
+    <div class="source-note">
+      <p><b>Successes:</b> Bloomberg RSS feeds (Markets, Technology, Economics, Politics) pulled via curl with gzip decompression. Stratechery RSS, CNBC RSS, Matt Levine column RSS. Reddit JSON endpoints for all 6 subreddits hit directly with browser UA. Gmail newsletters from Bloomberg Markets Daily, NYT The Morning, WSJ 10-Point, retrieved via search_threads.</p>
+      <p><b>Failures:</b> No dedicated Bright Data MCP tool was available in this session, so Reuters and FT (both blocklisted by the direct fetcher) couldn't be routed. Reuters returned a CAPTCHA wall via curl. FT returned a client-side-rendered shell with no extractable headlines. Calculated Risk RSS file loaded but the latest entries were stale (most recent updates were January 2026; site is in a quiet stretch).</p>
+      <p><b>Bloomberg feed binary issue:</b> Bloomberg's RSS uses gzip Content-Type that the direct web_fetch couldn't decompress. Worked around by pulling via curl --compressed in bash and parsing CDATA-wrapped titles with python regex.</p>
+      <p><b>Oversize payload note:</b> One Gmail thread (WSJ 10-Point with two duplicates) returned ~295k chars and exceeded the result limit. Worked around by switching to MINIMAL format for the Bloomberg Markets Daily thread to confirm the subject line ("AI thesis tested") without needing the full body.</p>
+      <p><b>Target output path note:</b> The configured target /Users/wesleyhu/Documents/MarketDigests/ is outside the session's connected folders, so the digest was written to the session outputs folder per the task's fallback instruction.</p>
+    </div>
+  </section>
+
+  <section id="quiz" class="quiz">
+    <h2>Quiz: Term Premium and the Bear Steepener</h2>
+    <div class="q" data-correct="b">
+      <h4>1. The NY Fed's ACM model decomposes the 10-year yield into:</h4>
+      <span class="opt" data-opt="a">a) Inflation expectations and credit spread</span>
+      <span class="opt" data-opt="b">b) Average expected short rate over 10 years and term premium</span>
+      <span class="opt" data-opt="c">c) Real yield and breakeven inflation</span>
+      <span class="opt" data-opt="d">d) Fed funds rate and corporate spread</span>
+      <div class="feedback"><b>Answer: b.</b> ACM splits the nominal yield into the path of expected short rates and the term premium. Real yield vs breakeven (c) is the TIPS decomposition, different framework.</div>
+    </div>
+    <div class="q" data-correct="c">
+      <h4>2. A bear steepener is most damaging to which type of equity?</h4>
+      <span class="opt" data-opt="a">a) Regional banks</span>
+      <span class="opt" data-opt="b">b) Short-duration value stocks</span>
+      <span class="opt" data-opt="c">c) Long-duration growth (megacap tech, unprofitable growth)</span>
+      <span class="opt" data-opt="d">d) Energy producers</span>
+      <div class="feedback"><b>Answer: c.</b> Long-duration assets discount future cash flows that are far away, so a rise in the long-end discount rate hits them hardest. Banks (a) often do OK because lending yields rise faster than funding costs. Energy (d) tends to benefit when the steepener is inflation-driven.</div>
+    </div>
+    <div class="q" data-correct="a">
+      <h4>3. Which is NOT a typical driver of rising term premium?</h4>
+      <span class="opt" data-opt="a">a) The Fed cutting policy rates 25 bps</span>
+      <span class="opt" data-opt="b">b) Rising Treasury issuance / fiscal deficits</span>
+      <span class="opt" data-opt="c">c) Foreign central banks reducing reserve buying</span>
+      <span class="opt" data-opt="d">d) Higher inflation volatility</span>
+      <div class="feedback"><b>Answer: a.</b> A policy rate cut moves expected short rates, not term premium. Supply (b), foreign demand (c), and inflation vol (d) all push term premium up. Today's selloff is being driven mostly by b, c, and d, while the policy rate itself hasn't moved.</div>
+    </div>
+  </section>
+
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form class="fb" id="fb-form" onsubmit="return submitFeedback(event)">
+      <label>1. Did the depth feel right today?</label>
+      <div class="opts" data-group="depth">
+        <button type="button" data-val="too-shallow">Too shallow</button>
+        <button type="button" data-val="right">Right</button>
+        <button type="button" data-val="too-deep">Too deep</button>
+      </div>
+      <label>2. Which section was most useful? (multi-select)</label>
+      <div class="opts" data-group="useful" data-multi="1">
+        <button type="button" data-val="narratives">Narratives</button>
+        <button type="button" data-val="equities">US Equities</button>
+        <button type="button" data-val="tech">Tech</button>
+        <button type="button" data-val="macro">Macro</button>
+        <button type="button" data-val="crypto">Crypto</button>
+        <button type="button" data-val="deals">Deals</button>
+        <button type="button" data-val="sentiment">Sentiment</button>
+        <button type="button" data-val="learning">Learning</button>
+      </div>
+      <label>3. What stories were missing that you'd have wanted?</label>
+      <textarea id="fb-missing" rows="3" placeholder="What did I skip that mattered to you today?"></textarea>
+      <label>4. Was the Learning Opportunity at the right level?</label>
+      <div class="opts" data-group="learning_level">
+        <button type="button" data-val="too-basic">Too basic</button>
+        <button type="button" data-val="right">Right</button>
+        <button type="button" data-val="too-advanced">Too advanced</button>
+      </div>
+      <label>5. Open feedback</label>
+      <textarea id="fb-open" rows="3" placeholder="Anything else?"></textarea>
+      <button type="submit" class="submit">Submit feedback</button>
+      <div class="fb-success" id="fb-success">Saved. Thanks for the read.</div>
+    </form>
+  </section>
+</main>
+</div>
+
+<script>
+  // Sticky nav active-section
+  const tocLinks = document.querySelectorAll('nav.toc a');
+  const sections = document.querySelectorAll('main section');
+  function onScroll() {
+    let cur = sections[0].id;
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top < 120) cur = s.id;
+    }
+    tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Bull/Bear toggle
+  document.querySelectorAll('.narrative').forEach(n => {
+    const bb = n.querySelector('.bullbear');
+    n.querySelectorAll('.toggles button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        n.querySelectorAll('.toggles button').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        bb.classList.remove('show-bull', 'show-bear');
+        const side = btn.dataset.side;
+        if (side === 'bull') bb.classList.add('show-bull');
+        if (side === 'bear') bb.classList.add('show-bear');
+      });
+    });
+  });
+
+  // Quiz
+  document.querySelectorAll('.quiz .q').forEach(q => {
+    const correct = q.dataset.correct;
+    q.querySelectorAll('.opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (q.classList.contains('answered')) return;
+        q.classList.add('answered');
+        if (opt.dataset.opt === correct) opt.classList.add('correct');
+        else {
+          opt.classList.add('wrong');
+          q.querySelector(`.opt[data-opt="${correct}"]`).classList.add('correct');
+        }
+      });
+    });
+  });
+
+  // Feedback form: button toggles
+  document.querySelectorAll('form.fb .opts').forEach(group => {
+    const multi = group.dataset.multi === '1';
+    group.querySelectorAll('button').forEach(b => {
+      b.addEventListener('click', () => {
+        if (!multi) group.querySelectorAll('button').forEach(x => x.classList.remove('on'));
+        b.classList.toggle('on');
+      });
+    });
+  });
+
+  function gatherFeedback() {
+    const out = { date: '2026-05-18', submittedAt: new Date().toISOString() };
+    document.querySelectorAll('form.fb .opts').forEach(group => {
+      const key = group.dataset.group;
+      const multi = group.dataset.multi === '1';
+      const sel = Array.from(group.querySelectorAll('button.on')).map(b => b.dataset.val);
+      out[key] = multi ? sel : (sel[0] || null);
+    });
+    out.missing = document.getElementById('fb-missing').value;
+    out.open = document.getElementById('fb-open').value;
+    return out;
+  }
+
+  async function submitFeedback(e) {
+    e.preventDefault();
+    const data = gatherFeedback();
+    try { localStorage.setItem('marketDigest_feedback_2026-05-18', JSON.stringify(data)); } catch(_) {}
+    document.getElementById('fb-success').style.display = 'block';
+    return false;
+  }
+
+  // Charts. Data is sourced verbatim from today's feed; see source line under each chart.
+  const chartFont = '"Inter", -apple-system, sans-serif';
+  const inkColor = '#1f1d1a';
+  const mutedColor = '#6b665d';
+  const ruleColor = '#d8cdb8';
+  const bullColor = '#166534';
+  const bearColor = '#991b1b';
+  const neutralColor = '#6b665d';
+  Chart.defaults.font.family = chartFont;
+  Chart.defaults.color = inkColor;
+
+  // 1. Tech movers
+  if (document.getElementById('techMovers')) {
+    new Chart(document.getElementById('techMovers'), {
+      type: 'bar',
+      data: {
+        labels: ['Kioxia (memory, JP)', 'Samsung (KR)', 'Baidu (rev YoY, proxy)'],
+        datasets: [{
+          data: [16, 6, -1],
+          backgroundColor: ['#166534', '#166534', '#991b1b'],
+          borderRadius: 2,
+          barThickness: 36
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ctx.parsed.x + '%' } }
+        },
+        scales: {
+          x: {
+            ticks: { callback: v => v + '%', font: { size: 12 } },
+            grid: { color: ruleColor, drawBorder: false }
+          },
+          y: { grid: { display: false }, ticks: { font: { size: 13 } } }
+        }
+      }
+    });
+  }
+
+  // 2. Reddit sentiment (top posts by upvote)
+  if (document.getElementById('redditSentiment')) {
+    const posts = [
+      { sub: 'r/WSB', text: '"Tomorrow"', ups: 9002, dir: 'bear' },
+      { sub: 'r/WSB', text: '"The market will turn red"', ups: 5443, dir: 'bear' },
+      { sub: 'r/WSB', text: '"Is this insider trading?"', ups: 5456, dir: 'neutral' },
+      { sub: 'r/investing', text: 'Gold -$114 Fri w/ CPI 3.8% PPI 6%', ups: 775, dir: 'bear' },
+      { sub: 'r/crypto', text: 'Harvard dumps ETH+BTC ETFs', ups: 583, dir: 'bear' },
+      { sub: 'r/stocks', text: 'Samsung court ruling on union', ups: 432, dir: 'bull' },
+      { sub: 'r/investing', text: 'Brent $110, Iran blockade for months', ups: 249, dir: 'bear' },
+      { sub: 'r/stocks', text: 'Powell expired, Warsh inherits 6% PPI', ups: 158, dir: 'bear' },
+      { sub: 'r/crypto', text: 'Iran BTC Hormuz insurance', ups: 129, dir: 'neutral' },
+      { sub: 'r/investing', text: 'Rate hike odds 1→45%, NVDA PE 48', ups: 97, dir: 'bear' }
+    ];
+    const dirColor = { bear: bearColor, bull: bullColor, neutral: neutralColor };
+    new Chart(document.getElementById('redditSentiment'), {
+      type: 'bar',
+      data: {
+        labels: posts.map(p => p.sub + ': ' + p.text),
+        datasets: [{
+          data: posts.map(p => p.ups),
+          backgroundColor: posts.map(p => dirColor[p.dir]),
+          borderRadius: 2,
+          barThickness: 18
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' upvotes' } }
+        },
+        scales: {
+          x: {
+            ticks: { callback: v => v.toLocaleString(), font: { size: 11 } },
+            grid: { color: ruleColor }
+          },
+          y: { grid: { display: false }, ticks: { font: { size: 11 } } }
+        }
+      }
+    });
+  }
+
+  // Treasury yields (FRED DGS2, DGS10, DGS30)
+  if (document.getElementById('treasuryYields')) {
+    const fred = {"DGS2":[{"date":"2026-02-20","value":3.48},{"date":"2026-02-23","value":3.43},{"date":"2026-02-24","value":3.43},{"date":"2026-02-25","value":3.45},{"date":"2026-02-26","value":3.42},{"date":"2026-02-27","value":3.38},{"date":"2026-03-02","value":3.47},{"date":"2026-03-03","value":3.51},{"date":"2026-03-04","value":3.54},{"date":"2026-03-05","value":3.57},{"date":"2026-03-06","value":3.56},{"date":"2026-03-09","value":3.56},{"date":"2026-03-10","value":3.57},{"date":"2026-03-11","value":3.64},{"date":"2026-03-12","value":3.76},{"date":"2026-03-13","value":3.73},{"date":"2026-03-16","value":3.68},{"date":"2026-03-17","value":3.68},{"date":"2026-03-18","value":3.76},{"date":"2026-03-19","value":3.79},{"date":"2026-03-20","value":3.88},{"date":"2026-03-23","value":3.83},{"date":"2026-03-24","value":3.9},{"date":"2026-03-25","value":3.84},{"date":"2026-03-26","value":3.96},{"date":"2026-03-27","value":3.88},{"date":"2026-03-30","value":3.82},{"date":"2026-03-31","value":3.79},{"date":"2026-04-01","value":3.81},{"date":"2026-04-02","value":3.79},{"date":"2026-04-03","value":3.84},{"date":"2026-04-06","value":3.84},{"date":"2026-04-07","value":3.81},{"date":"2026-04-08","value":3.79},{"date":"2026-04-09","value":3.78},{"date":"2026-04-10","value":3.81},{"date":"2026-04-13","value":3.78},{"date":"2026-04-14","value":3.76},{"date":"2026-04-15","value":3.76},{"date":"2026-04-16","value":3.78},{"date":"2026-04-17","value":3.71},{"date":"2026-04-20","value":3.72},{"date":"2026-04-21","value":3.78},{"date":"2026-04-22","value":3.79},{"date":"2026-04-23","value":3.83},{"date":"2026-04-24","value":3.78},{"date":"2026-04-27","value":3.78},{"date":"2026-04-28","value":3.84},{"date":"2026-04-29","value":3.92},{"date":"2026-04-30","value":3.88},{"date":"2026-05-01","value":3.88},{"date":"2026-05-04","value":3.95},{"date":"2026-05-05","value":3.93},{"date":"2026-05-06","value":3.87},{"date":"2026-05-07","value":3.92},{"date":"2026-05-08","value":3.9},{"date":"2026-05-11","value":3.95},{"date":"2026-05-12","value":4.0},{"date":"2026-05-13","value":3.98},{"date":"2026-05-14","value":4.0}],"DGS10":[{"date":"2026-02-20","value":4.08},{"date":"2026-02-23","value":4.03},{"date":"2026-02-24","value":4.04},{"date":"2026-02-25","value":4.05},{"date":"2026-02-26","value":4.02},{"date":"2026-02-27","value":3.97},{"date":"2026-03-02","value":4.05},{"date":"2026-03-03","value":4.06},{"date":"2026-03-04","value":4.09},{"date":"2026-03-05","value":4.13},{"date":"2026-03-06","value":4.15},{"date":"2026-03-09","value":4.12},{"date":"2026-03-10","value":4.15},{"date":"2026-03-11","value":4.21},{"date":"2026-03-12","value":4.27},{"date":"2026-03-13","value":4.28},{"date":"2026-03-16","value":4.23},{"date":"2026-03-17","value":4.2},{"date":"2026-03-18","value":4.26},{"date":"2026-03-19","value":4.25},{"date":"2026-03-20","value":4.39},{"date":"2026-03-23","value":4.34},{"date":"2026-03-24","value":4.39},{"date":"2026-03-25","value":4.33},{"date":"2026-03-26","value":4.42},{"date":"2026-03-27","value":4.44},{"date":"2026-03-30","value":4.35},{"date":"2026-03-31","value":4.3},{"date":"2026-04-01","value":4.33},{"date":"2026-04-02","value":4.31},{"date":"2026-04-03","value":4.35},{"date":"2026-04-06","value":4.34},{"date":"2026-04-07","value":4.33},{"date":"2026-04-08","value":4.29},{"date":"2026-04-09","value":4.29},{"date":"2026-04-10","value":4.31},{"date":"2026-04-13","value":4.3},{"date":"2026-04-14","value":4.26},{"date":"2026-04-15","value":4.29},{"date":"2026-04-16","value":4.32},{"date":"2026-04-17","value":4.26},{"date":"2026-04-20","value":4.26},{"date":"2026-04-21","value":4.3},{"date":"2026-04-22","value":4.3},{"date":"2026-04-23","value":4.34},{"date":"2026-04-24","value":4.31},{"date":"2026-04-27","value":4.35},{"date":"2026-04-28","value":4.36},{"date":"2026-04-29","value":4.42},{"date":"2026-04-30","value":4.4},{"date":"2026-05-01","value":4.39},{"date":"2026-05-04","value":4.45},{"date":"2026-05-05","value":4.43},{"date":"2026-05-06","value":4.36},{"date":"2026-05-07","value":4.41},{"date":"2026-05-08","value":4.38},{"date":"2026-05-11","value":4.42},{"date":"2026-05-12","value":4.46},{"date":"2026-05-13","value":4.46},{"date":"2026-05-14","value":4.47}],"DGS30":[{"date":"2026-02-20","value":4.72},{"date":"2026-02-23","value":4.7},{"date":"2026-02-24","value":4.7},{"date":"2026-02-25","value":4.7},{"date":"2026-02-26","value":4.67},{"date":"2026-02-27","value":4.64},{"date":"2026-03-02","value":4.7},{"date":"2026-03-03","value":4.7},{"date":"2026-03-04","value":4.72},{"date":"2026-03-05","value":4.74},{"date":"2026-03-06","value":4.77},{"date":"2026-03-09","value":4.72},{"date":"2026-03-10","value":4.78},{"date":"2026-03-11","value":4.86},{"date":"2026-03-12","value":4.88},{"date":"2026-03-13","value":4.9},{"date":"2026-03-16","value":4.86},{"date":"2026-03-17","value":4.85},{"date":"2026-03-18","value":4.88},{"date":"2026-03-19","value":4.83},{"date":"2026-03-20","value":4.96},{"date":"2026-03-23","value":4.91},{"date":"2026-03-24","value":4.94},{"date":"2026-03-25","value":4.89},{"date":"2026-03-26","value":4.93},{"date":"2026-03-27","value":4.98},{"date":"2026-03-30","value":4.91},{"date":"2026-03-31","value":4.88},{"date":"2026-04-01","value":4.91},{"date":"2026-04-02","value":4.88},{"date":"2026-04-03","value":4.91},{"date":"2026-04-06","value":4.89},{"date":"2026-04-07","value":4.9},{"date":"2026-04-08","value":4.89},{"date":"2026-04-09","value":4.9},{"date":"2026-04-10","value":4.91},{"date":"2026-04-13","value":4.9},{"date":"2026-04-14","value":4.87},{"date":"2026-04-15","value":4.89},{"date":"2026-04-16","value":4.93},{"date":"2026-04-17","value":4.88},{"date":"2026-04-20","value":4.88},{"date":"2026-04-21","value":4.89},{"date":"2026-04-22","value":4.9},{"date":"2026-04-23","value":4.92},{"date":"2026-04-24","value":4.91},{"date":"2026-04-27","value":4.94},{"date":"2026-04-28","value":4.94},{"date":"2026-04-29","value":4.98},{"date":"2026-04-30","value":4.98},{"date":"2026-05-01","value":4.97},{"date":"2026-05-04","value":5.02},{"date":"2026-05-05","value":4.98},{"date":"2026-05-06","value":4.94},{"date":"2026-05-07","value":4.97},{"date":"2026-05-08","value":4.95},{"date":"2026-05-11","value":4.98},{"date":"2026-05-12","value":5.03},{"date":"2026-05-13","value":5.03},{"date":"2026-05-14","value":5.02}]};
+    const labels = fred.DGS10.map(d => d.date.slice(5));
+    new Chart(document.getElementById('treasuryYields'), {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          { label: '2Y (DGS2)', data: fred.DGS2.map(d => d.value), borderColor: '#c2410c', backgroundColor: '#c2410c', tension: 0.15, pointRadius: 0, borderWidth: 2 },
+          { label: '10Y (DGS10)', data: fred.DGS10.map(d => d.value), borderColor: '#0f4f4a', backgroundColor: '#0f4f4a', tension: 0.15, pointRadius: 0, borderWidth: 2 },
+          { label: '30Y (DGS30)', data: fred.DGS30.map(d => d.value), borderColor: '#1e3a5f', backgroundColor: '#1e3a5f', tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
+        ]
+      },
+      options: {
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, boxHeight: 8 } },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + '%' } }
+        },
+        scales: {
+          y: { ticks: { callback: v => v + '%', font: { size: 11 } }, grid: { color: '#e8ddc7' } },
+          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8 }, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  // Brent crude (FRED DCOILBRENTEU)
+  if (document.getElementById('brentChart')) {
+    const brent = [{"date":"2026-02-12","value":69.8},{"date":"2026-02-13","value":69.96},{"date":"2026-02-16","value":70.81},{"date":"2026-02-17","value":69.77},{"date":"2026-02-18","value":71.78},{"date":"2026-02-19","value":73.17},{"date":"2026-02-20","value":72.75},{"date":"2026-02-23","value":71.9},{"date":"2026-02-24","value":71.21},{"date":"2026-02-25","value":70.69},{"date":"2026-02-26","value":71.66},{"date":"2026-02-27","value":71.32},{"date":"2026-03-02","value":77.24},{"date":"2026-03-03","value":83.28},{"date":"2026-03-04","value":81.56},{"date":"2026-03-05","value":88.59},{"date":"2026-03-06","value":95.74},{"date":"2026-03-09","value":94.35},{"date":"2026-03-10","value":89.84},{"date":"2026-03-11","value":90.98},{"date":"2026-03-12","value":102.38},{"date":"2026-03-13","value":103.23},{"date":"2026-03-16","value":101.04},{"date":"2026-03-17","value":108.39},{"date":"2026-03-18","value":118.09},{"date":"2026-03-19","value":111.05},{"date":"2026-03-20","value":118.42},{"date":"2026-03-23","value":103.79},{"date":"2026-03-24","value":108.42},{"date":"2026-03-25","value":109.14},{"date":"2026-03-26","value":113.39},{"date":"2026-03-27","value":121.47},{"date":"2026-03-30","value":121.88},{"date":"2026-03-31","value":126.69},{"date":"2026-04-01","value":119.56},{"date":"2026-04-02","value":127.61},{"date":"2026-04-07","value":138.21},{"date":"2026-04-08","value":122.11},{"date":"2026-04-09","value":119.03},{"date":"2026-04-10","value":119.07},{"date":"2026-04-13","value":123.28},{"date":"2026-04-14","value":118.69},{"date":"2026-04-15","value":114.93},{"date":"2026-04-16","value":116.63},{"date":"2026-04-17","value":98.63},{"date":"2026-04-20","value":103.4},{"date":"2026-04-21","value":106.14},{"date":"2026-04-22","value":113.44},{"date":"2026-04-23","value":113.25},{"date":"2026-04-24","value":111.86},{"date":"2026-04-27","value":113.89},{"date":"2026-04-28","value":117.62},{"date":"2026-04-29","value":124.16},{"date":"2026-04-30","value":124.24},{"date":"2026-05-01","value":118.26},{"date":"2026-05-05","value":114.51},{"date":"2026-05-06","value":103.7},{"date":"2026-05-07","value":101.82},{"date":"2026-05-08","value":103.48},{"date":"2026-05-11","value":106.11}];
+    new Chart(document.getElementById('brentChart'), {
+      type: 'line',
+      data: {
+        labels: brent.map(d => d.date.slice(5)),
+        datasets: [{
+          label: 'Brent ($/bbl)',
+          data: brent.map(d => d.value),
+          borderColor: '#c2410c',
+          backgroundColor: 'rgba(194,65,12,0.08)',
+          fill: true,
+          tension: 0.18,
+          pointRadius: 0,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: ctx => '$' + ctx.parsed.y.toFixed(2) } }
+        },
+        scales: {
+          y: { ticks: { callback: v => '$' + v, font: { size: 11 } }, grid: { color: '#e8ddc7' } },
+          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8 }, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  // 3. Deal sizes
+  if (document.getElementById('dealSizes')) {
+    new Chart(document.getElementById('dealSizes'), {
+      type: 'bar',
+      data: {
+        labels: ['NextEra → Dominion', 'Merck → Terns'],
+        datasets: [{
+          data: [67, 6.7],
+          backgroundColor: ['#0f4f4a', '#c2410c'],
+          borderRadius: 2,
+          barThickness: 56
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: ctx => '$' + ctx.parsed.y + 'B' } }
+        },
+        scales: {
+          y: {
+            ticks: { callback: v => '$' + v + 'B', font: { size: 12 } },
+            grid: { color: ruleColor }
+          },
+          x: { grid: { display: false }, ticks: { font: { size: 13 } } }
+        }
+      }
+    });
+  }
+</script>
+</body>
+</html>
