@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <style>
   :root {
     --bg: #f4ede0;
@@ -86,7 +87,9 @@
   html { transition: background-color .25s, color .25s; }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Newsreader", "Source Serif Pro", Georgia, serif; line-height: 1.6; font-size: 17px; -webkit-font-smoothing: antialiased; }
-  .page { display: flex; max-width: var(--content-max); margin: 0 auto; min-height: 100vh; gap: 32px; padding: 0 32px; }
+  .page { display: flex; width: 100%; min-height: 100vh; gap: 40px; padding: 0; }
+  nav.toc { padding-left: 28px; padding-right: 12px; }
+  main { max-width: 1080px; padding-right: 56px; }
   nav.toc {
     position: sticky; top: 0; align-self: flex-start;
     flex: 0 0 var(--nav); height: 100vh; padding: 36px 8px 36px 0;
@@ -202,6 +205,35 @@
   .buyside-card p { font-size: 14.5px; margin: 0; line-height: 1.55; max-width: none; }
   .buyside-card .tag { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
   @media (max-width: 880px) { .buyside-grid { grid-template-columns: 1fr; } }
+  .playout { max-width: 1080px; }
+  .playout-bar { display: flex; gap: 12px; margin: 14px 0 22px; padding: 12px 16px; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; }
+  .playout-bar .score { flex: 1; font-family: "Inter", sans-serif; font-size: 13px; }
+  .playout-bar .score-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+  .playout-bar .score-val { font-weight: 700; font-size: 15px; }
+  .playout-bar .score-val.bull { color: var(--bull); }
+  .playout-bar .score-val.bear { color: var(--bear); }
+  .playout-bar .score-val.mixed { color: var(--muted); }
+  .checkpoint { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 18px 22px; margin: 12px 0; max-width: 1080px; position: relative; }
+  .checkpoint.pending { opacity: .55; border-style: dashed; }
+  .checkpoint.active { border-left: 3px solid var(--accent); }
+  .checkpoint .cp-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+  .checkpoint .cp-time { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--accent-2); font-weight: 600; letter-spacing: .04em; }
+  .checkpoint .cp-title { font-family: "Fraunces", serif; font-weight: 600; font-size: 18px; }
+  .checkpoint .cp-updated { margin-left: auto; font-family: "Inter", sans-serif; font-size: 11px; color: var(--muted); }
+  .checkpoint .narrative-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 10px; }
+  @media (max-width: 880px) { .checkpoint .narrative-row { grid-template-columns: 1fr; } }
+  .nar-card { padding: 10px 14px; border-radius: 4px; background: var(--bg); border: 1px solid var(--rule); }
+  .nar-card .nar-name { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 6px; }
+  .nar-card .nar-call { font-size: 14px; line-height: 1.5; }
+  .nar-card .nar-data { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .nar-card.bull { background: var(--bull-soft); border-left: 3px solid var(--bull); }
+  .nar-card.bear { background: var(--bear-soft); border-left: 3px solid var(--bear); }
+  .week-table { width: 100%; border-collapse: collapse; font-family: "Inter", sans-serif; font-size: 13px; margin-top: 8px; max-width: 1080px; }
+  .week-table th, .week-table td { padding: 9px 10px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+  .week-table th { background: var(--code); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); font-weight: 700; }
+  .week-table td.score-bull { color: var(--bull); font-weight: 600; }
+  .week-table td.score-bear { color: var(--bear); font-weight: 600; }
+  .week-table td.score-mixed { color: var(--muted); }
   .source-note { font-family: "Inter", sans-serif; font-size: 13.5px; color: var(--muted); background: var(--code); padding: 18px 22px; border-radius: 4px; max-width: 980px; line-height: 1.6; }
   .source-note b { color: var(--ink); }
   .source-note p { max-width: none; margin: 6px 0; }
@@ -755,24 +787,77 @@
 
   // Charts. Data is sourced verbatim from today's feed; see source line under each chart.
   const chartFont = '"Inter", -apple-system, sans-serif';
-  const inkColor = '#1f1d1a';
-  const mutedColor = '#6b665d';
-  const ruleColor = '#d8cdb8';
-  const bullColor = '#166534';
-  const bearColor = '#991b1b';
-  const neutralColor = '#6b665d';
   Chart.defaults.font.family = chartFont;
-  Chart.defaults.color = inkColor;
+  window.allCharts = [];
+
+  // Theme-aware color reader (pulls live CSS variables, so dark/light mode swaps cleanly)
+  function tc() {
+    const s = getComputedStyle(document.documentElement);
+    return {
+      ink: s.getPropertyValue('--ink').trim() || '#1f1d1a',
+      muted: s.getPropertyValue('--muted').trim() || '#6b665d',
+      rule: s.getPropertyValue('--rule').trim() || '#d8cdb8',
+      bull: s.getPropertyValue('--bull').trim() || '#166534',
+      bear: s.getPropertyValue('--bear').trim() || '#991b1b',
+      accent: s.getPropertyValue('--accent').trim() || '#0f4f4a',
+      accent2: s.getPropertyValue('--accent-2').trim() || '#c2410c',
+      anchor: s.getPropertyValue('--anchor').trim() || '#1e3a5f',
+      surface: s.getPropertyValue('--surface').trim() || '#fbf6ec'
+    };
+  }
+  const bullColor = tc().bull;
+  const bearColor = tc().bear;
+  const neutralColor = tc().muted;
+  Chart.defaults.color = tc().ink;
+
+  // Register datalabels plugin (opt-in per chart)
+  if (window.ChartDataLabels) Chart.register(ChartDataLabels);
+  Chart.defaults.plugins = Chart.defaults.plugins || {};
+  Chart.defaults.plugins.datalabels = { display: false };
+
+  // Plugin: label only the last data point on line charts
+  const lastPointLabel = {
+    id: 'lastPointLabel',
+    afterDatasetsDraw(chart) {
+      if (!chart.options.plugins.lastPointLabel || !chart.options.plugins.lastPointLabel.show) return;
+      const fmt = chart.options.plugins.lastPointLabel.format || (v => v.toFixed(2));
+      const ctx = chart.ctx;
+      chart.data.datasets.forEach((ds, di) => {
+        const meta = chart.getDatasetMeta(di);
+        if (meta.hidden) return;
+        const last = meta.data[meta.data.length - 1];
+        if (!last) return;
+        const val = ds.data[ds.data.length - 1];
+        ctx.save();
+        ctx.font = '600 11px ' + chartFont;
+        ctx.fillStyle = ds.borderColor || '#000';
+        ctx.textBaseline = 'middle';
+        const label = fmt(val, ds);
+        const x = last.x + 6;
+        const y = last.y;
+        // background pill for readability
+        const w = ctx.measureText(label).width;
+        ctx.fillStyle = tc().surface;
+        ctx.globalAlpha = 0.85;
+        ctx.fillRect(x - 2, y - 8, w + 8, 16);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = ds.borderColor || '#000';
+        ctx.fillText(label, x + 2, y);
+        ctx.restore();
+      });
+    }
+  };
+  Chart.register(lastPointLabel);
 
   // 1. Tech movers
   if (document.getElementById('techMovers')) {
-    new Chart(document.getElementById('techMovers'), {
+    window.allCharts.push(new Chart(document.getElementById('techMovers'), {
       type: 'bar',
       data: {
         labels: ['Kioxia (memory, JP)', 'Samsung (KR)', 'Baidu (rev YoY, proxy)'],
         datasets: [{
           data: [16, 6, -1],
-          backgroundColor: ['#166534', '#166534', '#991b1b'],
+          backgroundColor: [tc().bull, tc().bull, tc().bear],
           borderRadius: 2,
           barThickness: 36
         }]
@@ -781,17 +866,25 @@
         indexAxis: 'y',
         plugins: {
           legend: { display: false },
-          tooltip: { callbacks: { label: ctx => ctx.parsed.x + '%' } }
+          tooltip: { callbacks: { label: ctx => ctx.parsed.x + '%' } },
+          datalabels: {
+            display: true,
+            anchor: ctx => ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start',
+            align: ctx => ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start',
+            color: tc().ink,
+            font: { size: 12, weight: 700 },
+            formatter: v => (v > 0 ? '+' : '') + v + '%'
+          }
         },
         scales: {
           x: {
-            ticks: { callback: v => v + '%', font: { size: 12 } },
-            grid: { color: ruleColor, drawBorder: false }
+            ticks: { callback: v => v + '%', font: { size: 12 }, color: tc().muted },
+            grid: { color: tc().rule, drawBorder: false }
           },
-          y: { grid: { display: false }, ticks: { font: { size: 13 } } }
+          y: { grid: { display: false }, ticks: { font: { size: 13 }, color: tc().ink } }
         }
       }
-    });
+    }));
   }
 
   // 2. Reddit sentiment (top posts by upvote)
@@ -808,8 +901,8 @@
       { sub: 'r/crypto', text: 'Iran BTC Hormuz insurance', ups: 129, dir: 'neutral' },
       { sub: 'r/investing', text: 'Rate hike odds 1→45%, NVDA PE 48', ups: 97, dir: 'bear' }
     ];
-    const dirColor = { bear: bearColor, bull: bullColor, neutral: neutralColor };
-    new Chart(document.getElementById('redditSentiment'), {
+    const dirColor = { bear: tc().bear, bull: tc().bull, neutral: tc().muted };
+    window.allCharts.push(new Chart(document.getElementById('redditSentiment'), {
       type: 'bar',
       data: {
         labels: posts.map(p => p.sub + ': ' + p.text),
@@ -824,59 +917,66 @@
         indexAxis: 'y',
         plugins: {
           legend: { display: false },
-          tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' upvotes' } }
+          tooltip: { callbacks: { label: ctx => ctx.parsed.x.toLocaleString() + ' upvotes' } },
+          datalabels: {
+            display: true, anchor: 'end', align: 'end', clamp: true,
+            color: tc().ink, font: { size: 11, weight: 600 },
+            formatter: v => v.toLocaleString()
+          }
         },
         scales: {
           x: {
-            ticks: { callback: v => v.toLocaleString(), font: { size: 11 } },
-            grid: { color: ruleColor }
+            ticks: { callback: v => v.toLocaleString(), font: { size: 11 }, color: tc().muted },
+            grid: { color: tc().rule }
           },
-          y: { grid: { display: false }, ticks: { font: { size: 11 } } }
+          y: { grid: { display: false }, ticks: { font: { size: 11 }, color: tc().ink } }
         }
       }
-    });
+    }));
   }
 
   // Treasury yields (FRED DGS2, DGS10, DGS30)
   if (document.getElementById('treasuryYields')) {
     const fred = {"DGS2":[{"date":"2026-02-20","value":3.48},{"date":"2026-02-23","value":3.43},{"date":"2026-02-24","value":3.43},{"date":"2026-02-25","value":3.45},{"date":"2026-02-26","value":3.42},{"date":"2026-02-27","value":3.38},{"date":"2026-03-02","value":3.47},{"date":"2026-03-03","value":3.51},{"date":"2026-03-04","value":3.54},{"date":"2026-03-05","value":3.57},{"date":"2026-03-06","value":3.56},{"date":"2026-03-09","value":3.56},{"date":"2026-03-10","value":3.57},{"date":"2026-03-11","value":3.64},{"date":"2026-03-12","value":3.76},{"date":"2026-03-13","value":3.73},{"date":"2026-03-16","value":3.68},{"date":"2026-03-17","value":3.68},{"date":"2026-03-18","value":3.76},{"date":"2026-03-19","value":3.79},{"date":"2026-03-20","value":3.88},{"date":"2026-03-23","value":3.83},{"date":"2026-03-24","value":3.9},{"date":"2026-03-25","value":3.84},{"date":"2026-03-26","value":3.96},{"date":"2026-03-27","value":3.88},{"date":"2026-03-30","value":3.82},{"date":"2026-03-31","value":3.79},{"date":"2026-04-01","value":3.81},{"date":"2026-04-02","value":3.79},{"date":"2026-04-03","value":3.84},{"date":"2026-04-06","value":3.84},{"date":"2026-04-07","value":3.81},{"date":"2026-04-08","value":3.79},{"date":"2026-04-09","value":3.78},{"date":"2026-04-10","value":3.81},{"date":"2026-04-13","value":3.78},{"date":"2026-04-14","value":3.76},{"date":"2026-04-15","value":3.76},{"date":"2026-04-16","value":3.78},{"date":"2026-04-17","value":3.71},{"date":"2026-04-20","value":3.72},{"date":"2026-04-21","value":3.78},{"date":"2026-04-22","value":3.79},{"date":"2026-04-23","value":3.83},{"date":"2026-04-24","value":3.78},{"date":"2026-04-27","value":3.78},{"date":"2026-04-28","value":3.84},{"date":"2026-04-29","value":3.92},{"date":"2026-04-30","value":3.88},{"date":"2026-05-01","value":3.88},{"date":"2026-05-04","value":3.95},{"date":"2026-05-05","value":3.93},{"date":"2026-05-06","value":3.87},{"date":"2026-05-07","value":3.92},{"date":"2026-05-08","value":3.9},{"date":"2026-05-11","value":3.95},{"date":"2026-05-12","value":4.0},{"date":"2026-05-13","value":3.98},{"date":"2026-05-14","value":4.0}],"DGS10":[{"date":"2026-02-20","value":4.08},{"date":"2026-02-23","value":4.03},{"date":"2026-02-24","value":4.04},{"date":"2026-02-25","value":4.05},{"date":"2026-02-26","value":4.02},{"date":"2026-02-27","value":3.97},{"date":"2026-03-02","value":4.05},{"date":"2026-03-03","value":4.06},{"date":"2026-03-04","value":4.09},{"date":"2026-03-05","value":4.13},{"date":"2026-03-06","value":4.15},{"date":"2026-03-09","value":4.12},{"date":"2026-03-10","value":4.15},{"date":"2026-03-11","value":4.21},{"date":"2026-03-12","value":4.27},{"date":"2026-03-13","value":4.28},{"date":"2026-03-16","value":4.23},{"date":"2026-03-17","value":4.2},{"date":"2026-03-18","value":4.26},{"date":"2026-03-19","value":4.25},{"date":"2026-03-20","value":4.39},{"date":"2026-03-23","value":4.34},{"date":"2026-03-24","value":4.39},{"date":"2026-03-25","value":4.33},{"date":"2026-03-26","value":4.42},{"date":"2026-03-27","value":4.44},{"date":"2026-03-30","value":4.35},{"date":"2026-03-31","value":4.3},{"date":"2026-04-01","value":4.33},{"date":"2026-04-02","value":4.31},{"date":"2026-04-03","value":4.35},{"date":"2026-04-06","value":4.34},{"date":"2026-04-07","value":4.33},{"date":"2026-04-08","value":4.29},{"date":"2026-04-09","value":4.29},{"date":"2026-04-10","value":4.31},{"date":"2026-04-13","value":4.3},{"date":"2026-04-14","value":4.26},{"date":"2026-04-15","value":4.29},{"date":"2026-04-16","value":4.32},{"date":"2026-04-17","value":4.26},{"date":"2026-04-20","value":4.26},{"date":"2026-04-21","value":4.3},{"date":"2026-04-22","value":4.3},{"date":"2026-04-23","value":4.34},{"date":"2026-04-24","value":4.31},{"date":"2026-04-27","value":4.35},{"date":"2026-04-28","value":4.36},{"date":"2026-04-29","value":4.42},{"date":"2026-04-30","value":4.4},{"date":"2026-05-01","value":4.39},{"date":"2026-05-04","value":4.45},{"date":"2026-05-05","value":4.43},{"date":"2026-05-06","value":4.36},{"date":"2026-05-07","value":4.41},{"date":"2026-05-08","value":4.38},{"date":"2026-05-11","value":4.42},{"date":"2026-05-12","value":4.46},{"date":"2026-05-13","value":4.46},{"date":"2026-05-14","value":4.47}],"DGS30":[{"date":"2026-02-20","value":4.72},{"date":"2026-02-23","value":4.7},{"date":"2026-02-24","value":4.7},{"date":"2026-02-25","value":4.7},{"date":"2026-02-26","value":4.67},{"date":"2026-02-27","value":4.64},{"date":"2026-03-02","value":4.7},{"date":"2026-03-03","value":4.7},{"date":"2026-03-04","value":4.72},{"date":"2026-03-05","value":4.74},{"date":"2026-03-06","value":4.77},{"date":"2026-03-09","value":4.72},{"date":"2026-03-10","value":4.78},{"date":"2026-03-11","value":4.86},{"date":"2026-03-12","value":4.88},{"date":"2026-03-13","value":4.9},{"date":"2026-03-16","value":4.86},{"date":"2026-03-17","value":4.85},{"date":"2026-03-18","value":4.88},{"date":"2026-03-19","value":4.83},{"date":"2026-03-20","value":4.96},{"date":"2026-03-23","value":4.91},{"date":"2026-03-24","value":4.94},{"date":"2026-03-25","value":4.89},{"date":"2026-03-26","value":4.93},{"date":"2026-03-27","value":4.98},{"date":"2026-03-30","value":4.91},{"date":"2026-03-31","value":4.88},{"date":"2026-04-01","value":4.91},{"date":"2026-04-02","value":4.88},{"date":"2026-04-03","value":4.91},{"date":"2026-04-06","value":4.89},{"date":"2026-04-07","value":4.9},{"date":"2026-04-08","value":4.89},{"date":"2026-04-09","value":4.9},{"date":"2026-04-10","value":4.91},{"date":"2026-04-13","value":4.9},{"date":"2026-04-14","value":4.87},{"date":"2026-04-15","value":4.89},{"date":"2026-04-16","value":4.93},{"date":"2026-04-17","value":4.88},{"date":"2026-04-20","value":4.88},{"date":"2026-04-21","value":4.89},{"date":"2026-04-22","value":4.9},{"date":"2026-04-23","value":4.92},{"date":"2026-04-24","value":4.91},{"date":"2026-04-27","value":4.94},{"date":"2026-04-28","value":4.94},{"date":"2026-04-29","value":4.98},{"date":"2026-04-30","value":4.98},{"date":"2026-05-01","value":4.97},{"date":"2026-05-04","value":5.02},{"date":"2026-05-05","value":4.98},{"date":"2026-05-06","value":4.94},{"date":"2026-05-07","value":4.97},{"date":"2026-05-08","value":4.95},{"date":"2026-05-11","value":4.98},{"date":"2026-05-12","value":5.03},{"date":"2026-05-13","value":5.03},{"date":"2026-05-14","value":5.02}]};
     const labels = fred.DGS10.map(d => d.date.slice(5));
-    new Chart(document.getElementById('treasuryYields'), {
+    window.allCharts.push(new Chart(document.getElementById('treasuryYields'), {
       type: 'line',
       data: {
         labels: labels,
         datasets: [
-          { label: '2Y (DGS2)', data: fred.DGS2.map(d => d.value), borderColor: '#c2410c', backgroundColor: '#c2410c', tension: 0.15, pointRadius: 0, borderWidth: 2 },
-          { label: '10Y (DGS10)', data: fred.DGS10.map(d => d.value), borderColor: '#0f4f4a', backgroundColor: '#0f4f4a', tension: 0.15, pointRadius: 0, borderWidth: 2 },
-          { label: '30Y (DGS30)', data: fred.DGS30.map(d => d.value), borderColor: '#1e3a5f', backgroundColor: '#1e3a5f', tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
+          { label: '2Y', data: fred.DGS2.map(d => d.value), borderColor: tc().accent2, backgroundColor: tc().accent2, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+          { label: '10Y', data: fred.DGS10.map(d => d.value), borderColor: tc().accent, backgroundColor: tc().accent, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+          { label: '30Y', data: fred.DGS30.map(d => d.value), borderColor: tc().anchor, backgroundColor: tc().anchor, tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
         ]
       },
       options: {
         interaction: { mode: 'index', intersect: false },
+        layout: { padding: { right: 56 } },
         plugins: {
-          legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, boxHeight: 8 } },
-          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + '%' } }
+          legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, boxHeight: 8, color: tc().ink } },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + '%' } },
+          lastPointLabel: { show: true, format: v => v.toFixed(2) + '%' }
         },
         scales: {
-          y: { ticks: { callback: v => v + '%', font: { size: 11 } }, grid: { color: '#e8ddc7' } },
-          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8 }, grid: { display: false } }
+          y: { ticks: { callback: v => v + '%', font: { size: 11 }, color: tc().muted }, grid: { color: tc().rule } },
+          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8, color: tc().muted }, grid: { display: false } }
         }
       }
-    });
+    }));
   }
 
   // Brent crude (FRED DCOILBRENTEU)
   if (document.getElementById('brentChart')) {
     const brent = [{"date":"2026-02-12","value":69.8},{"date":"2026-02-13","value":69.96},{"date":"2026-02-16","value":70.81},{"date":"2026-02-17","value":69.77},{"date":"2026-02-18","value":71.78},{"date":"2026-02-19","value":73.17},{"date":"2026-02-20","value":72.75},{"date":"2026-02-23","value":71.9},{"date":"2026-02-24","value":71.21},{"date":"2026-02-25","value":70.69},{"date":"2026-02-26","value":71.66},{"date":"2026-02-27","value":71.32},{"date":"2026-03-02","value":77.24},{"date":"2026-03-03","value":83.28},{"date":"2026-03-04","value":81.56},{"date":"2026-03-05","value":88.59},{"date":"2026-03-06","value":95.74},{"date":"2026-03-09","value":94.35},{"date":"2026-03-10","value":89.84},{"date":"2026-03-11","value":90.98},{"date":"2026-03-12","value":102.38},{"date":"2026-03-13","value":103.23},{"date":"2026-03-16","value":101.04},{"date":"2026-03-17","value":108.39},{"date":"2026-03-18","value":118.09},{"date":"2026-03-19","value":111.05},{"date":"2026-03-20","value":118.42},{"date":"2026-03-23","value":103.79},{"date":"2026-03-24","value":108.42},{"date":"2026-03-25","value":109.14},{"date":"2026-03-26","value":113.39},{"date":"2026-03-27","value":121.47},{"date":"2026-03-30","value":121.88},{"date":"2026-03-31","value":126.69},{"date":"2026-04-01","value":119.56},{"date":"2026-04-02","value":127.61},{"date":"2026-04-07","value":138.21},{"date":"2026-04-08","value":122.11},{"date":"2026-04-09","value":119.03},{"date":"2026-04-10","value":119.07},{"date":"2026-04-13","value":123.28},{"date":"2026-04-14","value":118.69},{"date":"2026-04-15","value":114.93},{"date":"2026-04-16","value":116.63},{"date":"2026-04-17","value":98.63},{"date":"2026-04-20","value":103.4},{"date":"2026-04-21","value":106.14},{"date":"2026-04-22","value":113.44},{"date":"2026-04-23","value":113.25},{"date":"2026-04-24","value":111.86},{"date":"2026-04-27","value":113.89},{"date":"2026-04-28","value":117.62},{"date":"2026-04-29","value":124.16},{"date":"2026-04-30","value":124.24},{"date":"2026-05-01","value":118.26},{"date":"2026-05-05","value":114.51},{"date":"2026-05-06","value":103.7},{"date":"2026-05-07","value":101.82},{"date":"2026-05-08","value":103.48},{"date":"2026-05-11","value":106.11}];
-    new Chart(document.getElementById('brentChart'), {
+    window.allCharts.push(new Chart(document.getElementById('brentChart'), {
       type: 'line',
       data: {
         labels: brent.map(d => d.date.slice(5)),
         datasets: [{
-          label: 'Brent ($/bbl)',
+          label: 'Brent',
           data: brent.map(d => d.value),
-          borderColor: '#c2410c',
-          backgroundColor: 'rgba(194,65,12,0.08)',
+          borderColor: tc().accent2,
+          backgroundColor: 'rgba(194,65,12,0.10)',
           fill: true,
           tension: 0.18,
           pointRadius: 0,
@@ -884,27 +984,29 @@
         }]
       },
       options: {
+        layout: { padding: { right: 60 } },
         plugins: {
           legend: { display: false },
-          tooltip: { callbacks: { label: ctx => '$' + ctx.parsed.y.toFixed(2) } }
+          tooltip: { callbacks: { label: ctx => '$' + ctx.parsed.y.toFixed(2) } },
+          lastPointLabel: { show: true, format: v => '$' + v.toFixed(1) }
         },
         scales: {
-          y: { ticks: { callback: v => '$' + v, font: { size: 11 } }, grid: { color: '#e8ddc7' } },
-          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8 }, grid: { display: false } }
+          y: { ticks: { callback: v => '$' + v, font: { size: 11 }, color: tc().muted }, grid: { color: tc().rule } },
+          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8, color: tc().muted }, grid: { display: false } }
         }
       }
-    });
+    }));
   }
 
   // 3. Deal sizes
   if (document.getElementById('dealSizes')) {
-    new Chart(document.getElementById('dealSizes'), {
+    window.allCharts.push(new Chart(document.getElementById('dealSizes'), {
       type: 'bar',
       data: {
         labels: ['NextEra → Dominion', 'Merck → Terns'],
         datasets: [{
           data: [67, 6.7],
-          backgroundColor: ['#0f4f4a', '#c2410c'],
+          backgroundColor: [tc().accent, tc().accent2],
           borderRadius: 2,
           barThickness: 56
         }]
@@ -912,80 +1014,109 @@
       options: {
         plugins: {
           legend: { display: false },
-          tooltip: { callbacks: { label: ctx => '$' + ctx.parsed.y + 'B' } }
+          tooltip: { callbacks: { label: ctx => '$' + ctx.parsed.y + 'B' } },
+          datalabels: {
+            display: true, anchor: 'end', align: 'top', clip: false, offset: 4,
+            color: tc().ink, font: { size: 16, weight: 700 },
+            formatter: v => '$' + v + 'B'
+          }
         },
         scales: {
           y: {
-            ticks: { callback: v => '$' + v + 'B', font: { size: 12 } },
-            grid: { color: ruleColor }
+            ticks: { callback: v => '$' + v + 'B', font: { size: 12 }, color: tc().muted },
+            grid: { color: tc().rule },
+            suggestedMax: 80
           },
-          x: { grid: { display: false }, ticks: { font: { size: 13 } } }
+          x: { grid: { display: false }, ticks: { font: { size: 13 }, color: tc().ink } }
         }
       }
-    });
+    }));
   }
 
   // Credit-stress charts (FRED HY/IG OAS, VIX, 2s10s)
   const creditData = {"HY_OAS":[{"date":"2026-02-23","value":2.91},{"date":"2026-02-24","value":2.91},{"date":"2026-02-25","value":2.86},{"date":"2026-02-26","value":2.83},{"date":"2026-02-27","value":2.85},{"date":"2026-03-02","value":2.78},{"date":"2026-03-03","value":2.81},{"date":"2026-03-04","value":2.83},{"date":"2026-03-05","value":2.83},{"date":"2026-03-06","value":2.86},{"date":"2026-03-09","value":2.84},{"date":"2026-03-10","value":2.87},{"date":"2026-03-11","value":2.84},{"date":"2026-03-12","value":2.85},{"date":"2026-03-13","value":2.83},{"date":"2026-03-16","value":2.87},{"date":"2026-03-17","value":2.84},{"date":"2026-03-18","value":2.81},{"date":"2026-03-19","value":2.85},{"date":"2026-03-20","value":2.82},{"date":"2026-03-23","value":2.84},{"date":"2026-03-24","value":2.81},{"date":"2026-03-25","value":2.78},{"date":"2026-03-26","value":2.74},{"date":"2026-03-27","value":2.72},{"date":"2026-03-30","value":2.74},{"date":"2026-03-31","value":2.74},{"date":"2026-04-01","value":2.78},{"date":"2026-04-02","value":2.79},{"date":"2026-04-03","value":2.77},{"date":"2026-04-06","value":2.81},{"date":"2026-04-07","value":2.81},{"date":"2026-04-08","value":2.83},{"date":"2026-04-09","value":2.81},{"date":"2026-04-10","value":2.80},{"date":"2026-04-13","value":2.81},{"date":"2026-04-14","value":2.82},{"date":"2026-04-15","value":2.83},{"date":"2026-04-16","value":2.84},{"date":"2026-04-17","value":2.85},{"date":"2026-04-20","value":2.83},{"date":"2026-04-21","value":2.81},{"date":"2026-04-22","value":2.79},{"date":"2026-04-23","value":2.79},{"date":"2026-04-24","value":2.81},{"date":"2026-04-27","value":2.83},{"date":"2026-04-28","value":2.81},{"date":"2026-04-29","value":2.79},{"date":"2026-04-30","value":2.78},{"date":"2026-05-01","value":2.77},{"date":"2026-05-04","value":2.81},{"date":"2026-05-05","value":2.82},{"date":"2026-05-06","value":2.85},{"date":"2026-05-07","value":2.83},{"date":"2026-05-08","value":2.81},{"date":"2026-05-11","value":2.79},{"date":"2026-05-12","value":2.82},{"date":"2026-05-13","value":2.82},{"date":"2026-05-14","value":2.76},{"date":"2026-05-15","value":2.80}],"IG_OAS":[{"date":"2026-02-23","value":0.81},{"date":"2026-02-24","value":0.80},{"date":"2026-02-25","value":0.80},{"date":"2026-02-26","value":0.79},{"date":"2026-02-27","value":0.80},{"date":"2026-03-02","value":0.78},{"date":"2026-03-03","value":0.79},{"date":"2026-03-04","value":0.79},{"date":"2026-03-05","value":0.79},{"date":"2026-03-06","value":0.80},{"date":"2026-03-09","value":0.80},{"date":"2026-03-10","value":0.80},{"date":"2026-03-11","value":0.80},{"date":"2026-03-12","value":0.80},{"date":"2026-03-13","value":0.80},{"date":"2026-03-16","value":0.80},{"date":"2026-03-17","value":0.79},{"date":"2026-03-18","value":0.78},{"date":"2026-03-19","value":0.79},{"date":"2026-03-20","value":0.78},{"date":"2026-03-23","value":0.78},{"date":"2026-03-24","value":0.77},{"date":"2026-03-25","value":0.76},{"date":"2026-03-26","value":0.76},{"date":"2026-03-27","value":0.75},{"date":"2026-03-30","value":0.75},{"date":"2026-03-31","value":0.75},{"date":"2026-04-01","value":0.76},{"date":"2026-04-02","value":0.76},{"date":"2026-04-03","value":0.76},{"date":"2026-04-06","value":0.77},{"date":"2026-04-07","value":0.77},{"date":"2026-04-08","value":0.77},{"date":"2026-04-09","value":0.77},{"date":"2026-04-10","value":0.77},{"date":"2026-04-13","value":0.77},{"date":"2026-04-14","value":0.77},{"date":"2026-04-15","value":0.77},{"date":"2026-04-16","value":0.78},{"date":"2026-04-17","value":0.78},{"date":"2026-04-20","value":0.78},{"date":"2026-04-21","value":0.78},{"date":"2026-04-22","value":0.78},{"date":"2026-04-23","value":0.78},{"date":"2026-04-24","value":0.78},{"date":"2026-04-27","value":0.78},{"date":"2026-04-28","value":0.78},{"date":"2026-04-29","value":0.77},{"date":"2026-04-30","value":0.77},{"date":"2026-05-01","value":0.77},{"date":"2026-05-04","value":0.78},{"date":"2026-05-05","value":0.78},{"date":"2026-05-06","value":0.78},{"date":"2026-05-07","value":0.78},{"date":"2026-05-08","value":0.78},{"date":"2026-05-11","value":0.78},{"date":"2026-05-12","value":0.77},{"date":"2026-05-13","value":0.76},{"date":"2026-05-14","value":0.76},{"date":"2026-05-15","value":0.75}],"VIX":[{"date":"2026-02-23","value":17.85},{"date":"2026-02-24","value":17.45},{"date":"2026-02-25","value":17.20},{"date":"2026-02-26","value":17.10},{"date":"2026-02-27","value":18.50},{"date":"2026-03-02","value":19.20},{"date":"2026-03-03","value":21.40},{"date":"2026-03-04","value":22.30},{"date":"2026-03-05","value":24.80},{"date":"2026-03-06","value":26.10},{"date":"2026-03-09","value":25.40},{"date":"2026-03-10","value":23.10},{"date":"2026-03-11","value":22.50},{"date":"2026-03-12","value":24.30},{"date":"2026-03-13","value":23.80},{"date":"2026-03-16","value":22.40},{"date":"2026-03-17","value":24.10},{"date":"2026-03-18","value":26.20},{"date":"2026-03-19","value":25.40},{"date":"2026-03-20","value":27.30},{"date":"2026-03-23","value":24.10},{"date":"2026-03-24","value":25.20},{"date":"2026-03-25","value":24.80},{"date":"2026-03-26","value":26.10},{"date":"2026-03-27","value":28.40},{"date":"2026-03-30","value":27.80},{"date":"2026-03-31","value":29.10},{"date":"2026-04-01","value":27.50},{"date":"2026-04-02","value":29.30},{"date":"2026-04-07","value":32.40},{"date":"2026-04-08","value":28.10},{"date":"2026-04-09","value":26.40},{"date":"2026-04-10","value":25.10},{"date":"2026-04-13","value":26.30},{"date":"2026-04-14","value":24.80},{"date":"2026-04-15","value":23.10},{"date":"2026-04-16","value":23.40},{"date":"2026-04-17","value":21.20},{"date":"2026-04-20","value":22.10},{"date":"2026-04-21","value":22.40},{"date":"2026-04-22","value":23.20},{"date":"2026-04-23","value":22.80},{"date":"2026-04-24","value":22.10},{"date":"2026-04-27","value":22.50},{"date":"2026-04-28","value":23.10},{"date":"2026-04-29","value":24.30},{"date":"2026-04-30","value":23.80},{"date":"2026-05-01","value":22.50},{"date":"2026-05-04","value":21.80},{"date":"2026-05-05","value":21.20},{"date":"2026-05-06","value":20.10},{"date":"2026-05-07","value":19.80},{"date":"2026-05-08","value":19.10},{"date":"2026-05-11","value":18.38},{"date":"2026-05-12","value":17.99},{"date":"2026-05-13","value":17.87},{"date":"2026-05-14","value":17.26},{"date":"2026-05-15","value":18.43}],"TENMINUSTWO":[{"date":"2026-02-23","value":0.60},{"date":"2026-02-24","value":0.61},{"date":"2026-02-25","value":0.60},{"date":"2026-02-26","value":0.60},{"date":"2026-02-27","value":0.59},{"date":"2026-03-02","value":0.58},{"date":"2026-03-03","value":0.55},{"date":"2026-03-04","value":0.55},{"date":"2026-03-05","value":0.56},{"date":"2026-03-06","value":0.59},{"date":"2026-03-09","value":0.56},{"date":"2026-03-10","value":0.58},{"date":"2026-03-11","value":0.57},{"date":"2026-03-12","value":0.51},{"date":"2026-03-13","value":0.55},{"date":"2026-03-16","value":0.55},{"date":"2026-03-17","value":0.52},{"date":"2026-03-18","value":0.50},{"date":"2026-03-19","value":0.46},{"date":"2026-03-20","value":0.51},{"date":"2026-03-23","value":0.51},{"date":"2026-03-24","value":0.49},{"date":"2026-03-25","value":0.49},{"date":"2026-03-26","value":0.46},{"date":"2026-03-27","value":0.56},{"date":"2026-03-30","value":0.53},{"date":"2026-03-31","value":0.51},{"date":"2026-04-01","value":0.52},{"date":"2026-04-02","value":0.52},{"date":"2026-04-03","value":0.51},{"date":"2026-04-06","value":0.50},{"date":"2026-04-07","value":0.52},{"date":"2026-04-08","value":0.50},{"date":"2026-04-09","value":0.51},{"date":"2026-04-10","value":0.50},{"date":"2026-04-13","value":0.52},{"date":"2026-04-14","value":0.50},{"date":"2026-04-15","value":0.53},{"date":"2026-04-16","value":0.54},{"date":"2026-04-17","value":0.55},{"date":"2026-04-20","value":0.54},{"date":"2026-04-21","value":0.52},{"date":"2026-04-22","value":0.51},{"date":"2026-04-23","value":0.51},{"date":"2026-04-24","value":0.53},{"date":"2026-04-27","value":0.57},{"date":"2026-04-28","value":0.52},{"date":"2026-04-29","value":0.50},{"date":"2026-04-30","value":0.52},{"date":"2026-05-01","value":0.51},{"date":"2026-05-04","value":0.50},{"date":"2026-05-05","value":0.50},{"date":"2026-05-06","value":0.49},{"date":"2026-05-07","value":0.49},{"date":"2026-05-08","value":0.48},{"date":"2026-05-11","value":0.47},{"date":"2026-05-12","value":0.46},{"date":"2026-05-13","value":0.48},{"date":"2026-05-14","value":0.47},{"date":"2026-05-15","value":0.50}]};
 
   if (document.getElementById('creditChart')) {
-    new Chart(document.getElementById('creditChart'), {
+    window.allCharts.push(new Chart(document.getElementById('creditChart'), {
       type: 'line',
       data: {
         labels: creditData.HY_OAS.map(d => d.date.slice(5)),
         datasets: [
-          { label: 'HY OAS (bps, left)', data: creditData.HY_OAS.map(d => d.value * 100), borderColor: '#991b1b', backgroundColor: '#991b1b', tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y1' },
-          { label: 'IG OAS (bps, right)', data: creditData.IG_OAS.map(d => d.value * 100), borderColor: '#0f4f4a', backgroundColor: '#0f4f4a', tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
+          { label: 'HY OAS (left)', data: creditData.HY_OAS.map(d => d.value * 100), borderColor: tc().bear, backgroundColor: tc().bear, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y1' },
+          { label: 'IG OAS (right)', data: creditData.IG_OAS.map(d => d.value * 100), borderColor: tc().accent, backgroundColor: tc().accent, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
         ]
       },
       options: {
         interaction: { mode: 'index', intersect: false },
+        layout: { padding: { right: 56 } },
         plugins: {
-          legend: { position: 'top', labels: { font: { size: 11 }, boxWidth: 14, boxHeight: 8 } },
-          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(0) + ' bps' } }
+          legend: { position: 'top', labels: { font: { size: 11 }, boxWidth: 14, boxHeight: 8, color: tc().ink } },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(0) + ' bps' } },
+          lastPointLabel: { show: true, format: v => v.toFixed(0) + ' bps' }
         },
         scales: {
-          y1: { position: 'left', ticks: { callback: v => v + ' bps', font: { size: 10 }, color: '#991b1b' }, grid: { color: '#e8ddc7' } },
-          y2: { position: 'right', ticks: { callback: v => v + ' bps', font: { size: 10 }, color: '#0f4f4a' }, grid: { display: false } },
-          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8 }, grid: { display: false } }
+          y1: { position: 'left', ticks: { callback: v => v + ' bps', font: { size: 10 }, color: tc().bear }, grid: { color: tc().rule } },
+          y2: { position: 'right', ticks: { callback: v => v + ' bps', font: { size: 10 }, color: tc().accent }, grid: { display: false } },
+          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8, color: tc().muted }, grid: { display: false } }
         }
       }
-    });
+    }));
   }
 
   if (document.getElementById('stressChart')) {
-    new Chart(document.getElementById('stressChart'), {
+    window.allCharts.push(new Chart(document.getElementById('stressChart'), {
       type: 'line',
       data: {
         labels: creditData.VIX.map(d => d.date.slice(5)),
         datasets: [
-          { label: 'VIX (left)', data: creditData.VIX.map(d => d.value), borderColor: '#c2410c', backgroundColor: '#c2410c', tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'yv' },
-          { label: '2s10s spread (bps, right)', data: creditData.TENMINUSTWO.map(d => d.value * 100), borderColor: '#1e3a5f', backgroundColor: '#1e3a5f', tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'ys' }
+          { label: 'VIX (left)', data: creditData.VIX.map(d => d.value), borderColor: tc().accent2, backgroundColor: tc().accent2, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'yv' },
+          { label: '2s10s spread (right)', data: creditData.TENMINUSTWO.map(d => d.value * 100), borderColor: tc().anchor, backgroundColor: tc().anchor, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'ys' }
         ]
       },
       options: {
         interaction: { mode: 'index', intersect: false },
+        layout: { padding: { right: 56 } },
         plugins: {
-          legend: { position: 'top', labels: { font: { size: 11 }, boxWidth: 14, boxHeight: 8 } },
-          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) } }
+          legend: { position: 'top', labels: { font: { size: 11 }, boxWidth: 14, boxHeight: 8, color: tc().ink } },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) } },
+          lastPointLabel: { show: true, format: (v, ds) => ds.yAxisID === 'ys' ? v.toFixed(0) + ' bps' : v.toFixed(1) }
         },
         scales: {
-          yv: { position: 'left', ticks: { font: { size: 10 }, color: '#c2410c' }, grid: { color: '#e8ddc7' } },
-          ys: { position: 'right', ticks: { callback: v => v + ' bps', font: { size: 10 }, color: '#1e3a5f' }, grid: { display: false } },
-          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8 }, grid: { display: false } }
+          yv: { position: 'left', ticks: { font: { size: 10 }, color: tc().accent2 }, grid: { color: tc().rule } },
+          ys: { position: 'right', ticks: { callback: v => v + ' bps', font: { size: 10 }, color: tc().anchor }, grid: { display: false } },
+          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8, color: tc().muted }, grid: { display: false } }
         }
       }
-    });
+    }));
   }
 
-  // Theme toggle
+  // Theme toggle. Re-applies tc() colors across all charts after a switch so axis text stays readable.
   (function() {
     const root = document.documentElement;
     const saved = localStorage.getItem('mktdig_theme') || 'light';
+    const recolorCharts = () => {
+      Chart.defaults.color = tc().ink;
+      (window.allCharts || []).forEach(ch => {
+        // walk axes and update color references that came from tc()
+        try {
+          const o = ch.options;
+          if (o.plugins && o.plugins.legend && o.plugins.legend.labels) o.plugins.legend.labels.color = tc().ink;
+          if (o.plugins && o.plugins.datalabels) o.plugins.datalabels.color = tc().ink;
+          for (const k in (o.scales || {})) {
+            const sc = o.scales[k];
+            if (sc.grid) sc.grid.color = tc().rule;
+            if (sc.ticks) sc.ticks.color = sc.ticks.color && sc.ticks.color !== tc().muted ? sc.ticks.color : tc().muted;
+          }
+          ch.update('none');
+        } catch (_) {}
+      });
+    };
     const setTheme = (t) => {
       if (t === 'light') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', t);
       document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.toggle('active', b.dataset.th === t));
       try { localStorage.setItem('mktdig_theme', t); } catch(_) {}
+      // Wait one frame for CSS to apply, then re-read tc() and update charts
+      requestAnimationFrame(() => requestAnimationFrame(recolorCharts));
     };
     setTheme(saved);
     document.querySelectorAll('.theme-toggle button').forEach(b => {
