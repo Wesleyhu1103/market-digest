@@ -1001,22 +1001,27 @@
       },
       options: {
         indexAxis: 'y',
+        layout: { padding: { right: 60, left: 10 } },
         plugins: {
           legend: { display: false },
           tooltip: { callbacks: { label: ctx => ctx.parsed.x + '%' } },
           datalabels: {
             display: true,
             anchor: ctx => ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start',
-            align: ctx => ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start',
+            align: ctx => ctx.dataset.data[ctx.dataIndex] >= 0 ? 'right' : 'left',
+            offset: 6,
+            clip: false,
             color: tc().ink,
-            font: { size: 12, weight: 700 },
+            font: { size: 13, weight: 700 },
             formatter: v => (v > 0 ? '+' : '') + v + '%'
           }
         },
         scales: {
           x: {
             ticks: { callback: v => v + '%', font: { size: 12 }, color: tc().muted },
-            grid: { color: tc().rule, drawBorder: false }
+            grid: { color: tc().rule, drawBorder: false },
+            suggestedMin: -3,
+            suggestedMax: 18
           },
           y: { grid: { display: false }, ticks: { font: { size: 13 }, color: tc().ink } }
         }
@@ -1321,9 +1326,8 @@
   };
   function autoLinkCompanies() {
     const names = Object.keys(COMPANY_LINKS).sort((a, b) => b.length - a.length);
-    const blocked = new Set(['SCRIPT', 'STYLE', 'A', 'CODE', 'TEXTAREA', 'INPUT', 'BUTTON', 'svg', 'path', 'NAV']);
+    const blocked = new Set(['SCRIPT', 'STYLE', 'A', 'CODE', 'TEXTAREA', 'INPUT', 'BUTTON', 'NAV']);
     const containers = document.querySelectorAll('main section ul li, main section p, main section .deal-body, main section .lede, .narrative .bullbear .bull, .narrative .bullbear .bear, .anchor, .nar-card');
-    const seenText = new WeakSet();
     containers.forEach(container => {
       const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
         acceptNode: n => (blocked.has(n.parentNode.nodeName) || n.parentNode.closest('a')) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
@@ -1332,23 +1336,43 @@
       let n;
       while (n = walker.nextNode()) nodes.push(n);
       nodes.forEach(node => {
-        let text = node.textContent;
-        let html = text;
-        let modified = false;
+        const text = node.textContent;
+        // Partition node text into [string | {name, url}] segments by walking each company name
+        let parts = [text];
         for (const name of names) {
-          const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g');
-          if (re.test(html)) {
-            html = html.replace(re, m => `___CO__START__${m}___CO__SPLIT__${COMPANY_LINKS[name]}___CO__END__`);
-            modified = true;
+          const url = COMPANY_LINKS[name];
+          const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const re = new RegExp(`\\b${escaped}\\b`, 'g');
+          parts = parts.flatMap(part => {
+            if (typeof part !== 'string') return [part];
+            const segs = [];
+            let last = 0, m;
+            while ((m = re.exec(part)) !== null) {
+              if (m.index > last) segs.push(part.slice(last, m.index));
+              segs.push({ name: m[0], url });
+              last = m.index + m[0].length;
+            }
+            if (last < part.length) segs.push(part.slice(last));
+            return segs.length ? segs : [part];
+          });
+        }
+        if (parts.length === 1 && typeof parts[0] === 'string') return;
+        const frag = document.createDocumentFragment();
+        parts.forEach(p => {
+          if (typeof p === 'string') {
+            frag.appendChild(document.createTextNode(p));
+          } else {
+            const a = document.createElement('a');
+            a.className = 'co';
+            a.href = p.url;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.title = p.name + ' profile';
+            a.textContent = p.name;
+            frag.appendChild(a);
           }
-        }
-        if (modified) {
-          html = html.replace(/___CO__START__([^_]+)___CO__SPLIT__([^_]+)___CO__END__/g,
-            (_, name, url) => `<a class="co" href="${url}" target="_blank" rel="noopener" title="${name} profile">${name}</a>`);
-          const wrapper = document.createElement('span');
-          wrapper.innerHTML = html;
-          node.replaceWith(...wrapper.childNodes);
-        }
+        });
+        node.replaceWith(frag);
       });
     });
   }
