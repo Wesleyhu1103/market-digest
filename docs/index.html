@@ -27,8 +27,63 @@
     --anchor-soft: #dde6f0;
     --code: #ede2cc;
     --content-max: 1280px;
-    --nav: 240px;
+    --nav: 260px;
   }
+  [data-theme="dark"] {
+    --bg: #14171a;
+    --surface: #1d2025;
+    --ink: #e6e2d8;
+    --muted: #8a8779;
+    --rule: #2e3138;
+    --rule-soft: #25282d;
+    --accent: #5db7ad;
+    --accent-2: #e98b50;
+    --accent-soft: #1f3935;
+    --bull: #5eb87a;
+    --bull-soft: #1e2a22;
+    --bear: #e07070;
+    --bear-soft: #2e1f1f;
+    --anchor: #7aa6d6;
+    --anchor-soft: #1a2535;
+    --code: #22252b;
+  }
+  [data-theme="sepia"] {
+    --bg: #f1e3c8;
+    --surface: #f8edd2;
+    --ink: #3a2a1a;
+    --muted: #7a6a52;
+    --rule: #d6c19a;
+    --rule-soft: #e1d2af;
+    --accent: #6a3015;
+    --accent-2: #a04018;
+    --accent-soft: #ecd4b8;
+    --bull: #4c5a26;
+    --bull-soft: #e0e2c2;
+    --bear: #8a2020;
+    --bear-soft: #ecd4d0;
+    --anchor: #3a4a6b;
+    --anchor-soft: #d8dde8;
+    --code: #ddc8a0;
+  }
+  [data-theme="newsprint"] {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --ink: #111111;
+    --muted: #585858;
+    --rule: #d6d6d6;
+    --rule-soft: #ebebeb;
+    --accent: #1d4e89;
+    --accent-2: #b8430f;
+    --accent-soft: #e2eaf3;
+    --bull: #166534;
+    --bull-soft: #dff0e0;
+    --bear: #991b1b;
+    --bear-soft: #f3dada;
+    --anchor: #1e3a5f;
+    --anchor-soft: #dde6f0;
+    --code: #f1f1f1;
+  }
+  html { transition: background-color .25s, color .25s; }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Newsreader", "Source Serif Pro", Georgia, serif; line-height: 1.6; font-size: 17px; -webkit-font-smoothing: antialiased; }
   .page { display: flex; max-width: var(--content-max); margin: 0 auto; min-height: 100vh; gap: 32px; padding: 0 32px; }
@@ -39,9 +94,15 @@
     font-size: 13px; overflow-y: auto;
   }
   nav.toc h2 { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; font-weight: 600; padding-left: 12px; }
-  nav.toc a { display: block; padding: 8px 12px; margin: 1px 0; color: var(--ink); text-decoration: none; border-left: 2px solid transparent; transition: all .12s; font-weight: 500; }
-  nav.toc a:hover { color: var(--accent); border-left-color: var(--rule); }
+  nav.toc a { display: flex; align-items: center; gap: 10px; padding: 8px 12px; margin: 1px 0; color: var(--ink); text-decoration: none; border-left: 2px solid transparent; transition: all .12s; font-weight: 500; }
+  nav.toc a:hover { color: var(--accent); border-left-color: var(--rule); background: var(--rule-soft); }
   nav.toc a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; background: var(--accent-soft); }
+  nav.toc a svg { flex: 0 0 16px; opacity: .7; }
+  nav.toc a.active svg { opacity: 1; }
+  .theme-toggle { display: flex; gap: 4px; margin-top: 16px; padding: 6px; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; }
+  .theme-toggle button { flex: 1; background: transparent; color: var(--muted); border: none; padding: 6px 4px; border-radius: 2px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; transition: all .12s; }
+  .theme-toggle button:hover { color: var(--ink); background: var(--rule-soft); }
+  .theme-toggle button.active { background: var(--ink); color: var(--bg); }
   main { flex: 1; min-width: 0; padding: 36px 0 140px; }
   header.head { border-bottom: 2px solid var(--ink); padding-bottom: 28px; margin-bottom: 40px; }
   header.head .kicker { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 14px; font-weight: 700; }
@@ -124,6 +185,23 @@
   .chart-card .chart-wrap { position: relative; height: 260px; }
   .chart-card .chart-src { font-family: "Inter", sans-serif; font-size: 11.5px; color: var(--muted); margin-top: 14px; padding-top: 10px; border-top: 1px dotted var(--rule); line-height: 1.5; }
   .chart-card .chart-src b { color: var(--ink); font-weight: 600; }
+  details.deal { margin: 8px 0; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); max-width: 980px; }
+  details.deal summary { cursor: pointer; padding: 12px 16px; list-style: none; font-size: 15px; display: flex; align-items: center; gap: 10px; }
+  details.deal summary::-webkit-details-marker { display: none; }
+  details.deal summary::after { content: "+"; margin-left: auto; color: var(--muted); font-family: "Inter", sans-serif; font-size: 18px; font-weight: 400; transition: transform .15s; }
+  details.deal[open] summary::after { content: "−"; }
+  details.deal summary b { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-2); font-weight: 700; }
+  details.deal summary .deal-name { font-weight: 700; }
+  details.deal summary .deal-size { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--muted); margin-left: 4px; }
+  details.deal .deal-body { padding: 0 18px 16px; font-size: 14.5px; line-height: 1.6; }
+  details.deal .deal-body .block { margin: 12px 0; }
+  details.deal .deal-body .block-label { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+  .buyside-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 980px; margin: 14px 0; }
+  .buyside-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 16px 20px; }
+  .buyside-card h4 { font-family: "Fraunces", serif; font-weight: 600; font-size: 17px; margin: 0 0 8px; }
+  .buyside-card p { font-size: 14.5px; margin: 0; line-height: 1.55; max-width: none; }
+  .buyside-card .tag { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+  @media (max-width: 880px) { .buyside-grid { grid-template-columns: 1fr; } }
   .source-note { font-family: "Inter", sans-serif; font-size: 13.5px; color: var(--muted); background: var(--code); padding: 18px 22px; border-radius: 4px; max-width: 980px; line-height: 1.6; }
   .source-note b { color: var(--ink); }
   .source-note p { max-width: none; margin: 6px 0; }
@@ -145,18 +223,25 @@
 <div class="page">
 <nav class="toc" id="toc">
   <h2>Sections</h2>
-  <a href="#narratives">Three Narratives</a>
-  <a href="#equities">US Equities</a>
-  <a href="#tech">Tech & Growth</a>
-  <a href="#macro">Macro & Rates</a>
-  <a href="#crypto">Crypto</a>
-  <a href="#deals">Deals & Capital Markets</a>
-  <a href="#sentiment">Reddit Sentiment</a>
-  <a href="#learn">Learning Opportunity</a>
-  <a href="#ondeck">On Deck Tomorrow</a>
-  <a href="#sources">Source Coverage</a>
-  <a href="#quiz">Quiz</a>
-  <a href="#feedback">Feedback</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Three Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+    <button data-th="light" class="active" title="Cream">Cream</button>
+    <button data-th="newsprint" title="Newsprint">News</button>
+    <button data-th="sepia" title="Sepia">Sepia</button>
+    <button data-th="dark" title="Dark">Dark</button>
+  </div>
 </nav>
 <main>
   <header class="head">
@@ -226,15 +311,20 @@
 
   <section id="equities">
     <h2>US Equities</h2>
-    <p class="lede">S&amp;P futures -0.4% pre‑market. Bull honeymoon "over," per Wall Street strategists Bloomberg surveyed.</p>
+    <p class="lede">S&amp;P futures -0.4% pre‑market. Bull honeymoon "over," per Wall Street strategists Bloomberg surveyed. Defensives bid, growth offered.</p>
     <ul>
-      <li><b>NextEra-Dominion $67B all‑stock</b>, biggest power utility M&A on record. NextEra giving up roughly 15% of the combined cap. Data center load is the entire thesis.</li>
-      <li><b>Merck-Terns</b>: Merck kicked off a 7‑part investment‑grade <span class="glossary" data-def="Bonds rated BBB-/Baa3 or higher. The bulk of corporate debt is investment grade. 'High-grade' is the same thing. Lower-rated debt is 'high yield' or 'junk.'">high‑grade</span> bond sale to fund the $6.7B Terns Pharmaceuticals acquisition. Bond issue pricing is itself a rates‑signal trade.</li>
-      <li><b>Lululemon vs Chip Wilson</b> goes public: company called the founder "misguided" and "outdated" in a shareholder letter ahead of the annual meeting. Activist‑style proxy fight on consumer discretionary.</li>
-      <li><b>Starbucks layoffs</b>: 300 US corporate staff cut, some regional support offices shuttered. Operating leverage story turning into cost-cut story.</li>
-      <li><b>Detroit autos</b>: 20,000+ salaried jobs cut across GM, Ford, Stellantis since the start of the year. Justified internally as "AI restructuring."</li>
-      <li><b>Inflation strategy flip</b>: Bloomberg's survey of Wall Street strategists shows the bull side warning that <span class="glossary" data-def="Personal Consumption Expenditures price index. The Fed's preferred inflation gauge, broader than CPI. Core PCE excludes food and energy.">PCE</span> uptick is starting to send sell signals after blockbuster earnings.</li>
-      <li><b>Cerebras (CBRS) IPO pop</b>: still chopping post‑listing. r/stocks is asking whether the move's already over. Volatility is the punchline.</li>
+      <li><b>NextEra-Dominion $67B all‑stock</b>, biggest power utility M&A on record. NextEra giving up roughly 15% of the combined cap. Data center load is the entire thesis. Vistra (VST) and Constellation (CEG) bid in sympathy 2-3% pre-market.</li>
+      <li><b>Merck-Terns</b>: Merck kicked off a 7‑part investment‑grade <span class="glossary" data-def="Bonds rated BBB-/Baa3 or higher. The bulk of corporate debt is investment grade. 'High-grade' is the same thing. Lower-rated debt is 'high yield' or 'junk.'">high‑grade</span> bond sale to fund the $6.7B Terns Pharma acquisition. The bond issue itself is a rates-signal trade. Read-through: large pharma still buying despite cost of capital. SMID-cap biotech (XBI) catching a bid.</li>
+      <li><b>Lululemon vs Chip Wilson</b> goes public. Company called the founder "misguided" and "outdated" in a shareholder letter ahead of the annual meeting. Activist-style proxy fight on consumer discretionary; Wilson holds ~8% of shares.</li>
+      <li><b>Starbucks layoffs</b>: 300 US corporate staff cut, some regional support offices shuttered. Niccol's cost-out story turning concrete. Watch SG&A guidance at next print.</li>
+      <li><b>Detroit autos</b>: 20,000+ salaried jobs cut across GM, Ford, Stellantis YTD. Justified internally as "AI restructuring." Real driver is China EV cost competition (Bloomberg today: 49K Chinese EVs cleared for Canada at 6.1% tariff).</li>
+      <li><b>Wall Street strategist flip</b>: Bloomberg survey shows the bull side warning that <span class="glossary" data-def="Personal Consumption Expenditures price index. The Fed's preferred inflation gauge, broader than CPI. Core PCE excludes food and energy.">PCE</span> uptick is sending sell signals after blockbuster earnings. Morgan Stanley's Mike Wilson, who flipped bullish in March, now neutralizing. JPM's Marko Kolanovic still cautious.</li>
+      <li><b>Cerebras (CBRS) post-IPO</b>: still chopping after the IPO pop. r/stocks asking whether the move's already over. Lockup expiry in 90 days is the next catalyst.</li>
+      <li><b>Versant (CMCSA spin)</b>: Q1 print showed bright spots in licensing and platforms. Stock +10% on the read. Family-office capital rotating into legacy media at depressed multiples.</li>
+      <li><b>Spirit Airlines</b>: pilots flying yellow jets to the desert. Liquidation phase. JBLU and Frontier picking over slots and gates.</li>
+      <li><b>Allegiant (ALGT) + Sun Country</b>: low-cost airline deal closed. Allegiant CEO Greg Anderson said leisure demand "still strong despite higher fuel." Hedge against the legacy carriers' pricing power.</li>
+      <li><b>Trump Accounts loophole</b>: if regs allow appreciated stock contributions, wealthy donors get a double tax benefit. Look for HNW advisors pitching this aggressively. Bond proxies and dividend payers benefit.</li>
+      <li><b>Biogen (BIIB)</b>: advancing Alzheimer's drug to late-stage trial despite disappointing data. Signal of desperation OR genuine subgroup efficacy, depending on who you ask. Bear case shorts have been pressing.</li>
     </ul>
     <div class="anchor">
       <div class="label">Knowledge anchor</div>
@@ -248,15 +338,22 @@
 
   <section id="tech">
     <h2>Tech and Growth</h2>
-    <p class="lede">Memory keeps printing. Two IPO stories. AI infrastructure stress story emerging from inside Google.</p>
+    <p class="lede">Memory keeps printing. Two new IPO storylines. AI infrastructure stress emerging from inside Google. Multiple-compression debate sharpening into Wednesday's Nvidia print.</p>
     <ul>
-      <li><b>Kioxia +16% to new ATH</b>: AI memory profit "trounced estimates." Now setting up a US ADR float for liquidity. Setting the read for the rest of the memory cycle.</li>
-      <li><b>CXMT (China)</b>: 8x revenue jump in Q1, on path to high‑profile IPO. Memory is the new oil — both supply‑constrained, both China-exposed.</li>
-      <li><b>Baidu</b>: AI sales now eclipse legacy ads for the first time. Revenue still -1% but the mix shift is the headline.</li>
-      <li><b>Samsung +6%</b>: Korean court limited the union strike, blunting chip-volume hit. Korean court ruling matters more than the wage outcome for KRW and tech.</li>
-      <li><b>SpaceX IPO</b>: Musk said publicly he wants the IPO "pretty soon." Pre‑IPO secondary marks have ticked up. This is the largest listing of all time if it lands.</li>
-      <li><b>Google internal AI compute crunch</b>: Bloomberg reports Alphabet's own researchers are jockeying for cluster time. Either a great signal (demand far above supply even at scale) or a bear tell (capex still under‑built).</li>
-      <li><b>Stratechery (Ben Thompson)</b> this morning on data center NIMBYism: only fix is "simply paying them off." Capital allocation read for utilities and PE infra funds.</li>
+      <li><b>Kioxia +16% to new ATH</b>: AI memory profit trounced estimates. US ADR float planned for liquidity. The bellwether for the rest of the memory cycle.</li>
+      <li><b>CXMT (China)</b>: 8x Q1 revenue, IPO path. Memory is the new oil, both supply-constrained, both China-exposed. Watch CFIUS overhang on listing venue choice.</li>
+      <li><b>Baidu (BIDU)</b>: AI sales now eclipse legacy ads for the first time. Revenue still -1% YoY but the mix shift is the headline. Hyper-aware of the Alibaba comparison ahead.</li>
+      <li><b>Samsung (005930.KS) +6%</b>: Korean court limited union strike, blunting chip-volume hit. The court ruling matters more than wage outcome for KRW and tech. HBM3e supply path back on track.</li>
+      <li><b>SpaceX IPO</b>: Musk publicly said "pretty soon." Pre-IPO secondary marks have ticked up. Largest listing of all time if it lands. Index-fund mechanical demand alone is the bull thesis.</li>
+      <li><b>Google internal AI compute crunch</b>: Bloomberg reports Alphabet's own researchers jockeying for cluster time. Either great signal (demand outstripping supply at hyperscale) or bear tell (capex still under-built). Both can be true.</li>
+      <li><b>Anthropic-Datadog</b>: r/SecurityAnalysis surfaced the deep dive. DDOG is now a top-tier Anthropic vendor. Validates AI observability moat; question is how much lab capex flows to infra software vs evaporates in GPU rentals.</li>
+      <li><b>OpenAI Deployment Company</b>: per Stratechery, OpenAI forming new entity to deploy AI. Top-down implementation thesis. Reads as competitive pressure on Microsoft Copilot integration.</li>
+      <li><b>Anthropic-xAI rumored</b>: Stratechery on the surprise pairing. Implication: Musk pivots from xAI moonshot to selling capacity to other labs (which is, frankly, what SpaceX did with Starlink).</li>
+      <li><b>YouTube vs Netflix upfronts</b>: YouTube pitching advertisers on a new TV-network-style slate. Creator content moving to the main stage. ROKU and TTD beneficiaries of the budget shift.</li>
+      <li><b>StanChart absorbs Zodia Custody</b>: TradFi keeps colonizing crypto infrastructure. Custody is the boring-but-real moat. Coinbase Custody competitive pressure rising.</li>
+      <li><b>Kalshi + Polymarket defy India ban</b>: prediction markets continue jurisdictional arbitrage. Matt Levine has covered this arc 4 times in his last 10 columns. Tells you where the regulatory frontier is.</li>
+      <li><b>"AI Startups Hallucinate Their Revenue Metrics"</b> (r/SecurityAnalysis): the skeptic post of the week. Highest-signal critique of the AI-revenue-quality story. Connect to the IRR question on Magnificent 7 capex.</li>
+      <li><b>Rakuten Bank surge</b>: Mizuho considering investment in the digital bank. Japanese e-commerce reorg unlocking value. SoftBank-style sum-of-parts setup.</li>
     </ul>
     <div class="chart-card">
       <div class="chart-title">Today's tech movers (single-day move)</div>
@@ -302,6 +399,18 @@
       <div class="label">Knowledge anchor</div>
       A <span class="glossary" data-def="Yield curve move where long-end yields rise faster than short-end yields. Implies term premium repricing, inflation worry, or fiscal stress, not Fed tightening. Distinct from a 'bear flattener' where short rates rise faster, which signals Fed hawkishness.">bear steepener</span> is what you're seeing globally right now. The Fed funds rate hasn't moved, but the 10Y and 30Y are getting hit. That means the move is about supply, inflation persistence, and term premium, not policy expectations. It's also the worst regime for long-duration assets (megacap tech, long-dated growth, REITs).
     </div>
+    <div class="chart-card">
+      <div class="chart-title">Is credit cracking? HY and IG spreads, last 3 months</div>
+      <div class="chart-sub">High‑yield <span class="glossary" data-def="Option-Adjusted Spread. Yield premium of a corporate bond over comparable-duration Treasuries, adjusted for embedded options (calls, prepayments). Lower = market is calm about default risk. Higher = stress.">OAS</span> in bps (left), IG OAS in bps (right). If credit were genuinely cracking with the bond selloff, you'd see HY widening 50+ bps. Today's print: 280 bps HY, 75 bps IG. Both still inside the post‑COVID range.</div>
+      <div class="chart-wrap" style="height: 240px"><canvas id="creditChart"></canvas></div>
+      <div class="chart-src"><b>Source:</b> FRED series <b>BAMLH0A0HYM2</b> (ICE BofA US High Yield Index OAS) and <b>BAMLC0A0CM</b> (ICE BofA US Corporate Index OAS). Pulled 18 May 2026. Reading: corporate credit is not signaling stress, which weakens the "fiscal dominance is happening now" thesis.</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">VIX and the 2s/10s curve: market stress dashboard</div>
+      <div class="chart-sub">VIX (S&amp;P implied vol) and the 10Y-minus-2Y spread. VIX at 18 says options markets aren't pricing crisis. The 2s10s steepener at +50 bps confirms the bear-steepener narrative.</div>
+      <div class="chart-wrap" style="height: 240px"><canvas id="stressChart"></canvas></div>
+      <div class="chart-src"><b>Source:</b> FRED series <b>VIXCLS</b> (CBOE Volatility Index) and <b>T10Y2Y</b> (10-Year minus 2-Year Treasury Constant Maturity). Pulled 18 May 2026.</div>
+    </div>
     <details class="dive">
       <summary>Deeper dive: the Warsh handoff context</summary>
       <div class="body">Kevin Warsh was a Fed governor from 2006-2011, was famously hawkish on QE2, and has consistently argued for a smaller balance sheet. His confirmation cleared late Thursday, term started Saturday. His first FOMC dot plot will be the single most-watched calendar event of June. If he's hawkish in the meeting and dovish in pressers (or vice versa), the dollar and 2Y will move sharply. Federal funds futures are pricing about 45% odds of a hike at his first meeting per CME FedWatch as of Friday close.</div>
@@ -324,21 +433,112 @@
 
   <section id="deals">
     <h2>Global Deals and Capital Markets</h2>
-    <ul>
-      <li><b>NextEra → Dominion</b>, ~$67B all‑stock, US utility, data center thesis.</li>
-      <li><b>Merck → Terns Pharmaceuticals</b>, $6.7B cash, financed via a 7‑part IG bond sale priced today.</li>
-      <li><b>Shein → Everlane</b> (reported), Chinese e‑commerce buying US apparel from L Catterton. Unclear deal value.</li>
-      <li><b>Kioxia US ADR float</b>: secondary listing planned for the year's hottest memory stock.</li>
-      <li><b>CXMT IPO path</b>: Chinese memory maker building the numbers for a high‑profile listing.</li>
-      <li><b>SpaceX IPO</b>: Musk said publicly "pretty soon." Would be the largest listing in history.</li>
-      <li><b>China → Boeing</b>: Trump told Fox News China agreed to buy 200 jets as part of the trade deal.</li>
-      <li><b>Allegiant → Sun Country</b>: low‑cost airline acquisition closed last week, mostly off the radar.</li>
-    </ul>
+    <p class="lede">Click any deal for the why, outlook, and what it means for the market.</p>
+
+    <details class="deal">
+      <summary><span class="deal-name">NextEra → Dominion</span><span class="deal-size">$67B all-stock</span></summary>
+      <div class="deal-body">
+        <div class="block"><div class="block-label">Why it happened</div>Hyperscaler load growth (AWS, Azure, Meta, Google) is unprecedented and concentrated in Virginia, the Carolinas, and Florida — exactly NextEra's nuclear/renewables fleet plus Dominion's PJM/Virginia data-center belt. Neither company alone could underwrite the 25+ GW of contracted hyperscale demand sitting in their joint backlog. M&A solves it in one stroke: shared transmission, accelerated nuclear restarts, combined balance sheet for capex.</div>
+        <div class="block"><div class="block-label">Outlook</div>Regulatory approval is the long pole — FERC plus state PUCs in VA, FL, NC. Expect 12-18 months. Integration risk is real (these are two giant utility cultures). Synergy guidance probably ~$300M run-rate by year 3. Watch for activist push to spin off legacy gas distribution.</div>
+        <div class="block"><div class="block-label">What it means</div>The AI capex thesis crystallized in M&A form. Bull read for IPP names with hyperscale exposure (VST, CEG, TLN). Hyperscalers will face higher PPA pricing as utility consolidation reduces their leverage. Other utility deals likely follow — Duke/Southern strategic review chatter increases. Bearish for grid-edge software vendors who counted on hyperscalers going direct around utilities.</div>
+      </div>
+    </details>
+
+    <details class="deal">
+      <summary><span class="deal-name">Merck → Terns Pharmaceuticals</span><span class="deal-size">$6.7B cash + 7-part IG bond</span></summary>
+      <div class="deal-body">
+        <div class="block"><div class="block-label">Why it happened</div>Merck's Keytruda LOE (loss of exclusivity) is 2028 and the patent cliff is real — $25B of revenue at risk. Terns brings late-stage MASH (liver disease) and oncology assets that pad the post-Keytruda pipeline. Cash deal financed via a 7-part bond issue because Merck's IG spread is still tight enough to do it cheaply.</div>
+        <div class="block"><div class="block-label">Outlook</div>Deal closes Q4. Pipeline value depends on Phase 2/3 readouts in late 2026. Merck still needs 2-3 more deals of this size to plug the Keytruda hole, so M&A appetite continues.</div>
+        <div class="block"><div class="block-label">What it means</div>Bullish for small/mid-cap biotech multiples (XBI). Other large pharma (BMS, Pfizer, Lilly, AbbVie) facing similar LOE pressure will follow. Watch for next Merck deal in 6-9 months. Bond market read: 7-part IG issue priced well = corporate credit demand still strong despite Treasury selloff, which contradicts the bear-credit narrative.</div>
+      </div>
+    </details>
+
+    <details class="deal">
+      <summary><span class="deal-name">Shein → Everlane</span><span class="deal-size">undisclosed (reported)</span></summary>
+      <div class="deal-body">
+        <div class="block"><div class="block-label">Why it happened</div>Shein needs US legitimacy and physical distribution ahead of its long-promised IPO. Everlane (acquired from L Catterton) gives Shein an established US brand, ESG halo (Everlane's "radical transparency" positioning), and stores. L Catterton was reportedly looking to exit at a markdown — Everlane has been a slow burn for them.</div>
+        <div class="block"><div class="block-label">Outlook</div>Regulatory risk is substantial: CFIUS could intervene if the deal includes US customer data transfer. Tariff exposure on Chinese-sourced Shein product is the other live risk. Brand integration is delicate — Everlane's customer is the anti-Shein customer.</div>
+        <div class="block"><div class="block-label">What it means</div>Signals Chinese e-commerce will keep buying US brands despite trade tensions, until politically blocked. Negative for legacy US apparel multiples (GAP, AEO) — more competition from a deeper-pocketed entrant. Watch for Temu doing the same playbook.</div>
+      </div>
+    </details>
+
+    <details class="deal">
+      <summary><span class="deal-name">SpaceX IPO</span><span class="deal-size">largest listing in history if executed</span></summary>
+      <div class="deal-body">
+        <div class="block"><div class="block-label">Why now</div>Secondary market demand is overwhelming, employees want liquidity, and Starlink revenue alone (now ~$15B run-rate) justifies a high standalone valuation. Musk said publicly today he's "back in Texas working on" the listing.</div>
+        <div class="block"><div class="block-label">Outlook</div>Filing depends on Starship V3 success — if it works this year, the IPO follows. If it slips again, deal pushes. Index-fund mechanical demand at listing would be massive. Pre-IPO secondaries are pricing the company in the $400-500B range.</div>
+        <div class="block"><div class="block-label">What it means</div>Would reset growth-stock benchmarks and crowd out other large IPOs (Stripe, Databricks, OpenAI). Bullish for aerospace/defense ETFs (ITA, XAR) and satellite-adjacent names (Iridium, AST SpaceMobile). Big tax windfall for early employees that flows back into Bay Area real estate and equity markets.</div>
+      </div>
+    </details>
+
+    <details class="deal">
+      <summary><span class="deal-name">Kioxia US ADR float</span><span class="deal-size">secondary listing TBD</span></summary>
+      <div class="deal-body">
+        <div class="block"><div class="block-label">Why it happened</div>Kioxia (memory) is one of the hottest stocks in Asia — primary listing is Tokyo. ADR float adds US institutional demand, expands the investor base, capitalizes on AI memory boom valuation while the cycle is hot.</div>
+        <div class="block"><div class="block-label">Outlook</div>Float likely Q3. Valuation will be set by where the Tokyo ADR arb settles. Bain Capital still holds a large stake, this is partial liquidity for them.</div>
+        <div class="block"><div class="block-label">What it means</div>More Japanese tech could follow with US listings — pattern of "Asia-listed company expands US liquidity" is back after a decade of dormancy. Micron (MU) competitive pressure intensifies.</div>
+      </div>
+    </details>
+
+    <details class="deal">
+      <summary><span class="deal-name">CXMT IPO path</span><span class="deal-size">Chinese memory IPO, venue TBD</span></summary>
+      <div class="deal-body">
+        <div class="block"><div class="block-label">Why now</div>8x revenue jump in Q1 makes the financials presentable. Capacity expansion needs capital. China wants to demonstrate semi-equipment independence post-export-controls.</div>
+        <div class="block"><div class="block-label">Outlook</div>Likely STAR Market in Shanghai (US listing closed off by CFIUS-equivalent restrictions in both directions). HKEX is plausible but politically charged. International investors mostly excluded.</div>
+        <div class="block"><div class="block-label">What it means</div>Validates the China memory ramp story. Bearish for Samsung/SK Hynix on long-term oversupply risk if CXMT and YMTC scale as projected. Watch US Commerce response — additional export controls likely.</div>
+      </div>
+    </details>
+
+    <details class="deal">
+      <summary><span class="deal-name">China → Boeing 200 jets</span><span class="deal-size">~$25-30B at list price</span></summary>
+      <div class="deal-body">
+        <div class="block"><div class="block-label">Why it happened</div>Part of the Trump-Xi trade package alongside the $17B/yr agricultural commitment. Boeing was the "give" from China's side in exchange for tariff relief. Deal is also political insurance for Boeing's domestic standing.</div>
+        <div class="block"><div class="block-label">Outlook</div>Orders are firm-ish but deliveries are multi-year. China's COMAC C919 will keep eating into the domestic market regardless. List price ≠ realized price — typical airline discounts run 40-60%.</div>
+        <div class="block"><div class="block-label">What it means</div>Positive for Boeing (BA), but priced in already. Pressure on Airbus (AIR.PA) market share in Asia. Signals a Trump-Xi detente phase that could extend 12-18 months. Boeing suppliers (SPR, HEI, TDG) get earnings tailwind.</div>
+      </div>
+    </details>
+
+    <details class="deal">
+      <summary><span class="deal-name">Allegiant → Sun Country</span><span class="deal-size">closed last week</span></summary>
+      <div class="deal-body">
+        <div class="block"><div class="block-label">Why it happened</div>ULCC consolidation continues. Allegiant gets Sun Country's Minneapolis hub and cargo agreement with Amazon. CEO Greg Anderson made the leisure-demand-resilient pitch.</div>
+        <div class="block"><div class="block-label">Outlook</div>Synergies depend on fleet rationalization. Watch for impact on Frontier (ULCC) competitive positioning. Sun Country's Amazon cargo deal is the underrated piece.</div>
+        <div class="block"><div class="block-label">What it means</div>ULCC consolidation reduces price competition on leisure routes. Bullish for legacy carriers (UAL, DAL) pricing power. The Spirit liquidation in the background frees up gates and slots that the survivors will fight over.</div>
+      </div>
+    </details>
+  </section>
     <div class="chart-card">
       <div class="chart-title">Today's announced M&A and financing, by deal size</div>
       <div class="chart-sub">Reported transaction values from today's Bloomberg feed. Only deals with a stated dollar figure are charted.</div>
       <div class="chart-wrap"><canvas id="dealSizes"></canvas></div>
       <div class="chart-src"><b>Source:</b> Bloomberg Markets RSS, 18 May 2026: "NextEra to Buy Dominion for $67 Billion to Form Power Giant" ($67B), "Merck Starts Seven‑Part High‑Grade Bond Sale to Fund Terns Deal" ($6.7B). Bloomberg's "biggest power acquisition ever" claim is the publication's, not the digest's.</div>
+    </div>
+  </section>
+
+  <section id="buyside">
+    <h2>Buy-Side: Private Credit, BDCs, Alternatives</h2>
+    <p class="lede">What the buy-side conversation looks like today. Heavy Matt Levine arc on private credit liquidity and BDC mechanics over the last six weeks; today's news fits the same picture.</p>
+    <ul>
+      <li><b>Private credit "has some debt"</b> (per Matt Levine): the question of how leveraged the private credit complex itself has become is becoming the macro story. <span class="glossary" data-def="Gross Asset Value (total fund assets) vs Net Asset Value (assets minus fund-level leverage). Wide GAV/NAV gap signals fund-level leverage stacking on portfolio-level leverage. Concern is layered leverage in a credit downturn.">GAV vs NAV</span> spread widening at the big managers. Watch Apollo (APO), Ares (ARES), Blue Owl (OWL) for any flag.</li>
+      <li><b>Banks aren't worried about private credit</b> (Levine, April): the big bank credit officers are saying the right things publicly, but Levine's read is that the systemic concern hasn't shown up in spreads yet. HY OAS at 280bps today supports the calm read (see Macro chart). The question is whether you trust the price action or the structural worry.</li>
+      <li><b>BDC redemptions and secondaries</b>: continuing theme. <span class="glossary" data-def="Business Development Company. Publicly-traded private credit vehicles. Examples: Ares Capital (ARCC), Blackstone Private Credit Fund (BCRED, non-traded). Many BDCs trade at premium or discount to NAV; secondary markets in non-traded BDCs are illiquid by design.">BDC</span> secondary marks softening 50-100bps below NAV at several large funds per Levine's columns. Tricolor (subprime auto BDC issuer) has come up repeatedly. Not yet a crisis, but the price-of-getting-out has moved.</li>
+      <li><b>Private assets in 401(k)s</b>: Levine flagged this is now actively being engineered. Once retail-401k flows are tapped, the marginal buyer of private credit changes. Bullish for the issuer side (APO, OWL, KKR), unclear for fee compression long-term.</li>
+      <li><b>Pension fund illiquidity</b>: Levine column from April 22 specifically. Public pensions are now ~20-25% allocated to illiquids (PE, PC, infra, RE) and rebalancing in a stress scenario is functionally impossible without big NAV markdowns. Watch CalPERS, CalSTRS allocation reports.</li>
+      <li><b>Family offices rotating to old-economy</b>: CNBC today, "dealerships and fisheries to avoid AI disruption." Cash-flow, oligopoly-ish, AI-resistant. Berkshire-style mindset spreading among ultra-HNW.</li>
+      <li><b>Tax-aware funds / pre-tax alpha</b>: Levine on April 16 covered the boom in tax-loss-harvesting parametric strategies. Aperio, 55ip, Vanguard PAS aggressive growth. Margin-of-error for tax efficiency narrowing as more capital chases it.</li>
+      <li><b>Bessent G-7 sanctions push</b>: indirectly relevant for distressed/situational. Stress in Iranian and Russian counterparties has been driving NPL flows to opportunistic funds. Apollo, Centerbridge, Oaktree positioning.</li>
+    </ul>
+    <div class="buyside-grid">
+      <div class="buyside-card">
+        <div class="tag">Today's bull-side buy-side read</div>
+        <h4>Credit isn't cracking</h4>
+        <p>HY OAS at 280bps, IG OAS at 75bps. Both still inside the post-COVID range. Merck just priced a 7-tranche IG deal into a bond selloff with no concession. Buy-side credit allocators (Pimco, BlackRock) are still adding duration at higher yields. The fiscal-dominance, "spreads finally widen" trade is not paying yet.</p>
+      </div>
+      <div class="buyside-card">
+        <div class="tag">Today's bear-side buy-side read</div>
+        <h4>The plumbing is the risk</h4>
+        <p>Private credit mark-to-market is opaque, BDC redemption queues are growing, and rate hikes (not cuts) are getting priced. If yields keep rising, every refi at a 100-200bps higher coupon eats into sponsor IRRs. Distressed shops (Cerberus, King Street) are reportedly raising fresh capital for the cycle they expect in 2027.</p>
+      </div>
     </div>
   </section>
 
@@ -724,6 +924,74 @@
       }
     });
   }
+
+  // Credit-stress charts (FRED HY/IG OAS, VIX, 2s10s)
+  const creditData = {"HY_OAS":[{"date":"2026-02-23","value":2.91},{"date":"2026-02-24","value":2.91},{"date":"2026-02-25","value":2.86},{"date":"2026-02-26","value":2.83},{"date":"2026-02-27","value":2.85},{"date":"2026-03-02","value":2.78},{"date":"2026-03-03","value":2.81},{"date":"2026-03-04","value":2.83},{"date":"2026-03-05","value":2.83},{"date":"2026-03-06","value":2.86},{"date":"2026-03-09","value":2.84},{"date":"2026-03-10","value":2.87},{"date":"2026-03-11","value":2.84},{"date":"2026-03-12","value":2.85},{"date":"2026-03-13","value":2.83},{"date":"2026-03-16","value":2.87},{"date":"2026-03-17","value":2.84},{"date":"2026-03-18","value":2.81},{"date":"2026-03-19","value":2.85},{"date":"2026-03-20","value":2.82},{"date":"2026-03-23","value":2.84},{"date":"2026-03-24","value":2.81},{"date":"2026-03-25","value":2.78},{"date":"2026-03-26","value":2.74},{"date":"2026-03-27","value":2.72},{"date":"2026-03-30","value":2.74},{"date":"2026-03-31","value":2.74},{"date":"2026-04-01","value":2.78},{"date":"2026-04-02","value":2.79},{"date":"2026-04-03","value":2.77},{"date":"2026-04-06","value":2.81},{"date":"2026-04-07","value":2.81},{"date":"2026-04-08","value":2.83},{"date":"2026-04-09","value":2.81},{"date":"2026-04-10","value":2.80},{"date":"2026-04-13","value":2.81},{"date":"2026-04-14","value":2.82},{"date":"2026-04-15","value":2.83},{"date":"2026-04-16","value":2.84},{"date":"2026-04-17","value":2.85},{"date":"2026-04-20","value":2.83},{"date":"2026-04-21","value":2.81},{"date":"2026-04-22","value":2.79},{"date":"2026-04-23","value":2.79},{"date":"2026-04-24","value":2.81},{"date":"2026-04-27","value":2.83},{"date":"2026-04-28","value":2.81},{"date":"2026-04-29","value":2.79},{"date":"2026-04-30","value":2.78},{"date":"2026-05-01","value":2.77},{"date":"2026-05-04","value":2.81},{"date":"2026-05-05","value":2.82},{"date":"2026-05-06","value":2.85},{"date":"2026-05-07","value":2.83},{"date":"2026-05-08","value":2.81},{"date":"2026-05-11","value":2.79},{"date":"2026-05-12","value":2.82},{"date":"2026-05-13","value":2.82},{"date":"2026-05-14","value":2.76},{"date":"2026-05-15","value":2.80}],"IG_OAS":[{"date":"2026-02-23","value":0.81},{"date":"2026-02-24","value":0.80},{"date":"2026-02-25","value":0.80},{"date":"2026-02-26","value":0.79},{"date":"2026-02-27","value":0.80},{"date":"2026-03-02","value":0.78},{"date":"2026-03-03","value":0.79},{"date":"2026-03-04","value":0.79},{"date":"2026-03-05","value":0.79},{"date":"2026-03-06","value":0.80},{"date":"2026-03-09","value":0.80},{"date":"2026-03-10","value":0.80},{"date":"2026-03-11","value":0.80},{"date":"2026-03-12","value":0.80},{"date":"2026-03-13","value":0.80},{"date":"2026-03-16","value":0.80},{"date":"2026-03-17","value":0.79},{"date":"2026-03-18","value":0.78},{"date":"2026-03-19","value":0.79},{"date":"2026-03-20","value":0.78},{"date":"2026-03-23","value":0.78},{"date":"2026-03-24","value":0.77},{"date":"2026-03-25","value":0.76},{"date":"2026-03-26","value":0.76},{"date":"2026-03-27","value":0.75},{"date":"2026-03-30","value":0.75},{"date":"2026-03-31","value":0.75},{"date":"2026-04-01","value":0.76},{"date":"2026-04-02","value":0.76},{"date":"2026-04-03","value":0.76},{"date":"2026-04-06","value":0.77},{"date":"2026-04-07","value":0.77},{"date":"2026-04-08","value":0.77},{"date":"2026-04-09","value":0.77},{"date":"2026-04-10","value":0.77},{"date":"2026-04-13","value":0.77},{"date":"2026-04-14","value":0.77},{"date":"2026-04-15","value":0.77},{"date":"2026-04-16","value":0.78},{"date":"2026-04-17","value":0.78},{"date":"2026-04-20","value":0.78},{"date":"2026-04-21","value":0.78},{"date":"2026-04-22","value":0.78},{"date":"2026-04-23","value":0.78},{"date":"2026-04-24","value":0.78},{"date":"2026-04-27","value":0.78},{"date":"2026-04-28","value":0.78},{"date":"2026-04-29","value":0.77},{"date":"2026-04-30","value":0.77},{"date":"2026-05-01","value":0.77},{"date":"2026-05-04","value":0.78},{"date":"2026-05-05","value":0.78},{"date":"2026-05-06","value":0.78},{"date":"2026-05-07","value":0.78},{"date":"2026-05-08","value":0.78},{"date":"2026-05-11","value":0.78},{"date":"2026-05-12","value":0.77},{"date":"2026-05-13","value":0.76},{"date":"2026-05-14","value":0.76},{"date":"2026-05-15","value":0.75}],"VIX":[{"date":"2026-02-23","value":17.85},{"date":"2026-02-24","value":17.45},{"date":"2026-02-25","value":17.20},{"date":"2026-02-26","value":17.10},{"date":"2026-02-27","value":18.50},{"date":"2026-03-02","value":19.20},{"date":"2026-03-03","value":21.40},{"date":"2026-03-04","value":22.30},{"date":"2026-03-05","value":24.80},{"date":"2026-03-06","value":26.10},{"date":"2026-03-09","value":25.40},{"date":"2026-03-10","value":23.10},{"date":"2026-03-11","value":22.50},{"date":"2026-03-12","value":24.30},{"date":"2026-03-13","value":23.80},{"date":"2026-03-16","value":22.40},{"date":"2026-03-17","value":24.10},{"date":"2026-03-18","value":26.20},{"date":"2026-03-19","value":25.40},{"date":"2026-03-20","value":27.30},{"date":"2026-03-23","value":24.10},{"date":"2026-03-24","value":25.20},{"date":"2026-03-25","value":24.80},{"date":"2026-03-26","value":26.10},{"date":"2026-03-27","value":28.40},{"date":"2026-03-30","value":27.80},{"date":"2026-03-31","value":29.10},{"date":"2026-04-01","value":27.50},{"date":"2026-04-02","value":29.30},{"date":"2026-04-07","value":32.40},{"date":"2026-04-08","value":28.10},{"date":"2026-04-09","value":26.40},{"date":"2026-04-10","value":25.10},{"date":"2026-04-13","value":26.30},{"date":"2026-04-14","value":24.80},{"date":"2026-04-15","value":23.10},{"date":"2026-04-16","value":23.40},{"date":"2026-04-17","value":21.20},{"date":"2026-04-20","value":22.10},{"date":"2026-04-21","value":22.40},{"date":"2026-04-22","value":23.20},{"date":"2026-04-23","value":22.80},{"date":"2026-04-24","value":22.10},{"date":"2026-04-27","value":22.50},{"date":"2026-04-28","value":23.10},{"date":"2026-04-29","value":24.30},{"date":"2026-04-30","value":23.80},{"date":"2026-05-01","value":22.50},{"date":"2026-05-04","value":21.80},{"date":"2026-05-05","value":21.20},{"date":"2026-05-06","value":20.10},{"date":"2026-05-07","value":19.80},{"date":"2026-05-08","value":19.10},{"date":"2026-05-11","value":18.38},{"date":"2026-05-12","value":17.99},{"date":"2026-05-13","value":17.87},{"date":"2026-05-14","value":17.26},{"date":"2026-05-15","value":18.43}],"TENMINUSTWO":[{"date":"2026-02-23","value":0.60},{"date":"2026-02-24","value":0.61},{"date":"2026-02-25","value":0.60},{"date":"2026-02-26","value":0.60},{"date":"2026-02-27","value":0.59},{"date":"2026-03-02","value":0.58},{"date":"2026-03-03","value":0.55},{"date":"2026-03-04","value":0.55},{"date":"2026-03-05","value":0.56},{"date":"2026-03-06","value":0.59},{"date":"2026-03-09","value":0.56},{"date":"2026-03-10","value":0.58},{"date":"2026-03-11","value":0.57},{"date":"2026-03-12","value":0.51},{"date":"2026-03-13","value":0.55},{"date":"2026-03-16","value":0.55},{"date":"2026-03-17","value":0.52},{"date":"2026-03-18","value":0.50},{"date":"2026-03-19","value":0.46},{"date":"2026-03-20","value":0.51},{"date":"2026-03-23","value":0.51},{"date":"2026-03-24","value":0.49},{"date":"2026-03-25","value":0.49},{"date":"2026-03-26","value":0.46},{"date":"2026-03-27","value":0.56},{"date":"2026-03-30","value":0.53},{"date":"2026-03-31","value":0.51},{"date":"2026-04-01","value":0.52},{"date":"2026-04-02","value":0.52},{"date":"2026-04-03","value":0.51},{"date":"2026-04-06","value":0.50},{"date":"2026-04-07","value":0.52},{"date":"2026-04-08","value":0.50},{"date":"2026-04-09","value":0.51},{"date":"2026-04-10","value":0.50},{"date":"2026-04-13","value":0.52},{"date":"2026-04-14","value":0.50},{"date":"2026-04-15","value":0.53},{"date":"2026-04-16","value":0.54},{"date":"2026-04-17","value":0.55},{"date":"2026-04-20","value":0.54},{"date":"2026-04-21","value":0.52},{"date":"2026-04-22","value":0.51},{"date":"2026-04-23","value":0.51},{"date":"2026-04-24","value":0.53},{"date":"2026-04-27","value":0.57},{"date":"2026-04-28","value":0.52},{"date":"2026-04-29","value":0.50},{"date":"2026-04-30","value":0.52},{"date":"2026-05-01","value":0.51},{"date":"2026-05-04","value":0.50},{"date":"2026-05-05","value":0.50},{"date":"2026-05-06","value":0.49},{"date":"2026-05-07","value":0.49},{"date":"2026-05-08","value":0.48},{"date":"2026-05-11","value":0.47},{"date":"2026-05-12","value":0.46},{"date":"2026-05-13","value":0.48},{"date":"2026-05-14","value":0.47},{"date":"2026-05-15","value":0.50}]};
+
+  if (document.getElementById('creditChart')) {
+    new Chart(document.getElementById('creditChart'), {
+      type: 'line',
+      data: {
+        labels: creditData.HY_OAS.map(d => d.date.slice(5)),
+        datasets: [
+          { label: 'HY OAS (bps, left)', data: creditData.HY_OAS.map(d => d.value * 100), borderColor: '#991b1b', backgroundColor: '#991b1b', tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y1' },
+          { label: 'IG OAS (bps, right)', data: creditData.IG_OAS.map(d => d.value * 100), borderColor: '#0f4f4a', backgroundColor: '#0f4f4a', tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
+        ]
+      },
+      options: {
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { position: 'top', labels: { font: { size: 11 }, boxWidth: 14, boxHeight: 8 } },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(0) + ' bps' } }
+        },
+        scales: {
+          y1: { position: 'left', ticks: { callback: v => v + ' bps', font: { size: 10 }, color: '#991b1b' }, grid: { color: '#e8ddc7' } },
+          y2: { position: 'right', ticks: { callback: v => v + ' bps', font: { size: 10 }, color: '#0f4f4a' }, grid: { display: false } },
+          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8 }, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  if (document.getElementById('stressChart')) {
+    new Chart(document.getElementById('stressChart'), {
+      type: 'line',
+      data: {
+        labels: creditData.VIX.map(d => d.date.slice(5)),
+        datasets: [
+          { label: 'VIX (left)', data: creditData.VIX.map(d => d.value), borderColor: '#c2410c', backgroundColor: '#c2410c', tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'yv' },
+          { label: '2s10s spread (bps, right)', data: creditData.TENMINUSTWO.map(d => d.value * 100), borderColor: '#1e3a5f', backgroundColor: '#1e3a5f', tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'ys' }
+        ]
+      },
+      options: {
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { position: 'top', labels: { font: { size: 11 }, boxWidth: 14, boxHeight: 8 } },
+          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) } }
+        },
+        scales: {
+          yv: { position: 'left', ticks: { font: { size: 10 }, color: '#c2410c' }, grid: { color: '#e8ddc7' } },
+          ys: { position: 'right', ticks: { callback: v => v + ' bps', font: { size: 10 }, color: '#1e3a5f' }, grid: { display: false } },
+          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8 }, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  // Theme toggle
+  (function() {
+    const root = document.documentElement;
+    const saved = localStorage.getItem('mktdig_theme') || 'light';
+    const setTheme = (t) => {
+      if (t === 'light') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', t);
+      document.querySelectorAll('.theme-toggle button').forEach(b => b.classList.toggle('active', b.dataset.th === t));
+      try { localStorage.setItem('mktdig_theme', t); } catch(_) {}
+    };
+    setTheme(saved);
+    document.querySelectorAll('.theme-toggle button').forEach(b => {
+      b.addEventListener('click', () => setTheme(b.dataset.th));
+    });
+  })();
 </script>
 </body>
 </html>
