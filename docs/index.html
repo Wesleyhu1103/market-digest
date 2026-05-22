@@ -299,6 +299,20 @@
     header.head h1 { font-size: 38px; }
     .bullbear { grid-template-columns: 1fr; }
   }
+
+  /* Archive section — collapsible 5-day groups */
+  .arch-group { border: 1px solid var(--rule); border-radius: 4px; margin: 10px 0; background: var(--surface); }
+  .arch-group summary { cursor: pointer; padding: 14px 18px; list-style: none; font-family: "Inter", sans-serif; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+  .arch-group summary::-webkit-details-marker { display: none; }
+  .arch-group summary::before { content: "\25B8  "; display: inline-block; transition: transform .15s; }
+  .arch-group[open] summary::before { transform: rotate(90deg); }
+  .arch-range { flex: 1; color: var(--ink); }
+  .arch-count { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .arch-list { padding: 0 10px 14px; display: flex; flex-direction: column; gap: 6px; }
+  .arch-item { display: block; padding: 13px 16px; border-radius: 3px; text-decoration: none; color: var(--ink); border: 1px solid var(--rule-soft); background: var(--bg); transition: background .12s; }
+  .arch-item:hover { background: var(--rule-soft); border-color: var(--rule); }
+  .arch-item-date { display: block; font-family: "Fraunces", serif; font-size: 16px; font-weight: 600; color: var(--accent); margin-bottom: 4px; }
+  .arch-item-summary { display: block; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -723,29 +737,21 @@
     </form>
   </section>
 
-  <section id="archive">
+    <section id="archive">
     <h2>Archive</h2>
-    <p class="lede">Past issues &mdash; each day's digest is preserved here.</p>
-    <table class="week-table" style="max-width:820px;">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Top Narrative</th>
-          <th>Regime</th>
-          <th>S&amp;P Weekly</th>
-        </tr>
-      </thead>
-      <tbody id="archiveRows">
-        <tr>
-          <td><a href="#narratives" style="font-family:'JetBrains Mono',monospace;font-size:13px;">May 22, 2026</a></td>
-          <td>Warsh sworn in &middot; Iran peace "narrowing gaps" &middot; 8th weekly gain</td>
-          <td class="score-mixed">Mixed (stagflation watch)</td>
-          <td class="score-bull">+8 weeks</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);margin-top:12px;">New rows are appended automatically each morning. Older issues will be linked individually as the archive grows.</p>
+    <p class="lede">Every issue, grouped in runs of five. Click to expand older weeks.</p>
+    <details class="arch-group" open>
+      <summary><span class="arch-range">Week of May 19&#8211;23, 2026</span><span class="arch-count">1 issue</span></summary>
+      <div class="arch-list">
+        <a class="arch-item" href="#narratives">
+          <span class="arch-item-date">Fri &middot; Friday, May 22, 2026</span>
+          <span class="arch-item-summary">Warsh sworn in as 17th Fed Chair &middot; Iran ceasefire "narrowing the gaps" &middot; S&amp;P on track for 8th straight weekly gain, longest since 2023. AI capex optimism dominates heading into a long weekend.</span>
+        </a>
+      </div>
+    </details>
   </section>
+
+
 
 </main>
 </div>
