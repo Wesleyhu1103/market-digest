@@ -844,6 +844,33 @@
     return false;
   }
 
+
+  // Theme toggle
+  (function() {
+    var root = document.documentElement;
+    function applyTheme(t) {
+      root.setAttribute('data-theme', t || 'light');
+      document.querySelectorAll('.theme-toggle button').forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-th') === (t || 'light'));
+      });
+      try { localStorage.setItem('md_theme', t || 'light'); } catch(e) {}
+      // Re-draw charts with new colors
+      if (window.allCharts && window.allCharts.length) {
+        window.allCharts.forEach(function(c) { try { c.update(); } catch(e) {} });
+      }
+    }
+    document.querySelectorAll('.theme-toggle button').forEach(function(b) {
+      b.addEventListener('click', function() { applyTheme(b.getAttribute('data-th')); });
+    });
+    // Restore saved theme on load
+    try {
+      var saved = localStorage.getItem('md_theme');
+      if (saved) applyTheme(saved);
+    } catch(e) {}
+  })();
+
+  // Charts — initialized after layout so container heights are non-zero
+  function _initAllCharts() {
   // Charts. Data is sourced verbatim from today's feed; see source line under each chart.
   const chartFont = '"Inter", -apple-system, sans-serif';
   Chart.defaults.font.family = chartFont;
@@ -1306,6 +1333,13 @@
   }
   document.addEventListener('DOMContentLoaded', autoLinkCompanies);
   if (document.readyState !== 'loading') autoLinkCompanies();
+  }
+  // Ensure browser has completed layout before Chart.js measures containers
+  if (document.readyState === 'complete') {
+    requestAnimationFrame(_initAllCharts);
+  } else {
+    window.addEventListener('load', function() { requestAnimationFrame(_initAllCharts); });
+  }
 
   // ============================================================
   // NARRATIVE VERDICT LIVE UPDATER
