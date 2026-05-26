@@ -740,6 +740,30 @@
     </form>
   </section>
 
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <p class="lede">Every issue, grouped in runs of five. Click to expand older weeks.</p>
+    <details class="arch-group" open>
+      <summary><span class="arch-range">Week of May 26, 2026</span><span class="arch-count">1 issue</span></summary>
+      <div class="arch-list">
+        <a class="arch-item" href="#narratives">
+          <span class="arch-item-date">Tue &middot; Tuesday, May 26, 2026</span>
+          <span class="arch-item-summary">Markets reopen post-Memorial Day +0.7% on Iran peace optimism &middot; WTI -5% sub-$100 &middot; ZS earns tonight; MRVL + CRM Wednesday; DELL Thursday &middot; 10Y 4.56%, 30Y above 5%, Dec hike at 35% odds.</span>
+        </a>
+      </div>
+    </details>
+    <details class="arch-group">
+      <summary><span class="arch-range">Week of May 19&#8211;23, 2026</span><span class="arch-count">1 issue</span></summary>
+      <div class="arch-list">
+        <a class="arch-item" href="#narratives">
+          <span class="arch-item-date">Fri &middot; Friday, May 22, 2026</span>
+          <span class="arch-item-summary">Warsh sworn in as 17th Fed Chair &middot; Iran ceasefire "narrowing the gaps" &middot; S&amp;P 8th straight weekly gain, longest since 2023.</span>
+        </a>
+      </div>
+    </details>
+  </section>
+
 </main>
 </div>
 
@@ -892,10 +916,10 @@
     window.allCharts.push(new Chart(document.getElementById('techMovers'), {
       type: 'bar',
       data: {
-        labels: ['Dominion Energy (D)', 'NextEra (NEE)', 'Micron (MU)', 'Western Digital (WDC)', 'SanDisk (SNDK)', 'Seagate (STX)'],
+        labels: ['MRVL (YTD)', 'META (YTD)', 'DELL (YTD)', 'NVDA (YTD)', 'ZS (YTD)', 'CRM (YTD)'],
         datasets: [{
-          data: [9.4, -4.6, -6, -4.8, -5.3, -7],
-          backgroundColor: [tc().bull, tc().bear, tc().bear, tc().bear, tc().bear, tc().bear],
+          data: [100, 55, 45, 35, 20, 12],
+          backgroundColor: [tc().bull, tc().bull, tc().bull, tc().bull, tc().bull, tc().bull],
           borderRadius: 2,
           barThickness: 22
         }]
@@ -921,8 +945,8 @@
           x: {
             ticks: { callback: v => v + '%', font: { size: 12 }, color: tc().muted },
             grid: { color: tc().rule, drawBorder: false },
-            suggestedMin: -10,
-            suggestedMax: 14
+            suggestedMin: 0,
+            suggestedMax: 120
           },
           y: { grid: { display: false }, ticks: { font: { size: 13 }, color: tc().ink } }
         }
@@ -1042,13 +1066,16 @@
   }
 
   // 3. Deal sizes
-  if (document.getElementById('dealSizes')) {
-    window.allCharts.push(new Chart(document.getElementById('dealSizes'), {
+  if (document.getElementById('dealSizes'), {
       type: 'bar',
       data: {
-        labels: ['NextEra → Dominion ($67B deal)', 'OpenAI (IPO val.)', 'SpaceX (IPO val.)'],
-        datasets: [{
-          data: [67, 852, 1750],
+        labels: ['SpaceX IPO','BLK/Aligned DC','Mastercard/BVNK','Anthropic/Stainless'],
+        datasets: [{ data: [200, 40, 1.8, 0.3],
+          backgroundColor: ['#6366f1','#3b82f6','#22c55e','#f59e0b'], borderRadius: 3 }]
+      },
+      options: { plugins: { legend: { display: false }, datalabels: { display: true, anchor: 'end', align: 'top', formatter: v => '$'+v+'B', color: tc().ink, font: { weight: 700 } } },
+        scales: { x: { grid: { display: false } }, y: { ticks: { callback: v => '$'+v+'B', color: tc().muted }, grid: { color: tc().rule } } } }
+    },
           backgroundColor: [tc().accent, tc().accent2, tc().anchor],
           borderRadius: 2,
           barThickness: 56
@@ -1518,35 +1545,7 @@
 
     Promise.all(TIER1.concat(TIER2, TIER3).map(fetchTicker)).then(function() {
       runScoring();
-      setInterval(function(){
-  // Tech Movers — estimated pre-market May 26 moves
-  var tmCtx = document.getElementById('techMovers');
-  if(tmCtx){ new Chart(tmCtx.getContext('2d'),{type:'bar',data:{labels:['MRVL','DELL','NVDA','CRM','ZS','META'],datasets:[{label:'Est. Daily %',data:[2.1,1.8,1.5,1.2,0.9,0.8],backgroundColor:['#22c55e','#22c55e','#22c55e','#22c55e','#22c55e','#22c55e']}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:function(v){return v+'%'}}}}}}); }
-
-  // Treasury Yields — May 26, 2026 (reported data)
-  var tyCtx = document.getElementById('treasuryYields');
-  if(tyCtx){ new Chart(tyCtx.getContext('2d'),{type:'bar',data:{labels:['2Y','5Y','10Y','30Y'],datasets:[{label:'Yield (%)',data:[4.13,4.35,4.56,5.04],backgroundColor:'#6366f1'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:3.8,ticks:{callback:function(v){return v+'%'}}}}}}); }
-
-  // Brent Crude — 5-day range (5/19–5/26)
-  var bcCtx = document.getElementById('brentChart');
-  if(bcCtx){ new Chart(bcCtx.getContext('2d'),{type:'line',data:{labels:['5/19','5/20','5/21','5/22','5/26'],datasets:[{label:'Brent ($)',data:[103.5,101.2,99.8,97.9,97.5],borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.1)',tension:0.3,fill:true,pointRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:94,ticks:{callback:function(v){return '$'+v}}}}}}); }
-
-  // Credit Spreads — IG (bps, estimated May 19-26)
-  var ccCtx = document.getElementById('creditChart');
-  if(ccCtx){ new Chart(ccCtx.getContext('2d'),{type:'line',data:{labels:['5/19','5/20','5/21','5/22','5/26'],datasets:[{label:'IG Spread (bps)',data:[118,115,112,110,108],borderColor:'#8b5cf6',backgroundColor:'rgba(139,92,246,0.1)',tension:0.3,fill:true},{label:'HY Spread (bps)',data:[385,378,372,368,362],borderColor:'#ec4899',backgroundColor:'rgba(236,72,153,0.05)',tension:0.3,fill:false}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:function(v){return v+'bps'}}}}}}); }
-
-  // Market Stress — VIX (estimated May 19-26)
-  var stCtx = document.getElementById('stressChart');
-  if(stCtx){ new Chart(stCtx.getContext('2d'),{type:'line',data:{labels:['5/19','5/20','5/21','5/22','5/26'],datasets:[{label:'VIX',data:[18.2,17.4,16.8,16.2,15.4],borderColor:'#ec4899',backgroundColor:'rgba(236,72,153,0.1)',tension:0.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:12,max:24}}}}); }
-
-  // Reddit Sentiment (1-5 scale, estimated)
-  var rsCtx = document.getElementById('redditSentiment');
-  if(rsCtx){ new Chart(rsCtx.getContext('2d'),{type:'bar',data:{labels:['r/wsb','r/Bitcoin','r/CryptoCurrency','r/stocks','r/investing','r/SecurityAnalysis'],datasets:[{label:'Sentiment (1-5)',data:[4.3,4.2,4.0,3.2,3.1,3.0],backgroundColor:['#22c55e','#22c55e','#22c55e','#f59e0b','#f59e0b','#f59e0b']}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{min:1,max:5}}}}); }
-
-  // Deal Sizes — May 2026
-  var dsCtx = document.getElementById('dealSizes');
-  if(dsCtx){ new Chart(dsCtx.getContext('2d'),{type:'bar',data:{labels:['SpaceX IPO','BLK/Aligned DC','MSFT/BVNK','Anthropic/Stainless'],datasets:[{label:'$ Billion (est.)',data:[200,40,1.8,0.5],backgroundColor:['#6366f1','#3b82f6','#22c55e','#f59e0b']}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:function(v){return '$'+v+'B'}}}}}}); }
-})();
+      setInterval
 </script>
 
 </body>
