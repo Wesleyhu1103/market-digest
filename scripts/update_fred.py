@@ -23,7 +23,7 @@ SERIES = {
     "DGS10": "DGS10",
     "DGS30": "DGS30",
     "DCOILBRENTEU": "DCOILBRENTEU",
-    "HY_OAS": "BAMLH0A0HYM2EY",
+    "HY_OAS": "BAMLH0A0HYM2",
     "IG_OAS": "BAMLC0A0CM",
     "VIX": "VIXCLS",
     "TENMINUSTWO": "T10Y2Y",
@@ -35,8 +35,8 @@ API_KEY = os.environ.get("FRED_API_KEY", "")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
 
 
-def _get(url: str) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+def _get(url: str, accept: str = "*/*") -> str:
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": accept})
     attempts = 3 if API_KEY else 2
     last_err = None
     for attempt in range(attempts):
@@ -61,7 +61,7 @@ def fetch_series(series_id: str) -> list[dict]:
             f"?series_id={series_id}&api_key={API_KEY}&file_type=json"
             f"&observation_start={start}&observation_end={end}"
         )
-        for obs in json.loads(_get(url)).get("observations", []):
+        for obs in json.loads(_get(url, accept="application/json,*/*")).get("observations", []):
             date_s, val_s = obs.get("date", ""), obs.get("value", "")
             if not date_s or val_s in ("", "."):
                 continue
@@ -78,7 +78,7 @@ def fetch_series(series_id: str) -> list[dict]:
         f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
         f"&cosd={start}&coed={end}"
     )
-    raw = _get(url)
+    raw = _get(url, accept="text/csv,*/*")
     for row in csv.DictReader(io.StringIO(raw)):
         date_s = row.get("observation_date") or row.get("DATE") or ""
         val_s = row.get(series_id) or row.get("VALUE") or ""
@@ -115,7 +115,10 @@ def main():
     for key, sid in SERIES.items():
         print(f"Fetching {sid}..." + (" (API)" if API_KEY else " (CSV)"))
         try:
-            data[key] = fetch_series(sid)
+            rows = fetch_series(sid)
+            if not rows:
+                raise ValueError("no usable observations returned")
+            data[key] = rows
             fetched += 1
             print(f"  {len(data[key])} points (last {data[key][-1]['date'] if data[key] else 'n/a'})")
         except Exception as e:
