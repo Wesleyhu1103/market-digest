@@ -23,6 +23,11 @@ def sample_previous(module):
 
 
 class UpdateFredTests(unittest.TestCase):
+    def test_hy_oas_uses_spread_series_not_effective_yield(self):
+        module = load_update_fred()
+
+        self.assertEqual(module.SERIES["HY_OAS"], "BAMLH0A0HYM2")
+
     def test_successful_but_invalid_responses_parse_as_empty_rows(self):
         module = load_update_fred()
 
