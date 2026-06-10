@@ -31,6 +31,18 @@ scripts/
 
 ## Daily publish sequence
 
+**Fully automated (default):** the `Publish digest` workflow's weekday cron
+(7:30am ET) runs `scripts/generate_digest.py` on GitHub's servers — fetches
+the RSS feeds, calls the Claude API (`ANTHROPIC_API_KEY` repo secret) to
+rewrite `<main>` from the current template, then archives the prior day,
+repairs, splices, validates, refreshes FRED, commits, and deploys Pages.
+No local machine or Claude session needed. Reddit sentiment is estimated
+from headlines and labeled as such; Gmail newsletters are not available in
+automated runs (historically ~2% of content).
+
+**Manual override (Claude session):** steps 1-6 below still work — a session
+can synthesize richer content (Gmail, Reddit scrape) and upload it:
+
 1. Fetch market data (feeds, Gmail, Reddit)
 2. Synthesize content
 3. Generate `<main>...</main>` HTML
@@ -38,7 +50,7 @@ scripts/
 5. The `Publish digest` workflow does everything else in the repo: archive prior day, `repair_main.py`, splice into `index.html`, date updates, `validate_digest.py` gate, `update_fred.py`, commit, Pages deploy
 6. Poll the workflow run (public API, no auth) and report success/failure
 
-A weekday cron (6:30am ET) also refreshes FRED data even when no digest lands.
+The cron also refreshes FRED data even when no digest lands.
 
 ---
 

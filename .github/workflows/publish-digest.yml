@@ -9,7 +9,7 @@ on:
     branches: [main]
     paths: ["incoming/**"]
   schedule:
-    - cron: "30 10 * * 1-5" # 6:30am ET weekdays
+    - cron: "30 11 * * 1-5" # 7:30am ET weekdays: generate + publish + FRED
   workflow_dispatch:
 
 permissions:
@@ -36,6 +36,24 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+
+      # Fully automated digest: on cron/manual runs with an ANTHROPIC_API_KEY
+      # secret, fetch feeds and generate today's <main> via the Claude API.
+      # Push-triggered runs already carry a digest in incoming/, so skip.
+      - name: Generate digest with Claude (cron/manual only)
+        if: github.event_name != 'push'
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "ANTHROPIC_API_KEY secret not set; skipping generation"
+          elif [ -f incoming/new-main.html ]; then
+            echo "incoming/new-main.html already present; skipping generation"
+          else
+            pip install -q anthropic
+            python3 scripts/generate_digest.py
+          fi
 
       - name: Apply incoming digest (archive + repair + splice)
         run: python3 scripts/publish_digest.py
