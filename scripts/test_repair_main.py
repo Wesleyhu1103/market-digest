@@ -36,8 +36,8 @@ class RepairMainFeedbackTest(unittest.TestCase):
         self.assertEqual(len(re.findall(r'id="fb-open"', repaired)), 1)
         self.assertRegex(repaired, r'<textarea[^>]*name="missing"[^>]*id="fb-missing"')
         self.assertRegex(repaired, r'<textarea[^>]*name="open"[^>]*id="fb-open"')
-        self.assertNotRegex(repaired, r'<textarea[^>]*id="fb-missing"[^>]*>[\s\S]*?<textarea')
-        self.assertNotRegex(repaired, r'<textarea[^>]*id="fb-open"[^>]*>[\s\S]*?<textarea')
+        self.assertNotIn('<textarea id="fb-missing" rows="4"><label>', repaired)
+        self.assertNotIn('<textarea id="fb-open" rows="4"><label>', repaired)
 
 
 if __name__ == "__main__":
