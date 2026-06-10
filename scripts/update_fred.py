@@ -37,10 +37,11 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like 
 
 def _get(url: str) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+    attempts = 3 if API_KEY else 2
     last_err = None
-    for attempt in range(4):
+    for attempt in range(attempts):
         try:
-            return urllib.request.urlopen(req, timeout=60).read().decode("utf-8")
+            return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
         except (OSError, TimeoutError) as e:
             last_err = e
             print(f"  retry {attempt + 1}: {e}")
@@ -120,6 +121,13 @@ def main():
         except Exception as e:
             data[key] = prev.get(key, [])
             print(f"  FAILED {sid}: {e} — keeping {len(data[key])} previous points")
+            # No key + nothing fetched yet means the endpoint is blocking this
+            # IP entirely; don't burn retries on the remaining series
+            if not API_KEY and fetched == 0:
+                print("Endpoint unreachable without API key; keeping previous data for all series")
+                for k in SERIES:
+                    data.setdefault(k, prev.get(k, []))
+                break
 
     if fetched == 0:
         raise SystemExit("ABORT: no FRED series fetched; leaving fred-data.json untouched")
