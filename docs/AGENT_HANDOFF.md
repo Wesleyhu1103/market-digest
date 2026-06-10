@@ -7,13 +7,18 @@ Last updated: 2026-05-29. Read this before touching anything.
 Single-page app at `wesleyhu1103.github.io/market-digest`.
 
 ```
+.github/workflows/
+  publish-digest.yml ← Actions pipeline: archive, repair, validate, FRED, Pages deploy
 docs/
   index.html        ← the entire site; only <main> changes daily
   fred-data.json    ← macro chart data (FRED); refreshed by update_fred.py
   archive/
-    manifest.json   ← list of prior digests; updated by commit script
+    manifest.json   ← list of prior digests; updated by publish_digest.py
     YYYY-MM-DD.html ← snapshots of prior days
+incoming/
+  new-main.html     ← drop zone: the digest agent's ONLY write; consumed by Actions
 scripts/
+  publish_digest.py ← runs in Actions: archive prior day, repair, splice <main>, update dates
   repair_main.py    ← run on generated main_html before committing
   validate_digest.py← structural + JS parse checks after committing
   update_fred.py    ← fetches FRED series daily; write to fred-data.json
@@ -29,16 +34,27 @@ scripts/
 1. Fetch market data (feeds, Gmail, Reddit)
 2. Synthesize content
 3. Generate `<main>...</main>` HTML
-4. Run `repair_main.py` on the generated string
-5. Run commit script (reads `GITHUB_TOKEN` from env — never hardcode)
-6. Run `validate_digest.py` against live URL
-7. Run `update_fred.py` to refresh macro chart data
+4. Upload it as `incoming/new-main.html` on `main` (GitHub connector tool preferred, Contents API fallback)
+5. The `Publish digest` workflow does everything else in the repo: archive prior day, `repair_main.py`, splice into `index.html`, date updates, `validate_digest.py` gate, `update_fred.py`, commit, Pages deploy
+6. Poll the workflow run (public API, no auth) and report success/failure
+
+A weekday cron (6:30am ET) also refreshes FRED data even when no digest lands.
 
 ---
 
 ## Token
 
-Use `os.environ["GITHUB_TOKEN"]`. Never put the token in any file committed to the repo or in the skill file.
+The pipeline itself needs no PAT — Actions uses the built-in `GITHUB_TOKEN`.
+The agent's single upload should use the GitHub connector/MCP tool when
+available. If a token fallback is needed, use a **fine-grained PAT** scoped to
+this repo with Contents read/write only, read from `os.environ["GITHUB_TOKEN"]`.
+Never put a token in any file committed to the repo or in the skill file.
+Note: regenerating a PAT on github.com invalidates the old value immediately —
+update every stored copy the moment you regenerate, or runs will 401.
+
+GitHub Pages must be set to **Settings → Pages → Source: GitHub Actions**
+(one-time). Pushes made with the built-in `GITHUB_TOKEN` don't trigger the
+legacy deploy-from-branch build, so the workflow deploys Pages explicitly.
 
 ---
 

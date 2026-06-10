@@ -76,7 +76,8 @@ def repair_main_html(main_html: str) -> str:
     if bull_on < 3 or show_bull < 3:
         raise SystemExit(f"ABORT: toggle structure bull_on={bull_on} show_bull={show_bull} (need 3 each)")
 
-    if main_html.count('id="chartData"') != 1:
-        raise SystemExit(f"ABORT: expected exactly 1 chartData block, got {main_html.count('id=\"chartData\"')}")
+    n_chart = main_html.count('id="chartData"')
+    if n_chart != 1:
+        raise SystemExit(f"ABORT: expected exactly 1 chartData block, got {n_chart}")
 
     return main_html

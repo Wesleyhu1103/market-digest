@@ -115,123 +115,58 @@ Write synthesized content to `market-digest-YYYY-MM-DD.md` in the session output
 
 ---
 
-## Step 5: Repair, commit, validate
+## Step 5: Upload the new `<main>` — GitHub Actions does the rest
+
+Archive, repair, date updates, validation, FRED refresh, and the Pages deploy
+all run **in the repo** via `.github/workflows/publish-digest.yml`. Your only
+write is one file: `incoming/new-main.html` on `main`.
+
+**Preferred: GitHub connector/MCP tool** (no token needed). If a tool like
+`create_or_update_file` is available, call it with:
+- owner `wesleyhu1103`, repo `market-digest`, branch `main`
+- path `incoming/new-main.html`
+- content: your full `<main>...</main>` string
+- message: `Incoming digest YYYY-MM-DD`
+
+**Fallback: Contents API** (needs `GITHUB_TOKEN` env — fine-grained, this repo
+only, Contents read/write):
 
 ```python
-import base64, json, os, re, subprocess, tempfile, urllib.request
-from datetime import date, datetime
+import base64, json, os, urllib.request, urllib.error
+from datetime import date
 
 TOKEN = os.environ["GITHUB_TOKEN"]
-OWNER = "wesleyhu1103"
-REPO  = "market-digest"
-PATH  = "docs/index.html"
+URL = "https://api.github.com/repos/wesleyhu1103/market-digest/contents/incoming/new-main.html"
 H = {"Authorization": f"Bearer {TOKEN}", "Accept": "application/vnd.github+json"}
 
-def gh_get(path):
-    req = urllib.request.Request(f"https://api.github.com/repos/{OWNER}/{REPO}/contents/{path}", headers=H)
-    return json.load(urllib.request.urlopen(req))
-
-def gh_put(path, content, message, sha=None):
-    payload = {"message": message, "content": base64.b64encode(content.encode()).decode(), "branch": "main"}
-    if sha: payload["sha"] = sha
-    req = urllib.request.Request(
-        f"https://api.github.com/repos/{OWNER}/{REPO}/contents/{path}",
-        data=json.dumps(payload).encode(), method="PUT",
-        headers={**H, "Content-Type": "application/json"})
-    return json.load(urllib.request.urlopen(req))
-
-# ── 1. Fetch current index.html ──
-data = gh_get(PATH)
-sha  = data["sha"]
-current_html = base64.b64decode(data["content"].replace("\n","")).decode()
-
-# ── 2. Archive prior day if different date ──
-old_h1   = re.search(r'<h1>([^<]+)</h1>', current_html)
-old_meta = re.search(r'<div class="meta">([\s\S]*?)</div>', current_html)
-today_iso = date.today().isoformat()
-
-if old_h1:
-    try:
-        dt = datetime.strptime(old_h1.group(1).strip(), "%A, %B %d, %Y")
-        old_date_iso = dt.strftime("%Y-%m-%d")
-    except ValueError:
-        old_date_iso = None
-
-    if old_date_iso and old_date_iso != today_iso:
-        banner = (
-            '<div style="background:var(--accent-soft);border-left:4px solid var(--accent);'
-            'padding:14px 22px;margin:0 0 18px;font-size:14px;">'
-            f'<strong>Archived — {old_date_iso}</strong> · '
-            '<a href="../index.html" style="color:var(--accent);">← back to today</a></div>'
-        )
-        snapshot = re.sub(r'<main>', '<main>\n' + banner, current_html, count=1)
-        archive_path = f"docs/archive/{old_date_iso}.html"
-        try:
-            gh_put(archive_path, snapshot, f"Archive {old_date_iso}")
-            print(f"Archived {archive_path}")
-        except urllib.error.HTTPError as e:
-            if e.code != 422: raise
-
-        summary = ""
-        if old_meta:
-            summary = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', old_meta.group(1))).strip()[:240]
-        new_entry = {"date": old_date_iso, "weekday": dt.strftime("%a"),
-                     "h1": old_h1.group(1).strip(), "summary": summary,
-                     "url": f"archive/{old_date_iso}.html"}
-        try:
-            m = gh_get("docs/archive/manifest.json")
-            manifest = json.loads(base64.b64decode(m["content"].replace("\n","")).decode())
-            manifest_sha = m["sha"]
-        except urllib.error.HTTPError as e:
-            if e.code == 404: manifest, manifest_sha = [], None
-            else: raise
-        manifest = [e for e in manifest if e.get("date") != old_date_iso] + [new_entry]
-        manifest.sort(key=lambda e: e["date"])
-        gh_put("docs/archive/manifest.json", json.dumps(manifest, indent=2),
-               f"Manifest entry {old_date_iso}", sha=manifest_sha)
-        print(f"Manifest updated ({len(manifest)} entries)")
-
-# ── 3. Repair main HTML ──
-# Pull repair_main.py from repo and exec it
-repair_src = base64.b64decode(gh_get("scripts/repair_main.py")["content"].replace("\n","")).decode()
-exec(compile(repair_src, "repair_main.py", "exec"))
-main_html = repair_main_html(NEW_MAIN)   # NEW_MAIN = your generated <main>...</main> string
-
-# ── 4. Replace <main> block ──
-new_html = re.sub(r'<main>.*?</main>', main_html, current_html, count=1, flags=re.DOTALL)
-
-# ── 5. Update date strings ──
-today = date.today()
-new_html = re.sub(r'Market Digest\s*[—\-]\s*[\w,\s]+\d{4}',
-                  f'Market Digest — {today.strftime("%a %b %-d, %Y")}', new_html)
-new_html = re.sub(r"date:\s*'\d{4}-\d{2}-\d{2}'", f"date: '{today_iso}'", new_html)
-new_html = re.sub(r"marketDigest_feedback_\d{4}-\d{2}-\d{2}",
-                  f"marketDigest_feedback_{today_iso}", new_html)
-
-# ── 6. JS parse check before commit ──
-scripts = re.findall(r'<script>([\s\S]*?)</script>', new_html)
-body = max(scripts, key=len) if scripts else ""
-with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as f:
-    f.write(body); tmp = f.name
-r = subprocess.run(["node", "-e",
-    f"try{{new Function(require('fs').readFileSync('{tmp}','utf8'));console.log('OK')}}"
-    f"catch(e){{console.log('FAIL:'+e.message)}}"],
-    capture_output=True, text=True, timeout=10)
-os.unlink(tmp)
-print("JS parse:", r.stdout.strip())
-if r.stdout.strip() != "OK":
-    raise SystemExit("ABORT: JS parse failed")
-
-# ── 7. Commit ──
-result = gh_put(PATH, new_html, f"Daily digest {today_iso}", sha=sha)
-print("Published:", result["commit"]["html_url"])
-print("Live: https://wesleyhu1103.github.io/market-digest")
+payload = {"message": f"Incoming digest {date.today().isoformat()}",
+           "content": base64.b64encode(NEW_MAIN.encode()).decode(), "branch": "main"}
+try:  # file may exist from a failed prior run — include its sha
+    payload["sha"] = json.load(urllib.request.urlopen(urllib.request.Request(URL, headers=H)))["sha"]
+except urllib.error.HTTPError as e:
+    if e.code != 404: raise
+req = urllib.request.Request(URL, data=json.dumps(payload).encode(), method="PUT",
+                             headers={**H, "Content-Type": "application/json"})
+print(json.load(urllib.request.urlopen(req))["commit"]["html_url"])
 ```
 
-After publishing, run `scripts/validate_digest.py` (fetch it from the repo the same way as `repair_main.py`) and report PASS/FAIL counts. If any check fails, say so explicitly — do not silently pass.
+---
 
-Also run `update_fred.py` to refresh macro chart data:
+## Step 6: Confirm the Actions run
+
+The push triggers the `Publish digest` workflow. Poll it (public repo — no
+auth needed) until the latest run completes, up to ~5 minutes:
+
 ```python
-fred_src = base64.b64decode(gh_get("scripts/update_fred.py")["content"].replace("\n","")).decode()
-exec(compile(fred_src, "update_fred.py", "exec"))
+import json, time, urllib.request
+URL = "https://api.github.com/repos/wesleyhu1103/market-digest/actions/workflows/publish-digest.yml/runs?per_page=1"
+for _ in range(30):
+    run = json.load(urllib.request.urlopen(URL))["workflow_runs"][0]
+    if run["status"] == "completed":
+        print(run["conclusion"], run["html_url"]); break
+    time.sleep(10)
 ```
+
+- `success` → report the live URL: https://wesleyhu1103.github.io/market-digest
+- `failure` → report it explicitly with the run URL — do not silently pass.
+  The workflow's validate step prints per-check PASS/FAIL in the run logs.
