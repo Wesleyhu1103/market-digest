@@ -37,6 +37,14 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Capture incoming digest identity
+        run: |
+          if [ -f incoming/new-main.html ]; then
+            echo "PROCESSED_INCOMING_SHA=$(git hash-object incoming/new-main.html)" >> "$GITHUB_ENV"
+          else
+            echo "PROCESSED_INCOMING_SHA=" >> "$GITHUB_ENV"
+          fi
+
       - name: Apply incoming digest (archive + repair + splice)
         run: python3 scripts/publish_digest.py
 
@@ -46,6 +54,9 @@ jobs:
 
       - name: Validate digest (structure + JS parse)
         run: python3 scripts/validate_digest.py docs/index.html
+
+      - name: Preserve newer queued incoming digest
+        run: python3 scripts/preserve_newer_incoming.py "$PROCESSED_INCOMING_SHA"
 
       - name: Commit and push
         run: |
