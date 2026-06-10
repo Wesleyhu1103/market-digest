@@ -1,0 +1,86 @@
+name: Publish digest
+
+# Triggers:
+#  - push of incoming/new-main.html (the digest agent's only write)
+#  - weekday cron to refresh FRED chart data even when no digest lands
+#  - manual dispatch for re-runs
+on:
+  push:
+    branches: [main]
+    paths: ["incoming/**"]
+  schedule:
+    - cron: "30 10 * * 1-5" # 6:30am ET weekdays
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publish-digest
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Apply incoming digest (archive + repair + splice)
+        run: python3 scripts/publish_digest.py
+
+      - name: Refresh FRED chart data
+        continue-on-error: true
+        run: python3 scripts/update_fred.py
+
+      - name: Validate digest (structure + JS parse)
+        run: python3 scripts/validate_digest.py docs/index.html
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Publish digest $(TZ=America/New_York date +%F)"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+  # Pushes made with GITHUB_TOKEN do not trigger the legacy
+  # pages-build-deployment workflow, so deploy explicitly.
+  # One-time setup: Settings -> Pages -> Source: "GitHub Actions".
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
