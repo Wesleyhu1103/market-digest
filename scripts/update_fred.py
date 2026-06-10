@@ -21,6 +21,7 @@ SERIES = {
 
 DAYS = 120
 OUT = Path(__file__).resolve().parents[1] / "docs" / "fred-data.json"
+REQUEST_HEADERS = {"User-Agent": "market-digest/1.0", "Accept": "text/csv,*/*"}
 
 
 def fetch_series(series_id: str) -> list[dict]:
@@ -30,7 +31,7 @@ def fetch_series(series_id: str) -> list[dict]:
         f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
         f"&cosd={start}&coed={end}"
     )
-    req = urllib.request.Request(url, headers={"User-Agent": "market-digest/1.0"})
+    req = urllib.request.Request(url, headers=REQUEST_HEADERS)
     # FRED is intermittently slow; retry transient failures before giving up
     for attempt in range(3):
         try:
