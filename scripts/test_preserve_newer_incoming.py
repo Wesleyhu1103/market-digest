@@ -78,6 +78,8 @@ class PreserveNewerIncomingTest(unittest.TestCase):
         self.push_newer_incoming_from_other_clone()
 
         result = self.run_helper(self.processed_sha)
+        commit_all(self.repo, "Workflow publish")
+        git(self.repo, "pull", "--rebase", "origin", "main")
 
         self.assertIn("Restored newer incoming/new-main.html", result.stdout)
         self.assertEqual(
@@ -89,6 +91,8 @@ class PreserveNewerIncomingTest(unittest.TestCase):
         (self.repo / "incoming" / "new-main.html").unlink()
 
         result = self.run_helper(self.processed_sha)
+        commit_all(self.repo, "Workflow publish")
+        git(self.repo, "pull", "--rebase", "origin", "main")
 
         self.assertIn("matches processed digest", result.stdout)
         self.assertFalse((self.repo / "incoming" / "new-main.html").exists())
