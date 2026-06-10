@@ -42,6 +42,8 @@ jobs:
 
       - name: Refresh FRED chart data
         continue-on-error: true
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python3 scripts/update_fred.py
 
       - name: Validate digest (structure + JS parse)
