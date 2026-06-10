@@ -21,6 +21,7 @@ RULES = [
     ("7 chart canvases", r'<canvas id="(techMovers|redditSentiment|treasuryYields|brentChart|creditChart|stressChart|dealSizes)"', 7),
     ("3 narrative-stacks", r'<div class="narrative-stack" data-narrative="(bonds|iran-oil|ai-capex)">', 3),
     ("fb-missing textarea", r'<textarea[^>]*id="fb-missing"', 1),
+    ("fb-open textarea", r'<textarea[^>]*id="fb-open"', 1),
 ]
 
 

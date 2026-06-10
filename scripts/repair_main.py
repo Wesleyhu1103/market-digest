@@ -57,18 +57,31 @@ def repair_main_html(main_html: str) -> str:
             continue
         main_html = re.sub(pat, repl, main_html, count=1)
 
-    # Feedback must use textarea for .value
+    # Feedback ids belong on the textarea read by gatherFeedback(), not on wrappers.
+    def _repair_feedback_wrapper(m):
+        feedback_id = m.group("id")
+        attrs = (m.group("attrs_before") + m.group("attrs_after")).strip()
+        body = m.group("body")
+
+        def _add_textarea_id(tm):
+            tag = tm.group(0)
+            if re.search(r'\bid=', tag, flags=re.I):
+                return re.sub(r'\bid=(["\']).*?\1', f'id="{feedback_id}"', tag, count=1, flags=re.I)
+            return tag[:-1] + f' id="{feedback_id}">'
+
+        if re.search(r"<textarea\b", body, flags=re.I):
+            body = re.sub(r"<textarea\b[^>]*>", _add_textarea_id, body, count=1, flags=re.I)
+            return f"<div{' ' + attrs if attrs else ''}>{body}</div>"
+
+        text = re.sub(r"<[^>]+>", "", body).strip()
+        return f"<textarea{' ' + attrs if attrs else ''} id=\"{feedback_id}\" rows=\"4\">{text}</textarea>"
+
     main_html = re.sub(
-        r'<div([^>]*)\bid="fb-missing"([^>]*)>',
-        r'<textarea\1id="fb-missing"\2 rows="4">',
+        r'<div(?P<attrs_before>[^>]*)\bid=(["\'])(?P<id>fb-missing|fb-open)\2(?P<attrs_after>[^>]*)>(?P<body>[\s\S]*?)</div>',
+        _repair_feedback_wrapper,
         main_html,
-        count=1,
-    )
-    main_html = re.sub(
-        r'<div([^>]*)\bid="fb-open"([^>]*)>',
-        r'<textarea\1id="fb-open"\2 rows="4">',
-        main_html,
-        count=1,
+        count=2,
+        flags=re.I,
     )
 
     bull_on = len(re.findall(r'data-side="bull"[^>]*class="bull on"|class="bull on"[^>]*data-side="bull"', main_html))
