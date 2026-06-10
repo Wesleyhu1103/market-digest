@@ -60,7 +60,11 @@ def fetch_series(series_id: str) -> list[dict]:
             f"?series_id={series_id}&api_key={API_KEY}&file_type=json"
             f"&observation_start={start}&observation_end={end}"
         )
-        for obs in json.loads(_get(url)).get("observations", []):
+        payload = json.loads(_get(url))
+        if payload.get("error_code") or "observations" not in payload:
+            msg = payload.get("error_message") or "missing observations in FRED API response"
+            raise RuntimeError(msg)
+        for obs in payload["observations"]:
             date_s, val_s = obs.get("date", ""), obs.get("value", "")
             if not date_s or val_s in ("", "."):
                 continue
@@ -114,7 +118,10 @@ def main():
     for key, sid in SERIES.items():
         print(f"Fetching {sid}..." + (" (API)" if API_KEY else " (CSV)"))
         try:
-            data[key] = fetch_series(sid)
+            rows = fetch_series(sid)
+            if not rows:
+                raise RuntimeError("no usable observations returned")
+            data[key] = rows
             fetched += 1
             print(f"  {len(data[key])} points (last {data[key][-1]['date'] if data[key] else 'n/a'})")
         except Exception as e:
