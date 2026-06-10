@@ -23,7 +23,7 @@ SERIES = {
     "DGS10": "DGS10",
     "DGS30": "DGS30",
     "DCOILBRENTEU": "DCOILBRENTEU",
-    "HY_OAS": "BAMLH0A0HYM2EY",
+    "HY_OAS": "BAMLH0A0HYM2",
     "IG_OAS": "BAMLC0A0CM",
     "VIX": "VIXCLS",
     "TENMINUSTWO": "T10Y2Y",
@@ -33,10 +33,11 @@ DAYS = 120
 OUT = Path(__file__).resolve().parents[1] / "docs" / "fred-data.json"
 API_KEY = os.environ.get("FRED_API_KEY", "")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+REQUEST_HEADERS = {"User-Agent": UA, "Accept": "application/json,text/csv,*/*"}
 
 
 def _get(url: str) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+    req = urllib.request.Request(url, headers=REQUEST_HEADERS)
     attempts = 3 if API_KEY else 2
     last_err = None
     for attempt in range(attempts):
@@ -115,7 +116,19 @@ def main():
     for key, sid in SERIES.items():
         print(f"Fetching {sid}..." + (" (API)" if API_KEY else " (CSV)"))
         try:
-            data[key] = fetch_series(sid)
+            rows = fetch_series(sid)
+            if not rows:
+                data[key] = prev.get(key, [])
+                print(f"  EMPTY {sid} response — keeping {len(data[key])} previous points")
+                # Keyless CSV blocking can return a successful non-CSV response;
+                # if the first parse is empty, avoid overwriting all series.
+                if not API_KEY and fetched == 0:
+                    print("Endpoint returned no parseable data without API key; keeping previous data for all series")
+                    for k in SERIES:
+                        data.setdefault(k, prev.get(k, []))
+                    break
+                continue
+            data[key] = rows
             fetched += 1
             print(f"  {len(data[key])} points (last {data[key][-1]['date'] if data[key] else 'n/a'})")
         except Exception as e:
