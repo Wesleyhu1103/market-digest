@@ -54,8 +54,8 @@ class RepairMainHtmlTest(unittest.TestCase):
         self.assertNotIn('<div id="fb-open"', fixed)
         self.assertIn('<textarea name="missing" rows="3" id="fb-missing"></textarea>', fixed)
         self.assertIn('<textarea name="open" rows="3" id="fb-open"></textarea>', fixed)
-        self.assertIsNone(re.search(r'<textarea[^>]*id="fb-missing"[^>]*>[\s\S]*?<textarea', fixed))
-        self.assertIsNone(re.search(r'<textarea[^>]*id="fb-open"[^>]*>[\s\S]*?<textarea', fixed))
+        self.assertIsNone(re.search(r'<textarea[^>]*id="fb-missing"[^>]*>(?:(?!</textarea>).)*<textarea', fixed))
+        self.assertIsNone(re.search(r'<textarea[^>]*id="fb-open"[^>]*>(?:(?!</textarea>).)*<textarea', fixed))
 
     def test_converts_simple_feedback_wrappers_to_closed_textareas(self):
         fixed = repair_main_html(

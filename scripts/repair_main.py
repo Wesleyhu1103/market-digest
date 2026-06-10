@@ -45,11 +45,9 @@ def _repair_feedback_textarea(main_html: str, field_id: str) -> str:
     )
 
     def convert_wrapper_to_textarea(match):
-        attrs = strip_id_attr(match.group("attrs") + match.group("attrs_after"))
-        attrs = attrs.rstrip()
-        if attrs:
-            attrs += " "
-        return f'<textarea{attrs}id="{field_id}" rows="4">{match.group("body")}</textarea>'
+        attrs = strip_id_attr(match.group("attrs") + match.group("attrs_after")).strip()
+        attr_prefix = f" {attrs}" if attrs else ""
+        return f'<textarea{attr_prefix} id="{field_id}" rows="4">{match.group("body")}</textarea>'
 
     return simple_wrapper.sub(convert_wrapper_to_textarea, main_html, count=1)
 
