@@ -62,7 +62,11 @@ class PreserveNewerIncomingTest(unittest.TestCase):
         )
 
     def push_newer_incoming_from_other_clone(self) -> None:
-        subprocess.run(["git", "clone", str(self.remote), str(self.other)], check=True, capture_output=True)
+        subprocess.run(
+            ["git", "clone", "-b", "main", str(self.remote), str(self.other)],
+            check=True,
+            capture_output=True,
+        )
         git(self.other, "config", "user.name", "Other User")
         git(self.other, "config", "user.email", "other@example.com")
         (self.other / "incoming" / "new-main.html").write_text("<main>new digest</main>\n")

@@ -57,19 +57,29 @@ def repair_main_html(main_html: str) -> str:
             continue
         main_html = re.sub(pat, repl, main_html, count=1)
 
-    # Feedback must use textarea for .value
-    main_html = re.sub(
-        r'<div([^>]*)\bid="fb-missing"([^>]*)>',
-        r'<textarea\1id="fb-missing"\2 rows="4">',
-        main_html,
-        count=1,
-    )
-    main_html = re.sub(
-        r'<div([^>]*)\bid="fb-open"([^>]*)>',
-        r'<textarea\1id="fb-open"\2 rows="4">',
-        main_html,
-        count=1,
-    )
+    # Feedback IDs must be on textareas because submit reads .value from them.
+    def _feedback_id_fix(field_id: str) -> None:
+        nonlocal main_html
+
+        def ensure_textarea_id(m):
+            tag = m.group(0)
+            if re.search(r'\bid=["\']', tag):
+                return re.sub(r'\bid=["\'][^"\']*["\']', f'id="{field_id}"', tag, count=1)
+            return tag.replace("<textarea", f'<textarea id="{field_id}"', 1)
+
+        wrapper = re.compile(
+            rf'<div([^>]*)\bid=["\']{field_id}["\']([^>]*)>([\s\S]*?)</div>',
+            re.I,
+        )
+
+        def move_id_to_textarea(m):
+            inner = re.sub(r"<textarea\b[^>]*>", ensure_textarea_id, m.group(3), count=1, flags=re.I)
+            return f"<div{m.group(1)}{m.group(2)}>{inner}</div>"
+
+        main_html = wrapper.sub(move_id_to_textarea, main_html, count=1)
+
+    _feedback_id_fix("fb-missing")
+    _feedback_id_fix("fb-open")
 
     bull_on = len(re.findall(r'data-side="bull"[^>]*class="bull on"|class="bull on"[^>]*data-side="bull"', main_html))
     show_bull = main_html.count('class="bullbear show-bull"')
