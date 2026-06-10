@@ -3,6 +3,7 @@
 import csv
 import io
 import json
+import time
 import urllib.request
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -30,7 +31,16 @@ def fetch_series(series_id: str) -> list[dict]:
         f"&cosd={start}&coed={end}"
     )
     req = urllib.request.Request(url, headers={"User-Agent": "market-digest/1.0"})
-    raw = urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
+    # FRED is intermittently slow; retry transient failures before giving up
+    for attempt in range(3):
+        try:
+            raw = urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
+            break
+        except (OSError, TimeoutError) as e:
+            if attempt == 2:
+                raise
+            print(f"  retry {attempt + 1} for {series_id}: {e}")
+            time.sleep(5 * (attempt + 1))
     cutoff = (datetime.now() - timedelta(days=DAYS)).date()
     rows = []
     for row in csv.DictReader(io.StringIO(raw)):
