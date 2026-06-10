@@ -42,17 +42,31 @@ jobs:
       # Push-triggered runs already carry a digest in incoming/, so skip.
       - name: Generate digest with Claude (cron/manual only)
         if: github.event_name != 'push'
-        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
+          if [ "$EVENT_NAME" = "schedule" ] && [ -f incoming/new-main.html ]; then
+            echo "Removing stale incoming/new-main.html before scheduled generation"
+            rm incoming/new-main.html
+          fi
+
           if [ -z "$ANTHROPIC_API_KEY" ]; then
+            if [ "$EVENT_NAME" = "schedule" ]; then
+              echo "::error::ANTHROPIC_API_KEY secret not set; scheduled digest generation cannot run"
+              exit 1
+            fi
             echo "ANTHROPIC_API_KEY secret not set; skipping generation"
           elif [ -f incoming/new-main.html ]; then
             echo "incoming/new-main.html already present; skipping generation"
           else
             pip install -q anthropic
             python3 scripts/generate_digest.py
+          fi
+
+          if [ "$EVENT_NAME" = "schedule" ] && [ ! -f incoming/new-main.html ]; then
+            echo "::error::Scheduled digest generation did not produce incoming/new-main.html"
+            exit 1
           fi
 
       - name: Apply incoming digest (archive + repair + splice)

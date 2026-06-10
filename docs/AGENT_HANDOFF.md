@@ -22,7 +22,6 @@ scripts/
   repair_main.py    ← run on generated main_html before committing
   validate_digest.py← structural + JS parse checks after committing
   update_fred.py    ← fetches FRED series daily; write to fred-data.json
-  patch_index_macro.py ← one-time migration script; do not re-run
 ```
 
 **You only replace `<main>...</main>` daily.** Everything else — CSS, JS, nav, chart rendering, archive mounting, verdict updater — is in the static template and must not be touched.
