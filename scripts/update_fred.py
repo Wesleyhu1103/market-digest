@@ -115,7 +115,19 @@ def main():
     for key, sid in SERIES.items():
         print(f"Fetching {sid}..." + (" (API)" if API_KEY else " (CSV)"))
         try:
-            data[key] = fetch_series(sid)
+            rows = fetch_series(sid)
+            if not rows:
+                data[key] = prev.get(key, [])
+                print(f"  EMPTY {sid} response — keeping {len(data[key])} previous points")
+                # Keyless CSV blocking can return a successful non-CSV response;
+                # if the first parse is empty, avoid overwriting all series.
+                if not API_KEY and fetched == 0:
+                    print("Endpoint returned no parseable data without API key; keeping previous data for all series")
+                    for k in SERIES:
+                        data.setdefault(k, prev.get(k, []))
+                    break
+                continue
+            data[key] = rows
             fetched += 1
             print(f"  {len(data[key])} points (last {data[key][-1]['date'] if data[key] else 'n/a'})")
         except Exception as e:
