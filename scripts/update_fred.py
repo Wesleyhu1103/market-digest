@@ -33,10 +33,11 @@ DAYS = 120
 OUT = Path(__file__).resolve().parents[1] / "docs" / "fred-data.json"
 API_KEY = os.environ.get("FRED_API_KEY", "")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+REQUEST_HEADERS = {"User-Agent": UA, "Accept": "application/json,text/csv,*/*"}
 
 
 def _get(url: str) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
+    req = urllib.request.Request(url, headers=REQUEST_HEADERS)
     attempts = 3 if API_KEY else 2
     last_err = None
     for attempt in range(attempts):

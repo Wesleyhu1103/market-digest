@@ -5,6 +5,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "update_fred.py"
@@ -41,6 +42,27 @@ class UpdateFredTests(unittest.TestCase):
         module.API_KEY = ""
         module._get = lambda url: "<html><body>not csv</body></html>"
         self.assertEqual(module.fetch_series("DGS2"), [])
+
+    def test_fred_requests_advertise_parseable_response_types(self):
+        module = load_update_fred()
+        seen = {}
+
+        class Response:
+            def read(self):
+                return b"DATE,DGS2\n2026-06-10,4.2\n"
+
+        def fake_urlopen(request, timeout):
+            seen["accept"] = request.get_header("Accept")
+            seen["user_agent"] = request.get_header("User-agent")
+            return Response()
+
+        with mock.patch.object(module.urllib.request, "urlopen", fake_urlopen):
+            body = module._get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS2")
+
+        self.assertIn("text/csv", seen["accept"])
+        self.assertIn("application/json", seen["accept"])
+        self.assertTrue(seen["user_agent"])
+        self.assertIn("DGS2", body)
 
     def test_empty_fetches_abort_without_touching_output(self):
         module = load_update_fred()
