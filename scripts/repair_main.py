@@ -2,6 +2,58 @@
 import re
 
 
+def _repair_feedback_textarea(main_html: str, field_id: str) -> str:
+    def strip_id_attr(attrs: str) -> str:
+        return re.sub(
+            rf'\s+id=(["\']){re.escape(field_id)}\1',
+            "",
+            attrs,
+            count=1,
+            flags=re.I,
+        )
+
+    def ensure_textarea_id(tag: str) -> str:
+        if re.search(r"\bid=", tag, flags=re.I):
+            return re.sub(r'\bid=(["\']).*?\1', f'id="{field_id}"', tag, count=1, flags=re.I)
+        return tag[:-1] + f' id="{field_id}">'
+
+    wrapper_with_textarea = re.compile(
+        rf'<div(?P<attrs>[^>]*)\bid=(?P<quote>["\']){re.escape(field_id)}(?P=quote)'
+        rf'(?P<attrs_after>[^>]*)>(?P<body>[\s\S]*?<textarea[^>]*>[\s\S]*?</textarea>[\s\S]*?)</div>',
+        flags=re.I,
+    )
+
+    def move_id_to_inner_textarea(match):
+        attrs = strip_id_attr(match.group("attrs") + match.group("attrs_after"))
+        body = re.sub(
+            r"<textarea[^>]*>",
+            lambda m: ensure_textarea_id(m.group(0)),
+            match.group("body"),
+            count=1,
+            flags=re.I,
+        )
+        return f"<div{attrs}>{body}</div>"
+
+    main_html, replacements = wrapper_with_textarea.subn(move_id_to_inner_textarea, main_html, count=1)
+    if replacements:
+        return main_html
+
+    simple_wrapper = re.compile(
+        rf'<div(?P<attrs>[^>]*)\bid=(?P<quote>["\']){re.escape(field_id)}(?P=quote)'
+        rf'(?P<attrs_after>[^>]*)>(?P<body>[\s\S]*?)</div>',
+        flags=re.I,
+    )
+
+    def convert_wrapper_to_textarea(match):
+        attrs = strip_id_attr(match.group("attrs") + match.group("attrs_after"))
+        attrs = attrs.rstrip()
+        if attrs:
+            attrs += " "
+        return f'<textarea{attrs}id="{field_id}" rows="4">{match.group("body")}</textarea>'
+
+    return simple_wrapper.sub(convert_wrapper_to_textarea, main_html, count=1)
+
+
 def repair_main_html(main_html: str) -> str:
     # Bull button active + visible on load
     main_html = re.sub(
@@ -57,19 +109,10 @@ def repair_main_html(main_html: str) -> str:
             continue
         main_html = re.sub(pat, repl, main_html, count=1)
 
-    # Feedback must use textarea for .value
-    main_html = re.sub(
-        r'<div([^>]*)\bid="fb-missing"([^>]*)>',
-        r'<textarea\1id="fb-missing"\2 rows="4">',
-        main_html,
-        count=1,
-    )
-    main_html = re.sub(
-        r'<div([^>]*)\bid="fb-open"([^>]*)>',
-        r'<textarea\1id="fb-open"\2 rows="4">',
-        main_html,
-        count=1,
-    )
+    # Feedback must use textarea for .value; move wrapper IDs onto existing
+    # textareas instead of creating malformed nested textarea markup.
+    main_html = _repair_feedback_textarea(main_html, "fb-missing")
+    main_html = _repair_feedback_textarea(main_html, "fb-open")
 
     bull_on = len(re.findall(r'data-side="bull"[^>]*class="bull on"|class="bull on"[^>]*data-side="bull"', main_html))
     show_bull = main_html.count('class="bullbear show-bull"')
