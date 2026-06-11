@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Demo 02 — Narrative-Thread Timeline</title>
+<title>Demo 02 — Narrative-Thread Timeline (Sidebar)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
   * { box-sizing: border-box; }
   html { transition: background-color .25s, color .25s; }
   html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Newsreader", Georgia, serif; line-height: 1.6; font-size: 17px; -webkit-font-smoothing: antialiased; }
-  .wrap { max-width: 940px; margin: 0 auto; padding: 40px 28px 120px; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 40px 28px 120px; }
   .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 36px; }
   .back { font-family: "Inter", sans-serif; font-size: 13px; color: var(--muted); text-decoration: none; }
   .back:hover { color: var(--accent); }
@@ -30,27 +30,69 @@
   .theme-toggle button { background: transparent; color: var(--muted); border: none; padding: 6px 10px; border-radius: 2px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
   .theme-toggle button.active { background: var(--ink); color: var(--bg); }
   .kicker { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 12px; font-weight: 700; }
-  h1 { font-family: "Fraunces", serif; font-weight: 700; font-variation-settings: "opsz" 144; margin: 0 0 14px; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em; }
-  .lede { font-family: "Newsreader", serif; font-size: 19px; color: var(--muted); font-style: italic; max-width: 720px; margin: 0 0 30px; }
+  h1 { font-family: "Fraunces", serif; font-weight: 700; font-variation-settings: "opsz" 144; margin: 0 0 14px; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em; }
+  .lede { font-family: "Newsreader", serif; font-size: 18px; color: var(--muted); font-style: italic; max-width: 720px; margin: 0 0 30px; }
 
-  /* thread tabs */
-  .threads { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 14px; }
-  .thread-tab { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; padding: 10px 16px; border-radius: 24px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); cursor: pointer; transition: all .15s; display: inline-flex; align-items: center; gap: 8px; }
+  /* page layout: main column + sidebar */
+  .layout { display: grid; grid-template-columns: 1fr 312px; gap: 38px; align-items: start; }
+  @media (max-width: 880px){ .layout { grid-template-columns: 1fr; } }
+
+  /* faux article content so the sidebar reads as part of a real page */
+  .article h2 { font-family:"Fraunces",serif; font-weight:600; font-size:26px; margin:0 0 10px; letter-spacing:-0.01em; }
+  .article .meta { font-family:"Inter",sans-serif; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; }
+  .article p { margin:0 0 18px; font-size:17px; }
+  .article .pull { border-left:3px solid var(--accent); padding:4px 0 4px 18px; margin:24px 0; font-style:italic; color:var(--muted); font-size:18px; }
+  .skel { height:13px; border-radius:3px; background:var(--rule-soft); margin:9px 0; }
+  .skel.w90{width:90%} .skel.w80{width:80%} .skel.w70{width:70%} .skel.w60{width:60%}
+
+  /* ===== SIDEBAR (collapsed rail) ===== */
+  .rail { position: sticky; top: 24px; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 16px 18px; }
+  .rail-head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:14px; }
+  .rail-title { font-family:"Inter",sans-serif; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+  .rail-expand { font-family:"Inter",sans-serif; font-size:11px; font-weight:600; color:var(--muted); background:transparent; border:1px solid var(--rule); border-radius:20px; padding:4px 11px; cursor:pointer; display:inline-flex; align-items:center; gap:5px; transition:all .15s; }
+  .rail-expand:hover { border-color:var(--accent); color:var(--ink); }
+  .rail-expand svg { width:12px; height:12px; }
+
+  .mini { width:100%; text-align:left; background:var(--bg); border:1px solid var(--rule); border-radius:9px; padding:12px 13px; margin-bottom:10px; cursor:pointer; transition: border-color .15s, transform .12s, background .15s; display:block; }
+  .mini:last-child { margin-bottom:0; }
+  .mini:hover { border-color:var(--accent); transform: translateY(-1px); }
+  .mini:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  .mini-top { display:flex; align-items:center; gap:7px; margin-bottom:7px; }
+  .mini-tdot { width:8px; height:8px; border-radius:50%; flex:0 0 auto; }
+  .mini-tab { font-family:"Inter",sans-serif; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .mini-h { font-family:"Fraunces",serif; font-weight:600; font-size:15px; line-height:1.25; margin:0 0 10px; letter-spacing:-0.01em; }
+  .mini-foot { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+  /* day-dot strip = sparkline of the week's verdicts */
+  .dots { display:flex; gap:4px; }
+  .dots i { width:9px; height:9px; border-radius:50%; display:block; }
+  .dots i.bull{ background:var(--bull); } .dots i.bear{ background:var(--bear); } .dots i.mixed{ background:var(--muted); opacity:.5; }
+  .dots i.today{ box-shadow:0 0 0 2px var(--accent-soft); outline:1.5px solid var(--accent-2); }
+  .mini-state { font-family:"Inter",sans-serif; font-size:9.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 7px; border-radius:20px; }
+
+  /* ===== EXPANDED DRAWER ===== */
+  .scrim { position: fixed; inset: 0; background: rgba(20,18,15,.46); opacity:0; pointer-events:none; transition: opacity .25s; z-index: 40; }
+  .scrim.open { opacity:1; pointer-events:auto; }
+  .drawer { position: fixed; top:0; right:0; height:100%; width: min(620px, 94vw); background: var(--bg); border-left:1px solid var(--rule); box-shadow: -18px 0 50px rgba(0,0,0,.18); transform: translateX(100%); transition: transform .32s cubic-bezier(.22,1,.36,1); z-index: 41; display:flex; flex-direction:column; }
+  .drawer.open { transform: none; }
+  .drawer-head { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:20px 26px; border-bottom:1px solid var(--rule); }
+  .drawer-head .dh-kicker { font-family:"Inter",sans-serif; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-2); }
+  .drawer-close { background:transparent; border:1px solid var(--rule); border-radius:50%; width:34px; height:34px; cursor:pointer; color:var(--muted); display:inline-flex; align-items:center; justify-content:center; transition:all .15s; flex:0 0 auto; }
+  .drawer-close:hover { border-color:var(--accent); color:var(--ink); }
+  .drawer-tabs { display:flex; flex-wrap:wrap; gap:8px; padding:16px 26px 0; }
+  .thread-tab { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; padding: 8px 13px; border-radius: 24px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); cursor: pointer; transition: all .15s; display: inline-flex; align-items: center; gap: 7px; }
   .thread-tab:hover { border-color: var(--accent); color: var(--ink); }
   .thread-tab.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
   .thread-tab .tdot { width: 8px; height: 8px; border-radius: 50%; }
+  .drawer-body { overflow-y:auto; padding: 4px 26px 40px; }
 
-  .arc-head { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin: 26px 0 8px; gap: 16px; flex-wrap: wrap; }
-  .arc-head h2 { font-family: "Fraunces", serif; font-weight: 600; font-size: 24px; margin: 0; letter-spacing: -0.01em; }
-  .arc-state { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
+  .arc-head { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin: 22px 0 8px; gap: 16px; flex-wrap: wrap; }
+  .arc-head h2 { font-family: "Fraunces", serif; font-weight: 600; font-size: 22px; margin: 0; letter-spacing: -0.01em; }
+  .arc-state { font-family: "Inter", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
+  .arc-summary { font-family: "Newsreader", serif; font-style: italic; color: var(--muted); font-size: 16px; margin: 16px 0 26px; }
 
-  /* sparkline summary */
-  .arc-summary { font-family: "Newsreader", serif; font-style: italic; color: var(--muted); font-size: 16px; margin: 16px 0 28px; max-width: 760px; }
-
-  /* timeline */
   .timeline { position: relative; margin-left: 8px; padding-left: 30px; }
   .timeline::before { content:""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--rule); }
-  .node { position: relative; padding: 0 0 26px; opacity: 0; transform: translateY(10px); transition: opacity .45s, transform .45s; }
+  .node { position: relative; padding: 0 0 24px; opacity: 0; transform: translateY(10px); transition: opacity .4s, transform .4s; }
   .node.in { opacity: 1; transform: none; }
   .node::before { content:""; position: absolute; left: -30px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--muted); }
   .node.bull::before { border-color: var(--bull); } .node.bear::before { border-color: var(--bear); } .node.mixed::before { border-color: var(--muted); }
@@ -59,8 +101,8 @@
   .node-day b { color: var(--ink); }
   .node-verdict { font-family: "Inter", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
   .v-bull { color: var(--bull); background: var(--bull-soft); } .v-bear { color: var(--bear); background: var(--bear-soft); } .v-mixed { color: var(--muted); background: var(--rule-soft); }
-  .node h3 { font-family: "Fraunces", serif; font-weight: 600; font-size: 18px; margin: 6px 0 6px; line-height: 1.3; }
-  .node p { margin: 0; font-size: 15.5px; color: var(--ink); max-width: 720px; }
+  .node h3 { font-family: "Fraunces", serif; font-weight: 600; font-size: 17px; margin: 6px 0 6px; line-height: 1.3; }
+  .node p { margin: 0; font-size: 15px; color: var(--ink); }
   .node .tag { display: inline-block; font-family:"Inter",sans-serif; font-size:11px; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 4px; margin-top: 8px; }
 </style>
 </head>
@@ -76,10 +118,45 @@
 
     <div class="kicker">Demo 02 · Week of June 5–11, 2026</div>
     <h1>Narrative-Thread Timeline</h1>
-    <p class="lede">Each dominant narrative as a story arc. Pick a thread and watch how the thesis built, confirmed, or broke day by day — the throughline behind the daily headlines.</p>
+    <p class="lede">A compact sidebar that lives alongside the digest. Each thread shows the week at a glance — click any one (or “Expand”) to open the full day-by-day story arc.</p>
 
-    <div class="threads" id="threads"></div>
-    <div id="arc"></div>
+    <div class="layout">
+      <!-- faux digest article, so the sidebar reads in context -->
+      <div class="article" aria-hidden="true">
+        <h2>Stagflation Stops Being a Forecast</h2>
+        <div class="meta">Markets · Thursday, June 11, 2026</div>
+        <p>Producer prices climbed 6.5% year over year, the fastest pace since November 2022, and the European Central Bank capitulated with its first hike since 2023. The combination put the stagflation framing — hot prices into a softening labor market — squarely in the tape.</p>
+        <div class="pull">“The textbook stagflation bind is no longer hypothetical; it’s in the print.”</div>
+        <div class="skel w90"></div><div class="skel w80"></div><div class="skel w70"></div><div class="skel w90"></div><div class="skel w60"></div>
+        <p style="margin-top:22px;">Jobless claims jumped to 229,000 even as the wholesale pipeline stayed full — the kind of split that leaves the Fed without a clean move. Track how the thesis built across the week in the panel to the right. →</p>
+        <div class="skel w80"></div><div class="skel w90"></div><div class="skel w70"></div>
+      </div>
+
+      <!-- collapsed sidebar rail -->
+      <aside class="rail" aria-label="Narrative threads">
+        <div class="rail-head">
+          <span class="rail-title">Narrative threads</span>
+          <button class="rail-expand" id="expandAll" aria-haspopup="dialog">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            Expand
+          </button>
+        </div>
+        <div id="miniList"></div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- expanded drawer -->
+  <div class="scrim" id="scrim"></div>
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Full narrative timeline">
+    <div class="drawer-head">
+      <span class="dh-kicker">Narrative-Thread Timeline · Week of June 5–11</span>
+      <button class="drawer-close" id="drawerClose" aria-label="Close timeline">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="drawer-tabs" id="threads"></div>
+    <div class="drawer-body"><div id="arc"></div></div>
   </div>
 
 <script>
@@ -94,7 +171,7 @@
       id: "bonds", color: "var(--bear)",
       tab: "Stagflation / Rates",
       title: "The Stagflation Trade Stops Being a Forecast",
-      state: "Bear thesis confirmed", stateClass: "v-bear",
+      state: "Bear thesis confirmed", stateClass: "v-bear", miniState: "Bear ✓",
       summary: "What started as a 'maybe transitory' energy blip hardened into a confirmed stagflation bind by Thursday — hot CPI, then a 6.5% PPI, then the ECB actually hiking.",
       nodes: [
         { day:"Fri 6/5", v:"bear", vl:"Bear ✓", h:"Sticky inflation print resets the week", p:"Early data undercut the disinflation story; the 10Y firmed and bears took the first round." },
@@ -108,7 +185,7 @@
       id: "iran", color: "var(--muted)",
       tab: "Iran / Oil",
       title: "A Fragile Ceasefire Under Constant Threat",
-      state: "Still unresolved — mixed", stateClass: "v-mixed",
+      state: "Still unresolved — mixed", stateClass: "v-mixed", miniState: "Mixed",
       summary: "The oil narrative never resolved cleanly: every escalation was met with a swift de-escalation. The real supply story (Iran -19%, Japan rerouting) built quietly underneath the headlines.",
       nodes: [
         { day:"Fri 6/5", v:"mixed", vl:"Mixed", h:"War premium ebbs and flows", p:"Brent traded the headlines without a directional break — neither side committed." },
@@ -122,7 +199,7 @@
       id: "aicapex", color: "var(--bull)",
       tab: "AI Capex / SpaceX",
       title: "Euphoria Meets the Capex Reckoning",
-      state: "Split tape — bull-leaning", stateClass: "v-bull",
+      state: "Split tape — bull-leaning", stateClass: "v-bull", miniState: "Bull-lean",
       summary: "The AI/IPO trade kept printing bull days, but the bear undertow grew louder all week — culminating Thursday in SpaceX mania running directly alongside Oracle's capex shock.",
       nodes: [
         { day:"Fri 6/5", v:"bear", vl:"Bear ✓", h:"AI-disruption jitters", p:"Software wobbled on fears that AI obsoletes incumbents — the first crack in the capex story." },
@@ -134,17 +211,36 @@
     },
   ];
 
+  // ---- build collapsed rail ----
+  const miniList = document.getElementById('miniList');
+  THREADS.forEach((t, i) => {
+    const dots = t.nodes.map(n => `<i class="${n.v}${n.today?' today':''}" title="${n.day}: ${n.vl}"></i>`).join('');
+    const m = document.createElement('button');
+    m.className = 'mini';
+    m.setAttribute('aria-haspopup','dialog');
+    m.innerHTML = `
+      <div class="mini-top"><span class="mini-tdot" style="background:${t.color}"></span><span class="mini-tab">${t.tab}</span></div>
+      <p class="mini-h">${t.title}</p>
+      <div class="mini-foot">
+        <span class="dots" aria-label="Week of verdicts">${dots}</span>
+        <span class="mini-state ${t.stateClass}">${t.miniState}</span>
+      </div>`;
+    m.addEventListener('click', () => openDrawer(i));
+    miniList.appendChild(m);
+  });
+
+  // ---- drawer tabs ----
   const threadsEl = document.getElementById('threads');
   const arcEl = document.getElementById('arc');
   let active = 0;
-
   THREADS.forEach((t, i) => {
     const b = document.createElement('button');
     b.className = 'thread-tab' + (i===0?' active':'');
     b.innerHTML = `<span class="tdot" style="background:${t.color}"></span>${t.tab}`;
-    b.addEventListener('click', () => { active = i; render(); document.querySelectorAll('.thread-tab').forEach((x,j)=>x.classList.toggle('active', j===i)); });
+    b.addEventListener('click', () => { active = i; render(); syncTabs(); });
     threadsEl.appendChild(b);
   });
+  function syncTabs(){ document.querySelectorAll('.thread-tab').forEach((x,j)=>x.classList.toggle('active', j===active)); }
 
   function render(){
     const t = THREADS[active];
@@ -163,11 +259,28 @@
             ${n.tag?`<span class="tag">${n.tag}</span>`:''}
           </div>`).join('')}
       </div>`;
-    // staggered reveal
     const nodes = arcEl.querySelectorAll('.node');
-    nodes.forEach((n,i)=> setTimeout(()=> n.classList.add('in'), 80 + i*90));
+    nodes.forEach((n,i)=> setTimeout(()=> n.classList.add('in'), 60 + i*80));
   }
-  render();
+
+  // ---- open / close drawer ----
+  const scrim = document.getElementById('scrim');
+  const drawer = document.getElementById('drawer');
+  function openDrawer(i){
+    active = (typeof i === 'number') ? i : active;
+    render(); syncTabs();
+    scrim.classList.add('open'); drawer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('drawerClose').focus();
+  }
+  function closeDrawer(){
+    scrim.classList.remove('open'); drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('expandAll').addEventListener('click', () => openDrawer(active));
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  scrim.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
 </script>
 </body>
 </html>

@@ -52,10 +52,13 @@
 
   /* source chips */
   .sources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 22px; }
-  .src { border: 1px solid var(--rule); border-radius: 7px; padding: 12px 14px; cursor: default; transition: border-color .15s, background .15s; background: var(--bg); }
-  .src:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .src { display: block; border: 1px solid var(--rule); border-radius: 7px; padding: 12px 14px; cursor: pointer; transition: border-color .15s, background .15s, transform .12s; background: var(--bg); text-decoration: none; color: inherit; }
+  .src:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-1px); }
+  .src:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .src-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .src-name { font-family: "Inter", sans-serif; font-weight: 700; font-size: 13px; }
+  .src-name { font-family: "Inter", sans-serif; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 5px; }
+  .src-name .ext { width: 11px; height: 11px; opacity: .4; transition: opacity .15s; }
+  .src:hover .src-name .ext { opacity: .9; }
   .lean { font-family: "Inter", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
   .lean.bull { color: var(--bull); background: var(--bull-soft); }
   .lean.bear { color: var(--bear); background: var(--bear-soft); }
@@ -84,7 +87,7 @@
       <span><i class="dot bull"></i> Leans bullish</span>
       <span><i class="dot bear"></i> Leans bearish</span>
       <span><i class="dot neutral"></i> Neutral / mixed</span>
-      <span style="font-style:italic;">Hover any source for its specific take.</span>
+      <span style="font-style:italic;">Click any source to open its coverage.</span>
     </div>
 
     <div id="narratives"></div>
@@ -102,36 +105,36 @@
       label: "Narrative 1",
       title: "Stagflation: PPI 6.5%, ECB capitulates and hikes",
       sources: [
-        { name: "Bloomberg", lean: "bear", take: "Frames the 6.5% PPI as confirmation the energy shock is embedded in the wholesale pipeline." },
-        { name: "The Economist", lean: "bear", take: "ECB hiking first signals global conviction that inflation is durable, not transitory." },
-        { name: "WSJ", lean: "neutral", take: "Hot prices but rising jobless claims — the classic stagflation bind, no clean call." },
-        { name: "NYT", lean: "bear", take: "Leads on the labor softening plus sticky inflation as a policy trap for the Fed." },
-        { name: "CNBC", lean: "neutral", take: "Strategists split: base-effect roll-off (State Street) vs. short-duration (Ackman)." },
-        { name: "The Atlantic", lean: "bear", take: "Late-cycle framing — echoes the '2026 looks like 1929' caution." },
+        { name: "Bloomberg", lean: "bear", url: "https://www.bloomberg.com/economics", take: "Frames the 6.5% PPI as confirmation the energy shock is embedded in the wholesale pipeline." },
+        { name: "The Economist", lean: "bear", url: "https://www.economist.com/finance-and-economics", take: "ECB hiking first signals global conviction that inflation is durable, not transitory." },
+        { name: "WSJ", lean: "neutral", url: "https://www.wsj.com/economy", take: "Hot prices but rising jobless claims — the classic stagflation bind, no clean call." },
+        { name: "NYT", lean: "bear", url: "https://www.nytimes.com/section/business/economy", take: "Leads on the labor softening plus sticky inflation as a policy trap for the Fed." },
+        { name: "CNBC", lean: "neutral", url: "https://www.cnbc.com/economy/", take: "Strategists split: base-effect roll-off (State Street) vs. short-duration (Ackman)." },
+        { name: "The Atlantic", lean: "bear", url: "https://www.theatlantic.com/economy/", take: "Late-cycle framing — echoes the '2026 looks like 1929' caution." },
       ]
     },
     {
       label: "Narrative 2",
       title: "Iran strikes & the Kharg Island oil threat",
       sources: [
-        { name: "Bloomberg", lean: "neutral", take: "Oil whipsaws — higher on the Kharg threat, chops as strikes end swiftly." },
-        { name: "The Economist", lean: "bear", take: "Iran output already -19%; Japan rerouting 100% of July imports = real disruption risk." },
-        { name: "WSJ", lean: "neutral", take: "Reads Trump's 'more strikes' as posturing until the US actually moves on Kharg." },
-        { name: "NYT", lean: "bear", take: "A seizure of export infrastructure would invite Hormuz-wide retaliation." },
-        { name: "CNBC", lean: "bull", take: "Swift end to strikes = both sides want the ceasefire to hold; Brent settles $85-88." },
-        { name: "The Atlantic", lean: "neutral", take: "Fragile ceasefire under constant threat — neither escalation nor resolution priced." },
+        { name: "Bloomberg", lean: "neutral", url: "https://www.bloomberg.com/energy", take: "Oil whipsaws — higher on the Kharg threat, chops as strikes end swiftly." },
+        { name: "The Economist", lean: "bear", url: "https://www.economist.com/middle-east-and-africa", take: "Iran output already -19%; Japan rerouting 100% of July imports = real disruption risk." },
+        { name: "WSJ", lean: "neutral", url: "https://www.wsj.com/world/middle-east", take: "Reads Trump's 'more strikes' as posturing until the US actually moves on Kharg." },
+        { name: "NYT", lean: "bear", url: "https://www.nytimes.com/section/world/middleeast", take: "A seizure of export infrastructure would invite Hormuz-wide retaliation." },
+        { name: "CNBC", lean: "bull", url: "https://www.cnbc.com/oil/", take: "Swift end to strikes = both sides want the ceasefire to hold; Brent settles $85-88." },
+        { name: "The Atlantic", lean: "neutral", url: "https://www.theatlantic.com/international/", take: "Fragile ceasefire under constant threat — neither escalation nor resolution priced." },
       ]
     },
     {
       label: "Narrative 3",
       title: "SpaceX IPO euphoria vs. Oracle capex shock",
       sources: [
-        { name: "Bloomberg", lean: "bull", take: "$70B+ retail order book; largest listing in history prices tomorrow." },
-        { name: "The Economist", lean: "bear", take: "Oracle's $70B capex is the canary — spend rising faster than AI revenue." },
-        { name: "WSJ", lean: "neutral", take: "Split tape: marquee-IPO euphoria alongside a software AI-disruption reversal." },
-        { name: "NYT", lean: "bear", take: "Warren's AI-disclosure bill frames systemic funding risk worth legislating." },
-        { name: "CNBC", lean: "bull", take: "Evercore's 'wild-eyed FOMO still ahead'; halo lifts the whole space complex." },
-        { name: "The Atlantic", lean: "bear", take: "Apollo screening all software for AI obsolescence — the trade eating its own." },
+        { name: "Bloomberg", lean: "bull", url: "https://www.bloomberg.com/technology", take: "$70B+ retail order book; largest listing in history prices tomorrow." },
+        { name: "The Economist", lean: "bear", url: "https://www.economist.com/business", take: "Oracle's $70B capex is the canary — spend rising faster than AI revenue." },
+        { name: "WSJ", lean: "neutral", url: "https://www.wsj.com/tech", take: "Split tape: marquee-IPO euphoria alongside a software AI-disruption reversal." },
+        { name: "NYT", lean: "bear", url: "https://www.nytimes.com/section/technology", take: "Warren's AI-disclosure bill frames systemic funding risk worth legislating." },
+        { name: "CNBC", lean: "bull", url: "https://www.cnbc.com/technology/", take: "Evercore's 'wild-eyed FOMO still ahead'; halo lifts the whole space complex." },
+        { name: "The Atlantic", lean: "bear", url: "https://www.theatlantic.com/technology/", take: "Apollo screening all software for AI obsolescence — the trade eating its own." },
       ]
     },
   ];
@@ -163,22 +166,22 @@
           <span>Consensus across ${nar.sources.length} desks</span>
           <span class="meter-verdict" style="color:${c.vcolor}">${c.verdict}</span>
         </div>
-        <div class="bar" role="img" aria-label="${c.pct(c.bull)}% bullish, ${c.pct(c.neu)}% neutral, ${c.pct(c.bear)}% bearish">
+        <div class="bar" role="img" aria-label="${c.bull} bullish, ${c.neu} mixed, ${c.bear} bearish out of ${nar.sources.length}">
           <i class="bull" style="width:0%" data-w="${c.pct(c.bull)}"></i>
           <i class="neutral" style="width:0%" data-w="${c.pct(c.neu)}"></i>
           <i class="bear" style="width:0%" data-w="${c.pct(c.bear)}"></i>
         </div>
-        <div class="bar-scale"><span>${c.pct(c.bull)}% bull</span><span>${c.pct(c.neu)}% neutral</span><span>${c.pct(c.bear)}% bear</span></div>
+        <div class="bar-scale"><span>${c.bull} bullish</span><span>${c.neu} mixed</span><span>${c.bear} bearish</span></div>
       </div>
       <div class="sources-grid">
         ${nar.sources.map(s => `
-          <div class="src">
+          <a class="src" href="${s.url}" target="_blank" rel="noopener noreferrer">
             <div class="src-top">
-              <span class="src-name">${s.name}</span>
+              <span class="src-name">${s.name}<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
               <span class="lean ${s.lean}">${s.lean==='neutral'?'Mixed':s.lean}</span>
             </div>
             <div class="src-take">${s.take}</div>
-          </div>`).join('')}
+          </a>`).join('')}
       </div>
       <div class="divergence">
         <strong>Where they diverge</strong>
