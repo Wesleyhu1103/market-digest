@@ -1,15 +1,16 @@
 name: Publish digest
 
 # Triggers:
-#  - push of incoming/new-main.html (the digest agent's only write)
-#  - weekday cron to refresh FRED chart data even when no digest lands
-#  - manual dispatch for re-runs
+#  - push of incoming/new-main.html (agent upload)
+#  - push to main when the live digest date is behind today (catches missed cron / bad merges)
+#  - weekday cron (primary + backup)
+#  - manual dispatch
 on:
   push:
     branches: [main]
-    paths: ["incoming/**"]
   schedule:
-    - cron: "30 11 * * 1-5" # 7:30am ET weekdays: generate + publish + FRED
+    - cron: "30 11 * * 1-5" # 7:30am ET weekdays
+    - cron: "30 14 * * 1-5" # 10:30am ET backup
   workflow_dispatch:
 
 permissions:
@@ -22,7 +23,56 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+      stale: ${{ steps.decide.outputs.stale }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Decide whether publish pipeline should run
+        id: decide
+        run: |
+          EVENT="${{ github.event_name }}"
+          if [ "$EVENT" = "workflow_dispatch" ] || [ "$EVENT" = "schedule" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            if python3 scripts/digest_stale.py; then
+              echo "stale=false" >> "$GITHUB_OUTPUT"
+            else
+              echo "stale=true" >> "$GITHUB_OUTPUT"
+            fi
+            exit 0
+          fi
+
+          CHANGED="$(git diff-tree --no-commit-id --name-only -r HEAD | tr '\n' ' ')"
+          echo "changed: $CHANGED"
+          if echo "$CHANGED" | grep -q 'incoming/'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if python3 scripts/digest_stale.py; then
+            echo "Digest is current; skipping pipeline for this push"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Digest is stale; running catch-up publish"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          fi
+
   build:
+    needs: plan
+    if: needs.plan.outputs.run == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,14 +87,12 @@ jobs:
         with:
           node-version: "20"
 
-      # Fully automated digest: on cron/manual runs with an ANTHROPIC_API_KEY
-      # secret, fetch feeds and generate today's <main> via the Claude API.
-      # Push-triggered runs already carry a digest in incoming/, so skip.
-      - name: Generate digest with Claude (cron/manual only)
-        if: github.event_name != 'push'
+      - name: Generate digest with Claude
+        if: github.event_name != 'push' || needs.plan.outputs.stale == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           EVENT_NAME: ${{ github.event_name }}
+          STALE: ${{ needs.plan.outputs.stale }}
         run: |
           if [ "$EVENT_NAME" = "schedule" ] && [ -f incoming/new-main.html ]; then
             echo "Removing stale incoming/new-main.html before scheduled generation"
@@ -52,20 +100,20 @@ jobs:
           fi
 
           if [ -z "$ANTHROPIC_API_KEY" ]; then
-            if [ "$EVENT_NAME" = "schedule" ]; then
-              echo "::error::ANTHROPIC_API_KEY secret not set; scheduled digest generation cannot run"
+            if [ "$EVENT_NAME" = "schedule" ] || [ "$STALE" = "true" ]; then
+              echo "::error::ANTHROPIC_API_KEY secret not set; cannot generate today's digest"
               exit 1
             fi
             echo "ANTHROPIC_API_KEY secret not set; skipping generation"
-          elif [ -f incoming/new-main.html ]; then
+          elif [ -f incoming/new-main.html ] && [ "$STALE" != "true" ]; then
             echo "incoming/new-main.html already present; skipping generation"
           else
             pip install -q anthropic
             python3 scripts/generate_digest.py
           fi
 
-          if [ "$EVENT_NAME" = "schedule" ] && [ ! -f incoming/new-main.html ]; then
-            echo "::error::Scheduled digest generation did not produce incoming/new-main.html"
+          if { [ "$EVENT_NAME" = "schedule" ] || [ "$STALE" = "true" ]; } && [ ! -f incoming/new-main.html ]; then
+            echo "::error::Digest generation did not produce incoming/new-main.html"
             exit 1
           fi
 
@@ -94,12 +142,11 @@ jobs:
             git push origin main
           fi
 
-  # Pushes made with GITHUB_TOKEN do not trigger the legacy
-  # pages-build-deployment workflow, so deploy explicitly.
-  # One-time setup: Settings -> Pages -> Source: "GitHub Actions".
   deploy:
     needs: build
+    if: needs.build.result == 'success'
     runs-on: ubuntu-latest
+    continue-on-error: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
