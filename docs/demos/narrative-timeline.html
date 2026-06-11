@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demo 02 — Narrative-Thread Timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4ede0; --surface: #fbf6ec; --ink: #1f1d1a; --muted: #6b665d;
+    --rule: #d8cdb8; --rule-soft: #e8ddc7; --accent: #0f4f4a; --accent-2: #c2410c;
+    --accent-soft: #dfece9; --bull: #166534; --bull-soft: #dcedd5; --bear: #991b1b;
+    --bear-soft: #f3dada; --anchor: #1e3a5f; --anchor-soft: #dde6f0;
+  }
+  [data-theme="dark"] {
+    --bg:#14171a; --surface:#1d2025; --ink:#e6e2d8; --muted:#8a8779; --rule:#2e3138;
+    --rule-soft:#25282d; --accent:#5db7ad; --accent-2:#e98b50; --accent-soft:#1f3935;
+    --bull:#5eb87a; --bull-soft:#1e2a22; --bear:#e07070; --bear-soft:#2e1f1f; --anchor:#7aa6d6; --anchor-soft:#1a2535;
+  }
+  * { box-sizing: border-box; }
+  html { transition: background-color .25s, color .25s; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Newsreader", Georgia, serif; line-height: 1.6; font-size: 17px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 40px 28px 120px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 36px; }
+  .back { font-family: "Inter", sans-serif; font-size: 13px; color: var(--muted); text-decoration: none; }
+  .back:hover { color: var(--accent); }
+  .theme-toggle { display: flex; gap: 4px; padding: 5px; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; }
+  .theme-toggle button { background: transparent; color: var(--muted); border: none; padding: 6px 10px; border-radius: 2px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+  .theme-toggle button.active { background: var(--ink); color: var(--bg); }
+  .kicker { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 12px; font-weight: 700; }
+  h1 { font-family: "Fraunces", serif; font-weight: 700; font-variation-settings: "opsz" 144; margin: 0 0 14px; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em; }
+  .lede { font-family: "Newsreader", serif; font-size: 19px; color: var(--muted); font-style: italic; max-width: 720px; margin: 0 0 30px; }
+
+  /* thread tabs */
+  .threads { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 14px; }
+  .thread-tab { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; padding: 10px 16px; border-radius: 24px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); cursor: pointer; transition: all .15s; display: inline-flex; align-items: center; gap: 8px; }
+  .thread-tab:hover { border-color: var(--accent); color: var(--ink); }
+  .thread-tab.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .thread-tab .tdot { width: 8px; height: 8px; border-radius: 50%; }
+
+  .arc-head { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin: 26px 0 8px; gap: 16px; flex-wrap: wrap; }
+  .arc-head h2 { font-family: "Fraunces", serif; font-weight: 600; font-size: 24px; margin: 0; letter-spacing: -0.01em; }
+  .arc-state { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
+
+  /* sparkline summary */
+  .arc-summary { font-family: "Newsreader", serif; font-style: italic; color: var(--muted); font-size: 16px; margin: 16px 0 28px; max-width: 760px; }
+
+  /* timeline */
+  .timeline { position: relative; margin-left: 8px; padding-left: 30px; }
+  .timeline::before { content:""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--rule); }
+  .node { position: relative; padding: 0 0 26px; opacity: 0; transform: translateY(10px); transition: opacity .45s, transform .45s; }
+  .node.in { opacity: 1; transform: none; }
+  .node::before { content:""; position: absolute; left: -30px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--muted); }
+  .node.bull::before { border-color: var(--bull); } .node.bear::before { border-color: var(--bear); } .node.mixed::before { border-color: var(--muted); }
+  .node.today::before { border-color: var(--accent-2); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .node-day { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; }
+  .node-day b { color: var(--ink); }
+  .node-verdict { font-family: "Inter", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
+  .v-bull { color: var(--bull); background: var(--bull-soft); } .v-bear { color: var(--bear); background: var(--bear-soft); } .v-mixed { color: var(--muted); background: var(--rule-soft); }
+  .node h3 { font-family: "Fraunces", serif; font-weight: 600; font-size: 18px; margin: 6px 0 6px; line-height: 1.3; }
+  .node p { margin: 0; font-size: 15.5px; color: var(--ink); max-width: 720px; }
+  .node .tag { display: inline-block; font-family:"Inter",sans-serif; font-size:11px; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 4px; margin-top: 8px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="back" href="index.html">← All demos</a>
+      <div class="theme-toggle" role="group" aria-label="Theme">
+        <button data-th="light" class="active">Cream</button>
+        <button data-th="dark">Dark</button>
+      </div>
+    </div>
+
+    <div class="kicker">Demo 02 · Week of June 5–11, 2026</div>
+    <h1>Narrative-Thread Timeline</h1>
+    <p class="lede">Each dominant narrative as a story arc. Pick a thread and watch how the thesis built, confirmed, or broke day by day — the throughline behind the daily headlines.</p>
+
+    <div class="threads" id="threads"></div>
+    <div id="arc"></div>
+  </div>
+
+<script>
+  const THEME_KEY = 'mdemo-theme';
+  function setTheme(t){ document.documentElement.setAttribute('data-theme', t); document.querySelectorAll('.theme-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.th===t)); try{localStorage.setItem(THEME_KEY,t)}catch(e){} }
+  document.querySelectorAll('.theme-toggle button').forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.th)));
+  try{ const s=localStorage.getItem(THEME_KEY); if(s) setTheme(s); }catch(e){}
+
+  // Real week verdicts from the live scoreboard (Fri 6/5 – Wed 6/10) + today's open read.
+  const THREADS = [
+    {
+      id: "bonds", color: "var(--bear)",
+      tab: "Stagflation / Rates",
+      title: "The Stagflation Trade Stops Being a Forecast",
+      state: "Bear thesis confirmed", stateClass: "v-bear",
+      summary: "What started as a 'maybe transitory' energy blip hardened into a confirmed stagflation bind by Thursday — hot CPI, then a 6.5% PPI, then the ECB actually hiking.",
+      nodes: [
+        { day:"Fri 6/5", v:"bear", vl:"Bear ✓", h:"Sticky inflation print resets the week", p:"Early data undercut the disinflation story; the 10Y firmed and bears took the first round." },
+        { day:"Mon 6/8", v:"mixed", vl:"Mixed", h:"Markets digest, no clean signal", p:"Rates chopped sideways as traders waited for the CPI/PPI cluster later in the week." },
+        { day:"Tue 6/9", v:"bear", vl:"Bear ✓", h:"Energy shock bleeds into the curve", p:"Iran-driven energy pressure pushed inflation expectations up; the stagflation framing gained traction." },
+        { day:"Wed 6/10", v:"bear", vl:"Bear ✓", h:"Hot CPI lands", p:"A hotter-than-expected CPI flagged the pipeline was still full — setting up PPI as the confirmation." },
+        { day:"Thu 6/11", v:"bear", vl:"Open: Bear", h:"PPI 6.5% + ECB capitulates", p:"Producer prices hit 6.5% YoY (fastest since Nov 2022) and the ECB hiked for the first time since 2023. Jobless claims jumped to 229k — the textbook stagflation bind is now in the tape.", today:true, tag:"Today's digest" },
+      ]
+    },
+    {
+      id: "iran", color: "var(--muted)",
+      tab: "Iran / Oil",
+      title: "A Fragile Ceasefire Under Constant Threat",
+      state: "Still unresolved — mixed", stateClass: "v-mixed",
+      summary: "The oil narrative never resolved cleanly: every escalation was met with a swift de-escalation. The real supply story (Iran -19%, Japan rerouting) built quietly underneath the headlines.",
+      nodes: [
+        { day:"Fri 6/5", v:"mixed", vl:"Mixed", h:"War premium ebbs and flows", p:"Brent traded the headlines without a directional break — neither side committed." },
+        { day:"Mon 6/8", v:"mixed", vl:"Mixed", h:"Talks-on, talks-off", p:"Interim peace-talk optimism capped oil even as the ceasefire looked shaky." },
+        { day:"Tue 6/9", v:"bear", vl:"Bear ✓", h:"Apache downing → US strikes", p:"The US struck Iran in retaliation; the war premium spiked and risk assets sold off." },
+        { day:"Wed 6/10", v:"mixed", vl:"Mixed", h:"Strikes wind down, oil whipsaws", p:"Oil turned higher on a threat to seize Kharg Island, then chopped as strikes neared an end." },
+        { day:"Thu 6/11", v:"mixed", vl:"Open: Mixed", h:"Kharg threat vs. swift de-escalation", p:"Latest strikes ended swiftly (futures +0.7%), but Trump threatened to seize Kharg Island. Iran output already -19%; Japan rerouting 100% of July imports off Hormuz. A Kharg move is the line that sends Brent vertical.", today:true, tag:"Today's digest" },
+      ]
+    },
+    {
+      id: "aicapex", color: "var(--bull)",
+      tab: "AI Capex / SpaceX",
+      title: "Euphoria Meets the Capex Reckoning",
+      state: "Split tape — bull-leaning", stateClass: "v-bull",
+      summary: "The AI/IPO trade kept printing bull days, but the bear undertow grew louder all week — culminating Thursday in SpaceX mania running directly alongside Oracle's capex shock.",
+      nodes: [
+        { day:"Fri 6/5", v:"bear", vl:"Bear ✓", h:"AI-disruption jitters", p:"Software wobbled on fears that AI obsoletes incumbents — the first crack in the capex story." },
+        { day:"Mon 6/8", v:"bull", vl:"Bull ✓", h:"IPO pipeline excitement builds", p:"OpenAI filing and SpaceX buzz pulled retail back in; the bull tape reasserted." },
+        { day:"Tue 6/9", v:"bear", vl:"Bear ✓", h:"Risk-off drags growth", p:"The Iran strikes spilled into growth/tech, briefly overpowering the IPO optimism." },
+        { day:"Wed 6/10", v:"bull", vl:"Bull ✓", h:"FOMO reaccelerates", p:"Tech rebounded off a five-week low as SpaceX demand headlines dominated the wire." },
+        { day:"Thu 6/11", v:"bull", vl:"Open: Bull", h:"$70B book vs. Oracle's $70B capex", p:"SpaceX drew $70B+ in retail orders ahead of tomorrow's pricing — but Oracle fell on $70B FY2027 capex, Apollo now screens all software for AI risk, and Warren filed an AI-disclosure bill. Classic late-cycle split tape.", today:true, tag:"Today's digest" },
+      ]
+    },
+  ];
+
+  const threadsEl = document.getElementById('threads');
+  const arcEl = document.getElementById('arc');
+  let active = 0;
+
+  THREADS.forEach((t, i) => {
+    const b = document.createElement('button');
+    b.className = 'thread-tab' + (i===0?' active':'');
+    b.innerHTML = `<span class="tdot" style="background:${t.color}"></span>${t.tab}`;
+    b.addEventListener('click', () => { active = i; render(); document.querySelectorAll('.thread-tab').forEach((x,j)=>x.classList.toggle('active', j===i)); });
+    threadsEl.appendChild(b);
+  });
+
+  function render(){
+    const t = THREADS[active];
+    arcEl.innerHTML = `
+      <div class="arc-head">
+        <h2>${t.title}</h2>
+        <span class="arc-state ${t.stateClass}">${t.state}</span>
+      </div>
+      <p class="arc-summary">${t.summary}</p>
+      <div class="timeline">
+        ${t.nodes.map(n => `
+          <div class="node ${n.v}${n.today?' today':''}">
+            <span class="node-day">${n.today?'<b>'+n.day+'</b>':n.day}<span class="node-verdict v-${n.v}">${n.vl}</span></span>
+            <h3>${n.h}</h3>
+            <p>${n.p}</p>
+            ${n.tag?`<span class="tag">${n.tag}</span>`:''}
+          </div>`).join('')}
+      </div>`;
+    // staggered reveal
+    const nodes = arcEl.querySelectorAll('.node');
+    nodes.forEach((n,i)=> setTimeout(()=> n.classList.add('in'), 80 + i*90));
+  }
+  render();
+</script>
+</body>
+</html>

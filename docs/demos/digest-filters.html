@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demo 03 — Personalized Digest Filters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4ede0; --surface: #fbf6ec; --ink: #1f1d1a; --muted: #6b665d;
+    --rule: #d8cdb8; --rule-soft: #e8ddc7; --accent: #0f4f4a; --accent-2: #c2410c;
+    --accent-soft: #dfece9; --bull: #166534; --bull-soft: #dcedd5; --bear: #991b1b;
+    --bear-soft: #f3dada; --anchor: #1e3a5f; --anchor-soft: #dde6f0;
+  }
+  [data-theme="dark"] {
+    --bg:#14171a; --surface:#1d2025; --ink:#e6e2d8; --muted:#8a8779; --rule:#2e3138;
+    --rule-soft:#25282d; --accent:#5db7ad; --accent-2:#e98b50; --accent-soft:#1f3935;
+    --bull:#5eb87a; --bull-soft:#1e2a22; --bear:#e07070; --bear-soft:#2e1f1f; --anchor:#7aa6d6; --anchor-soft:#1a2535;
+  }
+  * { box-sizing: border-box; }
+  html { transition: background-color .25s, color .25s; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Newsreader", Georgia, serif; line-height: 1.6; font-size: 17px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 40px 28px 120px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 36px; }
+  .back { font-family: "Inter", sans-serif; font-size: 13px; color: var(--muted); text-decoration: none; }
+  .back:hover { color: var(--accent); }
+  .theme-toggle { display: flex; gap: 4px; padding: 5px; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; }
+  .theme-toggle button { background: transparent; color: var(--muted); border: none; padding: 6px 10px; border-radius: 2px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+  .theme-toggle button.active { background: var(--ink); color: var(--bg); }
+  .kicker { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 12px; font-weight: 700; }
+  h1 { font-family: "Fraunces", serif; font-weight: 700; font-variation-settings: "opsz" 144; margin: 0 0 14px; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em; }
+  .lede { font-family: "Newsreader", serif; font-size: 19px; color: var(--muted); font-style: italic; max-width: 720px; margin: 0 0 28px; }
+
+  /* control panel */
+  .controls { position: sticky; top: 0; z-index: 20; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px; margin-bottom: 36px; backdrop-filter: blur(4px); }
+  .ctrl-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .ctrl-row + .ctrl-row { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule-soft); }
+  .ctrl-label { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; flex: 0 0 72px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 22px; border: 1px solid var(--rule); background: var(--bg); color: var(--muted); cursor: pointer; transition: all .14s; }
+  .chip:hover { border-color: var(--accent); color: var(--ink); }
+  .chip.on { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 22px; overflow: hidden; }
+  .seg button { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; padding: 7px 16px; border: none; background: var(--bg); color: var(--muted); cursor: pointer; transition: all .14s; }
+  .seg button.on { background: var(--ink); color: var(--bg); }
+  .count { font-family: "Inter", sans-serif; font-size: 12px; color: var(--muted); margin-left: auto; }
+
+  /* feed */
+  .group { margin-bottom: 18px; }
+  .group-h { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin: 28px 0 16px; }
+  .item { border-left: 3px solid var(--rule); padding: 2px 0 2px 18px; margin-bottom: 18px; transition: opacity .3s, transform .3s; }
+  .item.lean-bull { border-left-color: var(--bull); } .item.lean-bear { border-left-color: var(--bear); } .item.lean-neutral { border-left-color: var(--anchor); }
+  .item-tags { display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
+  .ttag { font-family: "Inter", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; background: var(--rule-soft); color: var(--muted); }
+  .ttag.t-macro { background: var(--anchor-soft); color: var(--anchor); }
+  .ttag.t-tech { background: var(--accent-soft); color: var(--accent); }
+  .ttag.t-crypto { background: var(--bull-soft); color: var(--bull); }
+  .ttag.t-deals { background: var(--bear-soft); color: var(--bear); }
+  .ttag.t-geo { background: #ece3d2; color: var(--accent-2); }
+  [data-theme="dark"] .ttag.t-geo { background:#2e261c; }
+  .item h3 { font-family: "Fraunces", serif; font-weight: 600; font-size: 19px; margin: 0 0 6px; line-height: 1.3; }
+  .item p { margin: 0; font-size: 15.5px; color: var(--muted); max-width: 740px; }
+  .empty { text-align: center; padding: 60px 20px; color: var(--muted); font-style: italic; }
+  .skim .item p { display: none; }
+  .skim .item { margin-bottom: 10px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="back" href="index.html">← All demos</a>
+      <div class="theme-toggle" role="group" aria-label="Theme">
+        <button data-th="light" class="active">Cream</button>
+        <button data-th="dark">Dark</button>
+      </div>
+    </div>
+
+    <div class="kicker">Demo 03 · June 11, 2026</div>
+    <h1>Personalized Digest Filters</h1>
+    <p class="lede">Tune the digest to what you care about. Pick your topics and reading depth — the page re-composes instantly around your interests.</p>
+
+    <div class="controls">
+      <div class="ctrl-row">
+        <span class="ctrl-label">Topics</span>
+        <div class="chips" id="topicChips">
+          <button class="chip on" data-topic="all">All</button>
+          <button class="chip" data-topic="macro">Macro &amp; Rates</button>
+          <button class="chip" data-topic="geo">Geopolitics</button>
+          <button class="chip" data-topic="tech">Tech &amp; AI</button>
+          <button class="chip" data-topic="deals">Deals &amp; IPOs</button>
+          <button class="chip" data-topic="crypto">Crypto</button>
+        </div>
+      </div>
+      <div class="ctrl-row">
+        <span class="ctrl-label">Depth</span>
+        <div class="seg" id="depthSeg">
+          <button data-depth="skim">Skim</button>
+          <button class="on" data-depth="deep">Deep-dive</button>
+        </div>
+        <span class="count" id="count"></span>
+      </div>
+    </div>
+
+    <div id="feed"></div>
+  </div>
+
+<script>
+  const THEME_KEY = 'mdemo-theme';
+  function setTheme(t){ document.documentElement.setAttribute('data-theme', t); document.querySelectorAll('.theme-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.th===t)); try{localStorage.setItem(THEME_KEY,t)}catch(e){} }
+  document.querySelectorAll('.theme-toggle button').forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.th)));
+  try{ const s=localStorage.getItem(THEME_KEY); if(s) setTheme(s); }catch(e){}
+
+  const TOPIC_LABEL = { macro:"Macro", geo:"Geopolitics", tech:"Tech & AI", deals:"Deals", crypto:"Crypto" };
+  // Real June 11 items, each tagged with topics + a bull/bear/neutral lean.
+  const ITEMS = [
+    { topics:["macro"], lean:"bear", h:"PPI hits 6.5% YoY — fastest since Nov 2022", p:"Producer prices rose 1.1% MoM, confirming the inflation pipeline a day after hot CPI. The energy shock is embedded in the wholesale pipeline and still building." },
+    { topics:["macro","geo"], lean:"bear", h:"ECB hikes for the first time since 2023", p:"Lagarde cited a 'major energy shock' from the Iran war. When a cautious central bank moves first, it signals how high global inflation conviction has gotten." },
+    { topics:["macro"], lean:"neutral", h:"Jobless claims jump to 229,000 — highest since February", p:"Hot producer prices alongside softening employment is the textbook stagflation bind. The Fed can't ease into rising claims without feeding inflation." },
+    { topics:["geo"], lean:"neutral", h:"Trump threatens to seize Kharg Island; oil whipsaws", p:"Latest US strikes ended swiftly (futures +0.7%), but a threat to Iran's main export terminal turned oil higher before it chopped back." },
+    { topics:["geo"], lean:"bear", h:"Iran output down 19%; Japan reroutes 100% of July imports off Hormuz", p:"Supply is genuinely tightening even as headline oil stays range-bound. A Kharg move is the line that sends Brent vertical." },
+    { topics:["deals","tech"], lean:"bull", h:"SpaceX IPO draws $70B+ in retail orders — prices tomorrow", p:"Set to be the largest listing in history. Retail is dumping memory/storage names to free up dry powder for the allocation." },
+    { topics:["tech","deals"], lean:"bear", h:"Oracle falls on $70B FY2027 capex guide", p:"Data-center spending overshadowed AI revenue growth. At a 10Y near 4.62%, the financing cost of a $70B annual outlay is no longer trivial." },
+    { topics:["tech"], lean:"bear", h:"Software reversal — AI disruption fears resurface", p:"Apollo now screens every software investment for AI-obsolescence risk, institutionalizing the bear thesis that AI disrupts incumbents." },
+    { topics:["tech","macro"], lean:"neutral", h:"Warren files AI-exposure disclosure bill", p:"Would force financial institutions to disclose their AI-firm exposure — Washington now sees systemic AI-funding risk worth legislating." },
+    { topics:["deals"], lean:"neutral", h:"Amazon's record loonie bond shakes Canadian credit", p:"The size pushed risk spreads higher and forced other borrowers to delay note sales. Mega-cap tech is tapping debt globally to fund the buildout." },
+    { topics:["deals"], lean:"neutral", h:"IPO/SPAC pipeline: Kardigan, ZincFive, ADIC", p:"Heart-health biotech Kardigan seeks $373M; data-center battery maker ZincFive goes public via SPAC at $600M; Abu Dhabi's ADIC weighs a $15B hedge-fund bet." },
+    { topics:["crypto"], lean:"neutral", h:"BTC consolidates near $63K as SpaceX FOMO pulls retail away", p:"The same dry-powder rotation hitting memory stocks applies to crypto. At a 10Y of 4.62%, the opportunity cost against non-yielding BTC keeps tightening." },
+    { topics:["crypto","macro"], lean:"bear", h:"Spot BTC ETF flows still the cleanest institutional read", p:"Until flows flip consistently positive, the hot-inflation, high-rate macro is the headwind winning over any crypto-specific catalyst." },
+    { topics:["crypto","tech"], lean:"neutral", h:"AI-compute tokens ride the SpaceX/AI theme", p:"Decentralized compute names (Akash, Render) see speculative attention as retail searches for liquid AI exposure ahead of the IPO." },
+  ];
+
+  let activeTopic = "all";
+  let depth = "deep";
+
+  const feed = document.getElementById('feed');
+  const countEl = document.getElementById('count');
+
+  document.querySelectorAll('#topicChips .chip').forEach(c => c.addEventListener('click', () => {
+    activeTopic = c.dataset.topic;
+    document.querySelectorAll('#topicChips .chip').forEach(x=>x.classList.toggle('on', x===c));
+    render();
+  }));
+  document.querySelectorAll('#depthSeg button').forEach(b => b.addEventListener('click', () => {
+    depth = b.dataset.depth;
+    document.querySelectorAll('#depthSeg button').forEach(x=>x.classList.toggle('on', x===b));
+    render();
+  }));
+
+  function render(){
+    const list = ITEMS.filter(it => activeTopic==="all" || it.topics.includes(activeTopic));
+    feed.className = depth==="skim" ? "skim" : "";
+    countEl.textContent = `${list.length} ${list.length===1?'story':'stories'} · ${depth==='skim'?'headlines only':'full context'}`;
+    if (!list.length){ feed.innerHTML = `<div class="empty">No stories match this filter today.</div>`; return; }
+    feed.innerHTML = list.map(it => `
+      <div class="item lean-${it.lean}">
+        <div class="item-tags">${it.topics.map(t=>`<span class="ttag t-${t}">${TOPIC_LABEL[t]}</span>`).join('')}</div>
+        <h3>${it.h}</h3>
+        <p>${it.p}</p>
+      </div>`).join('');
+  }
+  render();
+</script>
+</body>
+</html>

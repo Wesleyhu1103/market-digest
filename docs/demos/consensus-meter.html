@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demo 01 — Cross-Source Consensus Meter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4ede0; --surface: #fbf6ec; --ink: #1f1d1a; --muted: #6b665d;
+    --rule: #d8cdb8; --rule-soft: #e8ddc7; --accent: #0f4f4a; --accent-2: #c2410c;
+    --accent-soft: #dfece9; --bull: #166534; --bull-soft: #dcedd5; --bear: #991b1b;
+    --bear-soft: #f3dada; --anchor: #1e3a5f; --anchor-soft: #dde6f0;
+  }
+  [data-theme="dark"] {
+    --bg:#14171a; --surface:#1d2025; --ink:#e6e2d8; --muted:#8a8779; --rule:#2e3138;
+    --rule-soft:#25282d; --accent:#5db7ad; --accent-2:#e98b50; --accent-soft:#1f3935;
+    --bull:#5eb87a; --bull-soft:#1e2a22; --bear:#e07070; --bear-soft:#2e1f1f; --anchor:#7aa6d6; --anchor-soft:#1a2535;
+  }
+  * { box-sizing: border-box; }
+  html { transition: background-color .25s, color .25s; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Newsreader", Georgia, serif; line-height: 1.6; font-size: 17px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 40px 28px 120px; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 36px; }
+  .back { font-family: "Inter", sans-serif; font-size: 13px; color: var(--muted); text-decoration: none; }
+  .back:hover { color: var(--accent); }
+  .theme-toggle { display: flex; gap: 4px; padding: 5px; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; }
+  .theme-toggle button { background: transparent; color: var(--muted); border: none; padding: 6px 10px; border-radius: 2px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+  .theme-toggle button.active { background: var(--ink); color: var(--bg); }
+  .kicker { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 12px; font-weight: 700; }
+  h1 { font-family: "Fraunces", serif; font-weight: 700; font-variation-settings: "opsz" 144; margin: 0 0 14px; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em; }
+  .lede { font-family: "Newsreader", serif; font-size: 19px; color: var(--muted); font-style: italic; max-width: 720px; margin: 0 0 16px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 18px; font-family: "Inter", sans-serif; font-size: 12px; color: var(--muted); margin: 0 0 40px; padding-bottom: 22px; border-bottom: 2px solid var(--ink); }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .dot.bull { background: var(--bull); } .dot.bear { background: var(--bear); } .dot.neutral { background: var(--muted); }
+
+  .nar { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 30px 32px; margin-bottom: 30px; }
+  .nar-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; }
+  .nar h2 { font-family: "Fraunces", serif; font-weight: 600; font-variation-settings: "opsz" 56; font-size: 25px; margin: 7px 0 22px; line-height: 1.22; letter-spacing: -0.01em; }
+
+  /* consensus meter bar */
+  .meter { margin: 0 0 26px; }
+  .meter-head { display: flex; align-items: baseline; justify-content: space-between; font-family: "Inter", sans-serif; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .meter-verdict { font-weight: 700; font-size: 13px; letter-spacing: .03em; }
+  .bar { position: relative; height: 16px; border-radius: 9px; overflow: hidden; display: flex; background: var(--rule-soft); }
+  .bar i { height: 100%; display: block; transition: width .7s cubic-bezier(.22,1,.36,1); }
+  .bar i.bull { background: var(--bull); } .bar i.bear { background: var(--bear); } .bar i.neutral { background: var(--muted); opacity: .55; }
+  .bar-scale { display: flex; justify-content: space-between; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+  /* source chips */
+  .sources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 22px; }
+  .src { border: 1px solid var(--rule); border-radius: 7px; padding: 12px 14px; cursor: default; transition: border-color .15s, background .15s; background: var(--bg); }
+  .src:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .src-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .src-name { font-family: "Inter", sans-serif; font-weight: 700; font-size: 13px; }
+  .lean { font-family: "Inter", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+  .lean.bull { color: var(--bull); background: var(--bull-soft); }
+  .lean.bear { color: var(--bear); background: var(--bear-soft); }
+  .lean.neutral { color: var(--muted); background: var(--rule-soft); }
+  .src-take { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.45; font-family: "Newsreader", serif; }
+
+  .divergence { margin-top: 22px; padding: 14px 18px; border-left: 3px solid var(--accent-2); background: var(--bg); border-radius: 0 6px 6px 0; }
+  .divergence strong { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-2); display: block; margin-bottom: 5px; }
+  .divergence p { margin: 0; font-size: 15px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="back" href="index.html">← All demos</a>
+      <div class="theme-toggle" role="group" aria-label="Theme">
+        <button data-th="light" class="active">Cream</button>
+        <button data-th="dark">Dark</button>
+      </div>
+    </div>
+
+    <div class="kicker">Demo 01 · June 11, 2026</div>
+    <h1>Cross-Source Consensus Meter</h1>
+    <p class="lede">Where the major desks actually agree — and where they split. The meter weights each outlet's read so you see the narrative, not the noise.</p>
+    <div class="legend">
+      <span><i class="dot bull"></i> Leans bullish</span>
+      <span><i class="dot bear"></i> Leans bearish</span>
+      <span><i class="dot neutral"></i> Neutral / mixed</span>
+      <span style="font-style:italic;">Hover any source for its specific take.</span>
+    </div>
+
+    <div id="narratives"></div>
+  </div>
+
+<script>
+  const THEME_KEY = 'mdemo-theme';
+  function setTheme(t){ document.documentElement.setAttribute('data-theme', t); document.querySelectorAll('.theme-toggle button').forEach(b=>b.classList.toggle('active', b.dataset.th===t)); try{localStorage.setItem(THEME_KEY,t)}catch(e){} }
+  document.querySelectorAll('.theme-toggle button').forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.th)));
+  try{ const s=localStorage.getItem(THEME_KEY); if(s) setTheme(s); }catch(e){}
+
+  // Real June 11 narratives, with each outlet's lean + one-line take.
+  const DATA = [
+    {
+      label: "Narrative 1",
+      title: "Stagflation: PPI 6.5%, ECB capitulates and hikes",
+      sources: [
+        { name: "Bloomberg", lean: "bear", take: "Frames the 6.5% PPI as confirmation the energy shock is embedded in the wholesale pipeline." },
+        { name: "The Economist", lean: "bear", take: "ECB hiking first signals global conviction that inflation is durable, not transitory." },
+        { name: "WSJ", lean: "neutral", take: "Hot prices but rising jobless claims — the classic stagflation bind, no clean call." },
+        { name: "NYT", lean: "bear", take: "Leads on the labor softening plus sticky inflation as a policy trap for the Fed." },
+        { name: "CNBC", lean: "neutral", take: "Strategists split: base-effect roll-off (State Street) vs. short-duration (Ackman)." },
+        { name: "The Atlantic", lean: "bear", take: "Late-cycle framing — echoes the '2026 looks like 1929' caution." },
+      ]
+    },
+    {
+      label: "Narrative 2",
+      title: "Iran strikes & the Kharg Island oil threat",
+      sources: [
+        { name: "Bloomberg", lean: "neutral", take: "Oil whipsaws — higher on the Kharg threat, chops as strikes end swiftly." },
+        { name: "The Economist", lean: "bear", take: "Iran output already -19%; Japan rerouting 100% of July imports = real disruption risk." },
+        { name: "WSJ", lean: "neutral", take: "Reads Trump's 'more strikes' as posturing until the US actually moves on Kharg." },
+        { name: "NYT", lean: "bear", take: "A seizure of export infrastructure would invite Hormuz-wide retaliation." },
+        { name: "CNBC", lean: "bull", take: "Swift end to strikes = both sides want the ceasefire to hold; Brent settles $85-88." },
+        { name: "The Atlantic", lean: "neutral", take: "Fragile ceasefire under constant threat — neither escalation nor resolution priced." },
+      ]
+    },
+    {
+      label: "Narrative 3",
+      title: "SpaceX IPO euphoria vs. Oracle capex shock",
+      sources: [
+        { name: "Bloomberg", lean: "bull", take: "$70B+ retail order book; largest listing in history prices tomorrow." },
+        { name: "The Economist", lean: "bear", take: "Oracle's $70B capex is the canary — spend rising faster than AI revenue." },
+        { name: "WSJ", lean: "neutral", take: "Split tape: marquee-IPO euphoria alongside a software AI-disruption reversal." },
+        { name: "NYT", lean: "bear", take: "Warren's AI-disclosure bill frames systemic funding risk worth legislating." },
+        { name: "CNBC", lean: "bull", take: "Evercore's 'wild-eyed FOMO still ahead'; halo lifts the whole space complex." },
+        { name: "The Atlantic", lean: "bear", take: "Apollo screening all software for AI obsolescence — the trade eating its own." },
+      ]
+    },
+  ];
+
+  function consensus(sources){
+    const n = sources.length;
+    const bull = sources.filter(s=>s.lean==='bull').length;
+    const bear = sources.filter(s=>s.lean==='bear').length;
+    const neu = n - bull - bear;
+    const pct = x => Math.round((x/n)*100);
+    let verdict, vcolor;
+    const lead = Math.max(bull, bear, neu);
+    if (bear === lead && bear > bull) { verdict = bear/n >= 0.5 ? 'Bearish consensus' : 'Leans bearish'; vcolor='var(--bear)'; }
+    else if (bull === lead && bull > bear) { verdict = bull/n >= 0.5 ? 'Bullish consensus' : 'Leans bullish'; vcolor='var(--bull)'; }
+    else { verdict = 'No consensus — split'; vcolor='var(--muted)'; }
+    return { bull, bear, neu, pct, verdict, vcolor };
+  }
+
+  const root = document.getElementById('narratives');
+  DATA.forEach((nar, idx) => {
+    const c = consensus(nar.sources);
+    const el = document.createElement('div');
+    el.className = 'nar';
+    el.innerHTML = `
+      <span class="nar-label">${nar.label}</span>
+      <h2>${nar.title}</h2>
+      <div class="meter">
+        <div class="meter-head">
+          <span>Consensus across ${nar.sources.length} desks</span>
+          <span class="meter-verdict" style="color:${c.vcolor}">${c.verdict}</span>
+        </div>
+        <div class="bar" role="img" aria-label="${c.pct(c.bull)}% bullish, ${c.pct(c.neu)}% neutral, ${c.pct(c.bear)}% bearish">
+          <i class="bull" style="width:0%" data-w="${c.pct(c.bull)}"></i>
+          <i class="neutral" style="width:0%" data-w="${c.pct(c.neu)}"></i>
+          <i class="bear" style="width:0%" data-w="${c.pct(c.bear)}"></i>
+        </div>
+        <div class="bar-scale"><span>${c.pct(c.bull)}% bull</span><span>${c.pct(c.neu)}% neutral</span><span>${c.pct(c.bear)}% bear</span></div>
+      </div>
+      <div class="sources-grid">
+        ${nar.sources.map(s => `
+          <div class="src">
+            <div class="src-top">
+              <span class="src-name">${s.name}</span>
+              <span class="lean ${s.lean}">${s.lean==='neutral'?'Mixed':s.lean}</span>
+            </div>
+            <div class="src-take">${s.take}</div>
+          </div>`).join('')}
+      </div>
+      <div class="divergence">
+        <strong>Where they diverge</strong>
+        <p>${divergenceNote(idx)}</p>
+      </div>`;
+    root.appendChild(el);
+  });
+
+  function divergenceNote(i){
+    return [
+      "Everyone sees hot inflation, but CNBC's strategists and WSJ hold out for energy base effects rolling off, while Bloomberg, NYT and The Economist treat the ECB hike as proof the bind is locked in.",
+      "CNBC is the lone bull, reading the swift end to strikes as de-escalation. The Economist and NYT focus on the physical supply cut (-19% output, Japan rerouting) that makes a Kharg move the line that sends Brent vertical.",
+      "The clearest split of the day: Bloomberg and CNBC ride the SpaceX FOMO, while The Economist, NYT and The Atlantic point at Oracle's capex and Apollo's software screening as the bear undertow under the euphoria.",
+    ][i];
+  }
+
+  // animate bars in on load
+  requestAnimationFrame(()=>{ setTimeout(()=>{ document.querySelectorAll('.bar i').forEach(i=>{ i.style.width = i.dataset.w + '%'; }); }, 120); });
+</script>
+</body>
+</html>
