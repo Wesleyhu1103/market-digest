@@ -95,8 +95,13 @@ jobs:
           STALE: ${{ needs.plan.outputs.stale }}
         run: |
           if [ "$EVENT_NAME" = "schedule" ] && [ -f incoming/new-main.html ]; then
-            echo "Removing stale incoming/new-main.html before scheduled generation"
+            echo "Removing stale incoming/new-main.html before scheduled run"
             rm incoming/new-main.html
+          fi
+
+          if [ "$EVENT_NAME" = "schedule" ] && [ "$STALE" != "true" ]; then
+            echo "Digest is current; running scheduled FRED refresh only"
+            exit 0
           fi
 
           if [ -z "$ANTHROPIC_API_KEY" ]; then
