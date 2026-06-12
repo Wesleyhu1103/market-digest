@@ -28,7 +28,7 @@ The weekday cron publishes ~7:30am US/Eastern. If the site looks stale:
 
 1. **GitHub → Actions → Publish digest → Run workflow** (manual catch-up).
 2. Confirm repo secret **`ANTHROPIC_API_KEY`** exists (Settings → Secrets → Actions).
-3. Optional: **`FRED_API_KEY`** for macro charts when FRED blocks GitHub IPs.
+3. **`FRED_API_KEY`** (recommended) for fresh macro charts; scheduled publishes fail if macro data stays stale.
 4. After any push to `main`, the workflow auto-runs if `docs/index.html` is behind today's date.
 
 Both [GitHub Pages](https://wesleyhu1103.github.io/market-digest) and Vercel redeploy on every `main` push.

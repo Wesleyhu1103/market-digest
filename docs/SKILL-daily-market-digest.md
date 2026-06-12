@@ -22,8 +22,11 @@ DIRECT FETCH (mcp__workspace__web_fetch):
 2. https://feeds.bloomberg.com/technology/news.rss
 3. https://feeds.bloomberg.com/economics/news.rss
 4. https://www.cnbc.com/id/10001147/device/rss/rss.html
-5. https://feeds.feedburner.com/calculatedrisk
-6. https://stratechery.com/feed/
+5. https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine.rss
+6. https://www.coindesk.com/arc/outboundfeeds/rss/
+7. https://stratechery.com/feed/
+
+Automated GitHub Actions runs use the same feed set via `scripts/feed_sources.py` (36h freshness window). Calculated Risk blog RSS is retired.
 
 GMAIL NEWSLETTERS (mcp__2f5ff42f-4aba-4630-9120-ea0018231b17__search_threads):
 query: `(from:bloomberg.net OR from:wsj.com OR from:nytimes.com OR from:axios.com OR from:morningbrew.com OR from:cnbc.com OR subject:"market wrap" OR subject:"daily brief" OR subject:"The Morning" OR subject:"Daily Shot") newer_than:1d`
