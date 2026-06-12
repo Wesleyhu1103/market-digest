@@ -121,9 +121,9 @@ jobs:
         run: python3 scripts/publish_digest.py
 
       - name: Refresh FRED chart data
-        continue-on-error: true
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          REQUIRE_FRED_API_KEY: ${{ (github.event_name == 'schedule' || needs.plan.outputs.stale == 'true') && 'true' || '' }}
         run: python3 scripts/update_fred.py
 
       - name: Validate digest (structure + JS parse)

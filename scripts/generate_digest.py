@@ -2,21 +2,17 @@
 """Generate the daily market digest <main> block via the Claude API.
 
 Runs in GitHub Actions on the weekday cron (no local machine involved).
-Fetches the RSS feeds, then asks Claude to rewrite the current <main>
+Fetches the RSS/Atom feeds, then asks Claude to rewrite the current <main>
 in docs/index.html with today's content, preserving the exact HTML
 structure the static template's JS depends on. Writes the result to
 incoming/new-main.html for publish_digest.py to consume in the same run.
 
 Requires ANTHROPIC_API_KEY in the environment.
 """
-import html
-import os
 import re
 import sys
-import urllib.request
 from datetime import datetime
 from pathlib import Path
-from xml.etree import ElementTree
 from zoneinfo import ZoneInfo
 
 import anthropic
@@ -24,24 +20,22 @@ import anthropic
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "docs" / "index.html"
 OUT = ROOT / "incoming" / "new-main.html"
+REPORT = ROOT / "incoming" / "feed-report.json"
 
-FEEDS = {
-    "Bloomberg Markets": "https://feeds.bloomberg.com/markets/news.rss",
-    "Bloomberg Technology": "https://feeds.bloomberg.com/technology/news.rss",
-    "Bloomberg Economics": "https://feeds.bloomberg.com/economics/news.rss",
-    "CNBC Top News": "https://www.cnbc.com/id/10001147/device/rss/rss.html",
-    "Calculated Risk": "https://feeds.feedburner.com/calculatedrisk",
-    "Stratechery": "https://stratechery.com/feed/",
-}
-MAX_ITEMS_PER_FEED = 25
-MIN_TOTAL_ITEMS = 15
-UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+sys.path.insert(0, str(ROOT / "scripts"))
+from feed_sources import (  # noqa: E402
+    MIN_TOTAL_FRESH_ITEMS,
+    build_feed_report_json,
+    build_sources_html,
+    gather_sources,
+    inject_sources_section,
+)
 
 SYSTEM = """You are generating Wesley's daily market digest for wesleyhu1103.github.io/market-digest.
 
 Wesley is an intermediate-knowledge market reader on US East Coast time who reads this at 8-9am. He wants granularity: named stories, explicit drivers with directional impact, named bull/bear proponents (specific funds, analysts). No em-dashes. Always contractions. No AI-tell phrases ("genuinely", "honestly", "straightforward", "delve").
 
-You will receive (1) today's date, (2) the current <main> block as a STRUCTURAL TEMPLATE, and (3) today's source material from RSS feeds.
+You will receive (1) today's date, (2) the current <main> block as a STRUCTURAL TEMPLATE, (3) today's source material from RSS/Atom feeds, and (4) a machine-generated FEED_REPORT JSON.
 
 Produce ONLY a complete <main>...</main> block. No markdown fences, no commentary before or after.
 
@@ -56,68 +50,47 @@ STRUCTURAL RULES (the static template's JS breaks if these drift):
 - Feedback section: keep ids fb-missing, fb-open, fb-success, verdictFb, vfSaved exactly as in the template.
 - Do NOT include <section id="archive"> anywhere.
 - Escape apostrophes safely; never break inline JS or JSON.
+- Include <section id="sources"> as a placeholder; it will be replaced automatically after generation. Do not invent feed status prose.
 
 CONTENT (synthesized from the sources):
 - 3 dominant narratives with named bull/bear proponents
 - 5-7 US equities stories with tickers and directional drivers
 - 5-7 tech/growth stories with metrics
 - 5-7 macro/rates stories with explicit drivers
-- 4-6 crypto stories
+- 4-6 crypto stories (use CoinDesk items when present)
 - Major deals and capital markets events
-- Reddit sentiment by subreddit: estimate from the day's headlines and label it as estimated in the sources section
+- Reddit sentiment by subreddit: estimate from the day's headlines
 - One Learning Opportunity (400-500 words, mechanism-based, no bullets)
-- On Deck: next 5 trading days of catalysts
-- Sources section: list which feeds contributed and note Reddit is estimated and Gmail newsletters unavailable in automated runs"""
-
-
-def fetch_feed(name: str, url: str) -> list[dict]:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
-    raw = urllib.request.urlopen(req, timeout=30).read()
-    root = ElementTree.fromstring(raw)
-    items = []
-    for item in root.iter("item"):
-        title = (item.findtext("title") or "").strip()
-        desc = (item.findtext("description") or "").strip()
-        date = (item.findtext("pubDate") or "").strip()
-        desc = html.unescape(re.sub(r"<[^>]+>", " ", desc))
-        desc = re.sub(r"\s+", " ", desc).strip()[:600]
-        if title:
-            items.append({"title": html.unescape(title), "desc": desc, "date": date})
-        if len(items) >= MAX_ITEMS_PER_FEED:
-            break
-    return items
-
-
-def gather_sources() -> tuple[str, int]:
-    blocks, total = [], 0
-    for name, url in FEEDS.items():
-        try:
-            items = fetch_feed(name, url)
-        except Exception as e:
-            blocks.append(f"## {name}\n(FAILED: {e})")
-            continue
-        total += len(items)
-        lines = [f"- [{it['date']}] {it['title']}\n  {it['desc']}" for it in items]
-        blocks.append(f"## {name}\n" + "\n".join(lines))
-    return "\n\n".join(blocks), total
+- On Deck: next 5 trading days of catalysts"""
 
 
 def main() -> int:
-    sources_text, total = gather_sources()
-    print(f"Fetched {total} items across {len(FEEDS)} feeds")
-    if total < MIN_TOTAL_ITEMS:
-        raise SystemExit(f"ABORT: only {total} feed items (need {MIN_TOTAL_ITEMS}); not generating a thin digest")
+    sources_text, reports, total_fresh = gather_sources()
+    ok_feeds = sum(1 for r in reports if r.status == "ok")
+    print(f"Fetched {total_fresh} fresh items from {ok_feeds}/{len(reports)} feeds")
+    for r in reports:
+        print(f"  {r.name}: {r.status} ({r.items_fresh}/{r.items_fetched} fresh)")
+
+    if total_fresh < MIN_TOTAL_FRESH_ITEMS:
+        raise SystemExit(
+            f"ABORT: only {total_fresh} fresh feed items in last 36h "
+            f"(need {MIN_TOTAL_FRESH_ITEMS}); not generating a thin digest"
+        )
 
     template = re.search(r"<main>[\s\S]*?</main>", INDEX.read_text())
     if not template:
         raise SystemExit("ABORT: no <main> in docs/index.html")
 
     today = datetime.now(ZoneInfo("America/New_York"))
+    feed_report = build_feed_report_json(reports)
     user_content = (
         f"Today's date: {today.strftime('%A, %B %-d, %Y')} ({today.strftime('%Y-%m-%d')})\n\n"
         f"=== STRUCTURAL TEMPLATE (yesterday's <main>; preserve structure, replace content) ===\n"
         f"{template.group(0)}\n\n"
-        f"=== TODAY'S SOURCE MATERIAL ===\n{sources_text}"
+        f"=== FEED_REPORT (authoritative feed status; do not contradict) ===\n"
+        f"{feed_report}\n\n"
+        f"=== TODAY'S SOURCE MATERIAL (items from last 36 hours) ===\n"
+        f"{sources_text}"
     )
 
     client = anthropic.Anthropic()
@@ -138,12 +111,13 @@ def main() -> int:
     m = re.search(r"<main>[\s\S]*</main>", text)
     if not m:
         raise SystemExit("ABORT: no <main> block in model output")
-    new_main = m.group(0)
+    new_main = inject_sources_section(m.group(0), build_sources_html(reports, today))
     if 'id="chartData"' not in new_main:
         raise SystemExit("ABORT: generated <main> missing chartData block")
 
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(new_main)
+    REPORT.write_text(feed_report)
     print(f"Wrote {OUT.relative_to(ROOT)} ({len(new_main) // 1024} KB)")
     return 0
 
