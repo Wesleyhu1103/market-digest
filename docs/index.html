@@ -106,7 +106,9 @@
   .theme-toggle button { flex: 1; background: transparent; color: var(--muted); border: none; padding: 6px 4px; border-radius: 2px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; transition: all .12s; }
   .theme-toggle button:hover { color: var(--ink); background: var(--rule-soft); }
   .theme-toggle button.active { background: var(--ink); color: var(--bg); }
-  main { flex: 1; min-width: 0; padding: 36px 0 140px; }
+  .content { flex: 1; min-width: 0; }
+  main { padding: 36px 0 0; }
+  #archive { padding: 0 0 140px; }
   header.head { border-bottom: 2px solid var(--ink); padding-bottom: 28px; margin-bottom: 40px; }
   header.head .kicker { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 14px; font-weight: 700; }
   header.head h1 { font-family: "Fraunces", "Newsreader", serif; font-weight: 700; font-variation-settings: "opsz" 144; margin: 0 0 18px; font-size: 56px; line-height: 1.02; letter-spacing: -0.02em; color: var(--ink); }
@@ -296,7 +298,8 @@
     nav.toc { position: relative; width: 100%; flex: none; height: auto; padding: 20px 0 12px; border-bottom: 1px solid var(--rule); }
     nav.toc a { display: inline-block; padding: 6px 10px; border-left: none; border-bottom: 2px solid transparent; }
     nav.toc a.active { border-left: none; border-bottom-color: var(--accent); background: transparent; }
-    main { padding: 24px 0 100px; }
+    main { padding: 24px 0 0; }
+    #archive { padding: 0 0 100px; }
     header.head h1 { font-size: 38px; }
     .bullbear { grid-template-columns: 1fr; }
   }
@@ -430,6 +433,7 @@
     <div id="trList"></div>
   </div>
 </nav>
+<div class="content">
 <main>
 
   <!-- HEADER -->
@@ -910,9 +914,12 @@
 }</script>
 </main>
 
-
-
-
+  <section id="archive">
+    <h2>Archive</h2>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 14px;">Prior digests are frozen at publish time. Today&apos;s edition is the live page.</p>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
 
 </div>
 
@@ -1028,7 +1035,7 @@
 
   // Sticky nav active-section
   const tocLinks = document.querySelectorAll('nav.toc a');
-  const sections = document.querySelectorAll('main section');
+  const sections = document.querySelectorAll('main section, #archive');
   function onScroll() {
     let cur = sections[0].id;
     for (const s of sections) {
