@@ -13,6 +13,7 @@ import csv
 import io
 import json
 import os
+import sys
 import time
 import urllib.request
 from datetime import datetime, timedelta
@@ -162,6 +163,15 @@ def main():
     }
     OUT.write_text(json.dumps(payload, separators=(",", ":")))
     print(f"Wrote {OUT} ({OUT.stat().st_size // 1024} KB), {fetched}/{len(SERIES)} series fresh")
+
+    if not API_KEY:
+        print("WARN: FRED_API_KEY not set; macro charts may be stale on GitHub Actions runners")
+    else:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from check_fred_freshness import main as check_freshness  # noqa: E402
+
+        if check_freshness() != 0:
+            raise SystemExit("ABORT: FRED data still stale after refresh")
 
 
 if __name__ == "__main__":

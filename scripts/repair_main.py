@@ -3,6 +3,14 @@ import re
 
 
 def repair_main_html(main_html: str) -> str:
+    # Archive is mounted outside <main> by the static template — strip if injected.
+    main_html = re.sub(
+        r'<section[^>]*\bid=["\']archive["\'][^>]*>[\s\S]*?</section>\s*',
+        '',
+        main_html,
+        flags=re.I,
+    )
+
     # Bull button active + visible on load
     main_html = re.sub(
         r'<button([^>]*)\bclass="bull"([^>]*)\bdata-side="bull"',

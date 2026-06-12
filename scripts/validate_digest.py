@@ -21,6 +21,7 @@ RULES = [
     ("7 chart canvases", r'<canvas id="(techMovers|redditSentiment|treasuryYields|brentChart|creditChart|stressChart|dealSizes)"', 7),
     ("3 narrative-stacks", r'<div class="narrative-stack" data-narrative="(bonds|iran-oil|ai-capex)">', 3),
     ("fb-missing textarea", r'<textarea[^>]*id="fb-missing"', 1),
+    ("archive-mount outside main", r'</main>[\s\S]*<div id="archive-mount"', 1),
 ]
 
 
@@ -59,7 +60,7 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
-    html_only = {"chartData last in main", "JS parse"}
+    html_only = {"chartData last in main", "archive-mount outside main", "JS parse"}
     for desc, pat, exp in RULES:
         scope = html if desc in html_only else main_block
         n = len(re.findall(pat, scope, re.DOTALL | re.I))

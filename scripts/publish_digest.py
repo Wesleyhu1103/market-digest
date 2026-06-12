@@ -105,6 +105,9 @@ def main() -> int:
 
     INDEX.write_text(new_html)
     INCOMING.unlink()
+    report = ROOT / "incoming" / "feed-report.json"
+    if report.exists():
+        report.unlink()
     print(f"Updated docs/index.html for {today_iso}")
     return 0
 
