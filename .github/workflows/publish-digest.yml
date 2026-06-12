@@ -63,8 +63,8 @@ jobs:
             exit 0
           fi
 
-          if echo "$CHANGED" | grep -qE '(^| )docs/'; then
-            echo "Static site change under docs/ — validate and deploy Pages"
+          if echo "$CHANGED" | grep -qE '(^| )(docs/|\.github/workflows/publish-digest\.yml)'; then
+            echo "Static site or publish workflow change — validate and deploy Pages"
             echo "run=true" >> "$GITHUB_OUTPUT"
             echo "stale=false" >> "$GITHUB_OUTPUT"
             echo "static=true" >> "$GITHUB_OUTPUT"
