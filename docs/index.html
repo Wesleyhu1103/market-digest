@@ -106,9 +106,9 @@
   .theme-toggle button { flex: 1; background: transparent; color: var(--muted); border: none; padding: 6px 4px; border-radius: 2px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; transition: all .12s; }
   .theme-toggle button:hover { color: var(--ink); background: var(--rule-soft); }
   .theme-toggle button.active { background: var(--ink); color: var(--bg); }
-  .content { flex: 1; min-width: 0; }
+  .content { flex: 1; min-width: 0; max-width: 1080px; width: 100%; }
   main { padding: 36px 0 0; }
-  #archive { padding: 0 0 140px; }
+  #archive { padding: 0 56px 140px 0; scroll-margin-top: 88px; }
   header.head { border-bottom: 2px solid var(--ink); padding-bottom: 28px; margin-bottom: 40px; }
   header.head .kicker { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 14px; font-weight: 700; }
   header.head h1 { font-family: "Fraunces", "Newsreader", serif; font-weight: 700; font-variation-settings: "opsz" 144; margin: 0 0 18px; font-size: 56px; line-height: 1.02; letter-spacing: -0.02em; color: var(--ink); }
@@ -299,7 +299,7 @@
     nav.toc a { display: inline-block; padding: 6px 10px; border-left: none; border-bottom: 2px solid transparent; }
     nav.toc a.active { border-left: none; border-bottom-color: var(--accent); background: transparent; }
     main { padding: 24px 0 0; }
-    #archive { padding: 0 0 100px; }
+    #archive { padding: 0 0 100px; scroll-margin-top: 72px; }
     header.head h1 { font-size: 38px; }
     .bullbear { grid-template-columns: 1fr; }
   }
@@ -1035,8 +1035,12 @@
 
   // Sticky nav active-section
   const tocLinks = document.querySelectorAll('nav.toc a');
-  const sections = document.querySelectorAll('main section, #archive');
+  function navSections() {
+    return document.querySelectorAll('main section, #archive');
+  }
   function onScroll() {
+    const sections = navSections();
+    if (!sections.length) return;
     let cur = sections[0].id;
     for (const s of sections) {
       if (s.getBoundingClientRect().top < 120) cur = s.id;
@@ -1045,6 +1049,14 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+  document.querySelector('nav.toc a[href="#archive"]')?.addEventListener('click', function(e) {
+    const target = document.getElementById('archive');
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', '#archive');
+    onScroll();
+  });
 
   // Bull/Bear toggle
   document.querySelectorAll('.narrative').forEach(n => {
@@ -1419,7 +1431,32 @@
   // ARCHIVE — built from docs/archive/manifest.json
   // ============================================================
   (function() {
-    var mount = document.getElementById('archive-mount');
+    function sitePath(rel) {
+      var path = window.location.pathname || '/';
+      if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
+      else if (!path.endsWith('/')) path += '/';
+      return path + String(rel || '').replace(/^\//, '');
+    }
+
+    function ensureArchiveSection() {
+      var mount = document.getElementById('archive-mount');
+      if (mount) return mount;
+      var section = document.createElement('section');
+      section.id = 'archive';
+      section.innerHTML = '<h2>Archive</h2>'
+        + '<p style="font-size:14px;color:var(--muted);margin:0 0 14px;">Prior digests are frozen at publish time. Today&apos;s edition is the live page.</p>'
+        + '<div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive\u2026</p></div>';
+      var content = document.querySelector('.content');
+      if (content) content.appendChild(section);
+      else {
+        var mainEl = document.querySelector('main');
+        if (mainEl) mainEl.insertAdjacentElement('afterend', section);
+        else document.body.appendChild(section);
+      }
+      return document.getElementById('archive-mount');
+    }
+
+    var mount = ensureArchiveSection();
     if (!mount) return;
     var todayIso = null;
     var h1 = document.querySelector('header.head h1');
@@ -1430,7 +1467,7 @@
         todayIso = m[4] + '-' + (months[m[2]] || '01') + '-' + String(m[3]).padStart(2, '0');
       }
     }
-    fetch('archive/manifest.json', { cache: 'no-store' })
+    fetch(sitePath('archive/manifest.json'), { cache: 'no-store' })
       .then(function(r) { return r.ok ? r.json() : []; })
       .catch(function() { return []; })
       .then(function(entries) {
@@ -1444,7 +1481,8 @@
           var d = new Date(e.date + 'T12:00:00');
           var label = e.weekday + ' ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
           var title = e.summary ? e.summary.slice(0, 120) : (e.h1 || e.date);
-          html += '<a class="arch-item" href="' + e.url + '" style="display:block;border-top:1px solid var(--rule-soft);padding:14px 0;text-decoration:none;color:inherit;">'
+          var href = sitePath(e.url || '');
+          html += '<a class="arch-item" href="' + href + '" style="display:block;border-top:1px solid var(--rule-soft);padding:14px 0;text-decoration:none;color:inherit;">'
             + '<span class="arch-date" style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">' + label + '</span>'
             + '<span class="arch-title" style="display:block;font-family:Fraunces,serif;font-size:17px;font-weight:600;color:var(--accent);margin-top:4px;">' + (e.h1 || e.date) + '</span>'
             + '<span class="arch-item-summary" style="display:block;margin-top:4px;">' + title + '</span>'
@@ -1457,6 +1495,7 @@
             + '<span style="font-size:13px;color:var(--muted);">You are reading today&apos;s live edition.</span></div>' + html;
         }
         mount.innerHTML = html;
+        if (typeof onScroll === 'function') onScroll();
       });
   })();
 
