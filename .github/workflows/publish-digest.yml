@@ -63,6 +63,14 @@ jobs:
             exit 0
           fi
 
+          if ! python3 scripts/digest_stale.py; then
+            echo "Digest is stale; running catch-up publish"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            echo "static=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           if echo "$CHANGED" | grep -qE '(^| )(docs/|\.github/workflows/publish-digest\.yml)'; then
             echo "Static site or publish workflow change — validate and deploy Pages"
             echo "run=true" >> "$GITHUB_OUTPUT"
@@ -71,17 +79,10 @@ jobs:
             exit 0
           fi
 
-          if python3 scripts/digest_stale.py; then
-            echo "Digest is current; skipping pipeline for this push"
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "stale=false" >> "$GITHUB_OUTPUT"
-            echo "static=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "Digest is stale; running catch-up publish"
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "stale=true" >> "$GITHUB_OUTPUT"
-            echo "static=false" >> "$GITHUB_OUTPUT"
-          fi
+          echo "Digest is current; skipping pipeline for this push"
+          echo "run=false" >> "$GITHUB_OUTPUT"
+          echo "stale=false" >> "$GITHUB_OUTPUT"
+          echo "static=false" >> "$GITHUB_OUTPUT"
 
   build:
     needs: plan
