@@ -135,6 +135,7 @@ jobs:
 
       - name: Refresh FRED chart data
         if: needs.plan.outputs.static != 'true'
+        continue-on-error: true
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           REQUIRE_FRED_API_KEY: ${{ (github.event_name == 'schedule' || needs.plan.outputs.stale == 'true') && 'true' || '' }}

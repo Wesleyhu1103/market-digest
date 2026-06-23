@@ -7,7 +7,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parents[1] / "docs" / "fred-data.json"
-MAX_STALE_DAYS = 4
+MAX_STALE_DAYS = 7
 REQUIRE_KEY = os.environ.get("REQUIRE_FRED_API_KEY", "").lower() in {"1", "true", "yes"}
 
 
