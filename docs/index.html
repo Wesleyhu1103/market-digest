@@ -1529,9 +1529,14 @@
     'use strict';
 
     var YF_BASE = 'https://query1.finance.yahoo.com/v8/finance/chart/';
+    // Our own cached Yahoo proxy (Vercel serverless fn) is tried first; it's far
+    // more reliable than the public proxies and edge-caches quotes for ~30s. The
+    // public proxies remain as automatic fallback if our endpoint ever fails.
+    var VERCEL_API = 'https://market-digest-liart.vercel.app';
     // Multiple public CORS proxies. Tried in order per request; a healthy one is
     // remembered so we don't burn attempts on a dead proxy every cycle.
     var PROXY_BUILDERS = [
+      function(u) { return VERCEL_API + '/api/quote?url=' + encodeURIComponent(u); },
       function(u) { return 'https://corsproxy.io/?url=' + encodeURIComponent(u); },
       function(u) { return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u); },
       function(u) { return 'https://thingproxy.freeboard.io/fetch/' + u; },
