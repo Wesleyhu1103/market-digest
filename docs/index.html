@@ -1115,6 +1115,26 @@
 </div>
 
 <script>
+  // Best-effort POST to our Vercel API to persist reader engagement (feedback,
+  // quiz answers, verdict notes) in Supabase. Same-origin when served from
+  // Vercel; absolute cross-origin URL when viewed on GitHub Pages. Fire-and-
+  // forget: it never blocks or breaks the UI if the network/endpoint is down.
+  function mdApiUrl(path) {
+    return /\.github\.io$/i.test(location.hostname)
+      ? 'https://market-digest-git-main-wesley-hu-s-projects.vercel.app' + path
+      : path;
+  }
+  function mdPost(path, body) {
+    try {
+      fetch(mdApiUrl(path), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+        keepalive: true,
+      }).catch(function () {});
+    } catch (_) {}
+  }
+
   // Repair agent-generated <main> markup before binding event listeners
   function repairMainDOM() {
     const main = document.querySelector('main');
@@ -1251,19 +1271,21 @@
   });
 
   // Quiz (case-insensitive; accepts data-opt or mistaken data-val on .opt only)
-  document.querySelectorAll('.quiz .q').forEach(q => {
+  document.querySelectorAll('.quiz .q').forEach((q, qi) => {
     const correct = String(q.dataset.correct || '').toLowerCase();
     q.querySelectorAll('.opt').forEach(opt => {
       opt.addEventListener('click', () => {
         if (q.classList.contains('answered')) return;
         q.classList.add('answered');
         const pick = String(opt.dataset.opt || opt.dataset.val || '').toLowerCase();
-        if (pick && pick === correct) opt.classList.add('correct');
+        const isRight = !!pick && pick === correct;
+        if (isRight) opt.classList.add('correct');
         else {
           opt.classList.add('wrong');
           const right = q.querySelector('.opt[data-opt="' + correct + '"], .opt[data-val="' + correct + '"]');
           if (right) right.classList.add('correct');
         }
+        mdPost('/api/quiz', { date: '2026-06-25', questionIndex: qi, picked: pick, correct: correct, isCorrect: isRight });
       });
     });
   });
@@ -1296,6 +1318,7 @@
     e.preventDefault();
     const data = gatherFeedback();
     try { localStorage.setItem('marketDigest_feedback_2026-06-25', JSON.stringify(data)); } catch(_) {}
+    mdPost('/api/feedback', data);
     document.getElementById('fb-success').style.display = 'block';
     return false;
   }
@@ -2296,6 +2319,7 @@
     const log = JSON.parse(localStorage.getItem('verdictFeedback') || '[]');
     log.push({ ts: new Date().toISOString(), date: '2026-06-25', text: txt });
     localStorage.setItem('verdictFeedback', JSON.stringify(log));
+    mdPost('/api/verdict-note', { date: '2026-06-25', note: txt });
     document.getElementById('verdictFb').value = '';
     const sav = document.getElementById('vfSaved');
     if (sav) { sav.style.display = 'inline'; setTimeout(() => sav.style.display = 'none', 2200); }
