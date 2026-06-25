@@ -30,11 +30,15 @@ scripts/
 
 ## Daily publish sequence
 
-**Fully automated (default):** the `Publish digest` workflow's weekday cron
-(7:30am ET) runs `scripts/generate_digest.py` on GitHub's servers — fetches
-the RSS feeds, calls the Claude API (`ANTHROPIC_API_KEY` repo secret) to
-rewrite `<main>` from the current template, then archives the prior day,
-repairs, splices, validates, refreshes FRED, commits, and deploys Pages.
+**Fully automated (default):** the **Digest watchdog** polls every 15 minutes
+during weekday mornings (US/Eastern) and dispatches **Publish digest** whenever
+`docs/index.html` is still behind today's date. The publish workflow also has
+direct cron backups (~7:30am and ~10:30am ET). GitHub's cron runner queue is
+often delayed 1–2 hours at peak load; the watchdog is the reliable safety net.
+On publish, Actions runs `scripts/generate_digest.py` — fetches the RSS feeds,
+calls the Claude API (`ANTHROPIC_API_KEY` repo secret) to rewrite `<main>` from
+the current template, then archives the prior day, repairs, splices, validates,
+refreshes FRED, commits, and deploys Pages.
 No local machine or Claude session needed. Reddit sentiment is estimated
 from headlines and labeled as such; Gmail newsletters are not available in
 automated runs (historically ~2% of content).

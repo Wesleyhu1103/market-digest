@@ -11,7 +11,8 @@ Daily market newsletter hosted at [wesleyhu1103.github.io/market-digest](https:/
 | `docs/fred-data.json` | Macro chart data refreshed by `scripts/update_fred.py` |
 | `incoming/new-main.html` | Drop zone for daily `<main>` content (consumed by Actions) |
 | `scripts/` | Publish, repair, validate, and FRED refresh utilities |
-| `.github/workflows/publish-digest.yml` | Daily cron + deploy pipeline |
+| `.github/workflows/publish-digest.yml` | Generate, validate, commit, deploy pipeline |
+| `.github/workflows/digest-watchdog.yml` | Morning stale-check; triggers publish when cron is delayed |
 
 ## Local development
 
@@ -24,11 +25,19 @@ See `docs/AGENT_HANDOFF.md` for HTML contracts and the publish flow. See `AGENTS
 
 ## Auto-update troubleshooting
 
-The weekday cron publishes ~7:30am US/Eastern. If the site looks stale:
+The weekday publish window targets **~7:30am US/Eastern**, but GitHub's shared
+cron runners are often delayed 1–2 hours at peak load. Two workflows cover this:
+
+| Workflow | Role |
+|----------|------|
+| **Digest watchdog** | Every 15 min (7–11am ET weekdays); triggers publish only while stale |
+| **Publish digest** | Generates, validates, commits, and deploys |
+
+If the site looks stale after 10am ET:
 
 1. **GitHub → Actions → Publish digest → Run workflow** (manual catch-up).
 2. Confirm repo secret **`ANTHROPIC_API_KEY`** exists (Settings → Secrets → Actions).
-3. **`FRED_API_KEY`** (recommended) for fresh macro charts; scheduled publishes fail if macro data stays stale.
-4. After any push to `main`, the workflow auto-runs if `docs/index.html` is behind today's date.
+3. **`FRED_API_KEY`** (recommended) for fresh macro charts.
+4. Any push to `main` while `docs/index.html` is behind today's date also auto-runs publish.
 
 Both [GitHub Pages](https://wesleyhu1103.github.io/market-digest) and Vercel redeploy on every `main` push.

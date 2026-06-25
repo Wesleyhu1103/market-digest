@@ -1,0 +1,66 @@
+name: Digest watchdog
+
+# GitHub's built-in cron is often delayed 1–2 hours during peak load.
+# This lightweight job polls every 15 minutes during the weekday publish
+# window (US/Eastern morning) and triggers the full publish pipeline only
+# while docs/index.html is still behind today's date.
+on:
+  schedule:
+    # 11:00–15:00 UTC Mon–Fri ≈ 7:00–11:00am ET (covers EDT and EST)
+    - cron: "0 11 * * 1-5"
+    - cron: "15 11 * * 1-5"
+    - cron: "30 11 * * 1-5"
+    - cron: "45 11 * * 1-5"
+    - cron: "0 12 * * 1-5"
+    - cron: "15 12 * * 1-5"
+    - cron: "30 12 * * 1-5"
+    - cron: "45 12 * * 1-5"
+    - cron: "0 13 * * 1-5"
+    - cron: "15 13 * * 1-5"
+    - cron: "30 13 * * 1-5"
+    - cron: "45 13 * * 1-5"
+    - cron: "0 14 * * 1-5"
+    - cron: "15 14 * * 1-5"
+    - cron: "30 14 * * 1-5"
+    - cron: "45 14 * * 1-5"
+    - cron: "0 15 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: digest-watchdog
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Trigger publish if digest is stale
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if python3 scripts/digest_stale.py; then
+            echo "Digest is current; nothing to do."
+            exit 0
+          fi
+
+          RUNNING="$(gh run list --repo "${{ github.repository }}" \
+            --workflow publish-digest.yml --status in_progress --json databaseId \
+            --jq 'length')"
+          if [ "$RUNNING" != "0" ]; then
+            echo "Publish digest already in progress; skipping duplicate trigger."
+            exit 0
+          fi
+
+          echo "Digest is stale; dispatching Publish digest workflow."
+          gh workflow run publish-digest.yml --repo "${{ github.repository }}" --ref main

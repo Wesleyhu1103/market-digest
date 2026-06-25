@@ -3,14 +3,17 @@ name: Publish digest
 # Triggers:
 #  - push of incoming/new-main.html (agent upload)
 #  - push to main when the live digest date is behind today (catches missed cron / bad merges)
-#  - weekday cron (primary + backup)
+#  - weekday cron (primary + backup; skipped when digest is already current)
+#  - digest-watchdog.yml dispatches this workflow when stale during the morning window
 #  - manual dispatch
 on:
   push:
     branches: [main]
   schedule:
-    - cron: "30 11 * * 1-5" # 7:30am ET weekdays
-    - cron: "30 14 * * 1-5" # 10:30am ET backup
+    - cron: "30 11 * * 1-5" # ~7:30am ET weekdays (GitHub cron runs in UTC; often delayed)
+    - cron: "30 12 * * 1-5" # ~8:30am ET during EST (Nov–Mar)
+    - cron: "30 14 * * 1-5" # ~10:30am ET backup (EDT)
+    - cron: "30 15 * * 1-5" # ~10:30am ET backup (EST)
   workflow_dispatch:
 
 permissions:
@@ -43,7 +46,7 @@ jobs:
         id: decide
         run: |
           EVENT="${{ github.event_name }}"
-          if [ "$EVENT" = "workflow_dispatch" ] || [ "$EVENT" = "schedule" ]; then
+          if [ "$EVENT" = "workflow_dispatch" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
             echo "static=false" >> "$GITHUB_OUTPUT"
             if python3 scripts/digest_stale.py; then
@@ -51,6 +54,20 @@ jobs:
             else
               echo "stale=true" >> "$GITHUB_OUTPUT"
             fi
+            exit 0
+          fi
+
+          if [ "$EVENT" = "schedule" ]; then
+            echo "static=false" >> "$GITHUB_OUTPUT"
+            if python3 scripts/digest_stale.py; then
+              echo "Digest already current; skipping scheduled publish"
+              echo "run=false" >> "$GITHUB_OUTPUT"
+              echo "stale=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Digest stale; running scheduled publish"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "stale=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
