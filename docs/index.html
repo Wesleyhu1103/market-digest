@@ -19,6 +19,13 @@
     'use strict';
     var BASE = 'https://query1.finance.yahoo.com/v8/finance/chart/';
     var PROXIES = [
+      // Our own cached Yahoo proxy first (reliable); same-origin on Vercel,
+      // absolute public production domain when viewed on GitHub Pages. The
+      // public proxies below remain as automatic fallback.
+      function (u) {
+        var base = /\.github\.io$/i.test(location.hostname) ? 'https://market-digest-liart.vercel.app' : '';
+        return base + '/api/quote?url=' + encodeURIComponent(u);
+      },
       function (u) { return 'https://corsproxy.io/?url=' + encodeURIComponent(u); },
       function (u) { return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u); },
       function (u) { return 'https://thingproxy.freeboard.io/fetch/' + u; },
