@@ -1530,13 +1530,22 @@
 
     var YF_BASE = 'https://query1.finance.yahoo.com/v8/finance/chart/';
     // Our own cached Yahoo proxy (Vercel serverless fn) is tried first; it's far
-    // more reliable than the public proxies and edge-caches quotes for ~30s. The
-    // public proxies remain as automatic fallback if our endpoint ever fails.
-    var VERCEL_API = 'https://market-digest-liart.vercel.app';
-    // Multiple public CORS proxies. Tried in order per request; a healthy one is
-    // remembered so we don't burn attempts on a dead proxy every cycle.
+    // more reliable than the public proxies and edge-caches quotes for ~30s.
+    // Canonical dynamic origin: the Vercel deployment tracking main in the
+    // wesley-hu-s-projects account (the live "git-main" alias). It's used as the
+    // cross-origin API base only when the page is viewed on GitHub Pages; when
+    // the page is served from Vercel itself, the call stays same-origin.
+    var VERCEL_API = 'https://market-digest-git-main-wesley-hu-s-projects.vercel.app';
+    function quoteEndpoint(u) {
+      var enc = encodeURIComponent(u);
+      if (/\.github\.io$/i.test(location.hostname)) return VERCEL_API + '/api/quote?url=' + enc;
+      return '/api/quote?url=' + enc;
+    }
+    // Public CORS proxies remain as automatic fallback if our endpoint fails.
+    // Tried in order per request; a healthy one is remembered so we don't burn
+    // attempts on a dead proxy every cycle.
     var PROXY_BUILDERS = [
-      function(u) { return VERCEL_API + '/api/quote?url=' + encodeURIComponent(u); },
+      quoteEndpoint,
       function(u) { return 'https://corsproxy.io/?url=' + encodeURIComponent(u); },
       function(u) { return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u); },
       function(u) { return 'https://thingproxy.freeboard.io/fetch/' + u; },
