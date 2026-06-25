@@ -7,13 +7,16 @@
 //
 // Files prefixed with "_" are not exposed as routes by Vercel.
 
-// Defaults are safe to commit: the URL is public and the key is a Supabase
-// *publishable* key, designed for public clients and limited by RLS to
-// INSERT-only on these three tables. Set the env vars to rotate without a code
-// change.
+// Defaults are safe to commit: the URL is public and the key is the Supabase
+// "anon" key, designed for public clients and limited by RLS to INSERT-only on
+// these three tables. We use the legacy anon JWT (not the sb_publishable_ key)
+// because PostgREST derives the role from the JWT claims in the Authorization
+// header; a non-JWT publishable key fails role resolution there. Set the env
+// vars to rotate without a code change.
 const SUPABASE_URL = process.env.SUPABASE_URL || "https://conjziylfpvuuwkmcqsh.supabase.co";
 const SUPABASE_KEY =
-  process.env.SUPABASE_ANON_KEY || "sb_publishable_2e_sq3nOiZU-_8LGr-uElA_Kit47sAG";
+  process.env.SUPABASE_ANON_KEY ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvbmp6aXlsZnB2dXV3a21jcXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5MDQ3ODcsImV4cCI6MjA5NTQ4MDc4N30.00izKhnYOro7A8VoGTj47zkCWntIJ62Uynpg48id_4I";
 
 export function cors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -54,6 +57,9 @@ export async function insert(table, row) {
   });
   if (!r.ok) {
     const t = await r.text().catch(() => "");
-    throw new Error(`supabase ${r.status}: ${t.slice(0, 200)}`);
+    // Surface the real reason in Vercel runtime logs (the handler only returns a
+    // generic 502 to the client).
+    console.error(`supabase insert failed [${table}] ${r.status}: ${t.slice(0, 300)}`);
+    throw new Error(`supabase ${r.status}`);
   }
 }
