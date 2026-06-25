@@ -1323,6 +1323,10 @@
     return false;
   }
 
+  // Bind the submit handler. Without this the form did a native GET submission
+  // (dumping the fields into the URL), so nothing was ever saved.
+  document.getElementById('fb-form')?.addEventListener('submit', submitFeedback);
+
 
   // Charts — initialized after layout so container heights are non-zero
   async function _initAllCharts() {
