@@ -1,0 +1,56 @@
+name: Sync agent branch to main
+
+# v0 and Claude Code push to v0/* or claude/* branches on GitHub.
+# Merging to main is what triggers Vercel + GitHub Pages deploys.
+# This workflow validates and merges automatically so you don't have to
+# click "Create PR" manually every time.
+on:
+  push:
+    branches:
+      - "v0/**"
+      - "claude/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-agent-to-main
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Merge agent branch into main
+        run: |
+          set -euo pipefail
+          BRANCH="${{ github.ref_name }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH"
+          if git merge --no-edit "origin/$BRANCH"; then
+            echo "Merged origin/$BRANCH into main"
+          else
+            echo "::error::Merge conflict with main — open a PR on GitHub and resolve manually"
+            git merge --abort
+            exit 1
+          fi
+
+      - name: Validate digest
+        run: python3 scripts/validate_digest.py docs/index.html
+
+      - name: Push main (triggers Pages + Vercel deploy)
+        run: git push origin main

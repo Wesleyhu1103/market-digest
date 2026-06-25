@@ -40,4 +40,8 @@ If the site looks stale after 10am ET:
 3. **`FRED_API_KEY`** (recommended) for fresh macro charts.
 4. Any push to `main` while `docs/index.html` is behind today's date also auto-runs publish.
 
-Both [GitHub Pages](https://wesleyhu1103.github.io/market-digest) and Vercel redeploy on every `main` push.
+Both [GitHub Pages](https://wesleyhu1103.github.io/market-digest) and [Vercel](https://market-digest-liart.vercel.app) redeploy on every `main` push.
+
+### v0 / Claude Code → live site
+
+Edits from **v0** or **Claude Code** land on `v0/*` or `claude/*` branches. They are **not** live until merged to `main`. The **Sync agent branch to main** workflow auto-merges those branches after validation passes, which triggers deploy. If a merge conflicts with `main`, open a PR on GitHub and resolve manually.
