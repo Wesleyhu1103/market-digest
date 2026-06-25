@@ -71,7 +71,13 @@ jobs:
             exit 0
           fi
 
-          CHANGED="$(git diff-tree --no-commit-id --name-only -r HEAD | tr '\n' ' ')"
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+          if [ "$EVENT" = "push" ] && [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            CHANGED="$(git diff --name-only "$BEFORE" "$AFTER" | tr '\n' ' ')"
+          else
+            CHANGED="$(git diff-tree --no-commit-id --name-only -r HEAD | tr '\n' ' ')"
+          fi
           echo "changed: $CHANGED"
           if echo "$CHANGED" | grep -q 'incoming/'; then
             echo "run=true" >> "$GITHUB_OUTPUT"
@@ -88,7 +94,7 @@ jobs:
             exit 0
           fi
 
-          if echo "$CHANGED" | grep -qE '(^| )(docs/|\.github/workflows/publish-digest\.yml)'; then
+          if echo "$CHANGED" | grep -qE '(^| )(docs/|\.github/workflows/publish-digest\.yml|\.github/workflows/sync-agent-branches\.yml)'; then
             echo "Static site or publish workflow change — validate and deploy Pages"
             echo "run=true" >> "$GITHUB_OUTPUT"
             echo "stale=false" >> "$GITHUB_OUTPUT"
