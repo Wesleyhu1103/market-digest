@@ -518,6 +518,60 @@
     .tl-drawer { width: 100vw; padding: 22px 20px 50px; }
     .tl-drawer-head h2 { font-size: 23px; }
   }
+
+  /* ============================================================
+     INTERACTIVE ARTIFACTS — Live Market Chart + Framing Compare
+     JS-injected into #equities and #narratives (see init scripts).
+     ============================================================ */
+  .mkt-card { border: 1px solid var(--rule); background: var(--surface); border-radius: 4px; margin: 4px 0 26px; max-width: 980px; }
+  .mkt-head { display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid var(--rule); padding: 16px 18px; }
+  @media (min-width: 640px) { .mkt-head { flex-direction: row; align-items: flex-start; justify-content: space-between; } }
+  .mkt-title-row { display: flex; align-items: center; gap: 8px; }
+  .mkt-title { font-family: "Fraunces", "Newsreader", serif; font-weight: 600; font-size: 21px; line-height: 1; color: var(--ink); margin: 0; }
+  .mkt-dot { display: inline-flex; height: 7px; width: 7px; border-radius: 50%; background: var(--muted); }
+  .mkt-dot.live { background: var(--bull); animation: mktPulse 1.6s ease-in-out infinite; }
+  @keyframes mktPulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+  .mkt-price-row { display: flex; align-items: baseline; gap: 8px; margin-top: 7px; }
+  .mkt-price { font-family: "JetBrains Mono", monospace; font-size: 26px; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .mkt-change { font-family: "JetBrains Mono", monospace; font-size: 13px; font-variant-numeric: tabular-nums; }
+  .mkt-change.up { color: var(--bull); }
+  .mkt-change.down { color: var(--bear); }
+  .mkt-syms { display: flex; flex-wrap: wrap; gap: 4px; }
+  .mkt-syms button, .mkt-ranges button {
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    border: none; background: transparent; color: var(--muted); padding: 4px 8px; cursor: pointer; border-radius: 2px; transition: all .12s;
+  }
+  .mkt-syms button:hover, .mkt-ranges button:hover { color: var(--ink); }
+  .mkt-syms button.active { background: var(--ink); color: var(--bg); }
+  .mkt-ranges button.active { background: var(--accent-soft); color: var(--accent); }
+  .mkt-body { padding: 16px 18px; }
+  .mkt-chart-wrap { position: relative; height: 260px; width: 100%; }
+  .mkt-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+  .mkt-ranges { display: flex; gap: 4px; }
+  .mkt-source { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .mkt-error { display: flex; height: 260px; align-items: center; justify-content: center; font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--bear); }
+
+  .frame-card { border: 1px solid var(--rule); background: var(--surface); border-radius: 4px; margin: 24px 0 8px; max-width: 980px; overflow: hidden; }
+  .frame-head { border-bottom: 1px solid var(--rule); padding: 16px 20px; }
+  .frame-kicker { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .frame-story { font-family: "Fraunces", "Newsreader", serif; font-weight: 600; font-size: 21px; line-height: 1.2; color: var(--ink); margin: 6px 0 0; }
+  .frame-tabs { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule); }
+  .frame-tabs button {
+    flex: 1 1 auto; min-width: 84px; font-family: "JetBrains Mono", monospace; font-size: 12px; border: none; cursor: pointer;
+    background: var(--surface); color: var(--muted); padding: 10px 8px; transition: all .12s;
+  }
+  .frame-tabs button:hover { color: var(--ink); }
+  .frame-tabs button.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .frame-body { padding: 22px 20px; }
+  .frame-outlet { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  .frame-headline { font-family: "Fraunces", "Newsreader", serif; font-weight: 600; font-size: 25px; line-height: 1.3; color: var(--ink); margin: 4px 0 0; text-wrap: balance; }
+  .frame-angle { font-size: 15px; color: var(--muted); line-height: 1.5; margin: 12px 0 0; max-width: none; }
+  .frame-pull { border-left: 2px solid var(--accent); padding-left: 14px; margin: 16px 0 0; font-family: "Newsreader", serif; font-style: italic; font-size: 17px; color: var(--ink); }
+  .frame-scale { margin-top: 24px; }
+  .frame-scale-labels { display: flex; align-items: center; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .frame-scale-labels .lean { color: var(--accent); }
+  .frame-track { position: relative; height: 6px; border-radius: 999px; background: var(--rule-soft); margin-top: 8px; }
+  .frame-marker { position: absolute; top: 50%; height: 16px; width: 16px; border-radius: 50%; border: 2px solid var(--bg); background: var(--accent); transform: translate(-50%, -50%); transition: left .3s ease; }
 </style>
 </head>
 <body>
@@ -1459,7 +1513,7 @@
     }));
   }
 
-  // ── 5. Deal sizes ───────────────────────────────────────────────────────
+  // ── 5. Deal sizes ────────────────────────────────���──────────────────────
   if (document.getElementById('dealSizes') && cd.dealSizes) {
     const d = cd.dealSizes;
     window.allCharts.push(new Chart(document.getElementById('dealSizes'), {
@@ -1619,6 +1673,286 @@
         mount.innerHTML = html;
         if (typeof onScroll === 'function') onScroll();
       });
+  })();
+
+  // ============================================================
+  // INTERACTIVE ARTIFACT 1 — LIVE MARKET CHART
+  // Self-mounts into #equities. Reuses window.MarketFeed (Yahoo via
+  // CORS proxies) + Chart.js. Lives in the static template, so it
+  // survives daily <main> regeneration automatically.
+  // ============================================================
+  (function() {
+    'use strict';
+    if (!window.MarketFeed || typeof Chart === 'undefined') return;
+    var section = document.getElementById('equities');
+    if (!section || section.querySelector('.mkt-card')) return;
+
+    var SYMBOLS = [
+      { sym: '^GSPC', label: 'S&P 500', source: 'S&P Dow Jones Indices' },
+      { sym: '^IXIC', label: 'Nasdaq', source: 'Nasdaq' },
+      { sym: '^DJI',  label: 'Dow Jones', source: 'S&P Dow Jones Indices' },
+      { sym: '^TNX',  label: '10-Yr Yield', source: 'Cboe / U.S. Treasury' }
+    ];
+    var RANGES = [
+      { key: '1d', label: '1D', range: '1d',  interval: '5m' },
+      { key: '1w', label: '1W', range: '5d',  interval: '30m' },
+      { key: '1m', label: '1M', range: '1mo', interval: '1d' },
+      { key: '1y', label: '1Y', range: '1y',  interval: '1d' }
+    ];
+
+    var state = { sym: '^GSPC', range: '1d' };
+    var chart = null;
+    var pollTimer = null;
+    var reqToken = 0;
+
+    function tc() {
+      var s = getComputedStyle(document.documentElement);
+      return {
+        ink:   s.getPropertyValue('--ink').trim()   || '#1f1d1a',
+        muted: s.getPropertyValue('--muted').trim() || '#6b665d',
+        rule:  s.getPropertyValue('--rule').trim()  || '#d8cdb8',
+        bull:  s.getPropertyValue('--bull').trim()  || '#166534',
+        bear:  s.getPropertyValue('--bear').trim()  || '#991b1b',
+        surface: s.getPropertyValue('--surface').trim() || '#fbf6ec',
+        bg:    s.getPropertyValue('--bg').trim()    || '#f4ede0'
+      };
+    }
+    function fmt(v) { return Number(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+    function rangeMeta() { for (var i = 0; i < RANGES.length; i++) if (RANGES[i].key === state.range) return RANGES[i]; return RANGES[0]; }
+    function symMeta() { for (var i = 0; i < SYMBOLS.length; i++) if (SYMBOLS[i].sym === state.sym) return SYMBOLS[i]; return SYMBOLS[0]; }
+    function tickLabel(t) {
+      var d = new Date(t);
+      if (state.range === '1d') return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      if (state.range === '1w') return d.toLocaleDateString('en-US', { weekday: 'short' });
+      if (state.range === '1m') return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      return d.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+    }
+
+    // Build DOM
+    var card = document.createElement('div');
+    card.className = 'mkt-card';
+    card.innerHTML =
+      '<div class="mkt-head">'
+      + '<div>'
+      +   '<div class="mkt-title-row"><h3 class="mkt-title" data-el="title">Loading\u2026</h3><span class="mkt-dot" data-el="dot"></span></div>'
+      +   '<div class="mkt-price-row"><span class="mkt-price" data-el="price">\u2014</span><span class="mkt-change" data-el="change"></span></div>'
+      + '</div>'
+      + '<div class="mkt-syms" data-el="syms"></div>'
+      + '</div>'
+      + '<div class="mkt-body">'
+      +   '<div class="mkt-chart-wrap" data-el="chartWrap"><canvas data-el="canvas"></canvas></div>'
+      +   '<div class="mkt-foot"><div class="mkt-ranges" data-el="ranges"></div><span class="mkt-source" data-el="source"></span></div>'
+      + '</div>';
+
+    function q(sel) { return card.querySelector('[data-el="' + sel + '"]'); }
+
+    SYMBOLS.forEach(function(s) {
+      var b = document.createElement('button');
+      b.textContent = s.label;
+      b.className = s.sym === state.sym ? 'active' : '';
+      b.addEventListener('click', function() {
+        if (state.sym === s.sym) return;
+        state.sym = s.sym;
+        syncToggles();
+        load();
+      });
+      q('syms').appendChild(b);
+    });
+    RANGES.forEach(function(r) {
+      var b = document.createElement('button');
+      b.textContent = r.label;
+      b.className = r.key === state.range ? 'active' : '';
+      b.addEventListener('click', function() {
+        if (state.range === r.key) return;
+        state.range = r.key;
+        syncToggles();
+        load();
+      });
+      q('ranges').appendChild(b);
+    });
+    function syncToggles() {
+      var sb = q('syms').children, rb = q('ranges').children, i;
+      for (i = 0; i < sb.length; i++) sb[i].className = SYMBOLS[i].sym === state.sym ? 'active' : '';
+      for (i = 0; i < rb.length; i++) rb[i].className = RANGES[i].key === state.range ? 'active' : '';
+    }
+
+    // Inject after the section's intro <ul> (keeps the headline list on top)
+    var heading = section.querySelector('h2');
+    if (heading) heading.insertAdjacentElement('afterend', card);
+    else section.insertBefore(card, section.firstChild);
+
+    function render(series, quote) {
+      var t = tc();
+      var up = (quote.price - quote.prevClose) >= 0;
+      var color = up ? t.bull : t.bear;
+      var meta = symMeta();
+
+      q('title').textContent = meta.label;
+      q('price').textContent = fmt(quote.price);
+      var chg = quote.price - quote.prevClose;
+      var pct = quote.prevClose ? (chg / quote.prevClose) * 100 : 0;
+      var chgEl = q('change');
+      chgEl.className = 'mkt-change ' + (up ? 'up' : 'down');
+      chgEl.textContent = (up ? '+' : '') + fmt(chg) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+      var live = window.MarketFeed.sessionPhase && window.MarketFeed.sessionPhase() === 'live';
+      q('dot').className = 'mkt-dot' + (live ? ' live' : '');
+      q('source').textContent = 'Source: ' + meta.source;
+
+      var labels = series.map(function(p) { return tickLabel(p.t); });
+      var values = series.map(function(p) { return p.v; });
+
+      if (chart) {
+        chart.data.labels = labels;
+        chart.data.datasets[0].data = values;
+        chart.data.datasets[0].borderColor = color;
+        chart.data.datasets[0].backgroundColor = color + '24';
+        chart.options.scales.y.suggestedMin = Math.min.apply(null, values);
+        chart.options.scales.y.suggestedMax = Math.max.apply(null, values);
+        chart.update('none');
+        return;
+      }
+      chart = new Chart(q('canvas'), {
+        type: 'line',
+        data: { labels: labels, datasets: [{
+          data: values, borderColor: color, backgroundColor: color + '24',
+          fill: true, tension: 0.18, pointRadius: 0, borderWidth: 1.75,
+          pointHoverRadius: 4, pointHoverBackgroundColor: color, pointHoverBorderColor: t.bg, pointHoverBorderWidth: 1.5
+        }]},
+        options: {
+          animation: false,
+          interaction: { mode: 'index', intersect: false },
+          layout: { padding: { top: 8, right: 8 } },
+          plugins: {
+            legend: { display: false }, datalabels: { display: false },
+            tooltip: { displayColors: false, callbacks: { label: function(ctx) { return fmt(ctx.parsed.y); } } }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: 6, font: { size: 11, family: '"JetBrains Mono", monospace' }, color: t.muted } },
+            y: { position: 'right', grid: { color: t.rule, drawBorder: false }, ticks: { font: { size: 11, family: '"JetBrains Mono", monospace' }, color: t.muted, callback: function(v) { return Math.abs(v) >= 10000 ? (v / 1000).toFixed(1) + 'k' : v; } } }
+          }
+        }
+      });
+      window.allCharts = window.allCharts || [];
+      window.allCharts.push(chart);
+    }
+
+    function load() {
+      var token = ++reqToken;
+      var meta = rangeMeta();
+      var wrap = q('chartWrap');
+      q('source').textContent = 'Syncing\u2026';
+      Promise.all([
+        window.MarketFeed.series(state.sym, meta.range, meta.interval),
+        window.MarketFeed.quote(state.sym)
+      ]).then(function(res) {
+        if (token !== reqToken) return;
+        var series = res[0] || [], quote = res[1] || {};
+        if (!series.length) throw new Error('no series');
+        if (quote.price == null) { quote.price = series[series.length - 1].v; quote.prevClose = series[0].v; }
+        wrap.innerHTML = '<canvas data-el="canvas"></canvas>';
+        chart = null;
+        render(series, quote);
+      }).catch(function(e) {
+        if (token !== reqToken) return;
+        if (chart) { chart.destroy(); chart = null; }
+        wrap.innerHTML = '<div class="mkt-error">Live market data unavailable.</div>';
+        q('source').textContent = '';
+        console.warn('[mkt-chart]', e && e.message);
+      });
+
+      if (pollTimer) clearInterval(pollTimer);
+      pollTimer = setInterval(function() {
+        if (document.hidden) return;
+        window.MarketFeed.quote(state.sym).then(function(quote) {
+          if (!chart || quote.price == null) return;
+          window.MarketFeed.series(state.sym, meta.range, meta.interval).then(function(series) {
+            if (series && series.length) render(series, quote);
+          });
+        }).catch(function() {});
+      }, state.range === '1d' ? 30000 : 60000);
+    }
+
+    load();
+  })();
+
+  // ============================================================
+  // INTERACTIVE ARTIFACT 2 — FRAMING COMPARE
+  // Self-mounts into #narratives. Reads an optional
+  // <script type="application/json" id="framingData"> from <main>
+  // (so the daily pipeline can drive it); otherwise uses a default.
+  // ============================================================
+  (function() {
+    'use strict';
+    var section = document.getElementById('narratives');
+    if (!section || section.querySelector('.frame-card')) return;
+
+    var DEFAULT_DATA = {
+      storyTitle: 'May jobs report comes in below expectations',
+      framings: [
+        { outlet: 'WSJ', headline: 'Hiring Slows, Clearing a Path for the Fed to Cut', angle: 'Frames the miss as healthy normalization that hands the Fed room.', lean: 28, pull: 'A cooler labor market is exactly what policymakers have been waiting for.' },
+        { outlet: 'The Economist', headline: 'America\u2019s labour market is bending, not breaking', angle: 'Measured: cautions against reading one print as a turning point.', lean: 6, pull: 'One soft month is a data point, not yet a trend.' },
+        { outlet: 'NYT', headline: 'Job Growth Cools, and Workers Feel the Squeeze', angle: 'Leads with the human cost and downside risk to households.', lean: -34, pull: 'For job seekers, the slowdown is already painful.' },
+        { outlet: 'CNBC', headline: 'Markets Rally as Weak Jobs Data Fuels Rate-Cut Bets', angle: 'Market-reaction first; bad news for jobs is good news for stocks.', lean: 58, pull: 'Traders cheered the report, sending equities to session highs.' }
+      ]
+    };
+
+    var data = DEFAULT_DATA;
+    var tag = document.getElementById('framingData');
+    if (tag) { try { var parsed = JSON.parse(tag.textContent); if (parsed && parsed.framings && parsed.framings.length) data = parsed; } catch (e) { console.warn('[framing] bad framingData', e); } }
+
+    function leanLabel(l) {
+      if (l > 25) return 'Optimistic';
+      if (l > 5) return 'Constructive';
+      if (l >= -5) return 'Neutral';
+      if (l >= -25) return 'Cautious';
+      return 'Downbeat';
+    }
+
+    var active = 0;
+    var card = document.createElement('div');
+    card.className = 'frame-card';
+    card.innerHTML =
+      '<div class="frame-head">'
+      +   '<span class="frame-kicker">One story, ' + data.framings.length + ' desks</span>'
+      +   '<h3 class="frame-story"></h3>'
+      + '</div>'
+      + '<div class="frame-tabs" data-el="tabs"></div>'
+      + '<div class="frame-body">'
+      +   '<p class="frame-outlet" data-el="outlet"></p>'
+      +   '<p class="frame-headline" data-el="headline"></p>'
+      +   '<p class="frame-angle" data-el="angle"></p>'
+      +   '<blockquote class="frame-pull" data-el="pull"></blockquote>'
+      +   '<div class="frame-scale">'
+      +     '<div class="frame-scale-labels"><span>Bearish</span><span class="lean" data-el="lean"></span><span>Bullish</span></div>'
+      +     '<div class="frame-track"><span class="frame-marker" data-el="marker"></span></div>'
+      +   '</div>'
+      + '</div>';
+
+    function q(sel) { return card.querySelector('[data-el="' + sel + '"]'); }
+    card.querySelector('.frame-story').textContent = data.storyTitle;
+
+    data.framings.forEach(function(f, i) {
+      var b = document.createElement('button');
+      b.textContent = f.outlet;
+      b.className = i === active ? 'active' : '';
+      b.addEventListener('click', function() { active = i; sync(); });
+      q('tabs').appendChild(b);
+    });
+
+    function sync() {
+      var f = data.framings[active];
+      var tabs = q('tabs').children;
+      for (var i = 0; i < tabs.length; i++) tabs[i].className = i === active ? 'active' : '';
+      q('outlet').textContent = f.outlet + ' headline';
+      q('headline').textContent = '\u201C' + f.headline + '\u201D';
+      q('angle').textContent = f.angle;
+      q('pull').textContent = f.pull;
+      q('lean').textContent = leanLabel(f.lean);
+      q('marker').style.left = (((f.lean + 100) / 200) * 100) + '%';
+    }
+
+    section.appendChild(card);
+    sync();
   })();
 
   // ============================================================
