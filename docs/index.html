@@ -1121,7 +1121,7 @@
   // forget: it never blocks or breaks the UI if the network/endpoint is down.
   function mdApiUrl(path) {
     return /\.github\.io$/i.test(location.hostname)
-      ? 'https://market-digest-git-main-wesley-hu-s-projects.vercel.app' + path
+      ? 'https://market-digest-liart.vercel.app' + path
       : path;
   }
   function mdPost(path, body) {
@@ -1991,11 +1991,12 @@
     var YF_BASE = 'https://query1.finance.yahoo.com/v8/finance/chart/';
     // Our own cached Yahoo proxy (Vercel serverless fn) is tried first; it's far
     // more reliable than the public proxies and edge-caches quotes for ~30s.
-    // Canonical dynamic origin: the Vercel deployment tracking main in the
-    // wesley-hu-s-projects account (the live "git-main" alias). It's used as the
-    // cross-origin API base only when the page is viewed on GitHub Pages; when
-    // the page is served from Vercel itself, the call stays same-origin.
-    var VERCEL_API = 'https://market-digest-git-main-wesley-hu-s-projects.vercel.app';
+    // Canonical dynamic origin: the public Vercel PRODUCTION domain in the
+    // wesley-hu-s-projects account. (Branch aliases like *-git-main-* sit behind
+    // Vercel Authentication and would bounce anonymous readers to an SSO login;
+    // the production domain is public.) Used as the cross-origin API base only
+    // when viewed on GitHub Pages; served from Vercel, the call stays same-origin.
+    var VERCEL_API = 'https://market-digest-liart.vercel.app';
     function quoteEndpoint(u) {
       var enc = encodeURIComponent(u);
       if (/\.github\.io$/i.test(location.hostname)) return VERCEL_API + '/api/quote?url=' + enc;
