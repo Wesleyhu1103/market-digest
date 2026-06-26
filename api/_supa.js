@@ -43,6 +43,18 @@ export function str(v, max) {
   return v == null ? null : String(v).slice(0, max);
 }
 
+// Read-only probe used by /api/health to confirm PostgREST can see a table.
+// A SELECT as anon returns 200 (empty, due to RLS) when the schema cache is
+// healthy, or 404 PGRST205 when the cache is stale.
+export async function probe(table) {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}?limit=1`, {
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+  });
+  let body = "";
+  try { body = await r.text(); } catch (_) {}
+  return { status: r.status, body: body.slice(0, 160) };
+}
+
 export async function insert(table, row) {
   if (!SUPABASE_URL || !SUPABASE_KEY) throw new Error("supabase env not configured");
   const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
