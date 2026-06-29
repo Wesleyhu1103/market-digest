@@ -1,6 +1,6 @@
 // POST /api/verdict-note — saves a reader's post-close verdict note.
 // Body: { date, note }
-import { cors, readJsonBody, str, insert } from "./_supa.js";
+import { cors, readJsonBody, str, insertVerdict } from "./_supa.js";
 
 export default async function handler(req, res) {
   cors(res);
@@ -12,9 +12,10 @@ export default async function handler(req, res) {
   if (!note || !note.trim()) return res.status(400).json({ error: "empty note" });
 
   try {
-    await insert("verdict_notes", { digest_date: str(b.date, 10), note });
+    await insertVerdict({ digest_date: str(b.date, 10), note });
     res.status(204).end();
   } catch (e) {
+    console.error("verdict insert failed:", e && e.message);
     res.status(502).json({ error: "insert failed" });
   }
 }
