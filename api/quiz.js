@@ -1,6 +1,6 @@
 // POST /api/quiz — records one quiz answer.
 // Body: { date, questionIndex, picked, correct, isCorrect }
-import { cors, readJsonBody, str, insert } from "./_supa.js";
+import { cors, readJsonBody, str, insertQuiz } from "./_supa.js";
 
 export default async function handler(req, res) {
   cors(res);
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
   const b = (await readJsonBody(req)) || {};
   try {
-    await insert("quiz_results", {
+    await insertQuiz({
       digest_date: str(b.date, 10),
       question_index: Number.isInteger(b.questionIndex) ? b.questionIndex : null,
       picked: str(b.picked, 8),
@@ -18,6 +18,7 @@ export default async function handler(req, res) {
     });
     res.status(204).end();
   } catch (e) {
+    console.error("quiz insert failed:", e && e.message);
     res.status(502).json({ error: "insert failed" });
   }
 }
