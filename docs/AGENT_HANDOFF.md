@@ -196,22 +196,23 @@ Heights: `techMovers` 320px, `treasuryYields`/`brentChart` 280px, `creditChart`/
 
 ## Section order inside `<main>`
 
-1. `<header class="head">` — kicker, h1 date, meta
-2. `<section id="narratives">` — three `.narrative` divs
-3. `<section id="equities">`
-4. `<section id="tech">` — includes `techMovers` chart
-5. `<section id="macro">` — includes `treasuryYields`, `brentChart`, `creditChart`, `stressChart` canvases
-6. `<section id="verdict" class="verdict-section">` — three narrative-stacks, scoreboard, feedback
-7. `<section id="crypto">`
-8. `<section id="deals">` — includes `dealSizes` chart
-9. `<section id="buyside">`
-10. `<section id="sentiment">` — includes `redditSentiment` chart
-11. `<section id="learn">`
-12. `<section id="ondeck">`
-13. `<section id="sources">`
-14. `<section id="quiz" class="quiz">`
-15. `<section id="feedback">`
-16. `<script type="application/json" id="chartData">...</script>` ← LAST, before `</main>`
+1. `<header class="head">` — kicker, h1 date, meta (2-3 sentences; structural context only — do not repeat `framingData` `storyTitle`)
+2. `<section id="framing">` — `#framing-mount` + `framingData` JSON (One Story, 5 Desks)
+3. `<section id="narratives">` — three `.narrative` divs
+4. `<section id="equities">`
+5. `<section id="tech">` — includes `techMovers` chart
+6. `<section id="macro">` — includes `treasuryYields`, `brentChart`, `creditChart`, `stressChart` canvases
+7. `<section id="verdict" class="verdict-section">` — three narrative-stacks, scoreboard, feedback
+8. `<section id="crypto">`
+9. `<section id="deals">` — includes `dealSizes` chart
+10. `<section id="buyside">`
+11. `<section id="sentiment">` — includes `redditSentiment` chart
+12. `<section id="learn">`
+13. `<section id="ondeck">`
+14. `<section id="sources">`
+15. `<section id="quiz" class="quiz">`
+16. `<section id="feedback">`
+17. `<script type="application/json" id="chartData">...</script>` ← LAST, before `</main>`
 
 ---
 
