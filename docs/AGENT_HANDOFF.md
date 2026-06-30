@@ -201,7 +201,7 @@ Heights: `techMovers` 320px, `treasuryYields`/`brentChart` 280px, `creditChart`/
 
 ### Archive section
 
-**Do NOT include `<section id="archive">` in `<main>`.** The template JS mounts the archive dynamically from `docs/archive/manifest.json` into `<div id="archive-mount">`. The commit script maintains the manifest.
+**Do NOT include `<section id="archive">` in `<main>`.** The template JS mounts the archive dynamically from `docs/archive/manifest.json` into `<div id="archive-mount">`. The commit script maintains the manifest. Prior editions render inside a collapsed `<details class="arch-group">` dropdown; today's live edition shows as a compact `.arch-today` card above it.
 
 ### Verdict stacks
 

@@ -437,12 +437,16 @@
     .bullbear { grid-template-columns: 1fr; }
   }
 
-  /* Archive section — collapsible 5-day groups */
-  .arch-group { border: 1px solid var(--rule); border-radius: 4px; margin: 10px 0; background: var(--surface); }
+  /* Archive section — collapsible prior editions */
+  .arch-today { border: 1px solid var(--accent); border-radius: 4px; padding: 12px 14px; margin-bottom: 12px; background: var(--accent-soft); }
+  .arch-today .arch-date { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .arch-today .arch-title { display: block; font-family: "Fraunces", serif; font-weight: 600; margin-top: 4px; }
+  .arch-today-note { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .arch-group { border: 1px solid var(--rule); border-radius: 4px; margin: 10px 0 0; background: var(--surface); }
   .arch-group summary { cursor: pointer; padding: 14px 18px; list-style: none; font-family: "Inter", sans-serif; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
   .arch-group summary::-webkit-details-marker { display: none; }
-  .arch-group summary::before { content: "\25B8  "; display: inline-block; transition: transform .15s; }
-  .arch-group[open] summary::before { transform: rotate(90deg); }
+  .arch-group summary::after { content: "+"; margin-left: auto; color: var(--muted); font-family: "Inter", sans-serif; font-size: 18px; font-weight: 400; }
+  .arch-group[open] summary::after { content: "−"; }
   .arch-range { flex: 1; color: var(--ink); }
   .arch-count { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
   .arch-list { padding: 0 10px 14px; display: flex; flex-direction: column; gap: 6px; }
@@ -1325,7 +1329,6 @@
 
   <section id="archive">
     <h2>Archive</h2>
-    <p style="font-size:14px;color:var(--muted);margin:0 0 14px;">Prior digests are frozen at publish time. Today&apos;s edition is the live page.</p>
     <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
   </section>
 </div>
@@ -1966,7 +1969,6 @@
       var section = document.createElement('section');
       section.id = 'archive';
       section.innerHTML = '<h2>Archive</h2>'
-        + '<p style="font-size:14px;color:var(--muted);margin:0 0 14px;">Prior digests are frozen at publish time. Today&apos;s edition is the live page.</p>'
         + '<div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive\u2026</p></div>';
       var content = document.querySelector('.content');
       if (content) content.appendChild(section);
@@ -1998,24 +2000,31 @@
           mount.innerHTML = '<p style="font-size:14px;color:var(--muted);">No archived digests yet.</p>';
           return;
         }
+        function fmtShort(iso) {
+          var d = new Date(iso + 'T12:00:00');
+          return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
         var html = '';
+        if (todayIso) {
+          html += '<div class="arch-today">'
+            + '<span class="arch-date">Today</span>'
+            + '<span class="arch-title">' + (h1 ? h1.textContent : 'Live digest') + '</span>'
+            + '<span class="arch-today-note">You are reading today&apos;s live edition.</span></div>';
+        }
+        var list = '';
         entries.forEach(function(e) {
-          var d = new Date(e.date + 'T12:00:00');
-          var label = e.weekday + ' ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
           var title = e.summary ? e.summary.slice(0, 120) : (e.h1 || e.date);
           var href = sitePath(e.url || '');
-          html += '<a class="arch-item" href="' + href + '" style="display:block;border-top:1px solid var(--rule-soft);padding:14px 0;text-decoration:none;color:inherit;">'
-            + '<span class="arch-date" style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">' + label + '</span>'
-            + '<span class="arch-title" style="display:block;font-family:Fraunces,serif;font-size:17px;font-weight:600;color:var(--accent);margin-top:4px;">' + (e.h1 || e.date) + '</span>'
-            + '<span class="arch-item-summary" style="display:block;margin-top:4px;">' + title + '</span>'
+          list += '<a class="arch-item" href="' + href + '">'
+            + '<span class="arch-item-date">' + (e.h1 || e.date) + '</span>'
+            + '<span class="arch-item-summary">' + title + '</span>'
             + '</a>';
         });
-        if (todayIso) {
-          html = '<div class="arch-item" style="border:1px solid var(--accent);border-radius:4px;padding:12px 14px;margin-bottom:12px;background:var(--accent-soft);">'
-            + '<span class="arch-date">Today</span>'
-            + '<span class="arch-title" style="display:block;font-weight:600;">' + (h1 ? h1.textContent : 'Live digest') + '</span>'
-            + '<span style="font-size:13px;color:var(--muted);">You are reading today&apos;s live edition.</span></div>' + html;
-        }
+        var range = fmtShort(entries[entries.length - 1].date) + ' \u2013 ' + fmtShort(entries[0].date);
+        html += '<details class="arch-group">'
+          + '<summary><span class="arch-range">Prior editions \u00b7 ' + range + '</span>'
+          + '<span class="arch-count">' + entries.length + ' issues</span></summary>'
+          + '<div class="arch-list">' + list + '</div></details>';
         mount.innerHTML = html;
         if (typeof onScroll === 'function') onScroll();
       });
