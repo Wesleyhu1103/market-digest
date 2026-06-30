@@ -228,6 +228,10 @@
   header.head .kicker { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 14px; font-weight: 700; }
   header.head h1 { font-family: "Fraunces", "Newsreader", serif; font-weight: 700; font-variation-settings: "opsz" 144; margin: 0 0 18px; font-size: 56px; line-height: 1.02; letter-spacing: -0.02em; color: var(--ink); }
   header.head .meta { font-family: "Newsreader", serif; font-size: 19px; color: var(--muted); line-height: 1.5; max-width: 780px; font-style: italic; }
+  .fresh-chip { color: var(--muted); font-weight: 600; }
+  .fresh-chip.live::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--bull); margin: 0 5px 1px 0; vertical-align: middle; animation: freshPulse 2s ease-in-out infinite; }
+  @keyframes freshPulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+  .stale-banner { max-width: 1080px; margin: 0 0 22px; padding: 11px 16px; background: var(--bear-soft); border: 1px solid var(--bear); border-radius: 4px; font-family: "Inter", sans-serif; font-size: 13px; line-height: 1.45; color: var(--bear); }
   section { margin-bottom: 56px; scroll-margin-top: 24px; }
   section h2 { font-family: "Fraunces", "Newsreader", serif; font-weight: 600; font-variation-settings: "opsz" 72; font-size: 32px; margin: 0 0 6px; line-height: 1.18; letter-spacing: -0.01em; }
   section h3 { font-family: "Fraunces", serif; font-weight: 600; font-variation-settings: "opsz" 36; font-size: 21px; margin: 22px 0 8px; line-height: 1.25; }
@@ -2533,6 +2537,53 @@
     document.getElementById('tlClose') && document.getElementById('tlClose').addEventListener('click', closeDrawer);
     scrim && scrim.addEventListener('click', e => { if (e.target === scrim) closeDrawer(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && scrim && !scrim.hidden) closeDrawer(); });
+  })();
+
+  // ── Reader-facing freshness indicator ──────────────────────────────────
+  // The edition date is baked at generation. Show a live ET clock in the
+  // header so the page never looks frozen between builds, and flag clearly
+  // when the edition is behind today (weekend / late or failed publish)
+  // instead of presenting stale content as current. Lives in the static
+  // script, so the daily <main> regeneration never touches it.
+  (function () {
+    var head = document.querySelector('header.head');
+    var kicker = head && head.querySelector('.kicker');
+    var h1 = head && head.querySelector('h1');
+    if (!head || !kicker || !h1) return;
+    var MONTHS = { January:0,February:1,March:2,April:3,May:4,June:5,July:6,August:7,September:8,October:9,November:10,December:11 };
+    var m = h1.textContent.match(/(\w+), (\w+) (\d+), (\d{4})/);
+    if (!m || MONTHS[m[2]] == null) return;
+
+    function etNow() {
+      var now = new Date(), y = now.getFullYear();
+      var dstStart = new Date(y, 2, 8 - new Date(y, 2, 1).getDay());
+      var dstEnd = new Date(y, 10, 1 + (7 - new Date(y, 10, 1).getDay()) % 7);
+      var off = (now >= dstStart && now < dstEnd) ? -4 : -5;
+      return new Date(Date.now() + new Date().getTimezoneOffset() * 60000 + off * 3600000);
+    }
+    function num(y, mo, d) { return y * 10000 + mo * 100 + d; }
+
+    var et = etNow();
+    var edition = num(+m[4], MONTHS[m[2]] + 1, +m[3]);
+    var today = num(et.getFullYear(), et.getMonth() + 1, et.getDate());
+
+    if (edition < today) {
+      var banner = document.createElement('div');
+      banner.className = 'stale-banner';
+      banner.textContent = "You're reading the " + m[1] + ", " + m[2] + ' ' + m[3] + ', ' + m[4] +
+        " edition — today's digest hasn't published yet. Live prices and charts below are still current.";
+      head.parentNode.insertBefore(banner, head);
+    } else {
+      var chip = document.createElement('span');
+      chip.className = 'fresh-chip live';
+      kicker.appendChild(chip);
+      var tick = function () {
+        chip.textContent = ' · Live ' +
+          etNow().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) + ' ET';
+      };
+      tick();
+      setInterval(tick, 30000);
+    }
   })();
 
 </script>
