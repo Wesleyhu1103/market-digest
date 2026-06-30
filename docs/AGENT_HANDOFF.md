@@ -115,6 +115,21 @@ Must be the **last element inside `<main>`**, right before `</main>`:
 - `treasuryYields`, `brentChart`, `creditChart`, `stressChart` load from `fred-data.json` — do NOT include them here
 - Positive `techMovers` values render green, negative red automatically
 
+### framingData
+
+The "One Story, 5 Desks" widget mounts into `#framing-mount` inside `<section id="framing">` (immediately after the header). Daily content must include:
+
+```html
+<section id="framing">
+  <div id="framing-mount"></div>
+  <script type="application/json" id="framingData">{ ... }</script>
+</section>
+```
+
+- `framingData` is the **last child** of `#framing` (before `</section>`)
+- JSON shape: `storyTitle` plus `framings` array with `outlet`, `headline`, `angle`, `lean` (-100..100), `pull`
+- Do NOT place `framingData` inside `#narratives` — the static JS no longer mounts there
+
 ### Chart canvas wrappers
 
 Every canvas must be in an explicit-height wrapper:
