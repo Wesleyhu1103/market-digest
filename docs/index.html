@@ -290,16 +290,18 @@
   .quiz .opt.wrong { background: var(--bear-soft); border-color: var(--bear); color: var(--bear); }
   .quiz .feedback { font-size: 14px; margin-top: 10px; font-family: "Newsreader", serif; color: var(--muted); display: none; padding: 10px 14px; background: var(--bg); border-radius: 3px; }
   .quiz .q.answered .feedback { display: block; }
-  form.fb { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 24px 28px; font-family: "Inter", sans-serif; font-size: 14px; }
-  form.fb label { display: block; margin: 18px 0 8px; font-weight: 600; font-size: 13px; }
-  form.fb .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  form.fb { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 16px 20px; font-family: "Inter", sans-serif; font-size: 14px; }
+  form.fb label { display: block; font-weight: 600; font-size: 12px; letter-spacing: .04em; margin-bottom: 8px; color: var(--muted); }
+  form.fb label + label, form.fb textarea + label { margin-top: 16px; }
+  form.fb .opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   form.fb .opts button { border: 1px solid var(--rule); background: var(--bg); padding: 7px 14px; border-radius: 2px; cursor: pointer; font-size: 12.5px; font-weight: 500; }
   form.fb .opts button:hover { border-color: var(--ink); }
   form.fb .opts button.on { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-  form.fb textarea, form.fb input[type=text] { width: 100%; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 3px; font-family: inherit; font-size: 14px; resize: vertical; background: var(--bg); }
-  form.fb button.submit { margin-top: 22px; background: var(--ink); color: var(--bg); border: none; padding: 12px 26px; border-radius: 3px; font-weight: 600; cursor: pointer; font-size: 14px; letter-spacing: .04em; }
-  form.fb button.submit:hover { background: var(--accent); }
+  form.fb textarea, form.fb input[type=text] { width: 100%; padding: 8px 12px; border: 1px solid var(--rule); border-radius: 3px; font-family: inherit; font-size: 13px; resize: vertical; background: var(--bg); display: block; box-sizing: border-box; }
+  form.fb button.submit, form.fb button[type="submit"] { margin-top: 10px; background: var(--ink); color: var(--bg); border: none; padding: 8px 18px; border-radius: 3px; font-weight: 600; cursor: pointer; font-size: 13px; }
+  form.fb button.submit:hover, form.fb button[type="submit"]:hover { background: var(--accent); }
   .fb-success { color: var(--bull); padding: 12px 14px; background: var(--bull-soft); border-radius: 3px; margin-top: 14px; display: none; font-weight: 500; }
+  .fb-success.fb-error { color: var(--bear); background: var(--bear-soft); }
   .sentiment-table { width: 100%; border-collapse: collapse; font-family: "Inter", sans-serif; font-size: 14px; margin: 14px 0; }
   .sentiment-table th, .sentiment-table td { padding: 10px 12px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
   .sentiment-table th { background: var(--code); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); font-weight: 700; }
@@ -1256,17 +1258,13 @@
   <!-- FEEDBACK -->
   <section id="feedback">
     <h2>Feedback</h2>
-    <form id="fb-form">
-      <div>
-        <label for="fb-missing">What did we miss today?</label>
-        <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
-      </div>
-      <div>
-        <label for="fb-open">Open feedback:</label>
-        <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
-      </div>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
       <button type="submit">Submit Feedback</button>
-      <div id="fb-success" style="display:none">Thanks -- feedback saved!</div>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
     </form>
   </section>
 
@@ -1350,24 +1348,23 @@
 </div>
 
 <script>
-  // Best-effort POST to our Vercel API to persist reader engagement (feedback,
-  // quiz answers, verdict notes) in Supabase. Same-origin when served from
-  // Vercel; absolute cross-origin URL when viewed on GitHub Pages. Fire-and-
-  // forget: it never blocks or breaks the UI if the network/endpoint is down.
+  // POST reader engagement (feedback, quiz, verdict notes) to Supabase via Vercel
+  // /api/*. Same-origin on Vercel; cross-origin on GitHub Pages and local dev.
+  const MD_API_ORIGIN = 'https://market-digest-liart.vercel.app';
+  function mdUsesRemoteApi() {
+    const h = location.hostname;
+    return /\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1';
+  }
   function mdApiUrl(path) {
-    return /\.github\.io$/i.test(location.hostname)
-      ? 'https://market-digest-liart.vercel.app' + path
-      : path;
+    return mdUsesRemoteApi() ? MD_API_ORIGIN + path : path;
   }
   function mdPost(path, body) {
-    try {
-      fetch(mdApiUrl(path), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-        keepalive: true,
-      }).catch(function () {});
-    } catch (_) {}
+    return fetch(mdApiUrl(path), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      keepalive: true,
+    });
   }
 
   // Repair agent-generated <main> markup before binding event listeners
@@ -1520,7 +1517,7 @@
           const right = q.querySelector('.opt[data-opt="' + correct + '"], .opt[data-val="' + correct + '"]');
           if (right) right.classList.add('correct');
         }
-        mdPost('/api/quiz', { date: '2026-06-30', questionIndex: qi, picked: pick, correct: correct, isCorrect: isRight });
+        mdPost('/api/quiz', { date: '2026-06-30', questionIndex: qi, picked: pick, correct: correct, isCorrect: isRight }).catch(function () {});
       });
     });
   });
@@ -1552,9 +1549,18 @@
   async function submitFeedback(e) {
     e.preventDefault();
     const data = gatherFeedback();
+    const el = document.getElementById('fb-success');
+    if (!String(data.missing || '').trim() && !String(data.open || '').trim()) return false;
+    el.classList.remove('fb-error');
     try { localStorage.setItem('marketDigest_feedback_2026-06-30', JSON.stringify(data)); } catch(_) {}
-    mdPost('/api/feedback', data);
-    document.getElementById('fb-success').style.display = 'block';
+    let ok = false;
+    try {
+      const res = await mdPost('/api/feedback', data);
+      ok = res && (res.ok || res.status === 204);
+    } catch (_) {}
+    el.textContent = ok ? 'Thanks -- feedback saved!' : 'Could not save — check your connection and try again.';
+    el.classList.toggle('fb-error', !ok);
+    el.style.display = 'block';
     return false;
   }
 
@@ -2760,7 +2766,7 @@
     const log = JSON.parse(localStorage.getItem('verdictFeedback') || '[]');
     log.push({ ts: new Date().toISOString(), date: '2026-06-30', text: txt });
     localStorage.setItem('verdictFeedback', JSON.stringify(log));
-    mdPost('/api/verdict-note', { date: '2026-06-30', note: txt });
+    mdPost('/api/verdict-note', { date: '2026-06-30', note: txt }).catch(function () {});
     document.getElementById('verdictFb').value = '';
     const sav = document.getElementById('vfSaved');
     if (sav) { sav.style.display = 'inline'; setTimeout(() => sav.style.display = 'none', 2200); }

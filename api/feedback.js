@@ -1,6 +1,6 @@
 // POST /api/feedback — persists the "What did we miss / open feedback" form.
 // Body: { date, submittedAt, missing, open, ...ratingGroups }
-import { cors, readJsonBody, str, insertFeedback } from "./_supa.js";
+import { cors, readJsonBody, str, insertFeedback, ensureSchema } from "./_supa.js";
 
 export default async function handler(req, res) {
   cors(res);
@@ -11,6 +11,7 @@ export default async function handler(req, res) {
   const { date, submittedAt, missing, open, ...ratings } = b;
 
   try {
+    await ensureSchema();
     await insertFeedback({
       digest_date: str(date, 10),
       missing: str(missing, 5000),

@@ -184,14 +184,19 @@ Heights: `techMovers` 320px, `treasuryYields`/`brentChart` 280px, `creditChart`/
 <button onclick="saveVerdictFeedback()">Save</button>
 <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
 
-<form class="fb" onsubmit="return submitFeedback(event)">
-  <textarea id="fb-missing" rows="4" placeholder="What was missing?"></textarea>
-  <textarea id="fb-open" rows="4" placeholder="Other thoughts?"></textarea>
-  <div id="fb-success" style="display:none;">Thanks! Feedback saved.</div>
+<form class="fb" id="fb-form">
+  <label for="fb-missing">What did we miss today?</label>
+  <textarea id="fb-missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+  <label for="fb-open">Open feedback:</label>
+  <textarea id="fb-open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+  <button type="submit">Submit Feedback</button>
+  <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
 </form>
 ```
 
 - `fb-missing` and `fb-open` must be `<textarea>` elements — `.value` is undefined on `<div>`
+- Feedback form must use `class="fb"` (same card layout as `.feedback-mini` in the verdict section)
+- Submit calls `POST /api/feedback` (Vercel → Supabase `public.feedback`). On GitHub Pages and `localhost` dev, requests go to `https://market-digest-liart.vercel.app/api/feedback`; on Vercel they are same-origin.
 - `vfSaved` span must exist — JS calls `getElementById('vfSaved')` and errors silently without it
 
 ### Archive section
