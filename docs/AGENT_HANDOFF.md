@@ -139,11 +139,13 @@ Tech, Macro, Crypto, Equities, Buyside, and Deals sections use the same condense
   <summary><strong>Headline</strong></summary>
   <div class="deal-body">
     <p>Driver and context for equities/tech/macro/crypto/buyside items.</p>
+    <p class="deal-source"><a href="https://..." target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Headline</a></p>
   </div>
 </details>
 ```
 
-- **Equities / Tech / Macro / Crypto / Buyside:** one `<p>` in `.deal-body` (the expanded detail)
+- **Source link:** every story dropdown, Learning Opportunity, and `details.dive` ends with `<p class="deal-source"><a href="..." target="_blank" rel="noopener noreferrer">Source: Outlet -- Headline</a></p>` (or `<div class="dive-deeper">` in narratives — same styling). Use a real article URL from the day's feeds when available.
+- **Equities / Tech / Macro / Crypto / Buyside:** one `<p>` in `.deal-body` (the expanded detail), then `.deal-source`
 - **Buyside:** named analyst calls in dropdowns, then one `.buyside-summary` block with `.nar-header`, `.toggles` (Bull/Bear/Both), and `.bullbear show-bull` — same interactive pattern as Dominant Narratives, not static side-by-side cards
 - **Deals:** three labeled paragraphs — `<p><strong>Why:</strong> ...</p>`, Outlook, What it means
 - Do NOT use bullet lists for equities, tech, macro, crypto, buyside, or deals (On Deck and other sections may still use lists)
