@@ -11,8 +11,8 @@ LIVE_URL = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/do
 
 RULES = [
     ("3 narrative data-nar", r'<div class="narrative" data-nar="(bonds|iran|aicapex)">', 3),
-    ("3 bullbear show-bull", r'<div class="bullbear show-bull">', 3),
-    ("bull on (flex order)", r'class="bull on"[^>]*data-side="bull"|data-side="bull"[^>]*class="bull on"', 3),
+    ("4 bullbear show-bull", r'<div class="bullbear show-bull">', 4),
+    ("bull on (flex order)", r'class="bull on"[^>]*data-side="bull"|data-side="bull"[^>]*class="bull on"', 4),
     ("12 quiz data-opt", r'<span class="opt" data-opt="[a-dA-D]">', 12),
     ("no quiz data-val on opts", r'<span class="opt"[^>]*data-val=', 0),
     ("chartData once", r'id="chartData"', 1),

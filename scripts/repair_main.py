@@ -81,8 +81,8 @@ def repair_main_html(main_html: str) -> str:
 
     bull_on = len(re.findall(r'data-side="bull"[^>]*class="bull on"|class="bull on"[^>]*data-side="bull"', main_html))
     show_bull = main_html.count('class="bullbear show-bull"')
-    if bull_on < 3 or show_bull < 3:
-        raise SystemExit(f"ABORT: toggle structure bull_on={bull_on} show_bull={show_bull} (need 3 each)")
+    if bull_on < 4 or show_bull < 4:
+        raise SystemExit(f"ABORT: toggle structure bull_on={bull_on} show_bull={show_bull} (need 4 each: 3 narratives + buyside summary)")
 
     n_chart = main_html.count('id="chartData"')
     if n_chart != 1:

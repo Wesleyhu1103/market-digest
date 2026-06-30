@@ -130,6 +130,24 @@ The "One Story, 5 Desks" widget mounts into `#framing-mount` inside `<section id
 - JSON shape: `storyTitle` plus `framings` array with `outlet`, `headline`, `angle`, `lean` (-100..100), `pull`
 - Do NOT place `framingData` inside `#narratives` — the static JS no longer mounts there
 
+### Story dropdowns (`details.deal`)
+
+Tech, Macro, Crypto, Equities, Buyside, and Deals sections use the same condensed dropdown pattern (styled in the static template):
+
+```html
+<details class="deal">
+  <summary><strong>Headline</strong></summary>
+  <div class="deal-body">
+    <p>Driver and context for equities/tech/macro/crypto/buyside items.</p>
+  </div>
+</details>
+```
+
+- **Equities / Tech / Macro / Crypto / Buyside:** one `<p>` in `.deal-body` (the expanded detail)
+- **Buyside:** named analyst calls in dropdowns, then one `.buyside-summary` block with `.nar-header`, `.toggles` (Bull/Bear/Both), and `.bullbear show-bull` — same interactive pattern as Dominant Narratives, not static side-by-side cards
+- **Deals:** three labeled paragraphs — `<p><strong>Why:</strong> ...</p>`, Outlook, What it means
+- Do NOT use bullet lists for equities, tech, macro, crypto, buyside, or deals (On Deck and other sections may still use lists)
+
 ### Chart canvas wrappers
 
 Every canvas must be in an explicit-height wrapper:
