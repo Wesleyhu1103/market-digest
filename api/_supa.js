@@ -5,16 +5,19 @@
 // cache got wedged after the project was unpaused and would not recover. A
 // direct connection is immune to that entire class of problem.
 //
-// Requires the env var SUPABASE_DB_URL — the Supabase "Transaction pooler"
-// connection string (port 6543), e.g.
-//   postgresql://postgres.<ref>:<password>@aws-0-<region>.pooler.supabase.com:6543/postgres
-// Set it in the Vercel project's Environment Variables.
+// Connection comes from POSTGRES_URL, which the Vercel<>Supabase Marketplace
+// integration already provisions for this project (pooled, port 6543). No new
+// env var needed. SUPABASE_DB_URL/DATABASE_URL are accepted as overrides.
 //
 // Files prefixed with "_" are not exposed as routes by Vercel.
 
 import postgres from "postgres";
 
-const DB_URL = process.env.SUPABASE_DB_URL || process.env.DATABASE_URL || "";
+const DB_URL =
+  process.env.SUPABASE_DB_URL ||
+  process.env.POSTGRES_URL ||
+  process.env.DATABASE_URL ||
+  "";
 
 let sql;
 function db() {
@@ -74,6 +77,31 @@ export async function insertQuiz(r) {
 export async function insertVerdict(r) {
   const s = db();
   await s`insert into public.verdict_notes (digest_date, note) values (${r.digest_date}, ${r.note})`;
+}
+
+// Idempotently create the tables in whatever database POSTGRES_URL points at.
+// Runs as the integration's postgres role (table owner), so inserts bypass RLS;
+// RLS is enabled with no policies so the public data API can't read/write them.
+export async function ensureSchema() {
+  const s = db();
+  const stmts = [
+    `create table if not exists public.feedback (
+      id bigint generated always as identity primary key,
+      created_at timestamptz not null default now(),
+      digest_date date, missing text, "open" text, ratings jsonb, user_agent text)`,
+    `create table if not exists public.quiz_results (
+      id bigint generated always as identity primary key,
+      created_at timestamptz not null default now(),
+      digest_date date, question_index smallint, picked text, correct text, is_correct boolean)`,
+    `create table if not exists public.verdict_notes (
+      id bigint generated always as identity primary key,
+      created_at timestamptz not null default now(),
+      digest_date date, note text)`,
+    `alter table public.feedback enable row level security`,
+    `alter table public.quiz_results enable row level security`,
+    `alter table public.verdict_notes enable row level security`,
+  ];
+  for (const stmt of stmts) await s.unsafe(stmt);
 }
 
 // Used by /api/health to confirm the DB connection works end to end.
