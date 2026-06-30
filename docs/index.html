@@ -1606,6 +1606,53 @@
     if (dp > 0) s = s.replace(/\.?0+$/, '');
     return s;
   }
+  function mdBarLabelColor() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? '#ffffff' : '#121212';
+  }
+  /** Sparse x-axis labels for live/FRED time series (one label per ~N points). */
+  function mdTimeAxisLabels(series, rangeKey) {
+    var labels = [], i, d, key, prevKey = null, step;
+    for (i = 0; i < series.length; i++) {
+      d = new Date(series[i].t != null ? series[i].t : series[i].date + 'T12:00:00');
+      if (rangeKey === '1d') {
+        key = d.toISOString().slice(0, 10) + '-' + d.getHours();
+        if (d.getMinutes() === 0 && (prevKey === null || key !== prevKey)) {
+          labels.push(d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }));
+          prevKey = key;
+        } else labels.push('');
+      } else if (rangeKey === '1w') {
+        step = Math.max(1, Math.round(series.length / 6));
+        labels.push((i === 0 || i === series.length - 1 || i % step === 0)
+          ? d.toLocaleDateString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) : '');
+      } else if (rangeKey === '1m') {
+        step = Math.max(1, Math.round(series.length / 7));
+        labels.push((i === 0 || i === series.length - 1 || i % step === 0)
+          ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '');
+      } else {
+        key = d.getFullYear() + '-' + d.getMonth();
+        if (key !== prevKey) {
+          labels.push(d.toLocaleDateString('en-US', { month: 'short' }));
+          prevKey = key;
+        } else labels.push('');
+      }
+    }
+    return labels;
+  }
+  function mdCategoryTickOpts(t, fontSize, fontFamily) {
+    return {
+      font: { size: fontSize || 10, family: fontFamily || '"Inter", -apple-system, sans-serif' },
+      maxRotation: 0,
+      autoSkip: true,
+      autoSkipPadding: 14,
+      maxTicksLimit: 7,
+      color: t.ink,
+      padding: 8,
+      callback: function(val, index) {
+        var lbl = this.chart.data.labels[index];
+        return lbl ? lbl : undefined;
+      }
+    };
+  }
   function mdAxisFromValues(values, tickCount, padRatio) {
     padRatio = padRatio == null ? 0.05 : padRatio;
     var nums = values.filter(function(v) { return v != null && isFinite(v); });
@@ -1639,9 +1686,12 @@
   Chart.defaults.font.family = chartFont;
   Chart.defaults.responsive = true;
   Chart.defaults.maintainAspectRatio = false;
-  // Destroy any existing charts so this builder is safely re-runnable on theme switch.
-  (window.allCharts || []).forEach(c => { try { c.destroy(); } catch (_) {} });
-  window.allCharts = [];
+  // Destroy static charts on re-init; preserve live mkt-card charts (equities + macro).
+  window.allCharts = (window.allCharts || []).filter(function(c) {
+    if (c.config && c.config._preserveOnReinit) return true;
+    try { c.destroy(); } catch (_) {}
+    return false;
+  });
 
   // Theme-aware color reader
   function tc() {
@@ -1723,7 +1773,7 @@
     const lo = Math.min(...d.values, 0);
     const hi = Math.max(...d.values, 0);
     const xr = mdNiceRange(lo, hi, 5);
-    const xAxis = mdLinearAxis(xr, function(v, dp) { return mdFmtNum(v, dp) + '%'; }, { font: { size: 12 }, color: tc().muted });
+    const xAxis = mdLinearAxis(xr, function(v, dp) { return mdFmtNum(v, dp) + '%'; }, { font: { size: 12 }, color: tc().ink });
     window.allCharts.push(new Chart(document.getElementById('techMovers'), {
       type: 'bar',
       data: {
@@ -1737,15 +1787,16 @@
       },
       options: {
         indexAxis: 'y',
-        layout: { padding: { right: 12, left: 8 } },
+        layout: { padding: { right: 48, left: 48 } },
         plugins: {
           legend: { display: false },
           tooltip: { callbacks: { label: ctx => (ctx.parsed.x > 0 ? '+' : '') + mdFmtNum(ctx.parsed.x, 1) + '%' } },
           datalabels: {
             display: true,
-            anchor: 'end',
+            anchor: ctx => ctx.dataset.data[ctx.dataIndex] >= 0 ? 'end' : 'start',
             align: ctx => ctx.dataset.data[ctx.dataIndex] >= 0 ? 'left' : 'right',
-            offset: 0, clip: false, color: '#fff',
+            offset: 6, clip: false,
+            color: mdBarLabelColor(),
             font: { size: 12, weight: 700 },
             formatter: v => (v > 0 ? '+' : '') + mdFmtNum(v, 1) + '%'
           }
@@ -1792,69 +1843,7 @@
     }));
   }
 
-  // ── 3. Treasury yields (docs/fred-data.json) ──
-  if (document.getElementById('treasuryYields') && fred.DGS10 && fred.DGS10.length) {
-    const labels = fred.DGS10.map(d => d.date.slice(5));
-    const yieldVals = fred.DGS2.map(d => d.value).concat(fred.DGS10.map(d => d.value), fred.DGS30.map(d => d.value));
-    const yr = mdAxisFromValues(yieldVals, 6, 0.03);
-    const yAxis = mdLinearAxis(yr, function(v, dp) { return mdFmtNum(v, dp) + '%'; }, { font: { size: 11 }, color: tc().muted });
-    window.allCharts.push(new Chart(document.getElementById('treasuryYields'), {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [
-          { label: '2Y',  data: fred.DGS2.map(d => d.value),  borderColor: tc().accent2, backgroundColor: tc().accent2, tension: 0.15, pointRadius: 0, borderWidth: 2 },
-          { label: '10Y', data: fred.DGS10.map(d => d.value), borderColor: tc().accent,  backgroundColor: tc().accent,  tension: 0.15, pointRadius: 0, borderWidth: 2 },
-          { label: '30Y', data: fred.DGS30.map(d => d.value), borderColor: tc().anchor,  backgroundColor: tc().anchor,  tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
-        ]
-      },
-      options: {
-        interaction: { mode: 'index', intersect: false },
-        layout: { padding: { right: 56 } },
-        plugins: {
-          legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, boxHeight: 8, color: tc().ink } },
-          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + mdFmtNum(ctx.parsed.y, 2) + '%' } },
-          lastPointLabel: { show: true, format: v => mdFmtNum(v, 2) + '%' }
-        },
-        scales: {
-          y: Object.assign({ grid: { color: tc().rule }, ticks: { font: { size: 11 }, color: tc().muted } }, yAxis),
-          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8, color: tc().muted }, grid: { display: false } }
-        }
-      }
-    }));
-  }
-
-  // ── 4. Brent crude (docs/fred-data.json) ──
-  if (document.getElementById('brentChart') && brent.length) {
-    const br = mdAxisFromValues(brent.map(d => d.value), 5, 0.04);
-    const yAxis = mdLinearAxis(br, function(v, dp) { return '$' + mdFmtNum(v, dp); }, { font: { size: 11 }, color: tc().muted });
-    window.allCharts.push(new Chart(document.getElementById('brentChart'), {
-      type: 'line',
-      data: {
-        labels: brent.map(d => d.date.slice(5)),
-        datasets: [{
-          label: 'Brent',
-          data: brent.map(d => d.value),
-          borderColor: tc().accent2,
-          backgroundColor: 'rgba(194,65,12,0.10)',
-          fill: true, tension: 0.18, pointRadius: 0, pointHoverRadius: 5,
-          pointHoverBackgroundColor: 'rgba(194,65,12,0.9)', borderWidth: 2
-        }]
-      },
-      options: {
-        layout: { padding: { right: 60 } },
-        plugins: {
-          legend: { display: false },
-          tooltip: { callbacks: { label: ctx => '$' + mdFmtNum(ctx.parsed.y, 2) } },
-          lastPointLabel: { show: true, format: v => '$' + mdFmtNum(v, 1) }
-        },
-        scales: {
-          y: Object.assign({ grid: { color: tc().rule }, ticks: { font: { size: 11 }, color: tc().muted } }, yAxis),
-          x: { ticks: { font: { size: 10 }, maxTicksLimit: 8, color: tc().muted }, grid: { display: false } }
-        }
-      }
-    }));
-  }
+  // ── 3–4, 6–7. Macro FRED charts — interactive mkt-cards (see initMacroCharts below) ──
 
   // ── 5. Deal sizes ───────────────────────────────────────────────────────
   if (document.getElementById('dealSizes') && cd.dealSizes) {
@@ -1892,61 +1881,6 @@
         scales: {
           y: Object.assign({ beginAtZero: true, grid: { color: tc().rule } }, yAxis),
           x: { grid: { display: false }, ticks: { font: { size: 12 }, color: tc().ink } }
-        }
-      }
-    }));
-  }
-
-  // ── 6 & 7. Credit + Stress (docs/fred-data.json) ──
-  if (document.getElementById('creditChart') && creditData.HY_OAS && creditData.HY_OAS.length) {
-    const spreadVals = creditData.HY_OAS.map(d => d.value * 100).concat(creditData.IG_OAS.map(d => d.value * 100));
-    const cr = mdAxisFromValues(spreadVals, 5, 0.05);
-    const y1Axis = mdLinearAxis(cr, function(v, dp) { return mdFmtNum(v, 0) + 'bps'; }, { font: { size: 11 }, color: tc().muted });
-    window.allCharts.push(new Chart(document.getElementById('creditChart'), {
-      type: 'line',
-      data: {
-        labels: creditData.HY_OAS.map(d => d.date.slice(5)),
-        datasets: [
-          { label: 'HY OAS', data: creditData.HY_OAS.map(d => d.value * 100), borderColor: tc().bear,   backgroundColor: tc().bear,   tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y1' },
-          { label: 'IG OAS', data: creditData.IG_OAS.map(d => d.value * 100), borderColor: tc().accent, backgroundColor: tc().accent, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y1' }
-        ]
-      },
-      options: {
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-          legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, color: tc().ink } },
-          tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + mdFmtNum(ctx.parsed.y, 0) + 'bps' } }
-        },
-        scales: {
-          y1: Object.assign({ position: 'left', grid: { color: tc().rule } }, y1Axis),
-          x:  { ticks: { font: { size: 10 }, maxTicksLimit: 8, color: tc().muted }, grid: { display: false } }
-        }
-      }
-    }));
-  }
-
-  if (document.getElementById('stressChart') && creditData.VIX && creditData.VIX.length) {
-    const vixAxis = mdLinearAxis(mdAxisFromValues(creditData.VIX.map(d => d.value), 5, 0.05), function(v, dp) { return mdFmtNum(v, dp); }, { font: { size: 11 }, color: tc().muted });
-    const slopeAxis = mdLinearAxis(mdAxisFromValues(creditData.TENMINUSTWO.map(d => d.value * 100), 5, 0.05), function(v, dp) { return mdFmtNum(v, 0) + 'bps'; }, { font: { size: 11 }, color: tc().muted });
-    window.allCharts.push(new Chart(document.getElementById('stressChart'), {
-      type: 'line',
-      data: {
-        labels: creditData.VIX.map(d => d.date.slice(5)),
-        datasets: [
-          { label: 'VIX',    data: creditData.VIX.map(d => d.value),          borderColor: tc().bear,   tension: 0.15, pointRadius: 0, borderWidth: 2 },
-          { label: '2s10s',  data: creditData.TENMINUSTWO.map(d => d.value * 100), borderColor: tc().accent, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
-        ]
-      },
-      options: {
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-          legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, color: tc().ink } },
-          tooltip: {}
-        },
-        scales: {
-          y:  Object.assign({ position: 'left', grid: { color: tc().rule } }, vixAxis),
-          y2: Object.assign({ position: 'right', grid: { display: false } }, slopeAxis),
-          x:  { ticks: { font: { size: 10 }, maxTicksLimit: 8, color: tc().muted }, grid: { display: false } }
         }
       }
     }));
@@ -2132,45 +2066,22 @@
       }, yAxis);
     }
 
-    // One x-axis label per day (or week/month boundary); vertical dividers at boundaries.
+    // One x-axis label per time bucket; vertical dividers at day/week/month boundaries.
     function buildMktAxis(series) {
-      var labels = [], dividers = [], prevKey = null, i, d, key;
+      var labels = mdTimeAxisLabels(series, state.range);
+      var dividers = [], prevKey = null, i, d, key;
       for (i = 0; i < series.length; i++) {
+        if (!labels[i]) continue;
         d = new Date(series[i].t);
         if (state.range === '1d') {
           key = d.toISOString().slice(0, 10) + '-' + d.getHours();
-          if (d.getMinutes() === 0 && (prevKey === null || key !== prevKey)) {
-            if (prevKey !== null) dividers.push(i);
-            labels.push(d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }));
-            prevKey = key;
-          } else {
-            labels.push('');
-          }
-        } else if (state.range === '1w') {
-          key = d.toISOString().slice(0, 10);
-          if (key !== prevKey) {
-            if (prevKey !== null) dividers.push(i);
-            labels.push(d.toLocaleDateString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }));
-            prevKey = key;
-          } else {
-            labels.push('');
-          }
-        } else if (state.range === '1m') {
-          key = d.toISOString().slice(0, 10);
-          var show = d.getDay() === 1 || d.getDate() <= 2 || i === 0 || i === series.length - 1;
-          labels.push(show ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '');
-          if (d.getDay() === 1 && prevKey !== null && key !== prevKey) dividers.push(i);
-          prevKey = key;
+        } else if (state.range === '1w' || state.range === '1m') {
+          key = String(i);
         } else {
           key = d.getFullYear() + '-' + d.getMonth();
-          if (key !== prevKey) {
-            if (prevKey !== null) dividers.push(i);
-            labels.push(d.toLocaleDateString('en-US', { month: 'short' }));
-            prevKey = key;
-          } else {
-            labels.push('');
-          }
         }
+        if (prevKey !== null && key !== prevKey) dividers.push(i);
+        prevKey = key;
       }
       return { labels: labels, dividers: dividers };
     }
@@ -2210,7 +2121,7 @@
           x: {
             grid: { display: false },
             border: { display: false },
-            ticks: { maxRotation: 0, autoSkip: false, maxTicksLimit: 24, font: mktAxisFont, color: t.muted, padding: 8 }
+            ticks: Object.assign({ font: mktAxisFont }, mdCategoryTickOpts(t, 11, MKT_SANS))
           },
           y: mktYScale(values, t)
         }
@@ -2316,10 +2227,13 @@
         }]},
         options: mktChartOptions(t, values)
       });
+      chart.config._preserveOnReinit = true;
       chart.config._mktDividers = axis.dividers;
       chart.config._mktSeries = series;
       window.allCharts = window.allCharts || [];
       window.allCharts.push(chart);
+      requestAnimationFrame(function() { if (chart) chart.resize(); });
+      return;
     }
 
     function load() {
@@ -2358,7 +2272,390 @@
       }, state.range === '1d' ? 30000 : 60000);
     }
 
-    load();
+    function bootMktChart() {
+      requestAnimationFrame(function() {
+        requestAnimationFrame(load);
+      });
+    }
+    window._liveChartReloaders = window._liveChartReloaders || [];
+    window._liveChartReloaders.push(load);
+    if (document.readyState === 'complete') bootMktChart();
+    else window.addEventListener('load', bootMktChart);
+  })();
+
+  // ============================================================
+  // INTERACTIVE MACRO CHARTS — FRED + live Brent; mkt-card UI
+  // ============================================================
+  (function initMacroCharts() {
+    'use strict';
+    if (typeof Chart === 'undefined') return;
+    var macroSection = document.getElementById('macro');
+    if (!macroSection || macroSection.dataset.macroChartsReady) return;
+
+    var RANGES = [
+      { key: '1d', label: '1D', fredDays: 5, range: '1d', interval: '5m' },
+      { key: '1w', label: '1W', fredDays: 7, range: '5d', interval: '30m' },
+      { key: '1m', label: '1M', fredDays: 31, range: '1mo', interval: '1d' },
+      { key: '1y', label: '1Y', fredDays: 366, range: '1y', interval: '1d' }
+    ];
+    var MKT_SANS = '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+    var fredMacro = null;
+
+    function tc() {
+      var s = getComputedStyle(document.documentElement);
+      return {
+        ink: s.getPropertyValue('--ink').trim() || '#1f1d1a',
+        muted: s.getPropertyValue('--muted').trim() || '#6b665d',
+        rule: s.getPropertyValue('--rule').trim() || '#d8cdb8',
+        bull: s.getPropertyValue('--bull').trim() || '#166534',
+        bear: s.getPropertyValue('--bear').trim() || '#991b1b',
+        accent: s.getPropertyValue('--accent').trim() || '#0f4f4a',
+        accent2: s.getPropertyValue('--accent-2').trim() || '#c2410c',
+        anchor: s.getPropertyValue('--anchor').trim() || '#1e3a5f',
+        bg: s.getPropertyValue('--bg').trim() || '#f4ede0'
+      };
+    }
+    function rangeMeta(key) {
+      for (var i = 0; i < RANGES.length; i++) if (RANGES[i].key === key) return RANGES[i];
+      return RANGES[0];
+    }
+    function sliceFred(rows, rangeKey) {
+      if (!rows || !rows.length) return [];
+      if (rangeKey === '1y') return rows.slice();
+      var meta = rangeMeta(rangeKey);
+      var last = new Date(rows[rows.length - 1].date + 'T12:00:00');
+      var cutoff = new Date(last);
+      cutoff.setDate(cutoff.getDate() - meta.fredDays);
+      return rows.filter(function(row) {
+        return new Date(row.date + 'T12:00:00') >= cutoff;
+      });
+    }
+    function dateLabels(rows, rangeKey) {
+      if (rangeKey === '1y') {
+        return rows.map(function(row, i) {
+          var prev = i > 0 ? rows[i - 1].date.slice(0, 7) : null;
+          return row.date.slice(0, 7) !== prev
+            ? new Date(row.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short' }) : '';
+        });
+      }
+      var step = Math.max(1, Math.round(rows.length / 7));
+      return rows.map(function(row, i) {
+        if (i === 0 || i === rows.length - 1 || i % step === 0) {
+          return new Date(row.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+        return '';
+      });
+    }
+    function fredByDate(series) {
+      var map = {};
+      (series || []).forEach(function(pt) { map[pt.date] = pt; });
+      return map;
+    }
+    function mapFilled(rows, series, transform) {
+      var byDate = fredByDate(series);
+      var last = null;
+      return rows.map(function(r) {
+        var pt = byDate[r.date];
+        if (pt) last = transform ? transform(pt) : pt.value;
+        return last;
+      });
+    }
+    function setHeadline(api, price, prev, fmtPrice, fmtChg) {
+      var up = (price - prev) >= 0;
+      api.qPrice.textContent = fmtPrice(price);
+      api.qChange.className = 'mkt-change ' + (up ? 'up' : 'down');
+      var chg = price - prev;
+      var pct = prev ? (chg / prev) * 100 : 0;
+      api.qChange.textContent = fmtChg(chg, pct, up);
+    }
+    function yScaleFromValues(values, fmt, t) {
+      var nums = values.filter(function(v) { return v != null && isFinite(v); });
+      if (!nums.length) nums = [0, 1];
+      var axis = mdAxisFromValues(nums, 5, 0.04);
+      var dp = mdTickDecimals(axis.step);
+      return Object.assign({
+        position: 'right',
+        min: axis.min,
+        max: axis.max,
+        border: { display: false },
+        grid: { color: t.rule, drawBorder: false, tickLength: 0 },
+        ticks: {
+          stepSize: axis.step,
+          maxTicksLimit: 6,
+          font: { size: 11, family: MKT_SANS, weight: '500' },
+          color: t.ink,
+          padding: 10,
+          callback: function(v) { return fmt(v, dp); }
+        }
+      });
+    }
+    function renderChart(api, labels, datasets, options) {
+      if (api.chart) {
+        api.chart.data.labels = labels;
+        api.chart.data.datasets = datasets;
+        if (options) {
+          api.chart.options.plugins = options.plugins;
+          api.chart.options.scales = options.scales;
+          api.chart.options.interaction = options.interaction;
+          api.chart.options.animation = options.animation;
+        }
+        api.chart.update('none');
+        return;
+      }
+      api.chart = new Chart(api.canvas, {
+        type: 'line',
+        data: { labels: labels, datasets: datasets },
+        options: options
+      });
+      api.chart.config._preserveOnReinit = true;
+      window.allCharts = window.allCharts || [];
+      window.allCharts.push(api.chart);
+      requestAnimationFrame(function() { if (api.chart) api.chart.resize(); });
+    }
+    function buildCard(title, source, canvasId, height) {
+      var canvas = document.getElementById(canvasId);
+      if (!canvas) return null;
+      var wrap = canvas.closest('.chart-card');
+      if (!wrap) return null;
+      var card = document.createElement('div');
+      card.className = 'mkt-card macro-mkt-card';
+      card.innerHTML =
+        '<div class="mkt-head"><div>'
+        + '<div class="mkt-title-row"><h3 class="mkt-title"></h3></div>'
+        + '<div class="mkt-price-row"><span class="mkt-price">—</span><span class="mkt-change"></span></div>'
+        + '</div></div>'
+        + '<div class="mkt-body">'
+        + '<div class="mkt-chart-wrap" style="height:' + height + 'px"><canvas id="' + canvasId + '"></canvas></div>'
+        + '<div class="mkt-foot"><div class="mkt-ranges"></div><span class="mkt-source"></span></div>'
+        + '</div>';
+      card.querySelector('.mkt-title').textContent = title;
+      card.querySelector('.mkt-source').textContent = 'Source: ' + source;
+      wrap.replaceWith(card);
+      var api = {
+        canvas: card.querySelector('canvas'),
+        qPrice: card.querySelector('.mkt-price'),
+        qChange: card.querySelector('.mkt-change'),
+        qRanges: card.querySelector('.mkt-ranges'),
+        range: '1d',
+        chart: null,
+        reload: null
+      };
+      RANGES.forEach(function(r) {
+        var b = document.createElement('button');
+        b.textContent = r.label;
+        b.className = r.key === '1d' ? 'active' : '';
+        b.addEventListener('click', function() {
+          if (api.range === r.key) return;
+          api.range = r.key;
+          var btns = api.qRanges.querySelectorAll('button');
+          for (var j = 0; j < btns.length; j++) btns[j].className = RANGES[j].key === api.range ? 'active' : '';
+          if (api.reload) api.reload();
+        });
+        api.qRanges.appendChild(b);
+      });
+      return api;
+    }
+
+    function initTreasury(api) {
+      if (!api || !fredMacro || !fredMacro.fred) return;
+      var fred = fredMacro.fred;
+      api.reload = function() {
+        var rows = sliceFred(fred.DGS10, api.range);
+        if (!rows.length) return;
+        var labels = dateLabels(rows, api.range);
+        var vals = [];
+        var d2 = mapFilled(rows, fred.DGS2, function(pt) { return pt.value; });
+        var d10 = rows.map(function(r) { vals.push(r.value); return r.value; });
+        var d30 = mapFilled(rows, fred.DGS30, function(pt) { return pt.value; });
+        d2.forEach(function(v) { if (v != null) vals.push(v); });
+        d30.forEach(function(v) { if (v != null) vals.push(v); });
+        var last = d10[d10.length - 1];
+        var prev = d10.length > 1 ? d10[d10.length - 2] : last;
+        setHeadline(api, last, prev, function(v) { return v.toFixed(2) + '% (10Y)'; }, function(chg, pct, up) {
+          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+        });
+        var t = tc();
+        var datasets = [
+          { label: '2Y', data: d2, borderColor: t.accent2, backgroundColor: t.accent2, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+          { label: '10Y', data: d10, borderColor: t.accent, backgroundColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+          { label: '30Y', data: d30, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
+        ];
+        renderChart(api, labels, datasets, {
+          animation: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, boxHeight: 8, color: t.ink } },
+            datalabels: { display: false },
+            tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + Number(ctx.parsed.y).toFixed(2) + '%'; } } }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
+            y: yScaleFromValues(vals, function(v) { return Number(v).toFixed(2) + '%'; }, t)
+          }
+        });
+      };
+      window._liveChartReloaders.push(api.reload);
+      api.reload();
+    }
+
+    function initBrent(api) {
+      if (!api) return;
+      api.reload = function() {
+        var meta = rangeMeta(api.range);
+        var t = tc();
+        function drawFromSeries(series) {
+          if (!series.length) return;
+          var labels = mdTimeAxisLabels(series, api.range);
+          var values = series.map(function(p) { return p.v; });
+          var last = values[values.length - 1];
+          var prev = values.length > 1 ? values[0] : last;
+          setHeadline(api, last, prev, function(v) { return '$' + Number(v).toFixed(2); }, function(chg, pct, up) {
+            return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+          });
+          var up = (last - prev) >= 0;
+          var color = up ? t.bull : t.bear;
+          renderChart(api, labels, [{
+            label: 'Brent', data: values, borderColor: color, backgroundColor: color + '24',
+            fill: true, tension: 0.18, pointRadius: 0, borderWidth: 1.75,
+            pointHoverRadius: 4, pointHoverBackgroundColor: color
+          }], {
+            animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { display: false },
+              datalabels: { display: false },
+              tooltip: { callbacks: { label: function(ctx) { return '$' + Number(ctx.parsed.y).toFixed(2); } } }
+            },
+            scales: {
+              x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
+              y: yScaleFromValues(values, function(v) { return '$' + Number(v).toFixed(0); }, t)
+            }
+          });
+        }
+        if (window.MarketFeed) {
+          window.MarketFeed.series('BZ=F', meta.range, meta.interval).then(drawFromSeries).catch(function() {
+            if (!fredMacro || !fredMacro.brent) return;
+            var rows = sliceFred(fredMacro.brent, api.range);
+            drawFromSeries(rows.map(function(r) { return { t: new Date(r.date + 'T12:00:00').getTime(), v: r.value }; }));
+          });
+        } else if (fredMacro && fredMacro.brent) {
+          var rows = sliceFred(fredMacro.brent, api.range);
+          drawFromSeries(rows.map(function(r) { return { t: new Date(r.date + 'T12:00:00').getTime(), v: r.value }; }));
+        }
+      };
+      window._liveChartReloaders.push(api.reload);
+      api.reload();
+    }
+
+    function initCredit(api) {
+      if (!api || !fredMacro || !fredMacro.credit) return;
+      var credit = fredMacro.credit;
+      api.reload = function() {
+        var rows = sliceFred(credit.HY_OAS, api.range);
+        if (!rows.length) return;
+        var labels = dateLabels(rows, api.range);
+        var hy = rows.map(function(r) { return r.value * 100; });
+        var ig = mapFilled(rows, credit.IG_OAS, function(pt) { return pt.value * 100; });
+        var vals = hy.concat(ig).filter(function(v) { return v != null; });
+        var last = hy[hy.length - 1];
+        var prev = hy.length > 1 ? hy[hy.length - 2] : last;
+        setHeadline(api, last, prev, function(v) { return Math.round(v) + ' bps (HY)'; }, function(chg, pct, up) {
+          return (up ? '+' : '') + Math.round(chg) + ' bps';
+        });
+        var t = tc();
+        renderChart(api, labels, [
+          { label: 'HY OAS', data: hy, borderColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+          { label: 'IG OAS', data: ig, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 }
+        ], {
+          animation: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, color: t.ink } },
+            datalabels: { display: false },
+            tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + Math.round(ctx.parsed.y) + ' bps'; } } }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
+            y: yScaleFromValues(vals, function(v) { return Math.round(v) + 'bps'; }, t)
+          }
+        });
+      };
+      window._liveChartReloaders.push(api.reload);
+      api.reload();
+    }
+
+    function initStress(api) {
+      if (!api || !fredMacro || !fredMacro.credit) return;
+      var credit = fredMacro.credit;
+      api.reload = function() {
+        var rows = sliceFred(credit.VIX, api.range);
+        if (!rows.length) return;
+        var labels = dateLabels(rows, api.range);
+        var vix = rows.map(function(r) { return r.value; });
+        var slope = mapFilled(rows, credit.TENMINUSTWO, function(pt) { return pt.value * 100; });
+        var last = vix[vix.length - 1];
+        var prev = vix.length > 1 ? vix[vix.length - 2] : last;
+        setHeadline(api, last, prev, function(v) { return Number(v).toFixed(2) + ' (VIX)'; }, function(chg, pct, up) {
+          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+        });
+        var t = tc();
+        renderChart(api, labels, [
+          { label: 'VIX', data: vix, borderColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y' },
+          { label: '2s10s', data: slope, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
+        ], {
+          animation: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, color: t.ink } },
+            datalabels: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function(ctx) {
+                  return ctx.dataset.label + ': ' + (ctx.dataset.label === 'VIX'
+                    ? Number(ctx.parsed.y).toFixed(2) : Math.round(ctx.parsed.y) + ' bps');
+                }
+              }
+            }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
+            y: Object.assign({}, yScaleFromValues(vix, function(v) { return Number(v).toFixed(1); }, t), { position: 'left', grid: { color: t.rule } }),
+            y2: Object.assign({}, yScaleFromValues(slope, function(v) { return Math.round(v) + 'bps'; }, t), { position: 'right', grid: { display: false } })
+          }
+        });
+      };
+      window._liveChartReloaders.push(api.reload);
+      api.reload();
+    }
+
+    // Upgrade DOM to mkt-card layout immediately (before data load)
+    var treasuryApi = buildCard('US Treasury Yields', 'FRED / U.S. Treasury', 'treasuryYields', 280);
+    var brentApi = buildCard('Brent Crude', 'ICE / Yahoo Finance', 'brentChart', 280);
+    var creditApi = buildCard('Credit Spreads', 'FRED / ICE BofA OAS', 'creditChart', 240);
+    var stressApi = buildCard('Market Stress', 'FRED / CBOE', 'stressChart', 240);
+
+    function boot() {
+      fetch('fred-data.json', { cache: 'no-store' })
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(data) {
+          if (!data) return;
+          fredMacro = data;
+          initTreasury(treasuryApi);
+          initBrent(brentApi);
+          initCredit(creditApi);
+          initStress(stressApi);
+          macroSection.dataset.macroChartsReady = '1';
+        })
+        .catch(function(e) { console.warn('[macro charts]', e); });
+    }
+
+    if (document.readyState === 'complete') {
+      requestAnimationFrame(function() { requestAnimationFrame(boot); });
+    } else {
+      window.addEventListener('load', function() {
+        requestAnimationFrame(function() { requestAnimationFrame(boot); });
+      });
+    }
   })();
 
   // ============================================================
@@ -2798,10 +3095,8 @@
     // axis labels and datalabels from the active theme's CSS tokens, so nothing is
     // left in a stale color that blends into the new background.
     const recolorCharts = () => {
-      if (!window.allCharts || !window.allCharts.length) return;
-      try {
-        if (typeof _initAllCharts === 'function') _initAllCharts();
-      } catch (_) {}
+      if (typeof _initAllCharts === 'function') _initAllCharts();
+      (window._liveChartReloaders || []).forEach(function(fn) { try { fn(); } catch (_) {} });
     };
     const setTheme = (t) => {
       if (t === 'light') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', t);
