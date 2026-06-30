@@ -1637,6 +1637,8 @@
   Chart.defaults.font.family = chartFont;
   Chart.defaults.responsive = true;
   Chart.defaults.maintainAspectRatio = false;
+  // Destroy any existing charts so this builder is safely re-runnable on theme switch.
+  (window.allCharts || []).forEach(c => { try { c.destroy(); } catch (_) {} });
   window.allCharts = [];
 
   // Theme-aware color reader
@@ -1713,7 +1715,7 @@
     try { cd = Object.assign(cd, JSON.parse(el.textContent)); } catch(e) { console.warn('chartData parse error', e); }
   });
 
-  // ── 1. Tech movers ──────────────────────────────────────���───────────────
+  // ── 1. Tech movers ────────────────────────���─────────────���───────────────
   if (document.getElementById('techMovers') && cd.techMovers) {
     const d = cd.techMovers;
     const lo = Math.min(...d.values, 0);
@@ -2789,21 +2791,15 @@
   (function() {
     const root = document.documentElement;
     const saved = localStorage.getItem('mktdig_theme') || 'light';
+    // Fully rebuild every chart with fresh theme colors. This is more robust than
+    // patching individual color props: it regenerates series, ticks, legend swatches,
+    // axis labels and datalabels from the active theme's CSS tokens, so nothing is
+    // left in a stale color that blends into the new background.
     const recolorCharts = () => {
-      Chart.defaults.color = tc().ink;
-      (window.allCharts || []).forEach(ch => {
-        try {
-          const o = ch.options;
-          if (o.plugins && o.plugins.legend && o.plugins.legend.labels) o.plugins.legend.labels.color = tc().ink;
-          if (o.plugins && o.plugins.datalabels) o.plugins.datalabels.color = tc().ink;
-          for (const k in (o.scales || {})) {
-            const sc = o.scales[k];
-            if (sc.grid) sc.grid.color = tc().rule;
-            if (sc.ticks) sc.ticks.color = tc().muted;
-          }
-          ch.update('none');
-        } catch (_) {}
-      });
+      if (!window.allCharts || !window.allCharts.length) return;
+      try {
+        if (typeof _initAllCharts === 'function') _initAllCharts();
+      } catch (_) {}
     };
     const setTheme = (t) => {
       if (t === 'light') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', t);
