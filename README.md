@@ -8,11 +8,13 @@ Daily market newsletter hosted at [wesleyhu1103.github.io/market-digest](https:/
 |------|---------|
 | `docs/` | Static site (GitHub Pages root) — `index.html` is the live digest |
 | `docs/archive/` | Prior-day snapshots + `manifest.json` for the archive UI |
+| `docs/admin.html` | Unlisted feedback admin UI (proposals + raw submissions) |
 | `docs/fred-data.json` | Macro chart data refreshed by `scripts/update_fred.py` |
 | `incoming/new-main.html` | Drop zone for daily `<main>` content (consumed by Actions) |
 | `scripts/` | Publish, repair, validate, and FRED refresh utilities |
 | `.github/workflows/publish-digest.yml` | Generate, validate, commit, deploy pipeline |
 | `.github/workflows/digest-watchdog.yml` | Morning stale-check; triggers publish when cron is delayed |
+| `.github/workflows/process-feedback.yml` | Weekly feedback clustering + review issue |
 | `api/cron-watchdog.js` | Vercel Cron backup (once daily on Hobby); dispatches publish when stale |
 | `vercel.json` | Vercel static output + cron config |
 
@@ -70,6 +72,7 @@ Optional Vercel env vars (Project → Settings → Environment Variables):
 |----------|---------|
 | `GITHUB_TOKEN` | PAT with `actions:write` — lets `/api/cron-watchdog` dispatch publish when GitHub cron lags |
 | `CRON_SECRET` | Auto-set by Vercel Cron; leave default unless you call the endpoint manually |
+| `FEEDBACK_ADMIN_SECRET` | Protects `/api/admin-proposals`, `/api/admin-feedback`, and sign-in for [`/admin.html`](docs/admin.html) |
 
 **Vercel Hobby cron limit:** one run per day (`vercel.json` uses `0 12 * * 1-5`). Hourly schedules block production deploys on Hobby.
 

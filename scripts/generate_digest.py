@@ -50,6 +50,7 @@ STRUCTURAL RULES (the static template's JS breaks if these drift):
 - Story items in #equities, #tech, #macro, #crypto, #buyside, and #deals use condensed <details class="deal"> dropdowns (NOT <ul><li>). Pattern: <details class="deal"><summary><strong>headline</strong></summary><div class="deal-body">...</div></details>. Equities/tech/macro/crypto/buyside: one <p> with the driver/context, then <p class="deal-source"><a href="..." target="_blank" rel="noopener noreferrer">Source: Outlet -- Headline</a></p> using the exact URL from today's feeds when a story matches (each feed item includes a URL line). Do not invent or guess URL slugs. Deals: Why / Outlook / What it means paragraphs, then the same deal-source line. Learning Opportunity and details.dive blocks also end with deal-source link(s). After the buyside analyst dropdowns, include one `.buyside-summary` block with the same Bull/Bear/Both toggles and `.bullbear show-bull` structure as `.narrative` (NOT `.buyside-grid` cards).
 - Keep every canvas inside its explicit-height wrapper div exactly as in the template.
 - Feedback section: keep ids fb-missing, fb-open, fb-success, verdictFb, vfSaved exactly as in the template.
+- Community votes section: keep `<section id="community-votes">` with `#cv-board` mount exactly as in the template (static shell; proposals load from API).
 - Do NOT include <section id="archive"> anywhere.
 - Escape apostrophes safely; never break inline JS or JSON.
 - Include <section id="sources"> as a placeholder; it will be replaced automatically after generation. Do not invent feed status prose.
@@ -63,7 +64,46 @@ CONTENT (synthesized from the sources):
 - Major deals and capital markets events
 - Reddit sentiment by subreddit: estimate from the day's headlines
 - One Learning Opportunity (400-500 words, mechanism-based, no bullets)
-- On Deck: next 5 trading days of catalysts"""
+- On Deck: next 5 trading days of catalysts; if COMMUNITY_VOTES block is present, add an h3 "Reader requests" under #ondeck with 1-2 bullets reflecting the highest-voted items (paraphrase; do not copy verbatim)"""
+
+
+def fetch_community_votes_block() -> str:
+    """Top approved proposals for On Deck prompt (empty if DB unavailable)."""
+    db_cli = ROOT / "scripts" / "feedback_db.mjs"
+    if not db_cli.exists():
+        return ""
+    import json
+    import subprocess
+
+    try:
+        proc = subprocess.run(
+            ["node", str(db_cli), "top-voted", "10"],
+            capture_output=True,
+            text=True,
+            cwd=str(ROOT),
+            timeout=30,
+        )
+        if proc.returncode != 0:
+            return ""
+        rows = json.loads(proc.stdout or "[]")
+        if not rows:
+            return ""
+        lines = []
+        for r in rows:
+            title = (r.get("title") or "").strip()
+            cat = r.get("category") or "features"
+            votes = r.get("vote_count") or 0
+            if title:
+                lines.append(f"[{cat}] {title} ({votes} votes)")
+        if not lines:
+            return ""
+        return (
+            "=== COMMUNITY_VOTES (top reader-requested changes; consider for On Deck Reader requests) ===\n"
+            + "\n".join(lines)
+            + "\n\n"
+        )
+    except (OSError, subprocess.TimeoutExpired, json.JSONDecodeError):
+        return ""
 
 
 def main() -> int:
@@ -85,12 +125,14 @@ def main() -> int:
 
     today = datetime.now(ZoneInfo("America/New_York"))
     feed_report = build_feed_report_json(reports)
+    community_votes = fetch_community_votes_block()
     user_content = (
         f"Today's date: {today.strftime('%A, %B %-d, %Y')} ({today.strftime('%Y-%m-%d')})\n\n"
         f"=== STRUCTURAL TEMPLATE (yesterday's <main>; preserve structure, replace content) ===\n"
         f"{template.group(0)}\n\n"
         f"=== FEED_REPORT (authoritative feed status; do not contradict) ===\n"
         f"{feed_report}\n\n"
+        f"{community_votes}"
         f"=== TODAY'S SOURCE MATERIAL (items from last 36 hours) ===\n"
         f"{sources_text}"
     )

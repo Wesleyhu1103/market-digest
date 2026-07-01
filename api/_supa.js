@@ -12,6 +12,7 @@
 // Files prefixed with "_" are not exposed as routes by Vercel.
 
 import postgres from "postgres";
+import crypto from "crypto";
 
 const DB_URL =
   process.env.SUPABASE_DB_URL ||
@@ -36,10 +37,17 @@ function db() {
   return sql;
 }
 
-export function cors(res) {
+export function cors(res, methods = "GET, POST, OPTIONS") {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Methods", methods);
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+}
+
+export function authorizeAdmin(req) {
+  const secret = process.env.FEEDBACK_ADMIN_SECRET;
+  if (!secret) return false;
+  const auth = req.headers.authorization || "";
+  return auth === `Bearer ${secret}`;
 }
 
 // Vercel's Node runtime usually pre-parses JSON bodies; fall back to reading the
@@ -97,19 +105,192 @@ export async function ensureSchema() {
       id bigint generated always as identity primary key,
       created_at timestamptz not null default now(),
       digest_date date, note text)`,
+    `alter table public.feedback add column if not exists processed_at timestamptz`,
+    `create table if not exists public.feedback_proposals (
+      id bigint generated always as identity primary key,
+      created_at timestamptz not null default now(),
+      title text not null,
+      summary text,
+      category text not null,
+      status text not null default 'pending',
+      source_feedback_ids bigint[] not null default '{}',
+      vote_count int not null default 0,
+      reject_reason text)`,
+    `create table if not exists public.proposal_votes (
+      id bigint generated always as identity primary key,
+      created_at timestamptz not null default now(),
+      proposal_id bigint not null references public.feedback_proposals(id) on delete cascade,
+      voter_hash text not null,
+      unique (proposal_id, voter_hash))`,
+    `create index if not exists idx_feedback_proposals_status on public.feedback_proposals(status)`,
+    `create index if not exists idx_feedback_unprocessed on public.feedback(processed_at) where processed_at is null`,
     `alter table public.feedback enable row level security`,
     `alter table public.quiz_results enable row level security`,
     `alter table public.verdict_notes enable row level security`,
+    `alter table public.feedback_proposals enable row level security`,
+    `alter table public.proposal_votes enable row level security`,
   ];
   for (const stmt of stmts) await s.unsafe(stmt);
+}
+
+export async function listApprovedProposals() {
+  const s = db();
+  return s`
+    select id, title, summary, category, vote_count, created_at
+    from public.feedback_proposals
+    where status = 'approved'
+    order by vote_count desc, created_at desc`;
+}
+
+export async function listProposalsAdmin(statusFilter) {
+  const s = db();
+  if (statusFilter) {
+    return s`
+      select p.id, p.title, p.summary, p.category, p.status, p.vote_count,
+             p.source_feedback_ids, p.reject_reason, p.created_at
+      from public.feedback_proposals p
+      where p.status = ${statusFilter}
+      order by p.created_at desc`;
+  }
+  return s`
+    select p.id, p.title, p.summary, p.category, p.status, p.vote_count,
+           p.source_feedback_ids, p.reject_reason, p.created_at
+    from public.feedback_proposals p
+    order by p.created_at desc`;
+}
+
+export async function getFeedbackByIds(ids) {
+  if (!ids || !ids.length) return [];
+  const s = db();
+  return s`
+    select id, digest_date, missing, "open", created_at
+    from public.feedback
+    where id = any(${ids})`;
+}
+
+export async function listRawFeedback(sinceDays) {
+  const s = db();
+  if (sinceDays) {
+    return s`
+      select id, digest_date, missing, "open", created_at, processed_at
+      from public.feedback
+      where created_at >= now() - (${sinceDays} || ' days')::interval
+      order by created_at desc`;
+  }
+  return s`
+    select id, digest_date, missing, "open", created_at, processed_at
+    from public.feedback
+    order by created_at desc
+    limit 200`;
+}
+
+export async function listUnprocessedFeedback() {
+  const s = db();
+  return s`
+    select id, digest_date, missing, "open", created_at
+    from public.feedback
+    where processed_at is null
+    order by created_at asc`;
+}
+
+export async function insertProposal(r) {
+  const s = db();
+  const rows = await s`
+    insert into public.feedback_proposals
+      (title, summary, category, status, source_feedback_ids)
+    values (${r.title}, ${r.summary}, ${r.category}, ${r.status || "pending"},
+            ${r.source_feedback_ids || []})
+    returning id`;
+  return rows[0].id;
+}
+
+export async function markFeedbackProcessed(ids) {
+  if (!ids || !ids.length) return;
+  const s = db();
+  await s`
+    update public.feedback
+    set processed_at = now()
+    where id = any(${ids})`;
+}
+
+export async function updateProposalStatus(ids, status, rejectReason) {
+  if (!ids || !ids.length) return;
+  const s = db();
+  if (rejectReason) {
+    await s`
+      update public.feedback_proposals
+      set status = ${status}, reject_reason = ${rejectReason}
+      where id = any(${ids})`;
+  } else {
+    await s`
+      update public.feedback_proposals
+      set status = ${status}, reject_reason = null
+      where id = any(${ids})`;
+  }
+}
+
+export async function getTopVotedProposals(limit = 10) {
+  const s = db();
+  return s`
+    select id, title, category, vote_count
+    from public.feedback_proposals
+    where status = 'approved'
+    order by vote_count desc, created_at desc
+    limit ${limit}`;
+}
+
+export async function castProposalVote(proposalId, voterHash, action) {
+  const s = db();
+  const pid = Number(proposalId);
+  if (!Number.isFinite(pid) || pid <= 0) throw new Error("invalid proposal id");
+  if (!voterHash || voterHash.length < 8) throw new Error("invalid voter hash");
+
+  const approved = await s`
+    select id from public.feedback_proposals
+    where id = ${pid} and status = 'approved'`;
+  if (!approved.length) throw new Error("proposal not found or not approved");
+
+  if (action === "remove") {
+    await s`delete from public.proposal_votes
+            where proposal_id = ${pid} and voter_hash = ${voterHash}`;
+    await s`update public.feedback_proposals
+            set vote_count = (select count(*)::int from public.proposal_votes where proposal_id = ${pid})
+            where id = ${pid}`;
+    const rows = await s`
+      select vote_count from public.feedback_proposals where id = ${pid}`;
+    return { voted: false, voteCount: rows[0].vote_count };
+  }
+
+  await s`
+    insert into public.proposal_votes (proposal_id, voter_hash)
+    values (${pid}, ${voterHash})
+    on conflict (proposal_id, voter_hash) do nothing`;
+  await s`update public.feedback_proposals
+          set vote_count = (select count(*)::int from public.proposal_votes where proposal_id = ${pid})
+          where id = ${pid}`;
+  const rows = await s`
+    select vote_count from public.feedback_proposals where id = ${pid}`;
+  return { voted: true, voteCount: rows[0].vote_count };
+}
+
+export function voterHashFromRequest(req, clientId) {
+  const ip = (req.headers["x-forwarded-for"] || req.socket?.remoteAddress || "")
+    .toString()
+    .split(",")[0]
+    .trim();
+  const ua = (req.headers["user-agent"] || "").slice(0, 200);
+  const cid = (clientId || "").slice(0, 64);
+  return crypto.createHash("sha256").update(`${ip}|${ua}|${cid}`).digest("hex");
 }
 
 // Used by /api/health to confirm the DB connection works end to end.
 export async function probe() {
   const s = db();
   const rows = await s`select
-    (select count(*)::int from public.feedback)      as feedback,
-    (select count(*)::int from public.quiz_results)  as quiz_results,
-    (select count(*)::int from public.verdict_notes) as verdict_notes`;
+    (select count(*)::int from public.feedback)           as feedback,
+    (select count(*)::int from public.quiz_results)       as quiz_results,
+    (select count(*)::int from public.verdict_notes)      as verdict_notes,
+    (select count(*)::int from public.feedback_proposals) as feedback_proposals,
+    (select count(*)::int from public.proposal_votes)     as proposal_votes`;
   return rows[0];
 }

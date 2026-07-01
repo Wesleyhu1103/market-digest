@@ -241,7 +241,87 @@ Heights: `techMovers` 320px, `treasuryYields`/`brentChart` 280px, `creditChart`/
 14. `<section id="sources">`
 15. `<section id="quiz" class="quiz">`
 16. `<section id="feedback">`
-17. `<script type="application/json" id="chartData">...</script>` ← LAST, before `</main>`
+17. `<section id="community-votes">` — `#cv-board` (static shell; proposals load from `GET /api/proposals`)
+18. `<script type="application/json" id="chartData">...</script>` ← LAST, before `</main>`
+
+---
+
+## Community votes and feedback review
+
+Reader feedback flows: **submit** → **cluster** (weekly) → **you approve** → **readers vote** → **On Deck prompt**.
+
+### Submit (public)
+
+- `#feedback` form → `POST /api/feedback` (unchanged)
+- `#community-votes` → `GET /api/proposals`, vote via `POST /api/proposals-vote`
+
+### Cluster (automatic)
+
+Weekly GitHub Action [`.github/workflows/process-feedback.yml`](../.github/workflows/process-feedback.yml) runs `scripts/process_feedback.py`, which:
+
+1. Pulls unprocessed rows from `public.feedback`
+2. Filters junk (too short, no letters, duplicates)
+3. Groups similar text into buckets (`coverage`, `depth`, `format`, `sources`, `sections`, `features`)
+4. Inserts `feedback_proposals` with `status = 'pending'`
+5. Opens a GitHub issue when pending items exist
+
+Manual run: `POSTGRES_URL=... python3 scripts/process_feedback.py`
+
+### Review (you)
+
+**Admin page (recommended):** bookmark [`docs/admin.html`](admin.html) — not linked from the public digest.
+
+- URL: `https://market-digest-liart.vercel.app/admin.html` (or same path on GitHub Pages)
+- Sign in with `FEEDBACK_ADMIN_SECRET` (stored in `sessionStorage` for the tab session)
+- **Proposals** tab: filter pending/approved/rejected, view source excerpts, approve or reject
+- **Raw feedback** tab: browse unfiltered submissions (7 / 14 / 30 days)
+
+The page is `noindex` and omitted from `#toc`; it calls `GET/POST /api/admin-proposals` and `GET /api/admin-feedback`.
+
+**CLI fallback:**
+
+```bash
+POSTGRES_URL=... python3 scripts/review_proposals.py list
+POSTGRES_URL=... python3 scripts/review_proposals.py raw --since 7d
+POSTGRES_URL=... python3 scripts/review_proposals.py approve 12 15
+POSTGRES_URL=... python3 scripts/review_proposals.py reject 9 --reason spam
+```
+
+Each pending proposal shows **source excerpts** from real reader submissions so you can judge before approving.
+
+**curl backup** (requires `FEEDBACK_ADMIN_SECRET` on Vercel):
+
+```bash
+curl -H "Authorization: Bearer $FEEDBACK_ADMIN_SECRET" \
+  https://market-digest-liart.vercel.app/api/admin-proposals?status=pending
+curl -H "Authorization: Bearer $FEEDBACK_ADMIN_SECRET" \
+  "https://market-digest-liart.vercel.app/api/admin-feedback?since=7"
+```
+
+### On Deck integration
+
+`scripts/generate_digest.py` injects top-voted approved proposals into the Claude prompt. The model may add an **Reader requests** subheading under `#ondeck` when votes exist.
+
+### Env vars
+
+| Var | Where | Purpose |
+|-----|-------|---------|
+| `POSTGRES_URL` | Vercel, GitHub Actions, local | Postgres connection (already provisioned) |
+| `FEEDBACK_ADMIN_SECRET` | Vercel | Protects admin APIs + sign-in for `/admin.html` |
+
+### Community votes HTML (preserve in template)
+
+```html
+<section id="community-votes">
+  <h2>Community Votes</h2>
+  <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+  <div id="cv-board" class="cv-board">
+    <p class="cv-empty">Loading community votes…</p>
+  </div>
+</section>
+```
+
+Do **not** remove `#community-votes` or `#cv-board` from the static template; daily `<main>` generation must keep this section shell intact.
 
 ---
 

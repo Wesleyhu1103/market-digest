@@ -306,6 +306,22 @@
   form.fb button.submit:hover, form.fb button[type="submit"]:hover { background: var(--accent); }
   .fb-success { color: var(--bull); padding: 12px 14px; background: var(--bull-soft); border-radius: 3px; margin-top: 14px; display: none; font-weight: 500; }
   .fb-success.fb-error { color: var(--bear); background: var(--bear-soft); }
+  /* Community votes */
+  .cv-board { margin-top: 8px; }
+  .cv-empty { font-family: "Inter", sans-serif; font-size: 14px; color: var(--muted); font-style: italic; padding: 16px 0; }
+  .cv-group { margin-bottom: 28px; }
+  .cv-group-h { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin: 0 0 14px; }
+  .cv-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px; margin-bottom: 10px; display: flex; gap: 14px; align-items: flex-start; }
+  .cv-vote { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 52px; }
+  .cv-vote button { border: 1px solid var(--rule); background: var(--bg); color: var(--ink); width: 40px; height: 36px; border-radius: 3px; cursor: pointer; font-size: 16px; line-height: 1; transition: all .12s; }
+  .cv-vote button:hover { border-color: var(--accent); color: var(--accent); }
+  .cv-vote button.on { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .cv-count { font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 600; color: var(--muted); }
+  .cv-vote button.on + .cv-count { color: var(--accent); }
+  .cv-body { flex: 1; min-width: 0; }
+  .cv-title { font-family: "Fraunces", serif; font-weight: 600; font-size: 17px; margin: 0 0 6px; line-height: 1.3; }
+  .cv-summary { font-family: "Inter", sans-serif; font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+  .cv-lede { font-family: "Inter", sans-serif; font-size: 14px; color: var(--muted); margin: 0 0 18px; max-width: 640px; }
   .sentiment-table { width: 100%; border-collapse: collapse; font-family: "Inter", sans-serif; font-size: 14px; margin: 14px 0; }
   .sentiment-table th, .sentiment-table td { padding: 10px 12px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
   .sentiment-table th { background: var(--code); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); font-weight: 700; }
@@ -618,6 +634,7 @@
   <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
   <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
   <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
   <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
   </div>
   <div class="theme-toggle" role="group" aria-label="Theme">
@@ -1271,6 +1288,15 @@
     </form>
   </section>
 
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
 <script type="application/json" id="consensusData">{
   "bonds": {
     "diverge": "Fed Chair Kevin Warsh makes his global debut at Sintra as hike bets build and the dollar climbs, while ADP undershot at 98,000 and euro-area inflation slowed more than expected on cheaper oil; bears point to the ECB's Nagel keeping options open and Kocher framing the choice as hike or hold, a surging dollar that erased EM currencies' 2026 gains, and the yen near a 40-year low.",
@@ -1366,6 +1392,38 @@
       body: JSON.stringify(body),
       keepalive: true,
     });
+  }
+  function mdGet(path) {
+    return fetch(mdApiUrl(path));
+  }
+
+  function mdVoterId() {
+    const key = 'marketDigest_voterId';
+    try {
+      let id = localStorage.getItem(key);
+      if (!id) {
+        id = (crypto.randomUUID && crypto.randomUUID()) || String(Date.now()) + Math.random().toString(36).slice(2);
+        localStorage.setItem(key, id);
+      }
+      return id;
+    } catch (_) {
+      return 'anon';
+    }
+  }
+
+  function mdVotesKey() {
+    return 'marketDigest_proposalVotes';
+  }
+
+  function mdGetLocalVotes() {
+    try { return JSON.parse(localStorage.getItem(mdVotesKey()) || '{}'); } catch (_) { return {}; }
+  }
+
+  function mdSetLocalVote(proposalId, voted) {
+    const map = mdGetLocalVotes();
+    if (voted) map[String(proposalId)] = true;
+    else delete map[String(proposalId)];
+    try { localStorage.setItem(mdVotesKey(), JSON.stringify(map)); } catch (_) {}
   }
 
   // Repair agent-generated <main> markup before binding event listeners
@@ -1568,6 +1626,80 @@
   // Bind the submit handler. Without this the form did a native GET submission
   // (dumping the fields into the URL), so nothing was ever saved.
   document.getElementById('fb-form')?.addEventListener('submit', submitFeedback);
+
+  // Community votes board
+  (function initCommunityVotes() {
+    const board = document.getElementById('cv-board');
+    if (!board) return;
+
+    function render(data) {
+      const localVotes = mdGetLocalVotes();
+      const cats = data.categories || [];
+      const labels = data.labels || {};
+      const proposals = data.proposals || {};
+      let total = 0;
+      cats.forEach(c => { total += (proposals[c] || []).length; });
+      if (!total) {
+        board.innerHTML = '<p class="cv-empty">No open votes yet — check back soon.</p>';
+        return;
+      }
+      let html = '';
+      cats.forEach(cat => {
+        const items = proposals[cat] || [];
+        if (!items.length) return;
+        html += '<div class="cv-group"><div class="cv-group-h">' + (labels[cat] || cat) + '</div>';
+        items.forEach(p => {
+          const voted = !!localVotes[String(p.id)];
+          html += '<div class="cv-card" data-id="' + p.id + '">'
+            + '<div class="cv-vote"><button type="button" class="cv-up' + (voted ? ' on' : '') + '" aria-label="Upvote" title="Upvote">▲</button>'
+            + '<span class="cv-count">' + (p.voteCount || 0) + '</span></div>'
+            + '<div class="cv-body"><div class="cv-title">' + escapeHtml(p.title) + '</div>'
+            + (p.summary ? '<p class="cv-summary">' + escapeHtml(p.summary) + '</p>' : '')
+            + '</div></div>';
+        });
+        html += '</div>';
+      });
+      board.innerHTML = html;
+      board.querySelectorAll('.cv-up').forEach(btn => {
+        btn.addEventListener('click', async function() {
+          const card = btn.closest('.cv-card');
+          const id = Number(card && card.dataset.id);
+          if (!id) return;
+          const wasOn = btn.classList.contains('on');
+          const action = wasOn ? 'remove' : 'upvote';
+          btn.disabled = true;
+          try {
+            const res = await mdPost('/api/proposals-vote', { proposalId: id, action, voterId: mdVoterId() });
+            if (!res.ok) throw new Error('vote failed');
+            const out = await res.json();
+            btn.classList.toggle('on', !wasOn);
+            mdSetLocalVote(id, !wasOn);
+            const countEl = card.querySelector('.cv-count');
+            if (countEl && out.voteCount != null) countEl.textContent = out.voteCount;
+            else if (countEl) {
+              const n = parseInt(countEl.textContent, 10) || 0;
+              countEl.textContent = Math.max(0, n + (wasOn ? -1 : 1));
+            }
+          } catch (_) {
+            /* keep UI unchanged on failure */
+          } finally {
+            btn.disabled = false;
+          }
+        });
+      });
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    mdGet('/api/proposals').then(r => r.ok ? r.json() : null).then(data => {
+      if (data) render(data);
+      else board.innerHTML = '<p class="cv-empty">Could not load votes — try again later.</p>';
+    }).catch(() => {
+      board.innerHTML = '<p class="cv-empty">Could not load votes — try again later.</p>';
+    });
+  })();
 
 
   // Charts — initialized after layout so container heights are non-zero

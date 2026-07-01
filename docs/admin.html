@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Market Digest — Feedback Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4ede0; --surface: #fbf6ec; --ink: #1f1d1a; --muted: #6b665d;
+    --rule: #d8cdb8; --rule-soft: #e8ddc7; --accent: #0f4f4a; --accent-2: #c2410c;
+    --accent-soft: #dfece9; --bull: #166534; --bull-soft: #dcedd5; --bear: #991b1b;
+    --bear-soft: #f3dada;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Newsreader", Georgia, serif; line-height: 1.55; font-size: 16px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+  .back { font-family: "Inter", sans-serif; font-size: 13px; color: var(--muted); text-decoration: none; }
+  .back:hover { color: var(--accent); }
+  h1 { font-family: "Fraunces", serif; font-weight: 700; font-size: 32px; margin: 0 0 6px; letter-spacing: -0.02em; }
+  .sub { font-family: "Inter", sans-serif; font-size: 14px; color: var(--muted); margin: 0 0 24px; }
+  .signout { font-family: "Inter", sans-serif; font-size: 12px; background: transparent; border: 1px solid var(--rule); color: var(--muted); padding: 6px 12px; border-radius: 3px; cursor: pointer; }
+  .signout:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* Login */
+  .login { max-width: 400px; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 28px 24px; }
+  .login label { display: block; font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--muted); margin-bottom: 8px; }
+  .login input { width: 100%; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 3px; font-family: "Inter", sans-serif; font-size: 14px; background: var(--bg); }
+  .login button { margin-top: 14px; background: var(--ink); color: var(--bg); border: none; padding: 10px 18px; border-radius: 3px; font-family: "Inter", sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  .login button:hover { background: var(--accent); }
+  .login-err { font-family: "Inter", sans-serif; font-size: 13px; color: var(--bear); margin-top: 12px; display: none; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .tabs button { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); border-radius: 20px; cursor: pointer; }
+  .tabs button.on { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .filters { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; }
+  .filters button { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; padding: 6px 12px; border: 1px solid var(--rule); background: var(--bg); color: var(--muted); border-radius: 16px; cursor: pointer; }
+  .filters button.on { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .filters select { font-family: "Inter", sans-serif; font-size: 12px; padding: 6px 10px; border: 1px solid var(--rule); border-radius: 3px; background: var(--bg); margin-left: auto; }
+
+  .toast { font-family: "Inter", sans-serif; font-size: 13px; padding: 10px 14px; border-radius: 3px; margin-bottom: 16px; display: none; }
+  .toast.ok { display: block; background: var(--bull-soft); color: var(--bull); }
+  .toast.err { display: block; background: var(--bear-soft); color: var(--bear); }
+  .empty { font-family: "Inter", sans-serif; font-size: 14px; color: var(--muted); font-style: italic; padding: 24px 0; }
+  .loading { font-family: "Inter", sans-serif; font-size: 14px; color: var(--muted); }
+
+  /* Cards */
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 16px 18px; margin-bottom: 12px; }
+  .card-head { display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .card-id { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted); }
+  .badge { font-family: "Inter", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; background: var(--accent-soft); color: var(--accent); }
+  .badge.pending { background: #ece3d2; color: var(--accent-2); }
+  .badge.approved { background: var(--bull-soft); color: var(--bull); }
+  .badge.rejected { background: var(--bear-soft); color: var(--bear); }
+  .badge.processed { background: var(--rule-soft); color: var(--muted); }
+  .badge.unprocessed { background: var(--accent-soft); color: var(--accent); }
+  .card-title { font-family: "Fraunces", serif; font-weight: 600; font-size: 18px; margin: 0 0 6px; line-height: 1.3; }
+  .card-summary { font-family: "Inter", sans-serif; font-size: 13px; color: var(--muted); margin: 0 0 12px; }
+  .sources { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--rule-soft); padding-top: 10px; }
+  .sources li { font-family: "Inter", sans-serif; font-size: 13px; color: var(--ink); margin-bottom: 8px; padding-left: 12px; border-left: 2px solid var(--rule); }
+  .sources .src-date { font-size: 11px; color: var(--muted); display: block; margin-top: 2px; }
+  .actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; align-items: center; }
+  .actions button { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 3px; cursor: pointer; border: 1px solid var(--rule); background: var(--bg); }
+  .actions .approve { background: var(--bull); border-color: var(--bull); color: #fff; }
+  .actions .approve:hover { opacity: .9; }
+  .actions .reject { color: var(--bear); border-color: var(--bear); }
+  .actions .reject:hover { background: var(--bear-soft); }
+  .reject-reason { flex: 1 1 180px; min-width: 140px; padding: 6px 10px; border: 1px solid var(--rule); border-radius: 3px; font-family: "Inter", sans-serif; font-size: 12px; background: var(--bg); }
+  .raw-text { font-family: "Inter", sans-serif; font-size: 14px; margin: 8px 0 0; white-space: pre-wrap; word-break: break-word; }
+  .raw-meta { font-family: "Inter", sans-serif; font-size: 12px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="index.html">← Back to digest</a>
+    <button type="button" class="signout hidden" id="signOut">Sign out</button>
+  </div>
+
+  <div id="loginView">
+    <h1>Feedback Admin</h1>
+    <p class="sub">Sign in to review reader feedback and proposals.</p>
+    <div class="login">
+      <label for="adminToken">Admin secret</label>
+      <input type="password" id="adminToken" autocomplete="current-password" placeholder="FEEDBACK_ADMIN_SECRET" />
+      <button type="button" id="signIn">Sign in</button>
+      <div class="login-err" id="loginErr">Invalid secret — try again.</div>
+    </div>
+  </div>
+
+  <div id="adminView" class="hidden">
+    <h1>Feedback Admin</h1>
+    <p class="sub">Approve clustered proposals or browse raw submissions.</p>
+    <div class="toast" id="toast"></div>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="on" data-tab="proposals" role="tab">Proposals</button>
+      <button type="button" data-tab="raw" role="tab">Raw feedback</button>
+    </div>
+
+    <div id="panelProposals">
+      <div class="filters" id="statusFilters">
+        <button type="button" class="on" data-status="pending">Pending</button>
+        <button type="button" data-status="approved">Approved</button>
+        <button type="button" data-status="rejected">Rejected</button>
+        <button type="button" data-status="">All</button>
+      </div>
+      <div id="proposalsList"><p class="loading">Loading…</p></div>
+    </div>
+
+    <div id="panelRaw" class="hidden">
+      <div class="filters">
+        <span style="font-family:Inter,sans-serif;font-size:12px;color:var(--muted);">Show last</span>
+        <select id="rawSince">
+          <option value="7">7 days</option>
+          <option value="14">14 days</option>
+          <option value="30">30 days</option>
+        </select>
+      </div>
+      <div id="rawList"><p class="loading">Loading…</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const MD_API_ORIGIN = 'https://market-digest-liart.vercel.app';
+  const TOKEN_KEY = 'marketDigest_adminToken';
+
+  function mdUsesRemoteApi() {
+    const h = location.hostname;
+    return /\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1';
+  }
+  function mdApiUrl(path) {
+    return mdUsesRemoteApi() ? MD_API_ORIGIN + path : path;
+  }
+
+  function getToken() {
+    try { return sessionStorage.getItem(TOKEN_KEY) || ''; } catch (_) { return ''; }
+  }
+  function setToken(t) {
+    try { if (t) sessionStorage.setItem(TOKEN_KEY, t); else sessionStorage.removeItem(TOKEN_KEY); } catch (_) {}
+  }
+
+  async function adminFetch(path, opts) {
+    const token = getToken();
+    const headers = Object.assign({}, (opts && opts.headers) || {}, {
+      Authorization: 'Bearer ' + token,
+    });
+    const res = await fetch(mdApiUrl(path), Object.assign({}, opts, { headers }));
+    if (res.status === 401) {
+      setToken('');
+      showLogin();
+      throw new Error('unauthorized');
+    }
+    return res;
+  }
+
+  const loginView = document.getElementById('loginView');
+  const adminView = document.getElementById('adminView');
+  const signOut = document.getElementById('signOut');
+  const toast = document.getElementById('toast');
+  let proposalStatus = 'pending';
+  let activeTab = 'proposals';
+
+  function showLogin() {
+    loginView.classList.remove('hidden');
+    adminView.classList.add('hidden');
+    signOut.classList.add('hidden');
+  }
+  function showAdmin() {
+    loginView.classList.add('hidden');
+    adminView.classList.remove('hidden');
+    signOut.classList.remove('hidden');
+  }
+
+  function showToast(msg, ok) {
+    toast.textContent = msg;
+    toast.className = 'toast ' + (ok ? 'ok' : 'err');
+    setTimeout(function () { toast.className = 'toast'; }, 4000);
+  }
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function fmtDate(val) {
+    if (!val) return '—';
+    return String(val).slice(0, 10);
+  }
+
+  async function verifyToken(token) {
+    const res = await fetch(mdApiUrl('/api/admin-proposals?status=pending'), {
+      headers: { Authorization: 'Bearer ' + token },
+    });
+    return res.ok;
+  }
+
+  document.getElementById('signIn').addEventListener('click', async function () {
+    const token = document.getElementById('adminToken').value.trim();
+    const errEl = document.getElementById('loginErr');
+    errEl.style.display = 'none';
+    if (!token) return;
+    try {
+      const ok = await verifyToken(token);
+      if (!ok) {
+        errEl.style.display = 'block';
+        return;
+      }
+      setToken(token);
+      showAdmin();
+      loadProposals();
+    } catch (_) {
+      errEl.style.display = 'block';
+    }
+  });
+
+  document.getElementById('adminToken').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') document.getElementById('signIn').click();
+  });
+
+  signOut.addEventListener('click', function () {
+    setToken('');
+    document.getElementById('adminToken').value = '';
+    showLogin();
+  });
+
+  document.querySelectorAll('.tabs button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activeTab = btn.dataset.tab;
+      document.querySelectorAll('.tabs button').forEach(function (b) { b.classList.toggle('on', b === btn); });
+      document.getElementById('panelProposals').classList.toggle('hidden', activeTab !== 'proposals');
+      document.getElementById('panelRaw').classList.toggle('hidden', activeTab !== 'raw');
+      if (activeTab === 'proposals') loadProposals();
+      else loadRaw();
+    });
+  });
+
+  document.querySelectorAll('#statusFilters button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      proposalStatus = btn.dataset.status;
+      document.querySelectorAll('#statusFilters button').forEach(function (b) { b.classList.toggle('on', b === btn); });
+      loadProposals();
+    });
+  });
+
+  document.getElementById('rawSince').addEventListener('change', loadRaw);
+
+  async function loadProposals() {
+    const el = document.getElementById('proposalsList');
+    el.innerHTML = '<p class="loading">Loading…</p>';
+    try {
+      const q = proposalStatus ? '?status=' + encodeURIComponent(proposalStatus) : '';
+      const res = await adminFetch('/api/admin-proposals' + q);
+      const data = await res.json();
+      renderProposals(data.proposals || [], el);
+    } catch (e) {
+      if (e.message !== 'unauthorized') el.innerHTML = '<p class="empty">Could not load proposals.</p>';
+    }
+  }
+
+  function renderProposals(items, el) {
+    if (!items.length) {
+      el.innerHTML = '<p class="empty">No proposals in this filter.</p>';
+      return;
+    }
+    el.innerHTML = items.map(function (p) {
+      const sources = (p.sources || []).map(function (s) {
+        return '<li>&ldquo;' + escapeHtml(s.text) + '&rdquo;<span class="src-date">' + escapeHtml(fmtDate(s.date)) + '</span></li>';
+      }).join('');
+      const actions = p.status === 'pending'
+        ? '<div class="actions">'
+          + '<button type="button" class="approve" data-action="approve" data-id="' + p.id + '">Approve</button>'
+          + '<input type="text" class="reject-reason" placeholder="Reject reason (optional)" data-id="' + p.id + '" />'
+          + '<button type="button" class="reject" data-action="reject" data-id="' + p.id + '">Reject</button>'
+          + '</div>'
+        : (p.rejectReason ? '<p class="card-summary">Rejected: ' + escapeHtml(p.rejectReason) + '</p>' : '');
+      return '<div class="card" data-proposal-id="' + p.id + '">'
+        + '<div class="card-head"><span class="card-id">#' + p.id + '</span>'
+        + '<span class="badge ' + escapeHtml(p.category) + '">' + escapeHtml(p.category) + '</span>'
+        + '<span class="badge ' + escapeHtml(p.status) + '">' + escapeHtml(p.status) + '</span>'
+        + (p.voteCount ? '<span class="card-id">' + p.voteCount + ' votes</span>' : '')
+        + '</div>'
+        + '<div class="card-title">' + escapeHtml(p.title) + '</div>'
+        + (p.summary ? '<p class="card-summary">' + escapeHtml(p.summary) + '</p>' : '')
+        + (sources ? '<ul class="sources">' + sources + '</ul>' : '')
+        + actions
+        + '</div>';
+    }).join('');
+
+    el.querySelectorAll('[data-action]').forEach(function (btn) {
+      btn.addEventListener('click', function () { handleProposalAction(btn); });
+    });
+  }
+
+  async function handleProposalAction(btn) {
+    const id = Number(btn.dataset.id);
+    const action = btn.dataset.action;
+    if (!id || !action) return;
+    btn.disabled = true;
+    let body = { action: action, ids: [id] };
+    if (action === 'reject') {
+      const input = document.querySelector('.reject-reason[data-id="' + id + '"]');
+      if (input && input.value.trim()) body.reason = input.value.trim();
+    }
+    try {
+      const res = await adminFetch('/api/admin-proposals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) throw new Error('failed');
+      showToast(action === 'approve' ? 'Approved #' + id : 'Rejected #' + id, true);
+      loadProposals();
+    } catch (e) {
+      if (e.message !== 'unauthorized') showToast('Action failed — try again.', false);
+      btn.disabled = false;
+    }
+  }
+
+  async function loadRaw() {
+    const el = document.getElementById('rawList');
+    el.innerHTML = '<p class="loading">Loading…</p>';
+    const since = document.getElementById('rawSince').value;
+    try {
+      const res = await adminFetch('/api/admin-feedback?since=' + encodeURIComponent(since));
+      const data = await res.json();
+      renderRaw(data.feedback || [], el);
+    } catch (e) {
+      if (e.message !== 'unauthorized') el.innerHTML = '<p class="empty">Could not load raw feedback.</p>';
+    }
+  }
+
+  function renderRaw(items, el) {
+    if (!items.length) {
+      el.innerHTML = '<p class="empty">No submissions in this window.</p>';
+      return;
+    }
+    el.innerHTML = items.map(function (f) {
+      const processed = f.processedAt ? 'processed' : 'unprocessed';
+      const parts = [];
+      if (f.missing) parts.push('Missing: ' + f.missing);
+      if (f.open) parts.push('Open: ' + f.open);
+      const text = parts.join('\n\n') || '(empty)';
+      return '<div class="card">'
+        + '<div class="raw-meta"><span class="card-id">#' + f.id + '</span>'
+        + '<span>' + escapeHtml(fmtDate(f.digestDate || f.createdAt)) + '</span>'
+        + '<span class="badge ' + processed + '">' + processed + '</span>'
+        + '</div>'
+        + '<div class="raw-text">' + escapeHtml(text) + '</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  if (getToken()) {
+    verifyToken(getToken()).then(function (ok) {
+      if (ok) { showAdmin(); loadProposals(); }
+      else showLogin();
+    }).catch(showLogin);
+  }
+})();
+</script>
+</body>
+</html>

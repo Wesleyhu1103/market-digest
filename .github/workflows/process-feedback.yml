@@ -1,0 +1,85 @@
+name: Process feedback
+
+# Cluster reader feedback into pending proposals for editor review.
+# Runs weekly; opens a GitHub issue when new pending proposals are created.
+on:
+  schedule:
+    - cron: "0 14 * * 1" # Mondays 14:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Cluster feedback into proposals
+        env:
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        run: |
+          set -euo pipefail
+          python3 scripts/process_feedback.py | tee /tmp/process-feedback.log
+
+      - name: Open review issue if pending proposals exist
+        env:
+          GH_TOKEN: ${{ github.token }}
+          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        run: |
+          set -euo pipefail
+          PENDING="$(node scripts/feedback_db.mjs list-proposals pending)"
+          COUNT="$(echo "$PENDING" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))")"
+          if [ "$COUNT" = "0" ]; then
+            echo "No pending proposals; skipping issue."
+            exit 0
+          fi
+
+          BODY="$(python3 <<'PY'
+          import json, os, subprocess
+          pending = json.loads(subprocess.check_output(
+              ["node", "scripts/feedback_db.mjs", "list-proposals", "pending"], text=True))
+          lines = [
+              f"**{len(pending)} proposal(s)** are waiting for review.",
+              "",
+              "Review locally:",
+              "```bash",
+              "POSTGRES_URL=... python3 scripts/review_proposals.py list",
+              "POSTGRES_URL=... python3 scripts/review_proposals.py approve ID [ID ...]",
+              "```",
+              "",
+          ]
+          for p in pending[:20]:
+              lines.append(f"### ID {p['id']} [{p['category']}] — {p['title']}")
+              if p.get("summary"):
+                  lines.append(p["summary"])
+              for s in (p.get("sources") or [])[:3]:
+                  text = (s.get("text") or "")[:160]
+                  lines.append(f"- \"{text}\"")
+              lines.append("")
+          print("\n".join(lines))
+          PY
+          )"
+
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "Review ${COUNT} feedback proposal(s)" \
+            --body "$BODY" \
+            --label "feedback-review" || \
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "Review ${COUNT} feedback proposal(s)" \
+            --body "$BODY"
