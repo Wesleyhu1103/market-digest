@@ -275,6 +275,7 @@ Manual run: `POSTGRES_URL=... python3 scripts/process_feedback.py`
 - Sign in with `FEEDBACK_ADMIN_SECRET` (stored in `sessionStorage` for the tab session)
 - **Proposals** tab: filter pending/approved/rejected, view source excerpts, approve or reject
 - **Raw feedback** tab: browse unfiltered submissions (7 / 14 / 30 days)
+- **Cluster into proposals** button: runs clustering on unprocessed raw feedback (same as weekly job)
 
 The page is `noindex` and omitted from `#toc`; it calls `GET/POST /api/admin-proposals` and `GET /api/admin-feedback`.
 

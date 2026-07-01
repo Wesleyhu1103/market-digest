@@ -73,6 +73,12 @@
   .reject-reason { flex: 1 1 180px; min-width: 140px; padding: 6px 10px; border: 1px solid var(--rule); border-radius: 3px; font-family: "Inter", sans-serif; font-size: 12px; background: var(--bg); }
   .raw-text { font-family: "Inter", sans-serif; font-size: 14px; margin: 8px 0 0; white-space: pre-wrap; word-break: break-word; }
   .raw-meta { font-family: "Inter", sans-serif; font-size: 12px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .hint { font-family: "Inter", sans-serif; font-size: 13px; color: var(--muted); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 14px; margin-bottom: 16px; line-height: 1.5; }
+  .hint strong { color: var(--ink); }
+  .toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .toolbar button.primary { font-family: "Inter", sans-serif; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 3px; cursor: pointer; border: none; background: var(--accent); color: var(--bg); }
+  .toolbar button.primary:hover { opacity: .92; }
+  .toolbar button.primary:disabled { opacity: .5; cursor: wait; }
   .hidden { display: none !important; }
 </style>
 </head>
@@ -99,6 +105,11 @@
     <p class="sub">Approve clustered proposals or browse raw submissions.</p>
     <div class="toast" id="toast"></div>
 
+    <div class="toolbar">
+      <button type="button" class="primary" id="clusterBtn">Cluster into proposals</button>
+      <span style="font-family:Inter,sans-serif;font-size:12px;color:var(--muted);">Groups unprocessed raw feedback into pending proposals</span>
+    </div>
+
     <div class="tabs" role="tablist">
       <button type="button" class="on" data-tab="proposals" role="tab">Proposals</button>
       <button type="button" data-tab="raw" role="tab">Raw feedback</button>
@@ -115,6 +126,7 @@
     </div>
 
     <div id="panelRaw" class="hidden">
+      <div class="hint"><strong>Raw feedback</strong> is what readers submitted directly. <strong>Unprocessed</strong> means clustering has not run yet — click <strong>Cluster into proposals</strong> above. Submissions under 15 characters are skipped as noise.</div>
       <div class="filters">
         <span style="font-family:Inter,sans-serif;font-size:12px;color:var(--muted);">Show last</span>
         <select id="rawSince">
@@ -253,6 +265,23 @@
 
   document.getElementById('rawSince').addEventListener('change', loadRaw);
 
+  document.getElementById('clusterBtn').addEventListener('click', async function () {
+    const btn = document.getElementById('clusterBtn');
+    btn.disabled = true;
+    try {
+      const res = await adminFetch('/api/admin-process-feedback', { method: 'POST' });
+      const out = await res.json();
+      if (!res.ok) throw new Error(out.error || 'failed');
+      showToast(out.message || ('Created ' + (out.created || 0) + ' proposal(s)'), true);
+      if (activeTab === 'raw') loadRaw();
+      else { activeTab = 'proposals'; document.querySelectorAll('.tabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.tab === 'proposals'); }); document.getElementById('panelProposals').classList.remove('hidden'); document.getElementById('panelRaw').classList.add('hidden'); loadProposals(); }
+    } catch (e) {
+      if (e.message !== 'unauthorized') showToast('Clustering failed — try again.', false);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
   async function loadProposals() {
     const el = document.getElementById('proposalsList');
     el.innerHTML = '<p class="loading">Loading…</p>';
@@ -268,7 +297,7 @@
 
   function renderProposals(items, el) {
     if (!items.length) {
-      el.innerHTML = '<p class="empty">No proposals in this filter.</p>';
+      el.innerHTML = '<div class="hint"><strong>No proposals yet.</strong> Raw feedback must be clustered first — click <strong>Cluster into proposals</strong> above, then review pending items here and approve them for the public voting board.</div>';
       return;
     }
     el.innerHTML = items.map(function (p) {

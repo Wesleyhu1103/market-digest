@@ -94,6 +94,13 @@ async function main() {
     return;
   }
 
+  if (cmd === "process") {
+    const { processFeedback } = await import("../api/_process_feedback.js");
+    const result = await processFeedback();
+    console.log(JSON.stringify(result));
+    return;
+  }
+
   console.error(`Unknown command: ${cmd}`);
   process.exit(1);
 }
