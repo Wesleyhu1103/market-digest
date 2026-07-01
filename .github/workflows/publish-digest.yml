@@ -1,5 +1,11 @@
 name: Publish digest
 
+# Dual-host deploy model (GitHub Pages + Vercel):
+#   1. build  — generate/repair digest, validate, commit + push to main
+#   2. deploy — upload docs/ to GitHub Pages, then POST VERCEL_DEPLOY_HOOK
+# Vercel should rely on the deploy hook (after Pages), not git auto-deploy alone.
+# Git auto-deploy can fail silently (e.g. invalid vercel.json cron) or race the hook.
+#
 # Triggers:
 #  - push of incoming/new-main.html (agent upload)
 #  - push to main when the live digest date is behind today (catches missed cron / bad merges)
@@ -111,6 +117,8 @@ jobs:
     needs: plan
     if: needs.plan.outputs.run == 'true'
     runs-on: ubuntu-latest
+    outputs:
+      deploy_sha: ${{ steps.commit.outputs.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -169,6 +177,7 @@ jobs:
         run: python3 scripts/validate_digest.py docs/index.html
 
       - name: Commit and push
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -180,19 +189,20 @@ jobs:
             git pull --rebase origin main
             git push origin main
           fi
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   deploy:
     needs: build
     if: needs.build.result == 'success'
     runs-on: ubuntu-latest
-    continue-on-error: true
+    continue-on-error: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ needs.build.outputs.deploy_sha }}
 
       - uses: actions/configure-pages@v5
         with:
@@ -210,8 +220,16 @@ jobs:
           VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
         run: |
           if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
-            echo "::warning::VERCEL_DEPLOY_HOOK not set. Create one at Vercel → Project → Settings → Git → Deploy Hooks (branch: main) and add the URL as a repo secret."
-            exit 0
+            echo "::error::VERCEL_DEPLOY_HOOK not set — Vercel will not sync after publish."
+            exit 1
           fi
-          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
-          echo "Vercel production redeploy triggered"
+          for attempt in 1 2 3; do
+            if curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"; then
+              echo "Vercel production redeploy triggered (attempt $attempt)"
+              exit 0
+            fi
+            echo "Deploy hook attempt $attempt failed; retrying in 10s…"
+            sleep 10
+          done
+          echo "::error::Vercel deploy hook failed after 3 attempts"
+          exit 1

@@ -32,8 +32,8 @@ cron runners are often delayed 1–2 hours at peak load. Two workflows cover thi
 
 | Workflow | Role |
 |----------|------|
-| **Digest watchdog** | Every 15 min (7–11am ET weekdays); triggers publish only while stale |
-| **Publish digest** | Generates, validates, commits, and deploys |
+| **Digest watchdog** | Every 15 min (7am–2pm ET weekdays); triggers publish only while stale |
+| **Publish digest** | Generates, validates, commits, deploys Pages, syncs Vercel |
 
 If the site looks stale after 10am ET:
 
@@ -42,15 +42,27 @@ If the site looks stale after 10am ET:
 3. **`FRED_API_KEY`** (recommended) for fresh macro charts.
 4. Any push to `main` while `docs/index.html` is behind today's date also auto-runs publish.
 
-Both [GitHub Pages](https://wesleyhu1103.github.io/market-digest) and [Vercel](https://market-digest-liart.vercel.app) should show the same digest after each publish.
+Both [GitHub Pages](https://wesleyhu1103.github.io/market-digest) and [Vercel](https://market-digest-liart.vercel.app) update from the same **Publish digest** workflow run — not from arbitrary git pushes alone.
 
-### Keep Vercel in sync (one-time setup)
+### How both hosts stay in sync
 
-GitHub Pages redeploys automatically from Actions. Vercel does **not** unless you wire it up:
+```
+Publish digest workflow
+  ├─ build   → generate, validate, commit + push to main
+  └─ deploy  → GitHub Pages (docs/)  →  POST VERCEL_DEPLOY_HOOK
+```
 
-1. **Deploy Hook (recommended)** — Vercel → **market-digest** → Settings → **Git** → **Deploy Hooks** → create hook for branch `main`. Copy the URL.
-2. GitHub → repo **Settings → Secrets and variables → Actions** → add secret **`VERCEL_DEPLOY_HOOK`** with that URL.
-3. Every successful **Publish digest** run POSTs the hook after GitHub Pages deploy, rebuilding Vercel from latest `main`.
+| Host | Mechanism | Why |
+|------|-----------|-----|
+| **GitHub Pages** | `deploy-pages` in Actions | `GITHUB_TOKEN` pushes don't trigger legacy Pages builds |
+| **Vercel** | Deploy hook after Pages | Explicit, runs only after validated content is on `main` |
+
+**Recommended:** In Vercel → **market-digest** → Settings → **Git**, turn off automatic production deploys on push (keep the repo connected for previews if you want). The deploy hook is the single source of truth — git auto-deploy can fail silently (e.g. invalid `vercel.json` cron) or race the hook.
+
+One-time setup (done if `VERCEL_DEPLOY_HOOK` is in repo secrets):
+
+1. Vercel → Settings → **Git** → **Deploy Hooks** → hook for branch `main`
+2. GitHub → repo **Secrets → Actions** → **`VERCEL_DEPLOY_HOOK`** = hook URL
 
 Optional Vercel env vars (Project → Settings → Environment Variables):
 

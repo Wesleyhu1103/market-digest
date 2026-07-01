@@ -38,7 +38,7 @@ often delayed 1–2 hours at peak load; the watchdog is the reliable safety net.
 On publish, Actions runs `scripts/generate_digest.py` — fetches the RSS feeds,
 calls the Claude API (`ANTHROPIC_API_KEY` repo secret) to rewrite `<main>` from
 the current template, then archives the prior day, repairs, splices, validates,
-refreshes FRED, commits, and deploys Pages.
+refreshes FRED, commits, deploys Pages, and triggers the Vercel deploy hook.
 No local machine or Claude session needed. Reddit sentiment is estimated
 from headlines and labeled as such; Gmail newsletters are not available in
 automated runs (historically ~2% of content).
@@ -70,6 +70,10 @@ update every stored copy the moment you regenerate, or runs will 401.
 GitHub Pages must be set to **Settings → Pages → Source: GitHub Actions**
 (one-time). Pushes made with the built-in `GITHUB_TOKEN` don't trigger the
 legacy deploy-from-branch build, so the workflow deploys Pages explicitly.
+
+**Vercel** syncs via **`VERCEL_DEPLOY_HOOK`** (repo secret): the publish workflow
+POSTs the hook after Pages deploy. Prefer this over git auto-deploy alone — disable
+automatic production deploys on push in Vercel → Project → Settings → Git.
 
 ---
 
