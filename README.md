@@ -13,6 +13,8 @@ Daily market newsletter hosted at [wesleyhu1103.github.io/market-digest](https:/
 | `scripts/` | Publish, repair, validate, and FRED refresh utilities |
 | `.github/workflows/publish-digest.yml` | Generate, validate, commit, deploy pipeline |
 | `.github/workflows/digest-watchdog.yml` | Morning stale-check; triggers publish when cron is delayed |
+| `api/cron-watchdog.js` | Vercel Cron backup (once daily on Hobby); dispatches publish when stale |
+| `vercel.json` | Vercel static output + cron config |
 
 ## Local development
 
@@ -40,7 +42,31 @@ If the site looks stale after 10am ET:
 3. **`FRED_API_KEY`** (recommended) for fresh macro charts.
 4. Any push to `main` while `docs/index.html` is behind today's date also auto-runs publish.
 
-Both [GitHub Pages](https://wesleyhu1103.github.io/market-digest) and [Vercel](https://market-digest-liart.vercel.app) redeploy on every `main` push.
+Both [GitHub Pages](https://wesleyhu1103.github.io/market-digest) and [Vercel](https://market-digest-liart.vercel.app) should show the same digest after each publish.
+
+### Keep Vercel in sync (one-time setup)
+
+GitHub Pages redeploys automatically from Actions. Vercel does **not** unless you wire it up:
+
+1. **Deploy Hook (recommended)** — Vercel → **market-digest** → Settings → **Git** → **Deploy Hooks** → create hook for branch `main`. Copy the URL.
+2. GitHub → repo **Settings → Secrets and variables → Actions** → add secret **`VERCEL_DEPLOY_HOOK`** with that URL.
+3. Every successful **Publish digest** run POSTs the hook after GitHub Pages deploy, rebuilding Vercel from latest `main`.
+
+Optional Vercel env vars (Project → Settings → Environment Variables):
+
+| Variable | Purpose |
+|----------|---------|
+| `GITHUB_TOKEN` | PAT with `actions:write` — lets `/api/cron-watchdog` dispatch publish when GitHub cron lags |
+| `CRON_SECRET` | Auto-set by Vercel Cron; leave default unless you call the endpoint manually |
+
+**Vercel Hobby cron limit:** one run per day (`vercel.json` uses `0 12 * * 1-5`). Hourly schedules block production deploys on Hobby.
+
+Create the hook from CLI (after `vercel login`):
+
+```bash
+npx vercel deploy-hook create "GitHub Actions publish" --ref main
+gh secret set VERCEL_DEPLOY_HOOK --body "<hook-url-from-output>"
+```
 
 ### v0 / Claude Code → live site
 

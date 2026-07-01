@@ -94,7 +94,7 @@ jobs:
             exit 0
           fi
 
-          if echo "$CHANGED" | grep -qE '(^| )(docs/|\.github/workflows/publish-digest\.yml|\.github/workflows/sync-agent-branches\.yml)'; then
+          if echo "$CHANGED" | grep -qE '(^| )(docs/|\.github/workflows/publish-digest\.yml|\.github/workflows/sync-agent-branches\.yml|vercel\.json|api/)'; then
             echo "Static site or publish workflow change — validate and deploy Pages"
             echo "run=true" >> "$GITHUB_OUTPUT"
             echo "stale=false" >> "$GITHUB_OUTPUT"
@@ -181,16 +181,6 @@ jobs:
             git push origin main
           fi
 
-      - name: Redeploy Vercel (optional deploy hook)
-        env:
-          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
-        run: |
-          if [ -n "$VERCEL_DEPLOY_HOOK" ]; then
-            curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
-          else
-            echo "VERCEL_DEPLOY_HOOK not set; skipping Vercel redeploy"
-          fi
-
   deploy:
     needs: build
     if: needs.build.result == 'success'
@@ -214,3 +204,14 @@ jobs:
 
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Sync Vercel production
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
+            echo "::warning::VERCEL_DEPLOY_HOOK not set. Create one at Vercel → Project → Settings → Git → Deploy Hooks (branch: main) and add the URL as a repo secret."
+            exit 0
+          fi
+          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
+          echo "Vercel production redeploy triggered"

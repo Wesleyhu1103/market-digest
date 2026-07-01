@@ -43,3 +43,4 @@ No `npm install`, `pip install`, or Docker. System requirements: **Python 3** an
 - Do not open `docs/index.html` via `file://` — JSON fetches will fail.
 - Only replace `<main>...</main>` for daily content updates; the static template (CSS, JS, nav) must stay intact per `docs/AGENT_HANDOFF.md`.
 - Long-running dev server: use tmux if starting `python3 -m http.server` in the background.
+- **Vercel vs GitHub Pages:** Pages updates from Actions automatically; Vercel needs repo secret **`VERCEL_DEPLOY_HOOK`** (Deploy Hook URL for branch `main`). Hobby plan allows only one cron/day in `vercel.json`.
