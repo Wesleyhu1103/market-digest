@@ -222,7 +222,7 @@
   nav.toc a svg { flex: 0 0 16px; opacity: .7; }
   nav.toc a.active svg { opacity: 1; }
   .theme-toggle { display: flex; gap: 4px; margin: 16px 12px 0 16px; padding: 6px; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; }
-  .theme-toggle button { flex: 1; background: transparent; color: var(--muted); border: none; padding: 6px 4px; border-radius: 2px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; transition: all .12s; }
+  .theme-toggle button { flex: 1; background: transparent; color: var(--muted); border: none; padding: 6px 4px; border-radius: 2px; cursor: pointer; font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; transition: all .12s; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
   .theme-toggle button:hover { color: var(--ink); background: var(--rule-soft); }
   .theme-toggle button.active { background: var(--ink); color: var(--bg); }
   .content { flex: 1; min-width: 0; width: 100%; max-width: var(--content-max); padding: 0 var(--content-pad) 0 var(--content-pad); }
@@ -265,7 +265,7 @@
   .narrative h3 { margin-top: 0; font-size: 24px; }
   .narrative p { max-width: none; }
   .toggles { display: flex; gap: 8px; margin: 14px 0; font-family: "Inter", sans-serif; font-size: 12px; }
-    .toggles button { border: 1px solid var(--rule); background: var(--bg); color: var(--ink); padding: 7px 14px; border-radius: 2px; cursor: pointer; font-weight: 600; letter-spacing: .04em; transition: all .12s; }
+    .toggles button { border: 1px solid var(--rule); background: var(--bg); color: var(--ink); padding: 7px 14px; border-radius: 2px; cursor: pointer; font-weight: 600; letter-spacing: .04em; transition: all .12s; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
   .toggles button:hover { border-color: var(--ink); }
   .toggles button.bull.on { background: var(--bull-soft); border-color: var(--bull); color: var(--bull); }
   .toggles button.bear.on { background: var(--bear-soft); border-color: var(--bear); color: var(--bear); }
@@ -519,17 +519,17 @@
   .tr-dot.today { box-shadow: 0 0 0 2px var(--accent); }
 
   /* ── Full timeline drawer ──────────────────────────────────��───────── */
-  .tl-scrim { position: fixed; inset: 0; background: rgba(0,0,0,.45); opacity: 0; visibility: hidden; transition: opacity .25s; z-index: 90; }
-  .tl-scrim.open { opacity: 1; visibility: visible; }
-  .tl-drawer { position: fixed; top: 0; right: 0; height: 100vh; width: min(680px, 94vw); background: var(--bg); border-left: 1px solid var(--rule); box-shadow: -16px 0 48px rgba(0,0,0,.18); transform: translateX(100%); transition: transform .3s cubic-bezier(.22,1,.36,1); z-index: 91; overflow-y: auto; padding: 28px 32px 60px; }
-  .tl-scrim.open .tl-drawer { transform: translateX(0); }
+  .tl-scrim { position: fixed; inset: 0; background: rgba(0,0,0,.45); opacity: 0; visibility: hidden; transition: opacity .25s; z-index: 90; pointer-events: none; }
+  .tl-scrim.open { opacity: 1; visibility: visible; pointer-events: auto; }
+  .tl-drawer { position: fixed; top: 0; right: 0; height: 100vh; width: min(680px, 94vw); background: var(--bg); border-left: 1px solid var(--rule); box-shadow: -16px 0 48px rgba(0,0,0,.18); transform: translateX(100%); visibility: hidden; transition: transform .3s cubic-bezier(.22,1,.36,1), visibility .3s; z-index: 91; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 28px 32px 60px; touch-action: pan-y; }
+  .tl-drawer.open { transform: translateX(0); visibility: visible; }
   .tl-drawer-head { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 20px; }
   .tl-drawer-head .kicker { font-family: "Inter", sans-serif; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-2); font-weight: 700; margin-bottom: 8px; }
   .tl-drawer-head h2 { font-family: "Playfair Display", serif; font-size: 28px; margin: 0; line-height: 1.1; }
   .tl-close { background: none; border: 1px solid var(--rule); border-radius: 6px; width: 34px; height: 34px; cursor: pointer; color: var(--ink); font-size: 18px; line-height: 1; flex: 0 0 auto; }
   .tl-close:hover { background: var(--rule-soft); }
   .tl-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 22px; }
-  .tl-tab { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 20px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); cursor: pointer; }
+  .tl-tab { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 20px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
   .tl-tab.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
   .tl-track { position: relative; padding-left: 30px; }
   .tl-track::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--rule); }
@@ -557,6 +557,11 @@
     /* timeline drawer fits a phone */
     .tl-drawer { width: 100vw; padding: 22px 20px 50px; }
     .tl-drawer-head h2 { font-size: 23px; }
+    .tl-tab { min-height: 44px; }
+    .toggles button { min-height: 44px; padding: 10px 16px; }
+    .theme-toggle button { min-height: 44px; padding: 10px 6px; }
+    .frame-tabs button { min-height: 44px; }
+    .mkt-syms button, .mkt-ranges button { min-height: 44px; padding: 10px 12px; }
   }
 
   /* ============================================================
@@ -579,7 +584,7 @@
   .mkt-syms { display: flex; flex-wrap: wrap; gap: 4px; }
   .mkt-syms button, .mkt-ranges button {
     font-family: "Inter", sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-    border: none; background: transparent; color: var(--muted); padding: 4px 8px; cursor: pointer; border-radius: 2px; transition: all .12s;
+    border: none; background: transparent; color: var(--muted); padding: 4px 8px; cursor: pointer; border-radius: 2px; transition: all .12s; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
   }
   .mkt-syms button:hover, .mkt-ranges button:hover { color: var(--ink); }
   .mkt-syms button.active { background: var(--ink); color: var(--bg); }
@@ -598,7 +603,7 @@
   .frame-tabs { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule); }
   .frame-tabs button {
     flex: 1 1 auto; min-width: 84px; font-family: "JetBrains Mono", monospace; font-size: 12px; border: none; cursor: pointer;
-    background: var(--surface); color: var(--muted); padding: 10px 8px; transition: all .12s;
+    background: var(--surface); color: var(--muted); padding: 10px 8px; transition: all .12s; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
   }
   .frame-tabs button:hover { color: var(--ink); }
   .frame-tabs button.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
@@ -638,10 +643,10 @@
   <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
   </div>
   <div class="theme-toggle" role="group" aria-label="Theme">
-        <button data-th="light" class="active" title="The Economist">Econ</button>
-        <button data-th="newsprint" title="The Wall Street Journal">WSJ</button>
-        <button data-th="sepia" title="Financial Times">FT</button>
-        <button data-th="dark" title="Bloomberg">BBG</button>
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
   </div>
   <div class="threads-rail">
     <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
@@ -1360,18 +1365,17 @@
 </div>
 
 <!-- NARRATIVE TIMELINE DRAWER -->
-<div class="tl-scrim" id="tlScrim" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
-  <div class="tl-drawer">
-    <div class="tl-drawer-head">
-      <div>
-        <div class="kicker">Narrative Threads</div>
-        <h2 id="tlTitle">How the week's theses built</h2>
-      </div>
-      <button class="tl-close" id="tlClose" aria-label="Close timeline">&times;</button>
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
     </div>
-    <div class="tl-tabs" id="tlTabs"></div>
-    <div class="tl-track" id="tlTrack"></div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
   </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
 </div>
 
 <script>
@@ -1479,9 +1483,10 @@
         else n.appendChild(toggles);
       }
       if (!toggles.querySelector('[data-side="bull"]')) {
-        toggles.innerHTML = '<button class="bull on" data-side="bull">Bull</button><button class="bear" data-side="bear">Bear</button><button data-side="both">Both</button>';
+        toggles.innerHTML = '<button type="button" class="bull on" data-side="bull">Bull</button><button type="button" class="bear" data-side="bear">Bear</button><button type="button" data-side="both">Both</button>';
       } else if (!toggles.querySelector('[data-side="both"]')) {
         const bothBtn = document.createElement('button');
+        bothBtn.type = 'button';
         bothBtn.dataset.side = 'both';
         bothBtn.textContent = 'Both';
         toggles.appendChild(bothBtn);
@@ -1545,20 +1550,19 @@
     onScroll();
   });
 
-  // Bull/Bear toggle
-  document.querySelectorAll('.narrative, .buyside-summary').forEach(n => {
-    const bb = n.querySelector('.bullbear');
+  // Bull/Bear toggle — delegated so taps work reliably on mobile
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.narrative .toggles button, .buyside-summary .toggles button');
+    if (!btn) return;
+    const n = btn.closest('.narrative, .buyside-summary');
+    const bb = n && n.querySelector('.bullbear');
     if (!bb) return;
-    n.querySelectorAll('.toggles button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        n.querySelectorAll('.toggles button').forEach(b => b.classList.remove('on'));
-        btn.classList.add('on');
-        bb.classList.remove('show-bull', 'show-bear');
-        const side = btn.dataset.side;
-        if (side === 'bull') bb.classList.add('show-bull');
-        if (side === 'bear') bb.classList.add('show-bear');
-      });
-    });
+    n.querySelectorAll('.toggles button').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    bb.classList.remove('show-bull', 'show-bear');
+    const side = btn.dataset.side;
+    if (side === 'bull') bb.classList.add('show-bull');
+    if (side === 'bear') bb.classList.add('show-bear');
   });
 
   // Quiz (case-insensitive; accepts data-opt or mistaken data-val on .opt only)
@@ -2840,6 +2844,7 @@
 
     data.framings.forEach(function(f, i) {
       var b = document.createElement('button');
+      b.type = 'button';
       b.textContent = f.outlet;
       b.className = i === active ? 'active' : '';
       b.addEventListener('click', function() { active = i; sync(); });
@@ -3290,7 +3295,14 @@
       { key: 'aicapex', name: 'AI Capex / IPO', col: 3,
         blurb: { bull: 'SpaceX book swells; FOMO lifts the whole complex.', bear: 'Capex without proof of profit; software reversal.', neu: 'Split tape — euphoria meets the profitability test.' } }
     ];
-    const todayLabel = 'Thu 6/11';
+    const todayLabel = (function editionDayLabel() {
+      const h1 = document.querySelector('header.head h1');
+      if (!h1) return '';
+      const MONTHS = { January:0,February:1,March:2,April:3,May:4,June:5,July:6,August:7,September:8,October:9,November:10,December:11 };
+      const m = h1.textContent.match(/(\w+),\s+(\w+)\s+(\d+),\s+(\d{4})/);
+      if (!m || MONTHS[m[2]] == null) return '';
+      return m[1].slice(0, 3) + ' ' + (MONTHS[m[2]] + 1) + '/' + m[3];
+    })();
 
     // Parse the Week Scoreboard table into per-thread day arrays
     function readScoreboard() {
@@ -3337,11 +3349,27 @@
       }).join('');
     }
 
-    // Drawer
+    // Drawer — scrim and panel are siblings (iOS fixed-position touch quirk)
     const scrim = document.getElementById('tlScrim');
+    const drawer = document.getElementById('tlDrawer');
     const tabs = document.getElementById('tlTabs');
     const track = document.getElementById('tlTrack');
     let activeThread = 0;
+    let scrollLockY = 0;
+    function lockBodyScroll() {
+      scrollLockY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + scrollLockY + 'px';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+    }
+    function unlockBodyScroll() {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      window.scrollTo(0, scrollLockY);
+    }
 
     function renderTimeline(ti) {
       activeThread = ti;
@@ -3363,15 +3391,17 @@
     if (tabs) tabs.innerHTML = THREADS.map((th, i) => '<button class="tl-tab" type="button" data-tab="' + i + '">' + th.name + '</button>').join('');
 
     function openDrawer(ti) {
-      if (scrim.hidden) scrim.hidden = false;
-      requestAnimationFrame(() => scrim.classList.add('open'));
+      if (scrim.hidden) { scrim.hidden = false; drawer.hidden = false; scrim.setAttribute('aria-hidden', 'false'); }
+      requestAnimationFrame(function() { scrim.classList.add('open'); drawer.classList.add('open'); });
       renderTimeline(ti != null ? ti : activeThread);
-      document.body.style.overflow = 'hidden';
+      lockBodyScroll();
     }
     function closeDrawer() {
       scrim.classList.remove('open');
-      document.body.style.overflow = '';
-      setTimeout(() => { scrim.hidden = true; }, 280);
+      drawer.classList.remove('open');
+      scrim.setAttribute('aria-hidden', 'true');
+      unlockBodyScroll();
+      setTimeout(function() { scrim.hidden = true; drawer.hidden = true; }, 280);
     }
 
     document.getElementById('trExpand') && document.getElementById('trExpand').addEventListener('click', () => openDrawer(0));
@@ -3384,8 +3414,9 @@
       if (b) renderTimeline(parseInt(b.dataset.tab, 10));
     });
     document.getElementById('tlClose') && document.getElementById('tlClose').addEventListener('click', closeDrawer);
-    scrim && scrim.addEventListener('click', e => { if (e.target === scrim) closeDrawer(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && scrim && !scrim.hidden) closeDrawer(); });
+    scrim && scrim.addEventListener('click', closeDrawer);
+    drawer && drawer.addEventListener('click', function(e) { e.stopPropagation(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && drawer && !drawer.hidden) closeDrawer(); });
   })();
 
   // ── Reader-facing freshness indicator ──────────────────────────────────

@@ -9,6 +9,17 @@ import urllib.request
 
 LIVE_URL = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/index.html"
 
+# Full-page checks (static template outside <main>) — guard regressions in narrative
+# threads date logic and mobile drawer/toggle behavior.
+STATIC_RULES = [
+    ("narrative editionDayLabel", r"function editionDayLabel\(\)", 1),
+    ("no hardcoded todayLabel", r"todayLabel\s*=\s*['\"][A-Za-z]", 0),
+    ("timeline drawer id", r'id="tlDrawer"', 1),
+    ("timeline drawer not nested", r'<div class="tl-scrim"[^>]*>\s*<div class="tl-drawer"', 0),
+    ("ios scroll lock helper", r"function lockBodyScroll\(\)", 1),
+    ("bull/bear delegated clicks", r"\.closest\(['\"]\.narrative \.toggles button", 1),
+]
+
 RULES = [
     ("3 narrative data-nar", r'<div class="narrative" data-nar="(bonds|iran|aicapex)">', 3),
     ("4 bullbear show-bull", r'<div class="bullbear show-bull">', 4),
@@ -61,6 +72,12 @@ def main():
 
     failures = 0
     html_only = {"chartData last in main", "archive-mount outside main", "JS parse"}
+    for desc, pat, exp in STATIC_RULES:
+        n = len(re.findall(pat, html, re.DOTALL | re.I))
+        ok = n == exp
+        print(("OK   " if ok else "FAIL ") + f"{desc}: {n}/{exp}")
+        if not ok:
+            failures += 1
     for desc, pat, exp in RULES:
         scope = html if desc in html_only else main_block
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -72,7 +89,8 @@ def main():
     if not check_js(html):
         failures += 1
 
-    print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {len(RULES) + 1 - failures}/{len(RULES) + 1} checks")
+    total = len(STATIC_RULES) + len(RULES) + 1
+    print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
 
