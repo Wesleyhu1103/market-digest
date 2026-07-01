@@ -25,7 +25,7 @@ FEEDS: dict[str, str] = {
     "Bloomberg Economics": "https://feeds.bloomberg.com/economics/news.rss",
     "CNBC Top News": "https://www.cnbc.com/id/10001147/device/rss/rss.html",
     "Matt Levine Money Stuff": "https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine.rss",
-    "CoinDesk": "https://www.coindesk.com/arc/outboundfeeds/rss/",
+    "CoinDesk": "https://www.coindesk.com/arc/outboundfeeds/rss",
     "Stratechery": "https://stratechery.com/feed/",
 }
 
@@ -38,6 +38,7 @@ FETCH_RETRIES = 2
 @dataclass
 class FeedItem:
     title: str
+    url: str
     desc: str
     published: datetime | None
     published_label: str
@@ -92,6 +93,7 @@ def _text_el(parent: ElementTree.Element, *paths: str) -> str:
 
 
 def _fetch_bytes(url: str) -> bytes:
+    opener = urllib.request.build_opener(urllib.request.HTTPRedirectHandler())
     last_err: Exception | None = None
     for attempt in range(FETCH_RETRIES + 1):
         try:
@@ -99,7 +101,7 @@ def _fetch_bytes(url: str) -> bytes:
                 url,
                 headers={"User-Agent": UA, "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*"},
             )
-            return urllib.request.urlopen(req, timeout=30).read()
+            return opener.open(req, timeout=30).read()
         except (OSError, TimeoutError, urllib.error.URLError) as e:
             last_err = e
             if attempt < FETCH_RETRIES:
@@ -116,6 +118,8 @@ def _parse_items(raw: bytes) -> list[FeedItem]:
         nodes = root.findall("a:entry", ATOM_NS)
         for entry in nodes:
             title = _text_el(entry, "a:title")
+            link_el = entry.find("a:link", ATOM_NS)
+            link = (link_el.get("href", "") if link_el is not None else "").strip()
             desc = _strip_html(
                 _text_el(entry, "a:summary", "a:content") or ""
             )[:600]
@@ -125,6 +129,7 @@ def _parse_items(raw: bytes) -> list[FeedItem]:
                 items.append(
                     FeedItem(
                         title=html.unescape(title),
+                        url=link,
                         desc=desc,
                         published=pub,
                         published_label=pub_raw or "",
@@ -133,6 +138,7 @@ def _parse_items(raw: bytes) -> list[FeedItem]:
     else:
         for item in root.iter("item"):
             title = (item.findtext("title") or "").strip()
+            link = (item.findtext("link") or "").strip()
             desc = _strip_html(item.findtext("description") or "")[:600]
             pub_raw = (item.findtext("pubDate") or item.findtext("date") or "").strip()
             pub = _parse_datetime(pub_raw)
@@ -140,6 +146,7 @@ def _parse_items(raw: bytes) -> list[FeedItem]:
                 items.append(
                     FeedItem(
                         title=html.unescape(title),
+                        url=link,
                         desc=desc,
                         published=pub,
                         published_label=pub_raw or "",
@@ -190,6 +197,24 @@ def fetch_feed(name: str, url: str) -> tuple[list[FeedItem], FeedResult]:
     )
 
 
+def build_feed_url_index() -> dict[str, str]:
+    """Map normalized article URLs to titles from all configured feeds (no freshness filter)."""
+    index: dict[str, str] = {}
+    for name, url in FEEDS.items():
+        try:
+            items = _parse_items(_fetch_bytes(url))
+        except Exception:
+            continue
+        for it in items:
+            if it.url:
+                index[_normalize_url(it.url)] = it.title
+    return index
+
+
+def _normalize_url(url: str) -> str:
+    return url.rstrip("/").split("#", 1)[0]
+
+
 def gather_sources() -> tuple[str, list[FeedResult], int]:
     blocks: list[str] = []
     reports: list[FeedResult] = []
@@ -206,6 +231,9 @@ def gather_sources() -> tuple[str, list[FeedResult], int]:
             blocks.append(f"## {name}\n(no items in last {FRESH_HOURS}h; fetched {report.items_fetched} older)")
             continue
         lines = [
+            f"- [{it.published_label or 'undated'}] {it.title}\n  URL: {it.url}\n  {it.desc}"
+            for it in items if it.url
+        ] or [
             f"- [{it.published_label or 'undated'}] {it.title}\n  {it.desc}"
             for it in items
         ]
