@@ -181,6 +181,16 @@ jobs:
             git push origin main
           fi
 
+      - name: Redeploy Vercel (optional deploy hook)
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$VERCEL_DEPLOY_HOOK" ]; then
+            curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
+          else
+            echo "VERCEL_DEPLOY_HOOK not set; skipping Vercel redeploy"
+          fi
+
   deploy:
     needs: build
     if: needs.build.result == 'success'
