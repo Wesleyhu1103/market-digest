@@ -38,6 +38,13 @@ Publishing requires `GITHUB_TOKEN` in the environment; see `docs/AGENT_HANDOFF.m
 
 No `npm install`, `pip install`, or Docker. System requirements: **Python 3** and **Node.js** only.
 
+### Dev log (all agents: Claude Code, Cursor, v0)
+
+After completing any fix or feature, append a 2–3 line entry to
+`dev-log/YYYY-MM.md` (format in `dev-log/README.md`): date + what changed,
+why, and any gotchas. Do not create or edit daily market notes — those are
+written by hand.
+
 ### Gotchas
 
 - Do not open `docs/index.html` via `file://` — JSON fetches will fail.
