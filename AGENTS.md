@@ -40,6 +40,10 @@ No `npm install`, `pip install`, or Docker. System requirements: **Python 3** an
 
 ### Dev log (all agents: Claude Code, Cursor, v0)
 
+Before starting any fix, search `dev-log/` for entries about the same
+file/feature; entries flagged `→ didn't hold` are failed approaches — do
+not repeat them.
+
 After completing any fix or feature, append a 2–3 line entry to
 `dev-log/YYYY-MM.md` (format in `dev-log/README.md`): date + what changed,
 why, and any gotchas. If the change redoes something a previous entry

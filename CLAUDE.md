@@ -4,6 +4,11 @@ Project context, local commands, and gotchas live in [AGENTS.md](AGENTS.md) — 
 
 ## Dev log (required)
 
+Before starting any fix, search `dev-log/` for entries touching the same
+file or feature (this month and last). Entries flagged `→ didn't hold` are
+approaches that already failed — do not repeat them; address the underlying
+cause instead.
+
 After completing any fix or feature in this repo, append a short entry to
 `dev-log/YYYY-MM.md` (create the file for a new month using the format in
 `dev-log/README.md`). Each entry is 2–3 lines:
