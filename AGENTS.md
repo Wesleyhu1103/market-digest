@@ -42,8 +42,10 @@ No `npm install`, `pip install`, or Docker. System requirements: **Python 3** an
 
 After completing any fix or feature, append a 2–3 line entry to
 `dev-log/YYYY-MM.md` (format in `dev-log/README.md`): date + what changed,
-why, and any gotchas. Do not create or edit daily market notes — those are
-written by hand.
+why, and any gotchas. If the change redoes something a previous entry
+already fixed, add `Redo of: YYYY-MM-DD` to the new entry and append
+`→ didn't hold, see YYYY-MM-DD` to the old entry's first line. Do not
+create or edit daily market notes — those are written by hand.
 
 ### Gotchas
 
