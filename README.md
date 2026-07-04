@@ -71,7 +71,7 @@ Optional Vercel env vars (Project → Settings → Environment Variables):
 | Variable | Purpose |
 |----------|---------|
 | `GITHUB_TOKEN` | PAT with `actions:write` — lets `/api/cron-watchdog` dispatch publish when GitHub cron lags |
-| `CRON_SECRET` | Auto-set by Vercel Cron; leave default unless you call the endpoint manually |
+| `CRON_SECRET` | Required by `/api/cron-watchdog`; Vercel Cron sends it as the bearer token |
 | `FEEDBACK_ADMIN_SECRET` | Protects `/api/admin-proposals`, `/api/admin-feedback`, and sign-in for [`/admin.html`](docs/admin.html) |
 
 **Vercel Hobby cron limit:** one run per day (`vercel.json` uses `0 12 * * 1-5`). Hourly schedules block production deploys on Hobby.
