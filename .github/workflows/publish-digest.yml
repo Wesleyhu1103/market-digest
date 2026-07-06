@@ -53,11 +53,21 @@ jobs:
         run: |
           EVENT="${{ github.event_name }}"
           if [ "$EVENT" = "workflow_dispatch" ]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
+            if [ -f incoming/new-main.html ]; then
+              echo "Manual run found incoming/new-main.html; publishing it without regeneration"
+              echo "run=true" >> "$GITHUB_OUTPUT"
+              echo "stale=false" >> "$GITHUB_OUTPUT"
+              echo "static=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
             echo "static=false" >> "$GITHUB_OUTPUT"
             if python3 scripts/digest_stale.py; then
+              echo "Digest already current; skipping manual regeneration"
+              echo "run=false" >> "$GITHUB_OUTPUT"
               echo "stale=false" >> "$GITHUB_OUTPUT"
             else
+              echo "Digest stale; running manual catch-up publish"
+              echo "run=true" >> "$GITHUB_OUTPUT"
               echo "stale=true" >> "$GITHUB_OUTPUT"
             fi
             exit 0
@@ -139,19 +149,14 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           STALE: ${{ needs.plan.outputs.stale }}
         run: |
-          if [ "$EVENT_NAME" = "schedule" ] && [ -f incoming/new-main.html ]; then
-            echo "Removing stale incoming/new-main.html before scheduled generation"
-            rm incoming/new-main.html
-          fi
-
-          if [ -z "$ANTHROPIC_API_KEY" ]; then
+          if [ -f incoming/new-main.html ]; then
+            echo "incoming/new-main.html already present; publishing it without generation"
+          elif [ -z "$ANTHROPIC_API_KEY" ]; then
             if [ "$EVENT_NAME" = "schedule" ] || [ "$STALE" = "true" ]; then
               echo "::error::ANTHROPIC_API_KEY secret not set; cannot generate today's digest"
               exit 1
             fi
             echo "ANTHROPIC_API_KEY secret not set; skipping generation"
-          elif [ -f incoming/new-main.html ] && [ "$STALE" != "true" ]; then
-            echo "incoming/new-main.html already present; skipping generation"
           else
             pip install -q anthropic
             python3 scripts/generate_digest.py
