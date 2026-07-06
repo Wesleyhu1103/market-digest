@@ -76,3 +76,12 @@ jobs:
 
           echo "Digest is stale; dispatching Publish digest workflow."
           gh workflow run publish-digest.yml --repo "${{ github.repository }}" --ref main
+
+          # Loud alarm: by ~09:30 ET both primary paths (GitHub cron + Vercel
+          # cron) should have published already. Still stale this late means a
+          # scheduler silently failed — fail the run so it shows red and pings us.
+          NOWHM="$(date -u +%H%M)"
+          if [ "$((10#$NOWHM))" -ge 1330 ]; then
+            echo "::error::Digest still stale at ${NOWHM} UTC (past 09:30 ET). Primary schedulers lagged; backup just dispatched publish. Check the Vercel cron /api/cron-watchdog (it needs GITHUB_TOKEN set in Vercel to dispatch)."
+            exit 1
+          fi

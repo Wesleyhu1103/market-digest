@@ -100,12 +100,18 @@ export default async function handler(req, res) {
 
   const stale = !digestDate || digestDate < today;
   if (!stale) {
+    console.log(`[cron-watchdog] current today=${today} digestDate=${digestDate}`);
     res.status(200).json({ ok: true, action: "skip", today, digestDate, stale: false });
     return;
   }
 
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
+    // Non-2xx so Vercel flags the cron run as failed instead of silently no-oping.
+    console.error(
+      `[cron-watchdog] STALE but cannot dispatch: GITHUB_TOKEN not set on Vercel. ` +
+        `today=${today} digestDate=${digestDate}. Digest will only update if GitHub's own cron fires.`
+    );
     res.status(503).json({
       ok: false,
       action: "stale",
@@ -118,6 +124,7 @@ export default async function handler(req, res) {
 
   try {
     if (await publishInProgress(token)) {
+      console.log(`[cron-watchdog] stale but publish already in progress; today=${today}`);
       res.status(200).json({
         ok: true,
         action: "skip_in_progress",
@@ -128,8 +135,12 @@ export default async function handler(req, res) {
       return;
     }
     await dispatchPublish(token);
+    console.log(`[cron-watchdog] dispatched publish; today=${today} digestDate=${digestDate}`);
     res.status(200).json({ ok: true, action: "dispatched", today, digestDate, stale: true });
   } catch (e) {
+    console.error(
+      `[cron-watchdog] dispatch FAILED: ${(e && e.message) || e} today=${today} digestDate=${digestDate}`
+    );
     res.status(502).json({
       ok: false,
       action: "dispatch_failed",

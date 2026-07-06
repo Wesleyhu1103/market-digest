@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Return whether docs/index.html is behind today's US/Eastern digest date."""
+from __future__ import annotations
+
 import re
 import sys
 from datetime import datetime
