@@ -60,7 +60,7 @@ def run_handler(env, headers=None, html=None):
         text=True,
         check=True,
     )
-    return json.loads(result.stdout)
+    return json.loads(result.stdout.strip().splitlines()[-1])
 
 
 class CronWatchdogTests(unittest.TestCase):
