@@ -162,7 +162,7 @@ def _fresh_cutoff() -> datetime:
 
 def _is_fresh(item: FeedItem, cutoff: datetime) -> bool:
     if item.published is None:
-        return True
+        return False
     pub = item.published
     if pub.tzinfo is None:
         pub = pub.replace(tzinfo=timezone.utc)
