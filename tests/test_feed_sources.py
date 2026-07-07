@@ -51,11 +51,32 @@ class FeedSourcesTests(unittest.TestCase):
     def test_freshness_filter(self):
         module = load_feed_sources()
         now = datetime.now(timezone.utc)
-        fresh = module.FeedItem("new", "x", now, "")
-        old = module.FeedItem("old", "x", now - timedelta(hours=48), "")
+        fresh = module.FeedItem("new", "x", "", now, "")
+        old = module.FeedItem("old", "x", "", now - timedelta(hours=48), "")
+        undated = module.FeedItem("undated", "x", "", None, "")
         cutoff = now - timedelta(hours=module.FRESH_HOURS)
         self.assertTrue(module._is_fresh(fresh, cutoff))
         self.assertFalse(module._is_fresh(old, cutoff))
+        self.assertFalse(module._is_fresh(undated, cutoff))
+
+    def test_undated_feed_items_do_not_count_as_fresh(self):
+        module = load_feed_sources()
+        xml = b"""<?xml version='1.0'?>
+        <rss><channel>
+          <item>
+            <title>No date headline</title>
+            <link>https://example.test/no-date</link>
+            <description>Body text</description>
+          </item>
+        </channel></rss>"""
+
+        with mock.patch.object(module, "_fetch_bytes", return_value=xml):
+            items, report = module.fetch_feed("Example", "https://example.test/rss")
+
+        self.assertEqual(items, [])
+        self.assertEqual(report.status, "stale")
+        self.assertEqual(report.items_fresh, 0)
+        self.assertEqual(report.items_fetched, 1)
 
     def test_build_sources_html_lists_worked_and_failed(self):
         module = load_feed_sources()
