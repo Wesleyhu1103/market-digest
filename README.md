@@ -71,15 +71,15 @@ Vercel env vars (Project → Settings → Environment Variables → **Production
 | Variable | Purpose |
 |----------|---------|
 | `GITHUB_TOKEN` | **Required for reliable publishing.** PAT (or fine-grained token) with `actions:write` on this repo — lets the Vercel cron `/api/cron-watchdog` dispatch the publish workflow when GitHub's own cron lags. **Without it the endpoint returns 503 and can't recover a stale digest**, so publishing falls back entirely to GitHub's unreliable scheduler. |
-| `CRON_SECRET` | Recommended. Vercel Cron sends `Authorization: Bearer <CRON_SECRET>` on scheduled calls when this is set; the endpoint then rejects unauthenticated public callers. **Not auto-created — you must set it** (any long random string). If unset, `/api/cron-watchdog` is publicly callable. |
+| `CRON_SECRET` | **Required.** Vercel Cron sends `Authorization: Bearer <CRON_SECRET>` on scheduled calls. **Not auto-created — you must set it** (any long random string), or `/api/cron-watchdog` returns 401 and cannot dispatch stale-digest publishes. |
 | `FEEDBACK_ADMIN_SECRET` | Protects `/api/admin-proposals`, `/api/admin-feedback`, and sign-in for [`/admin.html`](docs/admin.html) |
 
 > **Failure mode to watch:** if the digest is stale in the morning, first check
 > the Vercel **Cron Jobs** dashboard / function logs for `[cron-watchdog]`. A
-> 503 there means `GITHUB_TOKEN` is missing or expired on Vercel — that has been
-> the recurring cause of late/missing digests. The GitHub `digest-watchdog`
-> workflow also fails loudly (red run) if the digest is still stale past
-> ~09:30 ET.
+> 401 means `CRON_SECRET` is missing or mismatched, while a 503 means
+> `GITHUB_TOKEN` is missing or expired on Vercel. The GitHub
+> `digest-watchdog` workflow also fails loudly (red run) if the digest is
+> still stale past ~09:30 ET.
 
 **Vercel Hobby cron limit:** one run per day (`vercel.json` uses `0 12 * * 1-5`). Hourly schedules block production deploys on Hobby.
 
