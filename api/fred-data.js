@@ -15,6 +15,8 @@ const SERIES = {
 };
 
 const DAYS = 400;
+const UA =
+  "Mozilla/5.0 (compatible; market-digest/1.0; +https://market-digest-liart.vercel.app)";
 
 function startDate() {
   const d = new Date();
@@ -54,6 +56,74 @@ async function fetchFredSeries(apiKey, seriesId) {
     rows.push({ date, value: Math.round(v * 10000) / 10000 });
   }
   return rows;
+}
+
+async function fetchFredCsv(seriesId) {
+  const start = startDate();
+  const end = todayStr();
+  const url =
+    "https://fred.stlouisfed.org/graph/fredgraph.csv" +
+    `?id=${encodeURIComponent(seriesId)}` +
+    `&cosd=${start}&coed=${end}`;
+  const res = await fetch(url, {
+    headers: { "User-Agent": UA, Accept: "text/csv,*/*" },
+  });
+  if (!res.ok) throw new Error(`FRED CSV ${seriesId} HTTP ${res.status}`);
+  const text = await res.text();
+  const rows = [];
+  for (const line of text.trim().split("\n").slice(1)) {
+    const idx = line.indexOf(",");
+    if (idx < 0) continue;
+    const date = line.slice(0, idx).trim();
+    const val = line.slice(idx + 1).trim();
+    if (!date || !val || val === ".") continue;
+    const v = Number(val);
+    if (!Number.isFinite(v) || date < start) continue;
+    rows.push({ date, value: Math.round(v * 10000) / 10000 });
+  }
+  return rows;
+}
+
+async function fetchAllFred(apiKey) {
+  const keys = Object.keys(SERIES);
+  const fetcher = apiKey
+    ? (id) => fetchFredSeries(apiKey, id)
+    : (id) => fetchFredCsv(id);
+  const results = await Promise.all(
+    keys.map((key) => fetcher(SERIES[key]).catch(() => null))
+  );
+  const data = {};
+  let fetched = 0;
+  for (let i = 0; i < keys.length; i++) {
+    if (results[i] && results[i].length) {
+      data[keys[i]] = results[i];
+      fetched++;
+    }
+  }
+  return { data, fetched };
+}
+
+async function mergeStatic(req, data) {
+  try {
+    const prev = await loadStatic(req);
+    if (prev.fred) {
+      if (!data.DGS2 && prev.fred.DGS2) data.DGS2 = prev.fred.DGS2;
+      if (!data.DGS10 && prev.fred.DGS10) data.DGS10 = prev.fred.DGS10;
+      if (!data.DGS30 && prev.fred.DGS30) data.DGS30 = prev.fred.DGS30;
+    }
+    if (!data.DCOILBRENTEU && prev.brent) data.DCOILBRENTEU = prev.brent;
+    if (prev.credit) {
+      if (!data.HY_OAS && prev.credit.HY_OAS) data.HY_OAS = prev.credit.HY_OAS;
+      if (!data.IG_OAS && prev.credit.IG_OAS) data.IG_OAS = prev.credit.IG_OAS;
+      if (!data.VIX && prev.credit.VIX) data.VIX = prev.credit.VIX;
+      if (!data.TENMINUSTWO && prev.credit.TENMINUSTWO) {
+        data.TENMINUSTWO = prev.credit.TENMINUSTWO;
+      }
+    }
+  } catch (_) {
+    /* optional */
+  }
+  return data;
 }
 
 async function loadStatic(req) {
@@ -97,35 +167,10 @@ export default async function handler(req, res) {
     return;
   }
 
-  const apiKey = process.env.FRED_API_KEY;
-  if (!apiKey) {
-    try {
-      const payload = await loadStatic(req);
-      res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
-      res.status(200).json(Object.assign({ source: "static" }, payload));
-    } catch (_) {
-      res.status(502).json({ error: "fred data unavailable" });
-    }
-    return;
-  }
+  const apiKey = process.env.FRED_API_KEY || "";
 
   try {
-    const keys = Object.keys(SERIES);
-    const results = await Promise.all(
-      keys.map((key) =>
-        fetchFredSeries(apiKey, SERIES[key]).catch(() => null)
-      )
-    );
-
-    const data = {};
-    let fetched = 0;
-    for (let i = 0; i < keys.length; i++) {
-      if (results[i] && results[i].length) {
-        data[keys[i]] = results[i];
-        fetched++;
-      }
-    }
-
+    const { data, fetched } = await fetchAllFred(apiKey || null);
     if (!fetched) {
       const payload = await loadStatic(req);
       res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=120");
@@ -133,31 +178,10 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Keep prior points for any series the API failed to return.
-    if (fetched < keys.length) {
-      try {
-        const prev = await loadStatic(req);
-        if (prev.fred) {
-          if (!data.DGS2 && prev.fred.DGS2) data.DGS2 = prev.fred.DGS2;
-          if (!data.DGS10 && prev.fred.DGS10) data.DGS10 = prev.fred.DGS10;
-          if (!data.DGS30 && prev.fred.DGS30) data.DGS30 = prev.fred.DGS30;
-        }
-        if (!data.DCOILBRENTEU && prev.brent) data.DCOILBRENTEU = prev.brent;
-        if (prev.credit) {
-          if (!data.HY_OAS && prev.credit.HY_OAS) data.HY_OAS = prev.credit.HY_OAS;
-          if (!data.IG_OAS && prev.credit.IG_OAS) data.IG_OAS = prev.credit.IG_OAS;
-          if (!data.VIX && prev.credit.VIX) data.VIX = prev.credit.VIX;
-          if (!data.TENMINUSTWO && prev.credit.TENMINUSTWO) {
-            data.TENMINUSTWO = prev.credit.TENMINUSTWO;
-          }
-        }
-      } catch (_) {
-        /* static merge optional */
-      }
-    }
-
+    await mergeStatic(req, data);
+    const source = apiKey ? "fred-api" : "fred-csv";
     res.setHeader("Cache-Control", "s-maxage=900, stale-while-revalidate=1800");
-    res.status(200).json(buildPayload(data));
+    res.status(200).json(Object.assign({ source }, buildPayload(data)));
   } catch (_) {
     try {
       const payload = await loadStatic(req);

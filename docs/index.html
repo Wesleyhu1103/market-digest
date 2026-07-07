@@ -2559,6 +2559,14 @@
       if (asOfDate) suffix += ' · through ' + asOfDate;
       api.qSource.textContent = 'Source: ' + base + suffix;
     }
+    function macroFeed(call, fallback) {
+      fallback = fallback != null ? fallback : [];
+      try {
+        return call().catch(function() { return fallback; });
+      } catch (_) {
+        return Promise.resolve(fallback);
+      }
+    }
     function setHeadline(api, price, prev, fmtPrice, fmtChg) {
       var up = (price - prev) >= 0;
       api.qPrice.textContent = fmtPrice(price);
@@ -2744,12 +2752,13 @@
 
         if (window.MarketFeed) {
           Promise.all([
-            window.MarketFeed.series('^TNX', meta.range, meta.interval),
-            window.MarketFeed.series('^TYX', meta.range, meta.interval),
-            window.MarketFeed.quote('^TNX')
+            macroFeed(function() { return window.MarketFeed.series('^TNX', meta.range, meta.interval); }),
+            macroFeed(function() { return window.MarketFeed.series('^TYX', meta.range, meta.interval); }),
+            macroFeed(function() { return window.MarketFeed.quote('^TNX'); }, {})
           ]).then(function(res) {
-            drawFromLive(res[0] || [], res[1] || [], res[2] || {});
-          }).catch(function() { drawFromFred(); });
+            if (!res[0] || !res[0].length) { drawFromFred(); return; }
+            drawFromLive(res[0], res[1] || [], res[2] || {});
+          });
         } else {
           drawFromFred();
         }
@@ -2947,12 +2956,13 @@
 
         if (window.MarketFeed) {
           Promise.all([
-            window.MarketFeed.series('^VIX', meta.range, meta.interval),
-            window.MarketFeed.series('^TNX', meta.range, meta.interval),
-            window.MarketFeed.quote('^VIX')
+            macroFeed(function() { return window.MarketFeed.series('^VIX', meta.range, meta.interval); }),
+            macroFeed(function() { return window.MarketFeed.series('^TNX', meta.range, meta.interval); }),
+            macroFeed(function() { return window.MarketFeed.quote('^VIX'); }, {})
           ]).then(function(res) {
-            drawLive(res[0] || [], res[1] || [], res[2] || {});
-          }).catch(function() { drawFred(); });
+            if (!res[0] || !res[0].length) { drawFred(); return; }
+            drawLive(res[0], res[1] || [], res[2] || {});
+          });
         } else {
           drawFred();
         }
@@ -2991,23 +3001,22 @@
       }, pollMs);
     }
 
+    function bootMacroCharts() {
+      initTreasury(treasuryApi);
+      initBrent(brentApi);
+      initCredit(creditApi);
+      initStress(stressApi);
+      macroSection.dataset.macroChartsReady = '1';
+      startMacroPoll();
+    }
+
     function boot() {
-      refreshFredMacro().then(function(data) {
-        initTreasury(treasuryApi);
-        initBrent(brentApi);
-        if (data) {
-          initCredit(creditApi);
-          initStress(stressApi);
-        }
-        macroSection.dataset.macroChartsReady = '1';
-        startMacroPoll();
-      }).catch(function(e) {
-        console.warn('[macro charts]', e);
-        initTreasury(treasuryApi);
-        initBrent(brentApi);
-        macroSection.dataset.macroChartsReady = '1';
-        startMacroPoll();
-      });
+      refreshFredMacro()
+        .then(function() { bootMacroCharts(); })
+        .catch(function(e) {
+          console.warn('[macro charts]', e);
+          bootMacroCharts();
+        });
     }
 
     if (document.readyState === 'complete') {
