@@ -30,7 +30,7 @@ SERIES = {
     "TENMINUSTWO": "T10Y2Y",
 }
 
-DAYS = 120
+DAYS = 400
 OUT = Path(__file__).resolve().parents[1] / "docs" / "fred-data.json"
 API_KEY = os.environ.get("FRED_API_KEY", "")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"

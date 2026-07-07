@@ -1766,6 +1766,17 @@
     }
     return labels;
   }
+  /** CNBC-style tooltip date/time for macro and live charts. */
+  function mdMacroTooltipTitle(rangeKey, pt) {
+    var d = new Date(pt.t != null ? pt.t : pt.date + 'T12:00:00');
+    if (rangeKey === '1d' || rangeKey === '1w') {
+      return d.toLocaleString('en-US', {
+        weekday: 'short', month: '2-digit', day: '2-digit', year: 'numeric',
+        hour: 'numeric', minute: '2-digit'
+      });
+    }
+    return d.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
+  }
   function mdCategoryTickOpts(t, fontSize, fontFamily) {
     return {
       font: { size: fontSize || 10, family: fontFamily || '"Inter", -apple-system, sans-serif' },
@@ -2449,8 +2460,15 @@
     }
     function sliceFred(rows, rangeKey) {
       if (!rows || !rows.length) return [];
-      if (rangeKey === '1y') return rows.slice();
       var meta = rangeMeta(rangeKey);
+      if (rangeKey === '1y') {
+        var lastY = new Date(rows[rows.length - 1].date + 'T12:00:00');
+        var cutY = new Date(lastY);
+        cutY.setDate(cutY.getDate() - meta.fredDays);
+        return rows.filter(function(row) {
+          return new Date(row.date + 'T12:00:00') >= cutY;
+        });
+      }
       var last = new Date(rows[rows.length - 1].date + 'T12:00:00');
       var cutoff = new Date(last);
       cutoff.setDate(cutoff.getDate() - meta.fredDays);
@@ -2488,6 +2506,58 @@
         return last;
       });
     }
+    function fredRowsToPoints(rows) {
+      return (rows || []).map(function(r) {
+        return { t: new Date(r.date + 'T12:00:00').getTime(), d: r.date, v: r.value };
+      });
+    }
+    function mergeFredOntoLive(master, fredRows, transform) {
+      var byDate = fredByDate(fredRows);
+      var last = null;
+      return master.map(function(pt) {
+        var d = pt.d || new Date(pt.t).toISOString().slice(0, 10);
+        if (byDate[d]) last = transform ? transform(byDate[d]) : byDate[d].value;
+        return last;
+      });
+    }
+    function alignLiveSeries(master, slave) {
+      var byT = {}, byD = {}, last = null, i, p, d;
+      for (i = 0; i < slave.length; i++) {
+        p = slave[i];
+        byT[p.t] = p.v;
+        d = p.d || new Date(p.t).toISOString().slice(0, 10);
+        byD[d] = p.v;
+      }
+      return master.map(function(pt) {
+        var key = pt.d || new Date(pt.t).toISOString().slice(0, 10);
+        var v = byT[pt.t];
+        if (v == null) v = byD[key];
+        if (v != null) last = v;
+        return last;
+      });
+    }
+    function macroTooltipBase(rangeKey, pointAt) {
+      return {
+        displayColors: true,
+        titleFont: { family: MKT_SANS, size: 12, weight: '600' },
+        bodyFont: { family: MKT_SANS, size: 12, weight: '500' },
+        padding: 10,
+        cornerRadius: 4,
+        callbacks: {
+          title: function(items) {
+            if (!items.length) return '';
+            var pt = pointAt(items[0].dataIndex);
+            return pt ? mdMacroTooltipTitle(rangeKey, pt) : '';
+          }
+        }
+      };
+    }
+    function setSource(api, base, live) {
+      if (!api.qSource) return;
+      var suffix = live && window.MarketFeed && window.MarketFeed.asOfStr
+        ? ' · ' + window.MarketFeed.asOfStr() : '';
+      api.qSource.textContent = 'Source: ' + base + suffix;
+    }
     function setHeadline(api, price, prev, fmtPrice, fmtChg) {
       var up = (price - prev) >= 0;
       api.qPrice.textContent = fmtPrice(price);
@@ -2517,7 +2587,7 @@
         }
       });
     }
-    function renderChart(api, labels, datasets, options) {
+    function renderChart(api, labels, datasets, options, metaPoints) {
       if (api.chart) {
         api.chart.data.labels = labels;
         api.chart.data.datasets = datasets;
@@ -2527,6 +2597,7 @@
           api.chart.options.interaction = options.interaction;
           api.chart.options.animation = options.animation;
         }
+        if (metaPoints) api.chart.config._macroPoints = metaPoints;
         api.chart.update('none');
         return;
       }
@@ -2536,6 +2607,7 @@
         options: options
       });
       api.chart.config._preserveOnReinit = true;
+      if (metaPoints) api.chart.config._macroPoints = metaPoints;
       window.allCharts = window.allCharts || [];
       window.allCharts.push(api.chart);
       requestAnimationFrame(function() { if (api.chart) api.chart.resize(); });
@@ -2564,6 +2636,7 @@
         qPrice: card.querySelector('.mkt-price'),
         qChange: card.querySelector('.mkt-change'),
         qRanges: card.querySelector('.mkt-ranges'),
+        qSource: card.querySelector('.mkt-source'),
         range: '1d',
         chart: null,
         reload: null
@@ -2585,42 +2658,100 @@
     }
 
     function initTreasury(api) {
-      if (!api || !fredMacro || !fredMacro.fred) return;
-      var fred = fredMacro.fred;
+      if (!api) return;
       api.reload = function() {
-        var rows = sliceFred(fred.DGS10, api.range);
-        if (!rows.length) return;
-        var labels = dateLabels(rows, api.range);
-        var vals = [];
-        var d2 = mapFilled(rows, fred.DGS2, function(pt) { return pt.value; });
-        var d10 = rows.map(function(r) { vals.push(r.value); return r.value; });
-        var d30 = mapFilled(rows, fred.DGS30, function(pt) { return pt.value; });
-        d2.forEach(function(v) { if (v != null) vals.push(v); });
-        d30.forEach(function(v) { if (v != null) vals.push(v); });
-        var last = d10[d10.length - 1];
-        var prev = d10.length > 1 ? d10[d10.length - 2] : last;
-        setHeadline(api, last, prev, function(v) { return v.toFixed(2) + '% (10Y)'; }, function(chg, pct, up) {
-          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
-        });
+        var fred = fredMacro && fredMacro.fred;
+        var meta = rangeMeta(api.range);
         var t = tc();
-        var datasets = [
-          { label: '2Y', data: d2, borderColor: t.accent2, backgroundColor: t.accent2, tension: 0.15, pointRadius: 0, borderWidth: 2 },
-          { label: '10Y', data: d10, borderColor: t.accent, backgroundColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 },
-          { label: '30Y', data: d30, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
-        ];
-        renderChart(api, labels, datasets, {
-          animation: false,
-          interaction: { mode: 'index', intersect: false },
-          plugins: {
-            legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, boxHeight: 8, color: t.ink } },
-            datalabels: { display: false },
-            tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + Number(ctx.parsed.y).toFixed(2) + '%'; } } }
-          },
-          scales: {
-            x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
-            y: yScaleFromValues(vals, function(v) { return Number(v).toFixed(2) + '%'; }, t)
-          }
-        });
+
+        function drawFromLive(tnxSeries, tyxSeries, quote) {
+          if (!tnxSeries.length) return;
+          var labels = mdTimeAxisLabels(tnxSeries, api.range);
+          var d10 = tnxSeries.map(function(p) { return p.v; });
+          var d30 = alignLiveSeries(tnxSeries, tyxSeries || []);
+          var d2 = fred && fred.DGS2 ? mergeFredOntoLive(tnxSeries, fred.DGS2, function(pt) { return pt.value; }) : d10.map(function() { return null; });
+          var vals = d10.concat(d30).concat(d2).filter(function(v) { return v != null && isFinite(v); });
+          var last = quote && quote.price != null ? quote.price : d10[d10.length - 1];
+          var prev = quote && quote.prevClose != null ? quote.prevClose : (d10.length > 1 ? d10[d10.length - 2] : last);
+          setHeadline(api, last, prev, function(v) { return Number(v).toFixed(2) + '% (10Y)'; }, function(chg, pct, up) {
+            return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+          });
+          setSource(api, 'Cboe / FRED', true);
+          var tip = macroTooltipBase(api.range, function(i) { return tnxSeries[i]; });
+          tip.callbacks.label = function(ctx) {
+            return ctx.dataset.label + ': ' + Number(ctx.parsed.y).toFixed(2) + '%';
+          };
+          renderChart(api, labels, [
+            { label: '2Y', data: d2, borderColor: t.accent2, backgroundColor: t.accent2, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+            { label: '10Y', data: d10, borderColor: t.accent, backgroundColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+            { label: '30Y', data: d30, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
+          ], {
+            animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, boxHeight: 8, color: t.ink } },
+              datalabels: { display: false },
+              tooltip: tip
+            },
+            scales: {
+              x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
+              y: yScaleFromValues(vals, function(v) { return Number(v).toFixed(2) + '%'; }, t)
+            }
+          }, tnxSeries);
+        }
+
+        function drawFromFred() {
+          if (!fred || !fred.DGS10) return;
+          var rows = sliceFred(fred.DGS10, api.range);
+          if (!rows.length) return;
+          var points = fredRowsToPoints(rows);
+          var labels = dateLabels(rows, api.range);
+          var vals = [];
+          var d2 = mapFilled(rows, fred.DGS2, function(pt) { return pt.value; });
+          var d10 = rows.map(function(r) { vals.push(r.value); return r.value; });
+          var d30 = mapFilled(rows, fred.DGS30, function(pt) { return pt.value; });
+          d2.forEach(function(v) { if (v != null) vals.push(v); });
+          d30.forEach(function(v) { if (v != null) vals.push(v); });
+          var last = d10[d10.length - 1];
+          var prev = d10.length > 1 ? d10[d10.length - 2] : last;
+          setHeadline(api, last, prev, function(v) { return v.toFixed(2) + '% (10Y)'; }, function(chg, pct, up) {
+            return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+          });
+          setSource(api, 'FRED / U.S. Treasury', false);
+          var tip = macroTooltipBase(api.range, function(i) { return points[i]; });
+          tip.callbacks.label = function(ctx) {
+            return ctx.dataset.label + ': ' + Number(ctx.parsed.y).toFixed(2) + '%';
+          };
+          renderChart(api, labels, [
+            { label: '2Y', data: d2, borderColor: t.accent2, backgroundColor: t.accent2, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+            { label: '10Y', data: d10, borderColor: t.accent, backgroundColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+            { label: '30Y', data: d30, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
+          ], {
+            animation: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, boxHeight: 8, color: t.ink } },
+              datalabels: { display: false },
+              tooltip: tip
+            },
+            scales: {
+              x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
+              y: yScaleFromValues(vals, function(v) { return Number(v).toFixed(2) + '%'; }, t)
+            }
+          }, points);
+        }
+
+        if (window.MarketFeed) {
+          Promise.all([
+            window.MarketFeed.series('^TNX', meta.range, meta.interval),
+            window.MarketFeed.series('^TYX', meta.range, meta.interval),
+            window.MarketFeed.quote('^TNX')
+          ]).then(function(res) {
+            drawFromLive(res[0] || [], res[1] || [], res[2] || {});
+          }).catch(function() { drawFromFred(); });
+        } else {
+          drawFromFred();
+        }
       };
       window._liveChartReloaders.push(api.reload);
       api.reload();
@@ -2640,8 +2771,11 @@
           setHeadline(api, last, prev, function(v) { return '$' + Number(v).toFixed(2); }, function(chg, pct, up) {
             return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
           });
+          setSource(api, 'ICE / Yahoo Finance', true);
           var up = (last - prev) >= 0;
           var color = up ? t.bull : t.bear;
+          var tip = macroTooltipBase(api.range, function(i) { return series[i]; });
+          tip.callbacks.label = function(ctx) { return '$' + Number(ctx.parsed.y).toFixed(2); };
           renderChart(api, labels, [{
             label: 'Brent', data: values, borderColor: color, backgroundColor: color + '24',
             fill: true, tension: 0.18, pointRadius: 0, borderWidth: 1.75,
@@ -2652,13 +2786,13 @@
             plugins: {
               legend: { display: false },
               datalabels: { display: false },
-              tooltip: { callbacks: { label: function(ctx) { return '$' + Number(ctx.parsed.y).toFixed(2); } } }
+              tooltip: tip
             },
             scales: {
               x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
               y: yScaleFromValues(values, function(v) { return '$' + Number(v).toFixed(0); }, t)
             }
-          });
+          }, series);
         }
         if (window.MarketFeed) {
           window.MarketFeed.series('BZ=F', meta.range, meta.interval).then(drawFromSeries).catch(function() {
@@ -2676,11 +2810,13 @@
     }
 
     function initCredit(api) {
-      if (!api || !fredMacro || !fredMacro.credit) return;
-      var credit = fredMacro.credit;
+      if (!api) return;
       api.reload = function() {
+        var credit = fredMacro && fredMacro.credit;
+        if (!credit) return;
         var rows = sliceFred(credit.HY_OAS, api.range);
         if (!rows.length) return;
+        var points = fredRowsToPoints(rows);
         var labels = dateLabels(rows, api.range);
         var hy = rows.map(function(r) { return r.value * 100; });
         var ig = mapFilled(rows, credit.IG_OAS, function(pt) { return pt.value * 100; });
@@ -2690,7 +2826,10 @@
         setHeadline(api, last, prev, function(v) { return Math.round(v) + ' bps (HY)'; }, function(chg, pct, up) {
           return (up ? '+' : '') + Math.round(chg) + ' bps';
         });
+        setSource(api, 'FRED / ICE BofA OAS', false);
         var t = tc();
+        var tip = macroTooltipBase(api.range, function(i) { return points[i]; });
+        tip.callbacks.label = function(ctx) { return ctx.dataset.label + ': ' + Math.round(ctx.parsed.y) + ' bps'; };
         renderChart(api, labels, [
           { label: 'HY OAS', data: hy, borderColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2 },
           { label: 'IG OAS', data: ig, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 }
@@ -2700,24 +2839,26 @@
           plugins: {
             legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, color: t.ink } },
             datalabels: { display: false },
-            tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + Math.round(ctx.parsed.y) + ' bps'; } } }
+            tooltip: tip
           },
           scales: {
             x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
             y: yScaleFromValues(vals, function(v) { return Math.round(v) + 'bps'; }, t)
           }
-        });
+        }, points);
       };
       window._liveChartReloaders.push(api.reload);
       api.reload();
     }
 
     function initStress(api) {
-      if (!api || !fredMacro || !fredMacro.credit) return;
-      var credit = fredMacro.credit;
+      if (!api) return;
       api.reload = function() {
+        var credit = fredMacro && fredMacro.credit;
+        if (!credit) return;
         var rows = sliceFred(credit.VIX, api.range);
         if (!rows.length) return;
+        var points = fredRowsToPoints(rows);
         var labels = dateLabels(rows, api.range);
         var vix = rows.map(function(r) { return r.value; });
         var slope = mapFilled(rows, credit.TENMINUSTWO, function(pt) { return pt.value * 100; });
@@ -2726,7 +2867,13 @@
         setHeadline(api, last, prev, function(v) { return Number(v).toFixed(2) + ' (VIX)'; }, function(chg, pct, up) {
           return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
         });
+        setSource(api, 'FRED / CBOE', false);
         var t = tc();
+        var tip = macroTooltipBase(api.range, function(i) { return points[i]; });
+        tip.callbacks.label = function(ctx) {
+          return ctx.dataset.label + ': ' + (ctx.dataset.label === 'VIX'
+            ? Number(ctx.parsed.y).toFixed(2) : Math.round(ctx.parsed.y) + ' bps');
+        };
         renderChart(api, labels, [
           { label: 'VIX', data: vix, borderColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y' },
           { label: '2s10s', data: slope, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
@@ -2736,45 +2883,60 @@
           plugins: {
             legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, color: t.ink } },
             datalabels: { display: false },
-            tooltip: {
-              callbacks: {
-                label: function(ctx) {
-                  return ctx.dataset.label + ': ' + (ctx.dataset.label === 'VIX'
-                    ? Number(ctx.parsed.y).toFixed(2) : Math.round(ctx.parsed.y) + ' bps');
-                }
-              }
-            }
+            tooltip: tip
           },
           scales: {
             x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
             y: Object.assign({}, yScaleFromValues(vix, function(v) { return Number(v).toFixed(1); }, t), { position: 'left', grid: { color: t.rule } }),
             y2: Object.assign({}, yScaleFromValues(slope, function(v) { return Math.round(v) + 'bps'; }, t), { position: 'right', grid: { display: false } })
           }
-        });
+        }, points);
       };
       window._liveChartReloaders.push(api.reload);
       api.reload();
     }
 
     // Upgrade DOM to mkt-card layout immediately (before data load)
-    var treasuryApi = buildCard('US Treasury Yields', 'FRED / U.S. Treasury', 'treasuryYields', 280);
+    var treasuryApi = buildCard('US Treasury Yields', 'Cboe / FRED', 'treasuryYields', 280);
     var brentApi = buildCard('Brent Crude', 'ICE / Yahoo Finance', 'brentChart', 280);
     var creditApi = buildCard('Credit Spreads', 'FRED / ICE BofA OAS', 'creditChart', 240);
     var stressApi = buildCard('Market Stress', 'FRED / CBOE', 'stressChart', 240);
+    var macroApis = [treasuryApi, brentApi, creditApi, stressApi];
+    var macroPollTimer = null;
+
+    function refreshFredMacro() {
+      return fetch('fred-data.json', { cache: 'no-store' })
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(data) { if (data) fredMacro = data; return data; });
+    }
+
+    function startMacroPoll() {
+      if (macroPollTimer) clearInterval(macroPollTimer);
+      macroPollTimer = setInterval(function() {
+        if (document.hidden) return;
+        refreshFredMacro().finally(function() {
+          macroApis.forEach(function(a) { if (a && a.reload) try { a.reload(); } catch (_) {} });
+        });
+      }, 60000);
+    }
 
     function boot() {
-      fetch('fred-data.json', { cache: 'no-store' })
-        .then(function(r) { return r.ok ? r.json() : null; })
-        .then(function(data) {
-          if (!data) return;
-          fredMacro = data;
-          initTreasury(treasuryApi);
-          initBrent(brentApi);
+      refreshFredMacro().then(function(data) {
+        initTreasury(treasuryApi);
+        initBrent(brentApi);
+        if (data) {
           initCredit(creditApi);
           initStress(stressApi);
-          macroSection.dataset.macroChartsReady = '1';
-        })
-        .catch(function(e) { console.warn('[macro charts]', e); });
+        }
+        macroSection.dataset.macroChartsReady = '1';
+        startMacroPoll();
+      }).catch(function(e) {
+        console.warn('[macro charts]', e);
+        initTreasury(treasuryApi);
+        initBrent(brentApi);
+        macroSection.dataset.macroChartsReady = '1';
+        startMacroPoll();
+      });
     }
 
     if (document.readyState === 'complete') {
