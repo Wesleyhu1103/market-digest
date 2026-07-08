@@ -111,7 +111,7 @@ function mdLinearAxis(axis, fmt, tickStyle) {
   };
 }
 
-async function _initAllCharts() {
+function _initAllCharts() {
 // Chart data for simple bar charts is stored in <script id="chartData"> inside <main> — automatically updates them — no JS surgery needed.
 const chartFont = '"Inter", -apple-system, sans-serif';
 Chart.defaults.font.family = chartFont;
@@ -184,15 +184,6 @@ Chart.register(lastPointLabel);
 // This is the key architectural fix: chart data lives in <main>, not in JS.
 // Replacing <main> in the daily commit script updates charts automatically.
 let cd = {};
-
-let macro = null;
-try {
-  const mr = await fetch('fred-data.json', { cache: 'no-store' });
-  if (mr.ok) macro = await mr.json();
-} catch (e) { console.warn('fred-data.json unavailable', e); }
-const fred = (macro && macro.fred) ? macro.fred : { DGS2: [], DGS10: [], DGS30: [] };
-const brent = (macro && macro.brent) ? macro.brent : [];
-const creditData = (macro && macro.credit) ? macro.credit : { HY_OAS: [], IG_OAS: [], VIX: [], TENMINUSTWO: [] };
 
 document.querySelectorAll('script#chartData').forEach(el => {
   try { cd = Object.assign(cd, JSON.parse(el.textContent)); } catch(e) { console.warn('chartData parse error', e); }

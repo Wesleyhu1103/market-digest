@@ -10,8 +10,8 @@ Match the task to the right files — do not freehand-edit `index.html` structur
 |------|------|--------------|
 | Daily digest content | `incoming/new-main.html` (a full `<main>...</main>` block) | CSS, JS, nav, `index.html` template |
 | Change the digest's HTML structure/rules | `contracts/digest-main.json` **first**, then run `python3 scripts/digest_contracts.py --check` | inline prompt/regex copies (there are none — the contract is the source) |
-| Site template, styling, charts | `docs/css/`, `docs/js/`, `docs/index.html` shell | the daily `<main>` content |
-| Shared constants (FRED, Vercel origin, repair) | `docs/site-config.json`, then `python3 scripts/sync_site_config.py` | `docs/js/site-config.js` (generated) |
+| Site template, styling, charts | `docs/css/`, `docs/js/`, `docs/index.html` shell — then bump `assetVersion` in `docs/site-config.json` and run `python3 scripts/sync_site_config.py` | the daily `<main>` content; hand-edited `?v=` tags |
+| Shared constants (FRED, Vercel origin, repair, assetVersion) | `docs/site-config.json`, then `python3 scripts/sync_site_config.py` | `docs/js/site-config.js` (generated); `?v=` tags in `index.html`/`admin.html` (auto-synced) |
 
 **The structural contract for the daily `<main>` lives in one place: [`contracts/digest-main.json`](contracts/digest-main.json).** It drives both the Claude generation prompt (`scripts/generate_digest.py`) and the validator (`scripts/validate_digest.py`). Read it before writing `<main>`; edit it (not the scripts) when a rule changes. Human-readable examples and failure modes are in [`docs/AGENT_HANDOFF.md`](docs/AGENT_HANDOFF.md).
 

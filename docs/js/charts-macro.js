@@ -567,10 +567,24 @@
     return typeof mdMacroFredUrl === 'function' ? mdMacroFredUrl() : '/api/fred-data';
   }
 
-  function refreshFredMacro() {
-    return fetch(macroFredUrl(), { cache: 'no-store' })
+  function loadFred(url) {
+    return fetch(url, { cache: 'no-store' })
       .then(function(r) { return r.ok ? r.json() : null; })
-      .then(function(data) { if (data) fredMacro = data; return data; });
+      .catch(function() { return null; });
+  }
+
+  function refreshFredMacro() {
+    // Primary source is the Vercel /api/fred-data refresh; fall back to the
+    // published static snapshot so credit/stress still render when the API is
+    // unreachable (local preview, GitHub Pages, or a Vercel outage).
+    return loadFred(macroFredUrl()).then(function(data) {
+      if (data) { fredMacro = data; return data; }
+      if (macroFredUrl() === 'fred-data.json') return null;
+      return loadFred('fred-data.json').then(function(fb) {
+        if (fb) fredMacro = fb;
+        return fb;
+      });
+    });
   }
 
   function startMacroPoll() {
