@@ -2531,19 +2531,21 @@
       });
     }
     function alignLiveSeries(master, slave) {
-      var byT = {}, byD = {}, last = null, i, p, d;
-      for (i = 0; i < slave.length; i++) {
-        p = slave[i];
-        byT[p.t] = p.v;
-        d = p.d || new Date(p.t).toISOString().slice(0, 10);
-        byD[d] = p.v;
-      }
-      return master.map(function(pt) {
-        var key = pt.d || new Date(pt.t).toISOString().slice(0, 10);
-        var v = byT[pt.t];
-        if (v == null) v = byD[key];
-        if (v != null) last = v;
-        return last;
+      if (!slave || !slave.length) return master.map(function() { return null; });
+      var pts = slave.slice().sort(function(a, b) { return a.t - b.t; });
+      return master.map(function(m) {
+        var t = m.t;
+        if (t <= pts[0].t) return pts[0].v;
+        if (t >= pts[pts.length - 1].t) return pts[pts.length - 1].v;
+        var lo = 0, hi = pts.length - 1;
+        while (lo < hi - 1) {
+          var mid = (lo + hi) >> 1;
+          if (pts[mid].t <= t) lo = mid; else hi = mid;
+        }
+        var a = pts[lo], b = pts[hi];
+        if (a.t === b.t) return a.v;
+        var f = (t - a.t) / (b.t - a.t);
+        return a.v + f * (b.v - a.v);
       });
     }
     function macroTooltipBase(rangeKey, pointAt) {
@@ -2896,20 +2898,26 @@
             var fredSlope = mergeFredOntoLive(vixSeries, credit.TENMINUSTWO, function(pt) { return pt.value * 100; });
             slope = slope.map(function(v, i) { return v != null ? v : fredSlope[i]; });
           }
+          var d2Date = fred && fred.DGS2 && fred.DGS2.length ? fred.DGS2[fred.DGS2.length - 1].date : null;
           var last = quote && quote.price != null ? quote.price : vix[vix.length - 1];
           var prev = quote && quote.prevClose != null ? quote.prevClose : (vix.length > 1 ? vix[vix.length - 2] : last);
           setHeadline(api, last, prev, function(v) { return Number(v).toFixed(2) + ' (VIX)'; }, function(chg, pct, up) {
             return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
           });
-          setSource(api, 'Cboe / FRED', true);
+          if (api.qSource) {
+            var srcSuffix = window.MarketFeed && window.MarketFeed.asOfStr
+              ? ' · ' + window.MarketFeed.asOfStr() : '';
+            if (d2Date) srcSuffix += ' · 2Y through ' + d2Date;
+            api.qSource.textContent = 'Source: Cboe / FRED' + srcSuffix;
+          }
           var tip = macroTooltipBase(api.range, function(i) { return vixSeries[i]; });
           tip.callbacks.label = function(ctx) {
-            return ctx.dataset.label + ': ' + (ctx.dataset.label === 'VIX'
-              ? Number(ctx.parsed.y).toFixed(2) : Math.round(ctx.parsed.y) + ' bps');
+            if (ctx.dataset.label === 'VIX') return 'VIX: ' + Number(ctx.parsed.y).toFixed(2);
+            return '2s10s (est.): ' + Math.round(ctx.parsed.y) + ' bps';
           };
           renderChart(api, labels, [
             { label: 'VIX', data: vix, borderColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y' },
-            { label: '2s10s', data: slope, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
+            { label: '2s10s (est.)', data: slope, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
           ], {
             animation: false,
             interaction: { mode: 'index', intersect: false },
