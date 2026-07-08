@@ -1,0 +1,221 @@
+{
+  "version": 1,
+  "site": {
+    "url": "wesleyhu1103.github.io/market-digest"
+  },
+  "voice": {
+    "audience": "Wesley is an intermediate-knowledge market reader on US East Coast time who reads this at 8-9am. He wants granularity: named stories, explicit drivers with directional impact, named bull/bear proponents (specific funds, analysts).",
+    "style": [
+      "No em-dashes.",
+      "Always contractions.",
+      "No AI-tell phrases (\"genuinely\", \"honestly\", \"straightforward\", \"delve\")."
+    ]
+  },
+  "sectionOrder": [
+    "<header class=\"head\"> — kicker, h1 date, meta (2-3 sentences; structural context only — do not repeat framingData storyTitle)",
+    "<section id=\"framing\"> — #framing-mount + framingData JSON",
+    "<section id=\"narratives\"> — three .narrative divs",
+    "<section id=\"equities\">",
+    "<section id=\"tech\"> — includes techMovers chart",
+    "<section id=\"macro\"> — treasuryYields, brentChart, creditChart, stressChart canvases",
+    "<section id=\"verdict\" class=\"verdict-section\"> — narrative-stacks, scoreboard, feedback",
+    "<section id=\"crypto\">",
+    "<section id=\"deals\"> — includes dealSizes chart",
+    "<section id=\"buyside\">",
+    "<section id=\"sentiment\"> — includes redditSentiment chart",
+    "<section id=\"learn\">",
+    "<section id=\"ondeck\">",
+    "<section id=\"sources\">",
+    "<section id=\"quiz\" class=\"quiz\">",
+    "<section id=\"feedback\">",
+    "<section id=\"community-votes\"> — #cv-board shell",
+    "<script type=\"application/json\" id=\"chartData\"> — LAST, before </main>"
+  ],
+  "forbiddenInMain": [
+    "<section id=\"archive\">"
+  ],
+  "deadPatterns": [
+    "bb-toggle-bar",
+    "bb-panel",
+    "bb-btn",
+    "bb-content",
+    "onclick=\"toggleBB()\""
+  ],
+  "validate": {
+    "main": [
+      {
+        "id": "narrative-data-nar",
+        "desc": "3 narrative data-nar",
+        "pattern": "<div class=\"narrative\" data-nar=\"(bonds|iran|aicapex)\">",
+        "expected": 3,
+        "scope": "main"
+      },
+      {
+        "id": "bullbear-show-bull",
+        "desc": "4 bullbear show-bull",
+        "pattern": "<div class=\"bullbear show-bull\">",
+        "expected": 4,
+        "scope": "main"
+      },
+      {
+        "id": "bull-on",
+        "desc": "bull on (flex order)",
+        "pattern": "class=\"bull on\"[^>]*data-side=\"bull\"|data-side=\"bull\"[^>]*class=\"bull on\"",
+        "expected": 4,
+        "scope": "main"
+      },
+      {
+        "id": "quiz-data-opt",
+        "desc": "12 quiz data-opt",
+        "pattern": "<span class=\"opt\" data-opt=\"[a-dA-D]\">",
+        "expected": 12,
+        "scope": "main"
+      },
+      {
+        "id": "no-quiz-data-val",
+        "desc": "no quiz data-val on opts",
+        "pattern": "<span class=\"opt\"[^>]*data-val=",
+        "expected": 0,
+        "scope": "main"
+      },
+      {
+        "id": "chartdata-once",
+        "desc": "chartData once",
+        "pattern": "id=\"chartData\"",
+        "expected": 1,
+        "scope": "main"
+      },
+      {
+        "id": "chartdata-last",
+        "desc": "chartData last in main",
+        "pattern": "<script[^>]*id=\"chartData\"[^>]*>[\\s\\S]*?</script>\\s*</main>",
+        "expected": 1,
+        "scope": "html"
+      },
+      {
+        "id": "techmovers-wrapped",
+        "desc": "techMovers wrapped",
+        "pattern": "height:\\d+px[^\"]*\"><canvas id=\"techMovers\"",
+        "expected": 1,
+        "scope": "main"
+      },
+      {
+        "id": "chart-canvases",
+        "desc": "7 chart canvases",
+        "pattern": "<canvas id=\"(techMovers|redditSentiment|treasuryYields|brentChart|creditChart|stressChart|dealSizes)\"",
+        "expected": 7,
+        "scope": "main"
+      },
+      {
+        "id": "narrative-stacks",
+        "desc": "3 narrative-stacks",
+        "pattern": "<div class=\"narrative-stack\" data-narrative=\"(bonds|iran-oil|ai-capex)\">",
+        "expected": 3,
+        "scope": "main"
+      },
+      {
+        "id": "fb-missing-textarea",
+        "desc": "fb-missing textarea",
+        "pattern": "<textarea[^>]*id=\"fb-missing\"",
+        "expected": 1,
+        "scope": "main"
+      },
+      {
+        "id": "community-votes-section",
+        "desc": "community-votes section",
+        "pattern": "<section id=\"community-votes\">",
+        "expected": 1,
+        "scope": "main"
+      },
+      {
+        "id": "cv-board-mount",
+        "desc": "cv-board mount",
+        "pattern": "id=\"cv-board\"",
+        "expected": 1,
+        "scope": "main"
+      },
+      {
+        "id": "archive-mount-outside-main",
+        "desc": "archive-mount outside main",
+        "pattern": "</main>[\\s\\S]*<div id=\"archive-mount\"",
+        "expected": 1,
+        "scope": "html"
+      }
+    ],
+    "static": [
+      {
+        "id": "edition-day-label",
+        "desc": "narrative editionDayLabel",
+        "pattern": "function editionDayLabel\\(\\)",
+        "expected": 1,
+        "scope": "js"
+      },
+      {
+        "id": "no-hardcoded-today-label",
+        "desc": "no hardcoded todayLabel",
+        "pattern": "todayLabel\\s*=\\s*['\"][A-Za-z]",
+        "expected": 0,
+        "scope": "js"
+      },
+      {
+        "id": "timeline-drawer-id",
+        "desc": "timeline drawer id",
+        "pattern": "id=\"tlDrawer\"",
+        "expected": 1,
+        "scope": "html"
+      },
+      {
+        "id": "timeline-drawer-not-nested",
+        "desc": "timeline drawer not nested",
+        "pattern": "<div class=\"tl-scrim\"[^>]*>\\s*<div class=\"tl-drawer\"",
+        "expected": 0,
+        "scope": "html"
+      },
+      {
+        "id": "ios-scroll-lock",
+        "desc": "ios scroll lock helper",
+        "pattern": "function lockBodyScroll\\(\\)",
+        "expected": 1,
+        "scope": "js"
+      },
+      {
+        "id": "bullbear-delegated-clicks",
+        "desc": "bull/bear delegated clicks",
+        "pattern": "\\.closest\\(['\"]\\.narrative \\.toggles button",
+        "expected": 1,
+        "scope": "js"
+      }
+    ]
+  },
+  "generate": {
+    "intro": "You will receive (1) today's date, (2) the current <main> block as a STRUCTURAL TEMPLATE, (3) today's source material from RSS/Atom feeds, and (4) a machine-generated FEED_REPORT JSON.",
+    "output": "Produce ONLY a complete <main>...</main> block. No markdown fences, no commentary before or after.",
+    "structuralRules": [
+      "Preserve the template's structure exactly: same sections in the same order, same class names, same ids, same data-attribute patterns. Replace only the content.",
+      "<header class=\"head\">: h1 must be the full weekday date, e.g. \"Wednesday, June 10, 2026\". The `.meta` lede is exactly 2-3 short sentences: today's structural context (e.g. quarter-end, jobs day, FOMC) plus one or two secondary threads. Do NOT restate or preview framingData's storyTitle; that headline lives in the 5 Desks widget immediately below.",
+      "Three .narrative divs with data-nar=\"bonds\", \"iran\", \"aicapex\" (map: rates/bonds -> bonds, geopolitical/oil -> iran, AI/tech -> aicapex). Each has the toggles block with <button class=\"bull on\" data-side=\"bull\">, bear, both buttons, and <div class=\"bullbear show-bull\"> containing .bull and .bear cases with named proponents.",
+      "Verdict section: three .narrative-stack divs (data-narrative=\"bonds\", \"iran-oil\", \"ai-capex\"), 5 stack cells each (15 total), ALL <div class=\"stack-cell pending\"> with cell-val \"pending\" on morning publish, verdict lines \"Verdict: Pending\".",
+      "Quiz: 3 questions, each <div class=\"q\" data-correct=\"X\"> with 4 <span class=\"opt\" data-opt=\"A|B|C|D\"> options (data-opt, NEVER data-val) and a .feedback div. The correct answer must NOT be the longest option: keep all 4 options within a similar length band (roughly the same number of words), so length is not a tell. Make distractors plausible and specifically wrong (a real misconception, a swapped cause/effect, a true-but-irrelevant fact), not obvious throwaways. Vary the correct data-opt across the 3 questions and across days; do not default to the verbose option or to a fixed position.",
+      "chartData: exactly one <script type=\"application/json\" id=\"chartData\"> as the LAST element before </main>, containing only techMovers, redditSentiment, dealSizes (labels/values/colors arrays matching today's content). NO treasury/brent/credit data (loads from fred-data.json).",
+      "framingData (optional but preferred): a <script type=\"application/json\" id=\"framingData\"> placed inside <section id=\"framing\"> as its last child (before </section>). JSON shape: {\"storyTitle\": \"<one shared story everyone covered today>\", \"framings\": [{\"outlet\": \"WSJ\", \"headline\": \"<that outlet's actual headline angle>\", \"angle\": \"<one sentence on how they frame it>\", \"lean\": <integer -100 bearish..100 bullish>, \"pull\": \"<a short representative pull-quote>\"}, ...]} with 3-5 outlets drawn from WSJ, The Economist, NYT, CNBC, Bloomberg, Financial Times, The Atlantic. The static template's \"Framing Compare\" widget reads this; if absent it falls back to a default. Keep it valid JSON with escaped apostrophes; do NOT break inline JSON.",
+      "Story items in #equities, #tech, #macro, #crypto, #buyside, and #deals use condensed <details class=\"deal\"> dropdowns (NOT <ul><li>). Pattern: <details class=\"deal\"><summary><strong>headline</strong></summary><div class=\"deal-body\">...</div></details>. Equities/tech/macro/crypto/buyside: one <p> with the driver/context, then <p class=\"deal-source\"><a href=\"...\" target=\"_blank\" rel=\"noopener noreferrer\">Source: Outlet -- Headline</a></p> using the exact URL from today's feeds when a story matches (each feed item includes a URL line). Do not invent or guess URL slugs. Deals: Why / Outlook / What it means paragraphs, then the same deal-source line. Learning Opportunity and details.dive blocks also end with deal-source link(s). After the buyside analyst dropdowns, include one `.buyside-summary` block with the same Bull/Bear/Both toggles and `.bullbear show-bull` structure as `.narrative` (NOT `.buyside-grid` cards).",
+      "Keep every canvas inside its explicit-height wrapper div exactly as in the template.",
+      "Feedback section: keep ids fb-missing, fb-open, fb-success, verdictFb, vfSaved exactly as in the template.",
+      "Community votes section: keep `<section id=\"community-votes\">` with `#cv-board` mount exactly as in the template (static shell; proposals load from API).",
+      "Do NOT include <section id=\"archive\"> anywhere.",
+      "Escape apostrophes safely; never break inline JS or JSON.",
+      "Include <section id=\"sources\"> as a placeholder; it will be replaced automatically after generation. Do not invent feed status prose."
+    ],
+    "contentRules": [
+      "3 dominant narratives with named bull/bear proponents",
+      "5-7 US equities stories with tickers and directional drivers",
+      "5-7 tech/growth stories with metrics",
+      "5-7 macro/rates stories with explicit drivers",
+      "4-6 crypto stories (use CoinDesk items when present)",
+      "Major deals and capital markets events",
+      "Reddit sentiment by subreddit: estimate from the day's headlines",
+      "One Learning Opportunity (400-500 words, mechanism-based, no bullets)",
+      "On Deck: next 5 trading days of catalysts; if COMMUNITY_VOTES block is present, add an h3 \"Reader requests\" under #ondeck with 1-2 bullets reflecting the highest-voted items (paraphrase; do not copy verbatim)"
+    ]
+  }
+}

@@ -92,4 +92,6 @@ gh secret set VERCEL_DEPLOY_HOOK --body "<hook-url-from-output>"
 
 ### v0 / Claude Code → live site
 
-Edits from **v0** or **Claude Code** land on `v0/*` or `claude/*` branches. They are **not** live until merged to `main`. The **Sync agent branch to main** workflow auto-merges those branches after validation passes, which triggers deploy. If a merge conflicts with `main`, open a PR on GitHub and resolve manually.
+Edits from **v0** or **Claude Code** land on `v0/*` or `claude/*` branches. They are **not** live until merged to `main`. The **Sync agent branch to main** workflow runs the contract check + validator and auto-merges after they pass, which triggers deploy. A branch that violates `contracts/digest-main.json` fails the check and won't merge. If a merge conflicts with `main`, open a PR on GitHub and resolve manually.
+
+Agents should read `AGENTS.md` (routing + where to work) and `contracts/digest-main.json` (structural rules) before editing the digest.

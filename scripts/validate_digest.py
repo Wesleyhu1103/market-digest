@@ -9,34 +9,19 @@ import urllib.request
 from pathlib import Path
 from typing import Optional
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from digest_contracts import (  # noqa: E402
+    validate_html_only_descs,
+    validate_main_rules,
+    validate_static_rules,
+)
+
 LIVE_URL = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/index.html"
 LIVE_BASE = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/"
 
-# Full-page checks (static template outside <main>) — guard regressions in narrative
-# threads date logic and mobile drawer/toggle behavior.
-STATIC_RULES = [
-    ("narrative editionDayLabel", r"function editionDayLabel\(\)", 1, "js"),
-    ("no hardcoded todayLabel", r"todayLabel\s*=\s*['\"][A-Za-z]", 0, "js"),
-    ("timeline drawer id", r'id="tlDrawer"', 1, "html"),
-    ("timeline drawer not nested", r'<div class="tl-scrim"[^>]*>\s*<div class="tl-drawer"', 0, "html"),
-    ("ios scroll lock helper", r"function lockBodyScroll\(\)", 1, "js"),
-    ("bull/bear delegated clicks", r"\.closest\(['\"]\.narrative \.toggles button", 1, "js"),
-]
-
-RULES = [
-    ("3 narrative data-nar", r'<div class="narrative" data-nar="(bonds|iran|aicapex)">', 3),
-    ("4 bullbear show-bull", r'<div class="bullbear show-bull">', 4),
-    ("bull on (flex order)", r'class="bull on"[^>]*data-side="bull"|data-side="bull"[^>]*class="bull on"', 4),
-    ("12 quiz data-opt", r'<span class="opt" data-opt="[a-dA-D]">', 12),
-    ("no quiz data-val on opts", r'<span class="opt"[^>]*data-val=', 0),
-    ("chartData once", r'id="chartData"', 1),
-    ("chartData last in main", r'<script[^>]*id="chartData"[^>]*>[\s\S]*?</script>\s*</main>', 1),
-    ("techMovers wrapped", r'height:\d+px[^"]*"><canvas id="techMovers"', 1),
-    ("7 chart canvases", r'<canvas id="(techMovers|redditSentiment|treasuryYields|brentChart|creditChart|stressChart|dealSizes)"', 7),
-    ("3 narrative-stacks", r'<div class="narrative-stack" data-narrative="(bonds|iran-oil|ai-capex)">', 3),
-    ("fb-missing textarea", r'<textarea[^>]*id="fb-missing"', 1),
-    ("archive-mount outside main", r'</main>[\s\S]*<div id="archive-mount"', 1),
-]
+STATIC_RULES = validate_static_rules()
+RULES = validate_main_rules()
+HTML_ONLY = validate_html_only_descs()
 
 
 def _fetch_text(url: str) -> str:
@@ -101,7 +86,6 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
-    html_only = {"chartData last in main", "archive-mount outside main"}
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -110,7 +94,7 @@ def main():
         if not ok:
             failures += 1
     for desc, pat, exp in RULES:
-        scope = html if desc in html_only else main_block
+        scope = html if desc in HTML_ONLY else main_block
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
         ok = n == exp
         print(("OK   " if ok else "FAIL ") + f"{desc}: {n}/{exp}")

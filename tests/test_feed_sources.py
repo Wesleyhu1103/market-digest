@@ -51,8 +51,10 @@ class FeedSourcesTests(unittest.TestCase):
     def test_freshness_filter(self):
         module = load_feed_sources()
         now = datetime.now(timezone.utc)
-        fresh = module.FeedItem("new", "x", now, "")
-        old = module.FeedItem("old", "x", now - timedelta(hours=48), "")
+        fresh = module.FeedItem(title="new", url="x", desc="", published=now, published_label="")
+        old = module.FeedItem(
+            title="old", url="x", desc="", published=now - timedelta(hours=48), published_label=""
+        )
         cutoff = now - timedelta(hours=module.FRESH_HOURS)
         self.assertTrue(module._is_fresh(fresh, cutoff))
         self.assertFalse(module._is_fresh(old, cutoff))

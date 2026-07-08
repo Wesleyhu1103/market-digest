@@ -173,6 +173,9 @@ jobs:
           REQUIRE_FRED_API_KEY: ${{ (github.event_name == 'schedule' || needs.plan.outputs.stale == 'true') && 'true' || '' }}
         run: python3 scripts/update_fred.py
 
+      - name: Check digest contract
+        run: python3 scripts/digest_contracts.py --check
+
       - name: Validate digest (structure + JS parse)
         run: python3 scripts/validate_digest.py docs/index.html
 

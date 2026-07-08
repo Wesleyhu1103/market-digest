@@ -79,6 +79,11 @@ automatic production deploys on push in Vercel → Project → Settings → Git.
 
 ## HTML contracts — what the static JS expects
 
+**Machine-readable source of truth:** `contracts/digest-main.json`. It drives both
+`scripts/generate_digest.py` (Claude system prompt) and `scripts/validate_digest.py`
+(regex checks). Edit the contract first, then run `python3 scripts/digest_contracts.py --check`.
+Keep this section's examples in sync when you change structural rules.
+
 ### Bull/bear toggles
 
 Every `.narrative` div must have exactly this structure:

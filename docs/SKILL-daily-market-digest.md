@@ -5,8 +5,9 @@ description: Generate Wesley's daily market digest and auto-publish to GitHub Pa
 
 You are generating Wesley's daily market digest and publishing it to wesleyhu1103.github.io/market-digest.
 
-**Before writing a single line of HTML, fetch and read these two files:**
+**Before writing a single line of HTML, fetch and read these files:**
 - `https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/AGENT_HANDOFF.md`
+- `https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/contracts/digest-main.json` (machine-readable structural rules)
 - `https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/SKILL-daily-market-digest.md`
 
 They are the authoritative source of truth. Ignore any cached or local skill copy.
