@@ -53,7 +53,7 @@ document.querySelectorAll('.quiz .q').forEach((q, qi) => {
         const right = q.querySelector('.opt[data-opt="' + correct + '"], .opt[data-val="' + correct + '"]');
         if (right) right.classList.add('correct');
       }
-      mdPost('/api/quiz', { date: '2026-07-08', questionIndex: qi, picked: pick, correct: correct, isCorrect: isRight }).catch(function () {});
+      mdPost('/api/quiz', { date: mdEditionIso(), questionIndex: qi, picked: pick, correct: correct, isCorrect: isRight }).catch(function () {});
     });
   });
 });
@@ -70,7 +70,7 @@ document.querySelectorAll('form.fb .opts').forEach(group => {
 });
 
 function gatherFeedback() {
-  const out = { date: '2026-07-08', submittedAt: new Date().toISOString() };
+  const out = { date: mdEditionIso(), submittedAt: new Date().toISOString() };
   document.querySelectorAll('form.fb .opts').forEach(group => {
     const key = group.dataset.group;
     const multi = group.dataset.multi === '1';
@@ -88,7 +88,7 @@ async function submitFeedback(e) {
   const el = document.getElementById('fb-success');
   if (!String(data.missing || '').trim() && !String(data.open || '').trim()) return false;
   el.classList.remove('fb-error');
-  try { localStorage.setItem('marketDigest_feedback_2026-07-08', JSON.stringify(data)); } catch(_) {}
+  try { localStorage.setItem(mdFeedbackStorageKey(), JSON.stringify(data)); } catch(_) {}
   let ok = false;
   try {
     const res = await mdPost('/api/feedback', data);

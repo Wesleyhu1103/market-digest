@@ -25,7 +25,7 @@ class DigestContractsTest(unittest.TestCase):
 
     def test_validate_rule_counts(self):
         self.assertEqual(len(validate_main_rules()), 14)
-        self.assertEqual(len(validate_static_rules()), 6)
+        self.assertEqual(len(validate_static_rules()), 7)
 
     def test_system_prompt_includes_key_rules(self):
         prompt = build_system_prompt()
@@ -33,6 +33,11 @@ class DigestContractsTest(unittest.TestCase):
         self.assertIn("data-opt", prompt)
         self.assertIn("data-nar=\"bonds\"", prompt)
         self.assertIn("Produce ONLY a complete <main>", prompt)
+
+    def test_static_rules_reject_hardcoded_interaction_dates(self):
+        self.assertTrue(
+            any(desc == "no hardcoded interaction dates" for desc, _pat, _exp, _scope in validate_static_rules())
+        )
 
 
 if __name__ == "__main__":

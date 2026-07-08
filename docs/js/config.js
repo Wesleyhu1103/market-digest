@@ -6,9 +6,26 @@ function mdUsesRemoteApi() {
 function mdApiUrl(path) {
   return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
 }
+function mdSiteAsset(rel) {
+  const clean = String(rel || '').replace(/^\//, '');
+  let root = window.location.pathname || '/';
+  const archiveAt = root.indexOf('/archive/');
+  if (archiveAt >= 0) root = root.slice(0, archiveAt + 1);
+  else if (/\.[a-z0-9]+$/i.test(root)) root = root.replace(/[^/]+$/, '');
+  else if (!root.endsWith('/')) root += '/';
+  return root + clean;
+}
 function mdMacroFredUrl() {
-  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  if (/\.github\.io$/i.test(location.hostname)) return mdSiteAsset('fred-data.json');
   return '/api/fred-data';
+}
+function mdEditionIso() {
+  const edition = window.DigestDate && DigestDate.headerEdition && DigestDate.headerEdition();
+  return (edition && edition.iso) || '';
+}
+function mdFeedbackStorageKey() {
+  const iso = mdEditionIso();
+  return 'marketDigest_feedback' + (iso ? '_' + iso : '');
 }
 function mdPost(path, body) {
   return fetch(mdApiUrl(path), {

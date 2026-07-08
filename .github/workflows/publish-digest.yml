@@ -163,6 +163,7 @@ jobs:
           fi
 
       - name: Apply incoming digest (archive + repair + splice)
+        if: needs.plan.outputs.static != 'true'
         run: python3 scripts/publish_digest.py
 
       - name: Refresh FRED chart data
