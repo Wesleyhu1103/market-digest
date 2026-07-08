@@ -19,21 +19,18 @@ import urllib.request
 from datetime import datetime, timedelta
 from pathlib import Path
 
-SERIES = {
-    "DGS2": "DGS2",
-    "DGS10": "DGS10",
-    "DGS30": "DGS30",
-    "DCOILBRENTEU": "DCOILBRENTEU",
-    "HY_OAS": "BAMLH0A0HYM2",
-    "IG_OAS": "BAMLC0A0CM",
-    "VIX": "VIXCLS",
-    "TENMINUSTWO": "T10Y2Y",
-}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from site_config import fred_days, fred_series, load_site_config
 
-DAYS = 400
+SERIES = fred_series()
+DAYS = fred_days()
 OUT = Path(__file__).resolve().parents[1] / "docs" / "fred-data.json"
 API_KEY = os.environ.get("FRED_API_KEY", "")
-UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+_cfg = load_site_config()
+UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+)
 REQUEST_HEADERS = {"User-Agent": UA, "Accept": "application/json,text/csv,*/*"}
 
 

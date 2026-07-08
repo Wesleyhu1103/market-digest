@@ -3,20 +3,18 @@
 // re-fetches from the FRED API (when FRED_API_KEY is set) so credit/stress
 // series pick up the latest published observations between publishes.
 
-const SERIES = {
-  DGS2: "DGS2",
-  DGS10: "DGS10",
-  DGS30: "DGS30",
-  DCOILBRENTEU: "DCOILBRENTEU",
-  HY_OAS: "BAMLH0A0HYM2",
-  IG_OAS: "BAMLC0A0CM",
-  VIX: "VIXCLS",
-  TENMINUSTWO: "T10Y2Y",
-};
+import fs from "fs";
+import path from "path";
 
-const DAYS = 400;
-const UA =
-  "Mozilla/5.0 (compatible; market-digest/1.0; +https://market-digest-liart.vercel.app)";
+function loadSiteConfig() {
+  const cfgPath = path.join(process.cwd(), "docs", "site-config.json");
+  return JSON.parse(fs.readFileSync(cfgPath, "utf8"));
+}
+
+const { fred: fredCfg, vercelOrigin } = loadSiteConfig();
+const SERIES = fredCfg.series;
+const DAYS = fredCfg.days;
+const UA = `Mozilla/5.0 (compatible; market-digest/1.0; +${vercelOrigin})`;
 
 function startDate() {
   const d = new Date();

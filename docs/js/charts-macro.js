@@ -564,8 +564,7 @@
   var macroPollTimer = null;
 
   function macroFredUrl() {
-    if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
-    return '/api/fred-data';
+    return typeof mdMacroFredUrl === 'function' ? mdMacroFredUrl() : '/api/fred-data';
   }
 
   function refreshFredMacro() {

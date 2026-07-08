@@ -1,10 +1,14 @@
-const MD_API_ORIGIN = 'https://market-digest-liart.vercel.app';
+// API helpers — MD_VERCEL_ORIGIN comes from site-config.js (head).
 function mdUsesRemoteApi() {
   const h = location.hostname;
   return /\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1';
 }
 function mdApiUrl(path) {
-  return mdUsesRemoteApi() ? MD_API_ORIGIN + path : path;
+  return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
+}
+function mdMacroFredUrl() {
+  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  return '/api/fred-data';
 }
 function mdPost(path, body) {
   return fetch(mdApiUrl(path), {

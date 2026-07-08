@@ -3,7 +3,10 @@ function repairMainDOM() {
   const main = document.querySelector('main');
   if (!main) return;
 
-  const chartHeights = { techMovers: 320, treasuryYields: 280, brentChart: 280, creditChart: 240, stressChart: 240, redditSentiment: 240, dealSizes: 240 };
+  const chartHeights = (window.SiteConfig && SiteConfig.repair && SiteConfig.repair.chartHeights) || {
+    techMovers: 320, treasuryYields: 280, brentChart: 280, creditChart: 240,
+    stressChart: 240, redditSentiment: 240, dealSizes: 240
+  };
   Object.keys(chartHeights).forEach(id => {
     const canvas = document.getElementById(id);
     if (!canvas) return;

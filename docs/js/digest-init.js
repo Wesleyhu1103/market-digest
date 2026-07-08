@@ -91,14 +91,7 @@ function saveVerdictFeedback() {
     { key: 'aicapex', name: 'AI Capex / IPO', col: 3,
       blurb: { bull: 'SpaceX book swells; FOMO lifts the whole complex.', bear: 'Capex without proof of profit; software reversal.', neu: 'Split tape — euphoria meets the profitability test.' } }
   ];
-  const todayLabel = (function editionDayLabel() {
-    const h1 = document.querySelector('header.head h1');
-    if (!h1) return '';
-    const MONTHS = { January:0,February:1,March:2,April:3,May:4,June:5,July:6,August:7,September:8,October:9,November:10,December:11 };
-    const m = h1.textContent.match(/(\w+),\s+(\w+)\s+(\d+),\s+(\d{4})/);
-    if (!m || MONTHS[m[2]] == null) return '';
-    return m[1].slice(0, 3) + ' ' + (MONTHS[m[2]] + 1) + '/' + m[3];
-  })();
+  const todayLabel = (window.DigestDate && DigestDate.editionDayLabel()) || '';
 
   // Parse the Week Scoreboard table into per-thread day arrays
   function readScoreboard() {
@@ -224,11 +217,9 @@ function saveVerdictFeedback() {
 (function () {
   var head = document.querySelector('header.head');
   var kicker = head && head.querySelector('.kicker');
-  var h1 = head && head.querySelector('h1');
-  if (!head || !kicker || !h1) return;
-  var MONTHS = { January:0,February:1,March:2,April:3,May:4,June:5,July:6,August:7,September:8,October:9,November:10,December:11 };
-  var m = h1.textContent.match(/(\w+), (\w+) (\d+), (\d{4})/);
-  if (!m || MONTHS[m[2]] == null) return;
+  if (!head || !kicker || !window.DigestDate) return;
+  var edition = DigestDate.headerEdition();
+  if (!edition || !edition.iso) return;
 
   function etNow() {
     var now = new Date(), y = now.getFullYear();
@@ -240,13 +231,14 @@ function saveVerdictFeedback() {
   function num(y, mo, d) { return y * 10000 + mo * 100 + d; }
 
   var et = etNow();
-  var edition = num(+m[4], MONTHS[m[2]] + 1, +m[3]);
+  var isoParts = edition.iso.split('-');
+  var editionNum = num(+isoParts[0], +isoParts[1], +isoParts[2]);
   var today = num(et.getFullYear(), et.getMonth() + 1, et.getDate());
 
-  if (edition < today) {
+  if (editionNum < today) {
     var banner = document.createElement('div');
     banner.className = 'stale-banner';
-    banner.textContent = "You're reading the " + m[1] + ", " + m[2] + ' ' + m[3] + ', ' + m[4] +
+    banner.textContent = "You're reading the " + edition.weekday + ', ' + edition.month + ' ' + edition.day + ', ' + edition.year +
       " edition — today's digest hasn't published yet. Live prices and charts below are still current.";
     head.parentNode.insertBefore(banner, head);
   } else {

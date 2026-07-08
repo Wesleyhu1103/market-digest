@@ -28,13 +28,15 @@ function digestDateFromHtml(html) {
   if (meta) return meta[1];
   const h1 = html.match(/<h1>([^<]+)<\/h1>/);
   if (!h1) return null;
-  const parsed = Date.parse(h1[1].trim());
-  if (!Number.isFinite(parsed)) return null;
-  const d = new Date(parsed);
-  const y = d.getUTCFullYear();
-  const mo = String(d.getUTCMonth() + 1).padStart(2, "0");
-  const day = String(d.getUTCDate()).padStart(2, "0");
-  return `${y}-${mo}-${day}`;
+  const months = {
+    January: 1, February: 2, March: 3, April: 4, May: 5, June: 6,
+    July: 7, August: 8, September: 9, October: 10, November: 11, December: 12,
+  };
+  const m = h1[1].trim().match(/^(\w+),\s+(\w+)\s+(\d+),\s+(\d{4})$/);
+  if (!m || !months[m[2]]) return null;
+  const mo = String(months[m[2]]).padStart(2, "0");
+  const day = String(m[3]).padStart(2, "0");
+  return `${m[4]}-${mo}-${day}`;
 }
 
 function authorizeCron(req) {

@@ -29,14 +29,8 @@
   var mount = ensureArchiveSection();
   if (!mount) return;
   var todayIso = null;
-  var h1 = document.querySelector('header.head h1');
-  if (h1) {
-    var m = h1.textContent.match(/(\w+), (\w+) (\d+), (\d{4})/);
-    if (m) {
-      var months = {January:'01',February:'02',March:'03',April:'04',May:'05',June:'06',July:'07',August:'08',September:'09',October:'10',November:'11',December:'12'};
-      todayIso = m[4] + '-' + (months[m[2]] || '01') + '-' + String(m[3]).padStart(2, '0');
-    }
-  }
+  var edition = window.DigestDate && DigestDate.headerEdition();
+  if (edition) todayIso = edition.iso;
   fetch(sitePath('archive/manifest.json'), { cache: 'no-store' })
     .then(function(r) { return r.ok ? r.json() : []; })
     .catch(function() { return []; })
@@ -54,7 +48,7 @@
       if (todayIso) {
         html += '<div class="arch-today">'
           + '<span class="arch-date">Today</span>'
-          + '<span class="arch-title">' + (h1 ? h1.textContent : 'Live digest') + '</span>'
+          + '<span class="arch-title">' + (document.querySelector('header.head h1') ? document.querySelector('header.head h1').textContent : 'Live digest') + '</span>'
           + '<span class="arch-today-note">You are reading today&apos;s live edition.</span></div>';
       }
       var list = '';

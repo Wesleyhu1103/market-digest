@@ -11,7 +11,7 @@
     // absolute public production domain when viewed on GitHub Pages. The
     // public proxies below remain as automatic fallback.
     function (u) {
-      var base = /\.github\.io$/i.test(location.hostname) ? 'https://market-digest-liart.vercel.app' : '';
+      var base = /\.github\.io$/i.test(location.hostname) ? MD_VERCEL_ORIGIN : '';
       return base + '/api/quote?url=' + encodeURIComponent(u);
     },
     function (u) { return 'https://corsproxy.io/?url=' + encodeURIComponent(u); },

@@ -1,5 +1,10 @@
 """Auto-repair <main> HTML before daily publish. Run on main_html string."""
 import re
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from site_config import repair_chart_heights, repair_thresholds
 
 
 def repair_main_html(main_html: str) -> str:
@@ -46,15 +51,7 @@ def repair_main_html(main_html: str) -> str:
         main_html = main_html.replace('</main>', merged + '\n</main>', 1)
 
     # Canvas height wrappers (Chart.js needs explicit container height)
-    wrappers = {
-        'techMovers': 320,
-        'treasuryYields': 280,
-        'brentChart': 280,
-        'creditChart': 240,
-        'stressChart': 240,
-        'redditSentiment': 240,
-        'dealSizes': 240,
-    }
+    wrappers = repair_chart_heights()
     for cid, h in wrappers.items():
         pat = rf'<canvas id="{cid}"[^>]*></canvas>'
         repl = (
@@ -79,10 +76,14 @@ def repair_main_html(main_html: str) -> str:
         count=1,
     )
 
+    min_bull_on, min_show_bull = repair_thresholds()
     bull_on = len(re.findall(r'data-side="bull"[^>]*class="bull on"|class="bull on"[^>]*data-side="bull"', main_html))
     show_bull = main_html.count('class="bullbear show-bull"')
-    if bull_on < 4 or show_bull < 4:
-        raise SystemExit(f"ABORT: toggle structure bull_on={bull_on} show_bull={show_bull} (need 4 each: 3 narratives + buyside summary)")
+    if bull_on < min_bull_on or show_bull < min_show_bull:
+        raise SystemExit(
+            f"ABORT: toggle structure bull_on={bull_on} show_bull={show_bull} "
+            f"(need {min_bull_on} each: 3 narratives + buyside summary)"
+        )
 
     n_chart = main_html.count('id="chartData"')
     if n_chart != 1:
