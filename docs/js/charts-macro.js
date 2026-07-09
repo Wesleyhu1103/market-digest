@@ -137,6 +137,19 @@
     if (asOfDate) suffix += ' · through ' + asOfDate;
     api.qSource.textContent = 'Source: ' + base + suffix;
   }
+  function setDailySource(api, base, asOfDate) {
+    if (!api.qSource) return;
+    api.qSource.textContent = 'Source: ' + base + ' · daily close · through ' + asOfDate;
+  }
+  function macroLegend(t, show) {
+    return show
+      ? { position: 'top', labels: { font: { size: 11 }, boxWidth: 12, boxHeight: 8, color: t.ink, padding: 12 } }
+      : { display: false };
+  }
+  function macroLineOpts(t) {
+    return { animation: false, interaction: { mode: 'index', intersect: false },
+      plugins: { datalabels: { display: false } } };
+  }
   function macroFeed(call, fallback) {
     fallback = fallback != null ? fallback : [];
     try {
@@ -180,7 +193,8 @@
       api.chart.data.datasets = datasets;
       if (options) {
         api.chart.options.plugins = options.plugins;
-        api.chart.options.scales = options.scales;
+        api.chart.options.scales = Object.assign({}, options.scales || {});
+        if (!options.scales || !options.scales.y2) delete api.chart.options.scales.y2;
         api.chart.options.interaction = options.interaction;
         api.chart.options.animation = options.animation;
       }
@@ -199,7 +213,10 @@
     window.allCharts.push(api.chart);
     requestAnimationFrame(function() { if (api.chart) api.chart.resize(); });
   }
-  function buildCard(title, source, canvasId, height) {
+  function buildCard(title, source, canvasId, height, opts) {
+    opts = opts || {};
+    var cardRanges = opts.ranges || RANGES;
+    var defaultRange = opts.defaultRange || (cardRanges[0] && cardRanges[0].key) || '1d';
     var canvas = document.getElementById(canvasId);
     if (!canvas) return null;
     var wrap = canvas.closest('.chart-card');
@@ -224,19 +241,20 @@
       qChange: card.querySelector('.mkt-change'),
       qRanges: card.querySelector('.mkt-ranges'),
       qSource: card.querySelector('.mkt-source'),
-      range: '1d',
+      range: defaultRange,
       chart: null,
-      reload: null
+      reload: null,
+      ranges: cardRanges
     };
-    RANGES.forEach(function(r) {
+    cardRanges.forEach(function(r) {
       var b = document.createElement('button');
       b.textContent = r.label;
-      b.className = r.key === '1d' ? 'active' : '';
+      b.className = r.key === defaultRange ? 'active' : '';
       b.addEventListener('click', function() {
         if (api.range === r.key) return;
         api.range = r.key;
         var btns = api.qRanges.querySelectorAll('button');
-        for (var j = 0; j < btns.length; j++) btns[j].className = RANGES[j].key === api.range ? 'active' : '';
+        for (var j = 0; j < btns.length; j++) btns[j].className = cardRanges[j].key === api.range ? 'active' : '';
         if (api.reload) api.reload();
       });
       api.qRanges.appendChild(b);
@@ -414,26 +432,24 @@
       setHeadline(api, last, prev, function(v) { return Math.round(v) + ' bps (HY)'; }, function(chg, pct, up) {
         return (up ? '+' : '') + Math.round(chg) + ' bps';
       });
-      setSource(api, 'FRED / ICE BofA OAS', false, rows[rows.length - 1].date);
+      setDailySource(api, 'FRED / ICE BofA OAS', rows[rows.length - 1].date);
       var t = tc();
       var tip = macroTooltipBase(api.range, function(i) { return points[i]; });
       tip.callbacks.label = function(ctx) { return ctx.dataset.label + ': ' + Math.round(ctx.parsed.y) + ' bps'; };
+      var lineOpts = macroLineOpts(t);
       renderChart(api, labels, [
         { label: 'HY OAS', data: hy, borderColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2 },
         { label: 'IG OAS', data: ig, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 }
-      ], {
-        animation: false,
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-          legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, color: t.ink } },
-          datalabels: { display: false },
+      ], Object.assign({}, lineOpts, {
+        plugins: Object.assign({}, lineOpts.plugins, {
+          legend: macroLegend(t, true),
           tooltip: tip
-        },
+        }),
         scales: {
           x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
-          y: yScaleFromValues(vals, function(v) { return Math.round(v) + 'bps'; }, t)
+          y: yScaleFromValues(vals, function(v) { return Math.round(v) + ' bps'; }, t)
         }
-      }, points);
+      }), points);
     };
     window._liveChartReloaders.push(api.reload);
     api.reload();
@@ -442,62 +458,78 @@
   function initStress(api) {
     if (!api) return;
     api.reload = function() {
-      var fred = fredMacro && fredMacro.fred;
       var credit = fredMacro && fredMacro.credit;
       var meta = rangeMeta(api.range);
       var t = tc();
 
-      function drawLive(vixSeries, tnxSeries, quote) {
+      function renderStress(labels, vix, slope, metaPoints, opts) {
+        opts = opts || {};
+        var includeSpread = !!opts.includeSpread && slope && slope.some(function(v) { return v != null && isFinite(v); });
+        var datasets = [{
+          label: 'VIX', data: vix, borderColor: t.bear, tension: 0.15, pointRadius: 0,
+          borderWidth: 2, yAxisID: 'y', fill: !includeSpread, backgroundColor: includeSpread ? undefined : t.bear + '18'
+        }];
+        if (includeSpread) {
+          datasets.push({
+            label: opts.spreadLabel || '2s10s', data: slope, borderColor: t.accent, tension: 0,
+            stepped: opts.spreadStepped ? 'before' : false, pointRadius: 0, borderWidth: 2, yAxisID: 'y2'
+          });
+        }
+        var tip = macroTooltipBase(api.range, function(i) { return metaPoints[i]; });
+        tip.callbacks.label = function(ctx) {
+          if (ctx.dataset.label === 'VIX') return 'VIX: ' + Number(ctx.parsed.y).toFixed(2);
+          return ctx.dataset.label + ': ' + Math.round(ctx.parsed.y) + ' bps';
+        };
+        var scales = {
+          x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
+          y: Object.assign({}, yScaleFromValues(vix, function(v) { return Number(v).toFixed(1); }, t), { position: 'right', grid: { color: t.rule } })
+        };
+        if (includeSpread) {
+          scales.y.position = 'left';
+          scales.y2 = Object.assign({}, yScaleFromValues(slope, function(v) { return Math.round(v) + ' bps'; }, t), { position: 'right', grid: { display: false } });
+        }
+        var lineOpts = macroLineOpts(t);
+        renderChart(api, labels, datasets, Object.assign({}, lineOpts, {
+          plugins: Object.assign({}, lineOpts.plugins, {
+            legend: macroLegend(t, includeSpread),
+            tooltip: tip
+          }),
+          scales: scales
+        }), metaPoints);
+      }
+
+      function dailySpreadOnTimeline(series) {
+        if (!credit || !credit.TENMINUSTWO || !series || !series.length) return null;
+        return mergeFredOntoLive(series, credit.TENMINUSTWO, function(pt) { return pt.value * 100; });
+      }
+      function showLiveSpread() {
+        return api.range === '1w' || api.range === '1m' || api.range === '1y';
+      }
+
+      function drawLive(vixSeries, quote) {
         if (!vixSeries.length) return;
         var labels = mdTimeAxisLabels(vixSeries, api.range);
         var vix = vixSeries.map(function(p) { return p.v; });
-        var tnxAligned = alignLiveSeries(vixSeries, tnxSeries || []);
-        var d2 = fred && fred.DGS2
-          ? mergeFredOntoLive(vixSeries, fred.DGS2, function(pt) { return pt.value; })
-          : vixSeries.map(function() { return null; });
-        var slope = vixSeries.map(function(p, i) {
-          var y10 = tnxAligned[i], y2 = d2[i];
-          if (y10 == null || y2 == null) return null;
-          return (y10 - y2) * 100;
-        });
-        if (credit && credit.TENMINUSTWO) {
-          var fredSlope = mergeFredOntoLive(vixSeries, credit.TENMINUSTWO, function(pt) { return pt.value * 100; });
-          slope = slope.map(function(v, i) { return v != null ? v : fredSlope[i]; });
-        }
-        var d2Date = fred && fred.DGS2 && fred.DGS2.length ? fred.DGS2[fred.DGS2.length - 1].date : null;
+        var includeSpread = showLiveSpread();
+        var slope = includeSpread ? dailySpreadOnTimeline(vixSeries) : null;
+        var spreadDate = credit && credit.TENMINUSTWO && credit.TENMINUSTWO.length
+          ? credit.TENMINUSTWO[credit.TENMINUSTWO.length - 1].date : null;
         var last = quote && quote.price != null ? quote.price : vix[vix.length - 1];
         var prev = quote && quote.prevClose != null ? quote.prevClose : (vix.length > 1 ? vix[vix.length - 2] : last);
         setHeadline(api, last, prev, function(v) { return Number(v).toFixed(2) + ' (VIX)'; }, function(chg, pct, up) {
           return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
         });
         if (api.qSource) {
-          var srcSuffix = window.MarketFeed && window.MarketFeed.asOfStr
+          var suffix = window.MarketFeed && window.MarketFeed.asOfStr
             ? ' · ' + window.MarketFeed.asOfStr() : '';
-          if (d2Date) srcSuffix += ' · 2Y through ' + d2Date;
-          api.qSource.textContent = 'Source: Cboe / FRED' + srcSuffix;
+          if (includeSpread && spreadDate) suffix += ' · 2s10s daily through ' + spreadDate;
+          api.qSource.textContent = 'Source: Cboe / FRED' + suffix;
         }
-        var tip = macroTooltipBase(api.range, function(i) { return vixSeries[i]; });
-        tip.callbacks.label = function(ctx) {
-          if (ctx.dataset.label === 'VIX') return 'VIX: ' + Number(ctx.parsed.y).toFixed(2);
-          return '2s10s (est.): ' + Math.round(ctx.parsed.y) + ' bps';
-        };
-        renderChart(api, labels, [
-          { label: 'VIX', data: vix, borderColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y' },
-          { label: '2s10s (est.)', data: slope, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
-        ], {
-          animation: false,
-          interaction: { mode: 'index', intersect: false },
-          plugins: {
-            legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, color: t.ink } },
-            datalabels: { display: false },
-            tooltip: tip
-          },
-          scales: {
-            x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
-            y: Object.assign({}, yScaleFromValues(vix, function(v) { return Number(v).toFixed(1); }, t), { position: 'left', grid: { color: t.rule } }),
-            y2: Object.assign({}, yScaleFromValues(slope, function(v) { return Math.round(v) + 'bps'; }, t), { position: 'right', grid: { display: false } })
-          }
-        }, vixSeries);
+        renderStress(labels, vix, slope, vixSeries, {
+          includeSpread: includeSpread,
+          spreadLabel: '2s10s',
+          spreadStepped: includeSpread
+        });
       }
 
       function drawFred() {
@@ -507,45 +539,30 @@
         var points = fredRowsToPoints(rows);
         var labels = dateLabels(rows, api.range);
         var vix = rows.map(function(r) { return r.value; });
-        var slope = mapFilled(rows, credit.TENMINUSTWO, function(pt) { return pt.value * 100; });
+        var includeSpread = api.range === '1w' || api.range === '1m' || api.range === '1y';
+        var slope = includeSpread
+          ? mapFilled(rows, credit.TENMINUSTWO, function(pt) { return pt.value * 100; })
+          : null;
         var last = vix[vix.length - 1];
         var prev = vix.length > 1 ? vix[vix.length - 2] : last;
         setHeadline(api, last, prev, function(v) { return Number(v).toFixed(2) + ' (VIX)'; }, function(chg, pct, up) {
           return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
         });
-        setSource(api, 'FRED / CBOE', false, rows[rows.length - 1].date);
-        var tip = macroTooltipBase(api.range, function(i) { return points[i]; });
-        tip.callbacks.label = function(ctx) {
-          return ctx.dataset.label + ': ' + (ctx.dataset.label === 'VIX'
-            ? Number(ctx.parsed.y).toFixed(2) : Math.round(ctx.parsed.y) + ' bps');
-        };
-        renderChart(api, labels, [
-          { label: 'VIX', data: vix, borderColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y' },
-          { label: '2s10s', data: slope, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
-        ], {
-          animation: false,
-          interaction: { mode: 'index', intersect: false },
-          plugins: {
-            legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 14, color: t.ink } },
-            datalabels: { display: false },
-            tooltip: tip
-          },
-          scales: {
-            x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
-            y: Object.assign({}, yScaleFromValues(vix, function(v) { return Number(v).toFixed(1); }, t), { position: 'left', grid: { color: t.rule } }),
-            y2: Object.assign({}, yScaleFromValues(slope, function(v) { return Math.round(v) + 'bps'; }, t), { position: 'right', grid: { display: false } })
-          }
-        }, points);
+        setDailySource(api, 'FRED / CBOE', rows[rows.length - 1].date);
+        renderStress(labels, vix, slope, points, {
+          includeSpread: includeSpread,
+          spreadLabel: '2s10s',
+          spreadStepped: includeSpread
+        });
       }
 
       if (window.MarketFeed) {
         Promise.all([
           macroFeed(function() { return window.MarketFeed.series('^VIX', meta.range, meta.interval); }),
-          macroFeed(function() { return window.MarketFeed.series('^TNX', meta.range, meta.interval); }),
           macroFeed(function() { return window.MarketFeed.quote('^VIX'); }, {})
         ]).then(function(res) {
           if (!res[0] || !res[0].length) { drawFred(); return; }
-          drawLive(res[0], res[1] || [], res[2] || {});
+          drawLive(res[0], res[1] || {});
         });
       } else {
         drawFred();
@@ -556,9 +573,13 @@
   }
 
   // Upgrade DOM to mkt-card layout immediately (before data load)
+  var FRED_DAILY_RANGES = RANGES.filter(function(r) { return r.key !== '1d'; });
   var treasuryApi = buildCard('US Treasury Yields', 'Cboe / FRED', 'treasuryYields', 280);
   var brentApi = buildCard('Brent Crude', 'ICE / Yahoo Finance', 'brentChart', 280);
-  var creditApi = buildCard('Credit Spreads', 'FRED / ICE BofA OAS', 'creditChart', 240);
+  var creditApi = buildCard('Credit Spreads', 'FRED / ICE BofA OAS', 'creditChart', 240, {
+    ranges: FRED_DAILY_RANGES,
+    defaultRange: '1w'
+  });
   var stressApi = buildCard('Market Stress', 'Cboe / FRED', 'stressChart', 240);
   var macroApis = [treasuryApi, brentApi, creditApi, stressApi];
   var macroPollTimer = null;

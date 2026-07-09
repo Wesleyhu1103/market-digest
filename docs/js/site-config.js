@@ -1,7 +1,7 @@
 // Auto-generated from docs/site-config.json — run: python3 scripts/sync_site_config.py
 window.SiteConfig = {
   "vercelOrigin": "https://market-digest-liart.vercel.app",
-  "assetVersion": "20260710",
+  "assetVersion": "20260712",
   "fred": {
     "days": 400,
     "series": {
