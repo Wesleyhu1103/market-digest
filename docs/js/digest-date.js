@@ -43,10 +43,16 @@
     return ed && ed.shortLabel ? ed.shortLabel : '';
   }
 
+  function editionIso() {
+    var ed = headerEdition();
+    return ed && ed.iso ? ed.iso : new Date().toISOString().slice(0, 10);
+  }
+
   window.DigestDate = {
     parseH1Text: parseH1Text,
     parseFromHtml: parseFromHtml,
     headerEdition: headerEdition,
-    editionDayLabel: editionDayLabel
+    editionDayLabel: editionDayLabel,
+    editionIso: editionIso
   };
 })();
