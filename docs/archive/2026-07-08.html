@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Jul 8, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="js/site-config.js?v=20260710"></script>
+<script src="js/market-feed.js?v=20260710"></script>
+<link rel="stylesheet" href="css/digest.css?v=20260710">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-08</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, July 8, 2026</h1>
+    <div class="meta">
+      <p>The June FOMC minutes land this afternoon, but the tape is already reeling from President Trump's overnight declaration that the US-Iran ceasefire is "over" after fresh strikes, sending oil surging, bond yields spiking and stock futures lower. European bonds slumped as the oil spike reignited inflation fears, pushing French borrowing costs to their highest since 2009. Gold slipped even as risk rose, a tell that traders are repricing rate cuts out of the curve.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "President Trump declared the tentative US-Iran ceasefire 'over' after a fresh round of strikes and attacks on shipping in the Strait of Hormuz, sending oil soaring, bond yields spiking and stocks lower, and forcing markets to reprice a geopolitical tail they had spent late June trying to put behind them",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Stocks Fall as US-Iran Truce Comes Under Strain", "angle": "Reads the reversal as risk aversion snapping back the moment the ceasefire premise cracked.", "lean": -45, "pull": "Stocks fell, bond yields spiked and oil rallied after Trump thrust geopolitical risks back into focus."},
+        {"outlet": "Financial Times", "headline": "Oil Spike Reignites Europe's Inflation Fears as French Yields Hit 2009 High", "angle": "Frames the bond selloff as the real damage, with sovereign borrowing costs jumping on renewed price pressure.", "lean": -40, "pull": "European bonds slumped as oil prices and inflation expectations rose after the ceasefire was declared over."},
+        {"outlet": "CNBC", "headline": "Markets Reprice Rate Cuts as Iran Tensions Send Oil Higher", "angle": "Treats the move as a rates story first, with the energy jolt clouding the Fed's easing path.", "lean": -25, "pull": "Gold dropped as a renewal of fighting could again drive inflation and push up interest rates."},
+        {"outlet": "The Economist", "headline": "A Fragile Strait Shows the Iran Peace Deal Was Never Settled", "angle": "Argues the late-June deal was always thin and the Hormuz attacks exposed it.", "lean": -35, "pull": "Until the war, ships transiting the world's most important artery for oil didn't pay to pass; now even that is in doubt."},
+        {"outlet": "NYT", "headline": "Slumping Prices Still Crush Russia Even as Crude Jumps on Iran", "angle": "Steps back to note the underlying market stays oversupplied beneath the fresh premium.", "lean": 20, "pull": "Record global flows point to a glut that should reassert once the strait steadies."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Bonds Sell Off Into Today's FOMC Minutes as an Oil Spike Reignites Inflation Fears, Pushing French Borrowing Costs to Their Highest Since 2009 and Knocking Gold Lower on Rate-Hike Worries, Even as the US Trade Deficit Blows Out, Japan's Bank Lending Runs Its Fastest Since Covid and New Zealand Hikes</h3>
+      </div>
+      <p>The disinflation trade got yanked out from under the market overnight. European bonds slumped and French 10-year yields hit their highest since 2009 as oil prices and inflation expectations jumped after Trump declared the Iran ceasefire over. Gold, of all things, dropped, a sign traders are pricing higher-for-longer rates rather than a haven bid, because a renewed conflict threatens to reignite the very inflation that had been fading. The cross-currents are still there underneath: the US trade deficit widened in May to its biggest in more than a year as gold-led exports fell and imports rose, NY Fed President John Williams said before the spike that falling energy would drag inflation down over the coming months, and Poland and Romania were set to hold rates as eastern European price pressures moderate. But the tightening bias abroad is real. Japan's bank lending grew at its fastest pace since Covid, backing the BOJ's path even as Tokyo tweaked its policy language to ease worry it was pressuring the central bank, New Zealand raised its key rate for the first time in three years, and Scope warned Germany must stabilize its debt to keep its AAA. Today's minutes are now a stale document against a live oil shock.</p>
+      <p>The bull case is that US activity is cooling, the trade gap is widening, Williams still expects energy to pull inflation lower, and eastern Europe is easing off its war-era spike, so a patient Fed can look through a price jolt. The bear case is that the oil spike has reignited inflation expectations, French yields are at a 16-year high, Japan's lending and New Zealand's hike signal a global tightening bias, and gold falling on rate-hike fears says the market believes the price shock, not the disinflation story. The question is whether the minutes read patient enough to matter after crude moved the goalposts.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (cooling US, disinflation still intact):</strong> The US trade deficit blew out to a one-year high as exports fell, NY Fed's John Williams expects falling energy to drag inflation lower over coming months, and Poland and Romania are holding rates as eastern European inflation moderates. A patient Fed can look through a one-off oil jolt if activity keeps cooling.</div>
+        <div class="bear"><strong>Bear (oil spike reignites inflation, global tightening):</strong> The crude spike after Trump ended the ceasefire pushed French borrowing costs to their highest since 2009 and knocked gold lower on rate-hike fears. Japan's bank lending ran its fastest since Covid, backing more BOJ hikes, New Zealand raised for the first time in three years, and Scope warns Germany's debt threatens its AAA. The inflation tail is back.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-08/german-bonds-slide-as-higher-oil-prices-reignite-inflation-fears" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- European Bonds Slide as Oil Spike Reignites Inflation Fears</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Soars as Trump Declares the US-Iran Ceasefire "Over" After Fresh Strikes, With India Scrambling to Secure Safe Hormuz Passage for Nine Stranded Tankers and Iran Angling to Charge Transit Fees, Even as Canada's Trade Surplus Hits a Four-Year High Filling the Supply Gaps the Strait Keeps Opening</h3>
+      </div>
+      <p>The geopolitical tail did not just twitch, it took over the tape. Trump said the tentative ceasefire with Iran is over after both sides traded fresh airstrikes, and oil rallied hard, dragging equity futures down and bond yields up around the world. India is now weighing talks with Tehran to secure safe passage for at least nine laden tankers waiting in the Persian Gulf, and Bloomberg reports Iran wants to charge transit fees for the Strait of Hormuz, something ships never paid before this war, a sign the disruption is hardening into policy rather than fading. Soybean oil hit a three-week high on renewed biofuel-demand bets, Indian stocks and the rupee slid, and crypto sold off with bitcoin dropping toward $62,000. The oversupply underneath is still real: Canada's trade surplus hit a four-year high as its energy and metals sectors filled global gaps left by Hormuz disruptions, and the IEA had flagged gas demand set to fall for the first time since 2022. But that glut is a slow story, and the strait is writing the fast one. The NATO members meeting in Ankara pivoted from spending talk to security, with the Netherlands and UK signing a $3.2 billion amphibious-ship deal.</p>
+      <p>The bull read for prices is that the physical market stays oversupplied: Canada is filling the gaps, Russian and global flows have run at records, and gas demand is set to fall, all pointing lower once the shooting stops. The bear read is that the ceasefire is now formally dead, tankers are stranded in the Gulf, Iran is trying to monetize the chokepoint, and there is no near-term catalyst to calm the strait. The multi-week trend may still favor the glut, but the premium is back with a vengeance and no clear off-ramp.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (glut underneath the premium):</strong> Canada's trade surplus hit a four-year high as its energy and metals sectors filled the supply gaps Hormuz keeps opening, global flows have run at records, and the IEA sees gas demand falling for the first time since 2022. Once the strait steadies, the oversupply should reassert and feed importer disinflation again.</div>
+        <div class="bear"><strong>Bear (ceasefire dead, chokepoint monetized):</strong> Trump declared the truce over after fresh strikes, sending oil soaring and yields spiking worldwide. India is scrambling to free nine stranded tankers, Iran wants to charge Hormuz transit fees, and Indian stocks and the rupee slid. With no off-ramp, the risk premium is back and hardening into policy.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-08/us-stock-futures-slide-after-trump-says-iran-ceasefire-is-over" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stock Futures Slide After Trump Says Iran Ceasefire Is Over</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Rotation Trade Gathers Pace as Investors Pull Money From the Chipmakers That Led the Rally and Hunt Cheaper Ways to Play the Boom, With Goldman's Mueller-Glissmann Calling Hyperscalers Well-Positioned but Warning the Earnings Surprises Are Hard to Repeat, While Apple's Broadcom Deal Tops $30 Billion and Capital Keeps Flooding Into AI Names</h3>
+      </div>
+      <p>The story shifted from "chips crack" to "chips get rotated out of." After Samsung sent chip investors on another roller-coaster, money is moving down the AI stack: out of the semiconductors that powered this year's run and into hyperscalers and infrastructure seen as cheaper or steadier. Goldman's Christian Mueller-Glissmann said the levered positioning toward semis got "a bit extreme" and is now reversing, arguing the hyperscalers are well-positioned because they still own the infrastructure, while separately cautioning that last season's wave of AI-fueled earnings surprises will be hard to repeat, so results alone probably won't spark a fresh rally. The buildout money keeps coming regardless: Apple said its expanded Broadcom chip deal is expected to top $30 billion, AI chip startup SambaNova raised $1 billion at an $11 billion valuation, China's Zhipu is selling $4 billion of shares after a 1,500% rally and Iluvatar CoreX is chasing $850 million after a 428% run, OpenAI rolls out its top model globally Thursday, and Temasek's assets broke $400 billion on AI bets. Australia's UniSuper says it will buy any US tech dip. Bloomberg notes Nvidia is the world's most valuable company yet trades cheaper than Hershey. The counterweights are labor: a chip-worker shortfall threatens US fab construction and a craft-labor crunch is testing data-center builders.</p>
+      <p>The bulls point to Apple's $30 billion Broadcom commitment, SambaNova's fresh $11 billion mark, Temasek and UniSuper leaning in, and Mueller-Glissmann's call that hyperscalers own the durable assets. The bears point to the rotation itself as an admission that semis got overbought, Goldman's warning that the earnings surprises won't repeat, CoinDesk's read that the AI trade is losing steam on rising competition, and the labor bottlenecks that could stall the buildout. The question is whether rotating within AI is healthy breadth or the first sign the leadership is thinning.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (capital keeps flooding, rotation is breadth):</strong> Apple's Broadcom deal tops $30 billion, SambaNova raised $1 billion at an $11 billion valuation, and Temasek's assets broke $400 billion on AI bets. Goldman's Mueller-Glissmann calls hyperscalers well-positioned because they own the infrastructure, and Australia's UniSuper is set to buy any dip. Nvidia is the most valuable company yet cheaper than Hershey.</div>
+        <div class="bear"><strong>Bear (leadership thinning, surprises won't repeat):</strong> Investors are pulling money out of the chipmakers that led the rally, Goldman warns the AI earnings surprises are hard to repeat, and CoinDesk says the trade is losing steam on rising competition and slowing spend. A chip-worker shortfall threatens US fabs and a craft-labor crunch is testing data-center builders. The rotation admits semis got overbought.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/videos/2026-07-08/goldman-sachs-says-hyperscalers-are-well-positioned-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Goldman Sachs Says Hyperscalers Are 'Well-Positioned'</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>US stock futures slide after Trump says the Iran ceasefire is over</strong></summary>
+      <div class="deal-body">
+        <p>US equity futures fell as investors turned risk averse after President Trump said the tentative ceasefire with Iran has ended, fueling concern about a renewal of fighting. Oil rallied, bond yields spiked, and the risk-off move rippled from Asia into Europe ahead of today's FOMC minutes.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/us-stock-futures-slide-after-trump-says-iran-ceasefire-is-over" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stock Futures Slide After Trump Says Iran Ceasefire Is Over</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apple's expanded Broadcom chip deal is expected to exceed $30 billion</strong></summary>
+      <div class="deal-body">
+        <p>Apple (AAPL) said its expanded agreement with Broadcom (AVGO) is expected to top $30 billion, following through on a pledge to boost spending on US-made components. A concrete win for Broadcom and a sign the custom-silicon buildout keeps drawing scale commitments even on a risk-off day.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/apple-aapl-chip-deal-with-broadcom-avgo-expected-to-exceed-30-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apple's Chip Deal With Broadcom Expected to Exceed $30 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Rivian falls 18% after selling 75 million shares to raise capital</strong></summary>
+      <div class="deal-body">
+        <p>Rivian (RIVN) stock dropped 18% as the EV maker sold 75 million shares to fund equity contributions tied to a US Department of Energy loan. The dilutive raise came in extended hours after the stock had gained 8.1% Monday and 19.2% the prior week.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/07/rivian-stock-rivn-capital-raise.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Rivian Stock Falls 18% as Company Sells 75 Million Shares</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alibaba shares jump the most in 10 months on rebound hopes</strong></summary>
+      <div class="deal-body">
+        <p>Alibaba (BABA) surged the most since September as investors turned optimistic on earnings and rotated capital into major Chinese internet names that had lagged. A rare risk-on pocket as money hunts cheaper ways to play the tech and AI theme.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/alibaba-s-shares-jump-most-in-ten-months-as-earnings-hopes-grow" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba Shares Jump Most in 10 Months as Rebound Hopes Grow</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apple loses its EU court fight over App Store and iPhone rules</strong></summary>
+      <div class="deal-body">
+        <p>Apple lost a European Union court bid to shield its App Store and iPhone operating system from the full force of the bloc's antitrust crackdown on Big Tech, and a French watchdog separately ordered Meta to negotiate news copyright payments. Regulatory pressure keeps building on the platforms.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/apple-loses-spat-with-eu-over-app-store-and-iphone-rules" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apple Loses Spat With EU Over App Store and iPhone Rules</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Netflix, Disney and YouTube eye FIFA World Cup US rights worth up to $2 billion</strong></summary>
+      <div class="deal-body">
+        <p>FIFA told media companies that English- and Spanish-language US rights for 2030 and 2034 will likely be sold together, a package that could reach $2 billion. Streaming and legacy players are lining up as live sports remains the last must-have content.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/07/fifa-world-cup-media-rights-netflix-disney-youtube.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Netflix, Disney and YouTube Interested in FIFA World Cup US Rights</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Oman India Fertiliser surges 23% on its Muscat debut, the region's biggest IPO this year</strong></summary>
+      <div class="deal-body">
+        <p>Oman India Fertiliser jumped more than 23% on its trading debut after raising 261 million rials ($678 million), the region's largest IPO of the year. A pocket of primary-market strength that defied the war worries dominating the broader tape.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/fertilizer-firm-climbs-18-in-early-trading-after-oman-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oman Fertilizer Firm Defies War Worries and Surges 23% on Debut</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> Trump declaring the Iran ceasefire over flipped the tape risk-off, sending oil up, yields up and equity futures down into today's FOMC minutes. The bull thread is capital still flowing into AI (Apple's $30 billion Broadcom deal, Alibaba's rebound bid) and cheaper ways to play the theme; the bear undertow is a live geopolitical premium, Rivian's dilution, and regulators tightening on Apple and Meta. Watch whether the minutes can matter at all against a fresh crude shock.
+    </div>
+    <details class="dive">
+      <summary>Deeper: What the AI Rotation Trade Is and Why Money Is Leaving the Chipmakers</summary>
+      <p>Bloomberg's Asia desk describes an "AI rotation trade" gathering pace: investors pulling money out of the chipmakers that powered this year's rally and hunting cheaper ways to play the same boom. For a reader, the word rotation is the key. It does not mean investors are giving up on AI. It means they are moving the same conviction from one part of the theme to another, and understanding why teaches you how a maturing trade behaves. Early in an AI rally, the cleanest way to express the bet is the picks-and-shovels layer: the chipmakers whose silicon every model needs. That is why Nvidia, Samsung and SK Hynix ran so far. But a trade that works pulls in leverage and crowding. Goldman's Christian Mueller-Glissmann says positioning toward semiconductors got "a bit extreme," and extreme positioning is fragile because when everyone owns the same names, there is no one left to buy and any disappointment sends everyone for the same exit at once. That is the mechanism behind Samsung's record profit still tanking the stock and behind the roller-coaster swings since. Rotation is the market's way of relieving that pressure without abandoning the theme. Money flows to adjacent names that offer similar exposure at a lower valuation or with a steadier earnings base. Mueller-Glissmann's preferred destination is the hyperscalers, the cloud giants like Amazon, Microsoft and Alphabet, because they still own the data centers and the customer relationships, so they capture AI demand without being priced for perfection the way the pure chip plays were. Another channel is geography: Alibaba jumped the most in 10 months as investors rotated into lagging Chinese internet names, and capital chased Chinese chip startups like Zhipu and Iluvatar CoreX that had already run hundreds or thousands of percent. The nuance is that rotation can be healthy or ominous depending on breadth. If money leaving semis spreads into many names and lifts the broader market, that is breadth improving and a sign of a durable bull market. If it just crowds into a new narrow group while the old leaders fall, that is leadership thinning, which historically precedes trouble. The unresolved thread is which one this is. Goldman itself hedges, warning that last season's wave of AI earnings surprises will be hard to repeat, so results alone probably will not spark a fresh rally. For a reader, the lesson is that a rotation tells you where conviction is moving, not whether it is disappearing, and the tell to watch is whether the money spreads out or just huddles somewhere new.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-08/the-opening-trade-7-8-2026-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- The Opening Trade: AI Rotation Trade Gathers Pace in Asia</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Samsung sends chip investors on another roller-coaster ride</strong></summary>
+      <div class="deal-body">
+        <p>Samsung's strong earnings again fell short of an ever-rising bar for chipmakers, extending the whipsaw in semis even as the company began mass production of its most advanced data-center storage drive for Nvidia's upcoming Vera Rubin platform. The gap between real results and inflated expectations keeps driving the swings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-08/samsung-sends-chip-investors-on-another-roller-coaster-ride" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Samsung Sends Chip Investors on Another Roller Coaster Ride</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman says the wave of AI earnings surprises will be hard to repeat</strong></summary>
+      <div class="deal-body">
+        <p>Goldman's Christian Mueller-Glissmann said the AI-fueled earnings surprises that powered stocks last season will be tough to repeat, making it unlikely results alone spark a major rally, while calling hyperscalers well-positioned because they still own the infrastructure. A nuanced call framing the rotation out of semis.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/wave-of-earnings-surprises-will-be-hard-to-repeat-says-goldman" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wave of Earnings Surprises Will Be Hard to Repeat, Says Goldman</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI chip startup SambaNova raises $1 billion at an $11 billion valuation</strong></summary>
+      <div class="deal-body">
+        <p>SambaNova Systems raised $1 billion at an $11 billion valuation, underscoring investor conviction in rising demand for AI infrastructure. The raise lands the same day China's Zhipu launched a $4 billion share sale after a 1,500% rally, a sign private and cross-border AI capital keeps flowing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/ai-chip-startup-sambanova-raises-funds-at-11-billion-valuation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Chip Startup SambaNova Raises Funds at $11 Billion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI to roll out its top AI model globally after a limited preview</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI said it will release its most advanced model widely on Thursday and expand its preview globally. A fresh capability step that keeps the competitive pressure high across the frontier model race, from Tencent's WeChat agent to DeepSeek's in-house silicon push.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/openai-to-roll-out-top-ai-model-globally-after-limited-preview" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI to Roll Out Top AI Model Globally After Limited Preview</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Labor crunch tests growth limits for US data-center and chip builders</strong></summary>
+      <div class="deal-body">
+        <p>A skilled-labor shortage is testing the limits of the craft-labor providers who build US data centers after quarters of record order books, and a separate report warns a semiconductor worker shortfall could delay billions in new fab construction. The buildout's bottleneck is increasingly people, not capital.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/labor-crunch-tests-growth-limits-for-us-data-center-builders" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Labor Crunch Tests Growth Limits for US Data Center Builders</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Temasek assets break $400 billion as AI bets boost returns</strong></summary>
+      <div class="deal-body">
+        <p>Singapore's Temasek pushed its net portfolio value to a record S$518 billion ($401 billion) as it ramped exposure to AI and the Americas. A large sovereign investor leaning further into the theme even as the day's tape turns cautious.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/temasek-assets-break-400-billion-as-ai-bets-boost-returns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Temasek Assets Break $400 Billion as AI Bets Boost Returns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Allianz unit to cut as many as 1,800 jobs in a push to adopt AI</strong></summary>
+      <div class="deal-body">
+        <p>Allianz plans to eliminate hundreds of positions at its assistance and travel insurance subsidiary as it implements AI, one of the clearest signs the technology is starting to reshape white-collar headcount. A tangible early read on the productivity-versus-labor tradeoff.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/allianz-unit-to-cut-as-many-as-1-800-jobs-in-push-to-adopt-ai" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Allianz Unit to Cut as Many as 1,800 Jobs in Push to Adopt AI</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Wednesday July 8, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>The buildout funds while the leadership rotates:</strong> Apple's Broadcom deal tops $30 billion, SambaNova raised $1 billion at an $11 billion mark, Temasek broke $400 billion on AI, and OpenAI ships its top model Thursday. The bear frame is Goldman's warning the earnings surprises won't repeat, Samsung's renewed roller-coaster, and labor bottlenecks now testing both data-center and chip construction. Money is rotating out of semis and toward hyperscalers and cheaper regional names.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>European bonds slide as the oil spike reignites inflation fears</strong></summary>
+      <div class="deal-body">
+        <p>European bonds slumped and French borrowing costs hit their highest since 2009 as oil and inflation expectations rose after Trump declared the Iran ceasefire over. A clean example of a geopolitical price shock feeding straight into sovereign yields.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/german-bonds-slide-as-higher-oil-prices-reignite-inflation-fears" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- European Bonds Slide as Oil Spike Reignites Inflation Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Gold drops on rate-hike fears as Trump says the Iran ceasefire is over</strong></summary>
+      <div class="deal-body">
+        <p>Gold fell as the end of the ceasefire stoked concern that a renewal of fighting could drive inflation and push interest rates higher, overwhelming the usual haven bid. A counterintuitive move that shows the market is pricing higher rates, not just risk.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-07/gold-holds-drop-as-us-strikes-in-iran-cloud-rate-hike-outlook" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Drops on Rate-Hike Fears as Trump Says Iran Ceasefire Over</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US trade deficit widens in May to its biggest in more than a year</strong></summary>
+      <div class="deal-body">
+        <p>The US trade deficit widened as imports rose and exports, led by gold, declined, propelling the gap to the most since March 2025. A read that shaves near-term growth and fits the cooling-activity thesis into today's FOMC minutes.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-07/us-trade-deficit-widens-to-biggest-in-more-than-a-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Trade Deficit Widens to Biggest in More Than a Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Williams stays optimistic as energy prices fall</strong></summary>
+      <div class="deal-body">
+        <p>NY Fed President John Williams said he expects falling energy prices to drive overall inflation lower over coming months and called policy well-placed for now. The comments predate the fresh oil spike, which now complicates that read.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-07/fed-s-williams-stays-optimistic-as-energy-prices-fall" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Williams Stays Optimistic as Energy Prices Fall</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Japan's bank lending rises at its fastest pace since Covid, backing the BOJ path</strong></summary>
+      <div class="deal-body">
+        <p>Japanese bank lending expanded at the fastest pace since the pandemic, suggesting credit is still accessible and the BOJ has room to keep raising rates, even as Tokyo tweaked its policy language to ease worry it was pressuring the central bank. Rising JGB yields keep tugging US yields higher.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/japan-s-bank-lending-rises-fastest-since-covid-backing-boj-path" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Japan's Bank Lending Rises Fastest Since Covid, Backing BOJ Path</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>New Zealand raises its key rate for the first time in three years</strong></summary>
+      <div class="deal-body">
+        <p>New Zealand's central bank hiked for the first time in three years and signaled more may come as it drives inflation back to target. Another sign the global tightening bias is broadening beyond Japan even as the US debates cuts.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/new-zealand-raises-key-rate-to-head-off-inflation-pressures" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- New Zealand Raises Key Rate, Sees Further Unwinding of Stimulus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Canada's trade surplus hits a four-year high as the war fuels exports</strong></summary>
+      <div class="deal-body">
+        <p>Canada's trade surplus widened to its largest in four years as its energy, metals and mineral sectors filled global supply gaps left by Hormuz disruptions. A concrete read on how the strait shock reroutes trade flows to alternative suppliers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-07/canada-trade-surplus-hits-four-year-high-on-aluminum-exports" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Canada Trade Surplus Highest Since 2022 as War Fuels Exports</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 7, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>A cooling US read gets overrun by an oil-driven inflation scare:</strong> The trade deficit blew out and Williams still expects energy to pull inflation lower, keeping the patient-Fed thesis alive. But the crude spike after Trump ended the ceasefire pushed French yields to a 16-year high, knocked gold on rate-hike fears, and lands as Japan's lending and New Zealand's hike signal a broadening global tightening bias. The minutes now read against a live shock.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why an Oil Spike Pushes Bond Yields Up Through Inflation Expectations</summary>
+      <p>The clearest cause-and-effect on today's tape is that oil jumped and European bonds fell, sending French borrowing costs to their highest since 2009. To connect the two you need to understand what a bond yield is actually made of. When you buy a government bond, you lock in a fixed stream of future payments in dollars or euros. Inflation is the enemy of that deal, because if prices rise faster than expected, the money you get back buys less. So any bond yield can be split into two conceptual pieces: a real yield, which is your compensation after inflation, and an inflation compensation, which covers the erosion you expect over the life of the bond. Economists call that second piece the breakeven inflation rate, and you can read it directly by comparing a normal bond to an inflation-protected one. Now bring in oil. Energy is an input to almost everything: transport, manufacturing, food, heating. When crude spikes, businesses face higher costs and pass some along, and households spend more at the pump, so measured inflation tends to rise in the months after. The bond market does not wait for the data. The moment oil surges on a credible shock, traders raise their expected inflation, which lifts the breakeven, which pushes the nominal yield up. Bond prices fall as yields rise, which is exactly the slump Bloomberg described. There is a second, reinforcing channel through the central bank. If higher oil threatens to keep inflation above target, the market assumes policymakers will hold rates higher for longer, or even hike, rather than cut. That expectation lifts the real-yield piece too. This is the missing link behind the strange sight of gold falling on a day of rising geopolitical risk: gold pays no interest, so its main competitor is the real yield on safe bonds, and when rate-hike odds rise, gold looks relatively worse and can drop even as danger climbs. The nuance is that not every oil move matters equally. A spike seen as temporary, one the market expects to reverse once a strait reopens, feeds through weakly, because central banks are trained to look through one-off energy shocks. A spike seen as persistent, tied to a chokepoint that may stay contested, feeds through strongly. That is why the framing of the Iran story matters as much as the price: a ceasefire declared dead with no off-ramp reads as persistent. The unresolved thread is how long the premium lasts. For a reader, the lesson is that oil and bonds are linked through expectations, and the breakeven is the gauge that translates a barrel of crude into a move in yields.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/german-bonds-slide-as-higher-oil-prices-reignite-inflation-fears" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- European Bonds Slide as Oil Spike Reignites Inflation Fears</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Oil soars and yields spike after Trump declares the Iran ceasefire over; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/6</td>
+            <td><span style="color:var(--muted);font-weight:700;">Mixed</span></td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/7</td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/8</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/9</td>
+            <td><span style="color:var(--muted);font-weight:700;">—</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">—</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">—</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/10</td>
+            <td><span style="color:var(--muted);font-weight:700;">—</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">—</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">—</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">5</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">1</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">83%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Crypto and stocks tumble after Trump declares the ceasefire over</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin fell and altcoins slid after Trump said the ceasefire with Iran is over as both sides traded airstrikes, with the token dropping toward $62,000 as oil soared and risk assets sold off worldwide. A clean risk-off reaction to the geopolitical shock.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/08/crypto-and-stocks-tumble-after-trump-declares-ceasefire-over-following-iran-strikes" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto and Stocks Tumble After Trump Declares Ceasefire 'Over' Following Iran Strikes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin's inflation quagmire gets stickier as renewed conflict sends oil soaring</strong></summary>
+      <div class="deal-body">
+        <p>The renewed Middle East conflict complicates bitcoin's macro backdrop by lifting oil and inflation expectations, which pressure the rate-cut path that risk assets had been counting on. CoinDesk flags the token now squeezed between geopolitics and a stickier inflation read.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/07/08/bitcoin-s-inflation-quagmire-gets-stickier-as-renewed-mideast-conflict-sends-oil-price-soaring" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin's Inflation Quagmire Gets Stickier as Renewed MidEast Conflict Sends Oil Soaring</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Weak yen pushes Japanese firms into bitcoin and XRP for treasury diversification</strong></summary>
+      <div class="deal-body">
+        <p>SBI VC Trade says corporate demand for crypto is rising as a weak yen drives firms to diversify reserves, part of a run that took its registered accounts past 2 million, with hedge funds the most bearish on the yen since 2007. A structural bid tied to Japan's currency stress.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/07/bitcoin-xrp-draw-japanese-firms-as-weak-yen-drives-treasury-diversification" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin, XRP Draw Japanese Firms as Weak Yen Drives Treasury Diversification</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock-backed Securitize slides 40% after its SPAC debut</strong></summary>
+      <div class="deal-body">
+        <p>Tokenization platform Securitize dropped 40% after its SPAC debut despite the tokenization boom, fitting a pattern of recently public digital-asset companies sliding after they list, per Arca's Jeff Dorman. A reminder the public-market bid for crypto names is uneven.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/07/blackrock-backed-securitize-slides-40-after-spac-debut-despite-tokenization-boom" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BlackRock-Backed Securitize Slides 40% After SPAC Debut Despite Tokenization Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US SEC to propose a crypto rule as soon as this month to ease fundraising</strong></summary>
+      <div class="deal-body">
+        <p>A newly updated SEC agenda shows a so-called Reg Crypto high on its near-term list, a proposed rule aimed at easing startup formation and fundraising. A constructive regulatory signal, contrasting with India's central bank still favoring prohibition to curb tax evasion.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/07/07/u-s-sec-to-propose-crypto-rule-as-soon-as-this-month-to-ease-startups-fundraising" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US SEC to Propose Crypto Rule as Soon as This Month to Ease Startups, Fundraising</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kraken is trying to become a bank in Europe</strong></summary>
+      <div class="deal-body">
+        <p>Crypto exchange Kraken is pursuing a European banking license, focusing on Lithuania as the jurisdiction to secure it, per a person familiar. The latest exchange chasing bank status as the line between crypto and traditional finance keeps blurring.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/07/crypto-exchange-kraken-is-trying-to-become-a-bank-in-europe" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Exchange Kraken Is Trying to Become a Bank in Europe</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Apple / Broadcom -- Expanded Chip Deal Expected to Exceed $30 Billion</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Apple said its expanded agreement with Broadcom is expected to top $30 billion, following through on a pledge to boost spending on US-made components and custom silicon.</p>
+        <p><strong>Outlook:</strong> The commitment locks in years of demand for Broadcom and deepens Apple's move toward in-house and US-sourced chips, even as the tape turns risk-off on Iran.</p>
+        <p><strong>What it means:</strong> A scale supply deal shows the AI and custom-silicon buildout keeps drawing multi-year capital regardless of the day's volatility, and it reinforces the reshoring theme.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/apple-aapl-chip-deal-with-broadcom-avgo-expected-to-exceed-30-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apple's Chip Deal With Broadcom Expected to Exceed $30 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zhipu -- Seeks $4 Billion Share Sale After a 1,500% Rally</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Chinese AI model maker Zhipu is looking to raise about $4 billion after its stock soared almost 1,500% since a January Hong Kong listing, funding an aggressive model and infrastructure push.</p>
+        <p><strong>Outlook:</strong> The raise lands alongside Iluvatar CoreX chasing $850 million and SambaNova's $11 billion round, a wave of AI capital tapping investors while valuations run hot.</p>
+        <p><strong>What it means:</strong> Cross-border AI fundraising is booming even as US chip equities wobble, a sign the capital cycle is broad and increasingly global.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/ai-firm-zhipu-to-sell-4-billion-of-shares-after-1-500-rally" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Firm Zhipu to Sell $4 Billion of Shares After 1,500% Rally</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dream Finders Homes -- Boosts Bid for Beazer Homes to $875 Million</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Dream Finders Homes raised its offer for rival homebuilder Beazer Homes to $32 a share, valuing the target at about $875 million as it pushes for scale.</p>
+        <p><strong>Outlook:</strong> The sweetened bid comes as a CNBC survey shows far more agents now see a balanced housing market, with price cuts easing, a backdrop that could support consolidation.</p>
+        <p><strong>What it means:</strong> Homebuilder M&A picking up signals confidence in the sector's medium-term demand even with rates uncertain, and a reminder deal activity spans well beyond AI.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/dream-finders-homes-boosts-beazer-bid-to-875-million" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dream Finders Homes Boosts Bid for Beazer Homes to $875 Million</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Netherlands / UK -- Sign $3.2 Billion Amphibious-Ship Deal in Ankara</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> The Netherlands and UK signed a £2.4 billion ($3.2 billion) agreement to build new amphibious transport ships, part of a flurry of deals among European NATO members meeting in Ankara.</p>
+        <p><strong>Outlook:</strong> The renewed Iran conflict shifts the summit from spending debate to concrete procurement, supporting Europe's fragile defense-stock rebound.</p>
+        <p><strong>What it means:</strong> Cross-border defense contracts are converting political pledges into orders, a real-economy tailwind for the sector as the geopolitical tail reasserts.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/netherlands-and-uk-sign-3-2-billion-deal-on-amphibious-ships" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Netherlands and UK Sign $3.2 Billion Deal on Amphibious Ships</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal Sizes This Week ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Christian Mueller-Glissmann (Goldman Sachs) -- hyperscalers are well-positioned as the semi trade unwinds</strong></summary>
+      <div class="deal-body">
+        <p>The portfolio strategy and asset allocation head said levered positioning toward semiconductors got "a bit extreme" and is now reversing, while the hyperscalers are well-positioned because they still own a lot of the infrastructure. The anchor call behind the rotation trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-08/goldman-sachs-says-hyperscalers-are-well-positioned-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Goldman Sachs Says Hyperscalers Are 'Well-Positioned'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UniSuper -- shrugs off AI bubble fears and plans to buy dips</strong></summary>
+      <div class="deal-body">
+        <p>One of Australia's largest pension funds said it will buy any pullback in US tech stocks, dismissing valuation worries as it bets AI will fuel years of earnings growth. A large long-term allocator leaning into weakness.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/australian-pension-shrugs-off-ai-bubble-fears-plans-to-buy-dips" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Australian Pension Shrugs Off AI Bubble Fears, Plans to Buy Dips</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs -- the wave of AI earnings surprises will be hard to repeat</strong></summary>
+      <div class="deal-body">
+        <p>Mueller-Glissmann also warned the AI-fueled earnings surprises that powered last season's rally will be tough to repeat, making it unlikely results alone spark a major move higher. A caution that tempers the same bullish infrastructure call.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/wave-of-earnings-surprises-will-be-hard-to-repeat-says-goldman" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wave of Earnings Surprises Will Be Hard to Repeat, Says Goldman</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SpaceX bulls -- full speed ahead with a raised $800 target</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street analysts kept the bullish drumbeat on SpaceX after its Nasdaq 100 entry, with one lifting the price target to $800 and floating a $10.5 trillion valuation as AI drives the story. Conviction on the name despite the broader AI-trade wobble.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-08/spacex-stock-price-target-raised-to-800-as-ai-drives-10-5-trillion-valuation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SpaceX Bulls Say Full Speed Ahead Despite Wobbles in the AI Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Susquehanna -- puts up $500 million to hedge World Cup outcomes via prediction markets</strong></summary>
+      <div class="deal-body">
+        <p>Susquehanna International Group lined up $500 million to work with institutions wanting to use prediction markets to hedge economic risks tied to World Cup outcomes. A novel read on how prediction markets are becoming a real hedging venue.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/susquehanna-puts-up-500-million-for-hedging-world-cup-games" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Susquehanna Puts Up $500 Million for 'Hedging' World Cup Games</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bond investors -- crowd into flexible funds as credit gets pricey</strong></summary>
+      <div class="deal-body">
+        <p>With lofty credit valuations leaving little margin for error, investors are increasingly betting on go-anywhere funds that can buy whatever they like. A positioning shift that signals caution on tight spreads and a hunt for flexibility.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/pricey-credit-markets-fuel-rise-of-funds-that-can-buy-anything" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Pricey Credit Markets Fuel Rise of Funds That Can Buy Anything</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as a Fresh Oil Shock Reprices Rates, the AI Trade Rotates Out of Chips and the FOMC Minutes Land</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (buildout intact, buy the dip):</strong> Goldman's Mueller-Glissmann says hyperscalers are well-positioned because they own the infrastructure, Australia's UniSuper plans to buy any US tech dip, and Temasek broke $400 billion on AI. Apple committed over $30 billion to Broadcom, SambaNova raised at an $11 billion mark, and SpaceX bulls lifted targets. The capital keeps flowing.</div>
+        <div class="bear"><strong>Bear (rotation admits froth, rates repricing):</strong> Goldman warns the AI earnings surprises are hard to repeat, and investors are pulling out of the chipmakers that led. The oil spike after Trump ended the ceasefire knocked gold on rate-hike fears and pushed French yields to a 2009 high, while bond investors crowd into go-anywhere funds as credit spreads leave no margin for error.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Trump says Iran ceasefire over, oil spikes; Rivian dumps 18% on dilution; Apple-Broadcom $30B</td><td>Bearish</td><td>~22,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>AI rotation out of chips into hyperscalers; Goldman says surprises hard to repeat; Alibaba pops</td><td>Cautious</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>FOMC minutes today; oil spike reignites inflation; gold falls on rate-hike fears; French yields 2009 high</td><td>Cautious/Bearish</td><td>~11,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Oil-to-breakeven-to-yields mechanism; credit spreads leave no margin; Temasek AI bets</td><td>Analytical</td><td>~6,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC toward $62K as ceasefire collapses; SEC Reg Crypto coming; Securitize slides 40%; weak yen bid</td><td>Mixed/Bearish</td><td>~19,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned decisively risk-off after Trump declared the Iran ceasefire over overnight. r/wallstreetbets went bearish as oil spiked and Rivian dumped 18% on a dilutive raise, though the Apple-Broadcom $30 billion deal drew notice. r/stocks tracked the AI rotation out of chips into hyperscalers, flagging Goldman's warning that the earnings surprises won't repeat while Alibaba popped. r/investing leaned cautious to bearish into today's FOMC minutes as the oil spike reignited inflation, gold fell on rate-hike fears, and French yields hit a 2009 high. r/SecurityAnalysis dug into the oil-to-yields mechanism and tight credit spreads, and r/CryptoCurrency went mixed to bearish as bitcoin slid toward $62,000, even as the SEC teased a friendlier Reg Crypto and a weak yen drove Japanese corporate demand. A live geopolitical tail overrunning a stale set of minutes is the thread everyone circles.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Gold Can Fall on a Day of Rising Geopolitical Risk</h2>
+    <p>One of the most confusing moves on today's tape is that Trump declared the Iran ceasefire over, risk rose everywhere, and gold, the classic safe haven, went down. For a reader, that seems to break the rule that fear lifts gold. It does not break the rule so much as reveal a deeper one, and understanding it teaches you how gold is actually priced.</p>
+    <p>Start with what gold is and is not. Gold pays no interest and no dividend. It just sits there. That single fact is the key to everything. When you own gold, you are giving up the yield you could have earned by holding a safe interest-bearing asset instead, most obviously a government bond. Economists call that forgone yield the opportunity cost of holding gold. When safe yields are low, giving them up costs you little, so gold looks attractive. When safe yields are high, holding gold means passing up real income, so gold looks worse. That is why gold's biggest driver over time is not fear at all, it is the real yield on safe bonds, meaning the interest rate after subtracting expected inflation.</p>
+    <p>Now apply that to today. Trump ending the ceasefire sent oil soaring. Higher oil raises expected inflation, and it makes the market believe central banks will keep rates higher for longer to fight that inflation, or even hike. Bloomberg's own headline said gold dropped precisely on rate-hike fears. When the market prices in higher rates, the real yield on bonds rises, and the opportunity cost of holding non-yielding gold rises with it. So the very same event that increased geopolitical danger also increased the appeal of interest-bearing safe assets relative to gold. The rate channel overwhelmed the fear channel.</p>
+    <p>This is a tug-of-war, and which side wins depends on the nature of the shock. When investors fear a recession or a financial crisis, central banks are expected to cut rates, real yields fall, and gold usually rallies hard because both the fear bid and the falling opportunity cost push the same direction. But when the shock is inflationary, like an oil spike, the two forces split: fear says buy gold, but rising rate expectations say sell it. On an inflationary geopolitical shock, the rate side often wins in the short run, which is exactly what happened.</p>
+    <p>The nuance is timing and horizon. Over years, gold has been a strong beneficiary of the volatile geopolitics of the 2020s and of central-bank buying, and Bloomberg separately noted gold's haven status is proving durable. A single day's drop on rate-hike fears does not overturn that structural bid. It just shows that on any given day, the marginal driver can be the interest-rate math rather than the fear story. For a reader, the lesson is to always ask what a shock does to real yields before assuming gold will rise, because gold competes with safe bonds, and the winner of that competition is set by rates, not headlines alone.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-07/gold-holds-drop-as-us-strikes-in-iran-cloud-rate-hike-outlook" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Drops on Rate-Hike Fears as Trump Says Iran Ceasefire Over</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-08/gold-gets-a-new-shine-in-era-of-volatile-geopolitics" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Gets a New Shine in Era of Volatile Geopolitics</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>June FOMC minutes -- Wednesday, July 8 (today).</strong> The minutes land into a fresh oil shock, so the swing factor is whether they read patient enough to matter after crude reignited inflation expectations and knocked gold on rate-hike fears. Williams' pre-spike optimism on falling energy now sits awkwardly against a live premium.</li>
+      <li><strong>US CPI -- mid-July.</strong> The next inflation read tests whether cooling activity and a widening trade deficit filter through, but the renewed Hormuz disruption muddies the energy component. A hot print would pull cuts further out of the curve.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Big-bank Q2 season -- mid-July.</strong> Reporting broadens with the major banks after Samsung's beat still disappointed, the first look at whether Goldman's warning that AI earnings surprises won't repeat shows up in guidance, and how trading desks fared through the chip volatility.</li>
+      <li><strong>OpenAI top-model global rollout -- Thursday, July 9.</strong> Not an earnings print, but a capability release that resets the competitive bar and could move sentiment across the AI complex.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Zhipu, Iluvatar CoreX and SambaNova raises.</strong> A wave of AI fundraising tests appetite: Zhipu's $4 billion share sale, Iluvatar CoreX chasing $850 million, and SambaNova's $1 billion round at an $11 billion valuation, all live gauges of AI capital demand.</li>
+      <li><strong>Apple-Broadcom $30 billion chip deal.</strong> A multi-year supply commitment that anchors the reshoring and custom-silicon theme even as equities trade risk-off.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Iran ceasefire fallout.</strong> With Trump declaring the truce over, watch for further strikes, Iran's push to charge Hormuz transit fees, and whether the strait steadies. This is the dominant swing factor for oil, yields and inflation expectations.</li>
+      <li><strong>Stranded tankers in the Gulf.</strong> India is seeking safe passage for nine laden tankers; whether those flows clear against a still-oversupplied market is the near-term tell for crude and importer inflation.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Jul 8, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (24 fresh, newest 2026-07-08 08:03 ET); Bloomberg Technology (25 fresh, newest 2026-07-08 08:00 ET); Bloomberg Economics (25 fresh, newest 2026-07-08 07:11 ET); CNBC Top News (4 fresh, newest 2026-07-07 18:53 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-07 14:32 ET); CoinDesk (25 fresh, newest 2026-07-08 07:15 ET); Stratechery (2 fresh, newest 2026-07-08 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. Trump declared the Iran ceasefire over, geopolitical risk rose, yet gold fell. What best explains that?</strong></p>
+      <span class="opt" data-opt="A">A. Investors always sell gold when a war escalates further</span>
+      <span class="opt" data-opt="B">B. Rate-hike fears lift real yields, raising gold's opportunity cost</span>
+      <span class="opt" data-opt="C">C. Central banks were forced to dump their entire gold reserves</span>
+      <span class="opt" data-opt="D">D. Oil and gold prices always move in opposite directions</span>
+      <div class="feedback"><strong>B is correct.</strong> Gold pays no interest, so it competes with safe bonds; when an oil spike raises inflation and rate-hike expectations, real yields rise and holding non-yielding gold costs more. War does not always sink gold, central banks kept buying, and oil and gold have no fixed inverse link.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. European bonds slumped and French yields hit a 2009 high right after oil surged. What is the main channel?</strong></p>
+      <span class="opt" data-opt="A">A. France was downgraded by ratings agencies overnight</span>
+      <span class="opt" data-opt="B">B. Higher oil forces the ECB to buy fewer bonds directly</span>
+      <span class="opt" data-opt="C">C. Oil producers dumped their French bond holdings at once</span>
+      <span class="opt" data-opt="D">D. Higher oil lifts inflation expectations, so yields rise</span>
+      <div class="feedback"><strong>D is correct.</strong> A bond yield includes compensation for expected inflation, so when oil spikes and raises that expectation, the breakeven rises and nominal yields climb, pushing bond prices down. There was no downgrade, no forced ECB action, and no evidence producers dumped French bonds.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Goldman says money is rotating out of chipmakers into hyperscalers. What is the logic?</strong></p>
+      <span class="opt" data-opt="A">A. Semi positioning got extreme, and hyperscalers own the infrastructure</span>
+      <span class="opt" data-opt="B">B. Chipmakers stopped selling to hyperscalers entirely this quarter</span>
+      <span class="opt" data-opt="C">C. Hyperscalers pay much higher dividends than chip stocks do</span>
+      <span class="opt" data-opt="D">D. Regulators banned investors from holding semiconductor shares</span>
+      <div class="feedback"><strong>A is correct.</strong> Goldman's Mueller-Glissmann said levered positioning in semis got extreme and is reversing, while hyperscalers are well-positioned because they still own the infrastructure. Chip sales to hyperscalers continue, dividends are not the driver, and no regulator banned holding semis.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Bonds sold off into today's FOMC minutes as the oil spike after Trump ended the Iran ceasefire reignited inflation fears, pushing French borrowing costs to their highest since 2009 and knocking gold lower on rate-hike worries; bulls cite a widening US trade deficit and Williams expecting energy to pull inflation down, while bears flag Japan's fastest bank lending since Covid, New Zealand's hike and Scope's warning on German debt.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-08/german-bonds-slide-as-higher-oil-prices-reignite-inflation-fears", "take": "The oil spike reignited inflation fears and lifted yields." },
+      { "name": "The Economist", "lean": "bear", "url": "https://www.economist.com/finance-and-economics", "take": "A broadening global tightening bias sets a floor under yields." },
+      { "name": "WSJ", "lean": "neutral", "url": "https://www.wsj.com/economy", "take": "A widening trade deficit muddies the growth read." },
+      { "name": "NYT", "lean": "bull", "url": "https://www.nytimes.com/section/business/economy", "take": "Cooling US activity still argues for a patient Fed." },
+      { "name": "CNBC", "lean": "neutral", "url": "https://www.cnbc.com/economy/", "take": "Williams expects falling energy to pull inflation lower." },
+      { "name": "The Atlantic", "lean": "bear", "url": "https://www.theatlantic.com/economy/", "take": "An inflationary oil shock reprices rate cuts out of the curve." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil soared after Trump declared the US-Iran ceasefire over following fresh strikes, with India scrambling to free nine stranded tankers and Iran angling to charge Hormuz transit fees; bulls note Canada's four-year-high trade surplus filling supply gaps and gas demand set to fall, while bears see no near-term off-ramp for the strait.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-08/us-stock-futures-slide-after-trump-says-iran-ceasefire-is-over", "take": "The ceasefire is dead and the risk premium is back." },
+      { "name": "The Economist", "lean": "bear", "url": "https://www.economist.com/middle-east-and-africa", "take": "A fragile strait shows the peace deal was never settled." },
+      { "name": "WSJ", "lean": "neutral", "url": "https://www.wsj.com/world/middle-east", "take": "Rerouted flows point to an oversupplied market underneath." },
+      { "name": "NYT", "lean": "bull", "url": "https://www.nytimes.com/section/world/middleeast", "take": "Record global flows still crush producer income." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/oil/", "take": "Canada is filling the gaps the strait keeps opening." },
+      { "name": "The Atlantic", "lean": "bear", "url": "https://www.theatlantic.com/international/", "take": "Iran monetizing the chokepoint hardens the disruption." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI rotation trade gathered pace as investors pulled money from the chipmakers that led the rally into hyperscalers and cheaper regional names, with Goldman's Mueller-Glissmann calling hyperscalers well-positioned but warning the earnings surprises are hard to repeat; bulls point to Apple's $30 billion Broadcom deal, SambaNova's $11 billion round and UniSuper buying dips.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-07-08/goldman-sachs-says-hyperscalers-are-well-positioned-video", "take": "Hyperscalers own the infrastructure and are well-positioned." },
+      { "name": "The Economist", "lean": "bear", "url": "https://www.economist.com/business", "take": "Labor bottlenecks could stall the buildout." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/tech", "take": "The rotation admits the semi trade got overbought." },
+      { "name": "NYT", "lean": "neutral", "url": "https://www.nytimes.com/section/technology", "take": "Rotation shows conviction moving, not disappearing." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/technology/", "take": "Apple's $30 billion Broadcom deal shows capital still flows." },
+      { "name": "The Atlantic", "lean": "bear", "url": "https://www.theatlantic.com/technology/", "take": "Goldman warns the earnings surprises will be hard to repeat." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Alibaba","Broadcom","Nvidia","AMD","Samsung El.","SK Hynix"],
+    "values": [8.2, 1.6, -2.1, -2.9, -3.4, -4.1]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [22000, 14000, 11000, 6000, 19000],
+    "colors": ["bear","neutral","bear","neutral","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Apple/Broadcom","Zhipu Share Sale","Netherlands/UK Ships","SambaNova Round","Dream Finders/Beazer","Oman Fertiliser IPO"],
+    "values": [30, 4, 3.2, 1, 0.875, 0.678]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="js/digest-date.js?v=20260710"></script>
+<script src="js/config.js?v=20260710"></script>
+<script src="js/repair-dom.js?v=20260710"></script>
+<script src="js/digest-ui.js?v=20260710"></script>
+<script src="js/charts-core.js?v=20260710"></script>
+<script src="js/archive.js?v=20260710"></script>
+<script src="js/artifact-equities.js?v=20260710"></script>
+<script src="js/charts-macro.js?v=20260710"></script>
+<script src="js/artifact-framing.js?v=20260710"></script>
+<script src="js/verdict-updater.js?v=20260710"></script>
+<script src="js/digest-init.js?v=20260710"></script>
+
+</body>
+</html>
