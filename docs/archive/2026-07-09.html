@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Jul 9, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="js/site-config.js?v=20260713"></script>
+<script src="js/market-feed.js?v=20260713"></script>
+<link rel="stylesheet" href="css/digest.css?v=20260713">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-09</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, July 9, 2026</h1>
+    <div class="meta">
+      <p>The US military struck Iran for a second straight day and Tehran retaliated against American allies in the Gulf, yet after a brief risk-off spell the tape rebounded, oil's rally cooled and chipmakers led equities higher. SK Hynix's US listing ran more than seven times oversubscribed, a loud vote that the AI capital cycle is still intact. China's June inflation surprised soft, a disinflation win for the world even as fuel prices stay sticky.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The US struck Iran for a second straight day and Tehran retaliated against American allies in the Persian Gulf, yet after a brief risk-off spell markets rebounded, oil's rally cooled and SK Hynix's US listing ran seven times oversubscribed, forcing investors to weigh a shaky ceasefire and a near-halt in Hormuz shipping against resilient earnings and an unbroken AI capital cycle",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Chipmakers Fuel Gains as Stocks Shrug Off Second Day of Strikes", "angle": "Reads the rebound as risk appetite reasserting once the oil rally cooled and chip demand held.", "lean": 30, "pull": "Technology stocks lifted equity markets after SK Hynix drew strong demand ahead of its US listing."},
+        {"outlet": "Financial Times", "headline": "Hormuz Traffic Grinds to a Near Halt as US-Iran Truce Frays", "angle": "Frames the real risk as physical, with the world's key oil artery going quiet even as prices ease.", "lean": -25, "pull": "Traffic through the Strait of Hormuz came to a near standstill after the US struck Iran for a second straight day."},
+        {"outlet": "CNBC", "headline": "Markets Look Past Middle East Turmoil as Earnings Stay in Focus", "angle": "Treats the bounce as investors resisting the urge to reposition around headlines.", "lean": 20, "pull": "Investors should brace for more turmoil but resist the temptation to make major portfolio shifts."},
+        {"outlet": "The Economist", "headline": "The Iran Ceasefire Was Built to Fail", "angle": "Argues the ambiguous truce terms let both sides keep pursuing war aims by other means.", "lean": -35, "pull": "The ceasefire terms did not represent Iran's unconditional surrender, and the ambiguity has allowed both sides to continue."},
+        {"outlet": "NYT", "headline": "India's Wartime Buying Leaves a Cooking Gas Glut as Oil Eases", "angle": "Steps back to note the panic buying overshot and supply is now piling up underneath the premium.", "lean": 15, "pull": "India's frenzied efforts to counter disruptions have left state retailers with more than they can sell."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Bonds Stay Caught Between a Sticky Fuel-Inflation Risk and a Genuine Disinflation Signal as China's Prices Cool More Than Forecast, Jupiter Cuts Its Treasury Holdings to Zero on Rising Inflation Fears, an Ex-BOJ Official Warns Japan's Rate Could Top 2%, and a Coming PCE Makeover May Tip Warsh Against Hikes</h3>
+      </div>
+      <p>The rates picture is a genuine split-screen. On the disinflation side, China's June CPI surprised soft as the easing of Iran tensions pulled commodity costs lower, a domestic worry for Beijing but a clean win for global inflation, and Bloomberg reports that a coming revamp of the Fed's preferred PCE gauge could be just enough to tip the scales against rate increases this year even without changing the underlying picture. German exports unexpectedly rose for a fourth month on a US rebound, and Egypt's inflation eased for a third straight month. On the other side, the inflation tail refuses to die: refined-product prices for gasoline and diesel are proving much stickier than crude, Jupiter Asset Management cut US Treasury holdings to zero in a main bond fund and rotated into European and emerging-market debt on rising inflation risk, a former BOJ official warned Japan may speed up hikes and push its benchmark above 2%, Poland raised its inflation forecast on Iran-driven energy costs, and the market is warning the UK to scale back planned long-dated debt sales. Serbia and Malaysia held, with Malaysia flagging a possible hike as AI boosts growth.</p>
+      <p>The bull case is that the underlying disinflation trend is intact: China's prices are cooling, oil's rally has cooled with it, German trade is healthy, and the PCE makeover gives Warsh cover to hold. The bear case is that the fuel-price stickiness, Jupiter dumping Treasuries, an ex-BOJ warning of a 2%-plus rate and Poland lifting its inflation outlook all point to a global tightening bias that puts a floor under yields. The question is whether soft China data or sticky pump prices sets the tone.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (disinflation reasserts as commodities cool):</strong> China's June CPI surprised soft as Iran tensions eased and commodity costs fell, a win for global inflation, and Bloomberg says a coming PCE makeover could tip the Fed against hikes this year. German exports rose a fourth month and Egypt's inflation eased again. A patient central bank can let the trend do the work.</div>
+        <div class="bear"><strong>Bear (sticky fuel, global tightening bias):</strong> Refined-product prices for gasoline and diesel are staying elevated even as crude eases, Jupiter cut its Treasury holdings to zero on rising inflation risk, an ex-BOJ official warned Japan's rate could top 2%, and Poland lifted its inflation forecast. The UK is being told to trim long-dated sales. The floor under yields holds.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/newsletters/2026-07-09/fuel-prices-show-inflation-is-still-a-risk-for-markets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fuel Prices Show Inflation Is Still a Risk for Markets</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>The US and Iran Trade Airstrikes for a Second Straight Day and Hormuz Shipping Grinds to a Near Halt, Yet Oil's Rally Cools for a Third Session and Copper and Risk Assets Rally, as Oman Tells the UN It Opposes Iran's Push for Transit Fees and India's Panic Buying Leaves a Cooking Gas Glut Underneath the Premium</h3>
+      </div>
+      <p>The geopolitical shock got louder and the market got calmer, an unusual pairing. The US military struck Iran for a second day, Tehran retaliated against American allies in the Gulf, and Bloomberg reports traffic through the Strait of Hormuz came to a near standstill, yet oil actually fell for a third session, copper jumped in a broad industrial-metals rally, and Nasdaq futures climbed as investors shrugged. Bloomberg Opinion's Marc Champion argues the ceasefire was built to fail because the ambiguous terms let both sides keep pursuing war aims, and Amundi's Anna Rosenberg calls the truce fragile, but the price action says traders are treating this as headline risk rather than a durable supply shock. The oversupply underneath keeps showing through: India's wartime buying spree left state fuel retailers with a cooking gas surplus they cannot sell, Oman told the UN's shipping agency it opposes Iran's push to charge Hormuz transit fees, setting up a Gulf split, and European gas swung rather than spiked. The counter is Columbia's Karen Young, who warns Iran is unwilling to surrender its chokepoint leverage, leaving Kuwait, Bahrain and Qatar exposed.</p>
+      <p>The bull read for calm is that oil is falling despite a near-halt in Hormuz, India is drowning in surplus gas, Oman is fighting the transit-fee push, and risk assets from copper to chips are rallying, all saying the market sees this as noise, not a lasting squeeze. The bear read is that shipping has ground to a near standstill, the ceasefire is functionally dead, and Iran still holds the chokepoint. If the strait stays shut, the calm is borrowed time.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (glut underneath, market shrugs):</strong> Oil fell for a third session even as Hormuz shipping ground to a near halt, copper and Nasdaq futures rallied, India's panic buying left a cooking gas surplus it cannot sell, and Oman is opposing Iran's transit-fee push. The physical oversupply and the market's calm say this reads as headline risk, not a durable supply shock.</div>
+        <div class="bear"><strong>Bear (ceasefire dead, chokepoint held):</strong> The US struck Iran a second day and Hormuz traffic came to a near standstill, with Bloomberg Opinion's Marc Champion calling the truce built to fail. Columbia's Karen Young warns Iran won't surrender its Hormuz leverage, leaving Gulf states exposed. If the strait stays shut, the borrowed calm ends fast.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-09/hormuz-traffic-grinds-to-a-near-halt-as-ceasefire-under-threat" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hormuz Shipping Grinds to Near Halt After US, Iran Strikes</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>SK Hynix's US Listing Runs More Than Seven Times Oversubscribed and Chipmakers Lead the Rebound, Zhipu Jumps 22% After a $4 Billion Sale and CXMT Lines Up a $4.3 Billion IPO, With BlackRock's Helen Jewell Insisting the Capex Cycle Hasn't Hit Overspend, Even as the "Buy Chips, Sell Software" Trade Falls Apart and Korea's AI Rally Tips Into a Bear Market</h3>
+      </div>
+      <p>The AI capital cycle threw off two contradictory signals at once. SK Hynix's US offering came in more than seven times oversubscribed, chipmakers fueled the equity rebound, and cross-border AI money is gushing: Zhipu surged as much as 22% in Hong Kong after pricing a $4 billion share sale at the low end, memory giant CXMT lined up a $4.3 billion China IPO for next week, and Chinese AI stars raised $5.8 billion in Hong Kong this week, a spree Wall Street banks were largely shut out of. BlackRock's fundamental equities international CIO Helen Jewell told Bloomberg the next few years are clear because of the sheer capital being invested and that the cycle has not yet reached overspend. But the leadership tape is fraying. Bloomberg says the dominant 2026 trade, buying chip stocks and selling software, is showing signs of falling apart, souring AI sentiment pushed South Korea's Kospi into bear territory even as Nigeria's market vaulted past it for the world's top dollar returns, and the labor bottleneck is real, with contractors like Sterling Infrastructure and Comfort Systems short of skilled workers for the data-center build. Starbucks is now building in-house AI tools to cut its reliance on Microsoft and IBM software.</p>
+      <p>The bulls point to SK Hynix's sevenfold book, Zhipu's 22% pop, CXMT's $4.3 billion launch and Jewell's call that spending is nowhere near overshoot. The bears point to the chips-over-software trade unwinding, Kospi flipping into a bear market on souring sentiment, and the craft-labor crunch that could stall the buildout. The question is whether the fresh listings mean broadening demand or late-cycle supply hitting the market.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (capital cycle intact, demand broadening):</strong> SK Hynix's US listing ran seven times oversubscribed, chipmakers led the rebound, Zhipu jumped 22% after a $4 billion sale, CXMT is launching a $4.3 billion IPO, and Chinese AI stars raised $5.8 billion this week. BlackRock's Helen Jewell says the capex cycle is clear for years and has not hit overspend. The money keeps coming.</div>
+        <div class="bear"><strong>Bear (leadership fraying, sentiment souring):</strong> Bloomberg says the winning buy-chips, sell-software trade is falling apart, souring AI sentiment tipped Korea's Kospi into a bear market, and a skilled-labor crunch is stalling the data-center build for Sterling Infrastructure and Comfort Systems. A wave of new AI listings can look like supply arriving late in the cycle.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-08/sk-hynix-us-offering-is-more-than-seven-times-oversubscribed" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix US Offering Is More Than Seven Times Oversubscribed</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Chipmakers fuel a rebound as stocks shrug off a second day of US-Iran strikes</strong></summary>
+      <div class="deal-body">
+        <p>Technology stocks lifted equity markets after SK Hynix drew strong demand ahead of its US listing, and the tape rebounded from a brief geopolitical risk-off spell as oil's rally cooled. S&P 500 futures were up 0.2% premarket even with the US striking Iran for a second day.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chipmakers Fuel Gains in Stocks, Oil Fluctuates: Markets Wrap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Levi Strauss beats on top and bottom lines, raises guidance and dividend</strong></summary>
+      <div class="deal-body">
+        <p>Levi Strauss (LEVI) beat quarterly expectations on both revenue and earnings in fiscal Q2 and lifted its full-year guidance and dividend. A clean consumer beat that fed the day's earnings-over-headlines narrative, with the stock among premarket movers.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/08/levi-strauss-levi-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Levi Strauss Beats Quarterly Expectations, Raises Guidance and Dividend</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The "buy chips, sell software" trade of 2026 is falling apart</strong></summary>
+      <div class="deal-body">
+        <p>The dominant tech trade of the year, going long chipmakers and short software, is showing signs of breaking down as the leadership rotates. The unwind is a signal that positioning within tech got crowded and is now being reshuffled rather than abandoned.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/winning-trade-of-buying-chips-selling-software-is-falling-apart" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Winning Trade of Buying Chips, Selling Software Is Falling Apart</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nigerian stocks vault past Korea's Kospi to claim the world's top returns</strong></summary>
+      <div class="deal-body">
+        <p>Nigerian equities overtook South Korea's to hand investors the best dollar-based returns of the year as souring AI sentiment pushed the Kospi's world-beating rally into bear-market territory. A vivid read on how quickly the AI leadership can flip.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/nigeria-stocks-jump-south-korea-s-kospi-to-hand-most-dollar-returns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nigerian Stocks Vault Past Korea's Kospi to Claim World's Top Returns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Barclays' Cau says stocks can look past Middle East volatility</strong></summary>
+      <div class="deal-body">
+        <p>Barclays' head of European equity strategy Emmanuel Cau said investors should brace for more Middle East turmoil but resist major portfolio shifts, arguing earnings growth stays the key driver. The anchor call behind the day's shrug.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/barclays-cau-says-stocks-can-look-past-middle-east-volatility" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Barclays' Cau Says Stocks Can Look Past Middle East Volatility</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apple supplier Luxshare drops after its $3.1 billion Hong Kong debut</strong></summary>
+      <div class="deal-body">
+        <p>Apple (AAPL) supplier Luxshare Precision fell in its Hong Kong trading debut after raising HK$24.3 billion ($3.1 billion), the city's biggest listing of the year so far. A reminder that even in-demand tech listings can slip once they price and trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/apple-supplier-luxshare-to-trade-after-hk-s-biggest-2026-listing" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apple Supplier Luxshare Drops After $3 Billion Hong Kong Debut</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Used EV prices keep climbing amid the Iran war and high gas prices</strong></summary>
+      <div class="deal-body">
+        <p>The Manheim Used Vehicle Value Index for EVs rose 12% versus June 2025 as the war and elevated pump prices pushed buyers toward electric. A concrete channel from the oil shock into real consumer demand shifts.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/08/used-ev-prices-gas-war.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Used EVs Keep Getting More Expensive Amid Iran War, High Gas Prices</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> A second day of US-Iran strikes did not stick because oil's rally cooled and chip demand held, letting equities rebound with SK Hynix's sevenfold book leading the tone. The bull thread is resilient earnings (Levi's beat, Barclays' look-past-it call) and an unbroken AI capital cycle; the bear undertow is the chips-over-software trade unwinding, Korea's Kospi flipping bear, and Hormuz shipping near a standstill. Watch whether the calm survives a strait that stays shut.
+    </div>
+    <details class="dive">
+      <summary>Deeper: What a Pair Trade Is and Why the "Buy Chips, Sell Software" Unwind Matters</summary>
+      <p>Bloomberg says the dominant tech trade of 2026, buying chip stocks and selling software, is falling apart. To read that headline you need to know what a pair trade is and why its unwind carries information. A pair trade means going long one thing and short another at the same time, sized so the two roughly cancel out your exposure to the whole market. The idea is to bet on the relationship between the two, not on the direction of stocks overall. In this case, funds bought semiconductors, whose earnings ride the AI buildout, and shorted software, whose growth looked slower and whose moat AI might erode. If chips rose and software lagged, the trade made money in both legs even if the index went nowhere. The appeal is that it strips out market risk and isolates a clean view: AI spending flows to silicon first. The mechanism that makes it powerful is also what makes it fragile. When a pair trade works, more funds pile in, borrowing shares of software to short and buying more chips. That crowding pushes the spread further, which looks like confirmation, which pulls in still more capital. Eventually everyone owns the same long and the same short. At that point there is no fresh money to widen the spread, and the trade is exposed to a reversal. When one starts, the exit is violent because unwinding means selling the chips you are long and buying back the software you are short, and if everyone does that at once the spread snaps the other way fast. A short squeeze in the software names amplifies it: shorts scrambling to cover become forced buyers. So an unwind does not necessarily mean the AI story is wrong. It usually means the positioning got too one-sided and is being reset. The tell is what happens next. If money leaving the pair spreads into software and lifts the broader tape, that is healthy rotation and breadth. If chips simply fall while software pops purely on short-covering, that is a mechanical squeeze that fades. Today's tape muddies the read: chipmakers still led the rebound and SK Hynix's book was seven times oversubscribed, yet the pair trade cracked and Korea's chip-heavy Kospi slid into a bear market. For a reader, the lesson is that a crowded pair trade carries its own risk independent of the fundamental thesis, and when it unwinds, the first move often says more about who owned it than about whether the original idea was right.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/winning-trade-of-buying-chips-selling-software-is-falling-apart" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Winning Trade of Buying Chips, Selling Software Is Falling Apart</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>SK Hynix US listing is more than seven times oversubscribed</strong></summary>
+      <div class="deal-body">
+        <p>SK Hynix's US offering drew orders more than seven times the shares on sale, underscoring strong investor appetite despite recent volatility in the Korean memory chipmaker's stock. A loud signal that the AI infrastructure bid is still deep.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/sk-hynix-us-offering-is-more-than-seven-times-oversubscribed" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix US Offering Is More Than Seven Times Oversubscribed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zhipu surges 22% after pricing a $4 billion share sale at the low end</strong></summary>
+      <div class="deal-body">
+        <p>Chinese AI model maker Zhipu jumped as much as 22% in Hong Kong after pricing its $4 billion placement at the bottom of the marketed range. Part of a $5.8 billion fundraising spree by Chinese AI stars this week that Wall Street banks were largely shut out of.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/ai-firm-zhipu-prices-4-billion-placement-at-hk-1-588-each-share" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Zhipu Surges 22% After $4 Billion Share Sale Priced at Low End</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China chipmaker CXMT to launch a $4.3 billion IPO next week</strong></summary>
+      <div class="deal-body">
+        <p>Memory giant CXMT will open investor subscriptions next week for what is China's most anticipated listing of the year, a $4.3 billion offering. Another sign the AI-driven chip capital cycle keeps drawing scale even as leadership rotates.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/memory-chipmaker-cxmt-to-launch-4-3-billion-china-ipo-next-week" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China Chipmaker CXMT to Launch $4.3 Billion IPO Next Week</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock says the AI capex cycle hasn't reached overspend yet</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock's fundamental equities international CIO Helen Jewell said the next few years are clear given the capital being invested in AI, and that while every capex cycle eventually overshoots, the market is not there now. A direct rebuttal to bubble worries.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-09/ai-capex-cycle-hasn-t-reached-overspend-yet-blackrock-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Capex Cycle Hasn't Reached Overspend Yet: BlackRock</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Starbucks taps AI to cut its reliance on Microsoft and IBM software</strong></summary>
+      <div class="deal-body">
+        <p>Starbucks (SBUX) is building in-house tools with AI that could replace some applications it now buys from Microsoft (MSFT) and IBM. A tangible example of AI eroding the enterprise-software moat that underpinned the sell-software leg of the crowded trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/starbucks-taps-ai-to-reduce-reliance-on-microsoft-ibm-software" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Starbucks Taps AI to Cut Reliance on Microsoft, IBM Software</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Labor shortages are putting a bug in the data-center build</strong></summary>
+      <div class="deal-body">
+        <p>Contractors like Sterling Infrastructure and Comfort Systems USA have more data-center work than they have skilled labor to staff it, threatening the pace of the buildout. The bottleneck is increasingly people, not capital or chips.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-09/ai-data-center-boom-hits-a-labor-shortage-as-skilled-workers-run-out" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Labor Shortages Are Putting a Bug in the Data Center Build</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bain Capital exits Kioxia after its chip deal yields record returns</strong></summary>
+      <div class="deal-body">
+        <p>Bain Capital sold its entire stake in flash-memory maker Kioxia, closing a deal that transformed Japan's tech and investment landscape, though a separate vehicle Bain set up for SK Hynix still holds 14% of Kioxia. A landmark exit into strong memory demand.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/bain-exits-kioxia-after-landmark-chip-deal-yields-record-returns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bain Capital Exits Kioxia After Chip Deal Yields Big Returns</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Thursday July 9, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>The capital cycle funds while the pair trade breaks:</strong> SK Hynix's book ran seven times oversubscribed, Zhipu popped 22%, CXMT is launching a $4.3 billion IPO, and BlackRock's Helen Jewell says spending is nowhere near overshoot. The bear frame is the chips-over-software trade unwinding, Starbucks cutting enterprise-software spend with AI, Korea's Kospi turning bear, and a skilled-labor crunch stalling the buildout. Demand is deep, but the leadership is rotating hard.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Fuel prices show inflation is still a risk for markets</strong></summary>
+      <div class="deal-body">
+        <p>Even as crude prices fell, the cost of refined products like gasoline and diesel is proving much stickier, keeping an inflation risk alive under the surface. A reminder the pump, not the barrel, is what households and central banks feel.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-09/fuel-prices-show-inflation-is-still-a-risk-for-markets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fuel Prices Show Inflation Is Still a Risk for Markets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jupiter cut its Treasury holdings to zero as inflation risks rise</strong></summary>
+      <div class="deal-body">
+        <p>Jupiter Asset Management cut US Treasury holdings to zero in one of its main bond funds, buying European government notes and adding to a hefty emerging-markets position instead. A conviction move that the inflation tail keeps a floor under US yields.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/jupiter-fund-ditches-us-treasuries-in-favor-of-european-bonds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jupiter Fund Cut Treasuries to Zero as Inflation Risks Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's reflation shows signs of peaking as the war shock fades</strong></summary>
+      <div class="deal-body">
+        <p>China's June consumer inflation slowed more than forecast as easing Iran tensions pulled commodity costs lower, a fragile domestic sign but a disinflation win for the world. The tame print cuts a source of global price pressure.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/china-consumer-inflation-surprises-by-slowing-more-than-forecast" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Reflation Shows Signs of Peaking as War Shock Fades</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Warsh to get some inflation relief from an upcoming PCE makeover</strong></summary>
+      <div class="deal-body">
+        <p>A coming revamp of the Fed's preferred PCE gauge could be just enough to tip the scales against rate increases this year, even without dramatically altering the overall price picture. A technical shift that quietly leans dovish.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/warsh-to-get-some-inflation-relief-from-upcoming-pce-makeover" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Warsh to Get Some Inflation Relief From Upcoming PCE Makeover</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOJ may push its policy rate beyond 2% this cycle, ex-official says</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of Japan may accelerate hikes late this year and eventually push its benchmark above 2% to rein in inflation, a former central bank official said, as the yen keeps sliding. Rising JGB yields keep tugging global rates higher.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/boj-may-push-policy-rate-beyond-2-this-cycle-ex-official-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOJ May Push Policy Rate Beyond 2% This Cycle, Ex-Official Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>German exports unexpectedly rise as US sales rebound</strong></summary>
+      <div class="deal-body">
+        <p>German exports unexpectedly rose in May for a fourth straight month, driven by a sharp rebound in shipments to the US. A healthier read on Europe's biggest economy that supports the soft-landing side of the rates debate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/german-exports-unexpectedly-increase-as-us-sales-rebound" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- German Exports Unexpectedly Increase as US Sales Rebound</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Poland raises its inflation outlook on Iran risks as easing hopes fade</strong></summary>
+      <div class="deal-body">
+        <p>Poland's central bank held rates but lifted its inflation forecast for this year and next as the Middle East conflict drives up energy prices, dealing a blow to hopes for a return to easing. A clean example of the oil shock rewiring an easing path.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/poland-holds-rates-for-fourth-month-as-inflation-risks-decline" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Polish Central Bank Raises Inflation Outlook on Iran Risks</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 8, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>A soft China print meets sticky pump prices:</strong> China's June CPI cooled more than expected and a PCE makeover could tip Warsh against hikes, keeping the disinflation thread alive. But refined-product prices are staying elevated even as crude eases, Jupiter dumped Treasuries on inflation risk, an ex-BOJ official floated a 2%-plus rate, and Poland lifted its inflation outlook. The floor under yields is built from fuel, not barrels.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Oil Can Fall Even as the Strait of Hormuz Grinds to a Near Halt</summary>
+      <p>The strangest cause-and-effect on today's tape is that Hormuz shipping came to a near standstill after a second day of strikes, and oil fell anyway, for a third session. It looks like the market ignoring physics. It is not. To see why, you have to separate what oil prices actually reflect from what is happening on any single day. A crude price is not a snapshot of today's barrels changing hands. It is the market's best guess about the balance of supply and demand over the coming months, discounted back to now. So the question that moves price is not "is the strait quiet today" but "how much oil will actually be missing from the market over the horizon, and for how long." Three buffers stand between a chokepoint closing and a lasting price spike. The first is inventories. The world holds huge stockpiles in tanks, in strategic reserves and floating on ships already at sea. A near-halt in Hormuz for a few days draws those down without leaving anyone short, so the physical squeeze the headline implies does not actually bite yet. The second is spare capacity. Producers outside the Gulf, and even some inside it with pipeline routes that bypass the strait, can lift output, and buyers can reroute cargoes. The third is demand itself. High prices and slower growth destroy some consumption, and Bloomberg's own reporting shows the effect: India's panic buying during the disruption overshot so badly that state retailers now sit on a cooking gas surplus they cannot sell. That glut underneath tells the market the shortage was smaller than feared. Now add expectations. Prices had already risen on the earlier ceasefire scare, so a lot of risk was priced in before today. When the second day of strikes came and went without tankers being sunk or the strait being mined shut for weeks, traders concluded the disruption was more likely to be brief than permanent, and they sold the premium back down. That is why the framing matters as much as the event: a closure the market expects to reverse feeds through weakly, because the missing barrels get made up later. A closure seen as durable, with the strait mined or a blockade imposed, would feed through strongly and inventories would not save you. The unresolved thread is exactly that duration question, which is why Columbia's Karen Young warning that Iran will not give up its Hormuz leverage matters more than any single day's traffic count. For a reader, the lesson is that commodity prices track expected balances over time, not today's flows, and buffers like inventories, spare capacity and demand destruction are what let oil fall on a day the map says it should spike.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/hormuz-traffic-grinds-to-a-near-halt-as-ceasefire-under-threat" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hormuz Shipping Grinds to Near Halt After US, Iran Strikes</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Markets rebound as chipmakers lead and oil's rally cools despite a second day of US-Iran strikes; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/6</td>
+            <td><span style="color:var(--muted);font-weight:700;">Mixed</span></td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/7</td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/8</td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+            <td><span style="color:var(--bear);font-weight:700;">Bear ✓</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Mixed</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/9</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/10</td>
+            <td><span style="color:var(--muted);font-weight:700;">—</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">—</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">—</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">7</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">2</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">78%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Crypto stays resilient in the face of renewed Middle East tensions</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin rose 1.2% to $63,000 and Nasdaq futures jumped 2.6% as markets shrugged off a second day of US strikes on Iran, leaving BTC up 9% since the end of June. A sharp reversal from the risk-off dump when the ceasefire was declared over.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/09/crypto-remains-resilient-in-face-of-renewed-middle-east-tensions" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Remains Resilient in Face of Renewed Middle East Tensions</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Temasek says crypto is off the table and it will focus on AI</strong></summary>
+      <div class="deal-body">
+        <p>Singapore's $400 billion Temasek said crypto is not part of its plans and it will lift AI holdings to 15% of the portfolio by 2031 from 6% now. A large sovereign investor picking AI over digital assets, reinforcing the rotation theme.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/09/singapore-s-temasek-investment-fund-says-crypto-is-off-the-table-will-focus-on-ai" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Singapore's Temasek Says Crypto Is Off the Table, Will Focus on AI</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Two blockbuster AI IPOs could leave crypto further behind</strong></summary>
+      <div class="deal-body">
+        <p>A wave of large AI listings is drawing billions from global investors, reinforcing a rotation away from crypto, per CoinDesk. The same capital cycle powering chips is pulling money out of the digital-asset complex.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/09/two-blockbuster-ai-ipo-s-on-the-horizon-could-leave-crypto-further-behind" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Two Blockbuster AI IPOs on the Horizon Could Leave Crypto Further Behind</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Swift rolls out a blockchain ledger to bring 24/7 banking to 17 global giants</strong></summary>
+      <div class="deal-body">
+        <p>HSBC, UBS, Wells Fargo and Citi are among 17 banks preparing to pilot live transactions on Swift's new blockchain payments platform using tokenized digital assets. A major traditional-finance embrace of on-chain settlement.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/09/swift-rolls-out-24-7-blockchain-payment-systems-with-17-global-banks-across-six-continents" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Swift Rolls Out New Blockchain Ledger to Bring 24/7 Banking to 17 Global Giants</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Sony secures conditional approval for a US stablecoin trust bank</strong></summary>
+      <div class="deal-body">
+        <p>A New York subsidiary fully owned by Sony Bank won conditional approval and will be capitalized with $40 million to support upcoming stablecoin operations. Another corporate name moving into regulated stablecoin infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/09/sony-secures-conditional-approval-to-set-up-u-s-stablecoin-trust-bank" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Sony Secures Conditional Approval to Set Up US Stablecoin Trust Bank</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin ETFs slip back to outflows as ether funds extend their streak</strong></summary>
+      <div class="deal-body">
+        <p>US spot bitcoin ETFs lost a net $84 million Wednesday, ending a three-day inflow run that had pulled in roughly $509 million, while ether funds kept adding. A modest cooling in the ETF bid even as spot prices held.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/09/live-markets-bitcoin-etfs-slip-back-to-outflows-while-ether-funds-extend-their-streak" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Markets: Second Day of US-Iran Conflict Keeps Markets Volatile as Oil Drops</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>CXMT -- Lines Up China's Most Anticipated IPO of the Year at $4.3 Billion</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Memory chipmaker CXMT will open investor subscriptions next week for a $4.3 billion offering, the final stage of China's most highly anticipated listing of 2026.</p>
+        <p><strong>Outlook:</strong> The launch lands alongside Zhipu's $4 billion raise and Luxshare's $3.1 billion Hong Kong debut, part of a wall of Chinese tech and chip supply hitting the primary market.</p>
+        <p><strong>What it means:</strong> Domestic memory capacity is being funded aggressively even as the buy-chips trade wobbles, a sign China is racing to close the AI hardware gap on its own capital.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/memory-chipmaker-cxmt-to-launch-4-3-billion-china-ipo-next-week" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China Chipmaker CXMT to Launch $4.3 Billion IPO Next Week</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zhipu -- Prices $4 Billion Share Sale at the Low End, Stock Jumps 22%</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Chinese AI model maker Zhipu priced a $4 billion placement at the bottom of its marketed range, and shares still surged as much as 22% in Hong Kong.</p>
+        <p><strong>Outlook:</strong> The deal was part of a $5.8 billion fundraising spree by Chinese AI stars this week that Wall Street banks were largely shut out of, a shift in where AI underwriting fees flow.</p>
+        <p><strong>What it means:</strong> Cross-border AI capital is booming and increasingly domestic, with local banks capturing the mandates as US firms watch from the sidelines.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/ai-firm-zhipu-prices-4-billion-placement-at-hk-1-588-each-share" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Zhipu Surges 22% After $4 Billion Share Sale Priced at Low End</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Paradigm -- Crypto VC Launches a $1.2 Billion AI Fund</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Crypto venture firm Paradigm launched a $1.2 billion fund to back AI and robotics startups, broadening beyond digital assets while saying it stays committed to crypto.</p>
+        <p><strong>Outlook:</strong> A high-profile crypto investor following the money into AI, echoing Temasek's decision to pick AI over digital assets on the same day.</p>
+        <p><strong>What it means:</strong> Even the crypto-native allocators are rotating capital toward AI, a clear read on where the perceived returns are concentrated right now.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/08/crypto-vc-paradigm-launches-usd1-2-billion-ai-fund-as-it-broadens-beyond-digital-assets-bbg" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto VC Paradigm Launches $1.2 Billion AI Fund</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bain Capital -- Exits Kioxia for Record Returns</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Bain Capital sold its entire direct stake in flash-memory maker Kioxia, closing a landmark deal, though a separate SK Hynix vehicle Bain set up still holds 14%.</p>
+        <p><strong>Outlook:</strong> The exit into strong memory demand shows private equity harvesting the chip cycle at what it judges to be a rich valuation.</p>
+        <p><strong>What it means:</strong> A big sponsor taking chips off the table even as new memory listings pile in is a subtle counterpoint to the bullish oversubscription headlines.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-08/bain-exits-kioxia-after-landmark-chip-deal-yields-record-returns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bain Capital Exits Kioxia After Chip Deal Yields Big Returns</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal Sizes This Week ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Helen Jewell (BlackRock) -- the AI capex cycle hasn't hit overspend yet</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock's fundamental equities international CIO said the next few years are clear given the capital being poured into AI, and while every capex cycle eventually overshoots, the market is not there now. A direct pushback on bubble fears from a major manager.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-09/ai-capex-cycle-hasn-t-reached-overspend-yet-blackrock-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Capex Cycle Hasn't Reached Overspend Yet: BlackRock</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Emmanuel Cau (Barclays) -- stocks can look past Middle East volatility</strong></summary>
+      <div class="deal-body">
+        <p>Barclays' head of European equity strategy said investors should brace for more turmoil but resist major portfolio shifts, with earnings growth still the key driver. The anchor call behind the day's rebound.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/barclays-cau-says-stocks-can-look-past-middle-east-volatility" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Barclays' Cau Says Stocks Can Look Past Middle East Volatility</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Andrew Graham (Jackson Square Capital) -- time to buy the dip</strong></summary>
+      <div class="deal-body">
+        <p>The founder and portfolio manager told Bloomberg it is time to buy the pullback, leaning into the equity rebound as the geopolitical scare faded. A tactical bullish read echoing UniSuper's dip-buying stance from earlier in the week.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-09/andrew-graham-time-to-buy-the-dip-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Andrew Graham: Time to Buy the Dip</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jupiter Asset Management -- cut US Treasury holdings to zero on inflation risk</strong></summary>
+      <div class="deal-body">
+        <p>Jupiter cut Treasuries to zero in a main bond fund, buying European government notes and adding to emerging-markets debt instead as inflation risks rise. A conviction bearish rates positioning against sticky global prices.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/jupiter-fund-ditches-us-treasuries-in-favor-of-european-bonds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jupiter Fund Cut Treasuries to Zero as Inflation Risks Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs -- Erste shares set to rally 30% on Poland growth</strong></summary>
+      <div class="deal-body">
+        <p>Goldman said Erste Group Bank shares are poised to climb 30%, driven by the lender's expansion in Poland. A specific single-name bull call betting on eastern European growth.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/erste-shares-to-rally-30-on-poland-growth-goldman-sachs-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Erste Shares to Rally 30% on Poland Growth, Goldman Sachs Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Man Group -- 86x growth in AI token spending signals a deep buildout</strong></summary>
+      <div class="deal-body">
+        <p>Man Group's CTO Gary Collier detailed the hedge fund's 86-fold increase in AI token spending, a concrete read on how much compute a large quant shop is now consuming. A demand data point behind the capex-cycle bull case.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-09/giant-hedge-fund-on-its-86x-growth-in-token-spending-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- One of the World's Largest Hedge Funds on its 86x Growth in Token Spending</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Markets Shrug Off a Second Day of Iran Strikes, the AI Capital Cycle Roars On and Sticky Fuel Prices Keep a Floor Under Yields</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (look past the noise, buildout intact):</strong> Barclays' Cau says stocks can look past Middle East volatility, Jackson Square's Andrew Graham calls it time to buy the dip, and BlackRock's Helen Jewell insists the AI capex cycle is nowhere near overspend. SK Hynix's book ran seven times oversubscribed and Man Group's 86x jump in token spending shows demand is real.</div>
+        <div class="bear"><strong>Bear (crowded trades unwind, inflation floor holds):</strong> Jupiter cut Treasuries to zero on inflation risk, the buy-chips, sell-software trade is falling apart, and Korea's Kospi flipped into a bear market on souring AI sentiment. Bain harvested Kioxia into strong demand, and sticky fuel prices keep a floor under yields even as crude eases.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Markets rebound as chips lead; SK Hynix 7x oversubscribed; Levi beats and hikes dividend; buy the dip</td><td>Cautiously Bullish</td><td>~19,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Buy-chips sell-software trade breaking; Kospi flips bear; Nigeria tops world returns; Starbucks cuts MSFT/IBM</td><td>Mixed</td><td>~13,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>China CPI cools; fuel prices sticky; Jupiter dumps Treasuries; PCE makeover may tip Fed dovish</td><td>Cautious</td><td>~10,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Oil falls as Hormuz halts (expected-supply mechanism); pair-trade unwind; BlackRock capex-not-overspend</td><td>Analytical</td><td>~6,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC back to $63K, shrugs off strikes; Temasek picks AI over crypto; Swift blockchain; Sony stablecoin</td><td>Cautiously Bullish</td><td>~17,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped back toward risk-on as markets shrugged off a second day of US-Iran strikes. r/wallstreetbets turned cautiously bullish as chipmakers led the rebound, SK Hynix's book ran seven times oversubscribed and Levi beat, with buy-the-dip calls circulating. r/stocks was mixed, chewing on the buy-chips, sell-software trade breaking apart, Korea's Kospi flipping into a bear market and Nigeria topping world returns. r/investing leaned cautious as China's CPI cooled but fuel prices stayed sticky and Jupiter dumped Treasuries. r/SecurityAnalysis dug into why oil can fall while Hormuz halts and into the pair-trade unwind, and r/CryptoCurrency turned cautiously bullish as bitcoin climbed back to $63,000, even as Temasek said it would pick AI over crypto. The thread everyone circles is a market choosing earnings over headlines while the strait stays shut.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Chokepoint Can Close and Oil Can Still Fall</h2>
+    <p>The most counterintuitive move on today's tape is that shipping through the Strait of Hormuz ground to a near halt after a second day of US strikes on Iran, and oil fell anyway, for a third straight session. It looks like the market ignoring reality. It is not. Understanding why teaches you what a commodity price actually represents.</p>
+    <p>Start with the key idea. A crude price is not a photograph of today's barrels changing hands. It is the market's best estimate of the supply-and-demand balance over the coming months, expressed as a single number now. So the question that moves price is not "is the strait quiet today," but "how many barrels will actually be missing over the horizon, and for how long." A brief closure and a permanent one are completely different events even if today's satellite image looks the same.</p>
+    <p>Three buffers sit between a chokepoint closing and a lasting price spike. The first is inventories. The world holds enormous stockpiles in tanks, in strategic reserves and floating on ships already at sea. A few days of disrupted Hormuz traffic gets covered by drawing those down, so nobody actually runs short and the physical squeeze the headline implies does not bite yet. The second is spare capacity. Producers outside the Gulf can lift output, some Gulf barrels can move through pipelines that bypass the strait, and cargoes get rerouted. The third is demand destruction: high prices and slower growth quietly trim consumption. Bloomberg's own reporting shows the effect in miniature, with India's panic buying during the disruption overshooting so badly that state retailers now sit on a cooking gas surplus they cannot sell. That glut underneath tells traders the shortage was smaller than feared.</p>
+    <p>Now add expectations, which is the piece most readers miss. Prices had already jumped on the earlier ceasefire scare, so a lot of risk was priced in before today. When the second day of strikes came and went without tankers being sunk or the strait mined shut for weeks, traders concluded the disruption was more likely to be brief than durable, and they sold the premium back down. This is why framing matters as much as the event. A closure the market expects to reverse feeds through weakly, because the missing barrels get made up later from inventories and spare capacity. A closure the market believes is durable, with mining or a blockade, feeds through strongly, and the buffers do not save you.</p>
+    <p>That is exactly why Columbia's Karen Young warning that Iran will not surrender its Hormuz leverage matters more than any single day's ship count: it speaks to duration, not to today. For a reader, the lesson is to always ask how long a disruption is expected to last before assuming a chokepoint means higher prices, because commodity markets trade expected balances over time, and inventories, spare capacity and demand destruction are what let oil fall on a day the map says it should spike.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/hormuz-traffic-grinds-to-a-near-halt-as-ceasefire-under-threat" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hormuz Shipping Grinds to Near Halt After US, Iran Strikes</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-09/india-s-wartime-buying-spree-leaves-behind-a-cooking-gas-surplus" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- India's Wartime Buying Spree Leaves Behind a Cooking Gas Surplus</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>US CPI -- mid-July.</strong> The next inflation read is the swing factor: crude has eased but refined-product prices are sticky, so watch the energy and core components. A hot print would revive the higher-for-longer trade that Jupiter is already positioned for.</li>
+      <li><strong>Fed PCE gauge revamp -- rolling.</strong> Bloomberg flags a coming makeover of the Fed's preferred inflation measure that could quietly tip the scales against rate increases this year, worth tracking for how it reshapes the easing debate.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Big-bank Q2 season -- next week.</strong> The major US banks kick off reporting, the first broad look at trading revenue through the chip volatility and at loan demand as rate-cut timing stays uncertain.</li>
+      <li><strong>TCS and IT services -- ongoing.</strong> TCS posted a nearly 5% profit rise on deals despite the sector slump; watch peers for whether AI is expanding or shrinking the outsourcing pie.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>CXMT $4.3 billion IPO -- subscriptions open next week.</strong> China's most anticipated listing of the year tests appetite for domestic memory capacity right as the buy-chips trade wobbles.</li>
+      <li><strong>SK Hynix US listing pricing.</strong> With the book more than seven times oversubscribed, the final price and debut are a live gauge of the AI infrastructure bid.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran strikes and Hormuz.</strong> With the truce fraying after a second day of attacks and shipping near a standstill, watch whether the strait reopens or Iran presses transit fees against Oman's objection. This is the dominant swing factor for oil and inflation expectations.</li>
+      <li><strong>Stranded Gulf tankers.</strong> India is still seeking safe passage for nine laden tankers; whether those cargoes clear against a surplus-heavy market is the near-term tell for crude and importer inflation.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Jul 9, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (25 fresh, newest 2026-07-09 08:02 ET); Bloomberg Technology (25 fresh, newest 2026-07-09 07:02 ET); Bloomberg Economics (25 fresh, newest 2026-07-09 08:01 ET); CNBC Top News (4 fresh, newest 2026-07-09 07:44 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-08 13:23 ET); CoinDesk (25 fresh, newest 2026-07-09 08:00 ET); Stratechery (2 fresh, newest 2026-07-09 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. Hormuz shipping ground to a near halt after a second day of strikes, yet oil fell for a third session. Why?</strong></p>
+      <span class="opt" data-opt="A">A. The strait fully reopened to normal traffic overnight</span>
+      <span class="opt" data-opt="B">B. Iran agreed to stop charging any transit fees entirely</span>
+      <span class="opt" data-opt="C">C. Prices track expected supply over months, not today's flows</span>
+      <span class="opt" data-opt="D">D. European gasoline demand collapsed across the whole region</span>
+      <div class="feedback"><strong>C is correct.</strong> A crude price reflects the expected supply-demand balance over coming months, and buffers like inventories, spare capacity and demand destruction cover a brief closure, so a disruption seen as temporary feeds through weakly. The strait did not reopen, Iran did not drop its fee push, and demand did not collapse.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. The "buy chips, sell software" pair trade is unwinding. What does that mainly tell you?</strong></p>
+      <span class="opt" data-opt="A">A. Crowded positioning is being reset, not the AI thesis abandoned</span>
+      <span class="opt" data-opt="B">B. Chipmakers have stopped selling any silicon to software firms</span>
+      <span class="opt" data-opt="C">C. Software companies across the board just raised their dividends</span>
+      <span class="opt" data-opt="D">D. Regulators ordered every fund to close paired tech positions</span>
+      <div class="feedback"><strong>A is correct.</strong> A pair trade goes long one leg and short another; when it gets crowded and unwinds, it usually means positioning got too one-sided and is being reshuffled, not that the underlying view is wrong. Chip sales continue, dividends are not the driver, and no regulator forced closures.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. Jupiter cut its US Treasury holdings to zero in a main bond fund. What was the stated reason?</strong></p>
+      <span class="opt" data-opt="A">A. US Treasuries were downgraded by every agency overnight</span>
+      <span class="opt" data-opt="B">B. European bonds now carry far higher coupons than Treasuries</span>
+      <span class="opt" data-opt="C">C. The Fed barred foreign funds from holding US Treasuries</span>
+      <span class="opt" data-opt="D">D. Rising inflation risks made Treasuries less attractive to hold</span>
+      <div class="feedback"><strong>D is correct.</strong> Jupiter cited rising inflation risk, rotating into European government notes and emerging-markets debt instead. There was no overnight downgrade, coupon levels were not the rationale, and no rule bars foreign funds from holding Treasuries.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Bonds stay split between a genuine disinflation signal and a sticky fuel-inflation risk; China's June CPI cooled more than forecast and a coming PCE makeover could tip Warsh against hikes, while Jupiter cut US Treasuries to zero on inflation risk, an ex-BOJ official warned Japan's rate could top 2%, and Poland lifted its inflation outlook on Iran-driven energy costs.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-07-09/fuel-prices-show-inflation-is-still-a-risk-for-markets", "take": "Sticky refined-product prices keep an inflation risk alive." },
+      { "name": "The Economist", "lean": "bear", "url": "https://www.economist.com/finance-and-economics", "take": "A broadening global tightening bias sets a floor under yields." },
+      { "name": "WSJ", "lean": "neutral", "url": "https://www.wsj.com/economy", "take": "A PCE revamp muddies the read on where inflation sits." },
+      { "name": "NYT", "lean": "bull", "url": "https://www.nytimes.com/section/business/economy", "take": "China's cooling prices are a disinflation win for the world." },
+      { "name": "CNBC", "lean": "neutral", "url": "https://www.cnbc.com/economy/", "take": "German exports and easing Egypt inflation cut both ways." },
+      { "name": "The Atlantic", "lean": "bear", "url": "https://www.theatlantic.com/economy/", "take": "Fuel stickiness keeps rate cuts on hold." }
+    ]
+  },
+  "iran": {
+    "diverge": "The US struck Iran a second day and Hormuz shipping ground to a near halt, yet oil fell for a third session as copper and risk assets rallied; bulls note India's cooking gas surplus and Oman opposing Iran's transit-fee push, while bears cite Marc Champion's view the ceasefire was built to fail and Iran's refusal to give up its chokepoint leverage.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-08/stock-market-today-dow-s-p-live-updates", "take": "Markets shrugged as oil's rally cooled and chips led." },
+      { "name": "The Economist", "lean": "bear", "url": "https://www.economist.com/middle-east-and-africa", "take": "The ceasefire was built to fail on ambiguous terms." },
+      { "name": "WSJ", "lean": "neutral", "url": "https://www.wsj.com/world/middle-east", "take": "Hormuz near-halt is the real risk beneath calm prices." },
+      { "name": "NYT", "lean": "bull", "url": "https://www.nytimes.com/section/world/middleeast", "take": "India's overshoot left a surplus underneath the premium." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/oil/", "take": "Investors should look past Middle East volatility." },
+      { "name": "The Atlantic", "lean": "bear", "url": "https://www.theatlantic.com/international/", "take": "Iran's Hormuz leverage leaves Gulf states exposed." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "SK Hynix's US listing ran more than seven times oversubscribed and chipmakers led the rebound, with Zhipu up 22% and CXMT launching a $4.3 billion IPO, while BlackRock's Helen Jewell says the capex cycle hasn't hit overspend; bears point to the buy-chips, sell-software trade falling apart and Korea's Kospi tipping into a bear market on souring sentiment.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-08/sk-hynix-us-offering-is-more-than-seven-times-oversubscribed", "take": "SK Hynix's sevenfold book shows deep AI demand." },
+      { "name": "The Economist", "lean": "bear", "url": "https://www.economist.com/business", "take": "Labor bottlenecks could stall the buildout." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/tech", "take": "The winning chips-over-software trade is unraveling." },
+      { "name": "NYT", "lean": "neutral", "url": "https://www.nytimes.com/section/technology", "take": "New AI listings show conviction moving, not fading." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/technology/", "take": "BlackRock says spending is nowhere near overshoot." },
+      { "name": "The Atlantic", "lean": "bear", "url": "https://www.theatlantic.com/technology/", "take": "Korea's Kospi flipping bear signals souring AI sentiment." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Zhipu","SK Hynix","Nvidia","Broadcom","Kospi","Luxshare"],
+    "values": [22.0, 5.4, 2.6, 1.9, -1.8, -6.2]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [19000, 13000, 10000, 6000, 17000],
+    "colors": ["bull","neutral","neutral","neutral","bull"]
+  },
+  "dealSizes": {
+    "labels": ["CXMT IPO","Zhipu Share Sale","Luxshare Listing","Paradigm AI Fund","World Bank/Ivory Coast"],
+    "values": [4.3, 4, 3.1, 1.2, 0.875]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="js/digest-date.js?v=20260713"></script>
+<script src="js/config.js?v=20260713"></script>
+<script src="js/repair-dom.js?v=20260713"></script>
+<script src="js/digest-ui.js?v=20260713"></script>
+<script src="js/charts-core.js?v=20260713"></script>
+<script src="js/archive.js?v=20260713"></script>
+<script src="js/artifact-equities.js?v=20260713"></script>
+<script src="js/charts-macro.js?v=20260713"></script>
+<script src="js/artifact-framing.js?v=20260713"></script>
+<script src="js/verdict-updater.js?v=20260713"></script>
+<script src="js/digest-init.js?v=20260713"></script>
+
+</body>
+</html>
