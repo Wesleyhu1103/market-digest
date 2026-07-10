@@ -69,6 +69,23 @@ def check_js(js_body: str) -> bool:
     return ok
 
 
+def missing_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
+    if not html_path:
+        return []
+    missing: list[str] = []
+    for m in re.finditer(r'<(?:script|link)\b[^>]+(?:src|href)=["\']([^"\']+)["\']', html, re.I):
+        url = m.group(1)
+        if url.startswith(("http://", "https://", "//", "data:")):
+            continue
+        rel = url.split("?", 1)[0].split("#", 1)[0]
+        if not rel:
+            continue
+        fp = (html_path.parent / rel.lstrip("/")).resolve()
+        if not fp.is_file():
+            missing.append(url)
+    return missing
+
+
 def main():
     path = sys.argv[1] if len(sys.argv) > 1 else None
     html_path = Path(path).resolve() if path else None
@@ -101,10 +118,17 @@ def main():
         if not ok:
             failures += 1
 
+    missing_assets = missing_local_assets(html, html_path)
+    if missing_assets:
+        print("FAIL local assets resolve: " + ", ".join(missing_assets))
+        failures += 1
+    else:
+        print("OK   local assets resolve")
+
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
