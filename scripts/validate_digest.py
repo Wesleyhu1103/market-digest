@@ -22,6 +22,8 @@ LIVE_BASE = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/d
 STATIC_RULES = validate_static_rules()
 RULES = validate_main_rules()
 HTML_ONLY = validate_html_only_descs()
+LOCAL_SCRIPT_RE = re.compile(r'<script[^>]+src=["\']([^"\']+)["\']', re.I)
+LOCAL_STYLE_RE = re.compile(r'<link[^>]+href=["\']([^"\']+)["\']', re.I)
 
 
 def _fetch_text(url: str) -> str:
@@ -29,19 +31,52 @@ def _fetch_text(url: str) -> str:
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
 
 
+def _is_remote_asset(ref: str) -> bool:
+    return ref.startswith(("http://", "https://", "//", "data:"))
+
+
+def _asset_ref_path(ref: str) -> str:
+    return ref.split("#", 1)[0].split("?", 1)[0]
+
+
+def check_local_assets(html: str, html_path: Optional[Path]) -> bool:
+    if not html_path:
+        print("OK   local assets: skipped for remote validation")
+        return True
+
+    missing: list[str] = []
+    for ref in LOCAL_SCRIPT_RE.findall(html) + LOCAL_STYLE_RE.findall(html):
+        if _is_remote_asset(ref):
+            continue
+        rel = _asset_ref_path(ref)
+        if not rel:
+            continue
+        fp = (html_path.parent / rel.lstrip("/")).resolve()
+        if not fp.is_file():
+            missing.append(ref)
+
+    if missing:
+        print("FAIL local assets: missing " + ", ".join(missing))
+        return False
+    print("OK   local assets: all local script/style refs resolve")
+    return True
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
-    for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
-        src = m.group(1).split("?")[0]
-        if src.startswith(("http://", "https://", "//")):
+    for m in LOCAL_SCRIPT_RE.finditer(html):
+        src = m.group(1)
+        if _is_remote_asset(src):
             continue
-        rel = src.lstrip("/")
+        rel = _asset_ref_path(src).lstrip("/")
         if html_path:
             fp = (html_path.parent / rel).resolve()
             if fp.is_file():
                 parts.append(fp.read_text())
                 continue
+            print(f"WARN: could not load local script {src}")
+            continue
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -86,6 +121,9 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    if not check_local_assets(html, html_path):
+        failures += 1
+
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -104,7 +142,7 @@ def main():
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
