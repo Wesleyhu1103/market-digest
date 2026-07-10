@@ -52,6 +52,7 @@ class PublishDigestTests(unittest.TestCase):
             root = Path(tmp)
             archive_dir = root / "archive"
             archive_dir.mkdir()
+            module.ROOT = root
             module.ARCHIVE_DIR = archive_dir
             module.MANIFEST = archive_dir / "manifest.json"
 
