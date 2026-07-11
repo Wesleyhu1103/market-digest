@@ -51,6 +51,24 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
     return "\n\n".join(parts)
 
 
+def check_local_asset_refs(html: str, html_path: Optional[Path]) -> bool:
+    """Fail when local script/style refs do not resolve beside the HTML file."""
+    if not html_path:
+        return True
+    ok = True
+    for m in re.finditer(r'<(?:script|link)[^>]+(?:src|href)=["\']([^"\']+)["\']', html, re.I):
+        asset = m.group(1).split("?")[0]
+        if asset.startswith(("http://", "https://", "//")):
+            continue
+        fp = (html_path.parent / asset.lstrip("/")).resolve()
+        if not fp.is_file():
+            print(f"FAIL local asset resolves: {asset} -> {fp.relative_to(Path.cwd()) if fp.is_relative_to(Path.cwd()) else fp}")
+            ok = False
+    if ok:
+        print("OK   local asset refs resolve")
+    return ok
+
+
 def check_js(js_body: str) -> bool:
     if not js_body.strip():
         print("FAIL JS: no script content")
@@ -86,6 +104,8 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    if not check_local_asset_refs(html, html_path):
+        failures += 1
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -104,7 +124,7 @@ def main():
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
