@@ -6,6 +6,7 @@
   if (typeof Chart === 'undefined') return;
   var macroSection = document.getElementById('macro');
   if (!macroSection || macroSection.dataset.macroChartsReady) return;
+  window._liveChartReloaders = window._liveChartReloaders || [];
 
   var RANGES = [
     { key: '1d', label: '1D', fredDays: 5, range: '1d', interval: '5m' },
@@ -158,6 +159,13 @@
       return Promise.resolve(fallback);
     }
   }
+  function beginReload(api) {
+    api.reqToken = (api.reqToken || 0) + 1;
+    return api.reqToken;
+  }
+  function isCurrentReload(api, token) {
+    return api.reqToken === token;
+  }
   function setHeadline(api, price, prev, fmtPrice, fmtChg) {
     var up = (price - prev) >= 0;
     api.qPrice.textContent = fmtPrice(price);
@@ -265,6 +273,7 @@
   function initTreasury(api) {
     if (!api) return;
     api.reload = function() {
+      var token = beginReload(api);
       var fred = fredMacro && fredMacro.fred;
       var meta = rangeMeta(api.range);
       var t = tc();
@@ -352,6 +361,7 @@
           macroFeed(function() { return window.MarketFeed.series('^TYX', meta.range, meta.interval); }),
           macroFeed(function() { return window.MarketFeed.quote('^TNX'); }, {})
         ]).then(function(res) {
+          if (!isCurrentReload(api, token)) return;
           if (!res[0] || !res[0].length) { drawFromFred(); return; }
           drawFromLive(res[0], res[1] || [], res[2] || {});
         });
@@ -366,6 +376,7 @@
   function initBrent(api) {
     if (!api) return;
     api.reload = function() {
+      var token = beginReload(api);
       var meta = rangeMeta(api.range);
       var t = tc();
       function drawFromSeries(series) {
@@ -401,7 +412,11 @@
         }, series);
       }
       if (window.MarketFeed) {
-        window.MarketFeed.series('BZ=F', meta.range, meta.interval).then(drawFromSeries).catch(function() {
+        window.MarketFeed.series('BZ=F', meta.range, meta.interval).then(function(series) {
+          if (!isCurrentReload(api, token)) return;
+          drawFromSeries(series);
+        }).catch(function() {
+          if (!isCurrentReload(api, token)) return;
           if (!fredMacro || !fredMacro.brent) return;
           var rows = sliceFred(fredMacro.brent, api.range);
           drawFromSeries(rows.map(function(r) { return { t: new Date(r.date + 'T12:00:00').getTime(), v: r.value }; }));
@@ -418,6 +433,7 @@
   function initCredit(api) {
     if (!api) return;
     api.reload = function() {
+      beginReload(api);
       var credit = fredMacro && fredMacro.credit;
       if (!credit) return;
       var rows = sliceFred(credit.HY_OAS, api.range);
@@ -458,6 +474,7 @@
   function initStress(api) {
     if (!api) return;
     api.reload = function() {
+      var token = beginReload(api);
       var credit = fredMacro && fredMacro.credit;
       var meta = rangeMeta(api.range);
       var t = tc();
@@ -561,6 +578,7 @@
           macroFeed(function() { return window.MarketFeed.series('^VIX', meta.range, meta.interval); }),
           macroFeed(function() { return window.MarketFeed.quote('^VIX'); }, {})
         ]).then(function(res) {
+          if (!isCurrentReload(api, token)) return;
           if (!res[0] || !res[0].length) { drawFred(); return; }
           drawLive(res[0], res[1] || {});
         });
@@ -587,6 +605,9 @@
   function macroFredUrl() {
     return typeof mdMacroFredUrl === 'function' ? mdMacroFredUrl() : '/api/fred-data';
   }
+  function staticFredUrl() {
+    return typeof mdSitePath === 'function' ? mdSitePath('fred-data.json') : 'fred-data.json';
+  }
 
   function loadFred(url) {
     return fetch(url, { cache: 'no-store' })
@@ -600,8 +621,7 @@
     // unreachable (local preview, GitHub Pages, or a Vercel outage).
     return loadFred(macroFredUrl()).then(function(data) {
       if (data) { fredMacro = data; return data; }
-      if (macroFredUrl() === 'fred-data.json') return null;
-      return loadFred('fred-data.json').then(function(fb) {
+      return loadFred(staticFredUrl()).then(function(fb) {
         if (fb) fredMacro = fb;
         return fb;
       });

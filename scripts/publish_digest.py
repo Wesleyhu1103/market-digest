@@ -26,9 +26,15 @@ INDEX = ROOT / "docs" / "index.html"
 INCOMING = ROOT / "incoming" / "new-main.html"
 ARCHIVE_DIR = ROOT / "docs" / "archive"
 MANIFEST = ARCHIVE_DIR / "manifest.json"
+LOCAL_ASSET_RE = re.compile(r'((?:src|href)=")(js|css)/')
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from repair_main import repair_main_html
+
+
+def archive_safe_asset_paths(html: str) -> str:
+    """Archived snapshots live one directory below docs/, so local assets move up."""
+    return LOCAL_ASSET_RE.sub(r"\1../\2/", html)
 
 
 def archive_previous_day(current_html: str, today_iso: str) -> None:
@@ -51,7 +57,8 @@ def archive_previous_day(current_html: str, today_iso: str) -> None:
     )
     snapshot_path = ARCHIVE_DIR / f"{old_date_iso}.html"
     if not snapshot_path.exists():
-        snapshot = re.sub(r"<main>", lambda m: "<main>\n" + banner, current_html, count=1)
+        archive_html = archive_safe_asset_paths(current_html)
+        snapshot = re.sub(r"<main>", lambda m: "<main>\n" + banner, archive_html, count=1)
         snapshot_path.write_text(snapshot)
         print(f"Archived {snapshot_path.relative_to(ROOT)}")
 
