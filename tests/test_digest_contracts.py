@@ -1,6 +1,8 @@
 """Tests for contracts/digest-main.json loader."""
 import sys
 import unittest
+from contextlib import redirect_stdout
+from io import StringIO
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
@@ -51,7 +53,8 @@ class DigestContractsTest(unittest.TestCase):
         repo = Path(__file__).resolve().parents[1]
         archive_html = repo / "docs" / "archive" / "example.html"
         html = '<script src="js/missing.js?v=1"></script><main></main>'
-        self.assertFalse(check_local_assets(html, archive_html))
+        with redirect_stdout(StringIO()):
+            self.assertFalse(check_local_assets(html, archive_html))
 
 
 if __name__ == "__main__":
