@@ -51,6 +51,25 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
     return "\n\n".join(parts)
 
 
+def local_asset_failures(html: str, html_path: Optional[Path]) -> list[str]:
+    """Report local scripts/styles that would not resolve beside this HTML file."""
+    if not html_path:
+        return []
+    refs = []
+    refs.extend(re.findall(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I))
+    refs.extend(re.findall(r'<link[^>]+href=["\']([^"\']+)["\']', html, re.I))
+    failures = []
+    for ref in refs:
+        if ref.startswith(("http://", "https://", "//", "#", "mailto:", "tel:")):
+            continue
+        rel = re.split(r"[?#]", ref, 1)[0].lstrip("/")
+        if not rel:
+            continue
+        if not (html_path.parent / rel).resolve().is_file():
+            failures.append(ref)
+    return failures
+
+
 def check_js(js_body: str) -> bool:
     if not js_body.strip():
         print("FAIL JS: no script content")
@@ -101,10 +120,18 @@ def main():
         if not ok:
             failures += 1
 
+    missing_assets = local_asset_failures(html, html_path)
+    if missing_assets:
+        for ref in missing_assets:
+            print(f"FAIL asset: local reference does not resolve beside HTML: {ref}")
+        failures += 1
+    else:
+        print("OK   local assets resolve")
+
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
