@@ -31,6 +31,16 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from repair_main import repair_main_html
 
 
+def archive_safe_asset_paths(html: str) -> str:
+    """Rewrite live-page local assets so snapshots work from docs/archive/."""
+    return re.sub(
+        r'(?P<prefix>\b(?:src|href)=["\'])(?P<path>(?:js|css)/[^"\']+)(?P<suffix>["\'])',
+        lambda m: f"{m.group('prefix')}../{m.group('path')}{m.group('suffix')}",
+        html,
+        flags=re.I,
+    )
+
+
 def archive_previous_day(current_html: str, today_iso: str) -> None:
     old_h1 = re.search(r"<h1>([^<]+)</h1>", current_html)
     if not old_h1:
@@ -51,7 +61,8 @@ def archive_previous_day(current_html: str, today_iso: str) -> None:
     )
     snapshot_path = ARCHIVE_DIR / f"{old_date_iso}.html"
     if not snapshot_path.exists():
-        snapshot = re.sub(r"<main>", lambda m: "<main>\n" + banner, current_html, count=1)
+        snapshot = archive_safe_asset_paths(current_html)
+        snapshot = re.sub(r"<main>", lambda m: "<main>\n" + banner, snapshot, count=1)
         snapshot_path.write_text(snapshot)
         print(f"Archived {snapshot_path.relative_to(ROOT)}")
 
