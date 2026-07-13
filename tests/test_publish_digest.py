@@ -45,13 +45,16 @@ class PublishDigestArchiveTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             archive_dir = Path(td) / "archive"
             archive_dir.mkdir()
+            old_root = publish_digest.ROOT
             old_archive_dir = publish_digest.ARCHIVE_DIR
             old_manifest = publish_digest.MANIFEST
+            publish_digest.ROOT = Path(td)
             publish_digest.ARCHIVE_DIR = archive_dir
             publish_digest.MANIFEST = archive_dir / "manifest.json"
             try:
                 publish_digest.archive_previous_day(html, "2026-07-13")
             finally:
+                publish_digest.ROOT = old_root
                 publish_digest.ARCHIVE_DIR = old_archive_dir
                 publish_digest.MANIFEST = old_manifest
 
