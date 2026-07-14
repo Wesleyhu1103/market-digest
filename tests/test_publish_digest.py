@@ -48,7 +48,7 @@ class PublishDigestTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             module.ROOT = Path(tmp)
             module.ARCHIVE_DIR = module.ROOT / "docs" / "archive"
-            module.ARCHIVE_DIR.mkdir()
+            module.ARCHIVE_DIR.mkdir(parents=True)
             module.MANIFEST = module.ARCHIVE_DIR / "manifest.json"
 
             module.archive_previous_day(current_html, "2026-07-14")
