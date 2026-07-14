@@ -46,7 +46,8 @@ class PublishDigestTests(unittest.TestCase):
 </main></body></html>"""
 
         with tempfile.TemporaryDirectory() as tmp:
-            module.ARCHIVE_DIR = Path(tmp) / "archive"
+            module.ROOT = Path(tmp)
+            module.ARCHIVE_DIR = module.ROOT / "docs" / "archive"
             module.ARCHIVE_DIR.mkdir()
             module.MANIFEST = module.ARCHIVE_DIR / "manifest.json"
 
