@@ -18,10 +18,41 @@ from digest_contracts import (  # noqa: E402
 
 LIVE_URL = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/index.html"
 LIVE_BASE = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/"
+DOCS_ROOT = Path(__file__).resolve().parents[1] / "docs"
 
 STATIC_RULES = validate_static_rules()
 RULES = validate_main_rules()
 HTML_ONLY = validate_html_only_descs()
+
+
+def _strip_url_query(url: str) -> str:
+    return url.split("#", 1)[0].split("?", 1)[0]
+
+
+def _is_remote_or_nonfile(url: str) -> bool:
+    return bool(re.match(r"^(?:https?:)?//|^(?:data|mailto):|^#", url, re.I))
+
+
+def _resolve_local_asset(url: str, html_path: Path) -> Path:
+    clean = _strip_url_query(url)
+    if clean.startswith("/"):
+        return (DOCS_ROOT / clean.lstrip("/")).resolve()
+    return (html_path.parent / clean).resolve()
+
+
+def local_asset_failures(html: str, html_path: Optional[Path]) -> list[tuple[str, Path]]:
+    if not html_path:
+        return []
+
+    failures: list[tuple[str, Path]] = []
+    for m in re.finditer(r'<(?:script|link)\b[^>]+(?:src|href)=["\']([^"\']+)["\']', html, re.I):
+        url = m.group(1)
+        if _is_remote_or_nonfile(url):
+            continue
+        fp = _resolve_local_asset(url, html_path)
+        if not fp.is_file():
+            failures.append((url, fp))
+    return failures
 
 
 def _fetch_text(url: str) -> str:
@@ -36,12 +67,14 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
         src = m.group(1).split("?")[0]
         if src.startswith(("http://", "https://", "//")):
             continue
-        rel = src.lstrip("/")
         if html_path:
-            fp = (html_path.parent / rel).resolve()
+            fp = _resolve_local_asset(src, html_path)
             if fp.is_file():
                 parts.append(fp.read_text())
                 continue
+            print(f"WARN: could not load local script {src} ({fp})")
+            continue
+        rel = src.lstrip("/")
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -86,6 +119,10 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    for url, fp in local_asset_failures(html, html_path):
+        print(f"FAIL local asset: {url} resolves to missing {fp}")
+        failures += 1
+
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
