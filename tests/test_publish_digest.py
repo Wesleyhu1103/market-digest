@@ -36,9 +36,11 @@ class PublishDigestArchiveTests(unittest.TestCase):
 
         old_archive_dir = publish_digest.ARCHIVE_DIR
         old_manifest = publish_digest.MANIFEST
+        old_root = publish_digest.ROOT
         try:
             with tempfile.TemporaryDirectory() as tmp:
                 tmp_path = Path(tmp)
+                publish_digest.ROOT = tmp_path
                 publish_digest.ARCHIVE_DIR = tmp_path / "archive"
                 publish_digest.MANIFEST = publish_digest.ARCHIVE_DIR / "manifest.json"
                 publish_digest.ARCHIVE_DIR.mkdir()
@@ -50,6 +52,7 @@ class PublishDigestArchiveTests(unittest.TestCase):
                 self.assertIn('href="../css/digest.css?v=1"', snapshot)
                 self.assertIn("Archived -- 2026-07-13", snapshot.replace("—", "--"))
         finally:
+            publish_digest.ROOT = old_root
             publish_digest.ARCHIVE_DIR = old_archive_dir
             publish_digest.MANIFEST = old_manifest
 
