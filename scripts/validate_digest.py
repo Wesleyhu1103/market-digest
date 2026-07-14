@@ -24,6 +24,39 @@ RULES = validate_main_rules()
 HTML_ONLY = validate_html_only_descs()
 
 
+def _is_external_asset(ref: str) -> bool:
+    return ref.startswith(("http://", "https://", "//", "data:", "mailto:"))
+
+
+def _local_asset_path(ref: str, html_path: Path) -> Path:
+    rel = ref.split("?", 1)[0].split("#", 1)[0]
+    if rel.startswith("/"):
+        docs_root = Path(__file__).resolve().parents[1] / "docs"
+        return (docs_root / rel.lstrip("/")).resolve()
+    return (html_path.parent / rel).resolve()
+
+
+def missing_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
+    if not html_path:
+        return []
+
+    refs: list[str] = []
+    refs.extend(m.group(1) for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I))
+    refs.extend(
+        m.group(1)
+        for m in re.finditer(r'<link[^>]+href=["\']([^"\']+)["\']', html, re.I)
+        if re.search(r'\brel=["\']stylesheet["\']', m.group(0), re.I)
+    )
+
+    missing: list[str] = []
+    for ref in refs:
+        if _is_external_asset(ref):
+            continue
+        if not _local_asset_path(ref, html_path).is_file():
+            missing.append(ref)
+    return missing
+
+
 def _fetch_text(url: str) -> str:
     req = urllib.request.Request(url, headers={"Cache-Control": "no-cache"})
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
@@ -38,10 +71,12 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
             continue
         rel = src.lstrip("/")
         if html_path:
-            fp = (html_path.parent / rel).resolve()
+            fp = _local_asset_path(src, html_path)
             if fp.is_file():
                 parts.append(fp.read_text())
                 continue
+            print(f"WARN: missing local script {src}")
+            continue
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -86,6 +121,12 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    missing_assets = missing_local_assets(html, html_path)
+    if missing_assets:
+        print("FAIL local assets: missing " + ", ".join(missing_assets))
+        failures += 1
+    else:
+        print("OK   local assets")
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -104,7 +145,7 @@ def main():
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
