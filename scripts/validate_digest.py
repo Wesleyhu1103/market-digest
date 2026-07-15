@@ -18,6 +18,8 @@ from digest_contracts import (  # noqa: E402
 
 LIVE_URL = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/index.html"
 LIVE_BASE = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/"
+ROOT = Path(__file__).resolve().parents[1]
+DOCS = ROOT / "docs"
 
 STATIC_RULES = validate_static_rules()
 RULES = validate_main_rules()
@@ -29,19 +31,48 @@ def _fetch_text(url: str) -> str:
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
 
 
+def _is_local_asset(ref: str) -> bool:
+    return not ref.startswith(("http://", "https://", "//", "data:"))
+
+
+def _asset_path(ref: str, html_path: Path) -> Path:
+    rel = ref.split("?")[0]
+    if rel.startswith("/"):
+        return (DOCS / rel.lstrip("/")).resolve()
+    return (html_path.parent / rel).resolve()
+
+
+def check_local_assets(html: str, html_path: Optional[Path]) -> bool:
+    if not html_path:
+        return True
+    ok = True
+    refs = []
+    refs.extend(("script", m.group(1)) for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I))
+    refs.extend(("style", m.group(1)) for m in re.finditer(r'<link[^>]+href=["\']([^"\']+)["\']', html, re.I))
+    for kind, ref in refs:
+        if not _is_local_asset(ref):
+            continue
+        fp = _asset_path(ref, html_path)
+        if not fp.is_file():
+            print(f"FAIL local {kind} asset missing: {ref} -> {fp}")
+            ok = False
+    return ok
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
     for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
         src = m.group(1).split("?")[0]
-        if src.startswith(("http://", "https://", "//")):
+        if not _is_local_asset(src):
             continue
-        rel = src.lstrip("/")
         if html_path:
-            fp = (html_path.parent / rel).resolve()
+            fp = _asset_path(src, html_path)
             if fp.is_file():
                 parts.append(fp.read_text())
                 continue
+            continue
+        rel = src.lstrip("/")
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -77,6 +108,7 @@ def main():
     else:
         html = _fetch_text(LIVE_URL)
 
+    assets_ok = check_local_assets(html, html_path)
     js_bundle = collect_js(html, html_path)
 
     main_block = re.search(r"<main>[\s\S]*?</main>", html, re.DOTALL)
@@ -86,6 +118,8 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    if not assets_ok:
+        failures += 1
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))

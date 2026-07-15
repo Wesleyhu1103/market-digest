@@ -71,7 +71,7 @@ Vercel env vars (Project → Settings → Environment Variables → **Production
 | Variable | Purpose |
 |----------|---------|
 | `GITHUB_TOKEN` | **Required for reliable publishing.** PAT (or fine-grained token) with `actions:write` on this repo — lets the Vercel cron `/api/cron-watchdog` dispatch the publish workflow when GitHub's own cron lags. **Without it the endpoint returns 503 and can't recover a stale digest**, so publishing falls back entirely to GitHub's unreliable scheduler. |
-| `CRON_SECRET` | Recommended. Vercel Cron sends `Authorization: Bearer <CRON_SECRET>` on scheduled calls when this is set; the endpoint then rejects unauthenticated public callers. **Not auto-created — you must set it** (any long random string). If unset, `/api/cron-watchdog` is publicly callable. |
+| `CRON_SECRET` | **Required for the Vercel cron backup.** Vercel Cron sends `Authorization: Bearer <CRON_SECRET>` on scheduled calls; `/api/cron-watchdog` now fails closed when this is unset so public callers cannot dispatch publishes. **Not auto-created — you must set it** (any long random string). |
 | `FEEDBACK_ADMIN_SECRET` | Protects `/api/admin-proposals`, `/api/admin-feedback`, and sign-in for [`/admin.html`](docs/admin.html) |
 
 > **Failure mode to watch:** if the digest is stale in the morning, first check
