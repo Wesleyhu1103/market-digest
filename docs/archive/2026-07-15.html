@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Jul 15, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="js/site-config.js?v=20260713"></script>
+<script src="js/market-feed.js?v=20260713"></script>
+<link rel="stylesheet" href="css/digest.css?v=20260713">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-15</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, July 15, 2026</h1>
+    <div class="meta">
+      <p>The CPI cloud lifted: June inflation came in soft, gutting the July rate-hike trade and pulling implied hike odds from 43% down to 13%. Morgan Stanley caps a blockbuster bank-earnings run with record revenue on a 69% equities-trading surge, while Stripe has lobbed a $53 billion bid for PayPal. Oil and fresh US-Iran tension are the one thing keeping the risk rally from running clean.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "A softer-than-expected June CPI print pulled July Fed rate-hike odds from 43% to 13%, sending bitcoin toward $65,000 and lifting risk assets, while Middle East tensions and oil kept a lid on gains and Morgan Stanley capped bank earnings with record revenue on a 69% equities surge",
+      "framings": [
+        {"outlet": "CNBC", "headline": "The AI Boom Just Found Two New Winners: Goldman and JPMorgan", "angle": "Turns bank earnings into an AI story, arguing Wall Street desks are direct beneficiaries of the buildout and the volatility around it.", "lean": 40, "pull": "Goldman Sachs and JPMorgan showed that Wall Street is a major beneficiary of the AI boom, with record revenue driven by surging trading and investment banking."},
+        {"outlet": "Bloomberg", "headline": "Risk Assets Rally as Cool CPI Guts the Hike Trade", "angle": "Reads the soft print as a clean release valve, with the front end repricing away from tightening.", "lean": 30, "pull": "A downside inflation surprise pulled July hike odds to the low teens, handing risk assets room to run into September."},
+        {"outlet": "WSJ", "headline": "Soft Inflation Takes a July Hike Off the Table", "angle": "Centers the Fed pivot away from the tightening scare the market carried into the print.", "lean": 20, "pull": "Traders slashed bets on a July move after June prices fell, shifting the debate to whether the Fed cuts later this year."},
+        {"outlet": "Financial Times", "headline": "Oil and Iran Cap the Inflation Relief Rally", "angle": "Widens the lens to warn the Hormuz premium can undo the disinflation the CPI print delivered.", "lean": -15, "pull": "The relief from softer inflation runs straight into a contested chokepoint and a crude price that refuses to fall."},
+        {"outlet": "The Economist", "headline": "One Good Print Does Not End the AI Leverage Question", "angle": "Keeps the focus on debt-financed capex even as the rate scare fades.", "lean": -25, "pull": "The market can cheer cooling inflation and still owe an answer on how the AI buildout is being funded."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Coin-Flip Hike Trade Collapses as June CPI Falls 0.4% and Pulls July Odds From 43% to 13%, Sending Bitcoin Toward $65,000 and Risk Assets Higher, With TS Lombard's Freya Beamish's Hawkish Call Now on the Defensive and the Debate Shifting to Whether the September FOMC Even Moves</h3>
+      </div>
+      <p>The whole hawkish setup unwound in a day. June CPI fell 0.4% month over month, a downside surprise that gutted the tightening scare the market had built up behind $87 oil, and CoinDesk's read of fed funds pricing put July hike odds at 13%, down from 43% a session earlier. Bitcoin ran to a three-week high near $65,000, spot bitcoin ETFs took in about $181 million after shedding roughly $425 million the day before, and the front end pulled its rate-hike premium out fast. The reframe puts TS Lombard's Freya Beamish, who argued the Fed was behind the curve and should tighten into the AI-fueled boom, on the back foot: one soft print does not confirm an overheating economy. Analysts have already pushed the live question out to the September FOMC. There are still crosscurrents: the UK plans the first G7 digital sovereign bond by early 2027 on HSBC's Orion platform, and the ECB picked Deutsche Bank and Revolut for its digital euro pilot, both signs the plumbing keeps modernizing regardless of the rate path.</p>
+      <p>The bull case for lower yields is now the base case: the inflation impulse the Fed feared did not show up, hike odds cratered, and risk assets rallied. The bear case is that the relief is one print deep, oil is still elevated with the Middle East unresolved, and a single reversal in energy could drag the tightening trade right back onto the board. Today's bank tape and this week's TSMC and ASML prints test whether the soft-landing read holds.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (cool CPI reopens the easing path):</strong> June prices fell 0.4%, July hike odds dropped to 13% from 43%, and bitcoin ran to a three-week high near $65,000 as ETFs flipped back to inflows. The inflation impulse never arrived, so the front end can price patience, and the debate moves to whether the Fed cuts rather than hikes.</div>
+        <div class="bear"><strong>Bear (one print, and oil still lurks):</strong> A single soft reading does not settle anything with Brent elevated and Hormuz contested. TS Lombard's Freya Beamish still argues an AI-hot economy runs above trend, and a fresh energy spike would drag the July hike scare straight back. The relief rally is leaning on data that can reverse next month.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.coindesk.com/markets/2026/07/15/bitcoin-tops-usd64-000-as-cooling-u-s-inflation-guts-the-fed-rate-hike-trade" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Nears $65,000 as Cooling US Inflation Guts the Fed Rate-Hike Trade</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Middle East Tension Caps the Relief Rally as US-Iran Escalation and a Contested Hormuz Keep Crude Elevated, Reining In Gains Bitcoin and Stocks Would Otherwise Have Taken From the Soft CPI Print, With Oil the One Variable That Can Drag the Hawkish Trade Back Onto the Board</h3>
+      </div>
+      <p>The disinflation news ran straight into the geopolitics. Bitcoin held its three-week high but gains were capped as rising US-Iran tension countered the boost from softer inflation, and CoinDesk flagged that the bitcoin rally cooled specifically because oil clouds the outlook. The mechanism is direct: the CPI print told the market the inflation impulse had faded, but a crude price that refuses to come down keeps the door open to exactly the price pressure the Fed was watching, so the risk-off overhang from the strait offsets part of the rate relief. The escalation is the same thread that weighed on bitcoin and stocks earlier in the week as oil climbed, and it has not resolved. As long as the chokepoint is contested, the premium sits in the barrel and works against the soft-landing read the CPI number just handed markets.</p>
+      <p>The bull read is that the inflation data has already turned, so even elevated oil is fighting a fading impulse, and any de-escalation lets the relief rally extend cleanly. The bear read is that crude is the single variable capable of reversing the whole disinflation story: one more supply scare pushes energy back up, revives the July hike math, and undoes the rate relief that lifted risk assets this week.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the impulse already faded):</strong> June CPI fell despite elevated oil, so the price data is fighting a shock that has not fed through. If Middle East tension eases even modestly, the relief rally extends and crude drops out of the inflation debate, letting risk assets follow the softer print higher.</div>
+        <div class="bear"><strong>Bear (oil is the reversal switch):</strong> Rising US-Iran tension already capped bitcoin's post-CPI gains and cooled the rally. A contested Hormuz keeps the premium in crude, and one more supply scare revives the July hike math and unwinds the rate relief. The disinflation story is only as durable as the oil price under it.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.coindesk.com/markets/2026/07/15/crypto-steadies-as-middle-east-tensions-counter-u-s-inflation-report-boost" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Steadies as Middle East Tensions Counter US Inflation Report Boost</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>IBM's Miss Spooks the Software Complex but Stratechery's Ben Thompson Argues It's a Mainframe-and-AI Story Specific to IBM, Even as Goldman and JPMorgan Emerge as the AI Boom's Newest Winners and OpenAI Refashions Codex Into the New ChatGPT in a Push Toward a Super App</h3>
+      </div>
+      <p>The AI trade split into signal and noise. IBM's preliminary Q2 miss spooked the broader software market, but Stratechery's Ben Thompson argued the story is specific to IBM and its mainframe franchise, not a read-through to the sector, since the company faces its own set of AI problems while its legacy moat holds. The more constructive tape came from the banks: CNBC framed Goldman Sachs and JPMorgan as new AI winners, with record revenue driven by surging trading and investment banking that ride the volatility the buildout generates, and Morgan Stanley confirmed it with record revenue on a 69% equities-trading jump. On the product side, OpenAI refashioned Codex as the new ChatGPT, raising the question of whether it is walking away from the chat category it pioneered in favor of an agentic super app. That agent thesis is showing up in payments too, where Visa, Mastercard and Ripple joined the x402 standard that lets AI agents pay in stablecoins, a protocol that settled about $24 million last month across 75 million payments. Hut 8 got a price-target hike to $165 at Benchmark as its Beacon Point AI-infrastructure pivot reshapes the valuation.</p>
+      <p>The bulls point to the banks minting record revenue off the AI-driven activity, OpenAI's aggressive product push, agentic payments going mainstream, and Hut 8's AI pivot as proof the ecosystem keeps widening. The bears point to IBM's miss rattling software, the still-open question of how the buildout is financed, and OpenAI's pivot as a sign even the leaders are unsure where the demand actually lands. TSMC and ASML this week are the cleaner referee.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the ecosystem keeps widening):</strong> Goldman, JPMorgan and Morgan Stanley are all posting record revenue as AI-era volatility and dealmaking fill their desks, OpenAI is pushing hard into an agentic super app, Visa, Mastercard and Ripple backed agent payments, and Benchmark hiked Hut 8 to $165 on its AI pivot. Demand keeps finding new surfaces.</div>
+        <div class="bear"><strong>Bear (cracks under the surface):</strong> IBM's miss spooked the whole software complex, and even if Stratechery's Ben Thompson is right that it is IBM-specific, the financing question the BIS raised has not gone away. OpenAI refashioning Codex into ChatGPT reads as a company still hunting for where the demand truly is. TSMC and ASML have to confirm it.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://stratechery.com/2026/ibm-misses-ibms-mainframe-moat-ibms-many-ai-problems/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- IBM Misses, IBM's Mainframe Moat, IBM's Many AI Problems</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Morgan Stanley posts record quarterly revenue and profit as equities trading surges 69%</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley (MS) reported record quarterly revenue and profit, with a massive beat in equities trading up 69% driving the outsized results, echoing what Goldman and JPMorgan already delivered. The volatility windfall is broad-based across the cohort.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/15/morgan-stanley-ms-earnings-q2-2026-.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Morgan Stanley Posts Record Quarterly Revenue and Profit as Equities Trading Surges 69%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs and JPMorgan emerge as the AI boom's newest winners</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs (GS) and JPMorgan (JPM) showed Wall Street is a major beneficiary of the AI boom, with record revenue driven by surging trading and investment banking. The desks profit from the activity the buildout and its volatility generate.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/14/goldman-sachs-and-jpmorgan-chase-are-emerging-as-ai-winners.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- The AI Boom Just Found Two New Winners: Goldman Sachs and JPMorgan Chase</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lucid dismisses report it is weighing bankruptcy or going private after shares plunge</strong></summary>
+      <div class="deal-body">
+        <p>Lucid (LCID) pushed back on a report that it was considering options including going private or filing for bankruptcy protection, after the story sent shares plunging. A company denial against a story that spooked an already fragile EV name.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/14/lucid-stock-lcid-bankruptcy-report.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Lucid Dismisses Report That It Is Weighing Filing for Bankruptcy or Going Private</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Paramount still plans to close WBD merger by end of September despite lawsuit</strong></summary>
+      <div class="deal-body">
+        <p>Paramount is still planning for its acquisition of Warner Bros. Discovery (WBD) to close by late September despite a lawsuit challenge from a group of state attorneys general. Management is signaling the antitrust risk will not derail the timeline.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/14/paramount-wbd-merger-lawsuit.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Paramount Still Plans to Close WBD Merger by End of September Despite Lawsuit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Big banks poised to report booming revenue on SpaceX IPO and Iran volatility</strong></summary>
+      <div class="deal-body">
+        <p>Big banks were set to report booming Q2 revenue as the SpaceX IPO, Iran war volatility and a rebound in commercial lending fueled what CNBC calls Wall Street's "sweet spot." The record prints from JPMorgan, Goldman and Morgan Stanley confirmed the setup.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/13/bank-earnings-jpmorgan-chase-goldman-sachs-bank-of-america.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Big Banks Poised to Report Booming Revenue Propelled by SpaceX IPO, Iran War Volatility</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Frontier to debut in-flight Wi-Fi in 2027 with SpaceX's Starlink</strong></summary>
+      <div class="deal-body">
+        <p>Frontier Airlines is signing with Starlink for in-flight Wi-Fi, with service debuting as early as next year. Another airline distribution win for SpaceX's satellite unit as it presses its connectivity lead.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/14/frontier-airlines-wifi-spacex-starlink.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Frontier Airlines to Debut In-Flight Wi-Fi in 2027 With SpaceX's Starlink</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The soft CPI print flipped the mood risk-on, and the bank cohort confirmed the trading windfall with Morgan Stanley's record quarter capping Goldman and JPMorgan. The single-name pain is idiosyncratic: IBM's miss and Lucid's bankruptcy scare, not a broad break. Watch whether the AI-winner framing for the banks holds up against the still-open financing question, and whether Paramount's confidence on the WBD close survives the multistate suit.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Bank Trading Desks Make a Fortune Exactly When Investors Are Panicking</summary>
+      <p>Three of the biggest banks just posted record quarters, and the common driver was a surge in equities-trading revenue, up 69% at Morgan Stanley and up sharply at Goldman and JPMorgan too. That should seem strange. The last two weeks battered investors with a chip rout, an oil shock and a war scare, so how do banks make record money when their clients are getting hurt? The answer is that a trading desk is not an investor. It is a middleman, and middlemen get paid on activity and on the width of the gap between what buyers pay and what sellers receive, not on whether the market goes up or down. Start with the bid-ask spread. When a client wants to buy, the desk sells to them slightly above the true mid-price; when a client wants to sell, the desk buys slightly below it. That sliver is the desk's margin for warehousing risk and providing liquidity. In calm markets, competition compresses that spread to almost nothing. In volatile markets, uncertainty is higher, inventory is riskier to hold, and spreads widen, so the desk earns more on every single trade it intermediates. Now add volume. Volatility does not just widen spreads, it forces activity. Investors who need to cut risk, rebalance, roll hedges or chase a fast-moving price all have to transact, and every one of those trades flows through a dealer. When a CPI print swings hike odds from 43% to 13%, when oil gaps around, when a name like IBM craters, the sheer number of clients repositioning explodes. More trades at wider spreads is the exact recipe for a record quarter, which is why banks quietly welcome the kind of chaos that terrifies everyone else. There is a catch, and it is what separates a good desk from a blown-up one. The bank is holding inventory while it intermediates, so a sharp one-way move can leave it stuck with positions that lose money faster than the spread earns it. That is why risk limits, hedging and fast turnover matter: the goal is to capture the flow without betting on direction. A desk that stays flat and just services volume prints money in a storm; a desk that takes a view and gets it wrong gives it all back. The lesson for a reader is to separate two things the market constantly conflates. Volatility is bad for a buy-and-hold portfolio because it means uncertainty and drawdowns. But volatility is the raw material of a market-maker's business, because it widens spreads and multiplies volume at the same time. When you see banks guiding to a trading windfall during a scary tape, it is not a contradiction of the fear, it is a direct product of it. The chaos that empties retail accounts fills the dealer's, and that asymmetry is baked into how modern markets are structured.</p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/07/15/morgan-stanley-ms-earnings-q2-2026-.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Morgan Stanley Posts Record Quarterly Revenue and Profit as Equities Trading Surges 69%</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>IBM's miss spooks software, but Stratechery says the story is IBM-specific</strong></summary>
+      <div class="deal-body">
+        <p>IBM (IBM) announced preliminary results that spooked the software market generally, but Stratechery's Ben Thompson argues this is specifically about IBM and its mainframe franchise, not a sector read-through, even as the company faces its own set of AI problems. A read that separates one legacy name's trouble from the broader trade.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/ibm-misses-ibms-mainframe-moat-ibms-many-ai-problems/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- IBM Misses, IBM's Mainframe Moat, IBM's Many AI Problems</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI refashions Codex into the new ChatGPT in a push toward a super app</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI has refashioned Codex as the new ChatGPT, raising the question of whether it is abandoning the chat category it pioneered in favor of an agentic super app. A strategic pivot from conversation toward autonomous task execution.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/the-openai-super-app-chatgpt-codex-whither-chat/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- The OpenAI Super App, ChatGPT = Codex, Whither Chat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI agentic payments go mainstream as Visa, Mastercard and Ripple back x402</strong></summary>
+      <div class="deal-body">
+        <p>Forty companies now govern x402, the protocol Coinbase built and handed away, letting AI agents pay in stablecoins. It settled about $24 million last month across 75 million payments, a concrete sign the agent economy is starting to transact.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/07/15/visa-mastercard-and-ripple-join-the-standard-letting-ai-agents-pay-in-stablecoins" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- AI Agentic Payments Enter Mainstream as Visa, Mastercard, Ripple Back x402 Standard</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hut 8 price target hiked to $165 at Benchmark as AI pivot reshapes valuation</strong></summary>
+      <div class="deal-body">
+        <p>Benchmark's Mark Palmer said Hut 8's (HUT) Beacon Point project transforms the company into an AI infrastructure platform with a long growth runway, lifting his target to $165. A miner-to-AI pivot getting rewarded by the sell side.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/14/hut-8-price-target-hiked-to-usd165-at-benchmark-as-ai-pivot-reshapes-valuation" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Hut 8 Price Target Hiked to $165 at Benchmark as AI Pivot Reshapes Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wikipedia blackout could hurt how AI engines like ChatGPT understand crypto</strong></summary>
+      <div class="deal-body">
+        <p>A Wikipedia blackout could degrade how large language models understand crypto, since the site's guidelines on crypto coverage date back years and may now be outdated. A reminder of how much AI output leans on a handful of training sources.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/07/14/wikipedia-blackout-could-hurt-how-ai-engines-like-chatgpt-understand-crypto" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Wikipedia Blackout Could Hurt How AI Engines Like ChatGPT Understand Crypto</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ethereum Foundation spinout EthSystems targets banks with blockchain privacy tech</strong></summary>
+      <div class="deal-body">
+        <p>EthSystems, a spinout amid one of the biggest organizational shakeups at the Ethereum Foundation in years, is targeting banks with blockchain privacy technology. Enterprise privacy tooling aimed at pulling regulated finance onto public rails.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/07/14/ethereum-foundation-spinout-ethsystems-targets-banks-with-blockchain-privacy-technology" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Ethereum Foundation Spinout EthSystems Targets Banks With Blockchain Privacy Technology</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Wednesday July 15, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> IBM's miss rattled software but Stratechery's Ben Thompson pins it on IBM's own mainframe-and-AI problems, not the sector. The constructive side is broad: banks are being framed as AI winners, OpenAI is pushing an agentic super app, x402 is putting real settlement volume behind agent payments, and Benchmark's Mark Palmer hiked Hut 8 on its AI pivot. TSMC and ASML results this week remain the live referee on whether the hardware demand behind it all is intact.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>US June CPI fell 0.4%, likely cooling the move toward Fed rate hikes</strong></summary>
+      <div class="deal-body">
+        <p>The June CPI report showed prices fell 0.4% on the month, a downside surprise that could go a long way toward determining whether the Fed raises rates at its late-July meeting. The inflation impulse behind the hike scare simply did not show up.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/14/u-s-june-cpi-fell-0-4-likely-cooling-move-toward-fed-rate-hikes" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US June CPI Fell 0.4%, Likely Cooling Move Toward Fed Rate Hikes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cooling inflation guts the rate-hike trade as odds fall from 43% to 13%</strong></summary>
+      <div class="deal-body">
+        <p>The June CPI print pulled July hike odds from 43% to 13%, with analysts now watching the September FOMC meeting for further cues on positioning. A dramatic repricing of the front end in a single session.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/15/bitcoin-tops-usd64-000-as-cooling-u-s-inflation-guts-the-fed-rate-hike-trade" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Nears $65,000 as Cooling US Inflation Guts the Fed Rate-Hike Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin rally cools as investors digest inflation data and oil clouds the outlook</strong></summary>
+      <div class="deal-body">
+        <p>The post-CPI rally lost momentum as investors weighed the softer inflation data against an oil price that keeps the inflation door open. The clean read from the print runs into the geopolitical overhang.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/07/15/bitcoin-rally-cools-as-investors-digest-inflation-data-oil-clouds-outlook" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Rally Cools as Investors Digest Inflation Data, Oil Clouds Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UK plans the first G7 digital sovereign bond by early 2027</strong></summary>
+      <div class="deal-body">
+        <p>The UK plans to launch a digital sovereign bond on HSBC's Orion platform within the BoE and FCA's Digital Securities Sandbox by early 2027, testing reduced settlement times and costs. A G7 first that pushes government debt onto tokenized rails.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/15/uk-plans-first-g7-digital-sovereign-bond-by-early-2027" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- UK Plans First G7 Digital Sovereign Bond by Early 2027</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB picks firms including Deutsche Bank and Revolut for digital euro pilot</strong></summary>
+      <div class="deal-body">
+        <p>The ECB will test a beta version of the digital euro for online, offline, in-store and e-commerce payments, with ECB and central bank staff as users. A concrete step toward a retail CBDC across the eurozone.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/14/ecb-picks-firms-including-deutsche-bank-revolut-for-digital-euro-pilot" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- ECB Picks Firms Including Deutsche Bank, Revolut for Digital Euro Pilot</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US and UK move to align rules for tokenized finance</strong></summary>
+      <div class="deal-body">
+        <p>The US and UK unveiled a joint roadmap to reduce regulatory friction for tokenized assets across the world's two largest financial centers, strengthening ties on market structure. A cross-Atlantic push to standardize the rails for tokenized markets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/07/14/u-s-uk-move-to-align-rules-for-tokenized-finance-across-world-s-largest-financial-markets" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US, UK Move to Align Rules for Tokenized Finance</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 14, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>The hike scare unwinds, with one caveat:</strong> June CPI falling 0.4% pulled July hike odds from 43% to 13% and shifted the live debate to September, gutting the tightening trade that oil built up. Bitcoin ran to a three-week high and risk assets rallied. The single offset is crude: with Hormuz still contested, oil is the one variable that can reverse the disinflation story and drag the hawkish math back. The plumbing keeps modernizing regardless, from the UK's digital gilt to the ECB's digital euro pilot.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: How a Single Soft CPI Print Swings Rate-Hike Odds From 43% to 13%</summary>
+      <p>The most striking number on today's tape is not the CPI itself but what it did to expectations: July hike odds collapsed from 43% to 13% in one session. To a reader that can look like magic, as if the market simply changed its mind. It is not. Those probabilities are read directly out of fed funds futures, and understanding the mechanism explains why one data point can move them so violently. Start with what a fed funds futures contract is. It settles based on the average daily effective fed funds rate over a given month. If the market is certain the Fed holds, the contract prices the current rate for the whole month. If the market is certain the Fed hikes on a specific meeting date, the contract prices a blend: the old rate for the days before the meeting and the new, higher rate for the days after. Because the meeting date is known, that blend is a simple weighted average. Now run it backwards. The market does not know for sure what the Fed will do, so the contract trades at a price that reflects the probability-weighted average of the two outcomes. If a hike would move the rate up by a quarter point, and the futures price implies the average rate will rise by, say, a tenth of that, then the market is pricing roughly a 40% chance of the hike. Traders and analysts invert that arithmetic constantly, which is where the headline percentage comes from. Here is why a soft print moves it so far. Before the CPI, the market had built in a real chance the Fed would have to hike to fight oil-driven inflation, so the futures embedded a meaningful hike premium. The June number came in soft, falling 0.4%, which told traders the inflation impulse the Fed feared was not materializing. In an instant the case for a July move weakened, futures repriced toward the no-hike outcome, and the implied probability fell. Because the probability is a near-linear function of the futures price, and because the futures price moves the moment new information hits, the odds can gap from 43% to 13% in minutes. The lesson for a reader is that market-implied probabilities are not forecasts sitting in someone's model, they are live prices that update the instant the inputs change. That makes them powerful, because they aggregate every trader's money-weighted view, and fragile, because a single surprise reprices them wholesale. It also explains why the same crowd that was pricing a coin-flip hike a day earlier can look completely calm the next morning. Nothing about the Fed changed. The data changed, the futures repriced, and the arithmetic did the rest. Watch the September contract now, because that is where the next version of this same math is already forming.</p>
+      <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/14/u-s-june-cpi-fell-0-4-likely-cooling-move-toward-fed-rate-hikes" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US June CPI Fell 0.4%, Likely Cooling Move Toward Fed Rate Hikes</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Soft June CPI pulled July hike odds from 43% to 13% and lifted bitcoin near $65,000, Morgan Stanley capped record bank earnings, and Stripe bid $53 billion for PayPal, while oil and US-Iran tension capped the rally; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/13</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/14</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/15</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/16</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin nears $65,000 as cooling US inflation guts the Fed rate-hike trade</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin ran to a three-week high near $65,000 after the June CPI print pulled hike odds from 43% to 13%, with analysts now watching the September FOMC. The token was the cleanest expression of the rate relief.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/15/bitcoin-tops-usd64-000-as-cooling-u-s-inflation-guts-the-fed-rate-hike-trade" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Nears $65,000 as Cooling US Inflation Guts the Fed Rate-Hike Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto steadies as Middle East tensions counter the US inflation boost</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held its three-week high but capped its gains as rising US-Iran tension offset the lift from softer inflation numbers. A tug-of-war between the rate relief and the geopolitical overhang.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/15/crypto-steadies-as-middle-east-tensions-counter-u-s-inflation-report-boost" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Steadies as Middle East Tensions Counter US Inflation Report Boost</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Spot bitcoin and ether ETFs draw inflows as majors rise as much as 5%</strong></summary>
+      <div class="deal-body">
+        <p>US spot bitcoin ETFs took in about $181 million after shedding roughly $425 million the prior day, while ether ETFs added about $58 million, per SoSoValue data. The flow flipped back positive as majors rallied.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/07/15/live-markets-bitcoin-ether-etfs-draw-inflows-as-majors-rise-as-much-as-5" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Markets: Bitcoin, Ether ETFs Draw Inflows as Majors Rise as Much as 5%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Japan reclassifies crypto as a financial asset, paving the way for tax cuts</strong></summary>
+      <div class="deal-body">
+        <p>Japanese lawmakers said crypto has outgrown its role as a payment method and requires rules designed for investment products, reclassifying it as a financial asset. The move opens the door to lower, capital-gains-style taxation.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/07/15/japan-reclassifies-crypto-as-a-financial-asset-paves-way-for-tax-cuts" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Japan Reclassifies Crypto as a Financial Asset, Paves Way for Tax Cuts</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Robinhood Chain's memecoin economy craters after launchpad Noxa goes dark</strong></summary>
+      <div class="deal-body">
+        <p>Noxa, the launchpad behind CASHCAT's rise, racked up nearly $12 million in fees before going dark and giving away its revenue, leaving Robinhood Chain's memecoin economy in freefall. A reminder of how fragile launchpad-driven token markets are.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/15/the-launchpad-that-fueled-robinhood-chain-s-memecoin-boom-just-gave-away-all-its-revenue" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- The Launchpad That Fueled Robinhood Chain's Memecoin Boom Just Gave Away All Its Revenue</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mizuho downgrades Circle to underperform on the Open USD threat</strong></summary>
+      <div class="deal-body">
+        <p>Mizuho cut Circle (CRCL) to underperform with a $50 target, warning that Open USD's yield pass-through model could pressure margins by shifting more reserve income to distributors. A sell-side flag on stablecoin economics.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/14/mizuho-downgrades-circle-to-underperform-cuts-price-target-to-usd50-on-open-usd-threat" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Mizuho Downgrades Circle to Underperform, Cuts Price Target to $50 on Open USD Threat</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Stripe -- Mounts a Blockbuster $53 Billion Bid to Buy PayPal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Stripe, together with Advent, made a $53 billion bid for PayPal (PYPL), following an earlier expression of interest, though PayPal has been reluctant to engage with the offer so far.</p>
+        <p><strong>Outlook:</strong> A combination would fuse Stripe's developer-first payments rails with PayPal's vast consumer network, but the price tag, PayPal's reluctance and antitrust scrutiny all cloud the path.</p>
+        <p><strong>What it means:</strong> One of the largest fintech tie-ups ever attempted, and a sign the payments giants are racing to consolidate ahead of stablecoin and agentic-payment disruption.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/15/stripe-mounts-blockbuster-usd53-billion-bid-to-buy-paypal" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Stripe Mounts Blockbuster $53 Billion Bid to Buy PayPal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Paramount / Warner Bros. Discovery -- Merger Still Targeted to Close by September</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Paramount reaffirmed it plans to close its acquisition of Warner Bros. Discovery by late September despite a lawsuit challenge from a group of state attorneys general.</p>
+        <p><strong>Outlook:</strong> Management is signaling confidence the antitrust suit will not derail the timeline, but a multistate action introduces real headline and closing risk.</p>
+        <p><strong>What it means:</strong> One of media's biggest pending combinations is pressing ahead into legal resistance, a live test of how aggressively states can slow a deal.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/14/paramount-wbd-merger-lawsuit.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Paramount Still Plans to Close WBD Merger by End of September Despite Lawsuit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Circle -- Cut to Underperform at Mizuho on the Open USD Threat</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Mizuho downgraded Circle to underperform and set a $50 target, warning Open USD's yield pass-through model could pressure margins by shifting reserve income to distributors.</p>
+        <p><strong>Outlook:</strong> The call, alongside JPMorgan's note that Hyperliquid's rise threatens USDC economics, frames a tightening squeeze on stablecoin issuer profitability.</p>
+        <p><strong>What it means:</strong> The stablecoin business model is entering a competitive phase where distribution deals erode the float income issuers once kept.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/14/mizuho-downgrades-circle-to-underperform-cuts-price-target-to-usd50-on-open-usd-threat" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Mizuho Downgrades Circle to Underperform, Cuts Price Target to $50 on Open USD Threat</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal Sizes This Week ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Ben Thompson (Stratechery) -- IBM's miss is company-specific, not a sector signal</strong></summary>
+      <div class="deal-body">
+        <p>Stratechery's Ben Thompson argued IBM's preliminary miss spooked software broadly but is really about IBM's own mainframe franchise and its many AI problems, not a read-through to the sector. A read that separates one legacy name's trouble from the AI trade.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/ibm-misses-ibms-mainframe-moat-ibms-many-ai-problems/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- IBM Misses, IBM's Mainframe Moat, IBM's Many AI Problems</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mark Palmer (Benchmark) -- Hut 8's AI pivot warrants a $165 target</strong></summary>
+      <div class="deal-body">
+        <p>Benchmark's Mark Palmer said Hut 8's Beacon Point project transforms it into an AI infrastructure platform with a long growth runway, lifting his target to $165. A bull read on the miner-to-AI transition trade.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/14/hut-8-price-target-hiked-to-usd165-at-benchmark-as-ai-pivot-reshapes-valuation" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Hut 8 Price Target Hiked to $165 at Benchmark as AI Pivot Reshapes Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mizuho -- Circle to underperform as Open USD threatens stablecoin margins</strong></summary>
+      <div class="deal-body">
+        <p>Mizuho downgraded Circle to underperform with a $50 target, warning Open USD's yield pass-through model could pressure margins by shifting reserve income to distributors. A bearish read on issuer economics.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/14/mizuho-downgrades-circle-to-underperform-cuts-price-target-to-usd50-on-open-usd-threat" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Mizuho Downgrades Circle to Underperform, Cuts Price Target to $50 on Open USD Threat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan -- Hyperliquid's rise threatens Circle's USDC economics</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan analysts said Hyperliquid's deal with Circle and Coinbase creates a "prisoner's dilemma" that pressures earnings from the USDC stablecoin. A structural read on how distribution deals erode issuer profits.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/14/jpmorgan-says-hyperliquid-s-rise-threatens-circle-s-usdc-economics" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- JPMorgan Says Hyperliquid's Rise Threatens Circle's USDC Economics</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Giselle Lai (Fidelity International) -- tokenization's real play is balance-sheet management</strong></summary>
+      <div class="deal-body">
+        <p>Fidelity International's Giselle Lai argued the most compelling long-term use case for tokenized funds is balance-sheet management for large global institutions, not 24/7 liquidity. A read that reframes where tokenization actually creates value.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/14/for-pension-funds-tokenization-s-real-play-is-balance-sheet-management-fidelity-s-lai-says" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- For Pension Funds, Tokenization's Real Play Is Balance-Sheet Management, Fidelity's Lai Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Matt Levine (Bloomberg Opinion) -- banks made a lot of money on stocks</strong></summary>
+      <div class="deal-body">
+        <p>Money Stuff walked through the equities-revenue boom powering bank earnings, alongside debanking, a public-utility LBO and an alleged cocaine SPAC. A read that the trading windfall is the quarter's defining feature.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/opinion/newsletters/2026-07-14/banks-made-a-lot-of-money-on-stocks" target="_blank" rel="noopener noreferrer">Source: Bloomberg Opinion -- Banks Made a Lot of Money on Stocks</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Soft CPI Guts the Hike Trade, Banks Post Record Trading Revenue, IBM's Miss Rattles Software, and Stripe Bids $53 Billion for PayPal With Oil the Lone Overhang</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the relief is real and the desks are winning):</strong> Soft CPI pulled hike odds to 13%, Morgan Stanley capped record bank revenue on a 69% equities surge, and CNBC frames Goldman and JPMorgan as AI winners. Stratechery's Ben Thompson calls IBM's miss company-specific, Benchmark's Mark Palmer hiked Hut 8, and Stripe's $53 billion PayPal bid shows risk appetite for scale. Bitcoin ran to a three-week high.</div>
+        <div class="bear"><strong>Bear (one print, thinning margins, geopolitics):</strong> Mizuho cut Circle and JPMorgan flagged eroding stablecoin economics, IBM's miss still rattled the software complex, and the disinflation read rests on a single CPI number with Hormuz unresolved. Oil is the one variable that can drag the hawkish trade back, and a $53 billion fintech bid faces reluctant target and antitrust risk.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Morgan Stanley record; banks as AI winners; Stripe's $53B PayPal bid; Lucid bankruptcy scare</td><td>Bullish</td><td>~20,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Soft CPI guts hike trade; IBM miss spooks software; TSMC and ASML loom</td><td>Risk-On</td><td>~14,500 (est.)</td></tr>
+          <tr><td>r/investing</td><td>June CPI falls 0.4%; hike odds drop 43% to 13%; oil clouds the relief</td><td>Constructive</td><td>~12,500 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>IBM mainframe moat vs AI problems; how CPI moves rate-hike odds; Stripe-PayPal</td><td>Analytical</td><td>~6,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC nears $65,000; Japan reclassifies crypto; ETF inflows flip positive; x402 agent payments</td><td>Bullish</td><td>~16,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood swung risk-on as the CPI scare faded. r/wallstreetbets leaned bullish on Morgan Stanley's record quarter, the AI-winner framing for the banks and Stripe's $53 billion PayPal bid, with Lucid's bankruptcy scare the outlier. r/stocks turned risk-on as soft CPI gutted the hike trade, treating IBM's miss as a single-name problem rather than a sector break. r/investing was constructive as June prices fell 0.4% and hike odds dropped to 13%, tempered by oil clouding the relief. r/SecurityAnalysis dug into IBM's mainframe moat and the mechanics of how a CPI print reprices hike odds. r/CryptoCurrency ran bullish as bitcoin neared $65,000, ETF flows flipped positive and Japan reclassified crypto as a financial asset. The one thread keeping everyone from a clean victory lap is oil and the unresolved Middle East.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Cash-Rich Buyer Bidding $53 Billion for a Rival Tells You Where an Industry Thinks It Is Headed</h2>
+    <p>The eye-catching corporate move today was Stripe teaming with Advent to bid $53 billion for PayPal. A number that large is not just a headline, it is a signal, and learning to read what a giant acquisition says about an industry's future is more useful than tracking whether this particular deal closes. Start with the basic logic of why a buyer pays a premium at all. Nobody offers tens of billions for a company unless they believe the combined entity is worth meaningfully more than the two parts apart. That extra value has to come from somewhere specific: cost savings from merging overlapping operations, revenue gains from cross-selling to each other's customers, or the elimination of a competitor that was eroding prices. When a bid this size appears, the first question to ask is which of those three the buyer is chasing.</p>
+    <p>In payments, the answer usually leans toward the third and second. Stripe built its business serving developers and online merchants, while PayPal owns an enormous consumer wallet and merchant base. Fusing them would give Stripe instant reach into hundreds of millions of consumer accounts it would take years to build organically. That is a revenue-synergy story. But there is a defensive reading too, and it is the more revealing one. The payments industry is staring at two disruptions at once: stablecoins that can move dollars without card networks, and agentic AI systems that can transact on a user's behalf using new standards like the one Visa, Mastercard and Ripple just backed. When incumbents face a technology shift that could bypass their toll booths, they often respond by consolidating, because scale buys time and negotiating power against the new rails.</p>
+    <p>Here is the mechanism that makes a big bid informative. An acquirer has to underwrite the price against a forecast of the industry five to ten years out. To justify $53 billion, Stripe's backers must believe payments will consolidate into a few dominant platforms rather than fragment into many niche players, and that owning both developer and consumer sides is the way to defend margins as stablecoins and AI agents compress fees. The size of the bid is essentially a wager on that structure. If they thought the future was fragmented and fee-light, they would not pay up for scale; they would keep their cash.</p>
+    <p>The practical lesson for a reader is to treat large acquisitions as forecasts, not just transactions. The deal may fail, since PayPal has been reluctant and antitrust review looms. But the willingness to bid tells you how a sophisticated, cash-rich operator reads its own industry's direction. When you see incumbents in a disrupted sector reaching for scale through mega-deals, it usually means they expect the disruption to be real and are buying defensive mass before it arrives. The price tag is the confidence interval.</p>
+    <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/15/stripe-mounts-blockbuster-usd53-billion-bid-to-buy-paypal" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Stripe Mounts Blockbuster $53 Billion Bid to Buy PayPal</a></p>
+    <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/07/15/visa-mastercard-and-ripple-join-the-standard-letting-ai-agents-pay-in-stablecoins" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- AI Agentic Payments Enter Mainstream as Visa, Mastercard, Ripple Back x402 Standard</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>September FOMC pricing.</strong> With July hike odds cut to 13%, the live debate moves to September; watch the futures curve and any Fed speak for whether the market starts pricing cuts rather than hikes.</li>
+      <li><strong>Follow-through inflation and retail data.</strong> One soft CPI print does not settle the trend, so the next reads on prices and consumer spending test whether the disinflation is durable or a single-month base effect.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>TSMC and ASML.</strong> The chip bellwethers report into a jittery AI tape; their guidance is the cleanest referee on whether hardware demand is intact after IBM's software-side miss.</li>
+      <li><strong>Bank cohort wrap.</strong> After record prints from JPMorgan, Goldman and Morgan Stanley, watch whether regional and consumer-facing banks confirm the loan-demand rebound or expose weaker credit.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Stripe-PayPal.</strong> A $53 billion bid with a reluctant target and antitrust risk; watch for PayPal's board response and any competing interest or regulatory pushback.</li>
+      <li><strong>Paramount-WBD close.</strong> Management still targets a late-September close despite the multistate suit; watch the litigation calendar for anything that moves the timeline.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran and Hormuz.</strong> The tension that capped the post-CPI rally is unresolved; oil is the single variable that can revive the hike trade, so watch crude and any de-escalation signals.</li>
+      <li><strong>Oil pass-through.</strong> With crude still elevated, watch whether energy starts leaking back into inflation expectations and undercuts the disinflation read the June print delivered.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Jul 15, 2026)</h4>
+      <p><strong>Worked:</strong> CNBC Top News (9 fresh, newest 2026-07-15 08:11 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-14 14:17 ET); CoinDesk (25 fresh, newest 2026-07-15 08:11 ET); Stratechery (2 fresh, newest 2026-07-15 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Bloomberg Markets: HTTP Error 404: Not Found; Bloomberg Technology: HTTP Error 404: Not Found; Bloomberg Economics: HTTP Error 404: Not Found Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. June CPI came in soft. What happened to July Fed rate-hike odds?</strong></p>
+      <span class="opt" data-opt="A">A. They climbed toward a coin flip as oil kept lifting prices</span>
+      <span class="opt" data-opt="B">B. They collapsed from 43% to 13% on the cooler print</span>
+      <span class="opt" data-opt="C">C. They held steady because the Fed had already signaled a hike</span>
+      <span class="opt" data-opt="D">D. They jumped after the report confirmed sticky core inflation</span>
+      <div class="feedback"><strong>B is correct.</strong> The soft June print pulled implied July hike odds from 43% down to 13%, shifting the live debate to the September FOMC. Odds did not climb or hold, and the report showed the inflation impulse fading rather than sticky core prices.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. Morgan Stanley posted record revenue and profit. What drove the blockbuster quarter?</strong></p>
+      <span class="opt" data-opt="A">A. A 69% surge in equities-trading revenue, mirroring its peers</span>
+      <span class="opt" data-opt="B">B. A one-time gain from selling its wealth-management arm</span>
+      <span class="opt" data-opt="C">C. Sharp cost cuts after laying off half its trading desk</span>
+      <span class="opt" data-opt="D">D. A regulatory refund on prior capital charges it had paid</span>
+      <div class="feedback"><strong>A is correct.</strong> Like Goldman and JPMorgan, Morgan Stanley's record results were driven by a massive beat in equities trading, up 69%. There was no unit sale, no gutting of the trading desk, and no regulatory refund behind the print.</div>
+    </div>
+    <div class="q" data-correct="C">
+      <p><strong>3. Why can a single soft inflation print swing rate-hike odds so sharply?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed is legally required to follow each monthly CPI reading</span>
+      <span class="opt" data-opt="B">B. Rate-hike odds are fixed by Congress and rarely change at all</span>
+      <span class="opt" data-opt="C">C. Fed funds futures reprice instantly as expectations shift</span>
+      <span class="opt" data-opt="D">D. Banks vote on the hike probability after every inflation report</span>
+      <div class="feedback"><strong>C is correct.</strong> The headline odds are read out of fed funds futures, which reprice the moment new data hits, so a surprise gaps the implied probability. The Fed is not bound to follow CPI mechanically, Congress does not set the odds, and no one votes on the number.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "A soft June CPI print that fell 0.4% gutted the July rate-hike trade, pulling implied odds from 43% to 13% and lifting bitcoin near $65,000, with the live debate shifting to the September FOMC even as elevated oil remains the one variable that could drag the hawkish math back.",
+    "sources": [
+      { "name": "CoinDesk", "lean": "bull", "url": "https://www.coindesk.com/markets/2026/07/15/bitcoin-tops-usd64-000-as-cooling-u-s-inflation-guts-the-fed-rate-hike-trade", "take": "Cool CPI cut hike odds from 43% to 13%." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/economy", "take": "Softer inflation takes a July move off the table." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/markets", "take": "Risk assets rally as the hike premium unwinds." },
+      { "name": "The Economist", "lean": "neutral", "url": "https://www.economist.com/finance-and-economics", "take": "One print does not confirm a trend with oil high." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/economy/", "take": "The Fed debate flips from hikes toward patience." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/markets", "take": "Elevated crude keeps the tightening risk alive." }
+    ]
+  },
+  "iran": {
+    "diverge": "Rising US-Iran tension and a contested Hormuz kept crude elevated and capped the risk rally that soft CPI would otherwise have delivered, with oil the single variable capable of reviving the July hike math and reversing the disinflation read.",
+    "sources": [
+      { "name": "CoinDesk", "lean": "bear", "url": "https://www.coindesk.com/markets/2026/07/15/crypto-steadies-as-middle-east-tensions-counter-u-s-inflation-report-boost", "take": "Middle East tension counters the CPI boost." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/markets", "take": "The Hormuz premium can undo the inflation relief." },
+      { "name": "The Economist", "lean": "bear", "url": "https://www.economist.com/middle-east-and-africa", "take": "A contested chokepoint keeps risk in the barrel." },
+      { "name": "NYT", "lean": "bull", "url": "https://www.nytimes.com/section/world/middleeast", "take": "The inflation impulse faded despite elevated oil." },
+      { "name": "CNBC", "lean": "neutral", "url": "https://www.cnbc.com/oil/", "take": "De-escalation would let the relief rally extend." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/energy", "take": "Crude is the switch that can flip the trade." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "IBM's preliminary miss spooked the software complex, but Stratechery's Ben Thompson argues it is IBM-specific rather than a sector signal, even as Goldman, JPMorgan and Morgan Stanley emerge as AI-boom winners, OpenAI pushes an agentic super app, and Benchmark's Mark Palmer hikes Hut 8 on its AI pivot.",
+    "sources": [
+      { "name": "Stratechery", "lean": "neutral", "url": "https://stratechery.com/2026/ibm-misses-ibms-mainframe-moat-ibms-many-ai-problems/", "take": "IBM's miss is company-specific, not a sector read." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/07/14/goldman-sachs-and-jpmorgan-chase-are-emerging-as-ai-winners.html", "take": "Banks are among the AI boom's newest winners." },
+      { "name": "The Economist", "lean": "bear", "url": "https://www.economist.com/business", "take": "The financing question behind the buildout persists." },
+      { "name": "WSJ", "lean": "neutral", "url": "https://www.wsj.com/tech", "take": "TSMC and ASML results will referee the demand story." },
+      { "name": "NYT", "lean": "neutral", "url": "https://www.nytimes.com/section/technology", "take": "OpenAI's Codex pivot tests the chat category." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/technology", "take": "Agentic payments show demand finding new surfaces." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["IBM","Circle","Lucid","Coinbase","Nvidia","PayPal"],
+    "values": [-6.0, -4.0, -9.0, 3.0, 2.0, 12.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [20000, 14500, 12500, 6000, 16000],
+    "colors": ["bull","bull","neutral","neutral","bull"]
+  },
+  "dealSizes": {
+    "labels": ["Stripe/PayPal","Nebius/Reflection","GMI Cloud Loan"],
+    "values": [53.0, 1.0, 0.635]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="js/digest-date.js?v=20260713"></script>
+<script src="js/config.js?v=20260713"></script>
+<script src="js/repair-dom.js?v=20260713"></script>
+<script src="js/digest-ui.js?v=20260713"></script>
+<script src="js/charts-core.js?v=20260713"></script>
+<script src="js/archive.js?v=20260713"></script>
+<script src="js/artifact-equities.js?v=20260713"></script>
+<script src="js/charts-macro.js?v=20260713"></script>
+<script src="js/artifact-framing.js?v=20260713"></script>
+<script src="js/verdict-updater.js?v=20260713"></script>
+<script src="js/digest-init.js?v=20260713"></script>
+
+</body>
+</html>
