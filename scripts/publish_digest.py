@@ -26,9 +26,17 @@ INDEX = ROOT / "docs" / "index.html"
 INCOMING = ROOT / "incoming" / "new-main.html"
 ARCHIVE_DIR = ROOT / "docs" / "archive"
 MANIFEST = ARCHIVE_DIR / "manifest.json"
+ARCHIVE_SCRIPT_RE = re.compile(r'(<script\b[^>]*\bsrc=["\'])js/', re.I)
+ARCHIVE_STYLE_RE = re.compile(r'(<link\b[^>]*\bhref=["\'])css/', re.I)
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from repair_main import repair_main_html
+
+
+def archive_safe_asset_paths(html: str) -> str:
+    """Make root-local JS/CSS references work from docs/archive/*.html."""
+    html = ARCHIVE_SCRIPT_RE.sub(r"\1../js/", html)
+    return ARCHIVE_STYLE_RE.sub(r"\1../css/", html)
 
 
 def archive_previous_day(current_html: str, today_iso: str) -> None:
@@ -52,6 +60,7 @@ def archive_previous_day(current_html: str, today_iso: str) -> None:
     snapshot_path = ARCHIVE_DIR / f"{old_date_iso}.html"
     if not snapshot_path.exists():
         snapshot = re.sub(r"<main>", lambda m: "<main>\n" + banner, current_html, count=1)
+        snapshot = archive_safe_asset_paths(snapshot)
         snapshot_path.write_text(snapshot)
         print(f"Archived {snapshot_path.relative_to(ROOT)}")
 

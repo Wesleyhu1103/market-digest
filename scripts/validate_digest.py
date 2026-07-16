@@ -18,10 +18,42 @@ from digest_contracts import (  # noqa: E402
 
 LIVE_URL = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/index.html"
 LIVE_BASE = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/"
+DOCS_ROOT = Path(__file__).resolve().parents[1] / "docs"
 
 STATIC_RULES = validate_static_rules()
 RULES = validate_main_rules()
 HTML_ONLY = validate_html_only_descs()
+
+
+def _is_remote_ref(ref: str) -> bool:
+    return ref.startswith(("http://", "https://", "//", "data:"))
+
+
+def _local_asset_path(ref: str, html_path: Path) -> Path:
+    clean = ref.split("?", 1)[0].split("#", 1)[0]
+    if clean.startswith("/"):
+        return (DOCS_ROOT / clean.lstrip("/")).resolve()
+    return (html_path.parent / clean).resolve()
+
+
+def local_asset_refs(html: str) -> list[str]:
+    refs: list[str] = []
+    refs.extend(re.findall(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I))
+    refs.extend(re.findall(r'<link[^>]+href=["\']([^"\']+)["\']', html, re.I))
+    return [ref for ref in refs if not _is_remote_ref(ref)]
+
+
+def validate_local_assets(html: str, html_path: Optional[Path]) -> bool:
+    if not html_path:
+        return True
+
+    refs = local_asset_refs(html)
+    missing = [ref for ref in refs if not _local_asset_path(ref, html_path).is_file()]
+    if missing:
+        print("FAIL local assets: missing " + ", ".join(missing))
+        return False
+    print(f"OK   local assets: {len(refs)} checked")
+    return True
 
 
 def _fetch_text(url: str) -> str:
@@ -38,10 +70,12 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
             continue
         rel = src.lstrip("/")
         if html_path:
-            fp = (html_path.parent / rel).resolve()
+            fp = _local_asset_path(src, html_path)
             if fp.is_file():
                 parts.append(fp.read_text())
                 continue
+            print(f"WARN: missing local script {src}")
+            continue
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -86,6 +120,8 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    if not validate_local_assets(html, html_path):
+        failures += 1
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -104,7 +140,7 @@ def main():
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
