@@ -29,20 +29,51 @@ def _fetch_text(url: str) -> str:
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
 
 
+def _is_remote_asset(src: str) -> bool:
+    return src.startswith(("http://", "https://", "//"))
+
+
+def _asset_file(src: str, html_path: Path) -> Path:
+    rel = src.split("?")[0].split("#")[0].lstrip("/")
+    return (html_path.parent / rel).resolve()
+
+
+def _display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(Path.cwd()))
+    except ValueError:
+        return str(path)
+
+
+def collect_local_asset_errors(html: str, html_path: Optional[Path]) -> list[str]:
+    """Return missing local script/style assets for on-disk HTML validation."""
+    if not html_path:
+        return []
+    errors: list[str] = []
+    refs = re.findall(r'(?:src|href)=["\']([^"\']+)["\']', html, re.I)
+    for src in refs:
+        rel = src.split("?")[0].split("#")[0].lstrip("/")
+        if _is_remote_asset(src) or not rel.startswith(("js/", "css/", "../js/", "../css/")):
+            continue
+        if not _asset_file(src, html_path).is_file():
+            errors.append(f"{src} (resolved from {_display_path(html_path)})")
+    return errors
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
     for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
         src = m.group(1).split("?")[0]
-        if src.startswith(("http://", "https://", "//")):
+        if _is_remote_asset(src):
             continue
-        rel = src.lstrip("/")
         if html_path:
-            fp = (html_path.parent / rel).resolve()
+            fp = _asset_file(src, html_path)
             if fp.is_file():
                 parts.append(fp.read_text())
-                continue
+            continue
         try:
+            rel = src.lstrip("/")
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
             print(f"WARN: could not load script {src}")
@@ -77,6 +108,7 @@ def main():
     else:
         html = _fetch_text(LIVE_URL)
 
+    asset_errors = collect_local_asset_errors(html, html_path)
     js_bundle = collect_js(html, html_path)
 
     main_block = re.search(r"<main>[\s\S]*?</main>", html, re.DOTALL)
@@ -86,6 +118,12 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    if asset_errors:
+        for err in asset_errors:
+            print(f"FAIL local script/style asset: {err}")
+        failures += 1
+    else:
+        print("OK   local script/style assets")
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -104,7 +142,7 @@ def main():
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
