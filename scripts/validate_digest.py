@@ -29,6 +29,34 @@ def _fetch_text(url: str) -> str:
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
 
 
+def local_asset_failures(html: str, html_path: Optional[Path]) -> int:
+    if not html_path:
+        return 0
+
+    failures = 0
+    refs: list[tuple[str, str]] = []
+    for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
+        refs.append(("script", m.group(1)))
+    for m in re.finditer(r'<link\b[^>]*>', html, re.I):
+        tag = m.group(0)
+        if not re.search(r'\brel=["\']stylesheet["\']', tag, re.I):
+            continue
+        href = re.search(r'\bhref=["\']([^"\']+)["\']', tag, re.I)
+        if href:
+            refs.append(("stylesheet", href.group(1)))
+
+    for kind, ref in refs:
+        src = ref.split("?")[0]
+        if src.startswith(("http://", "https://", "//")):
+            continue
+        rel = src.lstrip("/")
+        fp = (html_path.parent / rel).resolve()
+        if not fp.is_file():
+            print(f"FAIL local {kind}: missing {src} resolved from {html_path}")
+            failures += 1
+    return failures
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
@@ -41,7 +69,7 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
             fp = (html_path.parent / rel).resolve()
             if fp.is_file():
                 parts.append(fp.read_text())
-                continue
+            continue
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -77,6 +105,7 @@ def main():
     else:
         html = _fetch_text(LIVE_URL)
 
+    failures = local_asset_failures(html, html_path)
     js_bundle = collect_js(html, html_path)
 
     main_block = re.search(r"<main>[\s\S]*?</main>", html, re.DOTALL)
@@ -85,7 +114,6 @@ def main():
         sys.exit(1)
     main_block = main_block.group(0)
 
-    failures = 0
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
