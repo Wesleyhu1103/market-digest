@@ -29,21 +29,65 @@ def _fetch_text(url: str) -> str:
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
 
 
+def _is_remote_ref(ref: str) -> bool:
+    return ref.startswith(("http://", "https://", "//", "data:"))
+
+
+def _local_asset_path(html_path: Path, ref: str) -> Path:
+    rel = ref.split("?", 1)[0].split("#", 1)[0]
+    if rel.startswith("/"):
+        for parent in (html_path.parent, *html_path.parents):
+            if parent.name == "docs":
+                return (parent / rel.lstrip("/")).resolve()
+        return (html_path.parent / rel.lstrip("/")).resolve()
+    return (html_path.parent / rel).resolve()
+
+
+def _local_script_refs(html: str) -> list[str]:
+    refs = []
+    for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
+        ref = m.group(1)
+        if not _is_remote_ref(ref):
+            refs.append(ref)
+    return refs
+
+
+def _local_stylesheet_refs(html: str) -> list[str]:
+    refs = []
+    for m in re.finditer(r"<link\b[^>]*>", html, re.I):
+        tag = m.group(0)
+        if not re.search(r'\brel=["\'][^"\']*\bstylesheet\b', tag, re.I):
+            continue
+        href = re.search(r'\bhref=["\']([^"\']+)["\']', tag, re.I)
+        if href and not _is_remote_ref(href.group(1)):
+            refs.append(href.group(1))
+    return refs
+
+
+def missing_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
+    if not html_path:
+        return []
+    missing = []
+    for ref in _local_script_refs(html) + _local_stylesheet_refs(html):
+        if not _local_asset_path(html_path, ref).is_file():
+            missing.append(ref)
+    return missing
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
-    for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
-        src = m.group(1).split("?")[0]
-        if src.startswith(("http://", "https://", "//")):
+    for ref in _local_script_refs(html):
+        src = ref.split("?", 1)[0].split("#", 1)[0]
+        if _is_remote_ref(ref):
             continue
-        rel = src.lstrip("/")
         if html_path:
-            fp = (html_path.parent / rel).resolve()
+            fp = _local_asset_path(html_path, ref)
             if fp.is_file():
                 parts.append(fp.read_text())
-                continue
+            continue
         try:
-            parts.append(_fetch_text(LIVE_BASE + rel))
+            parts.append(_fetch_text(LIVE_BASE + src.lstrip("/")))
         except OSError:
             print(f"WARN: could not load script {src}")
     for block in re.findall(r"<script>([\s\S]*?)</script>", html):
@@ -78,6 +122,7 @@ def main():
         html = _fetch_text(LIVE_URL)
 
     js_bundle = collect_js(html, html_path)
+    missing_assets = missing_local_assets(html, html_path)
 
     main_block = re.search(r"<main>[\s\S]*?</main>", html, re.DOTALL)
     if not main_block:
@@ -100,11 +145,16 @@ def main():
         print(("OK   " if ok else "FAIL ") + f"{desc}: {n}/{exp}")
         if not ok:
             failures += 1
+    if missing_assets:
+        print("FAIL local assets: missing " + ", ".join(missing_assets))
+        failures += 1
+    else:
+        print("OK   local assets: all referenced local scripts/styles exist")
 
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
