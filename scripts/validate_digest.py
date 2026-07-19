@@ -24,9 +24,32 @@ RULES = validate_main_rules()
 HTML_ONLY = validate_html_only_descs()
 
 
+def is_remote_asset(url: str) -> bool:
+    return url.startswith(("http://", "https://", "//"))
+
+
 def _fetch_text(url: str) -> str:
     req = urllib.request.Request(url, headers={"Cache-Control": "no-cache"})
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
+
+
+def local_asset_errors(html: str, html_path: Optional[Path]) -> list[str]:
+    if not html_path:
+        return []
+    errors: list[str] = []
+    for kind, pattern in (
+        ("script", r'<script[^>]+src=["\']([^"\']+)["\']'),
+        ("stylesheet", r'<link[^>]+href=["\']([^"\']+)["\'][^>]*rel=["\']stylesheet["\']|<link[^>]*rel=["\']stylesheet["\'][^>]+href=["\']([^"\']+)["\']'),
+    ):
+        for m in re.finditer(pattern, html, re.I):
+            asset = next((g for g in m.groups() if g), "")
+            src = asset.split("?")[0]
+            if is_remote_asset(src):
+                continue
+            fp = (html_path.parent / src.lstrip("/")).resolve()
+            if not fp.is_file():
+                errors.append(f"missing local {kind} asset {asset} (resolved {fp})")
+    return errors
 
 
 def collect_js(html: str, html_path: Optional[Path]) -> str:
@@ -34,7 +57,7 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
     parts: list[str] = []
     for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
         src = m.group(1).split("?")[0]
-        if src.startswith(("http://", "https://", "//")):
+        if is_remote_asset(src):
             continue
         rel = src.lstrip("/")
         if html_path:
@@ -42,6 +65,8 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
             if fp.is_file():
                 parts.append(fp.read_text())
                 continue
+            print(f"WARN: missing local script {src}")
+            continue
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -77,6 +102,7 @@ def main():
     else:
         html = _fetch_text(LIVE_URL)
 
+    asset_errors = local_asset_errors(html, html_path)
     js_bundle = collect_js(html, html_path)
 
     main_block = re.search(r"<main>[\s\S]*?</main>", html, re.DOTALL)
@@ -86,6 +112,9 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    for err in asset_errors:
+        print(f"FAIL asset: {err}")
+        failures += 1
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))

@@ -22,6 +22,14 @@ function mdGet(path) {
   return fetch(mdApiUrl(path));
 }
 
+function mdEditionIso() {
+  if (window.DigestDate && typeof DigestDate.editionIso === 'function') {
+    var iso = DigestDate.editionIso();
+    if (iso) return iso;
+  }
+  return new Date().toISOString().slice(0, 10);
+}
+
 function mdVoterId() {
   const key = 'marketDigest_voterId';
   try {
