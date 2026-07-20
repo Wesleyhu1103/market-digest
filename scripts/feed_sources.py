@@ -24,6 +24,15 @@ FEEDS: dict[str, str] = {
     "Bloomberg Technology": "https://feeds.bloomberg.com/technology/news.rss",
     "Bloomberg Economics": "https://feeds.bloomberg.com/economics/news.rss",
     "CNBC Top News": "https://www.cnbc.com/id/10001147/device/rss/rss.html",
+    # Non-Bloomberg general-market feeds: CNBC Top News alone delivered only
+    # 1-9 fresh items/day vs Bloomberg's 45-75, so the digest skewed Bloomberg
+    # by pool composition. Verify additions with .github/workflows/feed-check.yml.
+    "CNBC Finance": "https://www.cnbc.com/id/10000664/device/rss/rss.html",
+    "CNBC Economy": "https://www.cnbc.com/id/20910258/device/rss/rss.html",
+    "MarketWatch Top Stories": "https://feeds.marketwatch.com/marketwatch/topstories/",
+    "WSJ Markets": "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain",
+    "Yahoo Finance": "https://finance.yahoo.com/news/rssindex",
+    "FT Home": "https://www.ft.com/rss/home",
     "Matt Levine Money Stuff": "https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine.rss",
     "CoinDesk": "https://www.coindesk.com/arc/outboundfeeds/rss",
     "Stratechery": "https://stratechery.com/feed/",
@@ -301,6 +310,24 @@ def build_sources_html(reports: list[FeedResult], today: datetime) -> str:
   </section>"""
 
 
+def check_feeds() -> int:
+    """CLI: fetch every configured feed and print a status table.
+
+    Exit code is 0 unless EVERY feed fails (stale/empty feeds are normal —
+    e.g. Money Stuff on days with no column). Used by feed-check.yml.
+    """
+    failed = 0
+    print(f"{'feed':30s} {'status':8s} {'fetched':>7s} {'fresh':>5s}  newest")
+    for name, url in FEEDS.items():
+        _, rep = fetch_feed(name, url)
+        if rep.status == "failed":
+            failed += 1
+        detail = rep.error if rep.status == "failed" else (rep.newest or "-")
+        print(f"{name:30s} {rep.status:8s} {rep.items_fetched:7d} {rep.items_fresh:5d}  {detail}")
+    print(f"\n{len(FEEDS) - failed}/{len(FEEDS)} feeds reachable")
+    return 1 if failed == len(FEEDS) else 0
+
+
 def inject_sources_section(main_html: str, sources_html: str) -> str:
     if re.search(r'<section id=["\']sources["\']', main_html):
         return re.sub(
@@ -310,3 +337,7 @@ def inject_sources_section(main_html: str, sources_html: str) -> str:
             count=1,
         )
     return main_html.replace("</main>", sources_html + "\n</main>", 1)
+
+
+if __name__ == "__main__":
+    raise SystemExit(check_feeds())

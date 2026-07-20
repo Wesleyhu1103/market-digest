@@ -97,12 +97,14 @@
     var labels = mdTimeAxisLabels(series, state.range);
     var dividers = [], prevKey = null, i, d, key;
     for (i = 0; i < series.length; i++) {
-      if (!labels[i]) continue;
       d = new Date(series[i].t);
-      if (state.range === '1d') {
-        key = d.toISOString().slice(0, 10) + '-' + d.getHours();
-      } else if (state.range === '1w' || state.range === '1m') {
-        key = String(i);
+      if (state.range === '1w') {
+        // divider at each trading-day boundary (labels sit mid-day now)
+        key = mdEtDayKey(d);
+      } else if (!labels[i]) {
+        continue;
+      } else if (state.range === '1d' || state.range === '1m') {
+        key = labels[i] + '@' + i;
       } else {
         key = d.getFullYear() + '-' + d.getMonth();
       }
@@ -134,8 +136,10 @@
               var pt = chart.config._mktSeries && chart.config._mktSeries[idx];
               if (pt) {
                 var dd = new Date(pt.t);
-                if (state.range === '1d') return dd.toLocaleString('en-US', { weekday: 'short', hour: 'numeric', minute: '2-digit' });
-                return dd.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                if (state.range === '1d' || state.range === '1w') {
+                  return dd.toLocaleString('en-US', { weekday: 'short', hour: 'numeric', minute: '2-digit', timeZone: MD_MARKET_TZ }) + ' ET';
+                }
+                return dd.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: MD_MARKET_TZ });
               }
               return '';
             },
@@ -213,17 +217,25 @@
 
   function render(series, quote) {
     var t = tc();
-    var up = (quote.price - quote.prevClose) >= 0;
+    // Change readout and line color follow the SELECTED range: vs previous
+    // close on 1D, vs the start of the window on 1W/1M/1Y (CNBC-style), so
+    // the headline never says "up" over a chart that falls.
+    var baseline = quote.prevClose;
+    if (state.range !== '1d' && series.length) baseline = series[0].v;
+    if (baseline == null) baseline = series.length ? series[0].v : quote.price;
+    var up = (quote.price - baseline) >= 0;
     var color = up ? t.bull : t.bear;
     var meta = symMeta();
 
     q('title').textContent = meta.label;
     q('price').textContent = fmt(quote.price);
-    var chg = quote.price - quote.prevClose;
-    var pct = quote.prevClose ? (chg / quote.prevClose) * 100 : 0;
+    var chg = quote.price - baseline;
+    var pct = baseline ? (chg / baseline) * 100 : 0;
     var chgEl = q('change');
     chgEl.className = 'mkt-change ' + (up ? 'up' : 'down');
-    chgEl.textContent = (up ? '+' : '') + fmt(chg) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+    var rangeLbl = mdRangeChangeLabel(state.range);
+    chgEl.textContent = (up ? '+' : '') + fmt(chg) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)'
+      + (rangeLbl ? ' ' + rangeLbl : '');
     var live = window.MarketFeed.sessionPhase && window.MarketFeed.sessionPhase() === 'live';
     q('dot').className = 'mkt-dot' + (live ? ' live' : '');
     q('source').textContent = 'Source: ' + meta.source;
@@ -262,6 +274,16 @@
     return;
   }
 
+  // Destroy the current chart and drop it from the shared registry so range
+  // and symbol switches don't leak orphaned Chart instances.
+  function dropChart() {
+    if (!chart) return;
+    var old = chart;
+    chart = null;
+    try { old.destroy(); } catch (_) {}
+    window.allCharts = (window.allCharts || []).filter(function(c) { return c !== old; });
+  }
+
   function load() {
     var token = ++reqToken;
     var meta = rangeMeta();
@@ -275,12 +297,12 @@
       var series = res[0] || [], quote = res[1] || {};
       if (!series.length) throw new Error('no series');
       if (quote.price == null) { quote.price = series[series.length - 1].v; quote.prevClose = series[0].v; }
+      dropChart();
       wrap.innerHTML = '<canvas data-el="canvas"></canvas>';
-      chart = null;
       render(series, quote);
     }).catch(function(e) {
       if (token !== reqToken) return;
-      if (chart) { chart.destroy(); chart = null; }
+      dropChart();
       wrap.innerHTML = '<div class="mkt-error">Live market data unavailable.</div>';
       q('source').textContent = '';
       console.warn('[mkt-chart]', e && e.message);

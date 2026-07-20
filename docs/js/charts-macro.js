@@ -166,6 +166,20 @@
     var pct = prev ? (chg / prev) * 100 : 0;
     api.qChange.textContent = fmtChg(chg, pct, up);
   }
+  // Baseline for the change readout, consistent with the selected range:
+  // previous close on 1D, start of the displayed window otherwise — so the
+  // headline agrees with the chart it sits above.
+  function rangeBaseline(rangeKey, quote, values) {
+    if (rangeKey === '1d' && quote && quote.prevClose != null) return quote.prevClose;
+    for (var i = 0; i < values.length; i++) {
+      if (values[i] != null && isFinite(values[i])) return values[i];
+    }
+    return quote && quote.prevClose != null ? quote.prevClose : null;
+  }
+  function pctChangeSuffix(api) {
+    var lbl = mdRangeChangeLabel(api.range);
+    return lbl ? ' ' + lbl : '';
+  }
   function yScaleFromValues(values, fmt, t) {
     var nums = values.filter(function(v) { return v != null && isFinite(v); });
     if (!nums.length) nums = [0, 1];
@@ -277,9 +291,10 @@
         var d2 = fred && fred.DGS2 ? mergeFredOntoLive(tnxSeries, fred.DGS2, function(pt) { return pt.value; }) : d10.map(function() { return null; });
         var vals = d10.concat(d30).concat(d2).filter(function(v) { return v != null && isFinite(v); });
         var last = quote && quote.price != null ? quote.price : d10[d10.length - 1];
-        var prev = quote && quote.prevClose != null ? quote.prevClose : (d10.length > 1 ? d10[d10.length - 2] : last);
+        var prev = rangeBaseline(api.range, quote, d10);
+        if (prev == null) prev = last;
         setHeadline(api, last, prev, function(v) { return Number(v).toFixed(2) + '% (10Y)'; }, function(chg, pct, up) {
-          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)' + pctChangeSuffix(api);
         });
         setSource(api, 'Cboe / FRED', true);
         var tip = macroTooltipBase(api.range, function(i) { return tnxSeries[i]; });
@@ -318,9 +333,11 @@
         d2.forEach(function(v) { if (v != null) vals.push(v); });
         d30.forEach(function(v) { if (v != null) vals.push(v); });
         var last = d10[d10.length - 1];
-        var prev = d10.length > 1 ? d10[d10.length - 2] : last;
+        var prev = api.range === '1d'
+          ? (d10.length > 1 ? d10[d10.length - 2] : last)
+          : (d10.length ? d10[0] : last);
         setHeadline(api, last, prev, function(v) { return v.toFixed(2) + '% (10Y)'; }, function(chg, pct, up) {
-          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)' + pctChangeSuffix(api);
         });
         setSource(api, 'FRED / U.S. Treasury', false);
         var tip = macroTooltipBase(api.range, function(i) { return points[i]; });
@@ -368,14 +385,15 @@
     api.reload = function() {
       var meta = rangeMeta(api.range);
       var t = tc();
-      function drawFromSeries(series) {
+      function drawFromSeries(series, quote) {
         if (!series.length) return;
         var labels = mdTimeAxisLabels(series, api.range);
         var values = series.map(function(p) { return p.v; });
-        var last = values[values.length - 1];
-        var prev = values.length > 1 ? values[0] : last;
+        var last = quote && quote.price != null ? quote.price : values[values.length - 1];
+        var prev = rangeBaseline(api.range, quote, values);
+        if (prev == null) prev = last;
         setHeadline(api, last, prev, function(v) { return '$' + Number(v).toFixed(2); }, function(chg, pct, up) {
-          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)' + pctChangeSuffix(api);
         });
         setSource(api, 'ICE / Yahoo Finance', true);
         var up = (last - prev) >= 0;
@@ -401,7 +419,12 @@
         }, series);
       }
       if (window.MarketFeed) {
-        window.MarketFeed.series('BZ=F', meta.range, meta.interval).then(drawFromSeries).catch(function() {
+        Promise.all([
+          window.MarketFeed.series('BZ=F', meta.range, meta.interval),
+          macroFeed(function() { return window.MarketFeed.quote('BZ=F'); }, null)
+        ]).then(function(res) {
+          drawFromSeries(res[0], res[1] || null);
+        }).catch(function() {
           if (!fredMacro || !fredMacro.brent) return;
           var rows = sliceFred(fredMacro.brent, api.range);
           drawFromSeries(rows.map(function(r) { return { t: new Date(r.date + 'T12:00:00').getTime(), v: r.value }; }));
@@ -426,20 +449,30 @@
       var labels = dateLabels(rows, api.range);
       var hy = rows.map(function(r) { return r.value * 100; });
       var ig = mapFilled(rows, credit.IG_OAS, function(pt) { return pt.value * 100; });
-      var vals = hy.concat(ig).filter(function(v) { return v != null; });
       var last = hy[hy.length - 1];
-      var prev = hy.length > 1 ? hy[hy.length - 2] : last;
+      var prev = hy.length > 1 ? hy[0] : last;
       setHeadline(api, last, prev, function(v) { return Math.round(v) + ' bps (HY)'; }, function(chg, pct, up) {
-        return (up ? '+' : '') + Math.round(chg) + ' bps';
+        return ((up ? '+' : '') + Math.round(chg) + ' bps ' + mdRangeChangeLabel(api.range)).trim();
       });
       setDailySource(api, 'FRED / ICE BofA OAS', rows[rows.length - 1].date);
       var t = tc();
       var tip = macroTooltipBase(api.range, function(i) { return points[i]; });
       tip.callbacks.label = function(ctx) { return ctx.dataset.label + ': ' + Math.round(ctx.parsed.y) + ' bps'; };
       var lineOpts = macroLineOpts(t);
+      // HY (~250-450 bps) and IG (~80-130 bps) each get their own axis scaled
+      // to their range — on a shared 50-300 bps axis both plotted as flat
+      // lines and daily moves were invisible. Axis ticks match line colors.
+      var hyAxis = Object.assign(yScaleFromValues(hy, function(v) { return Math.round(v) + ' bps'; }, t), { position: 'left' });
+      var igVals = ig.filter(function(v) { return v != null && isFinite(v); });
+      var igAxis = Object.assign(
+        yScaleFromValues(igVals.length ? igVals : [0, 1], function(v) { return Math.round(v) + ' bps'; }, t),
+        { position: 'right', grid: { display: false } }
+      );
+      hyAxis.ticks.color = t.bear;
+      igAxis.ticks.color = t.anchor;
       renderChart(api, labels, [
-        { label: 'HY OAS', data: hy, borderColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2 },
-        { label: 'IG OAS', data: ig, borderColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 }
+        { label: 'HY OAS (left)', data: hy, borderColor: t.bear, backgroundColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y' },
+        { label: 'IG OAS (right)', data: ig, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
       ], Object.assign({}, lineOpts, {
         plugins: Object.assign({}, lineOpts.plugins, {
           legend: macroLegend(t, true),
@@ -447,7 +480,8 @@
         }),
         scales: {
           x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
-          y: yScaleFromValues(vals, function(v) { return Math.round(v) + ' bps'; }, t)
+          y: hyAxis,
+          y2: igAxis
         }
       }), points);
     };
@@ -467,11 +501,13 @@
         var includeSpread = !!opts.includeSpread && slope && slope.some(function(v) { return v != null && isFinite(v); });
         var datasets = [{
           label: 'VIX', data: vix, borderColor: t.bear, tension: 0.15, pointRadius: 0,
-          borderWidth: 2, yAxisID: 'y', fill: !includeSpread, backgroundColor: includeSpread ? undefined : t.bear + '18'
+          borderWidth: 2, yAxisID: 'y', fill: !includeSpread, backgroundColor: includeSpread ? t.bear : t.bear + '18'
         }];
         if (includeSpread) {
+          // t.anchor (navy), not t.accent: the ECON theme's accent is the same
+          // red as the VIX line, which made the two series indistinguishable.
           datasets.push({
-            label: opts.spreadLabel || '2s10s', data: slope, borderColor: t.accent, tension: 0,
+            label: opts.spreadLabel || '2s10s', data: slope, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0,
             stepped: opts.spreadStepped ? 'before' : false, pointRadius: 0, borderWidth: 2, yAxisID: 'y2'
           });
         }
@@ -486,7 +522,9 @@
         };
         if (includeSpread) {
           scales.y.position = 'left';
+          scales.y.ticks.color = t.bear;
           scales.y2 = Object.assign({}, yScaleFromValues(slope, function(v) { return Math.round(v) + ' bps'; }, t), { position: 'right', grid: { display: false } });
+          scales.y2.ticks.color = t.anchor;
         }
         var lineOpts = macroLineOpts(t);
         renderChart(api, labels, datasets, Object.assign({}, lineOpts, {
@@ -515,9 +553,10 @@
         var spreadDate = credit && credit.TENMINUSTWO && credit.TENMINUSTWO.length
           ? credit.TENMINUSTWO[credit.TENMINUSTWO.length - 1].date : null;
         var last = quote && quote.price != null ? quote.price : vix[vix.length - 1];
-        var prev = quote && quote.prevClose != null ? quote.prevClose : (vix.length > 1 ? vix[vix.length - 2] : last);
+        var prev = rangeBaseline(api.range, quote, vix);
+        if (prev == null) prev = last;
         setHeadline(api, last, prev, function(v) { return Number(v).toFixed(2) + ' (VIX)'; }, function(chg, pct, up) {
-          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)' + pctChangeSuffix(api);
         });
         if (api.qSource) {
           var suffix = window.MarketFeed && window.MarketFeed.asOfStr
@@ -544,9 +583,11 @@
           ? mapFilled(rows, credit.TENMINUSTWO, function(pt) { return pt.value * 100; })
           : null;
         var last = vix[vix.length - 1];
-        var prev = vix.length > 1 ? vix[vix.length - 2] : last;
+        var prev = api.range === '1d'
+          ? (vix.length > 1 ? vix[vix.length - 2] : last)
+          : (vix.length ? vix[0] : last);
         setHeadline(api, last, prev, function(v) { return Number(v).toFixed(2) + ' (VIX)'; }, function(chg, pct, up) {
-          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)';
+          return (up ? '+' : '') + chg.toFixed(2) + ' (' + (up ? '+' : '') + pct.toFixed(2) + '%)' + pctChangeSuffix(api);
         });
         setDailySource(api, 'FRED / CBOE', rows[rows.length - 1].date);
         renderStress(labels, vix, slope, points, {

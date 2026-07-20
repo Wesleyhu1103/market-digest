@@ -1,0 +1,26 @@
+name: Feed check
+
+# On-demand health check for the RSS/Atom feed roster in
+# scripts/feed_sources.py. Run it (Actions tab -> Feed check -> Run
+# workflow, any branch) after adding or suspecting a feed: agent sandboxes
+# often can't reach news CDNs, but Actions runners can, so this is the
+# authoritative reachability test. Fails only if EVERY feed is down.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch all configured feeds
+        run: python3 scripts/feed_sources.py

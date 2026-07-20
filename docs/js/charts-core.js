@@ -29,21 +29,48 @@ function mdFmtNum(v, dp) {
 function mdBarLabelColor() {
   return document.documentElement.getAttribute('data-theme') === 'dark' ? '#ffffff' : '#121212';
 }
+/** All chart times are pinned to the exchange timezone, not the viewer's. */
+var MD_MARKET_TZ = 'America/New_York';
+function mdSeriesDate(pt) {
+  return new Date(pt.t != null ? pt.t : pt.date + 'T12:00:00');
+}
+function mdEtDayKey(d) {
+  return d.toLocaleDateString('en-US', { timeZone: MD_MARKET_TZ });
+}
+/** Suffix clarifying what window a change readout covers ('' on 1D = daily). */
+function mdRangeChangeLabel(rangeKey) {
+  return { '1w': 'past week', '1m': 'past month', '1y': 'past year' }[rangeKey] || '';
+}
+/** One label per trading day, centered mid-day: no duplicate day labels and
+ *  no first-tick overflow that used to shrink the plot area on 1W. */
+function mdWeekDayLabels(series) {
+  var labels = [], starts = [], prev = null, i;
+  for (i = 0; i < series.length; i++) {
+    labels.push('');
+    var key = mdEtDayKey(mdSeriesDate(series[i]));
+    if (key !== prev) { starts.push(i); prev = key; }
+  }
+  for (i = 0; i < starts.length; i++) {
+    var end = i + 1 < starts.length ? starts[i + 1] : series.length;
+    var mid = starts[i] + Math.floor((end - starts[i]) / 2);
+    labels[mid] = mdSeriesDate(series[mid]).toLocaleDateString('en-US', {
+      weekday: 'short', month: 'numeric', day: 'numeric', timeZone: MD_MARKET_TZ
+    });
+  }
+  return labels;
+}
 /** Sparse x-axis labels for live/FRED time series (one label per ~N points). */
 function mdTimeAxisLabels(series, rangeKey) {
+  if (rangeKey === '1w') return mdWeekDayLabels(series);
   var labels = [], i, d, key, prevKey = null, step;
   for (i = 0; i < series.length; i++) {
-    d = new Date(series[i].t != null ? series[i].t : series[i].date + 'T12:00:00');
+    d = mdSeriesDate(series[i]);
     if (rangeKey === '1d') {
-      key = d.toISOString().slice(0, 10) + '-' + d.getHours();
-      if (d.getMinutes() === 0 && (prevKey === null || key !== prevKey)) {
-        labels.push(d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }));
+      key = Math.floor(d.getTime() / 3600000);
+      if (d.getMinutes() === 0 && key !== prevKey) {
+        labels.push(d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: MD_MARKET_TZ }));
         prevKey = key;
       } else labels.push('');
-    } else if (rangeKey === '1w') {
-      step = Math.max(1, Math.round(series.length / 6));
-      labels.push((i === 0 || i === series.length - 1 || i % step === 0)
-        ? d.toLocaleDateString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) : '');
     } else if (rangeKey === '1m') {
       step = Math.max(1, Math.round(series.length / 7));
       labels.push((i === 0 || i === series.length - 1 || i % step === 0)
@@ -58,14 +85,14 @@ function mdTimeAxisLabels(series, rangeKey) {
   }
   return labels;
 }
-/** CNBC-style tooltip date/time for macro and live charts. */
+/** CNBC-style tooltip date/time for macro and live charts (ET). */
 function mdMacroTooltipTitle(rangeKey, pt) {
-  var d = new Date(pt.t != null ? pt.t : pt.date + 'T12:00:00');
-  if (rangeKey === '1d' || rangeKey === '1w') {
+  var d = mdSeriesDate(pt);
+  if ((rangeKey === '1d' || rangeKey === '1w') && pt.t != null) {
     return d.toLocaleString('en-US', {
       weekday: 'short', month: '2-digit', day: '2-digit', year: 'numeric',
-      hour: 'numeric', minute: '2-digit'
-    });
+      hour: 'numeric', minute: '2-digit', timeZone: MD_MARKET_TZ
+    }) + ' ET';
   }
   return d.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
 }
