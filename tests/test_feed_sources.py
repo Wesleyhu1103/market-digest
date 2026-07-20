@@ -55,9 +55,11 @@ class FeedSourcesTests(unittest.TestCase):
         old = module.FeedItem(
             title="old", url="x", desc="", published=now - timedelta(hours=48), published_label=""
         )
+        undated = module.FeedItem(title="undated", url="x", desc="", published=None, published_label="")
         cutoff = now - timedelta(hours=module.FRESH_HOURS)
         self.assertTrue(module._is_fresh(fresh, cutoff))
         self.assertFalse(module._is_fresh(old, cutoff))
+        self.assertFalse(module._is_fresh(undated, cutoff))
 
     def test_build_sources_html_lists_worked_and_failed(self):
         module = load_feed_sources()
