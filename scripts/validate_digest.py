@@ -24,6 +24,32 @@ RULES = validate_main_rules()
 HTML_ONLY = validate_html_only_descs()
 
 
+def _local_asset_path(url: str, html_path: Path) -> Optional[Path]:
+    clean = url.split("?", 1)[0].split("#", 1)[0]
+    if not clean or clean.startswith(("http://", "https://", "//", "data:", "mailto:")):
+        return None
+    if clean.startswith("/"):
+        return (Path(__file__).resolve().parents[1] / "docs" / clean.lstrip("/")).resolve()
+    return (html_path.parent / clean).resolve()
+
+
+def local_asset_failures(html: str, html_path: Optional[Path]) -> list[str]:
+    if not html_path:
+        return []
+    failures: list[str] = []
+    for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
+        src = m.group(1)
+        fp = _local_asset_path(src, html_path)
+        if fp is not None and not fp.is_file():
+            failures.append(f"missing local script {src}")
+    for m in re.finditer(r'<link\b(?=[^>]*\brel=["\'][^"\']*stylesheet)(?=[^>]*\bhref=["\']([^"\']+)["\'])[^>]*>', html, re.I):
+        href = m.group(1)
+        fp = _local_asset_path(href, html_path)
+        if fp is not None and not fp.is_file():
+            failures.append(f"missing local stylesheet {href}")
+    return failures
+
+
 def _fetch_text(url: str) -> str:
     req = urllib.request.Request(url, headers={"Cache-Control": "no-cache"})
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
@@ -36,12 +62,12 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
         src = m.group(1).split("?")[0]
         if src.startswith(("http://", "https://", "//")):
             continue
-        rel = src.lstrip("/")
         if html_path:
-            fp = (html_path.parent / rel).resolve()
-            if fp.is_file():
+            fp = _local_asset_path(src, html_path)
+            if fp is not None and fp.is_file():
                 parts.append(fp.read_text())
-                continue
+            continue
+        rel = src.lstrip("/")
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -86,6 +112,15 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    asset_failures = local_asset_failures(html, html_path)
+    if html_path:
+        if asset_failures:
+            for failure in asset_failures:
+                print(f"FAIL local asset: {failure}")
+            failures += 1
+        else:
+            print("OK   local assets resolve: OK")
+
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -104,7 +139,7 @@ def main():
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 1 + (1 if html_path else 0)
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 

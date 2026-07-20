@@ -25,7 +25,7 @@ class DigestContractsTest(unittest.TestCase):
 
     def test_validate_rule_counts(self):
         self.assertEqual(len(validate_main_rules()), 14)
-        self.assertEqual(len(validate_static_rules()), 6)
+        self.assertEqual(len(validate_static_rules()), 8)
 
     def test_system_prompt_includes_key_rules(self):
         prompt = build_system_prompt()

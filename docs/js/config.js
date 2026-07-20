@@ -10,6 +10,10 @@ function mdMacroFredUrl() {
   if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
   return '/api/fred-data';
 }
+function mdEditionIso() {
+  const edition = window.DigestDate && DigestDate.headerEdition && DigestDate.headerEdition();
+  return (edition && edition.iso) || new Date().toISOString().slice(0, 10);
+}
 function mdPost(path, body) {
   return fetch(mdApiUrl(path), {
     method: 'POST',
