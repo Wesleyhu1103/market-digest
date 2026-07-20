@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Fri Jul 17, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="js/site-config.js?v=20260713"></script>
+<script src="js/market-feed.js?v=20260713"></script>
+<link rel="stylesheet" href="css/digest.css?v=20260713">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-17</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Friday, July 17, 2026</h1>
+    <div class="meta">
+      <p>Monthly options expiration lands on a tape that has flipped hard from yesterday's TSMC euphoria. A surprise model from Chinese startup Moonshot sparked a global chip rout, with Nasdaq futures down 1.6%, the Nikkei and the MSCI EM gauge both sliding into correction. A fresh US strike on Iran keeps oil and Hormuz live, and Fed hawks Schmid and Jefferson revived hike talk as gold heads for a second straight weekly drop.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "A surprise breakthrough from Chinese AI startup Moonshot rippled through global markets Friday, sending semiconductor and AI stocks sharply lower, dragging the Nikkei and MSCI EM index into correction and pulling bitcoin below $63,000, as investors drew parallels to last year's DeepSeek moment and questioned whether the industry's enormous spending spree can still be justified",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "China's Powerful New AI Surprises Investors, Fueling Tech Rout", "angle": "Frames Moonshot as a second DeepSeek shock that reprices the entire capex-heavy AI trade.", "lean": -55, "pull": "Investors drew parallels with last year's DeepSeek moment and questioned whether the spending spree is becoming harder to justify."},
+        {"outlet": "CNBC", "headline": "Chip Stocks Lead the Selloff as Investors Question AI Assumptions", "angle": "Centers the mechanical unwind of crowded, richly valued semiconductor positions.", "lean": -45, "pull": "Traders rushed to exit the stocks that fueled this year's rally but whose valuations grew increasingly rich."},
+        {"outlet": "WSJ", "headline": "A Cheaper Chinese Model Reopens the AI Bubble Debate", "angle": "Treats Moonshot as evidence that compute scarcity, the core bull thesis, may be overstated.", "lean": -30, "pull": "If frontier performance keeps getting cheaper, the case for trillion-dollar buildouts gets harder to defend."},
+        {"outlet": "Financial Times", "headline": "AI Rout Meets an Oil Shock as Iran Strikes Persist", "angle": "Layers the Hormuz risk on top of the tech selloff to explain a broad risk-off session.", "lean": -35, "pull": "A chip unwind and a contested chokepoint are a bad combination for a stretched market."},
+        {"outlet": "The Economist", "headline": "One Cheap Model Does Not End AI, but It Prices the Risk", "angle": "Keeps the focus on whether the financing and valuations can survive a demand-scarcity scare.", "lean": -10, "pull": "The threat is not that AI stops mattering, but that the market paid as if compute would stay scarce forever."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>War-Driven Inflation Revives the Hike Scare as Fed's Jeff Schmid Calls Prices Too Hot and Philip Jefferson Says the Bank Should Consider Raising, With UBS AM's Kevin Zhao Shorting Treasuries on US Growth While the ECB and BOJ Signal Patience</h3>
+      </div>
+      <p>The rate debate tilted hawkish even after this week's soft CPI. Gold is heading for its biggest weekly loss since early June specifically because renewed Middle East hostilities raised fears that higher rates will be needed to contain war-driven inflation, the market's tell that it is pricing higher-for-longer rather than reaching for a haven. Kansas City Fed President Jeff Schmid said inflation is his biggest worry given the risk of a further acceleration, and Vice Chair Philip Jefferson said the bank should consider raising rates if inflation does not cool soon, though he called policy well positioned for now. UBS Asset Management's Kevin Zhao is planning to short Treasuries on a bet that a robust US economy erodes the haven appeal of government debt. The counterweight is patience abroad: the ECB is seen pausing next week before one final September hike, and the BOJ is likely to lift its growth forecast while standing pat after last month's hike to the highest rate since 1995. US homebuilder sentiment slipping to the year's low is the softer domestic tug.</p>
+      <p>The bull case for lower yields is that the CPI print was genuinely soft, Jefferson called policy well positioned, and a slowing housing market argues against tightening into weakness. The bear case is that Schmid and Jefferson both flagged hikes, gold is falling as the market prices war-inflation, and Zhao is putting money behind higher yields on US growth.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (disinflation is intact):</strong> This week's CPI came in soft, Jefferson called policy well positioned for now, and homebuilder sentiment just matched the year's low. A cooling housing market and a global chip unwind argue for patience, not hikes, so the front end can keep pricing a Fed on hold while the ECB and BOJ signal the same restraint.</div>
+        <div class="bear"><strong>Bear (war-inflation forces the hand):</strong> Gold is heading for its worst week since June as strikes revive inflation fears, Fed's Jeff Schmid calls prices too hot, and Philip Jefferson says the bank should consider raising if inflation does not cool. UBS AM's Kevin Zhao is shorting Treasuries on strong US growth. The hawkish tape is winning.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-16/gold-heads-for-weekly-fall-as-hormuz-strikes-raise-fed-hike-bets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Heads for Second Weekly Drop as War Raises Fed Hike Fears</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>A Fresh US Strike on Iran Keeps the Oil-Inflation Risk Alive as Bloomberg Warns the Market Cannot Live Without Hormuz Barrels for Long, While RBI Governor Sanjay Malhotra Flags the War as a Key Risk and Reliance's Founders Buy the Dip After the Conflict</h3>
+      </div>
+      <p>Geopolitics stayed the reversal switch under an already jittery tape. The US carried out another strike on Iran, and Bloomberg's oil desk warned that while flows through the strait have not fully stopped, signs of stress are mounting and the market cannot live without Hormuz barrels for long. Gold falling into its second weekly loss is the clearest read that the crude premium is being priced as an inflation problem rather than a haven bid. The ripples spread wide: RBI Governor Sanjay Malhotra flagged the Iran war and a weak monsoon as the top risks to India's elevated inflation, Malaysia's 5.8% growth surprise came despite the war rather than because of it, and Reliance's founders led by Mukesh Ambani lifted their stake by the most since 2019 after the US-Iran conflict knocked the stock. In crypto, the strike pulled bitcoin under $63,000 as Trump's China comments added to the uncertainty, and wheat swung near a two-year high on Black Sea supply risk.</p>
+      <p>The bull read is that barrels are still flowing and oil has not gapped to a new high, so contained strikes let the disinflation story eventually resume. The bear read is that Bloomberg's own desk says the market cannot do without Hormuz for long, RBI is naming the war a top inflation risk, and gold's slide says the premium is now feeding the hike math.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (barrels still flow):</strong> Flows through Hormuz have not fully stopped and crude has not gapped to a new high, so the market is not pricing a full closure. Malaysia posted a 5.8% growth surprise despite the war, and if the strikes stay contained the premium bleeds out and the soft-CPI disinflation read can reassert itself over the coming weeks.</div>
+        <div class="bear"><strong>Bear (the chokepoint is tightening):</strong> Bloomberg's oil desk warns the market cannot live without Hormuz barrels for long as stress signs mount, RBI's Sanjay Malhotra named the war a top inflation risk, and gold is heading for its worst week since June. A fresh US strike pushed bitcoin under $63,000. The oil overhang keeps risk-off alive.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/newsletters/2026-07-17/oil-market-can-t-live-without-hormuz-barrels-for-long" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oil Market Can't Live Without Hormuz Barrels for Long</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>A Surprise Model From China's Moonshot Sparks a Global Chip Rout as Investors Draw DeepSeek Parallels and Question the Spending Spree, Sending the Nikkei and MSCI EM Into Correction, Halving Kioxia and Prompting Coronation's $47 Billion Fund to Trim TSMC and SK Hynix</h3>
+      </div>
+      <p>Twenty-four hours after TSMC's blowout guide, the AI trade cracked. A surprise breakthrough from Chinese startup Moonshot, whose model closed the gap with US rivals at a fraction of the cost, rippled through markets and revived the DeepSeek fear that the industry's enormous capex may be harder to justify. Nasdaq 100 futures tumbled 1.6% as the chip selloff gathered pace, Japan's Nikkei 225 closed more than 10% below its June peak into a technical correction, and the MSCI EM index headed for a correction of its own. Memory names took the worst of it: Kioxia's market value has halved in a month. Coronation Asset Management, which runs $47 billion, said it trimmed TSMC and SK Hynix and boosted India because AI expectations have risen to levels nearly impossible to beat, while Bloomberg flagged a neglected quant safety trade making a comeback as investors seek sturdy balance sheets. Xi Jinping used the moment at China's top tech summit to pitch cheap AI for all, and IBM's sales warning was called a hammer on tech's AI outsiders. Hyperscaler bonds are now dragging global bond gauges from London to Tokyo.</p>
+      <p>The bulls note the demand story TSMC laid out yesterday is unchanged, and a cheaper model widens the total user base rather than killing the hardware need. The bears say a scarcity thesis just met a cheaper competitor, valuations left no cushion, and the correction across the Nikkei, EM and Kioxia shows how crowded the trade had become.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (cheaper AI widens the market):</strong> TSMC's raised capex and three-year runway from yesterday still stand, and a cheaper, more capable Moonshot model expands the number of AI deployments rather than shrinking the compute bill. Falling inference cost is how a technology goes mainstream, and Xi pushing cheap AI for all only enlarges the ecosystem the hardware winners serve.</div>
+        <div class="bear"><strong>Bear (the scarcity thesis just broke):</strong> Moonshot revived the DeepSeek scare, Nasdaq futures fell 1.6%, the Nikkei and MSCI EM slid into correction, and Kioxia's value halved in a month. Coronation trimmed TSMC and SK Hynix because expectations are impossible to beat, the quant safety trade is back, and hyperscaler bonds are dragging global portfolios. The crowd is unwinding.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-17/china-s-powerful-new-moonshot-ai-model-closes-gap-with-us-rivals" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Powerful New AI Surprises Investors, Fueling Tech Rout</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Nasdaq futures tumble 1.6% as the chip rout deepens</strong></summary>
+      <div class="deal-body">
+        <p>Nasdaq 100 futures fell 1.6% as the global selloff in chipmakers gathered pace, with traders rushing to exit the stocks that fueled this year's rally but whose valuations grew increasingly rich. A crowded trade unwinding on a valuation scare.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-16/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nasdaq Futures Tumble 1.6% as Chip Rout Deepens</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MSCI EM index heads for correction as the chip selloff jolts markets</strong></summary>
+      <div class="deal-body">
+        <p>Emerging-market equities slumped, with the key gauge headed for a technical correction as mounting concerns over stretched AI valuations triggered a selloff in chip stocks across Asia. The rout is broadest where chipmakers dominate the index.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/em-stocks-headed-for-weekly-loss-on-tech-selloff-rising-crude" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- MSCI EM Index Heads for Correction as Chip Selloff Jolts Markets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Netflix drops after forecasting a second straight quarter of slowing sales growth</strong></summary>
+      <div class="deal-body">
+        <p>Netflix (NFLX) shares fell after guiding to another quarter of decelerating revenue and saying it would give fewer engagement updates, cutting the frequency of its "What We Watched" reports. A megacap growth name adding to the risk-off mood.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/16/netflix-nflx-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Netflix Stock Falls as Earnings Forecast Disappoints</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A neglected quant safety trade makes a comeback as AI risks rise</strong></summary>
+      <div class="deal-body">
+        <p>As worries build around the AI trade, investors are seeking shelter in a pedestrian corner of the market: companies with sturdy finances. The quality factor is back in demand exactly as the momentum names crack.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/neglected-quant-safety-trade-makes-a-comeback-as-ai-risks-rise" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Neglected Quant Safety Trade Makes a Comeback as AI Risks Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>IBM's sales warning is a hammer on tech's AI outsiders</strong></summary>
+      <div class="deal-body">
+        <p>IBM's (IBM) warning that sales are falling well short of expectations highlights a growing divide between AI winners and everyone else. The gap between the hyperscaler beneficiaries and the legacy names is widening fast.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/ibm-s-warning-is-a-hammer-slamming-down-on-tech-s-ai-outsiders" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- IBM's Warning Is a 'Hammer' Slamming Down on Tech's AI Outsiders</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UnitedHealth blows past estimates and hikes its earnings outlook</strong></summary>
+      <div class="deal-body">
+        <p>UnitedHealth (UNH) topped estimates and raised guidance, stabilizing margins by shrinking membership, exiting unprofitable contracts and pouring $1.5 billion into AI. A defensive healthcare beat that stands out on a risk-off day.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/16/unitedhealth-group-unh-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- UnitedHealth Blows Past Estimates, Hikes Earnings Outlook as It Reins in Costs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citi's Beata Manthey says a broadening rally requires sharp rotations</strong></summary>
+      <div class="deal-body">
+        <p>Citigroup's Beata Manthey argued that sharp stock rotations are necessary for the equity rally to broaden beyond tech. The chip rout may be the disorderly version of exactly that rotation.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/citi-s-manthey-says-broadening-requires-sharp-stock-rotations" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citi's Manthey Says Broadening Requires Sharp Stock Rotations</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The chip rout is doing the rotating work Citi's Manthey said the rally needed, just violently. Watch whether the quant safety trade and defensive beats like UnitedHealth actually catch the money leaving semis, or whether the whole tape just deleverages. The Nikkei and MSCI EM correction thresholds are the reference points: a break in the S&P's own leadership would confirm the unwind is more than an Asia session.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Cheaper Competitor's Product Can Crash an Entire Industry's Stocks</summary>
+      <p>The strange thing about today is that Moonshot did not build a worse product, it built a cheaper one, and that is precisely what tanked the chip stocks. To a newer reader this feels backwards: cheaper AI should mean more AI, which should mean more demand for the chips that run it. To see why the market recoiled, you have to understand what the semiconductor valuations were actually pricing. A stock price is a bet on future profits, and the AI hardware names had been bid to extreme multiples on one core assumption: that frontier AI performance would stay expensive to produce, so the world would need to buy ever more of the scarce, high-end compute that only a handful of firms can supply. That assumption is the scarcity thesis, and scarcity is what lets a supplier charge premium prices and earn fat margins. Now a cheaper model that matches the frontier attacks that thesis directly. If comparable performance can be reached with less compute, or with cheaper chips, then the mountain of spending the hyperscalers had planned starts to look like it might buy more capability than the market actually needs, or that the same capability could be had for far less. The demand does not vanish, but the pricing power behind it weakens, and pricing power is what the rich multiples were paying for. Investors are not concluding AI is over. They are re-pricing the odds that compute stays scarce and expensive, and even a modest shift in that probability moves stocks a lot when the valuation left no room for it. This is the same mechanism that hit the group during the original DeepSeek shock. The second force is reflexive and mechanical. When a trade is crowded, meaning many funds hold the same names with borrowed money or concentrated exposure, a fall in price forces some of them to sell to cut risk, which pushes the price down further, which forces the next tier to sell. That is why the Nikkei and the MSCI EM gauge slid into correction in a single session and Kioxia's value halved in a month. The selling is not all fresh opinion about AI, a chunk of it is positioning unwinding under its own weight. Coronation telling you it trimmed TSMC because expectations are impossible to beat is the calm version of what the leveraged crowd does in a panic. The lesson for a reader is to separate the fundamental question from the positioning question. Fundamentally, cheaper AI is ambiguous, it can grow the market or compress margins, and reasonable people will debate it for months. But the violence of a one-day move usually comes from positioning, from a crowded, expensive trade meeting a reason to doubt, and reacting far more than the news alone warrants. When you see a rout like this, ask whether the story actually changed the long-run demand, or whether it just gave an over-owned trade the excuse it needed to unwind.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-17/chip-stocks-lead-selloff-as-investors-question-ai-assumptions" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chip Stocks Lead Selloff as Investors Question AI Assumptions</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>China's powerful new Moonshot AI surprises investors and fuels the tech rout</strong></summary>
+      <div class="deal-body">
+        <p>A surprise breakthrough from Chinese startup Moonshot, whose model closed the gap with US rivals at far lower cost, rippled through global markets and sent AI and semiconductor stocks sharply lower. Investors drew parallels to last year's DeepSeek moment and questioned the spending spree.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/china-s-powerful-new-moonshot-ai-model-closes-gap-with-us-rivals" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Powerful New AI Surprises Investors, Fueling Tech Rout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Japan's Nikkei 225 enters correction on fears the AI rally is overdone</strong></summary>
+      <div class="deal-body">
+        <p>The Nikkei 225 closed more than 10% below its June 25 peak, a technical correction, amid concern the global AI rally has stretched too far. The correction is a barometer of how much of the run was chip-driven.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/japan-s-stocks-dive-as-investors-worry-about-ai-rally-s-run-mro83xih" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Japan's Nikkei 225 Enters Correction on Fears AI Rally Overdone</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kioxia's market value halves from its peak on the AI selloff</strong></summary>
+      <div class="deal-body">
+        <p>Japanese memory chipmaker Kioxia saw its market cap halve in just a month after briefly becoming the nation's most valuable company, on fears the AI-driven rally in the sector has gone too far. A vivid marker of how fast momentum reverses.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/chipmaker-kioxia-s-market-value-halves-from-peak-on-ai-selloff" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chipmaker Kioxia's Market Value Halves From Peak on AI Selloff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Coronation trims TSMC and SK Hynix on AI hype, boosts India stocks</strong></summary>
+      <div class="deal-body">
+        <p>Coronation Asset Management, which oversees $47 billion, cut its chipmaker exposure and raised its India allocation, saying AI stock expectations have risen to levels nearly impossible to beat. A concrete example of a real-money fund de-risking ahead of the rout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/coronation-trims-tsm-krx-ai-hype-boosts-india-stocks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Coronation Trims TSMC, SK Hynix on AI Hype, Boosts India Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Xi seeks global AI sway as surging Chinese models spur alarm</strong></summary>
+      <div class="deal-body">
+        <p>Xi Jinping used the rise of China's AI models to stake a claim on shaping the technology's global rules, promising "AI for all" and low-cost systems at China's top tech summit, even as their growing power stirs security concerns. The cheap-AI push is now state policy.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-16/china-s-ai-ascendance-gives-xi-a-stage-and-a-security-dilemma" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Xi Seeks Global AI Sway as Surging Chinese Models Spur Alarm</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hyperscalers are dragging down bond gauges across global markets</strong></summary>
+      <div class="deal-body">
+        <p>The bonds sold by hyperscalers to fund their AI buildouts have become a drag on investor portfolios from London to Tokyo. The financing side of the capex boom is now a visible headwind, not just an equity story.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/hyperscalers-are-dragging-down-bond-gauges-across-global-markets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hyperscalers Are Dragging Down Bond Gauges Across Global Markets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Z.AI set to be the first China AI firm with $1 billion in annual sales</strong></summary>
+      <div class="deal-body">
+        <p>Enterprise-focused Z.AI is on track for $1 billion in annual recurring revenue, a sharp ramp for a Chinese startup fending off a crowded field. Evidence China's AI cohort is monetizing, not just demoing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/z-ai-set-to-be-first-china-ai-firm-with-1-billion-annual-sales" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Z.AI Set to Be First China AI Firm With $1 Billion Annual Sales</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Friday July 17, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is that a cheaper Chinese frontier model is a real challenge to the scarcity thesis that justified the highest chip multiples, and hyperscaler bonds dragging global portfolios shows the financing cost is real. The noise is the one-day violence: crowded, leveraged positions unwinding pushed the Nikkei and EM into correction and halved Kioxia far faster than the underlying demand actually changed. Watch whether US megacap guidance next week confirms softer capex or reaffirms it.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Fed's Schmid says inflation is too hot and above target too long</strong></summary>
+      <div class="deal-body">
+        <p>Kansas City Fed President Jeff Schmid called inflation his biggest worry given the risk of a further acceleration in coming months. A hawkish voice pushing back on the soft-CPI relief.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-16/fed-s-schmid-says-inflation-is-too-hot-above-target-too-long" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Schmid Says Inflation Too Hot, Above Target Too Long</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Jefferson says policy is well positioned if inflation cools</strong></summary>
+      <div class="deal-body">
+        <p>Vice Chair Philip Jefferson suggested the bank should consider raising rates if inflation does not cool soon, but said policy is well positioned for now. A two-handed message that keeps a hike on the table without committing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-16/jefferson-says-policy-well-positioned-can-reconsider-if-needed" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Jefferson Says Policy Well Positioned If Inflation Cools</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Gold heads for a second weekly drop as war raises Fed hike fears</strong></summary>
+      <div class="deal-body">
+        <p>Gold is on track for its biggest weekly loss since early June as renewed Middle East hostilities raise concern that higher rates will be needed to contain war-driven inflation. The haven falling is the market's tell that it is pricing higher-for-longer.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-16/gold-heads-for-weekly-fall-as-hormuz-strikes-raise-fed-hike-bets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Heads for Second Weekly Drop as War Raises Fed Hike Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UBS AM's Kevin Zhao sours on Treasuries as US growth beats Europe</strong></summary>
+      <div class="deal-body">
+        <p>UBS Asset Management's Kevin Zhao is planning to short Treasuries on a bet that a robust US economy erodes the haven appeal of government debt. A named real-money position on higher US yields.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/ubs-am-s-zhao-sours-on-treasuries-as-us-growth-outpaces-europe" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UBS AM's Zhao Sours on Treasuries as US Growth Beats Europe</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOJ likely to raise its growth forecast and stand pat on rates</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of Japan is likely to consider lifting its growth forecast at its July meeting while leaving the policy rate unchanged after last month's hike to the highest level since 1995. A patient hold after a live tightening cycle.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/boj-is-said-likely-to-raise-growth-forecast-stand-pat-on-rates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOJ Is Said Likely to Raise Growth Forecast, Stand Pat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB set to wait for September to hike one last time, poll shows</strong></summary>
+      <div class="deal-body">
+        <p>The ECB will probably pause next week to assess inflation before delivering a final rate hike in September, economists say. A telegraphed end to the European tightening path.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/ecb-set-to-wait-for-september-to-hike-one-last-time-poll-shows" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB Set to Wait for September to Hike One Last Time, Poll Shows</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US homebuilder sentiment slips again to match the year's low</strong></summary>
+      <div class="deal-body">
+        <p>Builder confidence dropped for a second month to the year's lowest, dragged by elevated borrowing costs and higher material and land prices. A soft domestic signal arguing against a Fed hike into weakness.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-16/us-homebuilder-sentiment-slips-again-to-match-year-s-low" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Homebuilder Sentiment Slips Again to Match Year's Low</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 16, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish tug is real, with Schmid calling inflation too hot, Jefferson leaving a hike on the table, gold sliding on war-inflation fears and UBS AM's Zhao shorting Treasuries. The dovish counterweight is a soft CPI, homebuilder sentiment at the year's low and a patient BOJ and ECB. The near-term referee is still crude, and a fresh US strike on Iran keeps that unresolved while a chip rout adds a growth-scare cross-current.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why an Index Slips Into "Correction" and Why the Label Matters</summary>
+      <p>Two headlines today used the same word: the Nikkei 225 and the MSCI EM index both "entered correction." It sounds technical, and it is, but the definition is simple and the reason the label matters is worth understanding. A correction is a fall of 10% or more from a recent peak. A bear market is a fall of 20% or more. These are round-number conventions, not laws of finance, and there is nothing magic about a stock being down 9.8% versus 10.2%. So why does the market and the press treat the threshold as meaningful? Part of it is pure psychology and coordination. Because everyone uses the same definition, the 10% line becomes a shared reference point that traders, risk managers and headline writers all watch at once. When an index crosses it, the crossing itself becomes news, and the news can feed the move. That is a self-fulfilling element: a level that matters only because people agree it matters. But there is also a real, mechanical reason the label has teeth. Many institutions run rules tied to drawdowns and volatility. A risk-parity fund or a volatility-targeting strategy automatically cuts exposure when volatility rises and prices fall, and a 10% drop is usually accompanied by exactly the kind of volatility spike that triggers those rules. Some mandates force managers to de-risk once a benchmark falls a set amount. So a correction is often the point where discretionary selling on a story hands off to systematic selling on a formula, and the second kind does not care about the fundamentals at all. That is why corrections can accelerate right after the threshold is hit. The distinction between the Nikkei and the MSCI EM gauge is instructive. The Nikkei is one country's blue chips, heavily weighted toward exporters and, lately, chip-related names, so an AI scare hits it directly. The MSCI EM index spans many countries but is dominated by Asian technology and semiconductor giants like TSMC and Samsung, so it too is really an AI-exposed basket in disguise. When both correct on the same day from the same catalyst, it tells you the selloff is concentrated in the chip complex rather than a broad, all-sectors panic. The practical lesson is to read the correction label as information about positioning and breadth, not as a verdict on value. A correction driven by one crowded sector unwinding is a different animal from a correction where every sector falls together on a recession fear. The first can reverse quickly once the forced selling exhausts itself, because the underlying economy has not changed. The second tends to grind. When you see the word, do not just note the number, ask what is inside the index that fell and whether the selling looks like a story or a formula. That is where the real read on what happens next lives.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/em-stocks-headed-for-weekly-loss-on-tech-selloff-rising-crude" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- MSCI EM Index Heads for Correction as Chip Selloff Jolts Markets</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">A surprise Moonshot AI model sparked a global chip rout, sending Nasdaq futures down 1.6% and the Nikkei and MSCI EM into correction, while a fresh US strike on Iran kept oil live and Fed hawks Schmid and Jefferson revived hike talk as gold headed for a second weekly drop; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/13</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/14</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/15</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/16</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Risk-off wave drags bitcoin below $63,000 as the AI selloff spreads to crypto</strong></summary>
+      <div class="deal-body">
+        <p>Crypto fell as AI stock fatigue and US-Iran tensions weighed on sentiment, pulling bitcoin back from the $65,000 it reached on this week's soft inflation print, though a technical measure hints at oversold conditions into the weekend. Crypto traded as the high-beta version of the chip rout.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/17/risk-off-wave-drags-bitcoin-below-usd63-000-as-ai-selloff-spreads-from-stocks-to-crypto" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Risk-Off Wave Drags Bitcoin Below $63,000 as AI Selloff Spreads From Stocks to Crypto</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ether falls twice as hard as bitcoin and HYPE drops 10% as the chip trade unwinds</strong></summary>
+      <div class="deal-body">
+        <p>Ether fell roughly double bitcoin's decline and hyperliquid's HYPE dropped 10% as the semiconductor unwind rippled into crypto, with the Nikkei posting its worst day since March. Ether is barely the only major holding a weekly gain.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/17/ether-falls-twice-as-hard-as-bitcoin-and-hype-drops-10-as-the-chip-trade-unwinds" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Ether Falls Twice as Hard as Bitcoin and HYPE Drops 10% as the Chip Trade Unwinds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citadel Securities invests $400 million in Crypto.com at a $20 billion valuation</strong></summary>
+      <div class="deal-body">
+        <p>Citadel Securities put $400 million into Crypto.com in the exchange's first institutional round, valuing it at $20 billion and funding an expansion into tokenized securities and derivatives. A marquee traditional-finance name planting a flag in crypto market structure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/16/citadel-securities-invests-usd400-million-in-crypto-com-valuing-exchange-at-usd20-billion" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Citadel Securities Invests $400 Million in Crypto.com, Valuing Exchange at $20 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Visa backs Open USD with a new stablecoin platform as Circle faces fresh competition</strong></summary>
+      <div class="deal-body">
+        <p>Visa launched a stablecoin platform that lets banks and fintechs issue, manage and settle digital dollars over its network, backing the consortium-driven Open USD. A direct competitive threat to Circle's USDC economics.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/16/visa-backs-open-usd-with-new-stablecoin-platform-as-circle-faces-fresh-competition" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Visa Backs Open USD With New Stablecoin Platform as Circle Faces Fresh Competition</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>T. Rowe Price bets on active management with its first multi-token crypto ETF</strong></summary>
+      <div class="deal-body">
+        <p>The $1.9 trillion asset manager launched what it says is the industry's first actively managed multi-token spot crypto ETF, offering diversified digital-asset exposure. A traditional giant entering crypto through active, not passive, product.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/16/usd1-9-trillion-asset-manager-t-rowe-price-bets-on-active-management-with-first-multi-token-crypto-etf" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- T. Rowe Price Bets on Active Management With First Multi-Token Crypto ETF</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US adds four Iran central bank crypto wallets to sanctions, Tether freezes $131 million</strong></summary>
+      <div class="deal-body">
+        <p>The US sanctioned four Iran central bank crypto wallets, and Tether froze $131 million of the contents, targeting TRON addresses that had held over $165 million. Direct evidence of stablecoins as a sanctions-enforcement tool.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/16/u-s-adds-four-iran-central-bank-crypto-wallets-to-sanctions-tether-freezes-usd131-million-of-contents" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US Adds Four Iran Central Bank Crypto Wallets to Sanctions, Tether Freezes $131 Million</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Stripe / PayPal -- A $53 Billion Bid to Own the Future of Digital Payments</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Stripe is pursuing a $53 billion acquisition of PayPal (PYPL), a high-stakes play where the real prize could be consumer wallets, stablecoin issuance and the infrastructure powering the next generation of digital payments.</p>
+        <p><strong>Outlook:</strong> A deal this size would draw intense antitrust scrutiny in payments, and integrating PayPal's consumer base into a private, developer-focused infrastructure firm is a major execution risk.</p>
+        <p><strong>What it means:</strong> The payments giants are racing to control the wallet layer as stablecoins reshape how money moves, and Stripe is willing to pay up to avoid being disintermediated.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/16/stripe-s-usd53-billion-paypal-bid-is-a-high-stakes-play-to-own-the-future-of-digital-payments" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Stripe's $53 Billion PayPal Bid Is a High-Stakes Play to Own the Future of Digital Payments</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CXMT -- Blockbuster IPO 212 Times Oversubscribed by Retail Investors</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> China's homegrown memory giant CXMT opened books for a $9.8 billion IPO, the nation's second-largest ever, and drew a rush of retail demand that left the retail tranche 212 times oversubscribed.</p>
+        <p><strong>Outlook:</strong> The frenzy shows deep domestic appetite for chip self-sufficiency plays, but it lands into a brutal chip selloff, so pricing and aftermarket support could be tested.</p>
+        <p><strong>What it means:</strong> Even as global chip valuations crack, China's push to fund its own memory champion is drawing huge capital, a reminder the semiconductor arms race is a policy priority, not just a trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-16/cxmt-s-blockbuster-ipo-212-times-covered-for-retail-investors" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CXMT's Marquee IPO 212 Times Oversubscribed by Retail Investors</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mitsubishi Electric / Rohm / Toshiba -- Eyeing a Power-Chip Merger by September</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Mitsubishi Electric is seeking a deal by September to combine its power semiconductor operations with those of Toshiba and Rohm, consolidating Japan's fragmented power-chip industry.</p>
+        <p><strong>Outlook:</strong> Scale would help the trio compete against larger global rivals, but merging three corporate cultures and overlapping product lines is a heavy integration lift.</p>
+        <p><strong>What it means:</strong> Japan is trying to build national champions in the less-glamorous but essential power-chip segment, a defensive consolidation as the AI cycle reshuffles the sector.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/mitsubishi-electric-eyes-power-chip-merger-with-rohm-and-toshiba" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Mitsubishi Electric Eyes Power-Chip Merger With Rohm and Toshiba</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dangote -- Taps $2.5 Billion in Private Placement Before Africa's Largest IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Aliko Dangote has nearly completed a $2.5 billion private stock placement for his refinery business as it prepares for what would be Africa's largest-ever IPO.</p>
+        <p><strong>Outlook:</strong> Locking in private capital first de-risks the eventual listing, but the timing depends on stable oil markets and investor appetite for African energy exposure.</p>
+        <p><strong>What it means:</strong> A landmark test of whether global capital will fund large-scale African industrial assets at scale ahead of a public debut.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/dangote-taps-2-5-billion-in-private-share-placement-before-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dangote Taps $2.5 Billion in Private Share Placement Before IPO</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal Sizes This Week ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Coronation Asset Management -- trimmed TSMC and SK Hynix on AI hype, added India</strong></summary>
+      <div class="deal-body">
+        <p>The $47 billion manager said it cut chipmaker exposure and raised its India allocation because AI stock expectations have risen to levels nearly impossible to beat. A real-money fund de-risking ahead of the rout it now looks well positioned for.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/coronation-trims-tsm-krx-ai-hype-boosts-india-stocks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Coronation Trims TSMC, SK Hynix on AI Hype, Boosts India Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kevin Zhao (UBS Asset Management) -- shorting Treasuries on strong US growth</strong></summary>
+      <div class="deal-body">
+        <p>UBS AM's Kevin Zhao is planning to short Treasuries on a bet that a robust US economy erodes the haven appeal of government debt. A named position on higher US yields even as the chip rout adds a growth-scare cross-current.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/ubs-am-s-zhao-sours-on-treasuries-as-us-growth-outpaces-europe" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UBS AM's Zhao Sours on Treasuries as US Growth Beats Europe</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Beata Manthey (Citigroup) -- broadening the rally requires sharp rotations</strong></summary>
+      <div class="deal-body">
+        <p>Citi's Beata Manthey argued sharp stock rotations are necessary for the equity rally to broaden beyond tech. The chip rout may be the disorderly form of the rotation she says the market needs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/citi-s-manthey-says-broadening-requires-sharp-stock-rotations" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citi's Manthey Says Broadening Requires Sharp Stock Rotations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jeff Schmid (Kansas City Fed) -- inflation is too hot and above target too long</strong></summary>
+      <div class="deal-body">
+        <p>Schmid called inflation his biggest worry given the risk of a further acceleration in coming months, the hawkish counterpoint to this week's soft CPI. A read that keeps a hike scare alive.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-16/fed-s-schmid-says-inflation-is-too-hot-above-target-too-long" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Schmid Says Inflation Too Hot, Above Target Too Long</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Matt Levine (Bloomberg Opinion) -- shorts will sell you SpaceX and the Korean ETF ban</strong></summary>
+      <div class="deal-body">
+        <p>Money Stuff walked through synthetic SpaceX exposure, Korea's leveraged ETF ban, buyside alpha capture, Kalshi drug-trial markets and a Truth Social API. A read on how structure and access shape who can bet on what.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/opinion/newsletters/2026-07-16/shorts-will-sell-you-spacex" target="_blank" rel="noopener noreferrer">Source: Bloomberg Opinion -- Shorts Will Sell You SpaceX</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bloomberg oil desk -- the market cannot live without Hormuz barrels for long</strong></summary>
+      <div class="deal-body">
+        <p>Bloomberg's oil coverage warned that while flows through the strait have not fully stopped, signs of stress are mounting and the market cannot do without Hormuz barrels indefinitely. A time-bound read on the crude premium hanging over rates.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-17/oil-market-can-t-live-without-hormuz-barrels-for-long" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oil Market Can't Live Without Hormuz Barrels for Long</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as a Cheap Moonshot Model Sparks a Global Chip Rout, Real-Money Funds Trim Semis, Fresh Iran Strikes Keep Oil Live, and Fed Hawks Revive the Hike Scare</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the demand is intact):</strong> TSMC's raised capex and three-year runway from yesterday still stand, cheaper AI widens the market, and Z.AI hitting $1 billion in sales shows monetization is real. UnitedHealth beat and hiked, the quant safety trade is catching rotation, and Citadel's $400 million bet on Crypto.com plus T. Rowe's crypto ETF show institutions still leaning in.</div>
+        <div class="bear"><strong>Bear (a crowded trade unwinding):</strong> Moonshot revived the DeepSeek scare, the Nikkei and MSCI EM fell into correction, Kioxia halved, and Coronation's $47 billion fund trimmed TSMC and SK Hynix because expectations are impossible to beat. Hyperscaler bonds are dragging global portfolios, Fed's Schmid calls inflation too hot, and a fresh Iran strike keeps oil the reversal switch.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Moonshot AI sparks chip rout; Nasdaq futures -1.6%; Kioxia halves; is this DeepSeek 2.0</td><td>Bearish</td><td>~22,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Nikkei and EM into correction; Netflix slowing growth; UnitedHealth beats; quant safety trade back</td><td>Risk-Off</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Coronation trims TSMC/SK Hynix; hyperscaler bonds drag portfolios; Fed hawks revive hike scare</td><td>Cautious</td><td>~12,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Does cheaper AI break the scarcity thesis; why an index enters correction; Stripe-PayPal $53B</td><td>Analytical</td><td>~7,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC under $63K as chip rout spreads; ETH falls twice as hard; Citadel backs Crypto.com; Visa Open USD</td><td>Bearish</td><td>~16,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped to fear as the AI trade cracked. r/wallstreetbets ran bearish on the Moonshot-driven chip rout, Nasdaq futures down 1.6% and Kioxia halving, with the "DeepSeek 2.0" comparison everywhere. r/stocks went risk-off as the Nikkei and EM fell into correction and Netflix guided lower, though it noted UnitedHealth's beat and the quant safety trade catching a bid. r/investing turned cautious on Coronation trimming semis, hyperscaler bonds dragging portfolios and Fed hawks Schmid and Jefferson reviving hike talk. r/SecurityAnalysis dug into whether cheaper AI breaks the scarcity thesis and the mechanics of a correction. r/CryptoCurrency was bearish as bitcoin slid under $63,000 and ether fell twice as hard, even as Citadel and Visa headlines showed institutions leaning in. The single thread pulling everything down is the doubt over AI capex, with oil the second overhang.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why "Cheaper" Technology Can Be Bearish for the Companies That Sell the Hardware</h2>
+    <p>Today's rout was set off by news that should, on the surface, be good: a Chinese startup built an AI model that rivals the best US systems at a fraction of the cost. Cheaper, more capable AI sounds like a reason to buy more chips, not sell them, so why did semiconductor stocks collapse? The answer is one of the most important and counterintuitive ideas in investing, and it turns on the difference between demand for a technology and pricing power for its suppliers. Start with what a supplier's profit depends on. A company like a leading chipmaker earns fat margins not just because people want its product, but because that product is scarce and hard to replicate. Scarcity is what lets a seller charge a premium, and premium prices on high volume are what justify a rich stock valuation. The whole AI hardware trade had been built on a specific version of that idea, the scarcity thesis: the belief that reaching frontier AI performance requires enormous quantities of expensive, cutting-edge compute that only a few firms can make. If that is true, demand for those chips is close to insatiable and pricing power is secure.</p>
+    <p>Now introduce a cheaper way to get the same result. If a model can match the frontier using less compute, or cheaper chips, then the premise that the world needs ever-rising mountains of the most expensive hardware weakens. The total demand for AI might still grow, and probably will, but the intensity of demand per unit of AI output falls, and so does the seller's ability to command premium prices. That is the crucial distinction. The market is not betting AI will shrink. It is re-pricing the odds that compute stays scarce and expensive, because scarcity is what the valuations were paying for. A small shift in that probability moves the stocks hard, because they were priced for scarcity to last for years.</p>
+    <p>This is the same logic that hit the sector during the original DeepSeek shock, and it echoes a classic pattern across technology history. When a product gets dramatically cheaper to produce, the buyers win and the pure-scarcity sellers can lose, even as the technology itself takes over the world. Think of it as the value migrating: from the scarce input toward the applications built on top of it, which now enjoy cheaper raw materials.</p>
+    <p>The practical lesson for a reader is to always ask where a company's profit actually comes from before you assume good news for a technology is good news for a stock. If the profit rests on scarcity and premium pricing, then anything that makes the underlying capability cheaper or more abundant is a threat, regardless of how much total demand grows. Conversely, the firms that use the cheaper input, the software and application layer, can benefit from exactly the news that hurts the hardware makers. When you see a "breakthrough" that lowers cost, do not just ask whether it grows the market. Ask who in the chain was earning money from things staying expensive, because that is who gets repriced.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-17/china-s-powerful-new-moonshot-ai-model-closes-gap-with-us-rivals" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Powerful New AI Surprises Investors, Fueling Tech Rout</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-17/chip-stocks-lead-selloff-as-investors-question-ai-assumptions" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chip Stocks Lead Selloff as Investors Question AI Assumptions</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>ECB meeting.</strong> Economists expect a pause next week before a final September hike; watch the statement and Lagarde's tone for whether the AI-driven growth scare shifts the guidance.</li>
+      <li><strong>Fed speak and hike pricing.</strong> Schmid and Jefferson revived hike talk while gold fell on war-inflation; watch whether more officials lean hawkish or whether the chip rout and soft housing data push the market back toward patience.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>US megacap AI capex.</strong> After the Moonshot scare, watch whether the hyperscalers reaffirm or trim their buildout plans; guidance on spending is now the key referee for the scarcity thesis.</li>
+      <li><strong>Post-Netflix growth read.</strong> Netflix's slowing-sales guide rattled megacaps; watch whether the broader consumer-tech cohort confirms deceleration or steadies the tape.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Stripe-PayPal.</strong> A $53 billion payments tie-up would draw heavy antitrust scrutiny; watch for confirmation, financing detail and regulatory signals.</li>
+      <li><strong>CXMT and Dangote IPOs.</strong> CXMT's $9.8 billion listing was 212x covered into a chip selloff, and Dangote is prepping Africa's largest IPO; watch pricing and aftermarket demand.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran and Hormuz.</strong> A fresh US strike kept oil live and Bloomberg's desk warns the market cannot do without Hormuz barrels for long; watch crude, tanker flows and any US-China friction from Trump's comments.</li>
+      <li><strong>China AI policy.</strong> Xi's "AI for all" push and surging Chinese models raise security and competitive stakes; watch for US export-control or investment responses.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Fri Jul 17, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-07-17 08:02 ET); Bloomberg Technology (20 fresh, newest 2026-07-17 07:02 ET); Bloomberg Economics (20 fresh, newest 2026-07-17 07:09 ET); CNBC Top News (7 fresh, newest 2026-07-17 08:06 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-16 13:54 ET); CoinDesk (25 fresh, newest 2026-07-17 07:48 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Stratechery (10 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What set off Friday's global selloff in chip and AI stocks?</strong></p>
+      <span class="opt" data-opt="A">A. TSMC cut its capital-spending guidance for the year</span>
+      <span class="opt" data-opt="B">B. A cheaper, capable new model from China's Moonshot startup</span>
+      <span class="opt" data-opt="C">C. The Fed unexpectedly raised interest rates overnight</span>
+      <span class="opt" data-opt="D">D. Nvidia reported a large miss on quarterly revenue</span>
+      <div class="feedback"><strong>B is correct.</strong> A surprise Moonshot model that closed the gap with US rivals at low cost revived DeepSeek-style fears the AI spending spree is hard to justify, sending chips lower. TSMC actually raised guidance yesterday, the Fed did not hike overnight, and Nvidia did not report.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. Why did gold head for a second straight weekly drop?</strong></p>
+      <span class="opt" data-opt="A">A. A stronger dollar made gold cheaper for foreign buyers</span>
+      <span class="opt" data-opt="B">B. Central banks announced they were selling gold reserves</span>
+      <span class="opt" data-opt="C">C. The Middle East conflict was resolved, easing haven demand</span>
+      <span class="opt" data-opt="D">D. War-inflation fears raised bets the Fed keeps rates high</span>
+      <div class="feedback"><strong>D is correct.</strong> Renewed hostilities raised concern that higher rates will be needed to contain war-driven inflation, and higher expected rates make non-yielding gold less attractive. The conflict was not resolved, no reserve sales were announced, and the dollar move was not the driver.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why does a cheaper AI model threaten the chipmakers' stock prices?</strong></p>
+      <span class="opt" data-opt="A">A. It weakens the scarcity that gave chips their pricing power</span>
+      <span class="opt" data-opt="B">B. It means total demand for AI will immediately collapse</span>
+      <span class="opt" data-opt="C">C. It forces chipmakers to pay higher taxes on their sales</span>
+      <span class="opt" data-opt="D">D. It bars those chips from being exported to China</span>
+      <div class="feedback"><strong>A is correct.</strong> The rich chip valuations rested on the scarcity thesis, that frontier AI needs vast amounts of expensive compute. A cheaper model weakens that premise and the sellers' pricing power. Total demand does not collapse, and taxes and export rules were not the trigger.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "This week's soft CPI argues for patience, but fresh US-Iran strikes revived war-inflation fears, gold headed for a second weekly drop, Fed's Schmid called inflation too hot and Jefferson said the bank should consider hiking, while UBS AM's Kevin Zhao is shorting Treasuries even as the ECB and BOJ signal restraint.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-16/gold-heads-for-weekly-fall-as-hormuz-strikes-raise-fed-hike-bets", "take": "Gold falls as war raises Fed hike fears." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-16/fed-s-schmid-says-inflation-is-too-hot-above-target-too-long", "take": "Schmid says inflation is too hot." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-17/ubs-am-s-zhao-sours-on-treasuries-as-us-growth-outpaces-europe", "take": "UBS AM's Zhao is shorting Treasuries." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-16/us-homebuilder-sentiment-slips-again-to-match-year-s-low", "take": "Homebuilder sentiment at the year's low." },
+      { "name": "Bloomberg", "lean": "neutral", "url": "https://www.bloomberg.com/news/articles/2026-07-17/ecb-set-to-wait-for-september-to-hike-one-last-time-poll-shows", "take": "ECB seen pausing before a final hike." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-16/jefferson-says-policy-well-positioned-can-reconsider-if-needed", "take": "Jefferson calls policy well positioned for now." }
+    ]
+  },
+  "iran": {
+    "diverge": "A fresh US strike on Iran kept the oil-inflation risk alive, with Bloomberg's desk warning the market cannot live without Hormuz barrels for long and RBI's Sanjay Malhotra naming the war a top inflation risk, though barrels are still flowing and crude has not gapped to a new high.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-07-17/oil-market-can-t-live-without-hormuz-barrels-for-long", "take": "Market cannot do without Hormuz for long." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-17/iran-war-monsoons-key-risk-for-india-economy-rbi-governor-says", "take": "RBI names the Iran war a top inflation risk." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-17/malaysian-growth-surges-to-5-8-as-services-tech-sales-counter-impact-of-war", "take": "Malaysia grows 5.8% despite the war." },
+      { "name": "CoinDesk", "lean": "bear", "url": "https://www.coindesk.com/markets/2026/07/17/bitcoin-under-usd64-000-after-u-s-strike-on-iran-trump-s-china-comment-adds-to-uncertainty", "take": "Fresh Iran strike pulls bitcoin under $63K." },
+      { "name": "Bloomberg", "lean": "neutral", "url": "https://www.bloomberg.com/news/articles/2026-07-17/reliance-founders-lift-stake-by-most-since-2019-as-stock-slumps", "take": "Reliance founders buy the post-war dip." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-17/wheat-eases-as-traders-lock-in-gains-assess-black-sea-threats", "take": "Wheat near a two-year high on Black Sea risk." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "A surprise cheaper model from China's Moonshot revived DeepSeek fears and sparked a global chip rout, sending Nasdaq futures down 1.6%, the Nikkei and MSCI EM into correction and halving Kioxia, while Coronation trimmed TSMC and SK Hynix and hyperscaler bonds dragged global portfolios, even as the underlying demand story from TSMC's guide stands.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-17/china-s-powerful-new-moonshot-ai-model-closes-gap-with-us-rivals", "take": "Moonshot model fuels a global tech rout." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-17/japan-s-stocks-dive-as-investors-worry-about-ai-rally-s-run-mro83xih", "take": "Nikkei enters correction on AI fears." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-17/coronation-trims-tsm-krx-ai-hype-boosts-india-stocks", "take": "Coronation trims TSMC and SK Hynix." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-17/hyperscalers-are-dragging-down-bond-gauges-across-global-markets", "take": "Hyperscaler bonds drag global portfolios." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-17/z-ai-set-to-be-first-china-ai-firm-with-1-billion-annual-sales", "take": "Z.AI nears $1 billion in annual sales." },
+      { "name": "Bloomberg", "lean": "neutral", "url": "https://www.bloomberg.com/news/articles/2026-07-17/neglected-quant-safety-trade-makes-a-comeback-as-ai-risks-rise", "take": "Quant safety trade returns as AI risks rise." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Kioxia","SK Hynix","TSMC","Nvidia","ASML","Netflix"],
+    "values": [-9.0, -7.0, -5.0, -4.5, -4.0, -3.5]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [22000, 15000, 12000, 7000, 16000],
+    "colors": ["bear","bear","bear","neutral","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Stripe/PayPal","CXMT IPO","Dangote Placement","Citadel/Crypto.com"],
+    "values": [53.0, 9.8, 2.5, 0.4]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="js/digest-date.js?v=20260713"></script>
+<script src="js/config.js?v=20260713"></script>
+<script src="js/repair-dom.js?v=20260713"></script>
+<script src="js/digest-ui.js?v=20260713"></script>
+<script src="js/charts-core.js?v=20260713"></script>
+<script src="js/archive.js?v=20260713"></script>
+<script src="js/artifact-equities.js?v=20260713"></script>
+<script src="js/charts-macro.js?v=20260713"></script>
+<script src="js/artifact-framing.js?v=20260713"></script>
+<script src="js/verdict-updater.js?v=20260713"></script>
+<script src="js/digest-init.js?v=20260713"></script>
+
+</body>
+</html>
