@@ -301,11 +301,11 @@
         tip.callbacks.label = function(ctx) {
           return ctx.dataset.label + ': ' + Number(ctx.parsed.y).toFixed(2) + '%';
         };
-        renderChart(api, labels, [
+        renderChart(api, labels, mdDropEmptySeries([
           { label: '2Y', data: d2, borderColor: t.accent2, backgroundColor: t.accent2, tension: 0.15, pointRadius: 0, borderWidth: 2 },
           { label: '10Y', data: d10, borderColor: t.accent, backgroundColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 },
           { label: '30Y', data: d30, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
-        ], {
+        ]), {
           animation: false,
           interaction: { mode: 'index', intersect: false },
           plugins: {
@@ -344,11 +344,11 @@
         tip.callbacks.label = function(ctx) {
           return ctx.dataset.label + ': ' + Number(ctx.parsed.y).toFixed(2) + '%';
         };
-        renderChart(api, labels, [
+        renderChart(api, labels, mdDropEmptySeries([
           { label: '2Y', data: d2, borderColor: t.accent2, backgroundColor: t.accent2, tension: 0.15, pointRadius: 0, borderWidth: 2 },
           { label: '10Y', data: d10, borderColor: t.accent, backgroundColor: t.accent, tension: 0.15, pointRadius: 0, borderWidth: 2 },
           { label: '30Y', data: d30, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0.15, pointRadius: 0, borderWidth: 2.5 }
-        ], {
+        ]), {
           animation: false,
           interaction: { mode: 'index', intersect: false },
           plugins: {
@@ -454,25 +454,90 @@
       setHeadline(api, last, prev, function(v) { return Math.round(v) + ' bps (HY)'; }, function(chg, pct, up) {
         return ((up ? '+' : '') + Math.round(chg) + ' bps ' + mdRangeChangeLabel(api.range)).trim();
       });
-      setDailySource(api, 'FRED / ICE BofA OAS', rows[rows.length - 1].date);
       var t = tc();
+      // HY (~270 bps) and IG (~78 bps) are the same unit ~200 bps apart, so
+      // neither one shared level axis (both flat-line) nor two auto-scaled
+      // axes (both stretch to fill the plot and overlap as if identical)
+      // reads honestly. Plot each as CHANGE IN BPS since its first close in
+      // the window on ONE shared axis — the desk-standard "spread change"
+      // view. Levels stay visible at rest in the legend and headline; the
+      // source line names the rebase date.
+      function deltas(levels) {
+        var base = null;
+        for (var i = 0; i < levels.length; i++) {
+          if (levels[i] != null && isFinite(levels[i])) { base = levels[i]; break; }
+        }
+        return levels.map(function(v) {
+          return v == null || !isFinite(v) || base == null ? null : v - base;
+        });
+      }
+      function signedBps(v) { return (v > 0 ? '+' : '') + Math.round(v) + ' bps'; }
+      function lastFinite(arr) {
+        for (var i = arr.length - 1; i >= 0; i--) {
+          if (arr[i] != null && isFinite(arr[i])) return arr[i];
+        }
+        return null;
+      }
+      var hyChg = deltas(hy);
+      var igChg = deltas(ig);
+      var levelsByDs = [hy, ig];
+      var SERIES = ['HY OAS', 'IG OAS'];
       var tip = macroTooltipBase(api.range, function(i) { return points[i]; });
-      tip.callbacks.label = function(ctx) { return ctx.dataset.label + ': ' + Math.round(ctx.parsed.y) + ' bps'; };
+      tip.callbacks.label = function(ctx) {
+        var lvl = levelsByDs[ctx.datasetIndex][ctx.dataIndex];
+        return SERIES[ctx.datasetIndex] + ': ' + Math.round(lvl) + ' bps (' + signedBps(ctx.parsed.y) + ')';
+      };
+      if (api.qSource) {
+        api.qSource.textContent = 'Source: FRED / ICE BofA OAS · daily close · change since '
+          + rows[0].date + ' · through ' + rows[rows.length - 1].date;
+      }
       var lineOpts = macroLineOpts(t);
-      // HY (~250-450 bps) and IG (~80-130 bps) each get their own axis scaled
-      // to their range — on a shared 50-300 bps axis both plotted as flat
-      // lines and daily moves were invisible. Axis ticks match line colors.
-      var hyAxis = Object.assign(yScaleFromValues(hy, function(v) { return Math.round(v) + ' bps'; }, t), { position: 'left' });
-      var igVals = ig.filter(function(v) { return v != null && isFinite(v); });
-      var igAxis = Object.assign(
-        yScaleFromValues(igVals.length ? igVals : [0, 1], function(v) { return Math.round(v) + ' bps'; }, t),
-        { position: 'right', grid: { display: false } }
-      );
-      hyAxis.ticks.color = t.bear;
-      igAxis.ticks.color = t.anchor;
+      var allChg = hyChg.concat(igChg).filter(function(v) { return v != null && isFinite(v); });
+      // Integer-bps axis with 0 guaranteed on the tick lattice and at most 6
+      // ticks, so Chart.js honors stepSize verbatim (its maxTicksLimit
+      // respacing both drops the 0 tick and misplaces integer-rounded labels
+      // — confirmed against chart.umd 4.4.0 on quiet-week spans like 0..+2).
+      function deltaAxis(values) {
+        var lo = 0, hi = 0, i;
+        for (i = 0; i < values.length; i++) {
+          if (values[i] < lo) lo = values[i];
+          if (values[i] > hi) hi = values[i];
+        }
+        if (hi - lo < 2) { lo = Math.min(lo, -1); hi = Math.max(hi, 1); }
+        var steps = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000];
+        var step = steps[steps.length - 1], min, max;
+        for (i = 0; i < steps.length; i++) {
+          min = Math.floor(lo / steps[i]) * steps[i];
+          max = Math.ceil(hi / steps[i]) * steps[i];
+          if ((max - min) / steps[i] <= 5) { step = steps[i]; break; }
+        }
+        min = Math.floor(lo / step) * step;
+        max = Math.ceil(hi / step) * step;
+        return {
+          position: 'right',
+          min: min,
+          max: max,
+          border: { display: false },
+          // solid zero line so widening vs tightening reads at a glance
+          grid: {
+            color: function(ctx) { return ctx.tick && ctx.tick.value === 0 ? t.muted : t.rule; },
+            drawBorder: false, tickLength: 0
+          },
+          ticks: {
+            stepSize: step,
+            font: { size: 11, family: MKT_SANS, weight: '500' },
+            color: t.ink,
+            padding: 10,
+            callback: function(v) { return signedBps(v); }
+          }
+        };
+      }
+      var yAxis = deltaAxis(allChg.length ? allChg : [0, 1]);
+      var hyLvl = lastFinite(hy);
+      var igLvl = lastFinite(ig);
       renderChart(api, labels, [
-        { label: 'HY OAS (left)', data: hy, borderColor: t.bear, backgroundColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y' },
-        { label: 'IG OAS (right)', data: ig, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0.15, pointRadius: 0, borderWidth: 2, yAxisID: 'y2' }
+        { label: SERIES[0] + (hyLvl != null ? ' · ' + Math.round(hyLvl) + ' bps' : ''), data: hyChg, borderColor: t.bear, backgroundColor: t.bear, tension: 0.15, pointRadius: 0, borderWidth: 2 },
+        { label: SERIES[1] + (igLvl != null ? ' · ' + Math.round(igLvl) + ' bps' : ''), data: igChg, borderColor: t.anchor, backgroundColor: t.anchor, tension: 0.15, pointRadius: 0, borderWidth: 2 }
       ], Object.assign({}, lineOpts, {
         plugins: Object.assign({}, lineOpts.plugins, {
           legend: macroLegend(t, true),
@@ -480,8 +545,7 @@
         }),
         scales: {
           x: { grid: { display: false }, ticks: mdCategoryTickOpts(t, 10) },
-          y: hyAxis,
-          y2: igAxis
+          y: yAxis
         }
       }), points);
     };

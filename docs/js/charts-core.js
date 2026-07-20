@@ -37,6 +37,13 @@ function mdSeriesDate(pt) {
 function mdEtDayKey(d) {
   return d.toLocaleDateString('en-US', { timeZone: MD_MARKET_TZ });
 }
+/** Drop datasets with no plottable points so the legend never lists a
+ *  series that isn't drawn (e.g. FRED 2Y has no observation for today's 1D). */
+function mdDropEmptySeries(datasets) {
+  return datasets.filter(function(ds) {
+    return (ds.data || []).some(function(v) { return v != null && isFinite(v); });
+  });
+}
 /** Suffix clarifying what window a change readout covers ('' on 1D = daily). */
 function mdRangeChangeLabel(rangeKey) {
   return { '1w': 'past week', '1m': 'past month', '1y': 'past year' }[rangeKey] || '';
