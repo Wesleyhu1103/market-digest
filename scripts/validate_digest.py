@@ -29,19 +29,62 @@ def _fetch_text(url: str) -> str:
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
 
 
+def _local_asset_sources(html: str) -> list[str]:
+    sources: list[str] = []
+    for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
+        sources.append(m.group(1))
+    for m in re.finditer(
+        r'<link\b(?=[^>]*\brel=["\']stylesheet["\'])[^>]+href=["\']([^"\']+)["\']',
+        html,
+        re.I,
+    ):
+        sources.append(m.group(1))
+    return sources
+
+
+def _is_remote_asset(src: str) -> bool:
+    return src.startswith(("http://", "https://", "//"))
+
+
+def check_local_assets(html: str, html_path: Optional[Path]) -> bool:
+    if not html_path:
+        print("OK   local script/style assets: skipped for live URL")
+        return True
+
+    missing: list[str] = []
+    checked = 0
+    for raw_src in _local_asset_sources(html):
+        if _is_remote_asset(raw_src):
+            continue
+        src = raw_src.split("?")[0]
+        rel = src.lstrip("/")
+        fp = (html_path.parent / rel).resolve()
+        checked += 1
+        if not fp.is_file():
+            missing.append(raw_src)
+
+    if missing:
+        for src in missing:
+            print(f"FAIL local asset exists: {src}")
+        return False
+
+    print(f"OK   local script/style assets: {checked} checked")
+    return True
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
     for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
         src = m.group(1).split("?")[0]
-        if src.startswith(("http://", "https://", "//")):
+        if _is_remote_asset(src):
             continue
         rel = src.lstrip("/")
         if html_path:
             fp = (html_path.parent / rel).resolve()
             if fp.is_file():
                 parts.append(fp.read_text())
-                continue
+            continue
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -103,8 +146,10 @@ def main():
 
     if not check_js(js_bundle):
         failures += 1
+    if not check_local_assets(html, html_path):
+        failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
