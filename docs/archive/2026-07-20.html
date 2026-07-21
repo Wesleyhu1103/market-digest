@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Jul 20, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="js/site-config.js?v=20260721"></script>
+<script src="js/market-feed.js?v=20260721"></script>
+<link rel="stylesheet" href="css/digest.css?v=20260721">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-20</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, July 20, 2026</h1>
+    <div class="meta">
+      <p>Big Tech earnings week opens with Alphabet and Tesla, and the pressure is on hyperscalers to prove the AI spending is paying off. Chipmakers are bouncing as the tape digests Friday's Moonshot Kimi K3 shock, but oil is whipsawing after a weekend of US-Iran escalation pushed crude above $90 and US gasoline back over $4 before a reported mediation proposal cooled it. The ECB decides rates later this week.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Friday's Moonshot Kimi K3 shock now collides with Big Tech earnings week as chipmakers bounce back, Alibaba pushes its Qwen model open-weight, and investors demand that Alphabet, Tesla and the hyperscalers prove their enormous AI spending is actually going somewhere",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Big Tech Needs to Prove That AI Spending Is Going Somewhere", "angle": "Frames the week as a referendum on whether hyperscaler capex converts into revenue rather than just headline scares.", "lean": -15, "pull": "Alphabet and Tesla kick off a stretch of earnings that will decide whether the volatility persists or momentum returns."},
+        {"outlet": "CNBC", "headline": "Chip Stocks Rebound as Traders Look Past the Kimi K3 Scare", "angle": "Centers the mechanical bounce in oversold semiconductors after Friday's forced selling.", "lean": 25, "pull": "The names that led the selloff are leading the rebound as investors decide the demand story is intact."},
+        {"outlet": "WSJ", "headline": "A Chinese Model Keeps the AI Bubble Debate Alive Into Earnings", "angle": "Treats Kimi K3 as an unresolved threat to the compute-scarcity thesis that earnings must now address.", "lean": -20, "pull": "Cheaper frontier performance means guidance on capex matters more than any single quarter of revenue."},
+        {"outlet": "Financial Times", "headline": "Oil Whipsaws on Mediation Report as Iran Strikes Escalate", "angle": "Layers the Hormuz risk and a possible truce onto a market trying to price two shocks at once.", "lean": -10, "pull": "Crude swung from gains above $90 to losses on word that mediators floated a pause in the strikes."},
+        {"outlet": "The Economist", "headline": "The AI Trade Learns to Live With Cheaper Models", "angle": "Keeps focus on whether the market can reprice compute scarcity without abandoning the buildout.", "lean": 5, "pull": "One efficient model does not end the boom, but it forces investors to ask what they are really paying for."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Bond Traders Side With Fed Chair Kevin Warsh That the Inflation Fight Is Far From Over as Gold Steadies on the Rate Path, US Gasoline Tops $4 Again and Euro-Area Firms Face Rising Rates, While a Reported Mediation Push Tries to Cool the War Premium</h3>
+      </div>
+      <p>The rate debate stayed hawkish into a week that will be dominated by earnings and the ECB. Bloomberg reports that bond traders and Fed Chairman Kevin Warsh now agree on a crucial point: the central bank's fight against inflation still looks far from over, so the market is holding a higher-for-longer bias rather than reaching for cuts. Gold steadied rather than surging after the weekend US-Iran escalation, with traders weighing the odds the Fed keeps rates elevated to contain war-driven inflation instead of treating the metal as a pure haven. US gasoline climbing back above $4 a gallon is the freshest inflation tug, threatening to feed straight into headline prints. Abroad, an ECB survey showed euro-area firms faced higher interest rates and tighter lending conditions in the second quarter as the Iran war clouded the outlook, and the ECB decides rates later this week. The counterweight is the weekend mediation report, which if it holds could pull the crude premium out and hand the disinflation camp its opening.</p>
+      <p>The bull case for lower yields is that gold only steadied rather than spiked, a reported cessation could bleed out the oil premium, and tightening euro-area conditions point to a slowdown that argues for patience. The bear case is that Warsh and the bond market agree the inflation fight is not over, gasoline is back above $4, and crude briefly cleared $90.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (disinflation still has a path):</strong> Gold only steadied after the weekend escalation instead of blowing out, a reported 10-day cessation of strikes could drain the crude premium, and the ECB survey showing euro-area firms squeezed by tighter credit points to a slowing global backdrop. If oil rolls over, the inflation math eases and the front end can price patience rather than a hike.</div>
+        <div class="bear"><strong>Bear (the inflation fight is not over):</strong> Bloomberg says bond traders and Fed Chair Kevin Warsh agree the inflation battle is far from finished, US gasoline just topped $4 a gallon again, and crude briefly cleared $90 on the weekend strikes. War-inflation keeps the hike scare alive, and a mediation headline is not a signed truce. The hawkish tape holds.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-19/bond-traders-take-warsh-at-word-see-inflation-fight-continuing" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Traders Take Warsh at Word, See Inflation Fight Continuing</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>A Weekend of US-Iran Escalation Sends Oil Above $90 and US Gasoline Back Over $4 Before a Reported 10-Day Cessation Proposal Turns Crude Lower, With Emerging-Market Stocks Sliding on Combined Energy and Semiconductor Jitters</h3>
+      </div>
+      <p>Geopolitics stayed the swing factor over a violent weekend. Renewed US bombing of Iran lifted Brent nearly 4% to a one-month high above $90 a barrel, and US pump prices climbed back over $4 a gallon, threatening to worsen a global crunch for transport fuels and stoke inflation. Then the tape flipped: oil turned from gains to losses on Monday after a report that mediators proposed a 10-day cessation of strikes between the US and Iran following the escalation. Emerging equities extended their drop as the energy spike layered on top of lingering chip-stock pressure from Friday's Kimi K3 shock, a reminder that the AI unwind and the oil premium are now hitting the same indexes. Gold steadied as traders weighed whether the Fed keeps rates high to fight war-inflation. The bounce in stocks and crypto on Monday tracked the mediation headline directly, with bitcoin flat near $64,000 and equity futures higher.</p>
+      <p>The bull read is that the mediation proposal shows a diplomatic off-ramp exists, oil already reversed lower, and a contained pause lets the disinflation story resume. The bear read is that the weekend proved how fast strikes can gap crude above $90 and pump prices over $4, and a report of talks is not a ceasefire.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (a truce is on the table):</strong> Mediators reportedly floated a 10-day cessation of strikes, and oil turned from gains to losses on the news, with stocks and crypto bouncing in tandem. The market found a diplomatic off-ramp within hours of crude clearing $90. If the pause holds, the energy premium drains, pump prices ease and the growth scare from the chip rout does the rest of the disinflation work.</div>
+        <div class="bear"><strong>Bear (escalation is the base case):</strong> Renewed US bombing sent Brent up nearly 4% above $90 and US gasoline back over $4 a gallon, a direct inflation threat. Emerging stocks extended losses on combined energy and semiconductor jitters. A mediation report is not a signed deal, and the weekend showed how quickly the strikes reprice crude. The overhang stays live.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-19/latest-oil-market-news-and-analysis-for-july-20" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for July 20</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Chipmakers Bounce as Investors Digest Moonshot's Kimi K3 and Alibaba's Open-Weight Qwen Ahead of Big Tech Earnings, With Citi Declaring the Magnificent Seven Tag Obsolete and Stratechery's Ben Thompson Arguing the Frontier Labs Will Be Fine</h3>
+      </div>
+      <p>Three days after Kimi K3 sent semis reeling, the AI trade is trying to steady. Chipmakers bounced at the start of a week in which Alphabet and Tesla open Big Tech earnings, and Bloomberg framed the setup bluntly: the hyperscalers now need to prove their AI spending is going somewhere. Moonshot itself is leaning into the moment, telling investors it plans a Hong Kong IPO in as little as six months at a $30 billion-plus valuation, while Alibaba's Qwen3.8 Max preview goes open-weight and its shares rose as much as 5.4%. Bloomberg's technical read is that Kimi K3's efficiency may owe more to memory than to raw compute, a nuance that reframes which suppliers win and lose. Citi strategists declared the Magnificent Seven label obsolete for playing the AI trade, arguing the winners are broadening. Stratechery's Ben Thompson wrote that everyone is worried about Chinese models but the US frontier labs will be fine, and the real task is enabling open American alternatives. TSMC underscored the demand case, with its CFO saying a $265 billion US spend, including $100 billion more in Arizona, is driven by demand and rivals. Taiwan retail traders cut leverage at the fastest pace in 15 months, a sign Friday's forced selling was positioning, not a demand collapse.</p>
+      <p>The bulls note the bounce, TSMC's demand-led capex, Alibaba going open-weight and Thompson's frontier-labs argument all point to an ecosystem that is widening, not shrinking. The bears say Kimi K3 still cracked the scarcity thesis, earnings now have to justify the spend, and the leverage unwind shows how crowded the trade was.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the buildout is intact):</strong> Chipmakers are bouncing, TSMC's CFO says its $265 billion US spend is driven by real demand and rivals, and Prysmian just signed a $6.3 billion Molex deal for data-center gear. Alibaba's Qwen going open-weight and Stratechery's Ben Thompson arguing the frontier labs will be fine both point to a widening ecosystem. Citi says the winners are broadening beyond the Magnificent Seven.</div>
+        <div class="bear"><strong>Bear (earnings have to justify it):</strong> Kimi K3 still revived the DeepSeek scare and Bloomberg says Big Tech must now prove the AI spend is going somewhere. Taiwan retail cut leverage at the fastest pace in 15 months, EM stocks extended their drop, and a cheaper Chinese model plus an imminent Moonshot IPO keep the scarcity thesis under question into Alphabet and Tesla results.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/newsletters/2026-07-20/moonshot-ai-s-kimi-k3-stuns-investors-challenges-anthropic-openai-lead" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moonshot AI's Kimi K3 Stuns Investors, Challenges Anthropic, OpenAI Lead</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks climb as chipmakers bounce and oil slides into earnings week</strong></summary>
+      <div class="deal-body">
+        <p>Equities got a lift from a rebound in chipmakers at the start of a week in which Big Tech earnings will decide whether recent volatility persists or momentum returns. Oil swung from gains to losses on a reported mediation push, easing one of the two overhangs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-19/oil-climbs-as-middle-east-conflict-escalates-markets-wrap" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Climb as Chipmakers Bounce and Oil Slides: Markets Wrap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citi says the Magnificent Seven tag is obsolete for the AI trade</strong></summary>
+      <div class="deal-body">
+        <p>Citigroup strategists said the Magnificent Seven moniker is no longer relevant for assessing how to play the US AI trade, arguing the winners are broadening well beyond the familiar megacaps. A call that reframes leadership just as earnings begin.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/citi-says-magnificent-seven-tag-is-obsolete-in-ai-stock-winners" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citi Says Magnificent Seven Tag Is Obsolete in AI Stock Winners</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Emerging-market stocks extend their drop on energy and semiconductor jitters</strong></summary>
+      <div class="deal-body">
+        <p>EM equities extended losses as renewed US bombing of Iran lifted oil above $90 a barrel and chip stocks stayed under pressure from Friday's Kimi K3 shock. The two overhangs are hitting the same chip-heavy indexes at once.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/emerging-market-stocks-mixed-as-investors-weigh-iran-tensions" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Emerging Stocks Extend Drop on Energy, Semiconductor Jitters</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Segro rejects Prologis's raised £13.5 billion cash-and-share offer</strong></summary>
+      <div class="deal-body">
+        <p>Prologis (PLD) lifted its outline bid for UK warehouse landlord Segro to £13.5 billion ($18.2 billion) with a series of sweeteners, but Segro's board rejected the latest terms. A marquee real-estate takeover battle that is still live.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/segro-rejects-fresh-13-5-billion-cash-and-share-prologis-offer" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Segro Rejects £13.5 Billion Cash and Share Prologis Offer</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alibaba's EU e-commerce arm fined a record €550 million for illegal sales</strong></summary>
+      <div class="deal-body">
+        <p>Alibaba (BABA) was fined €550 million ($629 million) by the EU for selling illegal products, the largest penalty yet under the bloc's content moderation rulebook. A regulatory hit that lands even as its Qwen AI news lifts the shares.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/alibaba-fined-550-million-for-illegal-sales-in-biggest-dsa-case" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba Fined Record €550 Million by EU for Illegal Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>American Airlines CEO lays out a plan to close a $3 billion profit gap</strong></summary>
+      <div class="deal-body">
+        <p>American Airlines (AAL) is working to improve reliability, add premium seats and lounges, and weigh a new wide-body order from Boeing or Airbus as it tries to close a more than $3 billion profit gap with rivals. A self-help story into a soft macro tape.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/19/american-airlines-ceo.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- American Airlines CEO Lays Out His Vision to Close a More Than $3 Billion Profit Gap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chinese stocks rebound as national-team state fund support resurfaces</strong></summary>
+      <div class="deal-body">
+        <p>Chinese shares rose after a choppy session amid signs of late buying by state funds as authorities intensified efforts to stabilize a slumping market. State support is stepping back in as the AI trade wobbles.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/china-steps-up-efforts-to-stabilize-its-sagging-stock-market" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chinese Stocks Rebound After National Team Support Resurfaces</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The chipmaker bounce is the tell that Friday's move was largely positioning rather than a demand verdict, but it needs confirmation from earnings. Watch whether Alphabet and Tesla reaffirm capex plans and whether Citi's "broadening" call shows up as leadership spreading beyond the megacaps. If oil holds its mediation-driven reversal, the growth-scare cross-current fades and the rebound has room; if strikes resume and crude reclaims $90, the two overhangs stack again.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Report of a Ceasefire Can Move Oil More Than the Bombing Itself</summary>
+      <p>The strangest sequence of the weekend, to a newer reader, is that oil rose while bombs were actually falling and then fell on a mere report that mediators had proposed a pause. Actual escalation lifted crude toward $90, and then a headline about the possibility of a truce, not a signed one, sent it lower. This looks backwards until you understand what a market price actually represents. A price is not a measure of what is happening right now, it is the market's best guess about the future, weighted by probability. Oil traders were not pricing today's barrels, they were pricing the odds of supply disruption over the coming weeks and months. When the US struck Iran, the market raised its estimate of the chance that Hormuz flows get interrupted, so it bid crude up to compensate whoever holds a barrel for taking that risk. That premium is insurance, not a reaction to a physical shortage that has already happened, because the barrels are still moving. Now introduce the mediation report. Even an unconfirmed proposal for a 10-day cessation changes the probability distribution. It does not guarantee peace, but it lowers the odds of the worst outcome and shortens the expected duration of the conflict. Because the earlier price already embedded a fat risk premium, any news that trims the tail risk lets some of that premium unwind, and the price falls even though nothing physical has changed and the bombing was real. This is the core of how markets discount the future: they move on changes in expectations, not on the raw events. The events matter only insofar as they shift the probabilities the market was already carrying. It also explains why a fully anticipated event often produces a muted or even opposite reaction, the famous "buy the rumor, sell the news" pattern. If everyone expected an escalation and it arrives exactly as feared, the price already reflects it and may not move at all, while a surprise de-escalation, even a tentative one, can move it hard because it was not in the price. For a reader, the practical lesson is to always ask what the market was already expecting before you judge whether a headline is bullish or bearish. A terrible piece of news that is less terrible than feared can rally an asset, and a good outcome that falls short of a priced-in great one can sink it. The direction of the surprise relative to expectations is what matters, not the direction of the news in isolation. When oil falls on a war headline, you are not watching irrationality, you are watching the market reprice a probability it had leaned too far toward. Track the expectations, not just the events, and the whipsaws start to make sense.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/us-average-gasoline-prices-rise-above-4-a-gallon-again" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Gasoline Tops $4 a Gallon Again as Iran War Escalates</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Moonshot's Kimi K3 model sets off anxiety in the US</strong></summary>
+      <div class="deal-body">
+        <p>Moonshot's release of Kimi K3 sparked fierce debate in the US and is forcing Silicon Valley to reconsider long-held assumptions about the cost of frontier AI, challenging the Anthropic and OpenAI lead. The model is the catalyst behind Friday's chip rout and this week's earnings scrutiny.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-20/moonshot-s-kimi-ai-model-sets-off-anxiety-in-the-us" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moonshot's Kimi AI Model Sets Off Anxiety in the US</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kimi K3 may be more about memory than raw compute</strong></summary>
+      <div class="deal-body">
+        <p>When DeepSeek's R1 debuted in early 2025 it wiped nearly $600 billion off Nvidia in a day on fears AI would need less compute. Bloomberg's read is that Kimi K3's efficiency may owe more to memory than to compute, a nuance that reshapes which suppliers win and lose.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/moonshot-s-kimi-k3-may-be-more-about-memory-than-compute" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moonshot's Kimi K3 May Be More About Memory Than Compute</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Big Tech needs to prove that its AI spending is going somewhere</strong></summary>
+      <div class="deal-body">
+        <p>Alphabet (GOOGL) and Tesla (TSLA) kick off the sector's earnings this week, and the burden is on the hyperscalers to show their enormous AI capex converts into revenue rather than just fueling scares. Guidance is now the referee for the scarcity thesis.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-20/big-tech-needs-to-prove-that-ai-spending-is-going-somewhere" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Big Tech Needs to Prove That AI Spending Is Going Somewhere</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alibaba unveils an open-weight Qwen3.8 Max, shares rise 5.4%</strong></summary>
+      <div class="deal-body">
+        <p>Alibaba (BABA) shares rose as much as 5.4% after it launched a preview of its flagship Qwen3.8 Max model, describing it as second only to Anthropic's Fable 5. China's AI cohort is monetizing and going open-weight, widening the ecosystem.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-19/alibaba-s-qwen-unveils-preview-of-flagship-ai-model" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba Shares Rise After Unveiling Upgraded Flagship AI Model</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Moonshot plans a Hong Kong IPO within six months after its AI breakthrough</strong></summary>
+      <div class="deal-body">
+        <p>Moonshot AI told investors it is preparing to list in as little as six months at a $30 billion-plus valuation, seizing the chance to tap capital markets after Kimi K3 upended perceptions of China's AI capabilities and sent tech stocks reeling. The disruptor wants to monetize the moment.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-19/china-s-moonshot-plans-ipo-in-six-months-after-ai-breakthrough" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moonshot Plans IPO in Six Months After China AI Breakthrough</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Prysmian signs a $6.3 billion Molex deal for data-center gear</strong></summary>
+      <div class="deal-body">
+        <p>Prysmian signed a deal worth up to €5.5 billion ($6.3 billion) to supply Koch's Molex with optical cables for its data centers, tapping directly into the AI buildout. Evidence the physical infrastructure spend is still being committed even amid the model scare.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/prysmian-inks-6-3-billion-deal-with-molex-for-data-center-gear" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Prysmian Signs $6.3 Billion Molex Deal for Data-Center Gear</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Taiwan traders cut stock leverage at the fastest pace in 15 months</strong></summary>
+      <div class="deal-body">
+        <p>Taiwan's retail investors unwound leveraged stock bets at the fastest pace since April 2025 on Friday, helping drive the local equity market into a technical correction. A vivid read that Friday's rout was positioning unwinding, not a demand collapse.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/traders-cut-taiwan-stock-leverage-at-fastest-pace-in-15-months" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Traders Cut Taiwan Stock Leverage at Fastest Pace in 15 Months</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Monday July 20, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is that Kimi K3 is a real challenge to the compute-scarcity thesis, and Bloomberg's memory-over-compute read tells you which suppliers get repriced hardest. The noise is Friday's violence: Taiwan retail cutting leverage at the fastest pace in 15 months shows how much of the drop was forced selling, and today's bounce confirms it. The clean test now is Alphabet and Tesla guidance on capex, which decides whether the demand story holds.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Bond traders take Fed's Warsh at his word: the inflation fight continues</strong></summary>
+      <div class="deal-body">
+        <p>Bond traders and Fed Chairman Kevin Warsh are aligned on one crucial point: the central bank's fight against inflation still seems far from over. The market is holding a higher-for-longer bias rather than reaching for cuts.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-19/bond-traders-take-warsh-at-word-see-inflation-fight-continuing" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Traders Take Warsh at Word, See Inflation Fight Continuing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Gold steadies as traders assess the rate path amid the US-Iran conflict</strong></summary>
+      <div class="deal-body">
+        <p>Gold steadied after escalating US-Iran clashes over the weekend were followed by reports of mediation, with traders assessing the likelihood of the Fed raising rates to contain war-driven inflation. The muted haven bid is a read on higher-for-longer.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-19/gold-falls-as-us-iran-hostilities-keep-rate-hike-bets-on-table" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Steadies as Traders Assess Rates Path Amid US-Iran Conflict</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US gasoline tops $4 a gallon again as the Iran war escalates</strong></summary>
+      <div class="deal-body">
+        <p>Pump prices climbed back above $4 a gallon as the Middle East conflict intensified, threatening to worsen a global crunch for transport fuels and stoke inflation. A direct feed into headline inflation just as earnings season starts.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/us-average-gasoline-prices-rise-above-4-a-gallon-again" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Gasoline Tops $4 a Gallon Again as Iran War Escalates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euro-area firms faced rising interest rates in the second quarter</strong></summary>
+      <div class="deal-body">
+        <p>An ECB survey showed euro-area firms confronted higher interest rates and tighter lending conditions in the second quarter, when the Iran war clouded the region's outlook. A softening credit backdrop lands right before the ECB's rate decision this week.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/euro-area-firms-faced-rising-interest-rates-in-second-quarter" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Euro-Area Firms Faced Rising Interest Rates in Second Quarter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Oil turns lower after a report of a proposed 10-day cessation of strikes</strong></summary>
+      <div class="deal-body">
+        <p>Oil swung from gains to losses following a report that mediators proposed a 10-day cessation of strikes between the US and Iran after the recent escalation. The reversal shows how much of the crude move is a risk premium, not a supply shortage.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-19/latest-oil-market-news-and-analysis-for-july-20" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for July 20</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A key China copper gauge rallies to $100 after a tax crackdown</strong></summary>
+      <div class="deal-body">
+        <p>A closely watched gauge of China's copper market rose to its highest in more than a year as a tax shake-up spurred a scrap shortage and boosted import demand. A supply-side squeeze in an industrial bellwether metal.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/key-china-copper-gauge-rallies-to-100-after-tax-crackdown" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Key China Copper Gauge Rallies to $100 After Tax Crackdown</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>South Korea details a plan to make the won freely tradable abroad</strong></summary>
+      <div class="deal-body">
+        <p>South Korea laid out a detailed plan to make the won freely tradable among foreigners, its boldest step yet to liberalize the FX market, as the Kospi rides world-beating but volatile gains. A structural opening that could reshape flows into Korean assets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-19/south-korea-to-ease-fx-rules-for-foreigners-to-trade-won-easier" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- South Korea Details Plan to Make Won Freely Tradable Abroad</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 17, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish tug is real, with Fed Chair Warsh and the bond market agreeing the inflation fight is far from over, gasoline back above $4 and crude having cleared $90 on the weekend. The dovish counterweight is a reported mediation push that turned oil lower, gold merely steadying rather than spiking, and tighter euro-area credit conditions pointing to a slowdown. The near-term referee is still crude, and whether the cessation report holds decides which way the inflation math tips into the ECB decision.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Kospi Is the World's Most Volatile Big Benchmark and What That Tells You</summary>
+      <p>Bloomberg noted today that South Korea's Kospi has delivered huge returns this year but on a wild ride, with realized volatility topping 60%, roughly double Japan's Nikkei and even eclipsing bitcoin. That is an eye-catching statistic, and understanding why it happens teaches something general about how index composition and market structure drive risk. Start with concentration. The Kospi is dominated by a handful of enormous exporters, especially memory and chip names, so the index is really a leveraged bet on the global semiconductor cycle wearing the costume of a broad national benchmark. When the AI trade rips, those few giants carry the whole index up fast, and when a shock like Kimi K3 hits, the same names drag it down just as violently. A diversified index absorbs a sector shock because other sectors offset it. A concentrated one amplifies it, because there is nothing to offset. The second driver is retail leverage. Today's separate story on Taiwan showed retail investors unwinding leveraged bets at the fastest pace in 15 months, and Korea has a similar retail-heavy, margin-heavy culture. Leverage magnifies moves in both directions: when prices rise, margin buyers pile in and push them higher, and when prices fall, margin calls force selling that feeds on itself. A market where a large share of the float is held on borrowed money will always swing harder than one dominated by long-term institutions, because the marginal buyer and seller are both price-sensitive and forced to act by their broker rather than their conviction. The third factor is openness and currency. South Korea is now detailing a plan to make the won freely tradable abroad, which is a tacit admission that its market has been harder for foreigners to move in and out of smoothly. Frictions in currency access can make flows lumpy, and lumpy flows produce sharper price moves, because capital arrives and leaves in bursts rather than a steady stream. As those rules loosen, the volatility profile itself may change over time. The practical lesson is that a headline return number tells you almost nothing without the volatility that came with it. Two markets can post the same annual gain, but if one did it with 60% volatility and the other with 20%, they are completely different investments, because the high-volatility one exposed you to far larger drawdowns along the way and demanded far more nerve to hold. When you see an index described as a top performer, always ask what it is made of, who owns it and how it trades. A concentrated, retail-leveraged, semi-open market like the Kospi can be a fantastic vehicle in an up-cycle and a brutal one in a shock, and the same features drive both. Volatility is not noise around the return, it is a core feature of the asset.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/south-korea-stock-boom-why-kospi-is-world-s-most-volatile-benchmark-stock-index" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- South Korea Stock Boom: Why Kospi Is World's Most Volatile Benchmark Stock Index</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Chipmakers bounced and oil slid on a reported US-Iran mediation push as Big Tech earnings week opened with Alphabet and Tesla ahead, while Fed Chair Warsh and bond traders held that the inflation fight is far from over and US gasoline topped $4 again; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/22</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/23</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/24</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin flat near $64,000 as oil hits a one-month high and the Kimi selloff lingers</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held near $64,000 as Brent jumped almost 4% on escalating US-Iran strikes and Asian chip stocks stayed under pressure from Friday's Chinese AI shock. Crypto is caught between the oil premium and the lingering AI unwind.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/20/bitcoin-flat-near-usd64-000-as-oil-hits-a-one-month-high-and-kimi-ai-selloff-lingers" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Flat Near $64,000 as Oil Hits a One-Month High and Kimi AI Selloff Lingers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto slips even as equities advance, with PUMP surging on social chatter</strong></summary>
+      <div class="deal-body">
+        <p>With the Fear and Greed index pointing solidly at "fear," crypto prices drifted lower even as stock index futures rose, and PUMP's 20% surge was the only real headline in an otherwise quiet session. Retail risk appetite is lagging the equity bounce.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/20/crypto-market-slips-even-as-equities-advance-pump-surges-on-social-media-chatter" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Market Slips Even as Equities Advance, Pump Surges on Social-Media Chatter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A bitcoin 'volmageddon' may be brewing, a key indicator suggests</strong></summary>
+      <div class="deal-body">
+        <p>CoinDesk flagged a technical indicator hinting that a sharp burst of bitcoin volatility could be building into the week's earnings and ECB events. A warning that the recent calm may not last.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/07/20/a-bitcoin-volmageddon-may-be-brewing-key-indicator-suggests" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- A Bitcoin 'Volmageddon' May Be Brewing, Key Indicator Suggests</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin ETFs see new money again, but inflows remain 'peanuts'</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin ETFs attracted $273 million in new inflows over two weeks, but the total is barely enough to cover a single slow week of the recent exodus. Demand is returning, just not enough to reverse the outflow trend.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/20/bitcoin-etfs-see-new-money-again-but-inflows-remain-peanuts-relative-to-the-recent-exodus" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin ETFs See New Money Again, but Inflows Remain 'Peanuts' Relative to the Recent Exodus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bank of Korea prepares live CBDC transactions with nine banks in September</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of Korea will run live CBDC transactions with nine major banks in September, letting retail consumers trade tokenized won across commercial lines in a large blockchain network test. A concrete step toward retail central-bank digital money.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/20/bank-of-korea-prepares-for-live-cbdc-transactions-with-nine-banks-in-september" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bank of Korea Prepares for Live CBDC Transactions With 9 Banks in September</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Amazon Japan supplier AZ-Com Maruwa to pay 2,300 partners in yen stablecoin JPYC</strong></summary>
+      <div class="deal-body">
+        <p>Logistics firm AZ-Com Maruwa plans to pay 2,300 partners, including truck drivers, using the yen stablecoin JPYC in Japan's first large-scale corporate stablecoin rollout. Real-economy stablecoin payments are moving from pilot to payroll.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/20/amazon-japan-supplier-az-com-maruwa-to-adopt-yen-stablecoin-jpyc-for-payments" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Amazon Japan Supplier AZ-Com Maruwa to Adopt Yen Stablecoin JPYC for Payments</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Prologis / Segro -- A Raised £13.5 Billion Bid Rejected by the UK Landlord's Board</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Prologis (PLD) lifted its outline offer for UK warehouse owner Segro to £13.5 billion ($18.2 billion) with a series of sweeteners, seeking to tempt shareholders after the board rejected the latest terms.</p>
+        <p><strong>Outlook:</strong> A logistics-property tie-up of this scale would face UK competition review, and Segro's rejection signals the price still has to rise or the structure improve to get a deal done.</p>
+        <p><strong>What it means:</strong> The AI and e-commerce buildout is making warehouse and data-center-adjacent real estate a prize asset, and the biggest owners are willing to pay up to consolidate it.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/segro-rejects-fresh-13-5-billion-cash-and-share-prologis-offer" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Segro Rejects £13.5 Billion Cash and Share Prologis Offer</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Prysmian / Molex -- A $6.3 Billion Optical-Cable Deal for the AI Data-Center Boom</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Prysmian signed a deal worth up to €5.5 billion ($6.3 billion) to supply Koch's Molex with optical cables for its data centers, plugging directly into the AI infrastructure buildout.</p>
+        <p><strong>Outlook:</strong> Long-dated supply contracts like this lock in demand visibility for the physical layer of AI, insulating cable makers somewhat from the model-cost debate rattling chip stocks.</p>
+        <p><strong>What it means:</strong> Even as investors question compute scarcity, the plumbing of data centers keeps getting committed capital, a sign the buildout is not pausing on one cheaper model.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/prysmian-inks-6-3-billion-deal-with-molex-for-data-center-gear" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Prysmian Signs $6.3 Billion Molex Deal for Data-Center Gear</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jersey Mike's -- Sandwich Chain Seeks Up to $1.09 Billion in a US IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Jersey Mike's Subs and its backers are looking to raise as much as $1.09 billion in an IPO as consumer-oriented companies join the US listing rebound.</p>
+        <p><strong>Outlook:</strong> A consumer-brand debut tests appetite for defensive, cash-generative names against a jittery macro tape and elevated pump prices squeezing the same consumer.</p>
+        <p><strong>What it means:</strong> The IPO window is reopening beyond tech, and a franchised restaurant chain listing is a read on whether investors want steady cash flow over growth right now.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/sandwich-chain-jersey-mike-s-backers-seek-1-09-billion-in-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jersey Mike's, Backers Seek Up to $1.09 Billion in US IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Blackstone / Futronic -- A Bet on Korean Robotics Actuators</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Blackstone (BX) agreed to invest in Futronic, a South Korean supplier of high-precision actuators used in industrial robotics and the automotive sector.</p>
+        <p><strong>Outlook:</strong> Robotics component suppliers are a picks-and-shovels play on automation demand, and a Blackstone check adds scale and access ahead of a broader industrial-AI wave.</p>
+        <p><strong>What it means:</strong> Private capital is reaching past the AI software and chip layer into the physical robotics supply chain, widening where the automation money flows.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/blackstone-agrees-to-invest-in-korean-robotics-supplier-futronic" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Blackstone Agrees to Invest in Korean Robotics Supplier Futronic</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal Sizes This Week ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Citigroup strategists -- the Magnificent Seven tag is obsolete for the AI trade</strong></summary>
+      <div class="deal-body">
+        <p>Citi said the Magnificent Seven moniker is no longer relevant for playing the US AI trade, arguing the winners are broadening beyond the familiar megacaps. A call to rethink leadership just as earnings begin.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/citi-says-magnificent-seven-tag-is-obsolete-in-ai-stock-winners" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citi Says Magnificent Seven Tag Is Obsolete in AI Stock Winners</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kevin Warsh (Fed Chair) and bond traders -- the inflation fight is far from over</strong></summary>
+      <div class="deal-body">
+        <p>Bloomberg reports the bond market and Fed Chairman Kevin Warsh agree the inflation fight still looks far from finished, keeping a higher-for-longer bias in yields. The consensus read pushes back on any near-term easing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-19/bond-traders-take-warsh-at-word-see-inflation-fight-continuing" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Traders Take Warsh at Word, See Inflation Fight Continuing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ben Thompson (Stratechery) -- the US frontier labs will be fine</strong></summary>
+      <div class="deal-body">
+        <p>Thompson argued that everyone is worried about Chinese models but the frontier labs will be fine, and the real priority is enabling open US alternatives. A contrarian read that the Kimi scare is overdone for the American leaders.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/whos-afraid-of-chinese-models/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- Who's Afraid of Chinese Models?</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Blackstone -- investing in Korean robotics supplier Futronic</strong></summary>
+      <div class="deal-body">
+        <p>Blackstone agreed to invest in Futronic, a maker of high-precision actuators for industrial robotics and autos, extending its automation exposure into the physical supply chain. A named private-capital bet beyond the chip and software layer.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/blackstone-agrees-to-invest-in-korean-robotics-supplier-futronic" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Blackstone Agrees to Invest in Korean Robotics Supplier Futronic</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Singapore -- mulling lower taxes and easier talent entry for hedge funds</strong></summary>
+      <div class="deal-body">
+        <p>Singapore is weighing tax cuts for hedge funds and asset managers and easier rules to hire foreign talent, as rival Hong Kong nears finalizing widespread tax exemptions. A competition for where global buyside capital domiciles.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/singapore-mulls-lower-taxes-easier-talent-entry-for-hedge-funds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Singapore Mulls Lower Taxes, Easier Talent Entry for Hedge Funds</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Chipmakers Bounce Into Big Tech Earnings, Fed Chair Warsh and Bond Traders Hold the Inflation Fight Open, and Oil Whipsaws on a Reported US-Iran Mediation Push</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the demand is intact):</strong> Chipmakers are bouncing, TSMC's CFO says its $265 billion US spend is demand-driven, and Prysmian's $6.3 billion Molex deal shows the buildout continues. Citi says the winners are broadening beyond the Magnificent Seven, Stratechery's Ben Thompson argues the frontier labs will be fine, and a reported cessation of Iran strikes turned oil lower.</div>
+        <div class="bear"><strong>Bear (earnings and oil still threaten):</strong> Kimi K3 revived the DeepSeek scare and Bloomberg says Big Tech must prove its AI spend pays off, with Alphabet and Tesla up first. Fed Chair Warsh and bond traders say the inflation fight is far from over, gasoline is back above $4, and Taiwan retail cut leverage at the fastest pace in 15 months. A mediation report is not a truce.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Chipmakers bounce after Kimi K3 rout; Alphabet and Tesla earnings this week; is the dip bought or a trap</td><td>Cautiously Bullish</td><td>~19,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Citi says Mag 7 tag obsolete; oil back over $90 then slides; gasoline tops $4; Segro rejects Prologis</td><td>Mixed</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Warsh and bond traders say inflation fight not over; ECB decision this week; TSMC $265B demand-driven</td><td>Cautious</td><td>~11,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Is Kimi K3 about memory not compute; why oil fell on a truce report; Prysmian-Molex $6.3B buildout</td><td>Analytical</td><td>~7,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC flat near $64K; Fear index at "fear"; volmageddon warning; ETF inflows still peanuts; PUMP +20%</td><td>Bearish</td><td>~15,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood steadied from Friday's fear. r/wallstreetbets turned cautiously bullish on the chipmaker bounce but split over whether the dip is a buy or a trap ahead of Alphabet and Tesla. r/stocks was mixed as Citi called the Magnificent Seven tag obsolete, oil cleared $90 before sliding on the mediation report and gasoline topped $4. r/investing stayed cautious on Warsh and bond traders keeping the inflation fight open and the ECB decision looming, though TSMC's demand-led capex reassured some. r/SecurityAnalysis dug into whether Kimi K3 is really a memory story and why oil fell on a truce report. r/CryptoCurrency stayed bearish with the Fear and Greed index at "fear," a volmageddon warning and ETF inflows still called peanuts. The single swing factor is Big Tech earnings, with oil the second overhang.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why "Memory, Not Compute" Changes Which Companies Win From the Same AI Breakthrough</h2>
+    <p>Bloomberg made a subtle but important point today: Moonshot's Kimi K3, the model that rattled chip stocks on Friday, may owe its efficiency more to memory than to raw compute. That distinction sounds like an engineering footnote, but it decides which suppliers get hurt and which get helped, and understanding it teaches a broader lesson about reading technology news as an investor. Start with what an AI model actually needs to run. Two resources dominate: compute, the processing power that does the math, and memory, the fast storage that holds the model's data and intermediate results while it works. For years the market treated the story as a compute story. The scarcity thesis that justified sky-high valuations for the leading logic-chip makers rested on the idea that frontier AI needs ever-growing mountains of expensive processing power. When DeepSeek's R1 landed in early 2025 and wiped nearly $600 billion off Nvidia in a single day, the fear was specifically that AI would need less compute than assumed, which attacks the pricing power of the compute suppliers directly.</p>
+    <p>Now suppose Kimi K3's efficiency comes largely from clever use of memory rather than from needing less processing power overall. That reframes the whole trade. If the bottleneck is shifting from compute toward memory, then the value in the supply chain migrates too, away from the pure logic-chip makers and toward the memory makers, the companies that build the high-bandwidth memory that feeds these models. A breakthrough that looks bearish for one part of the chip complex can be neutral or even bullish for another part, even though the headline just says "chip stocks fell." The market on Friday sold the whole group indiscriminately, because in a panic investors reach for the crude category label first and sort out the nuance later.</p>
+    <p>This is why the same news can be a threat and an opportunity at once, and why lumping an entire sector together is a mistake. The lesson for a reader is to always push past the headline category to the specific mechanism. Ask what resource the breakthrough actually economizes on, and then ask who sells that resource versus who sells the one that becomes more important. When a technology gets more efficient in one dimension, demand often shifts toward the complementary input rather than disappearing, a pattern economists call the balancing of bottlenecks: relieve one constraint and the next one becomes the binding limit and the valuable one.</p>
+    <p>Practically, this means the first-day reaction to a shock like Kimi K3 is usually the crudest, most indiscriminate version of the trade, because it runs on the category label. The refinement comes later, as analysts work out that memory names might gain while some logic exposure is genuinely challenged. That gap between the panic and the sorting-out is where a careful reader can find both the real risk and the mispriced opportunity. When you see a technology breakthrough described as bad for an industry, do not stop at the label. Ask which specific input got cheaper or more abundant, and which one just became the new bottleneck, because that is where the winners and losers actually divide.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/moonshot-s-kimi-k3-may-be-more-about-memory-than-compute" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moonshot's Kimi K3 May Be More About Memory Than Compute</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/moonshot-ai-is-creating-new-winners-and-losers-in-the-ai-trade" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moonshot Is Creating New Winners and Losers in the AI Trade</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>ECB rate decision.</strong> The decision lands this week against an ECB survey showing euro-area firms squeezed by tighter credit and the Iran war clouding the outlook; watch the statement and Lagarde's tone for whether the growth scare shifts guidance.</li>
+      <li><strong>Fed hike pricing.</strong> Fed Chair Warsh and bond traders say the inflation fight is far from over and gasoline is back above $4; watch whether more officials lean hawkish or whether a holding oil truce lets the market price patience.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Alphabet and Tesla.</strong> Big Tech earnings open this week and the burden is on the hyperscalers to prove their AI spending is going somewhere; capex guidance is now the referee for the scarcity thesis after Kimi K3.</li>
+      <li><strong>Broader AI cohort.</strong> Watch whether the reported broadening beyond the Magnificent Seven that Citi flagged actually shows up in results, and whether memory names hold up better than logic exposure.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Prologis-Segro.</strong> A raised £13.5 billion bid was rejected; watch for a higher offer, a structure change or a walk-away.</li>
+      <li><strong>IPO window.</strong> Jersey Mike's is seeking up to $1.09 billion and Moonshot is prepping a Hong Kong listing within six months; watch pricing and demand as consumer and AI names test the market.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran mediation.</strong> A reported 10-day cessation proposal turned oil lower after crude cleared $90; watch whether the pause holds, tanker flows and pump prices, which feed straight into the inflation math.</li>
+      <li><strong>China AI policy.</strong> Kimi K3, Alibaba's open-weight Qwen and Moonshot's IPO push raise competitive and security stakes; watch for any US export-control or investment response.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Jul 20, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-07-20 06:54 ET); Bloomberg Technology (20 fresh, newest 2026-07-20 07:02 ET); Bloomberg Economics (5 fresh, newest 2026-07-20 07:00 ET); CNBC Top News (1 fresh, newest 2026-07-19 08:00 ET); CoinDesk (19 fresh, newest 2026-07-20 08:02 ET); Stratechery (1 fresh, newest 2026-07-20 07:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What sent oil lower on Monday despite the weekend US-Iran escalation?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC unexpectedly announced a large production increase</span>
+      <span class="opt" data-opt="B">B. US crude inventories rose far more than forecast</span>
+      <span class="opt" data-opt="C">C. A report that mediators proposed a 10-day cessation</span>
+      <span class="opt" data-opt="D">D. The dollar strengthened sharply against major currencies</span>
+      <div class="feedback"><strong>C is correct.</strong> Crude swung from gains above $90 to losses after a report that mediators proposed a 10-day cessation of strikes, which trimmed the war-risk premium the market had built in. OPEC did not add supply, inventories were not the driver, and the dollar move was not the cause.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>2. According to Bloomberg, Kimi K3's efficiency may owe more to what than to raw compute?</strong></p>
+      <span class="opt" data-opt="A">A. A much larger training dataset than US rivals</span>
+      <span class="opt" data-opt="B">B. Clever use of memory in how it runs</span>
+      <span class="opt" data-opt="C">C. Access to banned high-end Nvidia chips</span>
+      <span class="opt" data-opt="D">D. Direct subsidies from the Chinese government</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg's read is that Kimi K3's efficiency may stem more from memory than from processing power, which shifts value toward memory suppliers rather than pure logic-chip makers. A bigger dataset, banned chips and state subsidies were not cited as the mechanism.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why did Citi say the "Magnificent Seven" label is now obsolete?</strong></p>
+      <span class="opt" data-opt="A">A. The AI trade's winners are broadening beyond them</span>
+      <span class="opt" data-opt="B">B. All seven of those stocks have started falling together</span>
+      <span class="opt" data-opt="C">C. Regulators are forcing the group to be broken up</span>
+      <span class="opt" data-opt="D">D. Their combined earnings just turned sharply negative</span>
+      <div class="feedback"><strong>A is correct.</strong> Citi argued the moniker is no longer relevant because the AI winners are broadening well beyond the familiar megacaps. The group is not uniformly falling, facing breakup orders, or reporting negative earnings, so those framings miss the point.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Bond traders and Fed Chair Kevin Warsh agree the inflation fight is far from over, US gasoline topped $4 again and crude cleared $90 on the weekend strikes, while a reported mediation push turned oil lower, gold only steadied rather than spiked, and an ECB survey showed euro-area firms squeezed by tighter credit ahead of the ECB decision.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-19/bond-traders-take-warsh-at-word-see-inflation-fight-continuing", "take": "Traders and Warsh see inflation fight continuing." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-20/us-average-gasoline-prices-rise-above-4-a-gallon-again", "take": "US gasoline tops $4 again as war escalates." },
+      { "name": "Bloomberg", "lean": "neutral", "url": "https://www.bloomberg.com/news/articles/2026-07-19/gold-falls-as-us-iran-hostilities-keep-rate-hike-bets-on-table", "take": "Gold steadies as traders weigh the rate path." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-20/euro-area-firms-faced-rising-interest-rates-in-second-quarter", "take": "Euro-area firms face tighter credit conditions." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-19/latest-oil-market-news-and-analysis-for-july-20", "take": "Oil turns lower on a mediation report." }
+    ]
+  },
+  "iran": {
+    "diverge": "Renewed US bombing of Iran lifted Brent nearly 4% above $90 and pushed US gasoline over $4, and emerging stocks extended their drop, but oil turned from gains to losses after a report that mediators proposed a 10-day cessation of strikes, with stocks and crypto bouncing on the headline.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-20/emerging-market-stocks-mixed-as-investors-weigh-iran-tensions", "take": "EM stocks extend drop as oil clears $90." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-20/us-average-gasoline-prices-rise-above-4-a-gallon-again", "take": "Gasoline back over $4 threatens inflation." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-19/latest-oil-market-news-and-analysis-for-july-20", "take": "Mediators propose a 10-day cessation of strikes." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-19/oil-climbs-as-middle-east-conflict-escalates-markets-wrap", "take": "Stocks climb and oil slides on the truce report." },
+      { "name": "CoinDesk", "lean": "neutral", "url": "https://www.coindesk.com/markets/2026/07/20/bitcoin-flat-near-usd64-000-as-oil-hits-a-one-month-high-and-kimi-ai-selloff-lingers", "take": "Bitcoin flat near $64K as oil hits a one-month high." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Chipmakers bounced as investors digested Moonshot's Kimi K3 and Alibaba's open-weight Qwen ahead of Big Tech earnings, with Citi calling the Magnificent Seven tag obsolete and Stratechery's Ben Thompson arguing the frontier labs will be fine, though Bloomberg says the hyperscalers must now prove their AI spend pays off and Taiwan retail cut leverage at the fastest pace in 15 months.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-19/oil-climbs-as-middle-east-conflict-escalates-markets-wrap", "take": "Chipmakers bounce at the start of earnings week." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-07-20/big-tech-needs-to-prove-that-ai-spending-is-going-somewhere", "take": "Big Tech must prove the AI spend pays off." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-20/moonshot-s-kimi-k3-may-be-more-about-memory-than-compute", "take": "Kimi K3 may be about memory, not compute." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-20/citi-says-magnificent-seven-tag-is-obsolete-in-ai-stock-winners", "take": "Citi says AI winners are broadening." },
+      { "name": "Stratechery", "lean": "bull", "url": "https://stratechery.com/2026/whos-afraid-of-chinese-models/", "take": "Thompson says the frontier labs will be fine." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-20/traders-cut-taiwan-stock-leverage-at-fastest-pace-in-15-months", "take": "Taiwan retail cut leverage at the fastest pace in 15 months." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Alibaba","SK Hynix","TSMC","Nvidia","ASML","Netflix"],
+    "values": [5.4, 3.0, 2.5, 2.0, 1.5, -1.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [19000, 14000, 11000, 7000, 15000],
+    "colors": ["bull","neutral","neutral","neutral","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Prologis/Segro","Prysmian/Molex","Jersey Mike's IPO","Blackstone/Futronic"],
+    "values": [18.2, 6.3, 1.09, 0.45]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="js/digest-date.js?v=20260721"></script>
+<script src="js/config.js?v=20260721"></script>
+<script src="js/repair-dom.js?v=20260721"></script>
+<script src="js/digest-ui.js?v=20260721"></script>
+<script src="js/charts-core.js?v=20260721"></script>
+<script src="js/archive.js?v=20260721"></script>
+<script src="js/artifact-equities.js?v=20260721"></script>
+<script src="js/charts-macro.js?v=20260721"></script>
+<script src="js/artifact-framing.js?v=20260721"></script>
+<script src="js/verdict-updater.js?v=20260721"></script>
+<script src="js/digest-init.js?v=20260721"></script>
+
+</body>
+</html>
