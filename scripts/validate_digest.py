@@ -16,6 +16,8 @@ from digest_contracts import (  # noqa: E402
     validate_static_rules,
 )
 
+ROOT = Path(__file__).resolve().parents[1]
+DOCS_ROOT = ROOT / "docs"
 LIVE_URL = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/index.html"
 LIVE_BASE = "https://raw.githubusercontent.com/wesleyhu1103/market-digest/main/docs/"
 
@@ -29,26 +31,59 @@ def _fetch_text(url: str) -> str:
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
 
 
-def collect_js(html: str, html_path: Optional[Path]) -> str:
+def _is_remote_asset(url: str) -> bool:
+    return url.startswith(("http://", "https://", "//"))
+
+
+def _local_asset_path(url: str, html_path: Path) -> Path:
+    rel = url.split("?", 1)[0].split("#", 1)[0]
+    if rel.startswith("/"):
+        return (DOCS_ROOT / rel.lstrip("/")).resolve()
+    return (html_path.parent / rel).resolve()
+
+
+def _attr(tag: str, name: str) -> Optional[str]:
+    m = re.search(rf'\b{name}=["\']([^"\']+)["\']', tag, re.I)
+    return m.group(1) if m else None
+
+
+def collect_js(html: str, html_path: Optional[Path]) -> tuple[str, list[str]]:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
+    errors: list[str] = []
     for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
         src = m.group(1).split("?")[0]
-        if src.startswith(("http://", "https://", "//")):
+        if _is_remote_asset(src):
             continue
-        rel = src.lstrip("/")
         if html_path:
-            fp = (html_path.parent / rel).resolve()
+            fp = _local_asset_path(src, html_path)
             if fp.is_file():
                 parts.append(fp.read_text())
                 continue
+            errors.append(f"missing local script asset: {src}")
+            continue
         try:
-            parts.append(_fetch_text(LIVE_BASE + rel))
+            parts.append(_fetch_text(LIVE_BASE + src.lstrip("/")))
         except OSError:
             print(f"WARN: could not load script {src}")
     for block in re.findall(r"<script>([\s\S]*?)</script>", html):
         parts.append(block)
-    return "\n\n".join(parts)
+    return "\n\n".join(parts), errors
+
+
+def check_local_stylesheets(html: str, html_path: Optional[Path]) -> list[str]:
+    if not html_path:
+        return []
+    errors: list[str] = []
+    for tag in re.findall(r"<link\b[^>]*>", html, re.I):
+        rel = _attr(tag, "rel")
+        href = _attr(tag, "href")
+        if not rel or "stylesheet" not in rel.lower() or not href or _is_remote_asset(href):
+            continue
+        fp = _local_asset_path(href, html_path)
+        if not fp.is_file():
+            errors.append(f"missing local stylesheet asset: {href}")
+    return errors
 
 
 def check_js(js_body: str) -> bool:
@@ -77,7 +112,8 @@ def main():
     else:
         html = _fetch_text(LIVE_URL)
 
-    js_bundle = collect_js(html, html_path)
+    js_bundle, asset_errors = collect_js(html, html_path)
+    asset_errors.extend(check_local_stylesheets(html, html_path))
 
     main_block = re.search(r"<main>[\s\S]*?</main>", html, re.DOTALL)
     if not main_block:
@@ -86,6 +122,10 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    for err in asset_errors:
+        print(f"FAIL asset: {err}")
+        failures += 1
+
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
