@@ -27,8 +27,10 @@ class PublishDigestArchiveTest(unittest.TestCase):
     def test_archive_previous_day_writes_archive_safe_snapshot(self):
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
+            old_root = publish_digest.ROOT
             old_archive_dir = publish_digest.ARCHIVE_DIR
             old_manifest = publish_digest.MANIFEST
+            publish_digest.ROOT = tmp_path
             publish_digest.ARCHIVE_DIR = tmp_path / "archive"
             publish_digest.MANIFEST = publish_digest.ARCHIVE_DIR / "manifest.json"
             publish_digest.ARCHIVE_DIR.mkdir()
@@ -55,6 +57,7 @@ class PublishDigestArchiveTest(unittest.TestCase):
                 manifest = json.loads(publish_digest.MANIFEST.read_text())
                 self.assertEqual(manifest[0]["date"], "2026-07-21")
             finally:
+                publish_digest.ROOT = old_root
                 publish_digest.ARCHIVE_DIR = old_archive_dir
                 publish_digest.MANIFEST = old_manifest
 
