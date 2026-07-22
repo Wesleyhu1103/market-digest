@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Tue Jul 21, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="js/site-config.js?v=20260721"></script>
+<script src="js/market-feed.js?v=20260721"></script>
+<link rel="stylesheet" href="css/digest.css?v=20260721">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-21</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Tuesday, July 21, 2026</h1>
+    <div class="meta">
+      <p>Big Tech earnings ramp with Alphabet up Wednesday and Tesla close behind, and GM's beat-and-raise opens the industrials as chipmakers extend their rebound. Oil is still elevated on a 10th straight day of US-Iran strikes but pulling back on ceasefire hopes, while Trump's 10% tariff wall expires July 24 and a fresh 50% Canada levy lands. The Fed is in blackout ahead of next week's rate decision.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Chipmakers' rebound gathers pace into a Big Tech earnings gauntlet, with Alphabet reporting Wednesday and Tesla close behind, GM beating and raising, and oil still elevated on a 10th day of US-Iran strikes even as ceasefire hopes and diplomacy pull crude back",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Chip Stocks Lead U.S. Futures Higher as the AI Trade Bounces Back", "angle": "Centers the mechanical recovery in semiconductors as investors position ahead of megacap results.", "lean": 30, "pull": "U.S. stock futures jumped with Nasdaq leading gains as investors await earnings from some of America's biggest tech companies."},
+        {"outlet": "Bloomberg", "headline": "Stocks Rise as Rebound in Chipmakers Gathers Pace", "angle": "Frames dip buyers extending the rebound while Brent tops $90 on a 10th straight day of strikes.", "lean": 20, "pull": "Dip buyers extended a rebound in chipmakers, lifting global stock markets even as the US and Iran exchanged strikes."},
+        {"outlet": "CNBC", "headline": "Jamie Dimon Says Markets Underestimate Risks", "angle": "Leads with the JPMorgan chief warning that complacency is mispriced against wars and tariffs.", "lean": -35, "pull": "Dimon said he wouldn't buy stocks or Treasurys at current prices as investors look past shocks."},
+        {"outlet": "Financial Times", "headline": "Trump Prepares Fresh Tariff Barrage as 10% Levies Expire", "angle": "Puts the reignited trade war and a 50% Canada levy at the center of the macro risk.", "lean": -20, "pull": "The US president is set to renew the trade war after the Supreme Court threw out reciprocal duties."},
+        {"outlet": "The Economist", "headline": "The AI Trade Steadies but Has to Answer for the Spend", "angle": "Keeps focus on whether hyperscaler capex converts to revenue as earnings arrive.", "lean": 5, "pull": "A bounce in the chips is not the same as proof that the buildout pays for itself."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasury Yields Rise and JPMorgan's Jamie Dimon Warns Markets Underestimate War, Tariff and AI Risks, Saying He Would Not Buy Stocks or Treasurys Here, While Softer Canada Inflation and a Record Carry Trade Argue the Complacency Can Hold Through the Fed's Blackout</h3>
+      </div>
+      <p>The rate debate turned back toward risk this week even with the Fed in a pre-decision blackout and a quiet US data calendar. Treasury yields rose to start the week and euro-area yields edged higher as Mideast hostilities revived oil-supply fears, and JPMorgan's Jamie Dimon delivered the loudest hawkish caution, telling CNBC that markets underestimate the risks from wars, tariffs and stretched valuations and that he would not buy stocks or Treasurys at current prices. Trump's 50% tariff on a range of Canadian goods and a fresh barrage as the 10% levy expires July 24 add a supply-side inflation tug just as euro-zone banks tightened corporate credit standards further, citing the Iran war. The counterweight is that Canadian inflation cooled to 2.8% with core below 2% for the first time in nearly six years, the dollar held steady on softer inflation data, and Wall Street is piling into the carry trade as cross-asset volatility stays unusually muted. Hungary cut rates for a second month.</p>
+      <p>The bull case for lower yields is that Canada's core just broke below 2%, volatility is low enough to fuel a record carry trade, and the Fed's blackout means no new hawkish signal until next week. The bear case is that Dimon says the tape is complacent, yields are rising, oil is elevated, and tariffs plus tighter euro-area credit keep the inflation risk live.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (disinflation still has a path):</strong> Canada's core inflation dropped below 2% for the first time in almost six years, the dollar steadied on softer prints, and muted cross-asset volatility has investors piling into the carry trade at its best run in decades. With the Fed in blackout and a light US data week, there is no fresh hawkish catalyst, and calm markets let the front end price patience.</div>
+        <div class="bear"><strong>Bear (complacency is mispriced):</strong> Jamie Dimon says markets underestimate the risks from wars, tariffs and valuations and that he would not buy stocks or Treasurys here. Treasury and euro-area yields are rising, Trump is set to hit Canada with 50% tariffs as the 10% wall expires, and euro-zone banks tightened credit standards on Iran-war risk. The inflation threat has not gone away.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.cnbc.com/2026/07/21/jpmorgan-chase-ceo-jamie-dimon-market-risk.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Jamie Dimon Says Markets Underestimate Risks and He Wouldn't Buy Stocks or Treasurys at Current Prices</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>US-Iran Strikes Hit a 10th Straight Day and Brent Tops $90 as Tankers Turn Back in the Red Sea and Kazakhstan Halts Black Sea Flows, but Oil Pulls Back and Asian Equities Rally on Ceasefire Hopes, While the Crack Spread Pushes Gasoline Up Faster Than Crude</h3>
+      </div>
+      <p>Geopolitics stayed the swing factor into the week. Brent topped $90 a barrel as the US and Iran exchanged strikes for a 10th straight day, and the physical supply picture darkened: a very large Chinese crude carrier made a U-turn in the southern Red Sea after Houthi attack threats, Kazakhstan moved to stop piping oil to a Black Sea port after tanker attacks, and the IEA said it is closely monitoring markets as hostilities raise supply-security concerns. Then the tape flipped again. Oil pulled back and Asian equities broadly advanced on hopes for a new US-Iran ceasefire, and emerging-market assets rallied after three days of losses, helped by both the diplomacy and China's state-backed tech rescue. Underneath, the crack spread, the gap between refined gasoline and crude, widened sharply, which is why US pump prices have been climbing faster than the oil price itself. That refined-product squeeze is the freshest inflation channel even if crude cools.</p>
+      <p>The bull read is that oil already reversed lower on ceasefire hopes and risk assets rallied in tandem, so a diplomatic off-ramp is being priced. The bear read is that strikes are into a 10th day, tankers are rerouting across the Red Sea and Black Sea, and a widening crack spread keeps feeding gasoline even if crude eases.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (a ceasefire is in view):</strong> Oil pulled back and Asian equities rose broadly on hopes for a new US-Iran ceasefire, and emerging-market assets rallied out of a three-day slump on the diplomacy and China's tech support. The market keeps finding a de-escalation bid within hours of crude clearing $90, and if a pause holds the war premium drains and pump prices ease.</div>
+        <div class="bear"><strong>Bear (the supply threat is spreading):</strong> Strikes are into a 10th straight day, a Chinese tanker turned back in the Red Sea on Houthi threats, Kazakhstan is halting Black Sea flows, and the IEA is warning on supply security. Worse, the crack spread has widened sharply, so gasoline keeps rising faster than crude and hits headline inflation even if oil itself cools. Ceasefire hope is not a signed deal.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-20/latest-oil-market-news-and-analysis-for-july-20" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for July 21</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Chipmakers' Rebound Gathers Pace With UBS's Trading Desk Calling the Selloff Nearly Over and TSMC Planning 10% Price Hikes, but Oracle's Credit Risk Hits an 18-Year High and Morgan Stanley Cuts Adobe as Alphabet and Tesla Have to Prove the AI Spend</h3>
+      </div>
+      <p>Four days after Kimi K3, the AI trade is steadying and the bounce is broadening. UBS's trading desk said the sharp momentum selloff may be near its end and told clients to start rebuilding AI and semiconductor positions, and memory names led: Sandisk, Micron and AMD jumped, and Yahoo Finance argued the SK Hynix margin unwind could be a generational buying opportunity. TSMC is in talks to raise chipmaking prices by up to 10% in 2027 to cover costs, a pricing-power signal, and data centers are on track to consume a fifth of US power by 2035 per BloombergNEF. But the burden shifts to earnings: Alphabet reports Wednesday having poured record cash into data centers, and Tesla's results land as its Optimus and Robotaxi bets demand still more capital. The bear tape is real too. Oracle's credit-default cost hit a near 18-year high on doubts its AI investments will pay off, Morgan Stanley cut Adobe to underweight on AI-competition fears, and WSJ warned the massive supply deals feeding the AI frenzy are less solid than they look. Stratechery's Ben Thompson keeps arguing the US frontier labs will be fine.</p>
+      <p>The bulls note the broadening rebound, UBS calling a bottom, TSMC's pricing power and the relentless data-center power and financing demand. The bears point to Oracle's blowout credit risk, the Adobe downgrade, shaky supply contracts and the fact that Alphabet and Tesla now have to justify the spend.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the buildout is intact):</strong> UBS's trading desk says the selloff is nearly over and to rebuild AI and chip positions, memory names like Sandisk, Micron and AMD are leading the bounce, and TSMC is planning up to 10% price hikes in 2027. Data centers are set to eat a fifth of US power by 2035, BlackRock is leading a $12 billion Meta financing, and Stratechery's Ben Thompson argues the frontier labs will be fine.</div>
+        <div class="bear"><strong>Bear (earnings have to justify it):</strong> Oracle's credit-default cost hit a near 18-year high on AI debt-load angst, Morgan Stanley cut Adobe to underweight on AI competition, and WSJ says the big AI supply deals are no sure thing. Alphabet and Tesla must now prove that record capex converts to revenue, and Stocktwits' Howard Lindzon dumped chips before the 20% slide for a reason.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-20/ubs-trading-desk-says-buy-momentum-stocks-as-selloff-nears-end" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UBS Trading Desk Says Buy Momentum Stocks as Selloff Nears End</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>GM beats and raises guidance on a resilient consumer and better pricing</strong></summary>
+      <div class="deal-body">
+        <p>General Motors (GM) topped second-quarter expectations and raised several key earnings forecasts as its North American operations held up, with revenue growing for the first time in over a year and its stock bouncing. Its memory-chip and supply commentary is also being read as a stabilizer for the semiconductor tape.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/21/general-motors-gm-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- GM Beats on Earnings, Raises Guidance Amid 'Resilient' Consumer, Pricing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chip stocks lead US futures higher as the AI trade bounces back</strong></summary>
+      <div class="deal-body">
+        <p>US stock futures jumped with the Nasdaq leading as investors positioned ahead of earnings from some of America's biggest tech companies, extending the chipmaker rebound off last week's rout. Oil stayed elevated but the dip-buying held.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/u-s-futures-higher-as-ai-trade-bounces-back-d120b6a2?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Chip Stocks Lead U.S. Futures Higher</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Economic momentum flips from blessing to curse for S&amp;P 500 bulls</strong></summary>
+      <div class="deal-body">
+        <p>Bloomberg flagged the double-edged sword facing equity traders: solid growth is an earnings tailwind, but let it run too hot and it revives the rate-and-inflation worry that pressures multiples. Good data is starting to read as a rates problem.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/economic-momentum-flips-from-blessing-to-curse-for-s-p-500-bulls" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Economic Momentum Flips From Blessing to Curse for S&P 500 Bulls</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Novo Nordisk sues Eli Lilly over GLP-1 comparison ads</strong></summary>
+      <div class="deal-body">
+        <p>Novo Nordisk (NVO) sued Eli Lilly (LLY), alleging deceptive marketing that used outdated data to claim its weight-loss drugs are more effective than Wegovy, and asked a court to stop the ads and require corrective advertising. The obesity-drug rivalry is spilling into litigation.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/812d7feb-34d6-4f0f-8193-b037aee7ec86?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Novo Nordisk Accuses Eli Lilly of Deceptive Marketing in Weight-Loss Fight</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Paramount and Warner Bros merger hit with a temporary restraining order</strong></summary>
+      <div class="deal-body">
+        <p>A California judge granted a temporary restraining order in a suit brought by state attorneys general on antitrust grounds, delaying the Paramount (PARA) and Warner Bros Discovery (WBD) merger. A regulatory speed bump for one of the year's biggest media tie-ups.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/20/paramount-wbd-merger-delay.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Paramount and Warner Bros Merger Hit With Temporary Restraining Order</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Charles Schwab profits surge as retail traders bought the dip</strong></summary>
+      <div class="deal-body">
+        <p>Charles Schwab (SCHW) reported a jump in profit as retail traders bought the dip through a volatile quarter, lifting trading and asset-gathering revenue. A read that the retail bid stayed active even through the chip-led shakeout.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/article/charles-schwab-profits-surge-as-retail-traders-bought-the-dip-in-a-volatile-quarter-115800025.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Charles Schwab Profits Surge as Retail Traders Bought the Dip in a Volatile Quarter</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The chipmaker rebound gathering pace and UBS calling a bottom are the tells that last week's slide was largely positioning, but earnings are the real referee. Watch whether Alphabet's Wednesday capex guidance and Tesla's spend commentary reaffirm the buildout, and whether memory names keep leading over logic. If oil holds its ceasefire-driven pullback, the growth-scare cross-current fades and the rebound has room; if strikes intensify and crude reclaims $90, good economic data starts reading as a rates threat again.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Strong Growth Can Turn From a Blessing Into a Curse for Stocks</summary>
+      <p>Bloomberg made a point today that sounds paradoxical to a newer reader: strong economic momentum, usually the best possible backdrop for equities, is starting to work against the S&P 500. How can good news be bad news? The answer lives in the two opposing channels through which growth reaches a stock price, and understanding them explains one of the most confusing patterns in markets. Channel one is earnings. A growing economy means more spending, more revenue and fatter corporate profits, and since a stock is a claim on future earnings, faster growth should lift the numerator in the valuation. On its own, this is unambiguously bullish, which is why in a normal environment traders cheer a strong jobs report or a hot retail-sales print. Channel two is the discount rate. Those future earnings are worth something today only after you discount them back at prevailing interest rates, and rates are set with one eye on inflation. When growth runs hot, it raises the odds that the central bank keeps policy tight or even hikes to cool things off, which lifts the rate you discount future profits at and shrinks their present value. That works against the stock, hitting the denominator. Which channel wins depends entirely on where the economy and the central bank sit in the cycle. Early in a recovery, with inflation tame and the central bank friendly, the earnings channel dominates, and good data lifts stocks cleanly. But when inflation is already the worry and the central bank is leaning hawkish, as it is now with the Fed in a pre-decision blackout and traders wary of tariffs and oil, the discount-rate channel takes over. A strong print no longer just promises more profit, it threatens higher-for-longer rates, and the market can fall on news that would have rallied it a year earlier. This is the mechanism behind the phrase good news is bad news, and it is not a mood swing, it is a real change in which force is binding. The practical lesson is to always ask what the marginal worry is before you judge a data release. If the market is most afraid of a recession, strong data is a relief and stocks rise. If the market is most afraid of inflation and tight policy, the same strong data is a threat and stocks fall. The number itself is neutral. What matters is the regime it lands in and which channel, earnings or discount rate, is doing the heavy lifting at that moment. When you catch stocks selling off on a good report, resist the urge to call it irrational. The market is telling you that its dominant fear has shifted from growth to rates, and that shift is often the more important signal than the data point itself.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/economic-momentum-flips-from-blessing-to-curse-for-s-p-500-bulls" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Economic Momentum Flips From Blessing to Curse for S&P 500 Bulls</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>UBS's trading desk says buy momentum stocks as the selloff nears its end</strong></summary>
+      <div class="deal-body">
+        <p>UBS's trading desk said the sharp selloff in momentum stocks may be nearing its end, creating an opening to start rebuilding AI and semiconductor positions. A named desk calling a bottom just as chipmakers bounce into earnings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/ubs-trading-desk-says-buy-momentum-stocks-as-selloff-nears-end" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UBS Trading Desk Says Buy Momentum Stocks as Selloff Nears End</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alphabet is pouring record cash into data centers, and earnings will show if it pays off</strong></summary>
+      <div class="deal-body">
+        <p>Alphabet (GOOGL) reports Wednesday after committing record capital to data centers, and investors will hunt for more signs of AI monetization to justify the spend. Guidance, not the quarter itself, is the referee for the scarcity thesis.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/alphabet-is-pouring-record-cash-into-data-centers-and-earnings-will-show-if-thats-paying-off-fad38a2c?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Alphabet Is Pouring Record Cash Into Data Centers, and Earnings Will Show if That's Paying Off</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tesla's sales jump collides with cash-hungry Optimus and Robotaxi bets</strong></summary>
+      <div class="deal-body">
+        <p>Tesla (TSLA) heads into Q2 results with a rebound in sales but rising cash needs for its Optimus robot and Robotaxi programs. The question is whether the core auto business can fund the moonshots without straining the balance sheet.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/article/teslas-jump-in-sales-comes-as-optimus-robotaxi-bets-require-more-cash-q2-earnings-preview-110300122.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Tesla's Jump in Sales Comes as Optimus, Robotaxi Bets Require More Cash: Q2 Earnings Preview</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>TSMC in talks to raise chip prices by up to 10% in 2027</strong></summary>
+      <div class="deal-body">
+        <p>TSMC (TSM) has discussed chipmaking price increases of as much as 10% in 2027 with clients to cover rising manufacturing costs, the Nikkei reported. A clear pricing-power signal that cuts against the cheaper-model deflation scare.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/tsmc-in-talks-to-raise-prices-by-up-to-10-in-2027-nikkei-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- TSMC to Hike Chip Prices by Up to 10% in 2027, Nikkei Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Oracle's credit risk hits a near 18-year high on AI debt-load angst</strong></summary>
+      <div class="deal-body">
+        <p>The cost of protecting Oracle's (ORCL) debt against default reached a fresh multi-year high and its bonds sold off, as doubts grew over whether its massive AI investments will pay off. The bond market is pricing the risk that capex outruns returns.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/oracle-credit-risk-hits-near-18-year-high-on-ai-debt-load-angst" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oracle Credit Risk Hits Near 18-Year High on AI Debt Load Angst</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley cuts Adobe to underweight on AI competition fears</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley cut Adobe (ADBE) to underweight and slashed its price target by more than a third, citing multiple business transitions and rising competition from AI alternatives. Evidence the AI threat is repricing incumbents, not just chipmakers.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/adobe-stock-has-been-crushed-by-ai-fears-now-morgan-stanley-has-cut-its-rating-to-underweight-38378183?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Adobe Stock Has Been Crushed by AI Fears. Now Morgan Stanley Has Cut Its Rating to Underweight</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Data centers on track to consume a fifth of US power by 2035</strong></summary>
+      <div class="deal-body">
+        <p>US data centers will account for about 20% of the nation's electricity by 2035, up from 5.9% today, according to BloombergNEF. A structural demand read that anchors the physical case for the AI buildout regardless of any single model.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/data-centers-on-track-to-suck-up-a-fifth-of-us-power-use-by-2035" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Data Centers on Track to Suck Up a Fifth of US Power Use by 2035</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Tuesday July 21, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is that pricing power and physical demand are holding, with TSMC planning 10% hikes and data centers set to eat a fifth of US power by 2035. The noise is the whipsaw around last week's rout: UBS calling a bottom and memory names leading the bounce show how much of the drop was forced positioning. The clean test is Alphabet's Wednesday capex guidance and Tesla's spend commentary, set against Oracle's flashing credit risk and the Adobe downgrade.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Treasury yields rise to start a quiet week for economic data</strong></summary>
+      <div class="deal-body">
+        <p>Treasurys fell, sending yields higher, in a light US data week with Fed speakers in a blackout period ahead of next Wednesday's rate decision. Renewed Mideast hostilities and the supply-disruption risk did most of the lifting.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/articles/renewed-geopolitical-uncertainty-limits-italian-bond-spread-tightening-room-aa25d831?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury Yields Rise to Start a Quiet Week for Econ Data</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Canada inflation falls to 2.8% as core measures ease</strong></summary>
+      <div class="deal-body">
+        <p>Canada's inflation slowed more than expected last month as gasoline prices eased, and a key core measure dropped below 2% for the first time in nearly six years. A rare clean disinflation print in a week otherwise dominated by war and tariffs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/canada-inflation-rate-falls-to-2-8-core-measures-ease" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Canada Inflation Falls to 2.8%, Core Measures Ease</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump prepares a fresh tariff barrage as the 10% levies expire and Canada faces 50%</strong></summary>
+      <div class="deal-body">
+        <p>With the temporary 10% tariff wall set to expire July 24 after the Supreme Court threw out reciprocal duties, the administration vowed a 50% tariff on a range of Canadian goods over alleged unfair treatment. A supply-side inflation risk landing right into the rate debate.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/0b507e93-877f-4cf7-904b-639eb390c4bf?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US to Hit Canada With 50% Tariffs on Wide Range of Goods</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euro-zone banks further tighten companies' credit standards</strong></summary>
+      <div class="deal-body">
+        <p>An ECB survey showed euro-zone banks tightened corporate credit standards again as they flagged higher risks from geopolitical events including the Iran war. A softening credit backdrop lands just before the ECB's rate decision this week.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/euro-zone-banks-further-tighten-companies-credit-standards" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Euro-Zone Banks Further Tighten Companies' Credit Standards</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>IEA warns Mideast hostilities are increasing oil supply concerns</strong></summary>
+      <div class="deal-body">
+        <p>The International Energy Agency said it is closely monitoring oil markets as escalating Mideast hostilities raise concerns over supply security, with tanker reroutings across the Red Sea and Black Sea. An official flag under the crude premium.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/iea-warns-mideast-hostilities-are-increasing-oil-supply-concerns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- IEA Warns Mideast Hostilities Are Increasing Oil Supply Concerns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Why gasoline is rising faster than oil: blame the crack spread</strong></summary>
+      <div class="deal-body">
+        <p>The spread between the cost of gasoline and crude, known as the crack spread, has widened sharply, which is why pump prices are climbing faster than the oil price itself. A refining-side squeeze that hits headline inflation even if crude cools.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/why-are-gasoline-prices-rising-faster-than-oil-prices-blame-it-on-the-crack-22b454e7?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why Are Gasoline Prices Rising Faster Than Oil Prices? Blame It on the 'Crack'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hungary cuts rates for a second month as inflation stays soft</strong></summary>
+      <div class="deal-body">
+        <p>Hungary's central bank lowered borrowing costs for a second straight month as subdued inflation lets policymakers press ahead with easing. A reminder that some economies are still in a cutting cycle even as the Fed holds.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/hungary-cuts-rates-for-second-month-as-inflation-stays-muted" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hungary Cuts Rates for Second Month as Inflation Stays Soft</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 20, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish tug is that Treasury yields are rising, Jamie Dimon says the tape underestimates war, tariff and valuation risk, Trump's 50% Canada levy and expiring 10% wall add cost-push pressure, and euro-zone banks are tightening credit on Iran-war risk. The dovish counterweight is Canada's core inflation dropping below 2%, muted volatility fueling a record carry trade, and Hungary still cutting. The near-term referee is still crude, and whether ceasefire hopes hold decides which way the inflation math tips into the ECB decision.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Carry Trade Thrives When Volatility Is Quiet and Blows Up When It Is Not</summary>
+      <p>Bloomberg reported today that one of the oldest bets in currency markets, the carry trade, is off to its best run in decades, driven by unusually muted volatility across asset classes. Understanding why calm markets fuel this trade, and why the same trade can implode violently, teaches a general lesson about how leverage and volatility interact. Start with the trade itself. A carry trade borrows money in a currency with a low interest rate and invests it in a currency with a higher one, pocketing the difference in yield. If you borrow yen at near zero and buy a currency paying 5%, you earn that 5% spread as long as the exchange rate between the two stays roughly stable. The catch is that the profit is small relative to the amount at risk, so traders lever it up, borrowing far more than their own capital to make the thin spread worth chasing. That is where volatility comes in. The carry trade is really a bet that nothing moves much. As long as exchange rates drift gently, the steady yield accrues and the leverage is harmless. The single biggest threat is not that the high-yield currency falls a little, it is that it falls a lot, fast, because a sudden move can wipe out months of accumulated carry in a day and trigger margin calls that force the whole position to unwind at once. So the trade lives and dies on volatility. When cross-asset volatility is low, as it is now, carry looks like free money, and more capital piles in, which itself suppresses volatility further and makes the trade even more attractive, a self-reinforcing calm. But that same crowding builds fragility. Everyone is on the same side, financed with borrowed money, all implicitly short volatility. When a shock finally hits, whether an oil spike, a surprise rate move or a geopolitical jolt, the high-yield currency drops, the leverage amplifies the loss, margin calls force selling, and the selling pushes the currency down further, feeding on itself. The unwind is far more violent than the buildup because leverage cuts both ways and everyone runs for the same exit at the same time. This is why calm markets are not the same as safe markets. A long stretch of low volatility can quietly accumulate the very leverage and crowding that make the next shock more explosive. The practical lesson for a reader is to treat unusually quiet volatility as information, not comfort. When you see a yield-harvesting strategy described as having its best run in decades on the back of muted volatility, recognize that you are looking at a short-volatility position dressed up as a steady income stream, and that its risk is not in the calm days but in the one day the calm breaks. The return looks smooth right up until it does not, and the smoothness is precisely what draws in the leverage that makes the reversal brutal.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/wall-street-talks-up-carry-trade-as-returns-soar-most-in-decades" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wall Street Talks Up Carry Trade as Returns Soar Most in Decades</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Chipmakers extended their rebound and futures rose into Big Tech earnings with Alphabet up Wednesday and Tesla close behind, GM beat and raised, oil stayed elevated on a 10th day of US-Iran strikes but eased on ceasefire hopes, and Jamie Dimon warned the tape underestimates risk while Treasury yields rose; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/22</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/23</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/24</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin hits a one-month high above $66,000 as the chip trade turns back into a tailwind</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin climbed to a one-month high above $66,000 as Asian semiconductor shares rebounded hard, a five-day ETF inflow streak topped $600 million, and oil pulled back on Mideast diplomacy. The crosswinds that pinned crypto last week flipped in its favor.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/21/bitcoin-hits-a-two-week-high-near-usd65-500-as-the-chip-trade-turns-back-into-a-tailwind" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Hits One-Month High Above $66,000 as the Chip Trade Turns Back Into a Tailwind</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin's rally has broad-based support as institutions, whales and options traders pile in</strong></summary>
+      <div class="deal-body">
+        <p>CoinDesk's day-ahead read is that the move up is supported across institutional buyers, large holders and the options market rather than a single cohort. A healthier internal picture than the thin inflows of two weeks ago.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/07/21/bitcoin-rally-has-broad-based-support-as-institutions-whales-options-traders-pile-in" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Rally Has Broad-Based Support as Institutions, Whales, Options Traders Pile In</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin ETFs post a fifth straight day of inflows in a first since April</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin ETFs strung together a fifth consecutive day of inflows, pulling in roughly $727 million in the most sustained buying since June's record outflows. The demand base is finally rebuilding after the exodus.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/21/live-markets-bitcoin-etfs-post-a-fifth-straight-day-of-inflows-in-a-first-since-april" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Markets: Bitcoin ETFs Post a Fifth Straight Day of Inflows in a First Since April</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto markets rally on a Clarity Act progress report and the chip-stock rebound</strong></summary>
+      <div class="deal-body">
+        <p>Crypto prices rose on speculation that President Trump agreed to a crucial ethics provision for the market-structure bill, alongside the Asian chip-stock bounce. Regulatory optimism is layering onto the risk-on tape.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/21/crypto-markets-rally-on-clarity-progress-report-asian-chip-stock-rebound" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Markets Rally on Clarity Progress Report, Asian Chip-Stock Rebound</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Clarity Act odds jump to 43% on Polymarket after unverified ethics-deal reports</strong></summary>
+      <div class="deal-body">
+        <p>Bettors moved the market-structure bill to a 43% chance of passing this year, up from a record low last week, on unconfirmed reports Trump agreed to an ethics provision. No bill text has appeared yet, so the odds are running ahead of the paper.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/21/clarity-act-odds-jump-11-points-on-polymarket-after-reports-trump-agreed-to-ethics-deal" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Clarity Odds Jump to 43% on Polymarket After Unverified Reports Trump Agreed to Ethics Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tether's three-way crypto deal is called off and Mallers steps down</strong></summary>
+      <div class="deal-body">
+        <p>A proposed merger of three crypto firms was scrapped, with one leader stepping down and another consolidating power across the Tether-backed franchise. A reshuffle at the center of the stablecoin ecosystem.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/tether-s-three-way-crypto-deal-falls-apart-mallers-steps-down" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tether's Three-Way Crypto Deal Is Called Off, Mallers Steps Down</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>BlackRock / Meta -- A $12 Billion Financing for New Texas Data Centers</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> BlackRock (BLK) is leading a more than $12 billion debt sale for a Meta (META) data center in Texas, with its infrastructure and private-credit arms fronting the jumbo project.</p>
+        <p><strong>Outlook:</strong> The deal showcases the payoff from Larry Fink's $25 billion M&A push into private markets, and it locks in one of the largest single AI-infrastructure financings to date.</p>
+        <p><strong>What it means:</strong> Even as the model-cost debate rattles chip stocks, the capital to build the physical AI layer keeps flowing, and asset managers now sit at the center of it.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/blackrock-leads-12-billion-financing-for-new-meta-data-centers-in-texas-e1c3d42c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- BlackRock Leads $12 Billion Financing for New Meta Data Centers in Texas</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock-MGX / Aligned -- A $5 Billion Data-Center Expansion Bet</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A consortium including BlackRock's Global Infrastructure Partners and Abu Dhabi's MGX plans to invest $5 billion to fuel growth at Aligned Data Centers.</p>
+        <p><strong>Outlook:</strong> Sovereign and infrastructure capital is chasing scale in the data-center pipeline, betting the power and capacity crunch persists well into the next decade.</p>
+        <p><strong>What it means:</strong> With data centers on track to consume a fifth of US power by 2035, the constraint is shifting from chips to real estate and electricity, and money is following.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/blackrock-mgx-consortium-eyes-5-billion-aligned-data-centers-expansion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BlackRock-MGX Consortium Eyes $5 Billion Aligned Data Centers Expansion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zhongji Innolight -- An $8 Billion Hong Kong Listing Backed by BlackRock, Hillhouse and Temasek</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> BlackRock, Hillhouse and Temasek are set to be cornerstone investors in a potential $8 billion Hong Kong listing by optical-module maker Zhongji Innolight.</p>
+        <p><strong>Outlook:</strong> The lineup of marquee cornerstones signals strong institutional appetite for AI-networking hardware names, and adds to a wave of Chinese AI-linked IPOs.</p>
+        <p><strong>What it means:</strong> The Hong Kong window is reopening for AI supply-chain firms, and global asset managers want exposure to the optical-interconnect layer feeding data centers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/blackrock-hillhouse-temasek-said-set-to-back-innolight-listing" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BlackRock, Hillhouse, Temasek Said Set to Back Innolight Listing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mitie / OCS -- A £3.1 Billion Takeover Pushes the Great British Buyout Past $60 Billion</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Mitie Group's board backed a £3.1 billion takeover by OCS, the latest London-listed name to be snapped up as the UK market loses more than $2 billion a week to buyouts.</p>
+        <p><strong>Outlook:</strong> Cheap UK valuations keep drawing bidders, and the takeover pace is thinning the London roster faster than new listings can replace it.</p>
+        <p><strong>What it means:</strong> The persistent discount on UK equities is being arbitraged away deal by deal, a structural drain the London Stock Exchange is racing to counter with near-continuous trading.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/the-great-british-takeover-tops-60-billion-after-mitie-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- The Great British Takeover Tops $60 Billion After Mitie Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Truelink / Lyons Magnus -- A $1 Billion Bet on Coffee Syrups and Beverage Ingredients</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Buyout firm Truelink struck a roughly $1 billion deal for Lyons Magnus, a maker of fruit-based ingredients and flavored syrups for coffee drinks and smoothies.</p>
+        <p><strong>Outlook:</strong> Private equity is still writing checks for defensive, cash-generative consumer-staples suppliers even against a jittery macro backdrop.</p>
+        <p><strong>What it means:</strong> Away from the AI headlines, sponsors are hunting steady, recession-resilient cash flows, a barbell to the growth-heavy data-center deals dominating the tape.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/buyout-firm-truelink-nears-1-billion-deal-for-coffee-syrup-maker-256557ad?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Buyout Firm Truelink Strikes $1 Billion Deal for Coffee Syrup Maker</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal Sizes This Week ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>UBS trading desk -- buy momentum stocks as the selloff nears its end</strong></summary>
+      <div class="deal-body">
+        <p>UBS's trading desk said the sharp momentum selloff may be nearing its end and flagged an opening to rebuild AI and semiconductor positions. A named desk turning constructive just as chipmakers bounce.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-20/ubs-trading-desk-says-buy-momentum-stocks-as-selloff-nears-end" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UBS Trading Desk Says Buy Momentum Stocks as Selloff Nears End</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jamie Dimon (JPMorgan) -- markets underestimate the risks</strong></summary>
+      <div class="deal-body">
+        <p>Dimon said investors underestimate the risks from wars, tariffs and stretched valuations and that he would not buy stocks or Treasurys at current prices. A prominent bearish caution against the recent willingness to look past shocks.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/21/jpmorgan-chase-ceo-jamie-dimon-market-risk.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Jamie Dimon Says Markets Underestimate Risks and He Wouldn't Buy Stocks or Treasurys at Current Prices</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley -- cuts Adobe to underweight on AI competition</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley downgraded Adobe to underweight and slashed its target by more than a third, citing multiple transitions and rising competition from AI alternatives. A named call that the AI threat is repricing software incumbents.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/adobe-stock-has-been-crushed-by-ai-fears-now-morgan-stanley-has-cut-its-rating-to-underweight-38378183?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Adobe Stock Has Been Crushed by AI Fears. Now Morgan Stanley Has Cut Its Rating to Underweight</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Howard Lindzon (Stocktwits) -- dumped chips before the 20% slide</strong></summary>
+      <div class="deal-body">
+        <p>The Stocktwits co-founder told MarketWatch he sidestepped last week's chip selloff and detailed where he sees opportunity now in what he calls the "degenerate economy." A retail-facing voice that timed the exit.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-co-founder-of-stocktwits-dumped-chip-stocks-before-a-20-slide-where-hes-putting-his-money-now-07e8724f?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Co-Founder of Stocktwits Dumped Chip Stocks Before Their 20% Slide. Where He's Putting His Money Now</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ben Thompson (Stratechery) -- the frontier labs will be fine</strong></summary>
+      <div class="deal-body">
+        <p>Thompson argued that everyone is worried about Chinese models but the US frontier labs will be fine, and the real priority is enabling open American alternatives. His latest note also read Netflix's results as fine but mature. A contrarian steadying voice into earnings.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/whos-afraid-of-chinese-models/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- Who's Afraid of Chinese Models?</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Chipmakers Rebound Into Big Tech Earnings, Jamie Dimon Warns the Tape Underestimates Risk, and Oil Whipsaws Between a 10th Day of Strikes and Ceasefire Hopes</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the demand is intact):</strong> UBS's trading desk says the selloff is nearly over and to rebuild AI and chip positions, TSMC is planning 10% price hikes, and BlackRock is leading a $12 billion Meta financing as data centers head toward a fifth of US power by 2035. Canada's core inflation broke below 2%, oil eased on ceasefire hopes, and Stratechery's Ben Thompson says the frontier labs will be fine.</div>
+        <div class="bear"><strong>Bear (risk is mispriced):</strong> Jamie Dimon says markets underestimate war, tariff and valuation risk and he would not buy stocks or Treasurys here. Oracle's credit risk hit a near 18-year high, Morgan Stanley cut Adobe, and WSJ says the big AI supply deals are no sure thing. Alphabet and Tesla must now prove the spend, strikes are into a 10th day, and Trump's 50% Canada tariff lands as the 10% wall expires.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Chip rebound gathers pace; UBS says buy the dip; Alphabet and Tesla earnings; GM beat-and-raise; memory names lead</td><td>Bullish</td><td>~21,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Oracle credit risk 18-year high; Morgan Stanley cuts Adobe; Paramount-WBD hit with TRO; Novo sues Lilly</td><td>Mixed</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Dimon says markets underestimate risk; Trump 50% Canada tariff; Canada CPI 2.8%; carry trade record run</td><td>Cautious</td><td>~11,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Why the crack spread lifts gasoline over crude; are AI supply deals no sure thing; SK Hynix margin unwind</td><td>Analytical</td><td>~7,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC one-month high above $66K; fifth day of ETF inflows; Clarity odds jump to 43%; Tether deal called off</td><td>Bullish</td><td>~16,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned risk-on. r/wallstreetbets went bullish on the chip rebound, UBS calling a bottom, memory names leading and GM's beat-and-raise ahead of Alphabet and Tesla. r/stocks stayed mixed as Oracle's credit risk hit an 18-year high, Morgan Stanley cut Adobe, and the Paramount-WBD deal drew a restraining order. r/investing stayed cautious on Dimon warning the tape underestimates risk, Trump's 50% Canada tariff and the record carry-trade run, though cooler Canada inflation reassured some. r/SecurityAnalysis dug into the crack spread and whether AI supply deals hold. r/CryptoCurrency flipped bullish with bitcoin at a one-month high, a fifth day of ETF inflows and Clarity Act odds jumping. The swing factor is Big Tech earnings, with oil the second overhang.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why the "Crack Spread" Makes Gasoline Rise Faster Than Oil, and What It Means for Inflation</h2>
+    <p>MarketWatch made a useful point today: US gasoline prices have been rising faster than crude oil itself, and the reason is a widening "crack spread." That term sounds like jargon, but it is one of the most important relationships in energy markets, and understanding it explains why a jump in oil does not translate one-for-one into pain at the pump, and sometimes why the pump hurts more than the crude price alone would suggest. Start with the supply chain. Crude oil is the raw input. It is useless in your car until a refinery takes it and "cracks" it, breaking the long hydrocarbon molecules into finished products like gasoline, diesel and jet fuel. The crack spread is simply the difference between the price of those refined products and the price of the crude that goes into making them. It is, in effect, the refiner's gross margin, the reward for turning a barrel of crude into something you can actually burn.</p>
+    <p>Here is why it matters right now. The gasoline you buy is priced off two things: the cost of the crude and the cost of refining and delivering it. When the crack spread widens, it means the refined-product price is climbing on top of whatever crude is doing, so pump prices can rise even if oil is flat, and rise faster than oil when both move together. A widening crack usually signals a bottleneck downstream, at the refining and distribution stage, rather than upstream at the wellhead. Refineries can go offline for maintenance, get damaged, or simply run short of capacity for a particular product in a particular region, and when demand for gasoline outstrips the ability to make and move it, the spread blows out. The current Mideast conflict adds a second layer: it threatens not just crude flows through shipping chokepoints but also the movement of refined products and the confidence of refiners, which tightens the downstream market specifically.</p>
+    <p>The lesson for a reader is that "oil went up" is an incomplete story. To understand what actually hits consumers and headline inflation, you have to separate the crude move from the refining margin, because they can diverge. A crude spike with a stable crack passes through gently. A modest crude move with a blowing-out crack can slam the pump hard. This distinction matters for inflation because gasoline is one of the most visible prices households see, and it feeds directly into headline CPI, shaping inflation expectations far out of proportion to its weight in the basket.</p>
+    <p>Practically, when you next see crude and gasoline moving by different amounts, ask which part of the chain is under stress. If the crack is widening, the bottleneck is at the refinery, not the oil field, and the policy fix and the duration are different. Crude supply shocks ease when barrels reroute. Refining bottlenecks ease only when capacity comes back. Watching the spread, not just the crude price, tells you where the squeeze really is and how long it might last.</p>
+    <p class="deal-source"><a href="https://www.marketwatch.com/story/why-are-gasoline-prices-rising-faster-than-oil-prices-blame-it-on-the-crack-22b454e7?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why Are Gasoline Prices Rising Faster Than Oil Prices? Blame It on the 'Crack'</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-21/iea-warns-mideast-hostilities-are-increasing-oil-supply-concerns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- IEA Warns Mideast Hostilities Are Increasing Oil Supply Concerns</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>ECB rate decision.</strong> The decision lands this week against a survey showing euro-zone banks tightening corporate credit on Iran-war risk; watch the statement and Lagarde's tone for whether the growth scare shifts guidance.</li>
+      <li><strong>Trump tariff deadline (July 24).</strong> The temporary 10% levy expires and a fresh 50% tariff on Canadian goods is set to land; watch for retaliation, the inflation read-through and how it feeds the higher-for-longer debate.</li>
+      <li><strong>Fed blackout into next Wednesday.</strong> No Fed speakers until the decision; watch whether rising yields and Dimon's warning shift market pricing without any official signal.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Alphabet (Wednesday).</strong> After pouring record cash into data centers, its capex guidance is the referee for whether AI spending converts to revenue; watch cloud growth and monetization signals.</li>
+      <li><strong>Tesla.</strong> Results land as Optimus and Robotaxi bets demand more cash; watch margins and whether the core auto business can fund the moonshots.</li>
+      <li><strong>Capital One and Coinbase.</strong> Capital One must prove the Discover gamble is paying off, and prediction markets expect Coinbase trading volume fell a third straight quarter.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-infrastructure financing.</strong> BlackRock's $12 billion Meta deal, the $5 billion Aligned expansion and Innolight's potential $8 billion Hong Kong listing test appetite for the physical AI layer.</li>
+      <li><strong>UK takeover wave.</strong> With the Great British buyout past $60 billion after Mitie-OCS, watch for the next London-listed target and any LSE response.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran ceasefire hopes.</strong> Strikes are into a 10th day but oil eased on ceasefire talk; watch whether a pause materializes, plus tanker reroutings in the Red Sea and Black Sea and the crack spread feeding gasoline.</li>
+      <li><strong>China AI policy.</strong> China's World AI Conference, TSMC's Arizona spend and a wave of Chinese AI IPOs raise competitive and security stakes; watch for any US export-control or investment response.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Tue Jul 21, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-07-21 08:12 ET); Bloomberg Technology (20 fresh, newest 2026-07-21 08:02 ET); Bloomberg Economics (18 fresh, newest 2026-07-21 08:02 ET); CNBC Top News (7 fresh, newest 2026-07-21 08:21 ET); CNBC Finance (5 fresh, newest 2026-07-21 07:56 ET); MarketWatch Top Stories (10 fresh, newest 2026-07-21 08:21 ET); WSJ Markets (17 fresh, newest 2026-07-21 06:39 ET); Yahoo Finance (25 fresh, newest 2026-07-21 08:12 ET); FT Home (9 fresh, newest 2026-07-21 07:36 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-20 14:21 ET); CoinDesk (24 fresh, newest 2026-07-21 07:37 ET); Stratechery (2 fresh, newest 2026-07-21 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): CNBC Economy (25 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What did UBS's trading desk tell clients this week?</strong></p>
+      <span class="opt" data-opt="A">A. Sell all semiconductor exposure before earnings hit</span>
+      <span class="opt" data-opt="B">B. Rotate entirely out of tech into defensive staples</span>
+      <span class="opt" data-opt="C">C. Start rebuilding AI and chip positions as the selloff nears its end</span>
+      <span class="opt" data-opt="D">D. Wait for the Fed decision before touching any stocks</span>
+      <div class="feedback"><strong>C is correct.</strong> UBS's trading desk said the momentum selloff may be nearing its end and flagged an opening to rebuild AI and semiconductor positions. It did not call for dumping chips, a full rotation into staples, or waiting on the Fed.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. Why are US gasoline prices rising faster than crude oil?</strong></p>
+      <span class="opt" data-opt="A">A. The crack spread, the refiner's margin, has widened sharply</span>
+      <span class="opt" data-opt="B">B. OPEC deliberately cut its gasoline export quotas</span>
+      <span class="opt" data-opt="C">C. A federal gasoline tax increase just took effect nationwide</span>
+      <span class="opt" data-opt="D">D. The dollar collapsed, raising all import costs sharply</span>
+      <div class="feedback"><strong>A is correct.</strong> The crack spread, the gap between refined-product and crude prices, widened sharply, so gasoline climbs faster than oil when a downstream refining bottleneck tightens. OPEC does not set gasoline quotas, no federal gas-tax hike took effect, and the dollar held steady.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What did JPMorgan's Jamie Dimon say about the market?</strong></p>
+      <span class="opt" data-opt="A">A. Stocks are cheap and he is aggressively buying the dip</span>
+      <span class="opt" data-opt="B">B. The Fed will certainly cut rates at its next meeting</span>
+      <span class="opt" data-opt="C">C. Tariffs pose no real threat to corporate earnings now</span>
+      <span class="opt" data-opt="D">D. Markets underestimate risks and he wouldn't buy stocks or Treasurys here</span>
+      <div class="feedback"><strong>D is correct.</strong> Dimon warned that investors underestimate risks from wars, tariffs and valuations and said he would not buy stocks or Treasurys at current prices. He was not calling stocks cheap, predicting a cut, or dismissing tariff risk.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasury and euro-area yields rose and Jamie Dimon warned markets underestimate war, tariff and valuation risk, saying he would not buy stocks or Treasurys here, while Trump's 50% Canada tariff and tighter euro-zone credit add inflation risk, against softer Canada inflation, a record carry trade on muted volatility and the Fed's pre-decision blackout.",
+    "sources": [
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/07/21/jpmorgan-chase-ceo-jamie-dimon-market-risk.html", "take": "Dimon says markets underestimate risks." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/articles/renewed-geopolitical-uncertainty-limits-italian-bond-spread-tightening-room-aa25d831?mod=rss_markets_main", "take": "Treasury yields rise in a quiet data week." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/0b507e93-877f-4cf7-904b-639eb390c4bf?syn-25a6b1a6=1", "take": "US to hit Canada with 50% tariffs." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-20/canada-inflation-rate-falls-to-2-8-core-measures-ease", "take": "Canada inflation falls, core below 2%." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-21/wall-street-talks-up-carry-trade-as-returns-soar-most-in-decades", "take": "Carry trade soars on muted volatility." }
+    ]
+  },
+  "iran": {
+    "diverge": "Brent topped $90 on a 10th day of US-Iran strikes with a Chinese tanker turning back in the Red Sea, Kazakhstan halting Black Sea flows and the IEA flagging supply risk, but oil pulled back and Asian equities rallied on ceasefire hopes, while a widening crack spread pushed gasoline up faster than crude.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-21/iea-warns-mideast-hostilities-are-increasing-oil-supply-concerns", "take": "IEA warns hostilities raise supply concerns." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-21/chinese-oil-tanker-u-turns-in-red-sea-after-houthi-attack-threat", "take": "Chinese tanker U-turns on Houthi threat." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/why-are-gasoline-prices-rising-faster-than-oil-prices-blame-it-on-the-crack-22b454e7?mod=mw_rss_topstories", "take": "Crack spread lifts gasoline over crude." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/asian-equities-advance-on-hopes-for-mideast-ceasefire-38efa6d8?mod=rss_markets_main", "take": "Asian equities advance on ceasefire hopes." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-21/emerging-market-assets-rally-on-china-tech-support-iran-talks", "take": "EM assets rally on Iran talks and China support." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Chipmakers extended their rebound with UBS's desk calling a bottom, memory names leading and TSMC planning 10% price hikes, while data centers head toward a fifth of US power by 2035, but Oracle's credit risk hit an 18-year high, Morgan Stanley cut Adobe, and Alphabet and Tesla have to prove the AI spend.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-20/ubs-trading-desk-says-buy-momentum-stocks-as-selloff-nears-end", "take": "UBS says buy momentum as selloff nears end." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-21/tsmc-in-talks-to-raise-prices-by-up-to-10-in-2027-nikkei-says", "take": "TSMC in talks to raise prices up to 10%." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/alphabet-is-pouring-record-cash-into-data-centers-and-earnings-will-show-if-thats-paying-off-fad38a2c?mod=mw_rss_topstories", "take": "Alphabet must show record capex pays off." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-20/oracle-credit-risk-hits-near-18-year-high-on-ai-debt-load-angst", "take": "Oracle credit risk hits 18-year high on AI debt." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/adobe-stock-has-been-crushed-by-ai-fears-now-morgan-stanley-has-cut-its-rating-to-underweight-38378183?mod=mw_rss_topstories", "take": "Morgan Stanley cuts Adobe on AI fears." },
+      { "name": "Stratechery", "lean": "bull", "url": "https://stratechery.com/2026/whos-afraid-of-chinese-models/", "take": "Thompson says the frontier labs will be fine." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Sandisk","SK Hynix","Micron","AMD","TSMC","Adobe"],
+    "values": [5.5, 5.0, 4.5, 3.0, 2.0, -8.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [21000, 14000, 11000, 7000, 16000],
+    "colors": ["bull","neutral","neutral","neutral","bull"]
+  },
+  "dealSizes": {
+    "labels": ["BlackRock/Meta","Innolight IPO","Aligned/MGX","Mitie/OCS","Truelink/Lyons"],
+    "values": [12.0, 8.0, 5.0, 4.2, 1.0]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="js/digest-date.js?v=20260721"></script>
+<script src="js/config.js?v=20260721"></script>
+<script src="js/repair-dom.js?v=20260721"></script>
+<script src="js/digest-ui.js?v=20260721"></script>
+<script src="js/charts-core.js?v=20260721"></script>
+<script src="js/archive.js?v=20260721"></script>
+<script src="js/artifact-equities.js?v=20260721"></script>
+<script src="js/charts-macro.js?v=20260721"></script>
+<script src="js/artifact-framing.js?v=20260721"></script>
+<script src="js/verdict-updater.js?v=20260721"></script>
+<script src="js/digest-init.js?v=20260721"></script>
+
+</body>
+</html>
