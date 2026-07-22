@@ -29,6 +29,33 @@ def _fetch_text(url: str) -> str:
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
 
 
+def _local_ref(url: str) -> Optional[str]:
+    ref = url.split("#", 1)[0].split("?", 1)[0]
+    if not ref or ref.startswith(("http://", "https://", "//", "data:", "mailto:", "#")):
+        return None
+    return ref.lstrip("/")
+
+
+def missing_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
+    if not html_path:
+        return []
+
+    missing: list[str] = []
+    for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I):
+        ref = _local_ref(m.group(1))
+        if ref and not (html_path.parent / ref).resolve().is_file():
+            missing.append(f"script {m.group(1)}")
+
+    for m in re.finditer(r'<link[^>]+href=["\']([^"\']+)["\'][^>]*>', html, re.I):
+        tag = m.group(0)
+        if not re.search(r'\brel=["\'][^"\']*\bstylesheet\b', tag, re.I):
+            continue
+        ref = _local_ref(m.group(1))
+        if ref and not (html_path.parent / ref).resolve().is_file():
+            missing.append(f"stylesheet {m.group(1)}")
+    return missing
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
@@ -41,7 +68,9 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
             fp = (html_path.parent / rel).resolve()
             if fp.is_file():
                 parts.append(fp.read_text())
-                continue
+            else:
+                print(f"WARN: could not load local script {src}")
+            continue
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -86,6 +115,13 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    missing_assets = missing_local_assets(html, html_path)
+    if missing_assets:
+        print("FAIL local assets: missing " + ", ".join(missing_assets))
+        failures += 1
+    else:
+        print("OK   local assets: all found")
+
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -104,7 +140,7 @@ def main():
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
