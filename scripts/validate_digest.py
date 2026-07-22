@@ -29,6 +29,51 @@ def _fetch_text(url: str) -> str:
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
 
 
+def _is_local_ref(ref: str) -> bool:
+    return not ref.startswith(("http://", "https://", "//", "#", "mailto:", "tel:"))
+
+
+def _local_asset_path(html_path: Path, ref: str) -> Path:
+    rel = ref.split("?")[0].split("#")[0].lstrip("/")
+    return (html_path.parent / rel).resolve()
+
+
+def validate_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
+    if not html_path:
+        return []
+
+    missing: list[str] = []
+    refs: list[tuple[str, str]] = []
+    refs.extend(("script", m.group(1)) for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I))
+    refs.extend(
+        ("stylesheet", m.group(1))
+        for m in re.finditer(
+            r'<link(?=[^>]+\brel=["\']stylesheet["\'])(?=[^>]+\bhref=["\']([^"\']+)["\'])[^>]*>',
+            html,
+            re.I,
+        )
+    )
+    refs.extend(
+        ("stylesheet", m.group(1))
+        for m in re.finditer(
+            r'<link(?=[^>]+\bhref=["\']([^"\']+)["\'])(?=[^>]+\brel=["\']stylesheet["\'])[^>]*>',
+            html,
+            re.I,
+        )
+    )
+
+    seen: set[tuple[str, str]] = set()
+    for kind, ref in refs:
+        key = (kind, ref)
+        if key in seen or not _is_local_ref(ref):
+            continue
+        seen.add(key)
+        fp = _local_asset_path(html_path, ref)
+        if not fp.is_file():
+            missing.append(f"{kind} {ref} -> {fp}")
+    return missing
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
@@ -42,6 +87,8 @@ def collect_js(html: str, html_path: Optional[Path]) -> str:
             if fp.is_file():
                 parts.append(fp.read_text())
                 continue
+            print(f"WARN: missing local script {src} -> {fp}")
+            continue
         try:
             parts.append(_fetch_text(LIVE_BASE + rel))
         except OSError:
@@ -77,6 +124,11 @@ def main():
     else:
         html = _fetch_text(LIVE_URL)
 
+    failures = 0
+    for missing in validate_local_assets(html, html_path):
+        print(f"FAIL local asset: {missing}")
+        failures += 1
+
     js_bundle = collect_js(html, html_path)
 
     main_block = re.search(r"<main>[\s\S]*?</main>", html, re.DOTALL)
@@ -85,7 +137,6 @@ def main():
         sys.exit(1)
     main_block = main_block.group(0)
 
-    failures = 0
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
