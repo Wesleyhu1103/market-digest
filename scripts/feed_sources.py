@@ -39,6 +39,9 @@ FEEDS: dict[str, str] = {
 }
 
 MAX_ITEMS_PER_FEED = 25
+# Undated items ride along as source material but NEVER count as fresh
+# (see fetch_feed) — capped so a date-less feed can't flood the prompt.
+MAX_UNDATED_PER_FEED = 5
 FRESH_HOURS = 36
 MIN_TOTAL_FRESH_ITEMS = 12
 FETCH_RETRIES = 2
@@ -60,6 +63,7 @@ class FeedResult:
     status: str
     items_fetched: int = 0
     items_fresh: int = 0
+    items_undated: int = 0
     newest: str | None = None
     error: str | None = None
 
@@ -170,8 +174,11 @@ def _fresh_cutoff() -> datetime:
 
 
 def _is_fresh(item: FeedItem, cutoff: datetime) -> bool:
+    """Dated AND recent. Undated items are handled separately in fetch_feed:
+    they may ride along as source material but never count as fresh, so they
+    can't satisfy MIN_TOTAL_FRESH_ITEMS and mask a stale digest."""
     if item.published is None:
-        return True
+        return False
     pub = item.published
     if pub.tzinfo is None:
         pub = pub.replace(tzinfo=timezone.utc)
@@ -186,22 +193,36 @@ def fetch_feed(name: str, url: str) -> tuple[list[FeedItem], FeedResult]:
 
     cutoff = _fresh_cutoff()
     fresh = [it for it in raw_items if _is_fresh(it, cutoff)]
+    undated = [it for it in raw_items if it.published is None][:MAX_UNDATED_PER_FEED]
+    has_dated = any(it.published is not None for it in raw_items)
     newest = None
-    dated = [it for it in fresh if it.published is not None]
-    if dated:
+    if fresh:
         newest_dt = max(
             (it.published.replace(tzinfo=timezone.utc) if it.published.tzinfo is None else it.published.astimezone(timezone.utc))
-            for it in dated
+            for it in fresh
         )
         newest = newest_dt.astimezone(ET).strftime("%Y-%m-%d %H:%M ET")
 
-    status = "ok" if fresh else ("stale" if raw_items else "empty")
-    return fresh, FeedResult(
+    # Undated policy: keep undated items alongside a feed that also has fresh
+    # dated items, and keep a capped few from a feed with NO dates at all
+    # (status "undated" — can't judge freshness, so don't count it). Drop
+    # them from a stale feed: if all its dated items are old, its undated
+    # ones share the suspicion.
+    if fresh:
+        status, kept = "ok", fresh + undated
+    elif raw_items and not has_dated:
+        status, kept = "undated", undated
+    elif raw_items:
+        status, kept = "stale", []
+    else:
+        status, kept = "empty", []
+    return kept, FeedResult(
         name=name,
         url=url,
         status=status,
         items_fetched=len(raw_items),
         items_fresh=len(fresh),
+        items_undated=len(kept) - len(fresh) if kept else 0,
         newest=newest,
     )
 
@@ -232,7 +253,7 @@ def gather_sources() -> tuple[str, list[FeedResult], int]:
     for name, url in FEEDS.items():
         items, report = fetch_feed(name, url)
         reports.append(report)
-        total_fresh += len(items)
+        total_fresh += report.items_fresh  # dated-fresh only; undated never gates
         if report.status == "failed":
             blocks.append(f"## {name}\n(FAILED: {report.error})")
             continue
@@ -268,6 +289,7 @@ def build_feed_report_json(reports: list[FeedResult]) -> str:
 def build_sources_html(reports: list[FeedResult], today: datetime) -> str:
     worked = [
         f"{r.name} ({r.items_fresh} fresh"
+        + (f" +{r.items_undated} undated" if r.items_undated else "")
         + (f", newest {r.newest}" if r.newest else "")
         + ")"
         for r in reports
@@ -282,12 +304,19 @@ def build_sources_html(reports: list[FeedResult], today: datetime) -> str:
     ]
     failed = [f"{r.name}: {r.error}" for r in reports if r.status == "failed"]
     empty = [r.name for r in reports if r.status == "empty"]
+    undated_only = [
+        f"{r.name} ({r.items_undated} undated items included, not counted fresh)"
+        for r in reports
+        if r.status == "undated"
+    ]
 
     failed_bits = []
     if failed:
         failed_bits.append("Failed feeds: " + "; ".join(failed))
     if stale:
         failed_bits.append("Stale feeds (no items in window): " + "; ".join(stale))
+    if undated_only:
+        failed_bits.append("Undated feeds (no timestamps): " + "; ".join(undated_only))
     if empty:
         failed_bits.append("Empty feeds: " + ", ".join(empty))
     failed_bits.append(
@@ -317,13 +346,13 @@ def check_feeds() -> int:
     e.g. Money Stuff on days with no column). Used by feed-check.yml.
     """
     failed = 0
-    print(f"{'feed':30s} {'status':8s} {'fetched':>7s} {'fresh':>5s}  newest")
+    print(f"{'feed':30s} {'status':8s} {'fetched':>7s} {'fresh':>5s} {'undated':>7s}  newest")
     for name, url in FEEDS.items():
         _, rep = fetch_feed(name, url)
         if rep.status == "failed":
             failed += 1
         detail = rep.error if rep.status == "failed" else (rep.newest or "-")
-        print(f"{name:30s} {rep.status:8s} {rep.items_fetched:7d} {rep.items_fresh:5d}  {detail}")
+        print(f"{name:30s} {rep.status:8s} {rep.items_fetched:7d} {rep.items_fresh:5d} {rep.items_undated:7d}  {detail}")
     print(f"\n{len(FEEDS) - failed}/{len(FEEDS)} feeds reachable")
     return 1 if failed == len(FEEDS) else 0
 

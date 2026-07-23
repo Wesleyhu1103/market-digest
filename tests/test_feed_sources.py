@@ -55,14 +55,58 @@ class FeedSourcesTests(unittest.TestCase):
         old = module.FeedItem(
             title="old", url="x", desc="", published=now - timedelta(hours=48), published_label=""
         )
+        undated = module.FeedItem(title="undated", url="x", desc="", published=None, published_label="")
         cutoff = now - timedelta(hours=module.FRESH_HOURS)
         self.assertTrue(module._is_fresh(fresh, cutoff))
         self.assertFalse(module._is_fresh(old, cutoff))
+        # Undated items never count as fresh (they can't satisfy the
+        # MIN_TOTAL_FRESH_ITEMS gate) but fetch_feed may still carry them
+        # along as source material — see the policy tests below.
+        self.assertFalse(module._is_fresh(undated, cutoff))
+
+    @staticmethod
+    def _rss(items_xml: str) -> bytes:
+        return f"<?xml version='1.0'?><rss><channel>{items_xml}</channel></rss>".encode()
+
+    @staticmethod
+    def _item(title: str, pub: str | None) -> str:
+        pub_xml = f"<pubDate>{pub}</pubDate>" if pub else ""
+        return f"<item><title>{title}</title><link>http://x/{title}</link>{pub_xml}</item>"
+
+    def test_fetch_feed_undated_policy(self):
+        module = load_feed_sources()
+        now = datetime.now(timezone.utc)
+        fresh_pub = now.strftime("%a, %d %b %Y %H:%M:%S GMT")
+        old_pub = (now - timedelta(hours=90)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+        # fresh dated + undated: undated ride along but are not counted fresh
+        xml = self._rss(self._item("a", fresh_pub) + self._item("b", None))
+        with mock.patch.object(module, "_fetch_bytes", return_value=xml):
+            items, rep = module.fetch_feed("t", "http://t")
+        self.assertEqual(rep.status, "ok")
+        self.assertEqual(rep.items_fresh, 1)
+        self.assertEqual(rep.items_undated, 1)
+        self.assertEqual(len(items), 2)
+
+        # fully undated feed: capped items kept, status 'undated', 0 fresh
+        xml = self._rss("".join(self._item(f"u{i}", None) for i in range(10)))
+        with mock.patch.object(module, "_fetch_bytes", return_value=xml):
+            items, rep = module.fetch_feed("t", "http://t")
+        self.assertEqual(rep.status, "undated")
+        self.assertEqual(rep.items_fresh, 0)
+        self.assertEqual(len(items), module.MAX_UNDATED_PER_FEED)
+
+        # stale feed: its undated items are dropped with it
+        xml = self._rss(self._item("old", old_pub) + self._item("u", None))
+        with mock.patch.object(module, "_fetch_bytes", return_value=xml):
+            items, rep = module.fetch_feed("t", "http://t")
+        self.assertEqual(rep.status, "stale")
+        self.assertEqual(items, [])
 
     def test_build_sources_html_lists_worked_and_failed(self):
         module = load_feed_sources()
         reports = [
-            module.FeedResult("Bloomberg Markets", "http://x", "ok", 30, 12, "2026-06-12 09:00 ET"),
+            module.FeedResult("Bloomberg Markets", "http://x", "ok", 30, 12, newest="2026-06-12 09:00 ET"),
             module.FeedResult("CoinDesk", "http://y", "failed", 0, 0, error="timeout"),
         ]
         html_out = module.build_sources_html(reports, datetime(2026, 6, 12, 9, 0))
