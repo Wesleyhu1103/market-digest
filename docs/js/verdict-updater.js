@@ -163,16 +163,30 @@
     return { cells: cells, bull: bull, bear: bear, mixed: mixed };
   }
 
+  // Verdict rules (shared framing with cellVerdict below):
+  //   confirmed  = supermajority (4+ of 5) OR unopposed majority (3+ with zero
+  //                dissenting layers) — layers 4-5 abstain to mixed most days,
+  //                so demanding 4/5 alone made confirmation near-unreachable.
+  //   lean       = net conviction of 2 layers (3v1, or 2v0 with abstentions).
+  //   mixed      = |net| <= 1: genuinely contested (2v2) or thin signal.
+  //                A single net layer never moves the verdict.
+  // `lean` is stamped as data-lean for the Narrative Threads rail.
   function toVerdict(bull, bear, mixed) {
     var p = 5 - bull - bear - mixed;
-    if (p >= 3)               return { cls: 'pending',   txt: 'Pending  -  awaiting data' };
-    if (bull >= 4)            return { cls: 'confirmed', txt: '✓ Confirmed  -  4+ layers green' };
-    if (bear >= 4)            return { cls: 'failed',    txt: '✗ Failed  -  4+ layers red' };
-    if (bull===3 && bear===0) return { cls: 'tracking',  txt: 'Tracking  -  3 green, building' };
-    if (bear===3 && bull===0) return { cls: 'tracking',  txt: 'Tracking bear  -  3 red layers' };
-    if (bull >= 2 && bear<=1) return { cls: 'fragile',   txt: 'Fragile  -  leans bull' };
-    if (bear >= 2 && bull<=1) return { cls: 'fragile',   txt: 'Fragile  -  leans bear' };
-    return                           { cls: 'fragile',   txt: 'Contested  -  no dominant signal' };
+    if (p >= 3) return { cls: 'pending', lean: 'pending', txt: 'Pending  -  awaiting data' };
+    var net = bull - bear;
+    if (bull >= 4 || (bull >= 3 && bear === 0))
+      return { cls: 'confirmed', lean: 'bull', txt: '✓ Confirmed  -  ' + bull + ' green' + (bear ? ', ' + bear + ' red' : ', unopposed') };
+    if (bear >= 4 || (bear >= 3 && bull === 0))
+      return { cls: 'failed', lean: 'bear', txt: '✗ Failed  -  ' + bear + ' red' + (bull ? ', ' + bull + ' green' : ', unopposed') };
+    if (net >= 2)  return { cls: 'tracking', lean: 'lean-bull', txt: 'Leaning bull  -  ' + bull + ' green vs ' + bear + ' red' };
+    if (net <= -2) return { cls: 'tracking', lean: 'lean-bear', txt: 'Leaning bear  -  ' + bear + ' red vs ' + bull + ' green' };
+    return { cls: 'fragile', lean: 'neu', txt: 'Mixed  -  contested (' + bull + 'G/' + bear + 'R/' + mixed + 'M)' };
+  }
+
+  // Tell listeners (Narrative Threads rail) that verdicts were repainted.
+  function announce() {
+    try { document.dispatchEvent(new CustomEvent('mktdig:verdicts-updated')); } catch (_) {}
   }
 
   function updateStack(key, score) {
@@ -188,6 +202,7 @@
     var v = toVerdict(score.bull, score.bear, score.mixed);
     var vEl = stack.querySelector('.ns-verdict');
     vEl.className = 'ns-verdict ' + v.cls;
+    vEl.dataset.lean = v.lean;
     vEl.innerHTML = '<div class="v-label">Verdict</div>' + v.txt +
       ' <small style="opacity:.5;font-size:10px;font-style:normal">' + MF.asOfStr() + '</small>';
     return score;
@@ -317,19 +332,24 @@
       return found ? snap : null;
     }
 
-    // Label from raw layer counts (finer than toVerdict's card text).
+    // Label from raw layer counts — same framing as toVerdict:
+    // confirmed = supermajority or unopposed majority; lean = net 2 layers;
+    // mixed = |net| <= 1 (contested or thin signal), not "anything short
+    // of supermajority" as before.
     function cellVerdict(score) {
       var resolved = score.bull + score.bear + score.mixed;
       if (resolved < 3) return null;
-      if (score.bull >= 4) return { key: 'bull', word: '✓ Bull', color: 'var(--bull)' };
-      if (score.bear >= 4) return { key: 'bear', word: '✗ Bear', color: 'var(--bear)' };
-      if (score.bull >= 3 && score.bear === 0) return { key: 'lean-bull', word: 'Bull lean', color: 'var(--bull)' };
-      if (score.bear >= 3 && score.bull === 0) return { key: 'lean-bear', word: 'Bear lean', color: 'var(--bear)' };
+      var net = score.bull - score.bear;
+      if (score.bull >= 4 || (score.bull >= 3 && score.bear === 0)) return { key: 'bull', word: '✓ Bull', color: 'var(--bull)' };
+      if (score.bear >= 4 || (score.bear >= 3 && score.bull === 0)) return { key: 'bear', word: '✗ Bear', color: 'var(--bear)' };
+      if (net >= 2)  return { key: 'lean-bull', word: 'Bull lean', color: 'var(--bull)' };
+      if (net <= -2) return { key: 'lean-bear', word: 'Bear lean', color: 'var(--bear)' };
       return { key: 'mixed', word: 'Mixed', color: 'var(--muted)' };
     }
     function paintCell(td, score, pressLean, liveTag) {
       var v = cellVerdict(score);
-      if (!v) return null;
+      if (!v) { td.dataset.verdict = 'pending'; return null; }
+      td.dataset.verdict = v.key;
       var detail = score.bull + 'G/' + score.bear + 'R';
       if (pressLean) detail += ' · press ' + pressLean;
       if (liveTag) detail += ' · live';
@@ -384,7 +404,7 @@
           if (state === 'final') paintSummary(finalKeys);
         });
       });
-      return chain;
+      return chain.then(announce);
     }
 
     function boot() {
@@ -414,6 +434,7 @@
     ]);
     // keep the scoreboard's live (today) row in step with the cards
     try { WeekBoard.render(); } catch (_) {}
+    announce();
   }
 
   function fetchAndScore(tickers) {

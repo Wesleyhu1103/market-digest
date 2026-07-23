@@ -93,51 +93,94 @@ function saveVerdictFeedback() {
       blurb: { bull: 'SpaceX book swells; FOMO lifts the whole complex.', bear: 'Capex without proof of profit; software reversal.', neu: 'Split tape — euphoria meets the profitability test.' } }
   ];
   const todayLabel = (window.DigestDate && DigestDate.editionDayLabel()) || '';
+  const etTodayIso = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+
+  // Day states: bull | bear | lean-bull | lean-bear | neu (mixed) | pending.
+  // The scoreboard painter (verdict-updater.js) stamps data-verdict on every
+  // cell it scores and data-lean on the live cards; text sniffing is only a
+  // fallback for the unresolved morning DOM, where cells literally say
+  // "Pending" (never "Mixed" — an unscored day is not a mixed day).
+  function cellState(td) {
+    if (td.dataset && td.dataset.verdict) return td.dataset.verdict;
+    const t = td.textContent.toLowerCase();
+    if (t.includes('pending')) return 'pending';
+    if (t.includes('bull lean')) return 'lean-bull';
+    if (t.includes('bear lean')) return 'lean-bear';
+    if (t.includes('bull')) return 'bull';
+    if (t.includes('bear')) return 'bear';
+    return 'neu';
+  }
+  function rowIso(dayText) {
+    const m = dayText.match(/(\d+)\/(\d+)/);
+    if (!m) return '';
+    const year = (window.DigestDate && DigestDate.headerEdition && (DigestDate.headerEdition() || {}).year)
+      || Number(etTodayIso.slice(0, 4));
+    return year + '-' + String(m[1]).padStart(2, '0') + '-' + String(m[2]).padStart(2, '0');
+  }
 
   // Parse the Week Scoreboard table into per-thread day arrays
   function readScoreboard() {
-    const rows = [...document.querySelectorAll('#weekTbody tr')];
-    const days = rows.map(r => {
+    const days = [];
+    [...document.querySelectorAll('#weekTbody tr')].forEach(r => {
       const cells = [...r.children];
+      if (cells.length < 4) return;
       const day = cells[0].textContent.trim();
-      const reads = cells.slice(1).map(c => {
-        const t = c.textContent.toLowerCase();
-        if (t.includes('bull')) return 'bull';
-        if (t.includes('bear')) return 'bear';
-        return 'neu';
-      });
-      return { day, reads };
+      days.push({ day, iso: rowIso(day), reads: cells.slice(1, 4).map(cellState) });
     });
-    // Append today (live verdicts from the stacks, fall back to mixed)
-    const liveMap = { bonds: 'bonds', iran: 'iran-oil', aicapex: 'ai-capex' };
-    const liveRead = nk => {
-      const stack = document.querySelector('.narrative-stack[data-narrative="' + liveMap[nk] + '"] .ns-verdict');
-      if (!stack) return 'neu';
-      const t = stack.textContent.toLowerCase();
-      if (t.includes('bull')) return 'bull';
-      if (t.includes('bear')) return 'bear';
-      return 'neu';
-    };
-    days.push({ day: todayLabel, reads: THREADS.map(t => liveRead(t.key)), live: true });
+    const todayRow = days.find(d => d.iso === etTodayIso);
+    if (todayRow) {
+      todayRow.live = true;
+    } else {
+      // Table doesn't cover today (weekend/holiday view) — read the live cards.
+      const liveMap = { bonds: 'bonds', iran: 'iran-oil', aicapex: 'ai-capex' };
+      const liveRead = nk => {
+        const v = document.querySelector('.narrative-stack[data-narrative="' + liveMap[nk] + '"] .ns-verdict');
+        if (!v) return 'pending';
+        if (v.dataset && v.dataset.lean) return v.dataset.lean;
+        const t = v.textContent.toLowerCase();
+        if (t.includes('pending')) return 'pending';
+        if (t.includes('confirmed')) return 'bull';
+        if (t.includes('failed')) return 'bear';
+        if (t.includes('bull')) return t.includes('lean') ? 'lean-bull' : 'bull';
+        if (t.includes('bear')) return t.includes('lean') ? 'lean-bear' : 'bear';
+        return 'neu';
+      };
+      days.push({ day: todayLabel, iso: etTodayIso, reads: THREADS.map(t => liveRead(t.key)), live: true });
+    }
     return days;
   }
 
-  function leanClass(r) { return r; }
-  function verdictText(r) { return r === 'bull' ? 'Bull confirmed' : r === 'bear' ? 'Bear confirmed' : 'Mixed'; }
+  const STATE_META = {
+    'bull':      { cls: 'bull',      txt: 'Bull confirmed' },
+    'bear':      { cls: 'bear',      txt: 'Bear confirmed' },
+    'lean-bull': { cls: 'bull lean', txt: 'Leaning bull' },
+    'lean-bear': { cls: 'bear lean', txt: 'Leaning bear' },
+    'pending':   { cls: 'pending',   txt: 'Not yet scored' },
+    'neu':       { cls: 'neu',       txt: 'Mixed (contested)' }
+  };
+  function stateMeta(r) { return STATE_META[r] || STATE_META.neu; }
+  function blurbFor(th, r) {
+    if (r === 'pending') return 'Not scored yet: the verdict resolves from this session\'s market data.';
+    if (r === 'bull' || r === 'lean-bull') return th.blurb.bull;
+    if (r === 'bear' || r === 'lean-bear') return th.blurb.bear;
+    return th.blurb.neu;
+  }
 
-  const days = readScoreboard();
+  let days = readScoreboard();
 
   // Render compact rail
   const list = document.getElementById('trList');
-  if (list) {
+  function renderRail() {
+    if (!list) return;
     list.innerHTML = THREADS.map((th, ti) => {
-      const dots = days.map((d, di) =>
-        '<span class="tr-dot ' + leanClass(d.reads[ti]) + (di === days.length - 1 ? ' today' : '') + '" title="' + d.day + ': ' + verdictText(d.reads[ti]) + '"></span>'
+      const dots = days.map(d =>
+        '<span class="tr-dot ' + stateMeta(d.reads[ti]).cls + (d.live ? ' today' : '') + '" title="' + d.day + ': ' + stateMeta(d.reads[ti]).txt + '"></span>'
       ).join('');
       return '<button class="tr-thread" type="button" data-thread="' + ti + '">' +
         '<div class="tr-name">' + th.name + '</div><div class="tr-dots">' + dots + '</div></button>';
     }).join('');
   }
+  renderRail();
 
   // Drawer — scrim and panel are siblings (iOS fixed-position touch quirk)
   const scrim = document.getElementById('tlScrim');
@@ -161,18 +204,20 @@ function saveVerdictFeedback() {
     window.scrollTo(0, scrollLockY);
   }
 
-  function renderTimeline(ti) {
+  function renderTimeline(ti, instant) {
     activeThread = ti;
     tabs.querySelectorAll('.tl-tab').forEach((b, i) => b.classList.toggle('active', i === ti));
     const th = THREADS[ti];
     track.innerHTML = days.map(d => {
       const r = d.reads[ti];
-      return '<div class="tl-node ' + r + (d.live ? ' today' : '') + '">' +
+      const m = stateMeta(r);
+      return '<div class="tl-node ' + m.cls + (d.live ? ' today' : '') + (instant ? ' in' : '') + '">' +
         '<span class="tl-day">' + d.day + (d.live ? ' · Today' : '') + '</span>' +
-        '<span class="tl-verdict ' + r + '">' + verdictText(r) + '</span>' +
+        '<span class="tl-verdict ' + m.cls + '">' + m.txt + '</span>' +
         '<h4>' + th.name + '</h4>' +
-        '<p>' + th.blurb[r] + '</p></div>';
+        '<p>' + blurbFor(th, r) + '</p></div>';
     }).join('');
+    if (instant) return;
     requestAnimationFrame(() => {
       track.querySelectorAll('.tl-node').forEach((n, i) => setTimeout(() => n.classList.add('in'), i * 80));
     });
@@ -207,6 +252,15 @@ function saveVerdictFeedback() {
   scrim && scrim.addEventListener('click', closeDrawer);
   drawer && drawer.addEventListener('click', function(e) { e.stopPropagation(); });
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && drawer && !drawer.hidden) closeDrawer(); });
+
+  // Verdicts resolve asynchronously (live quotes + daily bars fetched by
+  // verdict-updater.js) — without this hook the rail would freeze on the
+  // morning "Pending" DOM and read every day as mixed forever.
+  document.addEventListener('mktdig:verdicts-updated', () => {
+    days = readScoreboard();
+    renderRail();
+    if (drawer && !drawer.hidden) renderTimeline(activeThread, true);
+  });
 })();
 
 // ── Reader-facing freshness indicator ──────────────────────────────────

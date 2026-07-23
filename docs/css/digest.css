@@ -389,6 +389,9 @@ details.logic-explainer .pyramid { padding: 0 18px 18px; }
 .tr-dots { display: flex; gap: 4px; align-items: center; }
 .tr-dot { width: 13px; height: 13px; border-radius: 3px; display: inline-block; }
 .tr-dot.bull { background: var(--bull); } .tr-dot.bear { background: var(--bear); } .tr-dot.neu { background: var(--muted); opacity: .5; }
+.tr-dot.bull.lean { background: var(--bull-soft); border: 1.5px solid var(--bull); }
+.tr-dot.bear.lean { background: var(--bear-soft); border: 1.5px solid var(--bear); }
+.tr-dot.pending { background: transparent; border: 1.5px dashed var(--muted); opacity: .6; }
 .tr-dot.today { box-shadow: 0 0 0 2px var(--accent); }
 
 /* ── Full timeline drawer ──────────────────────────────────��───────── */
@@ -410,10 +413,17 @@ details.logic-explainer .pyramid { padding: 0 18px 18px; }
 .tl-node.in { opacity: 1; transform: none; }
 .tl-node::before { content: ""; position: absolute; left: -30px; top: 4px; width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--bg); }
 .tl-node.bull::before { background: var(--bull); } .tl-node.bear::before { background: var(--bear); } .tl-node.neu::before { background: var(--muted); }
+.tl-node.bull.lean::before { background: var(--bull-soft); box-shadow: inset 0 0 0 2.5px var(--bull); }
+.tl-node.bear.lean::before { background: var(--bear-soft); box-shadow: inset 0 0 0 2.5px var(--bear); }
+.tl-node.pending::before { background: var(--bg); box-shadow: inset 0 0 0 2.5px var(--muted); }
 .tl-node.today::before { box-shadow: 0 0 0 3px var(--accent); }
+.tl-node.bull.lean.today::before { box-shadow: inset 0 0 0 2.5px var(--bull), 0 0 0 3px var(--accent); }
+.tl-node.bear.lean.today::before { box-shadow: inset 0 0 0 2.5px var(--bear), 0 0 0 3px var(--accent); }
+.tl-node.pending.today::before { box-shadow: inset 0 0 0 2.5px var(--muted), 0 0 0 3px var(--accent); }
 .tl-day { font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 .tl-verdict { font-family: "Inter", sans-serif; font-size: 12px; font-weight: 700; margin-left: 8px; }
 .tl-verdict.bull { color: var(--bull); } .tl-verdict.bear { color: var(--bear); } .tl-verdict.neu { color: var(--muted); }
+.tl-verdict.pending { color: var(--muted); font-style: italic; font-weight: 600; }
 .tl-node h4 { font-family: "Playfair Display", serif; font-size: 17px; margin: 5px 0 4px; line-height: 1.25; }
 .tl-node p { font-size: 14px; color: var(--muted); line-height: 1.5; margin: 0; font-family: "Source Serif 4", serif; max-width: none; }
 @media (max-width: 880px) {
