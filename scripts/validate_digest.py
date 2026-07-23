@@ -24,6 +24,35 @@ RULES = validate_main_rules()
 HTML_ONLY = validate_html_only_descs()
 
 
+def _local_asset_refs(html: str) -> list[str]:
+    refs: list[str] = []
+    refs.extend(re.findall(r'<script[^>]+src=["\']([^"\']+)["\']', html, re.I))
+    for link in re.finditer(r"<link[^>]+>", html, re.I):
+        tag = link.group(0)
+        if re.search(r'\brel=["\']stylesheet["\']', tag, re.I):
+            href = re.search(r'\bhref=["\']([^"\']+)["\']', tag, re.I)
+            if href:
+                refs.append(href.group(1))
+    return refs
+
+
+def validate_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
+    """Return local script/style refs that do not resolve from this HTML file."""
+    if not html_path:
+        return []
+
+    missing: list[str] = []
+    for ref in _local_asset_refs(html):
+        src = ref.split("?", 1)[0].split("#", 1)[0]
+        if not src or src.startswith(("http://", "https://", "//", "data:")):
+            continue
+        rel = src.lstrip("/")
+        fp = (html_path.parent / rel).resolve()
+        if not fp.is_file():
+            missing.append(ref)
+    return missing
+
+
 def _fetch_text(url: str) -> str:
     req = urllib.request.Request(url, headers={"Cache-Control": "no-cache"})
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
@@ -86,6 +115,14 @@ def main():
     main_block = main_block.group(0)
 
     failures = 0
+    missing_assets = validate_local_assets(html, html_path)
+    if missing_assets:
+        for ref in missing_assets:
+            print(f"FAIL local asset resolves: {ref}")
+        failures += 1
+    else:
+        print("OK   local assets resolve")
+
     for desc, pat, exp, scope_kind in STATIC_RULES:
         scope = js_bundle if scope_kind == "js" else html
         n = len(re.findall(pat, scope, re.DOTALL | re.I))
@@ -104,7 +141,7 @@ def main():
     if not check_js(js_bundle):
         failures += 1
 
-    total = len(STATIC_RULES) + len(RULES) + 1
+    total = len(STATIC_RULES) + len(RULES) + 2
     print(f"\n{'PASS' if failures == 0 else 'FAIL'}: {total - failures}/{total} checks")
     sys.exit(0 if failures == 0 else 1)
 
