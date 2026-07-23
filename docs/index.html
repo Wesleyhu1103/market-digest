@@ -802,6 +802,19 @@
 <script src="js/artifact-framing.js?v=20260722"></script>
 <script src="js/verdict-updater.js?v=20260722"></script>
 <script src="js/digest-init.js?v=20260722"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
 
 </body>
 </html>
