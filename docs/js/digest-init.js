@@ -1,11 +1,16 @@
 // Verdict feedback save
+function mdEditionIso() {
+  return (window.DigestDate && DigestDate.editionIso && DigestDate.editionIso()) || '';
+}
+
 function saveVerdictFeedback() {
   const txt = document.getElementById('verdictFb').value.trim();
   if (!txt) return;
   const log = JSON.parse(localStorage.getItem('verdictFeedback') || '[]');
-  log.push({ ts: new Date().toISOString(), date: '2026-07-08', text: txt });
+  const date = mdEditionIso();
+  log.push({ ts: new Date().toISOString(), date: date, text: txt });
   localStorage.setItem('verdictFeedback', JSON.stringify(log));
-  mdPost('/api/verdict-note', { date: '2026-07-08', note: txt }).catch(function () {});
+  mdPost('/api/verdict-note', { date: date, note: txt }).catch(function () {});
   document.getElementById('verdictFb').value = '';
   const sav = document.getElementById('vfSaved');
   if (sav) { sav.style.display = 'inline'; setTimeout(() => sav.style.display = 'none', 2200); }

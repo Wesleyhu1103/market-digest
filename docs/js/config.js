@@ -6,8 +6,13 @@ function mdUsesRemoteApi() {
 function mdApiUrl(path) {
   return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
 }
+function mdSitePath(path) {
+  const rel = String(path || '').replace(/^\/+/, '');
+  const current = window.location.pathname || '/';
+  return current.indexOf('/archive/') !== -1 ? '../' + rel : rel;
+}
 function mdMacroFredUrl() {
-  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  if (/\.github\.io$/i.test(location.hostname)) return mdSitePath('fred-data.json');
   return '/api/fred-data';
 }
 function mdPost(path, body) {
