@@ -1,5 +1,6 @@
 // GET /api/admin-proposals — pending/approved proposals with source feedback (admin only).
-// POST /api/admin-proposals — approve or reject proposals by id.
+// POST /api/admin-proposals — approve/reject proposals by id, or
+//   { action: "process" } to cluster unprocessed feedback into proposals.
 // Auth: Authorization: Bearer <FEEDBACK_ADMIN_SECRET>
 import {
   cors,
@@ -10,6 +11,7 @@ import {
   getFeedbackByIds,
   updateProposalStatus,
 } from "./_supa.js";
+import { processFeedback } from "./_process_feedback.js";
 
 async function enrichWithSources(proposals) {
   const allIds = [...new Set(proposals.flatMap((p) => p.source_feedback_ids || []))];
@@ -52,6 +54,17 @@ export default async function handler(req, res) {
 
     if (req.method === "POST") {
       const b = (await readJsonBody(req)) || {};
+
+      // action: "process" — cluster unprocessed feedback into pending
+      // proposals. Folded in from the former /api/admin-process-feedback
+      // function: Vercel Hobby caps a deployment at 12 serverless
+      // functions, and that 13th file broke the whole deploy.
+      if (b.action === "process") {
+        const result = await processFeedback();
+        res.status(200).json(result);
+        return;
+      }
+
       const ids = Array.isArray(b.ids) ? b.ids.map(Number).filter((n) => n > 0) : [];
       if (!ids.length) return res.status(400).json({ error: "ids required" });
 
@@ -65,7 +78,7 @@ export default async function handler(req, res) {
         res.status(200).json({ ok: true, rejected: ids });
         return;
       }
-      return res.status(400).json({ error: "action must be approve or reject" });
+      return res.status(400).json({ error: "action must be approve, reject, or process" });
     }
 
     res.status(405).json({ error: "method not allowed" });
