@@ -124,11 +124,26 @@ export async function ensureSchema() {
       unique (proposal_id, voter_hash))`,
     `create index if not exists idx_feedback_proposals_status on public.feedback_proposals(status)`,
     `create index if not exists idx_feedback_unprocessed on public.feedback(processed_at) where processed_at is null`,
+    `create table if not exists public.maintenance_flags (
+      id bigint generated always as identity primary key,
+      created_at timestamptz not null default now(),
+      last_seen timestamptz not null default now(),
+      seen_count int not null default 1,
+      dedupe_key text unique,
+      source text not null,
+      severity text not null default 'warning',
+      title text not null,
+      detail text,
+      url text,
+      status text not null default 'open',
+      resolved_at timestamptz)`,
+    `create index if not exists idx_maintenance_flags_status on public.maintenance_flags(status)`,
     `alter table public.feedback enable row level security`,
     `alter table public.quiz_results enable row level security`,
     `alter table public.verdict_notes enable row level security`,
     `alter table public.feedback_proposals enable row level security`,
     `alter table public.proposal_votes enable row level security`,
+    `alter table public.maintenance_flags enable row level security`,
   ];
   for (const stmt of stmts) await s.unsafe(stmt);
 }
@@ -281,6 +296,69 @@ export function voterHashFromRequest(req, clientId) {
   const ua = (req.headers["user-agent"] || "").slice(0, 200);
   const cid = (clientId || "").slice(0, 64);
   return crypto.createHash("sha256").update(`${ip}|${ua}|${cid}`).digest("hex");
+}
+
+// ── Site maintenance flags (monitor → admin pipeline) ──────────────────
+// Monitors (watchdog, feed check, bot-PR mirror) upsert flags keyed by
+// dedupe_key; a recurrence of a RESOLVED flag reopens it — that recurrence
+// is the signal that an earlier fix didn't hold.
+export async function upsertMaintenanceFlag(r) {
+  const s = db();
+  if (r.dedupe_key) {
+    const rows = await s`
+      insert into public.maintenance_flags
+        (dedupe_key, source, severity, title, detail, url)
+      values (${r.dedupe_key}, ${r.source}, ${r.severity || "warning"},
+              ${r.title}, ${r.detail || null}, ${r.url || null})
+      on conflict (dedupe_key) do update set
+        last_seen = now(),
+        seen_count = public.maintenance_flags.seen_count + 1,
+        severity = excluded.severity,
+        title = excluded.title,
+        detail = excluded.detail,
+        url = excluded.url,
+        status = case when public.maintenance_flags.status = 'resolved'
+                      then 'open' else public.maintenance_flags.status end,
+        resolved_at = case when public.maintenance_flags.status = 'resolved'
+                           then null else public.maintenance_flags.resolved_at end
+      returning id, status, seen_count`;
+    return rows[0];
+  }
+  const rows = await s`
+    insert into public.maintenance_flags (source, severity, title, detail, url)
+    values (${r.source}, ${r.severity || "warning"}, ${r.title},
+            ${r.detail || null}, ${r.url || null})
+    returning id, status, seen_count`;
+  return rows[0];
+}
+
+export async function listMaintenanceFlags(statusFilter) {
+  const s = db();
+  if (statusFilter) {
+    return s`
+      select id, created_at, last_seen, seen_count, dedupe_key, source,
+             severity, title, detail, url, status, resolved_at
+      from public.maintenance_flags
+      where status = ${statusFilter}
+      order by last_seen desc
+      limit 200`;
+  }
+  return s`
+    select id, created_at, last_seen, seen_count, dedupe_key, source,
+           severity, title, detail, url, status, resolved_at
+    from public.maintenance_flags
+    order by (status = 'open') desc, last_seen desc
+    limit 200`;
+}
+
+export async function setMaintenanceStatus(ids, status) {
+  if (!ids || !ids.length) return;
+  const s = db();
+  await s`
+    update public.maintenance_flags
+    set status = ${status},
+        resolved_at = case when ${status} = 'resolved' then now() else null end
+    where id = any(${ids})`;
 }
 
 // Used by /api/health to confirm the DB connection works end to end.

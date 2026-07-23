@@ -1,0 +1,71 @@
+name: Maintenance monitors
+
+# Daily sweep that feeds the admin page's Site Maintenance board
+# (docs/admin.html -> /api/maintenance). Two checks:
+#   1. Open bot PRs (cursor, vercel, dependabot) — surfaces automated
+#      bug-investigation output where it gets seen instead of piling up.
+#   2. Latest "Publish digest" run conclusion — a failed publish becomes a
+#      critical flag even if nobody watched the Actions tab.
+# Requires the MAINTENANCE_TOKEN repo secret (same value as the Vercel env
+# var of that name); steps no-op harmlessly when it is unset.
+on:
+  schedule:
+    - cron: "30 18 * * 1-5" # 2:30pm ET weekdays, after the publish window
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Mirror open bot PRs as maintenance flags
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh pr list --repo "${{ github.repository }}" --state open \
+            --json number,title,author,url \
+            --jq '.[] | select(.author.login | test("cursor|vercel|dependabot")) | [.number, .author.login, .title, .url] | @tsv' \
+          | while IFS=$'\t' read -r NUM AUTHOR TITLE URL; do
+              python3 scripts/post_maintenance_flag.py \
+                --source bot-prs --severity info \
+                --dedupe-key "bot-pr-${NUM}" \
+                --title "Open bot PR #${NUM} (${AUTHOR}): ${TITLE}" \
+                --detail "An automated agent opened this PR; review, merge, or close it so the queue stays clean." \
+                --url "${URL}"
+            done
+          echo "Bot PR sweep done."
+
+      - name: Flag a failed latest publish run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
+        run: |
+          set -euo pipefail
+          LATEST="$(gh run list --repo "${{ github.repository }}" \
+            --workflow publish-digest.yml --limit 1 \
+            --json conclusion,url,createdAt \
+            --jq '.[0] | [.conclusion // "in_progress", .url, .createdAt] | @tsv')"
+          [ -n "$LATEST" ] || { echo "No publish runs found."; exit 0; }
+          IFS=$'\t' read -r CONCLUSION URL CREATED <<< "$LATEST"
+          echo "Latest publish: ${CONCLUSION} (${CREATED})"
+          if [ "$CONCLUSION" = "failure" ] || [ "$CONCLUSION" = "timed_out" ]; then
+            python3 scripts/post_maintenance_flag.py \
+              --source publish-monitor --severity critical \
+              --dedupe-key "publish-failed:$(date -u +%F)" \
+              --title "Latest Publish digest run ${CONCLUSION}" \
+              --detail "The most recent publish-digest.yml run finished with '${CONCLUSION}' (started ${CREATED}). The site may be serving a stale edition." \
+              --url "${URL}"
+          fi

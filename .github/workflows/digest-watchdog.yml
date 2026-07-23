@@ -59,6 +59,7 @@ jobs:
       - name: Trigger publish if digest is stale
         env:
           GH_TOKEN: ${{ github.token }}
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
         run: |
           set -euo pipefail
           if python3 scripts/digest_stale.py; then
@@ -79,9 +80,17 @@ jobs:
 
           # Loud alarm: by ~09:30 ET both primary paths (GitHub cron + Vercel
           # cron) should have published already. Still stale this late means a
-          # scheduler silently failed — fail the run so it shows red and pings us.
+          # scheduler silently failed — fail the run so it shows red and pings us,
+          # and file a maintenance flag on the admin page.
           NOWHM="$(date -u +%H%M)"
           if [ "$((10#$NOWHM))" -ge 1330 ]; then
+            if [ -n "${MAINTENANCE_TOKEN:-}" ]; then
+              curl -sS -X POST "https://market-digest-liart.vercel.app/api/maintenance" \
+                -H "Content-Type: application/json" \
+                -H "x-maintenance-token: ${MAINTENANCE_TOKEN}" \
+                -d "{\"source\":\"digest-watchdog\",\"severity\":\"critical\",\"dedupeKey\":\"stale-digest-$(date -u +%F)\",\"title\":\"Digest still stale past 09:30 ET on $(date -u +%F)\",\"detail\":\"Primary schedulers (GitHub cron + Vercel cron) both lagged; backup dispatched publish at ${NOWHM} UTC. Check /api/cron-watchdog and GITHUB_TOKEN in Vercel.\",\"url\":\"https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+                || echo "maintenance flag POST failed (non-fatal)"
+            fi
             echo "::error::Digest still stale at ${NOWHM} UTC (past 09:30 ET). Primary schedulers lagged; backup just dispatched publish. Check the Vercel cron /api/cron-watchdog (it needs GITHUB_TOKEN set in Vercel to dispatch)."
             exit 1
           fi

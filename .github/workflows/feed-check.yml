@@ -23,4 +23,20 @@ jobs:
           python-version: "3.12"
 
       - name: Fetch all configured feeds
-        run: python3 scripts/feed_sources.py
+        run: python3 scripts/feed_sources.py | tee /tmp/feed-check.txt
+
+      - name: Flag failed feeds on the admin maintenance board
+        if: always()
+        env:
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
+        run: |
+          set -euo pipefail
+          FAILED="$(awk '/ failed / { sub(/ *failed.*/, ""); gsub(/ +$/, ""); print }' /tmp/feed-check.txt | paste -sd'; ' - || true)"
+          [ -n "$FAILED" ] || { echo "No failed feeds."; exit 0; }
+          DETAIL="$(grep ' failed ' /tmp/feed-check.txt | head -20 || true)"
+          python3 scripts/post_maintenance_flag.py \
+            --source feed-check --severity warning \
+            --dedupe-key "feed-failed" \
+            --title "Feed(s) unreachable: ${FAILED}" \
+            --detail "${DETAIL}" \
+            --url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
