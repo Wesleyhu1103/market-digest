@@ -3,7 +3,7 @@
 // publish-digest.yml via the GitHub API when stale.
 //
 // Env (Vercel project settings):
-//   CRON_SECRET   — Vercel sends Authorization: Bearer <CRON_SECRET>
+//   CRON_SECRET   — required; Vercel sends Authorization: Bearer <CRON_SECRET>
 //   GITHUB_TOKEN  — PAT or fine-grained token with actions:write on this repo
 
 import { upsertMaintenanceFlag } from "./_supa.js";
@@ -54,7 +54,7 @@ function digestDateFromHtml(html) {
 
 function authorizeCron(req) {
   const secret = process.env.CRON_SECRET;
-  if (!secret) return true;
+  if (!secret) return false;
   const auth = req.headers.authorization || "";
   return auth === `Bearer ${secret}`;
 }
