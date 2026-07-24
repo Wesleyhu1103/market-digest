@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Jul 23, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-23</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, July 23, 2026</h1>
+    <div class="meta">
+      <p>The ECB decides at midday and Lagarde is expected to hold while she gauges the Iran war, with Intel the last of the marquee names to report after the close. Overnight the story flipped hard: Houthis struck two Saudi tankers, Brent lunged toward $100, and a global bond selloff dragged the 30-year past its longest run above 5% since the financial crisis. Alphabet's cloud beat got buried under a $205 billion capex number that reignited AI spending fears.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Oil lunges toward $100 after Houthis strike two Saudi tankers, driving a global bond selloff, while Alphabet's $205 billion capex raise reignites AI spending fears and drags Big Tech futures lower",
+      "framings": [
+        {"outlet": "Financial Times", "headline": "Oil Price Surge Drives Global Bond Sell-Off", "angle": "Puts the crude spike at the center of a worldwide rates repricing that threatens a prolonged inflation surge.", "lean": -45, "pull": "Brent crude's rise towards $100 threatens a prolonged surge in inflation and a resetting of interest rate expectations."},
+        {"outlet": "Bloomberg", "headline": "Stocks Fall on AI Jitters as Oil Lifts Bond Yields", "angle": "Frames the double hit of Alphabet's spending shock and higher oil pushing yields up.", "lean": -35, "pull": "Stocks fell as Alphabet's earnings triggered fresh unease over ever-higher AI spending, while rising oil prices drove bond yields higher."},
+        {"outlet": "WSJ", "headline": "Google Has the Muscle to Overpower Spending Worries", "angle": "Contrarian take arguing the core businesses are strong enough to carry the capex bet.", "lean": 30, "pull": "AI investment and delays are concerns, but the company's core businesses look strong."},
+        {"outlet": "CNBC", "headline": "American Airlines Slashes 2026 Outlook as Fuel Costs Spike", "angle": "Shows the crude shock landing directly on corporate guidance beyond the oil complex.", "lean": -30, "pull": "American Airlines further cut its 2026 earnings outlook, citing higher fuel costs."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>An Oil-Driven Global Bond Selloff Pushes the US 30-Year Past Its Longest Run Above 5% Since the Financial Crisis and German Yields to a 15-Year High as the ECB Meets, While the AI Debt Wave Competes With Treasuries for Cash and Only a Bank Pause and a Wobbling Hedge-Fund Basis Trade Argue the Long End Can Steady</h3>
+      </div>
+      <p>The rates story went global overnight. FT led with an oil-driven bond selloff as Brent's push toward $100 threatened a prolonged inflation surge and forced traders to reset rate expectations, pulling the US 10-year back near its 2026 high and the 2-year to its highest in over a year. Bloomberg flagged the US 30-year holding above 5% for the longest stretch since the start of the financial crisis, and German bund yields hit a 15-year high before the ECB decision as inflation expectations climbed. Bloomberg also detailed how the AI debt wave, with hyperscalers gorging on bonds, is now competing with Treasuries for the same pool of cash and adding to lofty yields. Even Alphabet's own century bond has lost a tenth of its face value. The counterweight is thin but real: the ECB is expected to hold to gauge the war, Turkey and Ghana kept rates steady rather than easing, half of surveyed economists still see the BOJ waiting until December, and Bloomberg says the hedge funds' favorite basis trade in Treasuries is sputtering, a sign leverage is maxing out rather than extending.</p>
+      <p>The bull case for calmer yields is a wall of central banks choosing to hold, a maxed-out basis trade and WSJ's argument that quality investing is due for a comeback. The bear case is an oil-fueled global selloff, the 30-year past its longest run above 5% since 2008, German yields at a 15-year high and AI debt crowding into the same market as Treasuries.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the long end can steady):</strong> The ECB is expected to hold Thursday to gauge the war, Turkey and Ghana kept rates on hold rather than cutting, and half of economists still see the BOJ waiting until December, so no central bank is chasing yields higher. Bloomberg says the hedge funds' favorite basis trade is sputtering as leverage maxes out, and WSJ argues quality investing is due for a comeback as capital rotates toward durable earnings.</div>
+        <div class="bear"><strong>Bear (oil reset the whole curve):</strong> FT calls it a global bond selloff driven by Brent toward $100, the US 30-year is past its longest run above 5% since the financial crisis, and German yields hit a 15-year high before the ECB. Bloomberg says the AI debt wave is competing with Treasuries for cash and adding to lofty yields, and even Alphabet's century bond has lost a tenth of its value. The inflation premium is back.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/66bf810f-c1c0-488d-bd02-f8eba3acd743?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Oil Price Surge Drives Global Bond Sell-Off</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Brent Lunges Above $98 Toward $100 After Houthis Claim Missile and Drone Strikes on Two Saudi Tankers, Threatening the Kingdom's Oil Lifeline as Asian Refiners Reroute Around Africa and Crop Prices Hit a 3-Year High, While Some Crude Still Slips Through Bab el-Mandeb and John Paulson Calls Gold a Long-Term Bull Market</h3>
+      </div>
+      <p>Geopolitics escalated overnight from a swing factor into an outright supply shock. FT reported Houthis used missiles and drones to hit two Saudi tankers, the Encelia and Layla, in the Red Sea, and MarketWatch said Brent cleared $98 on the news with WTI topping $90. FT warned the attacks threaten to cut off Saudi Arabia's oil lifeline, with Asian refiners facing an extra month of waiting as tankers abandon the route through Bab el-Mandab and reroute around Africa. Bloomberg confirmed Asian buyers are in talks with Aramco to divert flows south of Africa. The second-order effects are spreading: crop prices hit a three-year high on Black Sea attacks and heat, US refineries are running at breakneck speeds as wars choke fuel supplies, and Russia is now importing fuel from India after Ukrainian strikes damaged its refineries. Not everything is one-way. Bloomberg noted a China-owned tanker still exited via Bab el-Mandeb despite the overnight attacks, gold actually fell as the inflation fear favored Fed tightening bets over dip-buying, and John Paulson told CNBC gold is in the early stages of a long-term bull market led by central banks.</p>
+      <p>The bull read is that some crude keeps moving through the chokepoint, rerouting adds cost but not a full cutoff, and gold remains a structural hedge per Paulson. The bear read is Brent toward $100, a direct hit on Saudi tankers, refiners rerouting around Africa, food inflation at a three-year high and no de-escalation in sight.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the flows still move):</strong> Bloomberg reported a China-owned tanker carrying Saudi crude still exited via Bab el-Mandeb despite the overnight attacks, and rerouting around Africa raises costs and delays rather than cutting supply outright. John Paulson told CNBC gold is only in the early stages of a long-term bull market led by central-bank buying, a working hedge for the shock, and the market is treating the strikes as a premium to fade rather than a permanent loss of barrels.</div>
+        <div class="bear"><strong>Bear (the shock is spreading):</strong> Houthis struck two Saudi tankers by name, Brent lunged past $98 toward $100, and FT says the kingdom's oil lifeline is threatened as Asian refiners reroute around Africa. Crop prices hit a three-year high, US refineries are running flat out, and Russia is importing fuel after Ukrainian strikes. Higher crude and food feed straight into headline inflation, which is exactly why the bond market sold off.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/1ddfbe42-b8e8-487c-a156-505879469926?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Oil Jumps to $98 After Houthis Attack Two Saudi Arabian Tankers</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Alphabet's Cloud Beat Gets Buried Under a $205 Billion Capex Raise and a $6 Billion Cash Burn That Reignite AI Spending Fears, IBM Suffers a Historic Plunge and STMicro Craters on a Weak Forecast, While WSJ Argues Google Has the Muscle to Carry the Bet and JPMorgan Warns the AI Split Echoes the Late 1990s</h3>
+      </div>
+      <p>The referee reported, and the market did not like the answer. Alphabet beat on cloud revenue but raised its 2026 capital-spending forecast to as much as $205 billion, and Bloomberg said that reignited concerns about a lack of fiscal discipline, sending the stock lower after hours. FT noted Google burned through $6 billion in cash as AI spending climbed again, and WSJ pinned the broad futures decline on fear about Big Tech's free-cash-flow negativity. The read-through hit the whole complex: IBM suffered a historic stock plunge on an earnings shortfall, its CEO defending the AI strategy, STMicro dropped the most in a year on a weak third-quarter forecast, and Bloomberg said Intel needs more than a blowout tonight to reverse its July slide as the chip rally falters. Semiconductor ETFs have fallen back to earth after astronomical gains. The bull file is not empty. WSJ argued Google has the muscle to overpower the spending worries because the core businesses look strong, Nokia's profit beat on data-center gear, and South Korea's economy topped estimates on an AI-fueled chip boom. JPMorgan framed the split between hyperscalers and chip and infrastructure names as a throwback to the late 1990s and warned the next few weeks are critical.</p>
+      <p>The bulls point to Google's cash-rich core, Nokia's data-center beat, Korea's chip boom and the durable demand underneath the spend. The bears point to the $205 billion capex raise, the $6 billion cash burn, IBM's plunge, STMicro's crater and JPMorgan's 1990s-split warning.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the core carries the bet):</strong> WSJ argues Google has the muscle to overpower spending worries because search and cloud look strong, the cloud line beat this quarter, and Alphabet even holds $94 billion in SpaceX shares as a cushion. Nokia's profit beat on data-center gear, South Korea's economy topped estimates on an AI-fueled chip boom, and demand at the physical layer is intact even as headline capex numbers scare the tape.</div>
+        <div class="bear"><strong>Bear (the spend outran the returns):</strong> Alphabet raised capex to $205 billion and burned $6 billion in cash, reigniting fears no one is disciplined in the AI race, and the stock fell after hours. IBM plunged on an earnings shortfall, STMicro dropped the most in a year, and Bloomberg says Intel needs more than a blowout tonight. JPMorgan warns the hyperscaler-versus-chip split echoes the late 1990s, and WSJ pins the selloff on free-cash-flow negativity.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-22/alphabet-posts-cloud-sales-beat-slight-miss-on-search-revenue" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet's $205 Billion Spending Target Fuels AI Cost Fears</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Alphabet falls after a $205 billion capex raise buries a cloud beat</strong></summary>
+      <div class="deal-body">
+        <p>Alphabet (GOOGL) beat on cloud revenue and slightly missed on search, but raised its 2026 capital-spending target to as much as $205 billion, and the stock fell after hours as investors focused on a lack of fiscal discipline. The referee for the AI-spend thesis gave an ambiguous verdict.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-22/alphabet-posts-cloud-sales-beat-slight-miss-on-search-revenue" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet's $205 Billion Spending Target Fuels AI Cost Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>IBM suffers a historic stock plunge on an earnings shortfall</strong></summary>
+      <div class="deal-body">
+        <p>IBM (IBM) shares fell sharply after an earnings miss, with CEO Arvind Krishna insisting the AI strategy is the right one. The magnitude of the drop underscored how little patience the market has for AI spending that has yet to convert into results.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/article/ibm-ceo-addresses-earnings-shortfall-and-historic-stock-plunge-our-ai-strategy-is-the-right-one-201452259.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- IBM CEO Addresses Earnings Shortfall and Historic Stock Plunge</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tesla beats on revenue, misses on profit, takes a $112M bitcoin hit</strong></summary>
+      <div class="deal-body">
+        <p>Tesla (TSLA) delivered mixed results, beating revenue estimates but missing on profit, and reported a $112 million impairment on its 11,509-bitcoin treasury as the token fell 14% in the quarter. The stock skidded alongside Alphabet on the capital-spending worry.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/22/tesla-holds-bitcoin-steady-reports-usd112m-impairment-loss" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Tesla Holds Bitcoin Treasury Steady, Reports $112M Impairment Loss</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lockheed Martin leaps as the missile-production ramp pays off</strong></summary>
+      <div class="deal-body">
+        <p>Lockheed Martin (LMT) stock jumped after a push to build more missiles faster drove an earnings beat and a raised outlook. With the Iran war escalating, defense demand is a clear counterweight to the tech wobble.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/lockheed-martins-stock-leaps-as-push-to-build-more-missiles-faster-pays-off-9d7e2091?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Lockheed Martin's Stock Leaps as Push to Build More Missiles Faster Pays Off</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Comcast beats on Peacock and box-office strength ahead of its split</strong></summary>
+      <div class="deal-body">
+        <p>Comcast (CMCSA) topped estimates, buoyed by the first-ever quarterly profitability at Peacock and a string of Hollywood hits, highlighting NBCUniversal strength ahead of the planned split into two public companies. A media bright spot against the tech drag.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/23/comcast-earnings-nbcuniversal-strength-split.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Comcast Earnings Highlight NBCUniversal Strength Ahead of Planned Split</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>American Airlines slashes its 2026 outlook as fuel costs spike</strong></summary>
+      <div class="deal-body">
+        <p>American Airlines (AAL) further cut its 2026 earnings outlook, citing higher fuel costs, a direct read on how the oil surge is landing on corporate guidance well beyond the energy sector. The crude spike is now a P&L problem for airlines.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/23/american-airlines-aal-2q-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- American Airlines Slashes 2026 Earnings Outlook as Fuel Costs Spike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Blackstone profit surges on AI investments as private credit slows</strong></summary>
+      <div class="deal-body">
+        <p>Blackstone (BX) reported a profit surge driven by AI-related investments, with stronger private-equity inflows offsetting a private-credit slowdown where individual investors pulled back. The firm said the pace of withdrawals at its flagship credit fund is now slowing.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/blackstone-bx-q2-earnings-report-stock-2026-99916051?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Blackstone's Profit Surges on AI Investments</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The earnings scorecard split cleanly. Defense and media beats (Lockheed, Comcast) and Alphabet's strong core cut one way; the capex raise, IBM's plunge and airline fuel warnings cut the other. Watch whether Intel tonight can arrest the chip-rally fade Bloomberg flags, and whether the oil-fed bond selloff keeps compressing equity multiples. If Brent holds near $100 and the 30-year stays above 5%, good earnings can still be offset by the rates-and-inflation cross-current; if crude backs off, the free-cash-flow fear eases fast.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Capex Raise Can Sink a Stock That Beat on Revenue</summary>
+      <p>Alphabet did something today that looks contradictory to a newer reader: it beat on its most-watched growth line, cloud revenue, and the stock still fell after hours. The reason was a single forward number, a lift in 2026 capital-spending plans to as much as $205 billion, and it is worth understanding why the market can punish a company for spending more even when its sales are growing. The key is the difference between revenue, earnings and free cash flow. Revenue is what a company sells. Earnings subtract the costs of running the business. Free cash flow goes one step further and subtracts the cash spent on long-lived assets like data centers, chips and power, the capital expenditure or capex. Free cash flow is the money actually left over that a company can return to shareholders or reinvest, and for a mature giant like Alphabet, investors have long valued the stock on that cash generation. When capex balloons, free cash flow shrinks even if revenue climbs, because the company is pouring cash into the ground faster than the new revenue arrives. FT noted Google burned through $6 billion in cash this quarter for exactly this reason. Here is the mechanism that makes the market nervous. Capital spending is a bet that today's outlay will produce tomorrow's profit. The market is willing to fund that bet, but only if it believes the return on the investment will clear the cost of the capital used to make it. When a hyperscaler keeps raising the spending number without a matching, visible acceleration in the revenue that spending is supposed to generate, investors start to suspect the returns are lagging the outlays, which is what WSJ meant when it flagged Big Tech's free-cash-flow negativity. The fear is not that the company is doomed; it is that a chunk of the capex may earn a return below what shareholders could get elsewhere, which lowers the present value of the whole enterprise. There is a second, subtler channel through rates. The value of a company is the present value of its future free cash flow, discounted back at a rate tied to bond yields. When the 30-year Treasury sits above 5% and yields are rising, that discount rate goes up, so distant cash flows are worth less today. A capex-heavy AI bet pushes the payoff further into the future, exactly when higher yields are making future payoffs cheaper to own. That is why the oil-driven bond selloff and the Alphabet capex shock reinforced each other on the same morning. The practical lesson is to separate the growth headline from the cash math. A revenue beat tells you the business is selling more. The capex line and the free-cash-flow trend tell you how much of that growth actually reaches the owners, and how confident management is that the spending will pay off. When a company raises spending faster than the market can see the return, and it does so into a rising-rate backdrop, a beat on the top line will not save the stock.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/b02f972c-c764-4006-9377-42563d9d5530?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Google Burns Through $6bn in Cash as AI Spending Climbs Again</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Alphabet raises AI capex to $205 billion, reigniting cost fears</strong></summary>
+      <div class="deal-body">
+        <p>Alphabet (GOOGL) lifted its 2026 capital-spending forecast to as much as $205 billion, reviving worries about fiscal discipline in the AI race even as the cloud line beat. WSJ countered that Google has the muscle to carry the bet because search and cloud look strong.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/ai/google-has-the-muscle-to-overpower-spending-worries-725a92e4?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Google Has the Muscle to Overpower Spending Worries</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Intel needs more than a blowout as the chip rally falters</strong></summary>
+      <div class="deal-body">
+        <p>Intel (INTC) is expected to post strong Q2 earnings after the close, but Bloomberg says even blowout results likely will not reverse the stock's July slide as the broader chip rally loses steam. The turnaround needs a narrative, not just a number.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/intel-needs-more-than-blowout-earnings-as-chips-rally-falters" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Intel Needs More Than Blowout Earnings as Chips Rally Falters</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>STMicro craters on a weak forecast despite the AI narrative</strong></summary>
+      <div class="deal-body">
+        <p>STMicroelectronics (STM) plunged the most in a year after guiding Q3 sales below estimates, dimming hopes for a stronger recovery on AI data-center demand. A reminder that the analog and industrial chip world is not riding the same wave as the AI leaders.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/stmicro-forecasts-revenue-growth-as-ai-boom-boosts-chipmaker" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- STMicro Drops as Weak Forecast Eclipses Longer-Term Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>EU fines Google €890 million in a test of Trump's Big Tech threats</strong></summary>
+      <div class="deal-body">
+        <p>The EU fined Google (GOOGL) a total of €890 million ($1 billion) for violating the Digital Markets Act over search and Play Store practices, a decision Brussels framed as its duty to defend the rule of law and one that risks inflaming tensions with Trump.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/c836e73b-66bb-4aa1-b85b-dd5b6eb89af0?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- EU Fines Google €890mn in Test of Trump's Threats to Protect Big Tech</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alphabet reveals it holds $94 billion in SpaceX shares after the IPO</strong></summary>
+      <div class="deal-body">
+        <p>Google (GOOGL) disclosed its equity holdings include $94.1 billion in SpaceX shares following the space-and-AI company's blockbuster IPO. A hidden cushion on the balance sheet even as SPCX shed roughly $1 trillion of market value over the past month.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/google-says-it-holds-94-billion-in-spacex-shares-after-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Google Says It Holds $94 Billion in SpaceX Shares After IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nokia profit beats as data centers propel sales</strong></summary>
+      <div class="deal-body">
+        <p>Nokia's Q2 profit strongly beat forecasts as its push to supply gear to data centers propelled sales, a rare clean read on real AI-infrastructure demand at the networking layer. It anchors the bull case beneath the capex anxiety.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/nokia-profit-beats-estimates-data-centers-boost-growth" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nokia's Profit Beats Estimates as Data Centers Boost Growth</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Infosys cuts its revenue forecast on muted IT services demand</strong></summary>
+      <div class="deal-body">
+        <p>Infosys (INFY) trimmed the top of its sales-growth outlook as global clients slow technology spending amid elevated rates and geopolitical conflict. A demand-side warning from the IT services world that contrasts with the hardware buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/infosys-cuts-revenue-forecast-as-it-service-demand-remains-muted" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Infosys Cuts Revenue Forecast on Muted IT Services Demand</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Thursday July 23, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is that hardware demand is holding, with Nokia's data-center beat and Korea's chip boom. The noise is the capex sticker shock: Alphabet's $205 billion number and IBM's shortfall spooked the whole complex on one night. JPMorgan's read that the hyperscaler-versus-chip split echoes the late 1990s is the frame to watch, with Intel tonight the next test of whether earnings can outrun the free-cash-flow fear.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Oil nears $100 after Houthis claim strikes on Saudi tankers</strong></summary>
+      <div class="deal-body">
+        <p>Brent rose above $98 and WTI topped $90 after Yemen's Houthis said they hit the Saudi tankers Encelia and Layla with missiles and drones in the Red Sea. The strike moved the conflict from a threat to an actual attack on the kingdom's crude exports.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/oil-nears-100-a-barrel-after-houthis-claim-strikes-on-saudi-arabian-tankers-4d9949c2?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Oil Nears $100 a Barrel After Houthis Claim Strikes on Saudi Arabian Tankers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The oil surge drives a global bond selloff</strong></summary>
+      <div class="deal-body">
+        <p>Brent's rise toward $100 threatens a prolonged inflation surge and is forcing a reset of rate expectations, FT reported, pushing the US 10-year back near its 2026 high and the 2-year to its highest in over a year. The 30-year is past its longest run above 5% since the financial crisis.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/66bf810f-c1c0-488d-bd02-f8eba3acd743?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Oil Price Surge Drives Global Bond Sell-Off</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>German bond yields hit a 15-year high before the ECB</strong></summary>
+      <div class="deal-body">
+        <p>German bund yields rose to their highest since 2011 as surging energy prices and rising inflation expectations fueled bets on rate hikes ahead of the ECB decision. The oil shock is reshaping the euro-area rate path in real time.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/german-bond-yields-hit-15-year-as-oil-prices-spike-before-ecb" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- German Bond Yields Hit 15-Year High as Oil Spikes Before ECB</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB set to hold as Lagarde gauges the Iran war</strong></summary>
+      <div class="deal-body">
+        <p>The ECB is expected to keep rates on hold Thursday, buying time to assess the fallout of renewed Middle East fighting, Bloomberg reported. Watch Lagarde's press conference for whether the oil spike shifts guidance toward a more hawkish stance.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/ecb-rate-decision-lagarde-set-to-keep-policy-unchanged-to-gauge-iran-war-risks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB Rate Decision: Lagarde Set to Keep Policy Unchanged to Gauge Iran War Risks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crop prices hit a three-year high as war and heat stoke food inflation</strong></summary>
+      <div class="deal-body">
+        <p>Crop prices rose to a three-year high as heat waves and escalating Black Sea attacks threatened to disrupt global grain trade, reviving food-inflation risks already stoked by the Iran war. A second inflation channel opening alongside oil.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/crop-prices-hit-3-year-high-as-black-sea-attacks-heat-stoke-food-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Crop Prices Hit 3-Year High as Black Sea Attacks, Heat Stoke Food Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI debt is now competing with Treasuries for cash, lifting yields</strong></summary>
+      <div class="deal-body">
+        <p>Bloomberg detailed how the AI borrowing wave, with hyperscalers issuing bonds worldwide, is competing with US Treasuries for the same pool of investor cash and adding to already-lofty yields. Alphabet's own century bond has dropped below 90 pence on the pound.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-23/ai-debt-competing-with-treasuries-is-adding-to-lofty-us-yields" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Debt Competing With Treasuries Is Adding to Lofty US Yields</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Turkey holds rates as the oil spike tests its inflation fight</strong></summary>
+      <div class="deal-body">
+        <p>Turkey's central bank left rates unchanged, with the Middle East war and rising energy prices threatening to derail a fragile disinflation. Ghana held at 14% and Goldman and Absa now see its easing window closed, showing how the oil shock is freezing rate cuts across emerging markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/turkey-holds-rates-as-iran-war-threatens-inflation-fight" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Turkey Holds Rates as Oil Price Spike Tests Inflation Fight</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 22, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish tug is Brent near $100 reviving cost-push inflation, the 30-year past its longest run above 5% since the financial crisis, German yields at a 15-year high, crop prices at a three-year high and AI debt crowding into the Treasury market. The dovish counterweight is a wall of central banks choosing to hold rather than move, from the ECB to Turkey to a patient BOJ. The near-term referee is crude, and whether the Houthi strikes escalate decides how hawkish the ECB and the long bond have to lean.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why an Oil Shock Shows Up First in the Bond Market</summary>
+      <p>The most telling move overnight was not in oil itself but in bonds. Brent's lunge toward $100 immediately triggered what FT called a global bond selloff, with German yields hitting a 15-year high and US yields climbing back toward their 2026 peaks. For a newer reader the link is not obvious, because oil is a commodity and bonds are a promise to repay money, so it is worth walking through why a crude spike hits the fixed-income market so fast and so hard. A bond pays a fixed stream of cash: a set coupon plus the return of principal at maturity. Because those payments are fixed in nominal terms, inflation is the enemy of a bondholder, since it eats away the real value of every future dollar the bond will pay. When oil surges, investors immediately revise up their expectations for inflation, because energy feeds into transport, manufacturing and food costs across the whole economy. If future inflation is going to be higher, the fixed payments on existing bonds are worth less in real terms, so investors sell them, and selling pushes prices down and yields up. That is the first channel, and it works almost instantly because it is a change in expectations, not in realized data. The second channel runs through central-bank policy. A crude spike that threatens to entrench inflation makes rate cuts less likely and hikes more likely, as we saw when Turkey and Ghana held rather than eased and German traders priced in a firmer ECB. Because bond yields embed the expected path of the policy rate over the bond's life, any repricing of that path shows up in yields right away. The third and subtlest channel is the term premium, the extra compensation lenders demand for the risk of holding long-dated bonds through an uncertain future. An oil shock raises uncertainty about the inflation path, so lenders demand a bigger cushion, and the long end rises even more than the short end. Layer on Bloomberg's point that the AI borrowing wave is issuing bonds that compete with Treasuries for the same cash, and the supply side pushes yields up too. Why does the speed matter? Because the bond market is where the inflation fear gets priced before it ever appears in a CPI report. Equities felt the same shock a step later, as higher yields raised the discount rate on future earnings and compressed valuations, which is why the oil spike and the Alphabet capex worry hit stocks together. The practical lesson is to treat the bond market as an early-warning system for inflation shocks. When a geopolitical event moves oil, watch yields first: they will tell you how seriously the market takes the inflation threat, how much it expects central banks to respond, and how much extra cushion lenders now demand, all before the official data confirms anything.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-23/ai-debt-competing-with-treasuries-is-adding-to-lofty-us-yields" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Debt Competing With Treasuries Is Adding to Lofty US Yields</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Oil lunged toward $100 after Houthis struck two Saudi tankers, driving a global bond selloff that pushed the 30-year past its longest run above 5% since the financial crisis, while Alphabet's $205 billion capex raise reignited AI spending fears and dragged Big Tech lower with Intel still to report; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/22</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/23</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/24</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin wilts as oil and rates rise and Clarity Act odds tumble to 38%</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin slipped as the oil surge and rising yields sapped risk appetite, and prediction-market odds on the crypto Clarity Act passing fell to 38% after key Democrats demanded stronger safeguards. Macro and Washington are both leaning against the tape.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/23/bitcoin-wilts-as-oil-and-rates-rise-clarity-act-odds-tumble-to-38" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Wilts as Oil and Rates Rise, Clarity Act Odds Tumble to 38%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto catches its breath as bitcoin settles into a holding pattern</strong></summary>
+      <div class="deal-body">
+        <p>BTC is rangebound between roughly $64,000 and $66,800 after a 13% recovery off July's lows, with macro offering little direction and World Liberty Financial's WLFI the surprise standout at +12%. The best month since January is consolidating rather than breaking out.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/23/crypto-catches-its-breath-as-bitcoin-settles-into-a-holding-pattern-after-its-best-month-since-january" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Catches Its Breath as Bitcoin Settles Into a Holding Pattern Amid July Rally</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Key Democrats say the Clarity Act still falls short on ethics</strong></summary>
+      <div class="deal-body">
+        <p>Several of the Democrats most likely to back the market-structure bill said the new Republican draft falls short on ethics and other issues, while Senator Lummis said she was pleased the text was ready. The core conflict-of-interest provision remains unresolved.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/07/22/key-democratic-lawmakers-say-crypto-clarity-act-falls-short-on-ethics-other-issues" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Key Democratic Lawmakers Say Crypto Clarity Act 'Falls Short' on Ethics</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BitMEX, the exchange that invented perpetual swaps, is shutting down</strong></summary>
+      <div class="deal-body">
+        <p>BitMEX, co-founded by Arthur Hayes in 2014 and the pioneer of the 100x-leverage perpetual swap, notified users it will end operations by September 23, closing an 11-year run. A symbolic end for the venue that reshaped global crypto trading.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/23/bitmex-s-11-year-run-comes-to-an-end-notifies-users-it-is-ending-operations-in-by-sept-23" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BitMEX, the Exchange That Invented Perps, Is Shutting Down</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bridge exploits drain $35M from Bitcoin and Ethereum-linked protocols</strong></summary>
+      <div class="deal-body">
+        <p>Multiple attacks hours apart hit Verus, B² Network and other cross-chain systems for about $35 million, and Arbitrum-based AFX Trade was drained of $24 million after bridge keys were compromised. Compromised keys and upgrade powers, not broken cryptography, keep emptying protocols.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/07/23/bitcoin-ethereum-linked-protocols-lose-usd35-million-in-multiple-attacks-hours-apart" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin, Ethereum-Linked Protocols Lose $35 Million in Multiple Attacks Hours Apart</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mubadala Capital and Coinbase join the tokenization push</strong></summary>
+      <div class="deal-body">
+        <p>Abu Dhabi's sovereign-backed Mubadala Capital tapped KAIO to bring one of its private-market funds onchain across Base, Solana and Sui, with Coinbase taking a stake in the onchain fund. Real-world-asset tokenization keeps drawing marquee institutional names.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/23/abu-dhabi-s-mubadala-capital-joins-tokenization-push-as-coinbase-takes-stake-in-onchain-fund" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Abu Dhabi's Mubadala Capital Joins Tokenization Push as Coinbase Takes Stake in Onchain Fund</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Revolut -- Europe's Most Valuable Startup Hits a $115 Billion Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Digital bank Revolut agreed to a secondary share sale that lifted its valuation by roughly 50% to about $115 billion, on the back of a $2.3 billion pre-tax profit, $6 billion in revenue and more than 75 million customers.</p>
+        <p><strong>Outlook:</strong> The employee-liquidity round lets Revolut reward staff and stamp a marquee number without an IPO, keeping it private while the public window stays choppy.</p>
+        <p><strong>What it means:</strong> Fintech is minting Europe's most valuable startup even as banks fret about rates, a sign private capital is happy to fund scale outside the public market.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/digital-bank-revolut-europes-most-valuable-startup-valued-at-115-billion-0344c14e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Digital Bank Revolut, Europe's Most Valuable Startup, Valued at $115 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>McCormick -- Adding a London Listing After the Unilever Food Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> McCormick picked London as a secondary listing location, months after agreeing to combine with Unilever's food business, adding to its existing New York Stock Exchange listing.</p>
+        <p><strong>Outlook:</strong> The move is a boost for London and a blow to Amsterdam, which had hoped to win the listing, and ties the spices maker more tightly to the enlarged European food footprint.</p>
+        <p><strong>What it means:</strong> London keeps clawing back listing prestige, drawing a US consumer giant even as UK fiscal questions weigh on the pound.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/mccormick-plans-to-add-a-london-listing-after-unilever-food-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- McCormick Will Add London Listing After Unilever Food Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Airtel Africa -- Mobile-Money Unit Picks London for Its Listing</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Airtel Africa chose London as the primary listing location for its mobile-money business and expects trading to begin there this year.</p>
+        <p><strong>Outlook:</strong> Carving out and listing the fast-growing payments unit unlocks value the parent's shares have not fully reflected, and gives London a marquee fintech float.</p>
+        <p><strong>What it means:</strong> African fintech is going public in Europe, another data point that London is winning listings even as US markets dominate the headlines.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/airtel-mobile-money-unit-chooses-london-for-listing-location" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Airtel Mobile-Money Unit Picks London for Listing Location</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Korbit / Mirae -- A $1 Trillion Group Takes Control of Korea's Oldest Crypto Exchange</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Korbit, South Korea's first crypto exchange, joined the Mirae Asset Group family, the first time a traditional Korean financial group's affiliate has taken a controlling stake in a domestic exchange.</p>
+        <p><strong>Outlook:</strong> The deal folds crypto rails into a mainstream $1 trillion asset manager, a template for how legacy finance absorbs exchanges rather than competes with them.</p>
+        <p><strong>What it means:</strong> Institutional ownership of exchanges is going mainstream in Asia, bridging traditional and digital finance at the infrastructure level.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/23/south-korea-s-oldest-crypto-exchange-is-now-part-of-the-usd800-billion-mirae-group-family" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- South Korea's Oldest Crypto Exchange Is Now Part of the Mirae Group Family</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kuehne+Nagel -- Weighing Options for Its Apex Logistics Unit</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Kuehne+Nagel is considering strategic options for Apex Logistics, its Asia-focused freight forwarder, people familiar with the matter said.</p>
+        <p><strong>Outlook:</strong> A potential sale or spin-off would let the Swiss logistics giant sharpen its focus while freight demand swings with the war-disrupted shipping map.</p>
+        <p><strong>What it means:</strong> Logistics M&A is stirring as rerouting around Africa reshapes trade flows and forces operators to rethink their Asia exposure.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/kuehne-nagel-weighs-options-for-apex-logistics-unit" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kuehne+Nagel Weighs Options for Apex Logistics Unit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Absa -- Nearing a Deal to Combine $3 Billion of Tanzania Banking Assets</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Absa Group is close to a deal to combine its banking interests in Tanzania as the South African lender looks to add scale across its East African businesses.</p>
+        <p><strong>Outlook:</strong> Consolidation of the Tanzanian units would cut costs and deepen Absa's footprint in a high-growth region even as African rate cuts stall on oil-driven inflation.</p>
+        <p><strong>What it means:</strong> African banking is still consolidating for scale, a quiet corner of M&A far from the AI and oil headlines dominating the tape.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/absa-nears-tanzania-deal-to-combine-3-billion-of-banking-assets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Absa Nears Tanzania Deal to Combine $3 Billion of Assets</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>JPMorgan -- the AI split echoes the late 1990s, next few weeks are critical</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan strategists argued the divergent price action between AI hyperscalers and chip and infrastructure names is a throwback to a late-1990s setup, and warned the next few weeks are critical for whether the trade holds. A named framework for the current rotation.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/ai-stocks-are-echoing-a-1990s-market-split-jpmorgan-warns-the-next-few-weeks-are-critical-408ed725?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- AI Stocks Are Echoing a 1990s Market Split, JPMorgan Warns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>John Paulson -- gold is in the early stages of a long-term bull market</strong></summary>
+      <div class="deal-body">
+        <p>Billionaire John Paulson told CNBC gold is in the early stages of a long-term bull market, with demand broadening beyond central banks into growing private-sector interest. A named hedge on the war-and-inflation backdrop.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/22/john-paulson-says-we-are-in-early-stages-of-a-long-term-bull-market-for-gold.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- John Paulson Says We Are in the Early Stages of a Long-Term Bull Market for Gold</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan quants -- the strongest earnings upgrades are now in Europe</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan's quant team said Europe now leads the world for the sharpest upward revisions to corporate earnings estimates, a rotation signal that cuts against US-equity dominance. A named case for looking beyond the Magnificent Seven.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/jpmorgan-quants-say-strongest-earnings-upgrades-are-in-europe" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- JPMorgan Quants Say Strongest Earnings Upgrades Are in Europe</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs and Absa -- the oil spike has closed the emerging-market easing window</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs and Absa said the window for the Bank of Ghana to resume easing this year has closed on fresh inflation pressure from the Iran war, a read that generalizes across oil-importing emerging markets. Named calls that reinforce the higher-for-longer thesis.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-23/goldman-sachs-absa-see-ghana-rate-cuts-delayed-by-iran-war-oil-prices" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Goldman Sachs, Absa See Ghana Rate Cuts Delayed by Iran War, Oil Prices</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Franklin Templeton's Sandy Kaul and Circle's Jeremy Allaire -- the next AI trade is crypto</strong></summary>
+      <div class="deal-body">
+        <p>Franklin Templeton's Sandy Kaul and Circle CEO Jeremy Allaire argued that as autonomous AI agents start spending money on their own, blockchain networks will power the next big AI trade. A contrarian, named bet on the AI-crypto convergence.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/21/forget-nvidia-the-next-big-ai-trade-could-be-crypto-and-blockchain" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Forget Nvidia: The Next Big AI Trade Could Be Crypto and Blockchain</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Oil Lunges Toward $100 on Houthi Tanker Strikes, a Global Bond Selloff Pushes the Long End Higher, and Alphabet's Capex Raise Splits the AI Trade</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (rotation, not collapse):</strong> JPMorgan's quants say Europe has the world's sharpest earnings upgrades, WSJ argues Google's core can carry the capex bet, and Nokia's data-center beat plus Korea's chip boom show real demand. John Paulson calls gold an early-stage bull market and a working hedge, and Franklin Templeton's Sandy Kaul sees blockchain powering the next AI trade. Capital is rotating, not fleeing.</div>
+        <div class="bear"><strong>Bear (the inflation premium is back):</strong> Goldman and Absa say the oil spike has closed the emerging-market easing window, and JPMorgan warns the AI split echoes the late 1990s with the next few weeks critical. Alphabet's $205 billion capex and $6 billion cash burn spooked the tape, IBM plunged, and the 30-year sits past its longest run above 5% since the financial crisis. Higher oil and yields are repricing everything.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Alphabet $205B capex fade; IBM historic plunge; Tesla mixed; Intel tonight; oil rips toward $100</td><td>Bearish</td><td>~22,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Lockheed missile beat; Comcast/Peacock; American Airlines fuel warning; EU fines Google €890M</td><td>Cautious</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>30-year past longest run above 5% since financial crisis; global bond selloff; ECB hold; AI debt vs Treasuries</td><td>Cautious</td><td>~13,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Alphabet free-cash-flow negativity; JPMorgan 1990s split; Revolut $115B; Blackstone private-credit slowdown</td><td>Analytical</td><td>~7,500 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC wilts on oil and rates; Clarity Act odds fall to 38%; BitMEX shutting down; $35M bridge exploits</td><td>Bearish</td><td>~15,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned bearish overnight. r/wallstreetbets fixated on Alphabet's $205 billion capex fade and IBM's historic plunge, with Intel tonight the last hope and oil ripping toward $100. r/stocks stayed cautious, cheering Lockheed's missile beat and Comcast's Peacock strength while digesting American Airlines' fuel warning and the EU's €890 million Google fine. r/investing dwelt on the 30-year past its longest run above 5% since the financial crisis and the global bond selloff. r/SecurityAnalysis dug into free-cash-flow negativity and JPMorgan's 1990s-split framing. r/CryptoCurrency went bearish as bitcoin wilted on oil and rates and Clarity Act odds fell to 38%. The swing factor is whether the crude spike keeps escalating into the ECB and Intel.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Cloud Beat Could Not Save Alphabet, and What Free Cash Flow Really Tells You</h2>
+    <p>Alphabet reported strong cloud growth and still fell after hours, which confuses a newer reader because the headline number looked good. The reason lives in the gap between three measures that sound similar but mean very different things: revenue, earnings and free cash flow. Revenue is simply what a company sells. Earnings, or net income, subtract the cost of running the business. Free cash flow goes one step further and subtracts capital expenditure, the cash a company sinks into long-lived assets like data centers, chips, buildings and power connections. For a mature cash machine like Alphabet, investors have long valued the stock on that final measure, the cash actually left over after the business has paid to keep growing. When Alphabet raised its 2026 capital-spending plan to as much as $205 billion, it told the market that free cash flow will be squeezed even as revenue rises, and FT noted the company burned $6 billion in cash this quarter for exactly that reason.</p>
+    <p>Here is the mechanism that makes the market anxious. Capital spending is a bet that today's cash outlay will produce tomorrow's profit. Investors are willing to fund that bet, but only if they believe the return on the investment will exceed the cost of the capital tied up in it. When a company keeps raising the spending figure without a matching, visible acceleration in the revenue that spending is supposed to generate, investors begin to suspect the returns are lagging the outlays. That is what WSJ meant when it flagged Big Tech's free-cash-flow negativity. The fear is not bankruptcy; it is that a slice of the capex may earn less than shareholders could get elsewhere, which lowers the present value of the whole company. A revenue beat cannot offset that worry, because the market is asking a different question: not are you growing, but is the growth worth what you are paying for it.</p>
+    <p>There is a second channel through interest rates. A company is worth the present value of its future free cash flow, discounted back at a rate tied to bond yields. When the 30-year Treasury sits above 5% and yields are climbing on an oil shock, that discount rate rises, so cash flows far in the future are worth less today. A capex-heavy AI bet pushes the payoff further out in time, precisely when higher yields make distant payoffs cheaper to own. That is why the bond selloff and the Alphabet capex shock hit stocks together on the same morning: they attack the same valuation math from two directions.</p>
+    <p>The practical lesson is to read past the growth headline to the cash math. A revenue beat tells you the business is selling more. The capex line and the free-cash-flow trend tell you how much of that growth actually reaches the owners, and how confident management is that the spending will pay off. When a company lifts spending faster than the market can see the return, and does so into a rising-rate backdrop, even a strong quarter on the top line will not carry the stock.</p>
+    <p class="deal-source"><a href="https://www.ft.com/content/b02f972c-c764-4006-9377-42563d9d5530?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Google Burns Through $6bn in Cash as AI Spending Climbs Again</a></p>
+    <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/oil-tops-98-a-barrel-tech-earnings-worry-markets-8b5adb27?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Futures Fall on Tech Worries</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>ECB rate decision (today).</strong> Lagarde is expected to hold to gauge the war, but German yields at a 15-year high mean her tone on the oil-driven inflation risk matters more than the rate itself; watch for any hawkish shift.</li>
+      <li><strong>Fed decision (Wednesday, July 29-30).</strong> The FOMC meets next week; watch whether the oil surge toward $100, the long-end selloff and the closing emerging-market easing window shift the tone even without a move.</li>
+      <li><strong>Inflation and energy read-through.</strong> With crop prices at a three-year high and Brent near $100, watch how the war-driven cost-push channel filters into the next round of CPI prints and rate expectations.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Intel (tonight).</strong> Bloomberg says even a blowout may not reverse the July slide; watch the data-center turnaround and whether the report can arrest the broader chip-rally fade.</li>
+      <li><strong>Big Tech digestion.</strong> After Alphabet's capex shock and IBM's plunge, watch how the market treats the remaining Magnificent Seven reports and whether free-cash-flow fear spreads.</li>
+      <li><strong>Defense and energy names.</strong> Lockheed's missile-driven beat sets a bar; watch other defense and oil-services names as the war lifts demand and fuel costs.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>London listing wave.</strong> Revolut's $115 billion valuation, McCormick's secondary London listing and Airtel Africa's mobile-money float test appetite for European listings even as UK fiscal questions weigh on the pound.</li>
+      <li><strong>Private-credit flows.</strong> Blackstone says withdrawals at its flagship credit fund are slowing; watch whether that stabilizes as the AI debt wave competes with Treasuries for cash.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Red Sea shipping.</strong> Houthis struck two Saudi tankers by name and refiners are rerouting around Africa; watch Bab el-Mandeb traffic, Aramco's flow diversions and whether Brent clears $100.</li>
+      <li><strong>Trade and tariffs.</strong> Trump is invoking Section 338 to threaten 50% tariffs on Canada and plans 100% generic-drug levies from 2028; watch retaliation risk and the inflation read-through.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Jul 23, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-07-23 07:39 ET); Bloomberg Technology (20 fresh, newest 2026-07-23 07:38 ET); Bloomberg Economics (20 fresh, newest 2026-07-23 07:07 ET); CNBC Top News (13 fresh, newest 2026-07-23 07:49 ET); CNBC Finance (2 fresh, newest 2026-07-22 18:06 ET); CNBC Economy (2 fresh, newest 2026-07-22 12:57 ET); MarketWatch Top Stories (10 fresh, newest 2026-07-23 07:59 ET); WSJ Markets (21 fresh, newest 2026-07-23 07:18 ET); Yahoo Finance (23 fresh, newest 2026-07-23 08:00 ET); FT Home (12 fresh, newest 2026-07-23 06:59 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-22 14:30 ET); CoinDesk (25 fresh, newest 2026-07-23 08:00 ET); Stratechery (1 fresh, newest 2026-07-22 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove the global bond selloff overnight?</strong></p>
+      <span class="opt" data-opt="A">A. A surprise ECB rate cut announced ahead of schedule</span>
+      <span class="opt" data-opt="B">B. A wave of central banks moving to ease policy together</span>
+      <span class="opt" data-opt="C">C. Oil's surge toward $100 reviving inflation expectations</span>
+      <span class="opt" data-opt="D">D. Heavy central-bank buying capping yields near lows</span>
+      <div class="feedback"><strong>C is correct.</strong> FT tied the global bond selloff to Brent's rise toward $100, which lifted inflation expectations and forced a reset of rate bets. It was not an ECB cut, coordinated easing or QE; central banks were mostly holding.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. Why did Alphabet's stock fall despite beating on cloud revenue?</strong></p>
+      <span class="opt" data-opt="A">A. It raised capital spending to $205 billion, denting free cash flow</span>
+      <span class="opt" data-opt="B">B. It missed badly on total revenue across every segment</span>
+      <span class="opt" data-opt="C">C. It announced it would stop investing in AI entirely</span>
+      <span class="opt" data-opt="D">D. It disclosed it had sold its entire SpaceX shareholding</span>
+      <div class="feedback"><strong>A is correct.</strong> Alphabet lifted its 2026 capex target to as much as $205 billion and burned $6 billion in cash, reigniting free-cash-flow fears that buried the cloud beat. It did not miss on revenue, halt AI spending or sell SpaceX.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>3. What sent oil toward $100 overnight?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC agreed to cut output at an emergency meeting</span>
+      <span class="opt" data-opt="B">B. Houthis claimed missile and drone strikes on two Saudi tankers</span>
+      <span class="opt" data-opt="C">C. The US announced it would refill its strategic reserve</span>
+      <span class="opt" data-opt="D">D. A hurricane shut down Gulf of Mexico production sites</span>
+      <div class="feedback"><strong>B is correct.</strong> Brent cleared $98 after Houthis said they hit the Saudi tankers Encelia and Layla with missiles and drones in the Red Sea. It was not an OPEC cut, a reserve refill or a hurricane.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "An oil-driven global bond selloff pushed the US 30-year past its longest run above 5% since the financial crisis and German yields to a 15-year high before the ECB, with the AI debt wave competing with Treasuries for cash, against a wall of central banks choosing to hold and a wobbling hedge-fund basis trade.",
+    "sources": [
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/66bf810f-c1c0-488d-bd02-f8eba3acd743?syn-25a6b1a6=1", "take": "Oil surge drives a global bond selloff." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-07-23/ai-debt-competing-with-treasuries-is-adding-to-lofty-us-yields", "take": "AI debt competes with Treasuries, lifting yields." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-23/german-bond-yields-hit-15-year-as-oil-prices-spike-before-ecb", "take": "German yields hit a 15-year high before the ECB." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-23/ecb-rate-decision-lagarde-set-to-keep-policy-unchanged-to-gauge-iran-war-risks", "take": "ECB set to hold to gauge the war." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-23/hedge-funds-favorite-us-bond-trade-is-sputtering", "take": "Hedge funds' favorite bond trade is sputtering." }
+    ]
+  },
+  "iran": {
+    "diverge": "Brent lunged above $98 toward $100 after Houthis struck two Saudi tankers, threatening the kingdom's oil lifeline as Asian refiners reroute around Africa and crop prices hit a three-year high, while some crude still slips through Bab el-Mandeb and John Paulson calls gold a long-term bull market.",
+    "sources": [
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/1ddfbe42-b8e8-487c-a156-505879469926?syn-25a6b1a6=1", "take": "Oil jumps to $98 after strikes on two Saudi tankers." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/oil-nears-100-a-barrel-after-houthis-claim-strikes-on-saudi-arabian-tankers-4d9949c2?mod=mw_rss_topstories", "take": "Oil nears $100 after Houthi strikes." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/02bf3e4d-7719-4482-9f2b-ab14bd3fe9c3?syn-25a6b1a6=1", "take": "Houthi attacks threaten Saudi Arabia's oil lifeline." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-23/china-tankers-head-to-red-sea-chokepoint-despite-houthi-attacks", "take": "China tankers still reach the Red Sea chokepoint." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/07/22/john-paulson-says-we-are-in-early-stages-of-a-long-term-bull-market-for-gold.html", "take": "Paulson says gold is early in a long-term bull market." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Alphabet's cloud beat got buried under a $205 billion capex raise and a $6 billion cash burn that reignited AI spending fears, IBM plunged and STMicro cratered, while WSJ argued Google has the muscle to carry the bet and JPMorgan warned the AI split echoes the late 1990s.",
+    "sources": [
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/tech/ai/google-has-the-muscle-to-overpower-spending-worries-725a92e4?mod=rss_markets_main", "take": "Google has the muscle to overpower spending worries." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-23/nokia-profit-beats-estimates-data-centers-boost-growth", "take": "Nokia profit beats as data centers boost growth." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-22/alphabet-posts-cloud-sales-beat-slight-miss-on-search-revenue", "take": "Alphabet's $205B spending target fuels cost fears." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/markets/article/ibm-ceo-addresses-earnings-shortfall-and-historic-stock-plunge-our-ai-strategy-is-the-right-one-201452259.html", "take": "IBM suffers a historic stock plunge on a miss." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/ai-stocks-are-echoing-a-1990s-market-split-jpmorgan-warns-the-next-few-weeks-are-critical-408ed725?mod=mw_rss_topstories", "take": "JPMorgan warns the AI split echoes the late 1990s." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Lockheed","Nokia","Comcast","Alphabet","IBM","STMicro"],
+    "values": [6.0, 4.0, 3.0, -4.0, -8.0, -11.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [22000, 14000, 13000, 7500, 15000],
+    "colors": ["bear","neutral","neutral","neutral","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Revolut valuation","Google/SpaceX stake","Absa Tanzania"],
+    "values": [115.0, 94.1, 3.0]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
