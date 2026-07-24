@@ -1,54 +1,37 @@
 name: Digest watchdog
 
-# GitHub's built-in cron is often delayed 1–2 hours during peak load.
+# GitHub's built-in cron is often delayed 1-2 hours during peak load.
 # This lightweight job polls every 15 minutes during the weekday publish
-# window (US/Eastern morning) and triggers the full publish pipeline only
-# while docs/index.html is still behind today's date.
+# window and triggers the full publish pipeline while docs/index.html is
+# still behind today's date.
+#
+# Design rules learned the hard way:
+#  - Window is 11:00-15:00 UTC (7-11am EDT / 6-10am EST): the digest either
+#    publishes in that window or the 13:30 UTC alarm has already fired.
+#    Polling into the afternoon added ~12 no-op runs/day whose only effect
+#    was more chances for infra noise to paint a red X.
+#  - NO concurrency group: each run is an idempotent staleness check, and
+#    publish-digest.yml's own concurrency group collapses duplicate
+#    dispatches. A group here meant queued runs got cancelled by newer
+#    ticks, which GitHub surfaces as red "failure" runs — pure noise
+#    (2026-07-24: a queued run was cancelled with the digest long since
+#    published and showed as a workflow failure).
+#  - Every gh/network call is retried; a transient API blip must not fail a
+#    poll. Red means exactly one thing: the digest is genuinely late.
 on:
   schedule:
-    # 11:00–18:00 UTC Mon–Fri ≈ 7:00am–2:00pm ET (covers EDT and EST)
-    - cron: "0 11 * * 1-5"
-    - cron: "15 11 * * 1-5"
-    - cron: "30 11 * * 1-5"
-    - cron: "45 11 * * 1-5"
-    - cron: "0 12 * * 1-5"
-    - cron: "15 12 * * 1-5"
-    - cron: "30 12 * * 1-5"
-    - cron: "45 12 * * 1-5"
-    - cron: "0 13 * * 1-5"
-    - cron: "15 13 * * 1-5"
-    - cron: "30 13 * * 1-5"
-    - cron: "45 13 * * 1-5"
-    - cron: "0 14 * * 1-5"
-    - cron: "15 14 * * 1-5"
-    - cron: "30 14 * * 1-5"
-    - cron: "45 14 * * 1-5"
+    - cron: "0,15,30,45 11-14 * * 1-5"
     - cron: "0 15 * * 1-5"
-    - cron: "15 15 * * 1-5"
-    - cron: "30 15 * * 1-5"
-    - cron: "45 15 * * 1-5"
-    - cron: "0 16 * * 1-5"
-    - cron: "15 16 * * 1-5"
-    - cron: "30 16 * * 1-5"
-    - cron: "45 16 * * 1-5"
-    - cron: "0 17 * * 1-5"
-    - cron: "15 17 * * 1-5"
-    - cron: "30 17 * * 1-5"
-    - cron: "45 17 * * 1-5"
-    - cron: "0 18 * * 1-5"
   workflow_dispatch:
 
 permissions:
   actions: write
   contents: read
 
-concurrency:
-  group: digest-watchdog
-  cancel-in-progress: true
-
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -62,35 +45,64 @@ jobs:
           MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
         run: |
           set -euo pipefail
+          REPO="${{ github.repository }}"
+
           if python3 scripts/digest_stale.py; then
             echo "Digest is current; nothing to do."
             exit 0
           fi
 
-          RUNNING="$(gh run list --repo "${{ github.repository }}" \
+          # Retry wrapper: attempt logs go to stderr so callers can capture
+          # stdout cleanly through command substitution.
+          ghretry() {
+            local n
+            for n in 1 2 3; do
+              if "$@"; then return 0; fi
+              echo "attempt ${n}/3 failed: $*" >&2
+              sleep $((2 * n))
+            done
+            return 1
+          }
+
+          # Duplicate-dispatch guard. If the check itself keeps failing,
+          # dispatch anyway: publish-digest.yml's concurrency group dedupes.
+          RUNNING="$(ghretry gh run list --repo "$REPO" \
             --workflow publish-digest.yml --status in_progress --json databaseId \
-            --jq 'length')"
+            --jq 'length' || echo unknown)"
+          if [ "$RUNNING" = "unknown" ]; then
+            echo "In-progress check failed after retries; proceeding (publish concurrency dedupes)."
+            RUNNING=0
+          fi
           if [ "$RUNNING" != "0" ]; then
             echo "Publish digest already in progress; skipping duplicate trigger."
             exit 0
           fi
 
           echo "Digest is stale; dispatching Publish digest workflow."
-          gh workflow run publish-digest.yml --repo "${{ github.repository }}" --ref main
+          DISPATCHED=1
+          ghretry gh workflow run publish-digest.yml --repo "$REPO" --ref main || DISPATCHED=0
+          if [ "$DISPATCHED" = "0" ]; then
+            echo "::warning::Dispatch failed after 3 attempts; the next 15-minute poll will retry."
+          fi
 
-          # Loud alarm: by ~09:30 ET both primary paths (GitHub cron + Vercel
-          # cron) should have published already. Still stale this late means a
-          # scheduler silently failed — fail the run so it shows red and pings us,
-          # and file a maintenance flag on the admin page.
+          # Loud alarm: by 13:30 UTC (09:30 EDT / 08:30 EST) both primary
+          # paths (GitHub cron + Vercel cron) should have published. Still
+          # stale this late means a scheduler silently failed — fail the run
+          # so it shows red and pings us, and file a maintenance flag on the
+          # admin page. The checkout is a snapshot, so re-verify against
+          # live main first: a publish that landed mid-run must not alarm.
           NOWHM="$(date -u +%H%M)"
           if [ "$((10#$NOWHM))" -ge 1330 ]; then
-            if [ -n "${MAINTENANCE_TOKEN:-}" ]; then
-              curl -sS -X POST "https://market-digest-liart.vercel.app/api/maintenance" \
-                -H "Content-Type: application/json" \
-                -H "x-maintenance-token: ${MAINTENANCE_TOKEN}" \
-                -d "{\"source\":\"digest-watchdog\",\"severity\":\"critical\",\"dedupeKey\":\"stale-digest-$(date -u +%F)\",\"title\":\"Digest still stale past 09:30 ET on $(date -u +%F)\",\"detail\":\"Primary schedulers (GitHub cron + Vercel cron) both lagged; backup dispatched publish at ${NOWHM} UTC. Check /api/cron-watchdog and GITHUB_TOKEN in Vercel.\",\"url\":\"https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
-                || echo "maintenance flag POST failed (non-fatal)"
+            if python3 scripts/digest_stale.py --remote "https://raw.githubusercontent.com/${REPO}/main/docs/index.html"; then
+              echo "Digest published since this run started; standing down."
+              exit 0
             fi
-            echo "::error::Digest still stale at ${NOWHM} UTC (past 09:30 ET). Primary schedulers lagged; backup just dispatched publish. Check the Vercel cron /api/cron-watchdog (it needs GITHUB_TOKEN set in Vercel to dispatch)."
+            python3 scripts/post_maintenance_flag.py \
+              --source digest-watchdog --severity critical \
+              --dedupe-key "stale-digest-$(date -u +%F)" \
+              --title "Digest still stale past 09:30 ET on $(date -u +%F)" \
+              --detail "Primary schedulers (GitHub cron + Vercel cron) both lagged; the watchdog dispatched publish at ${NOWHM} UTC. Check /api/cron-watchdog and GITHUB_TOKEN in Vercel." \
+              --url "https://github.com/${REPO}/actions/runs/${{ github.run_id }}"
+            echo "::error::Digest still stale at ${NOWHM} UTC (past 09:30 ET). Primary schedulers lagged; the watchdog just dispatched publish. Check the Vercel cron /api/cron-watchdog (it needs GITHUB_TOKEN set in Vercel to dispatch)."
             exit 1
           fi

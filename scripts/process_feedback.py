@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """Cluster unprocessed reader feedback into pending proposals for editor review.
 
+Local/manual path only — CI (process-feedback.yml) goes through the deployed
+admin API via scripts/call_admin_api.py instead, so the runner needs no DB URL.
+
 Uses scripts/feedback_db.mjs for Postgres I/O (postgres npm package already in repo).
-Run: POSTGRES_URL=... python3 scripts/process_feedback.py
+Run: SUPABASE_DB_URL=... python3 scripts/process_feedback.py
+(POSTGRES_URL and DATABASE_URL are accepted as fallbacks; see api/_supa.js.)
 """
 from __future__ import annotations
 

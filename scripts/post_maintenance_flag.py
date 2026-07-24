@@ -14,8 +14,11 @@ import argparse
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.request
+
+ATTEMPTS = 3
 
 ENDPOINT = os.environ.get(
     "MAINTENANCE_ENDPOINT", "https://market-digest-liart.vercel.app/api/maintenance"
@@ -49,18 +52,24 @@ def main() -> int:
     if args.dedupe_key:
         body["dedupeKey"] = args.dedupe_key
 
-    req = urllib.request.Request(
-        ENDPOINT,
-        data=json.dumps(body).encode(),
-        headers={"Content-Type": "application/json", "x-maintenance-token": token},
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=30) as res:
-            print("maintenance flag posted:", res.read().decode()[:200])
-    except (OSError, urllib.error.URLError) as e:
-        # Never fail the calling monitor over flag delivery.
-        print("maintenance flag POST failed (non-fatal):", e)
+    for attempt in range(1, ATTEMPTS + 1):
+        req = urllib.request.Request(
+            ENDPOINT,
+            data=json.dumps(body).encode(),
+            headers={"Content-Type": "application/json", "x-maintenance-token": token},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as res:
+                print("maintenance flag posted:", res.read().decode()[:200])
+                return 0
+        except (OSError, urllib.error.URLError) as e:
+            # Never fail the calling monitor over flag delivery.
+            if attempt < ATTEMPTS:
+                print(f"maintenance flag POST attempt {attempt}/{ATTEMPTS} failed, retrying: {e}")
+                time.sleep(2 * attempt)
+            else:
+                print("maintenance flag POST failed (non-fatal):", e)
     return 0
 
 

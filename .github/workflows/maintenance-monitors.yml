@@ -4,8 +4,11 @@ name: Maintenance monitors
 # (docs/admin.html -> /api/maintenance). Two checks:
 #   1. Open bot PRs (cursor, vercel, dependabot) — surfaces automated
 #      bug-investigation output where it gets seen instead of piling up.
-#   2. Latest "Publish digest" run conclusion — a failed publish becomes a
-#      critical flag even if nobody watched the Actions tab.
+#   2. Latest run conclusion of every automation workflow (publish,
+#      feedback clustering, watchdog) — a failing pipeline becomes a flag
+#      even if nobody watched the Actions tab. process-feedback failed 3
+#      straight weeks (2026-07-06..20) with zero in-band signal; this
+#      check exists so that class of silent rot cannot recur.
 # Requires the MAINTENANCE_TOKEN repo secret (same value as the Vercel env
 # var of that name); steps no-op harmlessly when it is unset.
 on:
@@ -48,24 +51,33 @@ jobs:
             done
           echo "Bot PR sweep done."
 
-      - name: Flag a failed latest publish run
+      - name: Flag failed automation runs
         env:
           GH_TOKEN: ${{ github.token }}
           MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
         run: |
           set -euo pipefail
-          LATEST="$(gh run list --repo "${{ github.repository }}" \
-            --workflow publish-digest.yml --limit 1 \
-            --json conclusion,url,createdAt \
-            --jq '.[0] | [.conclusion // "in_progress", .url, .createdAt] | @tsv')"
-          [ -n "$LATEST" ] || { echo "No publish runs found."; exit 0; }
-          IFS=$'\t' read -r CONCLUSION URL CREATED <<< "$LATEST"
-          echo "Latest publish: ${CONCLUSION} (${CREATED})"
-          if [ "$CONCLUSION" = "failure" ] || [ "$CONCLUSION" = "timed_out" ]; then
-            python3 scripts/post_maintenance_flag.py \
-              --source publish-monitor --severity critical \
-              --dedupe-key "publish-failed:$(date -u +%F)" \
-              --title "Latest Publish digest run ${CONCLUSION}" \
-              --detail "The most recent publish-digest.yml run finished with '${CONCLUSION}' (started ${CREATED}). The site may be serving a stale edition." \
-              --url "${URL}"
-          fi
+          check() {
+            local WF="$1" SEV="$2" WHY="$3" LATEST
+            LATEST="$(gh run list --repo "${{ github.repository }}" \
+              --workflow "$WF" --limit 1 \
+              --json conclusion,url,createdAt \
+              --jq '.[0] | [.conclusion // "in_progress", .url, .createdAt] | @tsv' || true)"
+            [ -n "$LATEST" ] || { echo "${WF}: no runs found."; return 0; }
+            IFS=$'\t' read -r CONCLUSION URL CREATED <<< "$LATEST"
+            echo "${WF} latest: ${CONCLUSION} (${CREATED})"
+            if [ "$CONCLUSION" = "failure" ] || [ "$CONCLUSION" = "timed_out" ]; then
+              python3 scripts/post_maintenance_flag.py \
+                --source workflow-monitor --severity "$SEV" \
+                --dedupe-key "wf-failed:${WF}:$(date -u +%F)" \
+                --title "Latest '${WF}' run ${CONCLUSION}" \
+                --detail "${WHY} (run started ${CREATED})" \
+                --url "${URL}"
+            fi
+          }
+          check publish-digest.yml critical \
+            "The most recent publish run failed; the site may be serving a stale edition."
+          check process-feedback.yml warning \
+            "Feedback clustering is failing; reader feedback is not reaching the proposals board."
+          check digest-watchdog.yml warning \
+            "The stale-digest watchdog's latest run failed. If it was the 09:30 ET alarm the digest was late; otherwise the monitor itself needs attention."

@@ -6,9 +6,22 @@
 //   CRON_SECRET   — Vercel sends Authorization: Bearer <CRON_SECRET>
 //   GITHUB_TOKEN  — PAT or fine-grained token with actions:write on this repo
 
+import { upsertMaintenanceFlag } from "./_supa.js";
+
 const REPO = "Wesleyhu1103/market-digest";
 const INDEX_URL =
   "https://raw.githubusercontent.com/Wesleyhu1103/market-digest/main/docs/index.html";
+
+// Self-report broken states to the admin page's Site Maintenance board —
+// a 503 in Vercel logs is invisible; a flag on the board is not. Never
+// lets flag delivery mask the real response.
+async function safeFlag(flag) {
+  try {
+    await upsertMaintenanceFlag(flag);
+  } catch (e) {
+    console.error(`[cron-watchdog] maintenance flag failed: ${(e && e.message) || e}`);
+  }
+}
 
 function todayEasternIso() {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -114,6 +127,17 @@ export default async function handler(req, res) {
       `[cron-watchdog] STALE but cannot dispatch: GITHUB_TOKEN not set on Vercel. ` +
         `today=${today} digestDate=${digestDate}. Digest will only update if GitHub's own cron fires.`
     );
+    await safeFlag({
+      dedupe_key: "cron-watchdog-no-github-token",
+      source: "cron-watchdog",
+      severity: "critical",
+      title: "Vercel backup cron cannot dispatch: GITHUB_TOKEN missing",
+      detail:
+        `Digest is stale (today=${today}, digest=${digestDate || "unknown"}) but /api/cron-watchdog ` +
+        `has no GITHUB_TOKEN env var in Vercel Production, so it cannot dispatch publish-digest.yml. ` +
+        `Set a PAT with actions:write on ${REPO} in the Vercel project env, then redeploy.`,
+      url: `https://github.com/${REPO}/actions/workflows/publish-digest.yml`,
+    });
     res.status(503).json({
       ok: false,
       action: "stale",
@@ -143,6 +167,16 @@ export default async function handler(req, res) {
     console.error(
       `[cron-watchdog] dispatch FAILED: ${(e && e.message) || e} today=${today} digestDate=${digestDate}`
     );
+    await safeFlag({
+      dedupe_key: "cron-watchdog-dispatch-failed",
+      source: "cron-watchdog",
+      severity: "critical",
+      title: "Vercel backup cron dispatch failed",
+      detail:
+        `Digest is stale (today=${today}, digest=${digestDate || "unknown"}) and the GitHub dispatch ` +
+        `errored: ${(e && e.message) || e}. GITHUB_TOKEN may be expired or under-scoped (needs actions:write).`,
+      url: `https://github.com/${REPO}/actions/workflows/publish-digest.yml`,
+    });
     res.status(502).json({
       ok: false,
       action: "dispatch_failed",

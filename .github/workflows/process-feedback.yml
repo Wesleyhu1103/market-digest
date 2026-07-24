@@ -1,7 +1,14 @@
 name: Process feedback
 
-# Cluster reader feedback into pending proposals for editor review.
-# Runs weekly; opens a GitHub issue when new pending proposals are created.
+# Cluster reader feedback into pending proposals for editor review, then
+# open (or refresh) a single "feedback-review" issue while pendings exist.
+#
+# Runs through the DEPLOYED admin API (Authorization: FEEDBACK_ADMIN_SECRET)
+# instead of talking to Postgres from the runner. The old direct-DB path
+# required a POSTGRES_URL repo secret that was never set, so every scheduled
+# run failed within seconds and no feedback was ever clustered. The API path
+# has one credential (the same bearer the admin page uses) and exercises the
+# exact code behind the admin page's "Cluster into proposals" button.
 on:
   schedule:
     - cron: "0 14 * * 1" # Mondays 14:00 UTC
@@ -14,51 +21,76 @@ permissions:
 jobs:
   process:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install Node dependencies
-        run: npm install
-
-      - name: Cluster feedback into proposals
+      - name: Preflight — FEEDBACK_ADMIN_SECRET must exist
         env:
-          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+          FEEDBACK_ADMIN_SECRET: ${{ secrets.FEEDBACK_ADMIN_SECRET }}
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
         run: |
           set -euo pipefail
-          python3 scripts/process_feedback.py | tee /tmp/process-feedback.log
+          if [ -z "${FEEDBACK_ADMIN_SECRET:-}" ]; then
+            python3 scripts/post_maintenance_flag.py \
+              --source process-feedback --severity critical \
+              --dedupe-key "process-feedback-no-secret" \
+              --title "Feedback pipeline cannot run: FEEDBACK_ADMIN_SECRET repo secret unset" \
+              --detail "Add a GitHub Actions repo secret named FEEDBACK_ADMIN_SECRET with the same value as the Vercel env var of that name (the admin-page bearer). Until then reader feedback is never clustered into proposals." \
+              --url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo "::error::FEEDBACK_ADMIN_SECRET is not set in this repo's Actions secrets. Add it under Settings > Secrets and variables > Actions with the same value as the Vercel FEEDBACK_ADMIN_SECRET env var, then re-run this workflow."
+            exit 1
+          fi
+          echo "Secret present."
 
-      - name: Open review issue if pending proposals exist
+      - name: Cluster feedback via admin API
+        env:
+          FEEDBACK_ADMIN_SECRET: ${{ secrets.FEEDBACK_ADMIN_SECRET }}
+        run: |
+          set -euo pipefail
+          python3 scripts/call_admin_api.py \
+            --method POST --path /api/admin-proposals \
+            --body '{"action":"process"}' \
+            --bearer-env FEEDBACK_ADMIN_SECRET \
+            --out /tmp/cluster.json
+          python3 - <<'PY'
+          import json
+          r = json.load(open("/tmp/cluster.json"))
+          print(r.get("message") or json.dumps(r))
+          for p in r.get("proposals") or []:
+              print(f"  proposal #{p['id']} [{p['category']}] {p['title']} ({p['sources']} source(s))")
+          PY
+
+      - name: Open or refresh the review issue
         env:
           GH_TOKEN: ${{ github.token }}
-          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+          FEEDBACK_ADMIN_SECRET: ${{ secrets.FEEDBACK_ADMIN_SECRET }}
         run: |
           set -euo pipefail
-          PENDING="$(node scripts/feedback_db.mjs list-proposals pending)"
-          COUNT="$(echo "$PENDING" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))")"
+          python3 scripts/call_admin_api.py \
+            --path '/api/admin-proposals?status=pending' \
+            --bearer-env FEEDBACK_ADMIN_SECRET \
+            --out /tmp/pending.json
+          COUNT="$(python3 -c "import json; print(len(json.load(open('/tmp/pending.json')).get('proposals', [])))")"
           if [ "$COUNT" = "0" ]; then
             echo "No pending proposals; skipping issue."
             exit 0
           fi
 
-          BODY="$(python3 <<'PY'
-          import json, os, subprocess
-          pending = json.loads(subprocess.check_output(
-              ["node", "scripts/feedback_db.mjs", "list-proposals", "pending"], text=True))
+          python3 - <<'PY' > /tmp/issue-body.md
+          import json
+          pending = json.load(open("/tmp/pending.json"))["proposals"]
           lines = [
               f"**{len(pending)} proposal(s)** are waiting for review.",
               "",
-              "Review locally:",
+              "Review on the admin page (Proposals tab), or locally:",
               "```bash",
-              "POSTGRES_URL=... python3 scripts/review_proposals.py list",
-              "POSTGRES_URL=... python3 scripts/review_proposals.py approve ID [ID ...]",
+              "SUPABASE_DB_URL=... python3 scripts/review_proposals.py list",
+              "SUPABASE_DB_URL=... python3 scripts/review_proposals.py approve ID [ID ...]",
               "```",
               "",
           ]
@@ -72,14 +104,31 @@ jobs:
               lines.append("")
           print("\n".join(lines))
           PY
-          )"
 
-          gh issue create \
-            --repo "${{ github.repository }}" \
-            --title "Review ${COUNT} feedback proposal(s)" \
-            --body "$BODY" \
-            --label "feedback-review" || \
-          gh issue create \
-            --repo "${{ github.repository }}" \
-            --title "Review ${COUNT} feedback proposal(s)" \
-            --body "$BODY"
+          TITLE="Review ${COUNT} feedback proposal(s)"
+          EXISTING="$(gh issue list --repo "${{ github.repository }}" \
+            --label feedback-review --state open \
+            --json number --jq '.[0].number // empty' 2>/dev/null || true)"
+          if [ -n "$EXISTING" ]; then
+            echo "Refreshing open review issue #${EXISTING} instead of stacking a duplicate."
+            gh issue edit "$EXISTING" --repo "${{ github.repository }}" \
+              --title "$TITLE" --body-file /tmp/issue-body.md
+          else
+            gh issue create --repo "${{ github.repository }}" \
+              --title "$TITLE" --body-file /tmp/issue-body.md \
+              --label "feedback-review" || \
+            gh issue create --repo "${{ github.repository }}" \
+              --title "$TITLE" --body-file /tmp/issue-body.md
+          fi
+
+      - name: Flag pipeline failure on the maintenance board
+        if: failure()
+        env:
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
+        run: |
+          python3 scripts/post_maintenance_flag.py \
+            --source process-feedback --severity warning \
+            --dedupe-key "process-feedback-failed" \
+            --title "Feedback clustering run failed" \
+            --detail "process-feedback.yml did not complete, so reader feedback is not being clustered into proposals. Open the run for details." \
+            --url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
