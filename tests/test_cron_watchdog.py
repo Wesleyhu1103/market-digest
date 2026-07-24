@@ -29,7 +29,7 @@ def run_node(script: str, env_updates: dict[str, str | None] | None = None) -> d
     )
     if result.returncode != 0:
         raise AssertionError(result.stderr or result.stdout)
-    return json.loads(result.stdout)
+    return json.loads(result.stdout.strip().splitlines()[-1])
 
 
 HANDLER_HARNESS = textwrap.dedent(
