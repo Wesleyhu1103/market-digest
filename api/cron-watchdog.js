@@ -54,7 +54,7 @@ function digestDateFromHtml(html) {
 
 function authorizeCron(req) {
   const secret = process.env.CRON_SECRET;
-  if (!secret) return true;
+  if (!secret) return false;
   const auth = req.headers.authorization || "";
   return auth === `Bearer ${secret}`;
 }
