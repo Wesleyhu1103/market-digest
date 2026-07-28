@@ -7,6 +7,7 @@
 //   GITHUB_TOKEN  — PAT or fine-grained token with actions:write on this repo
 
 import { upsertMaintenanceFlag } from "./_supa.js";
+import { authorizeCron } from "./_cron_auth.js";
 
 const REPO = "Wesleyhu1103/market-digest";
 const INDEX_URL =
@@ -50,13 +51,6 @@ function digestDateFromHtml(html) {
   const mo = String(months[m[2]]).padStart(2, "0");
   const day = String(m[3]).padStart(2, "0");
   return `${m[4]}-${mo}-${day}`;
-}
-
-function authorizeCron(req) {
-  const secret = process.env.CRON_SECRET;
-  if (!secret) return true;
-  const auth = req.headers.authorization || "";
-  return auth === `Bearer ${secret}`;
 }
 
 async function publishInProgress(token) {
