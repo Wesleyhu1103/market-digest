@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Tue Jul 28, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-28</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Tuesday, July 28, 2026</h1>
+    <div class="meta">
+      <p>Monday's relief rally has flipped into a global chip rout, with South Korea's Kospi crashing nearly 11% and Nasdaq futures down about 1% as a China lithography scare and circular-financing fears hammer AI hardware. The Fed decides tomorrow into that mess, with Citadel Securities warning of a surprise Warsh hike, and Microsoft reports Q4 tonight. Oil keeps sliding as Trump touts "deep talks" with Iran.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The AI and chip selloff deepens as reports China can mass-produce DUV lithography tools collide with circular-financing fears, crashing South Korea's Kospi nearly 11% and sending Nvidia default-protection costs to a record, all ahead of the Fed decision and Big Tech earnings",
+      "framings": [
+        {"outlet": "Financial Times", "headline": "AI Stock Sell-Off Deepens as Investors Dump Chipmakers", "angle": "Frames the rout as a broad de-rating that started in Asia and is rolling into Wall Street tech.", "lean": -40, "pull": "Wall Street tech shares set for further declines after South Korean markets tumble."},
+        {"outlet": "Bloomberg", "headline": "AI Greed Turns Into Fear as Tech Stocks Keep Sinking", "angle": "Leads with the credit signal, noting the cost of insuring Nvidia debt surged the most on record.", "lean": -50, "pull": "The cost of protecting Nvidia debt against default surged by the most on record."},
+        {"outlet": "WSJ", "headline": "Big Tech Stocks Are Pricing In a Miracle on Costs", "angle": "Argues valuations already assume efficiency gains that look too good to be true.", "lean": -35, "pull": "Analysts' models are assuming new efficiencies, but some of the numbers look too good to be true."},
+        {"outlet": "MarketWatch", "headline": "As Chips Sell Off, Investors Should Heed This Cisco Lesson", "angle": "Offers the contrarian read, with Fundstrat's Tom Lee saying the market should recover its poise within days.", "lean": 15, "pull": "The market should recover its poise within the next few days, says Fundstrat's Tom Lee."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasury Yields Fall as the Oil Slide and Mideast Diplomacy Cool the Inflation Scare, But the Fed Walks Into Wednesday With Citadel Securities Betting on a Surprise Warsh Hike and Man Group Warning AT1 Buyers Are Far Too Complacent, While Bulls Point to a Growing German Economy, Rising French Confidence and a Sixth Straight Month of Falling UK Food Inflation</h3>
+      </div>
+      <p>The rates story is caught between falling oil and a genuinely live Fed. WSJ said Treasury yields fell ahead of the meeting as the US and Iran held fire and crude plunged, with demand for Treasurys partly recovering from last week's slump. But the hawkish tail is real: Bloomberg reported Citadel Securities expects the Fed to raise rates this week, a surprise move that would strengthen Chair Kevin Warsh's credibility in the inflation fight, and Investor's Business Daily wrote a surprise hike can't be ruled out. Man Group told Bloomberg that AT1 buyers are far too complacent and spreads look too tight, a warning that risk is underpriced across bank debt. Gold declined as traders weighed the hike odds. The dovish counterweight kept building overseas: the Bundesbank said Germany's economy likely grew despite the Iran war, French consumer confidence hit its highest since March, and UK food inflation fell for a sixth straight month. HSBC's Max Kettner argued strong earnings and undemanding valuations should keep risk assets resilient even against a tougher inflation backdrop.</p>
+      <p>The bull case for calmer yields is oil sliding further, gold's retreat unwinding, a resilient German and French consumer and cooling UK food prices. The bear case is Citadel's surprise-hike call, Man Group's complacency warning and a Fed that may lean hawkish to cement Warsh's inflation-fighting credentials.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the inflation scare keeps fading):</strong> WSJ says Treasury yields fell as oil dropped and Mideast diplomacy raised hopes of a resolution. The Bundesbank sees Germany growing through the Iran war, French consumer confidence is back to a March high, UK food inflation has fallen six months running, and HSBC's Max Kettner argues earnings and valuations keep risk assets resilient. If crude keeps sliding, the long end steadies into the FOMC.</div>
+        <div class="bear"><strong>Bear (the hawkish tail is live):</strong> Bloomberg says Citadel Securities expects a surprise Fed hike this week to bolster Warsh's inflation-fighting credibility, and Investor's Business Daily agrees it can't be ruled out. Man Group warns AT1 buyers are far too complacent and spreads are too tight. Gold fell on the hike odds, and RBA's Bullock isn't sure rates are high enough. A pause in oil is not a pause in the Fed's problem.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-27/citadel-securities-sees-warsh-delivering-surprise-fed-rate-hike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citadel Securities Sees Warsh Delivering Surprise Fed Hike</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Slides Further as Trump Claims "Deep Talks" Are Underway With Iran and OPEC+ Signals It Will Pause Quota Hikes After September, But Royal Caribbean Cuts Its Yield Forecast on Softer Bookings, Singapore's MAS Flags a Prolonged Re-escalation as a Top Risk and FT Reports Tehran Has Adapted to Launch More Precision Strikes Across the Gulf</h3>
+      </div>
+      <p>The war premium kept deflating. MarketWatch said Brent and WTI fell again after Trump claimed deep talks are underway with Iran while both sides continue to pause fighting. Bloomberg reported OPEC+ expects to pause its production-quota hikes after a final September increase as it evaluates the fast-changing supply impact of the Iran war, a sign the cartel wants to avoid oversupplying a market where the geopolitical risk could flip either way. But the damage isn't fully cleared. Bloomberg said Royal Caribbean trimmed its yield forecast and flagged a modest hit to bookings from Middle East turmoil, a real-economy read on how the conflict lingers even as spot crude falls. Singapore's MAS warned that a prolonged re-escalation of the Middle East war, alongside uncertainty over sustaining AI investment, is a key risk to global growth and markets. FT ran pieces on how Iran adapted its missile war to launch more precision strikes across the Gulf and Jordan, and on the UAE's bold gambit balancing Iran against Israel and the US. Crypto swung with the risk-off tape rather than the oil relief.</p>
+      <p>The bull read is that talks are underway, oil keeps sliding and OPEC+ is managing supply carefully. The bear read is that bookings are already softening, central banks still flag re-escalation risk, and FT's reporting shows Tehran's capability has grown, not shrunk.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the premium keeps draining):</strong> MarketWatch says oil fell further after Trump claimed deep talks with Iran are underway while the fighting stays paused. Bloomberg reports OPEC+ plans to pause quota hikes after September, a sign it can flex supply if the risk fades. With crude sliding and gold retreating, the inflation impulse from the war is unwinding, and that hands the Fed and risk assets some room to breathe.</div>
+        <div class="bear"><strong>Bear (a pause is not a peace):</strong> Bloomberg says Royal Caribbean cut its yield forecast on softer bookings tied to Mideast turmoil, and Singapore's MAS flags a prolonged re-escalation as a top risk to global growth. FT reports Iran has adapted to launch more precision strikes across the Gulf and Jordan, so the capability is expanding. One headline can send crude back up, and the diversions already booked keep freight and diesel bid.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/oil-prices-decline-further-after-trump-claims-deep-talks-are-underway-with-iran-167a5393?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Oil Prices Decline Further After Trump Claims 'Deep Talks' Are Underway With Iran</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Cracks as Reports China Can Mass-Produce DUV Lithography Tools Crash the Kospi Nearly 11% and Send Nvidia's Default-Protection Cost to a Record, With Nvidia Backing a $50 Billion Texas Data-Center Lease and Meta Paying Up on Debt While Fitch Warns of a Credit-Level AI Correction and Fundstrat's Tom Lee Calls It a Cisco-Style Buying Chance</h3>
+      </div>
+      <p>The euphoria that carried CXMT's 466% debut curdled into fear overnight. Bloomberg said the chip selloff deepened as signs of progress in China's advanced chipmaking compounded worries about the sustainability of the AI spending boom, and that AI greed has turned to fear with the cost of protecting Nvidia debt against default surging the most on record. ASML slid to its lowest since early June on a report that a Chinese state-backed firm has begun mass-producing DUV chipmaking machines, and MarketWatch framed it as the "picks and shovels" trade coming unstuck. The scale of the buildout keeps feeding the debate: FT reported Nvidia is behind a $50 billion lease on a Texas data center that will use its chips, Meta and BlackRock plan a $14 billion Texas complex, and WSJ noted Meta's latest $12.5 billion data-center offering priced at a higher rate than a year ago as AI borrowers flood the market. Fitch warned an AI market correction is emerging as a major global credit risk. The bulls aren't gone: FT argued CXMT's IPO isn't the bubble signal it looks like, Fundstrat's Tom Lee invoked the Cisco lesson and sees a recovery within days, and Microsoft reports Q4 tonight as the first real test of whether the capex is paying off.</p>
+      <p>The bulls point to Lee's Cisco read, FT's CXMT case, AMD's new Core Scientific deal and Hong Kong exports at a 40-year high as proof demand is real. The bears point to China's DUV breakthrough, Nvidia's record CDS blowout, Fitch's credit warning and a Big Tech earnings gauntlet where any capex wobble gets punished.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the buildout is real):</strong> FT argues CXMT's roaring IPO isn't the bubble signal it looks like, since cheaper compute drives more AI demand, and Fundstrat's Tom Lee says the market should recover poise within days, citing the Cisco playbook. AMD signed a data-center deal with Core Scientific, Hong Kong exports hit their strongest since 1984 on AI demand, and Nvidia is backstopping a $50 billion Texas lease. The physical demand keeps compounding.</div>
+        <div class="bear"><strong>Bear (the spend outran the moat):</strong> Bloomberg says China's DUV progress and circular-funding fears crashed chip stocks, and Nvidia's default-protection cost surged the most on record. ASML slid on the lithography threat, Fitch warns an AI correction is a major global credit risk, and WSJ says Big Tech is pricing in a miracle on costs while Meta pays up on debt. If a competitor can copy the picks and shovels, the moat and the multiple both shrink.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-28/korean-stocks-sink-as-chipmakers-plung-on-deepening-ai-fatigue" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chip Rout Deepens on China Competition, Circular Funding Fears</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>US stocks waver as a chip slump fuels a rotation trade</strong></summary>
+      <div class="deal-body">
+        <p>US stocks struggled for direction as a deepening rout in chipmakers was offset by investors rotating into sectors that posted the strongest earnings so far this season, Bloomberg reported. The Dow was tipped higher even as the Nasdaq slid, with bonds climbing as oil fell.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-27/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stocks Waver as Chip Slump Fuels Rotation Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Boeing posts a bigger loss as Air Force One costs weigh</strong></summary>
+      <div class="deal-body">
+        <p>Boeing (BA) posted a larger-than-expected second-quarter loss after taking a $280 million charge on its long-delayed Air Force One program. The result keeps the turnaround story under pressure even as commercial deliveries recover.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/28/boeing-ba-2q-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Boeing Posts Bigger Loss Than Expected as Air Force One Costs Weigh on Results</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UPS beats and raises full-year guidance as the Amazon glide-down completes</strong></summary>
+      <div class="deal-body">
+        <p>UPS (UPS) beat Wall Street estimates and lifted its full-year outlook, with the stock rallying as job cuts and the planned "glide down" of low-margin Amazon volume wrapped up. A clean read that the cost restructuring is starting to show in margins.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/ups-turns-the-page-as-job-cuts-and-amazon-glide-down-are-completed-e16f03fe?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- UPS Turns the Page as Job Cuts and Amazon 'Glide Down' Are Completed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Coca-Cola tops estimates and hikes its outlook on climbing demand</strong></summary>
+      <div class="deal-body">
+        <p>Coca-Cola (KO) beat earnings expectations and raised its full-year outlook as demand for drinks kept climbing. The stock is up 19% this year, outstripping the S&amp;P 500 and reinforcing the defensive-consumer bid as chips sell off.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/28/coca-cola-ko-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Coca-Cola Tops Earnings Estimates, Hikes Full-Year Outlook as Demand for Drinks Climbs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>PayPal beats as investors fixate on merger speculation</strong></summary>
+      <div class="deal-body">
+        <p>PayPal (PYPL) delivered an earnings beat and showed progress as a standalone company, but Wall Street is preoccupied with deal prospects following recent takeover chatter tied to Stripe. The stock is trading on M&amp;A odds more than on the print itself.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/paypal-delivers-an-earnings-beat-as-investors-await-updates-on-possible-merger-105930b7?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- PayPal Delivers an Earnings Beat as Investors Await Updates on Possible Merger</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Centene raises guidance on better-than-expected medical costs</strong></summary>
+      <div class="deal-body">
+        <p>Centene (CNC) lifted its annual profit guidance after favorable medical costs in the second quarter, the latest US health insurer projecting confidence it can navigate a slew of government policy shifts. A steadying read for a beaten-down managed-care group.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/centene-boosts-guidance-on-better-than-expected-medical-costs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Centene Boosts Guidance, Reports Favorable Medical Costs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Growth is off the menu at Starbucks</strong></summary>
+      <div class="deal-body">
+        <p>Starbucks (SBUX) faces a stalling growth story as traffic and comparable-sales momentum fade, WSJ argued, adding a consumer-side worry to a day dominated by the chip meltdown. A reminder that the pressure isn't only in tech.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/growth-is-off-the-menu-at-starbucks-ce78101f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Growth Is Off the Menu at Starbucks</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape split hard: Nasdaq futures down about 1% as chips crater, the Dow tipped higher as money rotates into names with clean earnings like Coca-Cola and UPS. The signal is a classic risk rotation out of AI hardware and into defensives and beaten-down cyclicals, not a wholesale flush. The real tests land fast, with the Fed on Wednesday and Microsoft's Q4 tonight. If Microsoft shows AI capex converting to cash and the Fed holds, the rotation calms; if China's DUV threat looks durable or Citadel's surprise-hike call proves right, the selloff broadens beyond semis.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Rotation Isn't the Same as a Selloff</summary>
+      <p>Tuesday's split screen, with the Nasdaq falling while the Dow rose, is a rotation rather than a broad selloff, and telling the two apart changes how you read risk. A selloff is when investors pull money out of stocks entirely and move it to cash or bonds, so almost everything falls together and correlations spike toward one. A rotation is when investors keep roughly the same amount of money in equities but shift it between sectors, selling one group to buy another. On the surface both can start with red on the screen in the biggest names, but they mean very different things about conviction. Start with the mechanics of what happened. A China lithography scare and circular-financing fears hit the AI-hardware complex specifically, so chipmakers like Nvidia, Micron and the Korean memory names took the brunt while the broad index barely moved. Bloomberg described investors rotating into sectors that posted the strongest earnings this season. That is the tell: the money leaving semis did not leave the market, it went looking for a home in names with clean, already-reported results, which is why Coca-Cola and UPS caught a bid on the same day chips cratered. When you see leadership change hands like that, the index can hold even as its former generals fall. Why does the distinction matter for risk? Because a rotation is a sign the market still wants to own equities, just not the same ones, while a broad selloff signals investors want less equity exposure overall. Rotations tend to be healthier and more contained; they redistribute risk rather than removing it. The danger is when a rotation turns into contagion, which happens if the selling in the leading sector is violent enough to force deleveraging elsewhere. Watch the plumbing: Nvidia's credit-default-swap cost surging the most on record is exactly the kind of signal that can turn a sector rotation into something wider, because when the cost of insuring a bellwether's debt spikes, lenders and leveraged holders across the system reprice risk. There is a second layer specific to this setup. A lot of the chip weakness came from Asia overnight, with the Kospi down nearly 11% and leveraged ETFs amplifying the move. Forced selling in one time zone can look like a fundamental verdict when it is partly a positioning unwind. The practical lesson: when the index holds while one sector bleeds, check breadth and correlation before assuming the worst. If advancers roughly match decliners and defensives are green, it is a rotation, and the market is repricing a theme rather than fleeing stocks. If everything turns red together and credit spreads widen, the rotation has become a selloff, and that is when the real damage compounds. Today it is still a rotation, but the Nvidia CDS move is the wire to watch.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-28/ai-greed-turns-into-fear-as-tech-stocks-keep-sinking" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Greed Turns Into Fear as Tech Stocks Keep Sinking</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Chip rout deepens on China competition and circular-funding fears</strong></summary>
+      <div class="deal-body">
+        <p>A selloff in semiconductor stocks deepened as signs of progress in China's advanced chipmaking compounded worries about the sustainability of the AI spending boom, Bloomberg reported. Korean names led the plunge as the fear spread from Asia into US premarket trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/korean-stocks-sink-as-chipmakers-plung-on-deepening-ai-fatigue" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chip Rout Deepens on China Competition, Circular Funding Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ASML slides on report China has begun DUV tool production</strong></summary>
+      <div class="deal-body">
+        <p>ASML (ASML) shares slid to their lowest since early June after a report that a Chinese state-backed company has begun mass-producing certain DUV chipmaking machines, posing a potential threat to the Dutch firm's sales. The news cracked the "picks and shovels" thesis that had insulated equipment names.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-27/asml-slides-after-report-of-china-beginning-duv-tool-production" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ASML Slides on Report of China Starting DUV Tool Production</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta and BlackRock plan a $14 billion Texas data center</strong></summary>
+      <div class="deal-body">
+        <p>Meta (META) and BlackRock (BLK) plan to build a 1-gigawatt data-center complex in Texas that will cost about $14 billion to develop, Bloomberg reported, adding to a wave of AI computing investment. The scale keeps feeding both the demand story and the circular-financing debate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/meta-blackrock-plan-to-invest-in-giant-texas-data-center" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta, BlackRock Plan to Invest in $14 Billion Data Center</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia is behind a $50 billion lease on a Texas data center that uses its chips</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) is backstopping a $50 billion lease on a Texas data center that will run its chips, FT reported, as CEO Jensen Huang deploys the balance sheet to underpin growth of the AI computing market. Exactly the kind of self-reinforcing deal skeptics cite as circular financing.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/685014e7-47dd-471b-a585-1b9b73ce5d6f?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Nvidia Behind $50bn Lease on Texas Data Centre That Will Use Its Chips</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fitch warns an AI market correction is a major global credit risk</strong></summary>
+      <div class="deal-body">
+        <p>Fitch warned that a market correction in AI is emerging as a major global credit risk, flagging the debt piling up behind the data-center buildout. The call lands as WSJ notes Meta's latest $12.5 billion offering priced at a higher rate than a similar deal last year.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/ai/articles/fitch-warns-ai-market-correction-103630010.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Fitch Warns AI Market Correction Emerging as Major Global Credit Risk</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AMD signs an AI data-center deal with Core Scientific</strong></summary>
+      <div class="deal-body">
+        <p>AMD (AMD) signed an AI infrastructure agreement with Core Scientific (CORZ), extending the crypto-miner-to-AI pivot and giving AMD another anchor customer for its accelerators. A concrete demand data point on a day dominated by chip fear.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/ai/articles/core-scientific-signs-ai-infrastructure-110814795.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- AMD Signs AI Data Center Deal With Core Scientific</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Taiwan detains an Nvidia employee in a China chip-smuggling probe</strong></summary>
+      <div class="deal-body">
+        <p>Taiwanese prosecutors detained an Nvidia (NVDA) employee as part of a probe into the alleged smuggling of AI chips into China, thrusting the company into a high-profile case over the black market for its products. Another reminder of how tangled the AI supply chain is in the US-China tech fight.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/taiwan-detains-nvidia-employee-in-china-chip-smuggling-probe" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Staff Detained by Taiwan in China Chip Smuggling Case</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Tuesday July 28, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The noise, or maybe the warning, is that a single report on China's DUV progress crashed the Kospi nearly 11% and sent Nvidia's default-protection cost to a record, showing how crowded and levered the trade had become. The signal underneath is still messy but not dead: AMD signed a real deal with Core Scientific, Hong Kong exports hit a 40-year high on AI demand, and FT argues CXMT's cheap compute could stoke more demand, not less. The frame to watch: whether Microsoft's Q4 tonight proves the capex is turning into cash, or whether Fitch's credit warning and the DUV threat mark the start of a durable de-rating.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Treasury yields fall ahead of the Fed as the US and Iran hold fire</strong></summary>
+      <div class="deal-body">
+        <p>Treasury yields fell ahead of Wednesday's meeting as oil prices plunged and demand for Treasurys partly recovered from last week's slump, WSJ reported. The dollar firmed as investors hoped for a diplomatic solution in the Middle East.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/jgb-futures-rise-amid-falling-crude-oil-prices-2f1d5195?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury Yields Fall Ahead of Fed Meeting as U.S., Iran Hold Fire</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citadel Securities sees Warsh delivering a surprise Fed hike</strong></summary>
+      <div class="deal-body">
+        <p>Citadel Securities expects the Fed to raise rates this week, a surprise move that would strengthen Chair Kevin Warsh's credibility in the battle with inflation, Bloomberg reported. A named, high-conviction call that runs against the market's dovish read of falling oil.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-27/citadel-securities-sees-warsh-delivering-surprise-fed-rate-hike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citadel Securities Sees Warsh Delivering Surprise Fed Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Singapore's MAS flags an AI pullback as a threat to global markets</strong></summary>
+      <div class="deal-body">
+        <p>Singapore's central bank warned that uncertainty over sustaining massive AI investment is a key risk for global growth and financial markets, citing it alongside a prolonged re-escalation of the Middle East war. A rare official flag on the AI-capex tail exactly as the chip trade cracks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/singapore-s-mas-flags-ai-pullback-as-threat-to-global-markets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Singapore's MAS Flags AI Pullback as Threat to Global Markets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>German economy likely to grow despite the Iran war, Bundesbank says</strong></summary>
+      <div class="deal-body">
+        <p>Germany's economy probably saw modest expansion in the second quarter that will continue into the third, the Bundesbank said, a sign of resilience to higher energy prices and geopolitical uncertainty. A dovish-friendly data point supporting the case for calmer yields.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/german-economy-likely-to-grow-despite-iran-war-bundesbank-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- German Economy Likely to Grow Despite Iran War, Bundesbank Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UK food inflation falls for a sixth consecutive month</strong></summary>
+      <div class="deal-body">
+        <p>UK food inflation fell for a sixth straight month, the British Retail Consortium said, after shops discounted snacks and alcohol during England's World Cup run. Another sign home-grown UK price pressures are cooling for the BOE even with oil volatility.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-27/uk-food-inflation-falls-for-sixth-consecutive-month-brc-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UK Food Inflation Falls for Sixth Consecutive Month, BRC Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OPEC+ plans to pause quota hikes after September</strong></summary>
+      <div class="deal-body">
+        <p>OPEC+ expects to pause its oil-production quota hikes after a final increase in September as it evaluates the fast-changing supply impact of the Iran war, two delegates told Bloomberg. A supply-management signal that gives the cartel room to react if geopolitical risk swings back.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/opec-plans-to-pause-quota-hikes-after-september-delegates-say" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OPEC+ Plans to Pause Quota Hikes After September, Delegates Say</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Takaichi's looming food tax cut risks weighing on the yen and JGBs</strong></summary>
+      <div class="deal-body">
+        <p>Japan's government plans to cut the sales tax on food to 1% for two years from next April, Bloomberg reported, a signature Takaichi pledge that risks pressuring the yen and government bonds by stoking fiscal-deterioration worries. A reminder the fiscal-supply story keeps a bid under global long-end yields.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/takaichi-s-looming-tax-cut-plan-risks-weighing-on-yen-jgbs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Takaichi's Looming Tax Cut Plan Risks Weighing on Yen, JGBs</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 28, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The dovish tug is oil sliding further on Trump's "deep talks" claim, yields easing, gold retreating, a resilient German and French consumer and a sixth straight month of falling UK food inflation. The hawkish counterweight is Citadel Securities' surprise-hike call, Man Group warning bank-debt spreads are too tight, and RBA's Bullock unsure rates are high enough. The near-term referee is the FOMC itself: a hold validates the dovish oil read, while a Warsh surprise hike confirms the bears and jolts the long end.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Credit-Default-Swap Spike Is a Louder Warning Than a Falling Stock</summary>
+      <p>The single most important number in Tuesday's rout was not a stock price. It was Bloomberg's report that the cost of protecting Nvidia's debt against default surged the most on record. Understanding why a credit-default-swap move matters more than an equity move is the difference between reading a headline and reading the risk. Start with what a CDS is. A credit-default swap is insurance on a company's bonds: the buyer pays an annual premium, and if the company defaults, the seller pays out. The premium, quoted in basis points, is the market's live price on the odds that the borrower fails to pay. When that premium jumps, it means sophisticated debt investors are suddenly demanding much more to bear the risk that the company can't cover its obligations. Now contrast the two markets. Equity holders own the upside; they price growth, sentiment and story, and stocks swing on optimism as much as fear. Bondholders and CDS traders own the downside; they don't care how big the company could get, only whether it will pay them back. That makes the credit market a colder, more solvency-focused judge. So when a stock falls, it can just be a re-rating of growth expectations. When the CDS blows out, the market is questioning the company's ability to service its debt, which is a fundamentally more serious concern. This matters especially for the AI buildout because that buildout runs on borrowed money. WSJ noted Meta's latest $12.5 billion data-center offering priced at a higher interest rate than a year ago, and FT reported Nvidia backstopping a $50 billion Texas lease. The whole complex is layering on debt to fund data centers whose returns are still unproven. When Nvidia's CDS spikes, it signals that the lenders funding this ecosystem are getting nervous about the leverage underneath it, and that is exactly why Fitch flagged an AI correction as a major global credit risk. Here is the transmission mechanism that makes it dangerous. Rising CDS premiums raise the cost of new borrowing across the sector, because lenders benchmark to them. Higher borrowing costs make marginal data-center projects uneconomic, which slows the very capex that is the demand for chips. That can turn a sentiment wobble into a real slowdown, a feedback loop where fear in the credit market chokes off the funding that powers the boom. It also forces leveraged holders to post more collateral, which can trigger selling in unrelated assets. The practical lesson: when you see a big name's stock fall, check its credit. If bonds and CDS are calm, the market is just repricing growth and the damage is likely contained to the equity. If the CDS is blowing out alongside the stock, the market is questioning solvency and funding, and that is a far more contagious signal. Watch credit spreads, new-issue pricing and CDS levels on the AI bellwethers. They will tell you whether this is a scare or the start of something structural before the equity tape does.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/the-price-to-finance-the-ai-data-center-boom-is-rising-just-ask-meta-7894d503?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The Price to Finance the AI Data Center Boom Is Rising, Just Ask Meta</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">A China lithography scare and circular-financing fears crashed the Kospi nearly 11% and sent Nvidia's default-protection cost to a record, yields fell as oil slid on Trump's "deep talks" claim, and Citadel Securities is betting on a surprise Warsh hike Wednesday with Microsoft reporting tonight; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/27</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/29</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/30</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/31</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin drops as South Korea's stocks tumble and the Senate shelves the Clarity Act</strong></summary>
+      <div class="deal-body">
+        <p>BTC shed about 2% as South Korea's Kospi plunged nearly 11% and the US Senate shelved the crypto Clarity Act, leaving the market facing Wednesday's pivotal Fed decision. A one-two of risk-off equities and a policy setback knocked crypto off its recent footing.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/28/bitcoin-drops-as-south-korean-stocks-tumble-senate-shelves-crypto-clarity-act" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Drops as South Korean Stocks Tumble, Senate Shelves Crypto Clarity Act</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin holds better than Nasdaq futures on a broad risk-off day</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin fell back toward $63,000 as the Kospi crashed nearly 11%, but held up better than Nasdaq futures and Asian equities through the session, CoinDesk reported. A relative-strength read that has bulls watching whether crypto decouples from the AI selloff.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/28/bitcoin-recovers-from-asian-session-lows-nasdaq-futures-remain-under-pressure" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Updates: Bitcoin Falls Back to $63,000 as South Korea's Kospi Crashes Nearly 11%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Perpetuals tied to SK Hynix flash-crash to $900 on Hyperliquid</strong></summary>
+      <div class="deal-body">
+        <p>Perpetual futures on SK Hynix's American depositary receipts plunged 20% in one minute to $900 on Hyperliquid before rebounding above $1,000, CoinDesk reported. A vivid example of how onchain perps can amplify the chip-selloff shock into violent air pockets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/28/perpetuals-tied-to-sk-hynix-suffer-a-flash-crash-to-usd900-on-hyperliquid" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Perpetuals Tied to SK Hynix Hit by Flash Crash to $900 on Hyperliquid</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BitMEX and BitMart may be the first casualties of a crypto trading slump</strong></summary>
+      <div class="deal-body">
+        <p>Trading volumes across major centralized platforms fell to about $1.05 trillion, the quietest stretch in over two years, and CoinDesk flagged BitMEX and BitMart as possible early casualties. The slump extends a week of stress across exchange infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/28/bitmex-and-bitmart-may-be-first-casualties-of-crypto-trading-slump" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BitMEX and BitMart May Be First Casualties of Crypto Trading Slump</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitmine buys more ether as Tom Lee touts the rising ETH/BTC ratio</strong></summary>
+      <div class="deal-body">
+        <p>Ethereum treasury company Bitmine added nearly 10,000 ETH and expanded its buyback, with Fundstrat's Tom Lee arguing a rising ether-to-bitcoin ratio points to stronger crypto prices ahead. A named bull call for the altcoin side even as the tape turns risk-off.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/27/bitmine-buys-more-ether-as-tom-lee-says-rising-eth-btc-ratio-points-to-stronger-crypto-prices" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitmine Buys More Ether as Tom Lee Says Rising ETH/BTC Ratio Points to Stronger Crypto Prices</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Circle buys nearly 1,000 blockchain patents from IBM</strong></summary>
+      <div class="deal-body">
+        <p>Stablecoin issuer Circle acquired a portfolio of nearly 1,000 patents from IBM covering blockchain, banking, insurance and cloud security, with terms undisclosed. A strategic IP grab that hardens Circle's position as regulated stablecoin competition intensifies.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/27/circle-buys-nearly-1-000-blockchain-patents-from-ibm" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Circle Buys Nearly 1,000 Blockchain Patents From IBM</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Meta / BlackRock -- $14 Billion Texas Data-Center Complex</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Meta and BlackRock plan to build a 1-gigawatt data-center complex in Texas that will cost about $14 billion to develop, adding to a wave of AI computing investment.</p>
+        <p><strong>Outlook:</strong> Private capital keeps flowing into the physical layer of the buildout even as public chip stocks sell off, with asset managers underwriting long-dated infrastructure.</p>
+        <p><strong>What it means:</strong> The capex commitments are real and enormous, but they are increasingly debt-funded, which is exactly why Fitch and WSJ are flagging rising financing costs across the AI complex.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/meta-blackrock-plan-to-invest-in-giant-texas-data-center" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta, BlackRock Plan to Invest in $14 Billion Data Center</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Monte Paschi / Banco BPM -- Merger Talks to Foil Intesa's €35 Billion Bid</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Advisers for Monte dei Paschi and Banco BPM are in talks over a possible merger with a cash component that would effectively thwart Intesa Sanpaolo's roughly €35 billion ($40 billion) takeover offer for Monte Paschi.</p>
+        <p><strong>Outlook:</strong> Italian bank consolidation is turning combative, with target boards seeking defensive tie-ups to fend off unwanted suitors.</p>
+        <p><strong>What it means:</strong> Europe's bank M&amp;A wave is heating up, and a Paschi-BPM combination would reshape the competitive map while denying Intesa its prize.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-27/paschi-banco-bpm-advisers-working-on-deal-with-cash-component" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Paschi, BPM Advisers Working on Merger to Foil Intesa's Bid</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia -- $5 Billion Bet on Ilya Sutskever's Safe Superintelligence</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Nvidia is investing $5 billion in Ilya Sutskever's Safe Superintelligence, which will use Vera Rubin chips to rapidly expand computing capacity for its secretive research, FT reported.</p>
+        <p><strong>Outlook:</strong> Nvidia keeps deploying its balance sheet into the frontier-lab ecosystem, cementing demand for its next-generation silicon.</p>
+        <p><strong>What it means:</strong> Another vendor-financed stake that bulls read as conviction and bears read as circular financing, the very dynamic behind Tuesday's selloff.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/5c78dec1-b6d6-415e-9456-f1ab5eed6146?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Nvidia Bets $5bn on Ilya Sutskever's AI Breakthrough</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Angola / Unitel -- $321 Million Sale in the Nation's Biggest IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Angola raised 300.3 billion kwanzas ($321 million) by selling a 15% stake in state wireless operator Unitel, its largest-ever initial public offering.</p>
+        <p><strong>Outlook:</strong> Frontier-market privatizations are finding buyers as investors reach for growth and yield outside crowded developed markets.</p>
+        <p><strong>What it means:</strong> A milestone listing that deepens Angola's capital markets and signals appetite for African telecom assets despite global risk-off.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-27/angola-raises-321-million-through-nation-s-biggest-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Angola Raises $321 Million Through Nation's Biggest IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Elevate Campuses -- Hillhouse-Backed Student-Housing $267 Million India IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Hillhouse-backed Elevate Campuses is preparing to launch its 25.55 billion rupee ($267 million) IPO as early as August, paving the way for India's first listed operator of student dorms.</p>
+        <p><strong>Outlook:</strong> India's primary market stays vibrant as global capital chases domestic growth and novel real-asset plays.</p>
+        <p><strong>What it means:</strong> The listing broadens India's IPO pipeline into new asset classes, reinforcing the country as a global listing hotspot.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/elevate-campuses-said-to-launch-267-million-india-ipo-in-august" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Elevate Campuses Said to Launch $267 Million India IPO in August</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Citadel Securities -- expects a surprise Fed hike under Warsh</strong></summary>
+      <div class="deal-body">
+        <p>Citadel Securities expects the Fed to raise rates this week, a surprise move that would bolster Chair Kevin Warsh's inflation-fighting credibility, Bloomberg reported. A high-conviction named call that cuts against the market's dovish read of falling oil.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-27/citadel-securities-sees-warsh-delivering-surprise-fed-rate-hike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citadel Securities Sees Warsh Delivering Surprise Fed Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fundstrat's Tom Lee -- heed the Cisco lesson, buy the chip dip</strong></summary>
+      <div class="deal-body">
+        <p>Fundstrat's Tom Lee said the market should recover its poise within the next few days, invoking the Cisco Systems experience from the last millennium as a guide for rattled chip investors. A named contrarian bull as semis crater on the China threat.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/as-semis-sell-off-rattled-investors-should-heed-last-millenniums-lesson-from-cisco-systems-4bb53304?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- As Chips Sell Off, Rattled Investors Should Heed This Cisco Systems Lesson</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Man Group -- AT1 buyers are far too complacent to the risks</strong></summary>
+      <div class="deal-body">
+        <p>Investors at Man Group said buyers of Additional Tier 1 bonds, the riskiest type of bank debt, are far too complacent and spreads now look too tight. A named credit-side warning that risk is underpriced heading into a live Fed.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/at1-buyers-are-far-too-complacent-to-risks-man-group-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AT1 Buyers Are 'Far Too Complacent' to Risks, Man Group Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>HSBC's Max Kettner -- earnings and valuations keep risk assets buoyant</strong></summary>
+      <div class="deal-body">
+        <p>HSBC strategist Max Kettner argued strong earnings growth and undemanding valuations are keeping risk assets resilient even against a more challenging inflation backdrop. A named bull view holding the line as the chip trade wobbles.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/hsbc-s-kettner-sees-earnings-valuations-buoying-risk-assets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- HSBC's Kettner Sees Earnings, Valuations Buoying Risk Assets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fitch -- an AI market correction is a major global credit risk</strong></summary>
+      <div class="deal-body">
+        <p>Fitch warned that a correction in the AI market is emerging as a major global credit risk, pointing to the debt stacking up behind the data-center buildout. A named ratings-agency caution that sharpens the bear case on capex financing.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/ai/articles/fitch-warns-ai-market-correction-103630010.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Fitch Warns AI Market Correction Emerging as Major Global Credit Risk</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as a China Lithography Scare and Circular-Financing Fears Crash the Chip Complex, Yields Fall Into a Live Fed Decision, and Microsoft Earnings Loom as the First Real Test of the AI Buildout</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the dip is a chance):</strong> Fundstrat's Tom Lee says the market should recover poise within days and points to the Cisco playbook, HSBC's Max Kettner argues earnings and valuations keep risk assets buoyant, and FT contends CXMT's IPO isn't a bubble signal. AMD signed a real Core Scientific deal, Hong Kong exports hit a 40-year high, and money is rotating into names with clean results rather than fleeing stocks. The buildout is intact.</div>
+        <div class="bear"><strong>Bear (the risks stacked up):</strong> Citadel Securities expects a surprise Fed hike, Man Group warns AT1 spreads are far too tight, and Fitch flags an AI correction as a major global credit risk. Nvidia's default-protection cost surged the most on record, China can now make DUV tools, and WSJ says Big Tech is pricing in a miracle on costs. A hawkish Fed or a soft Microsoft print could turn a rotation into a real de-rating.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Chip rout; Kospi -11%; Nvidia CDS record; SK Hynix flash crash; Dow up as Nasdaq bleeds; Microsoft tonight</td><td>Bearish</td><td>~23,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Boeing loss; UPS beat; Coca-Cola hikes outlook; PayPal beat amid merger talk; rotation into defensives</td><td>Cautious</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Yields fall into Fed; Citadel sees surprise Warsh hike; Man Group AT1 warning; UK food inflation cools</td><td>Cautious</td><td>~13,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>China DUV threat breaks picks-and-shovels trade; Nvidia $50B lease; Meta pays up on debt; Fitch credit warning</td><td>Analytical</td><td>~8,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC drops to $63K as Kospi crashes; Senate shelves Clarity Act; BitMEX/BitMart stress; Tom Lee ETH call</td><td>Bearish</td><td>~12,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped hard to risk-off. r/wallstreetbets fixated on the chip carnage, the Kospi's near-11% crash and Nvidia's record CDS blowout, with the SK Hynix perp flash crash as the day's meme. r/stocks stayed steadier, leaning into the rotation with UPS and Coca-Cola beats against Boeing's loss. r/investing weighed falling yields against Citadel's surprise-hike call and Man Group's complacency warning. r/SecurityAnalysis dug into whether China's DUV breakthrough permanently breaks the picks-and-shovels trade. r/CryptoCurrency was gloomy as bitcoin fell to $63,000 and the Senate shelved the Clarity Act. The swing factor is whether Microsoft's print and the Fed calm the panic or confirm it.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Rival Learning to Make Your Product Can Break Its Value, Even When Demand Is Growing</h2>
+    <p>Tuesday's rout had a specific trigger: a report that a Chinese state-backed company has begun mass-producing DUV lithography machines, which sent ASML to its lowest since June and dragged the whole chip complex down. The strange part is that demand for chips is still booming, with Hong Kong exports hitting a 40-year high on AI orders. So why would a stock fall when demand is rising? The answer is commoditization risk, and understanding it explains a lot of Tuesday's damage. Start with why some companies command huge valuations. A firm like ASML has historically been worth so much not because chip demand is high, but because almost no one else on earth can make its machines. That scarcity is the moat. When a product is scarce and essential, the maker has pricing power: it can charge high margins because buyers have nowhere else to go. Investors capitalize that pricing power into the stock price, paying a premium multiple on the belief the moat will keep those fat margins flowing for years. The value lives in the scarcity, not the demand. Now watch what a credible new competitor does to that logic. The moment a rival can mass-produce a comparable machine, the scarcity that justified the premium starts to erode. Even if the newcomer's tools are a step behind, their mere existence caps how much the incumbent can charge, because buyers now have an alternative and can negotiate. Margins compress, pricing power fades, and the premium multiple the market was paying for a protected franchise deflates. Crucially, this can happen while total demand is climbing. More chips can be sold than ever, but if the profit per machine falls and the moat narrows, the incumbent's earnings power and its valuation both shrink. Demand growth and stock value are not the same thing when the moat is in question. This is the "picks and shovels" trade coming unstuck, as MarketWatch put it. The appeal of selling picks and shovels in a gold rush is that you profit no matter which miner wins, as long as you are the only one selling the tools. But if someone else starts making picks, your privileged position evaporates even as the gold rush rages on. The same logic threatens the whole AI-hardware complex: the bull case rested partly on the idea that a handful of Western firms had an unassailable lead. A Chinese DUV breakthrough attacks that premise directly. The practical lesson is to separate demand from moat when you value a company. Ask two questions, not one. First, is the end-demand for the product growing? Second, and more important for the stock, is the company's ability to earn outsized margins on that demand protected, or can a competitor replicate it? A firm with a shrinking moat in a growing market can still be a poor investment, because the market reprices the loss of pricing power faster than it credits the volume growth. Watch for signs of a moat eroding: new entrants, falling gross margins, customers gaining leverage. When the scarcity goes, the premium goes with it, no matter how strong demand looks.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-27/asml-slides-after-report-of-china-beginning-duv-tool-production" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ASML Slides on Report of China Starting DUV Tool Production</a></p>
+    <p class="deal-source"><a href="https://www.marketwatch.com/story/picks-and-shovels-trade-comes-unstuck-as-ai-hardware-stocks-plunge-on-competitive-threat-from-china-41a0c2b4?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Emerging China Threat Puts a Scare Into AI Hardware Stocks. Is the 'Picks and Shovels' Trade Breaking Down?</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Fed decision (Wednesday, July 29).</strong> Citadel Securities warns of a surprise Warsh hike while the market prices a hold; watch how Powell's successor frames falling oil against rebounding price risks and whether the dovish rate reaction survives the statement.</li>
+      <li><strong>Core PCE and inflation read-through.</strong> With oil sliding but pass-through still lagging, watch whether the Fed's favorite gauge keeps core prices firm enough to justify caution even as spot crude falls.</li>
+      <li><strong>BOJ and Japan fiscal watch.</strong> Takaichi's planned food-tax cut risks pressuring the yen and JGBs; watch whether the fiscal-supply story keeps a bid under global long-end yields.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Microsoft (tonight).</strong> Yahoo Finance frames it as the first real read on whether AI investment is paying off; watch Azure growth and capex guidance for proof the spending is converting into cash flow.</li>
+      <li><strong>Meta and Amazon.</strong> With Meta paying up on data-center debt and the chip complex cracking, watch capex plans and cloud margins for any wobble that broadens the selloff.</li>
+      <li><strong>Chip and hardware names.</strong> After the China DUV scare and the Kospi crash, watch how Nvidia, Micron and the equipment makers guide, plus whether AMD's Core Scientific deal signals durable demand.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>IPO pipeline.</strong> Angola's $321 million Unitel sale and Elevate Campuses' $267 million India filing test whether the primary window holds open through the risk-off turn.</li>
+      <li><strong>AI infra financing.</strong> Meta and BlackRock's $14 billion Texas complex and Nvidia's $50 billion lease test whether debt costs keep rising as Fitch flags a credit-level AI risk.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran talks.</strong> Trump claims "deep talks" are underway; watch whether the pause holds, whether OPEC+ confirms its post-September quota pause, and how bookings-sensitive names like Royal Caribbean guide.</li>
+      <li><strong>Germany-China trade.</strong> Berlin is mapping Beijing's choke points across chips, chemicals and medical tech; watch for escalation risk and the inflation read-through.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Tue Jul 28, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-07-28 08:00 ET); Bloomberg Technology (19 fresh, newest 2026-07-28 07:02 ET); Bloomberg Economics (20 fresh, newest 2026-07-28 07:00 ET); CNBC Top News (7 fresh, newest 2026-07-28 07:54 ET); CNBC Finance (1 fresh, newest 2026-07-27 14:06 ET); CNBC Economy (1 fresh, newest 2026-07-27 10:22 ET); MarketWatch Top Stories (10 fresh, newest 2026-07-28 08:01 ET); WSJ Markets (18 fresh, newest 2026-07-28 07:29 ET); Yahoo Finance (25 fresh, newest 2026-07-28 08:05 ET); FT Home (12 fresh, newest 2026-07-28 07:36 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-27 14:10 ET); CoinDesk (25 fresh, newest 2026-07-28 07:59 ET); Stratechery (1 fresh, newest 2026-07-27 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove Tuesday's global chip selloff?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed announced a surprise interest-rate hike</span>
+      <span class="opt" data-opt="B">B. Nvidia badly missed its quarterly earnings</span>
+      <span class="opt" data-opt="C">C. Reports China can now mass-produce DUV tools</span>
+      <span class="opt" data-opt="D">D. Taiwan banned all chip exports to the US</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg said progress in China's advanced chipmaking, including a report a state-backed firm began producing DUV machines, deepened the rout and hit ASML. The Fed hasn't decided yet, Nvidia hasn't reported, and Taiwan imposed no export ban.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did Citadel Securities predict for this week's Fed meeting?</strong></p>
+      <span class="opt" data-opt="A">A. A surprise rate hike under Chair Warsh</span>
+      <span class="opt" data-opt="B">B. An emergency rate cut to calm markets</span>
+      <span class="opt" data-opt="C">C. No change with dovish forward guidance</span>
+      <span class="opt" data-opt="D">D. A pause paired with balance-sheet runoff</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported Citadel Securities expects a surprise hike that would strengthen Warsh's inflation-fighting credibility. It did not forecast a cut, a dovish hold, or a balance-sheet move.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>3. Why did oil prices decline further on Tuesday?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC+ agreed to flood the market immediately</span>
+      <span class="opt" data-opt="B">B. Trump said deep talks with Iran are underway</span>
+      <span class="opt" data-opt="C">C. US crude inventories hit a record surplus</span>
+      <span class="opt" data-opt="D">D. China canceled its long-term supply contracts</span>
+      <div class="feedback"><strong>B is correct.</strong> MarketWatch said Brent and WTI fell again after Trump claimed deep talks are underway with Iran while both sides pause fighting. OPEC+ actually plans to pause hikes after September, and there was no inventory record or China cancellation.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasury yields fell as the oil slide and Mideast diplomacy cooled the inflation scare, but the Fed walks into Wednesday with Citadel Securities betting on a surprise Warsh hike and Man Group warning AT1 buyers are far too complacent, against bulls pointing to a growing German economy, rising French confidence and a sixth straight month of falling UK food inflation.",
+    "sources": [
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/jgb-futures-rise-amid-falling-crude-oil-prices-2f1d5195?mod=rss_markets_main", "take": "Treasury yields fall ahead of the Fed as the US and Iran hold fire." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-27/citadel-securities-sees-warsh-delivering-surprise-fed-rate-hike", "take": "Citadel Securities sees Warsh delivering a surprise Fed hike." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-28/at1-buyers-are-far-too-complacent-to-risks-man-group-says", "take": "Man Group says AT1 buyers are far too complacent." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-28/german-economy-likely-to-grow-despite-iran-war-bundesbank-says", "take": "Bundesbank says Germany likely grew despite the Iran war." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-27/uk-food-inflation-falls-for-sixth-consecutive-month-brc-says", "take": "UK food inflation falls for a sixth straight month." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil slid further as Trump claimed deep talks are underway with Iran and OPEC+ signaled it will pause quota hikes after September, but Royal Caribbean cut its yield forecast on softer bookings, Singapore's MAS flagged a prolonged re-escalation as a top risk, and FT reported Tehran has adapted to launch more precision strikes across the Gulf.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/oil-prices-decline-further-after-trump-claims-deep-talks-are-underway-with-iran-167a5393?mod=mw_rss_topstories", "take": "Oil declines further after Trump claims deep talks with Iran." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-28/opec-plans-to-pause-quota-hikes-after-september-delegates-say", "take": "OPEC+ plans to pause quota hikes after September." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-28/royal-caribbean-rcl-lowers-yield-forecast-as-middle-east-turmoil-hits-bookings", "take": "Royal Caribbean lowers its yield forecast on Mideast turmoil." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-28/singapore-s-mas-flags-ai-pullback-as-threat-to-global-markets", "take": "MAS flags a prolonged Mideast re-escalation as a key risk." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/82acf078-9214-4eb6-a162-15f584a5e3ca?syn-25a6b1a6=1", "take": "Iran has adapted to launch more precision strikes across the Gulf." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade cracked as reports China can mass-produce DUV lithography tools crashed the Kospi nearly 11% and sent Nvidia's default-protection cost to a record, with Nvidia backing a $50 billion Texas lease and Meta paying up on debt, while Fitch warned of a credit-level AI correction and Fundstrat's Tom Lee called it a Cisco-style buying chance.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-28/korean-stocks-sink-as-chipmakers-plung-on-deepening-ai-fatigue", "take": "Chip rout deepens on China competition and circular-funding fears." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-07-28/ai-greed-turns-into-fear-as-tech-stocks-keep-sinking", "take": "Nvidia's default-protection cost surged the most on record." },
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/4a0eeaf8-90b6-4053-a53c-b285d56f4dfe?syn-25a6b1a6=1", "take": "CXMT's roaring IPO isn't the bubble signal it might appear." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/as-semis-sell-off-rattled-investors-should-heed-last-millenniums-lesson-from-cisco-systems-4bb53304?mod=mw_rss_topstories", "take": "Fundstrat's Tom Lee sees a recovery within days, citing Cisco." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/technology/ai/articles/fitch-warns-ai-market-correction-103630010.html", "take": "Fitch warns an AI correction is a major global credit risk." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["SK Hynix","Samsung","Micron","ASML","Nvidia","AMD"],
+    "values": [-12.0, -10.0, -6.0, -4.2, -3.0, 1.2]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [23000, 14000, 13000, 8000, 12000],
+    "colors": ["bear","neutral","neutral","neutral","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Nvidia Texas lease","Intesa/Paschi bid","Meta-BlackRock data center","Angola Unitel IPO"],
+    "values": [50, 40, 14, 0.32]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
