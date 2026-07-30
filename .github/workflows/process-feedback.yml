@@ -3,12 +3,19 @@ name: Process feedback
 # Cluster reader feedback into pending proposals for editor review, then
 # open (or refresh) a single "feedback-review" issue while pendings exist.
 #
-# Runs through the DEPLOYED admin API (Authorization: FEEDBACK_ADMIN_SECRET)
-# instead of talking to Postgres from the runner. The old direct-DB path
-# required a POSTGRES_URL repo secret that was never set, so every scheduled
-# run failed within seconds and no feedback was ever clustered. The API path
-# has one credential (the same bearer the admin page uses) and exercises the
-# exact code behind the admin page's "Cluster into proposals" button.
+# Runs through the DEPLOYED admin API instead of talking to Postgres from
+# the runner (the old direct-DB path required a POSTGRES_URL repo secret
+# that was never set, so every scheduled run failed within seconds).
+# Credentials, in preference order:
+#   1. FEEDBACK_ADMIN_SECRET — the admin-page bearer, if it exists as a
+#      repo secret (it lives in Vercel; the repo copy is optional).
+#   2. MAINTENANCE_TOKEN — the monitor token every workflow here already
+#      has for posting maintenance flags. The API accepts it on
+#      /api/admin-proposals for exactly this pipeline's two operations
+#      (cluster + read pending, see api/_auth.js). This fallback exists
+#      because the pipeline spent weeks red at preflight waiting for a
+#      hand-copied FEEDBACK_ADMIN_SECRET repo secret that never arrived,
+#      while the same runs posted flags fine with MAINTENANCE_TOKEN.
 on:
   schedule:
     - cron: "0 14 * * 1" # Mondays 14:00 UTC
@@ -29,33 +36,32 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Preflight — FEEDBACK_ADMIN_SECRET must exist
+      - name: Preflight — a pipeline credential must exist
         env:
           FEEDBACK_ADMIN_SECRET: ${{ secrets.FEEDBACK_ADMIN_SECRET }}
           MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
         run: |
           set -euo pipefail
-          if [ -z "${FEEDBACK_ADMIN_SECRET:-}" ]; then
-            python3 scripts/post_maintenance_flag.py \
-              --source process-feedback --severity critical \
-              --dedupe-key "process-feedback-no-secret" \
-              --title "Feedback pipeline cannot run: FEEDBACK_ADMIN_SECRET repo secret unset" \
-              --detail "Add a GitHub Actions repo secret named FEEDBACK_ADMIN_SECRET with the same value as the Vercel env var of that name (the admin-page bearer). Until then reader feedback is never clustered into proposals." \
-              --url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            echo "::error::FEEDBACK_ADMIN_SECRET is not set in this repo's Actions secrets. Add it under Settings > Secrets and variables > Actions with the same value as the Vercel FEEDBACK_ADMIN_SECRET env var, then re-run this workflow."
+          if [ -n "${FEEDBACK_ADMIN_SECRET:-}" ]; then
+            echo "Using the FEEDBACK_ADMIN_SECRET admin bearer."
+          elif [ -n "${MAINTENANCE_TOKEN:-}" ]; then
+            echo "::notice::FEEDBACK_ADMIN_SECRET repo secret is unset; running with MAINTENANCE_TOKEN (monitor scope: cluster + read pending). Adding FEEDBACK_ADMIN_SECRET as a repo secret switches the pipeline back to the admin bearer — optional, not required."
+          else
+            echo "::error::Neither FEEDBACK_ADMIN_SECRET nor MAINTENANCE_TOKEN is set in this repo's Actions secrets, so the feedback pipeline cannot authenticate to the admin API. Add MAINTENANCE_TOKEN (same value as the Vercel env var of that name) under Settings > Secrets and variables > Actions — it is also what every monitor here uses to post maintenance flags. Without it no flag can be posted from this run either; the daily maintenance-monitors sweep will surface this red run instead."
             exit 1
           fi
-          echo "Secret present."
 
       - name: Cluster feedback via admin API
         env:
           FEEDBACK_ADMIN_SECRET: ${{ secrets.FEEDBACK_ADMIN_SECRET }}
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
         run: |
           set -euo pipefail
           python3 scripts/call_admin_api.py \
             --method POST --path /api/admin-proposals \
             --body '{"action":"process"}' \
             --bearer-env FEEDBACK_ADMIN_SECRET \
+            --monitor-env MAINTENANCE_TOKEN \
             --out /tmp/cluster.json
           python3 - <<'PY'
           import json
@@ -69,11 +75,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           FEEDBACK_ADMIN_SECRET: ${{ secrets.FEEDBACK_ADMIN_SECRET }}
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
         run: |
           set -euo pipefail
           python3 scripts/call_admin_api.py \
             --path '/api/admin-proposals?status=pending' \
             --bearer-env FEEDBACK_ADMIN_SECRET \
+            --monitor-env MAINTENANCE_TOKEN \
             --out /tmp/pending.json
           COUNT="$(python3 -c "import json; print(len(json.load(open('/tmp/pending.json')).get('proposals', [])))")"
           if [ "$COUNT" = "0" ]; then

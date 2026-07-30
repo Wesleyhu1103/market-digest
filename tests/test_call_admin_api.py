@@ -26,11 +26,13 @@ class ScriptedHandler(BaseHTTPRequestHandler):
 
     script = []  # class attr, set per server
     seen = None
+    seen_headers = None  # parallel list of header dicts per request
 
     def _respond(self):
         idx = min(len(type(self).seen), len(type(self).script) - 1)
         status, body = type(self).script[idx]
         type(self).seen.append((self.command, self.path))
+        type(self).seen_headers.append({k.lower(): v for k, v in self.headers.items()})
         payload = body.encode()
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
@@ -46,18 +48,23 @@ class ScriptedHandler(BaseHTTPRequestHandler):
 
 
 def serve(script):
-    handler = type("H", (ScriptedHandler,), {"script": script, "seen": []})
+    handler = type("H", (ScriptedHandler,), {"script": script, "seen": [], "seen_headers": []})
     srv = HTTPServer(("127.0.0.1", 0), handler)
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     return srv, handler
 
 
-def run_call(origin, *extra, bearer="test-secret"):
+def run_call(origin, *extra, bearer="test-secret", monitor=None):
+    env = {"FEEDBACK_ADMIN_SECRET": bearer, "PATH": "/usr/bin:/bin"}
+    args = [sys.executable, str(CALL), "--origin", origin, "--backoff-base", "1", *extra]
+    if monitor is not None:
+        env["MAINTENANCE_TOKEN"] = monitor
+        args += ["--monitor-env", "MAINTENANCE_TOKEN"]
     return subprocess.run(
-        [sys.executable, str(CALL), "--origin", origin, "--backoff-base", "1", *extra],
+        args,
         capture_output=True,
         text=True,
-        env={"FEEDBACK_ADMIN_SECRET": bearer, "PATH": "/usr/bin:/bin"},
+        env=env,
         cwd=str(ROOT),
     )
 
@@ -99,6 +106,64 @@ def test_missing_bearer_env_is_a_distinct_error():
     proc = run_call("http://127.0.0.1:9", "--path", "/x", bearer="")
     assert proc.returncode == 2
     assert "not set" in proc.stderr
+
+
+def test_bearer_preferred_over_monitor_fallback():
+    srv, handler = serve([(200, "{}")])
+    try:
+        proc = run_call(
+            f"http://127.0.0.1:{srv.server_port}",
+            "--path", "/api/admin-proposals?status=pending",
+            bearer="adm", monitor="mon",
+        )
+    finally:
+        srv.shutdown()
+    assert proc.returncode == 0, proc.stderr
+    hdrs = handler.seen_headers[0]
+    assert hdrs.get("authorization") == "Bearer adm"
+    assert "x-maintenance-token" not in hdrs
+
+
+def test_monitor_fallback_when_bearer_env_empty():
+    srv, handler = serve([(200, "{}")])
+    try:
+        proc = run_call(
+            f"http://127.0.0.1:{srv.server_port}",
+            "--path", "/api/admin-proposals",
+            "--body", '{"action":"process"}',
+            bearer="", monitor="mon",
+        )
+    finally:
+        srv.shutdown()
+    assert proc.returncode == 0, proc.stderr
+    assert "monitor token from MAINTENANCE_TOKEN" in proc.stderr
+    hdrs = handler.seen_headers[0]
+    assert hdrs.get("x-maintenance-token") == "mon"
+    assert "authorization" not in hdrs
+
+
+def test_monitor_403_hints_at_scope_and_deploy_lag():
+    # A 403 in monitor mode is what an out-of-scope call (or a production
+    # API that predates monitor-token support) returns; the hint must say so.
+    srv, handler = serve([(403, '{"error":"monitor token is limited"}')])
+    try:
+        proc = run_call(
+            f"http://127.0.0.1:{srv.server_port}",
+            "--path", "/api/admin-proposals?status=approved",
+            bearer="", monitor="mon",
+        )
+    finally:
+        srv.shutdown()
+    assert proc.returncode == 1
+    assert len(handler.seen) == 1  # 4xx still must not retry
+    assert "MAINTENANCE_TOKEN" in proc.stderr
+    assert "scoped to cluster + read-pending" in proc.stderr
+
+
+def test_missing_both_envs_is_a_distinct_error():
+    proc = run_call("http://127.0.0.1:9", "--path", "/x", bearer="", monitor="")
+    assert proc.returncode == 2
+    assert "FEEDBACK_ADMIN_SECRET nor MAINTENANCE_TOKEN" in proc.stderr
 
 
 def test_connection_refused_exhausts_retries():

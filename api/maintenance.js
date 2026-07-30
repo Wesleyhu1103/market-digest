@@ -17,15 +17,10 @@ import {
   listMaintenanceFlags,
   setMaintenanceStatus,
 } from "./_supa.js";
+import { authorizeMonitor } from "./_auth.js";
 
 const SEVERITIES = new Set(["critical", "warning", "info"]);
 const STATUSES = new Set(["open", "acked", "resolved"]);
-
-function authorizeMonitor(req) {
-  const token = process.env.MAINTENANCE_TOKEN || process.env.CRON_SECRET;
-  if (!token) return false;
-  return (req.headers["x-maintenance-token"] || "") === token;
-}
 
 export default async function handler(req, res) {
   cors(res, "GET, POST, PATCH, OPTIONS");

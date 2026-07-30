@@ -1,7 +1,16 @@
-// GET /api/admin-proposals — pending/approved proposals with source feedback (admin only).
+// GET /api/admin-proposals — pending/approved proposals with source feedback.
 // POST /api/admin-proposals — approve/reject proposals by id, or
 //   { action: "process" } to cluster unprocessed feedback into proposals.
-// Auth: Authorization: Bearer <FEEDBACK_ADMIN_SECRET>
+//
+// Auth (two tiers, see _auth.js):
+//  - Authorization: Bearer <FEEDBACK_ADMIN_SECRET> — full access (admin page).
+//  - x-maintenance-token: <MAINTENANCE_TOKEN|CRON_SECRET> — monitor scope,
+//    limited to GET ?status=pending and POST {action:"process"}: exactly what
+//    the process-feedback workflow needs, so the pipeline runs on the repo
+//    secret that already exists instead of a hand-synced admin bearer copy.
+//    The pending list a monitor can read is the same content that workflow
+//    publishes into the public feedback-review issue; raw feedback and
+//    approve/reject stay admin-only.
 import {
   cors,
   readJsonBody,
@@ -11,6 +20,7 @@ import {
   getFeedbackByIds,
   updateProposalStatus,
 } from "./_supa.js";
+import { authorizeMonitor, monitorMayProposals } from "./_auth.js";
 import { processFeedback } from "./_process_feedback.js";
 
 async function enrichWithSources(proposals) {
@@ -38,14 +48,27 @@ async function enrichWithSources(proposals) {
 
 export default async function handler(req, res) {
   cors(res, "GET, POST, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, x-maintenance-token"
+  );
   if (req.method === "OPTIONS") return res.status(204).end();
-  if (!authorizeAdmin(req)) return res.status(401).json({ error: "unauthorized" });
+
+  const isAdmin = authorizeAdmin(req);
+  const isMonitor = !isAdmin && authorizeMonitor(req);
+  if (!isAdmin && !isMonitor) return res.status(401).json({ error: "unauthorized" });
 
   try {
-    await ensureSchema();
-
     if (req.method === "GET") {
       const status = req.query?.status || null;
+      // Scope decisions come before any DB work: an out-of-scope monitor
+      // call must 403, not surface as a 502 when the DB is unreachable.
+      if (isMonitor && !monitorMayProposals("GET", { status })) {
+        return res
+          .status(403)
+          .json({ error: "monitor token is limited to GET ?status=pending" });
+      }
+      await ensureSchema();
       const rows = await listProposalsAdmin(status);
       const proposals = await enrichWithSources(rows);
       res.status(200).json({ proposals });
@@ -54,6 +77,12 @@ export default async function handler(req, res) {
 
     if (req.method === "POST") {
       const b = (await readJsonBody(req)) || {};
+      if (isMonitor && !monitorMayProposals("POST", { action: b.action })) {
+        return res
+          .status(403)
+          .json({ error: 'monitor token is limited to POST {"action":"process"}' });
+      }
+      await ensureSchema();
 
       // action: "process" — cluster unprocessed feedback into pending
       // proposals. Folded in from the former /api/admin-process-feedback

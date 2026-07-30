@@ -43,12 +43,9 @@ export function cors(res, methods = "GET, POST, OPTIONS") {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 }
 
-export function authorizeAdmin(req) {
-  const secret = process.env.FEEDBACK_ADMIN_SECRET;
-  if (!secret) return false;
-  const auth = req.headers.authorization || "";
-  return auth === `Bearer ${secret}`;
-}
+// Auth checks live in _auth.js (dependency-free, so tests can import them
+// without the postgres package); re-exported here for existing importers.
+export { authorizeAdmin } from "./_auth.js";
 
 // Vercel's Node runtime usually pre-parses JSON bodies; fall back to reading the
 // raw stream if it didn't (e.g. missing/odd content-type).
