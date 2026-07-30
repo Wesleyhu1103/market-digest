@@ -7,6 +7,7 @@
 //   GITHUB_TOKEN  — PAT or fine-grained token with actions:write on this repo
 
 import { upsertMaintenanceFlag } from "./_supa.js";
+import { authorizeCronBearer } from "./_auth.js";
 
 const REPO = "Wesleyhu1103/market-digest";
 const INDEX_URL =
@@ -52,13 +53,6 @@ function digestDateFromHtml(html) {
   return `${m[4]}-${mo}-${day}`;
 }
 
-function authorizeCron(req) {
-  const secret = process.env.CRON_SECRET;
-  if (!secret) return true;
-  const auth = req.headers.authorization || "";
-  return auth === `Bearer ${secret}`;
-}
-
 async function publishInProgress(token) {
   const url =
     `https://api.github.com/repos/${REPO}/actions/workflows/publish-digest.yml/runs?status=in_progress&per_page=1`;
@@ -97,7 +91,31 @@ export default async function handler(req, res) {
     res.status(405).json({ error: "method not allowed" });
     return;
   }
-  if (!authorizeCron(req)) {
+  if (!process.env.CRON_SECRET) {
+    // Fail closed, but never silently: with CRON_SECRET gone Vercel's cron
+    // sends no auth header, so every request 503s and the backup publish
+    // path is down until the env var is restored.
+    console.error(
+      "[cron-watchdog] REJECTING ALL REQUESTS: CRON_SECRET not set on Vercel. " +
+        "The stale-digest backup path is disabled until it is configured."
+    );
+    await safeFlag({
+      dedupe_key: "cron-watchdog-no-cron-secret",
+      source: "cron-watchdog",
+      severity: "critical",
+      title: "Vercel backup cron disabled: CRON_SECRET missing",
+      detail:
+        "/api/cron-watchdog fails closed and is rejecting every request — including " +
+        "Vercel's own cron, which only sends its Authorization header when CRON_SECRET " +
+        "exists. The stale-digest backup publisher is DOWN until the env var is restored. " +
+        "Set CRON_SECRET (any long random string) in the Vercel project's Production " +
+        "environment variables, then redeploy.",
+      url: "https://vercel.com/wesley-hu-s-projects/market-digest/settings/environment-variables",
+    });
+    res.status(503).json({ ok: false, error: "CRON_SECRET not configured on Vercel" });
+    return;
+  }
+  if (!authorizeCronBearer(req)) {
     res.status(401).json({ error: "unauthorized" });
     return;
   }

@@ -71,14 +71,15 @@ Vercel env vars (Project → Settings → Environment Variables → **Production
 | Variable | Purpose |
 |----------|---------|
 | `GITHUB_TOKEN` | **Required for reliable publishing.** PAT (or fine-grained token) with `actions:write` on this repo — lets the Vercel cron `/api/cron-watchdog` dispatch the publish workflow when GitHub's own cron lags. **Without it the endpoint returns 503 and can't recover a stale digest**, so publishing falls back entirely to GitHub's unreliable scheduler. |
-| `CRON_SECRET` | Recommended. Vercel Cron sends `Authorization: Bearer <CRON_SECRET>` on scheduled calls when this is set; the endpoint then rejects unauthenticated public callers. **Not auto-created — you must set it** (any long random string). If unset, `/api/cron-watchdog` is publicly callable. |
+| `CRON_SECRET` | **Required for the watchdog endpoint.** Vercel Cron sends `Authorization: Bearer <CRON_SECRET>` on scheduled calls when this is set. **Not auto-created — you must set it** (any long random string). The endpoint fails closed: if unset, `/api/cron-watchdog` rejects every request with 503 (including Vercel's own cron, which omits the header without the var) and posts a critical maintenance flag — the backup publisher is down until the var is restored. |
 | `FEEDBACK_ADMIN_SECRET` | Protects `/api/admin-proposals`, `/api/admin-feedback`, `/api/maintenance` (read/update), and sign-in for [`/admin.html`](docs/admin.html). **Also set the SAME value as a GitHub Actions repo secret** — `process-feedback.yml` clusters feedback through the deployed API with it (no DB credentials on the runner); without it the weekly clustering fails loudly at preflight. |
 | `MAINTENANCE_TOKEN` | Lets monitors (GitHub workflows: digest-watchdog, feed-check, maintenance-monitors, process-feedback) POST site-maintenance flags to `/api/maintenance`. Set the SAME value here and as a GitHub Actions repo secret. Falls back to `CRON_SECRET` if unset on Vercel; if neither exists, monitor posts are rejected (admin page still works). |
 
 > **Failure mode to watch:** if the digest is stale in the morning, first check
 > the Vercel **Cron Jobs** dashboard / function logs for `[cron-watchdog]`. A
-> 503 there means `GITHUB_TOKEN` is missing or expired on Vercel — that has been
-> the recurring cause of late/missing digests. The GitHub `digest-watchdog`
+> 503 there means `GITHUB_TOKEN` is missing/expired on Vercel (the historical
+> recurring cause of late/missing digests) or `CRON_SECRET` is unset (the
+> endpoint fails closed without it). The GitHub `digest-watchdog`
 > workflow also fails loudly (red run) if the digest is still stale past
 > ~09:30 ET.
 

@@ -30,6 +30,18 @@ export function authorizeMonitor(req) {
   return (req.headers["x-maintenance-token"] || "") === token;
 }
 
+// Vercel Cron calls /api/cron-watchdog with `Authorization: Bearer
+// <CRON_SECRET>` — a header Vercel only attaches when the env var exists.
+// Fails closed like the other two credential classes: no CRON_SECRET
+// configured means nobody is authorized. The handler turns that state into
+// a 503 + critical maintenance flag (see cron-watchdog.js) so a dropped env
+// var reads as "backup publisher down", never as an open endpoint.
+export function authorizeCronBearer(req) {
+  const secret = process.env.CRON_SECRET;
+  if (!secret) return false;
+  return (req.headers.authorization || "") === `Bearer ${secret}`;
+}
+
 // The exact two operations the process-feedback workflow performs, and
 // nothing else: clustering is idempotent, and the pending list is the same
 // content the pipeline publishes into the public review issue. Approve,
