@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Jul 29, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-29</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, July 29, 2026</h1>
+    <div class="meta">
+      <p>It's Fed decision day, and Chair Warsh walks into a live meeting the market can't call, with a hold expected but Citadel Securities and UBS flagging surprise-hike risk. The Iran ceasefire cracked overnight as Tehran struck US bases and the US and Saudi Arabia hit Iran-backed militias in Iraq, sending Brent back toward $90. SK Hynix crashed on an earnings miss, and Microsoft, Meta and Qualcomm report tonight.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "SK Hynix crashes as record profit still misses estimates, deepening the AI-chip rout and setting up Microsoft and Meta earnings tonight into a market that's turning skeptical of Big Tech's spending",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Even $64 Billion in Quarterly Profit Is a Disappointment for Chip Investors", "angle": "Frames the selloff as an expectations problem: even record results can't clear a bar the market set too high.", "lean": -35, "pull": "South Korea's SK Hynix shares fell nearly 10% despite record results powered by the AI boom."},
+        {"outlet": "Financial Times", "headline": "Tech Rout Roils Markets After SK Hynix Profits Disappoint", "angle": "Leads with the global contagion but notes SK Hynix insists memory-oversupply risk stays limited.", "lean": -25, "pull": "South Korean chip giant misses analyst expectations but insists risk of memory oversupply remains limited."},
+        {"outlet": "Bloomberg", "headline": "Microsoft, Meta Earnings Face a Market Growing Skeptical of AI", "angle": "Argues tonight's prints test dwindling patience for Big Tech's spending and shrinking cash piles.", "lean": -40, "pull": "About to test investors' diminishing patience for Big Tech's profligate spending on artificial intelligence."},
+        {"outlet": "MarketWatch", "headline": "Why It's Time to Go All-In on Stocks, According to These Bullish Strategists", "angle": "Offers the contrarian read, with HSBC's Max Kettner betting equities stay resilient through the chip pullback.", "lean": 30, "pull": "Nothing seems to shake this market, say strategists led by Max Kettner betting on equities."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasury Yields Edge Higher Into a Live Fed Decision as the Iran Flare-Up Sends Oil Back Up, With Citadel Securities and UBS Flagging Surprise-Hike Risk Under Warsh While JPMorgan's Priya Misra Says the Urgency to Act Is Low, Esther George Expects a Hold, and a US Statistics Change Is Set to Lower the Fed's Preferred Inflation Gauge</h3>
+      </div>
+      <p>The rates story flipped from Tuesday's dovish oil read straight back into a genuinely uncertain Fed. WSJ said Treasury yields rose as fresh military escalation in the Middle East pushed oil prices higher, and the dollar eased ahead of the decision. Bloomberg's Fed team warned watchers to gird for a lesson in reading Warsh in a high-stakes call, with a hold expected but a hike that can't be ruled out. The hawkish tail is loud: Investor's Business Daily wrote a surprise rate hike can't be ruled out, and CoinDesk noted Citadel Securities and UBS are among those flagging the risk, with inflation at 4.1% keeping an increase firmly on the table. The dovish counterweight kept building. JPMorgan Asset Management's Priya Misra said the urgency for the Fed to act is low, former Kansas City Fed President Esther George expects a hold even as she frets about how long inflation stays elevated, and FT reported a Bureau of Economic Analysis methodology change is set to lower the Fed's preferred inflation gauge, easing pressure to raise. Australia's core inflation came in cooler than expected, gutting bets on an RBA hike, and the ECB sees euro-area wage growth quickening but staying below prior peaks.</p>
+      <p>The bull case for calmer yields is a Fed that holds, a soft Australian print, quiet wage data and a stats change that mechanically cools the PCE gauge. The bear case is oil back toward $90, 4.1% inflation, and Citadel and UBS betting Warsh surprises to cement his inflation-fighting credibility.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the Fed can wait):</strong> JPMorgan's Priya Misra says the urgency to act is low, Esther George expects a hold, and FT reports a BEA methodology change is set to lower the Fed's preferred inflation gauge. Australia's cooler core print slashed RBA hike bets and the ECB sees wage growth staying below old peaks. If Warsh holds and frames the oil bounce as a spike, the long end steadies and the dovish read survives the statement.</div>
+        <div class="bear"><strong>Bear (the hike tail is live):</strong> WSJ says yields rose as the Iran flare-up pushed oil higher, and CoinDesk notes Citadel Securities and UBS flag real surprise-hike risk with inflation at 4.1%. Investor's Business Daily agrees a hike can't be ruled out. Bloomberg says the market can't confidently read Warsh at all. A hawkish surprise, or even a hawkish hold, jolts the front end and revives last week's Treasury slump.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/newsletters/2026-07-29/fed-watchers-gird-for-a-lesson-on-reading-warsh-in-high-stakes-rate-call" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Watchers Gird for a Lesson on Reading Warsh in High-Stakes Rate Call</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Rallies Back Toward $90 as the Ceasefire Cracks Overnight, With Iran Firing Ballistic Missiles at US Bases, the US and Saudi Arabia Striking Iran-Backed Militias in Iraq and Trump Vowing a "Beating," While Ukraine Hits Two Russian Refineries, Wheat Climbs a Second Day and Pakistan and Bangladesh Pay $1 Billion More for LNG With Hormuz Still Closed</h3>
+      </div>
+      <p>The war premium came roaring back. MarketWatch said WTI and Brent front-month contracts climbed on the risk of more fighting after the US and Saudi Arabia attacked Iran-backed militias in Iraq, and Bloomberg reported Brent rallying toward $90 a barrel as a fresh round of fighting erupted across the region. FT said Washington blamed Tehran for launching ballistic missiles at US installations, and Trump vowed to deliver a "beating" in retaliation. Saudi Arabia said it intercepted militia drones targeting its oil facilities for a second straight day before joining the US strikes. The commodity read-through is spreading: Bloomberg said Ukraine hit two major Russian oil refineries after a short lull, wheat futures climbed for a second day as Black Sea exports falter, and Pakistan and Bangladesh are paying $1 billion more for LNG as the Strait of Hormuz stays closed and forces a switch to pricier spot cargoes. Singapore nearly doubled its household support package to $1.5 billion to defray oil-shock costs. WSJ separately argued China's crude demand is far more flexible than the market thought, a longer-term bearish swing factor. Crypto shrugged off the tape.</p>
+      <p>The bull read is that this is a spike, not a war, and diplomacy can restart after Netanyahu's reportedly excellent call with Trump. The bear read is that the pause is over, Hormuz is still shut, freight and LNG costs are climbing, and one more strike sends Brent through $90.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (a flare-up, not a war):</strong> The pause held for days before this, and Netanyahu's office cited an excellent talk with Trump on Iran. WSJ argues China's crude demand is far more flexible than the market assumes, capping how high prices can run. If the retaliation stays contained and diplomacy restarts, the spike toward $90 fades as fast as it came, and the inflation impulse the Fed fears drains back out.</div>
+        <div class="bear"><strong>Bear (the pause is over):</strong> FT says Iran fired ballistic missiles at US bases and Trump has vowed a beating, so escalation risk is live. Brent is back toward $90, Saudi Arabia is exporting oil through a pricier Mediterranean workaround, Ukraine hit two Russian refineries, and Pakistan and Bangladesh are paying $1 billion more for LNG with Hormuz shut. Wheat is climbing too. The whole commodity complex is repricing conflict, not peace.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/oil-prices-rise-after-u-s-and-saudi-arabia-attack-iran-backed-militias-in-iraq-f0f409ea?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Oil Prices Rise After U.S. and Saudi Arabia Attack Iran-Backed Militias in Iraq</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI-Chip Rout Deepens as SK Hynix Crashes Nearly 20% Despite a 557% Profit Surge Because Even $64 Billion Still Missed Estimates, With Microsoft, Meta and Qualcomm Reporting Tonight Into a Market Growing Skeptical of Big Tech's Spending, While NextEra and Brookfield Plan a $100 Billion Kentucky Data Campus and ASMPT Insists AI Equipment Demand Is Intact</h3>
+      </div>
+      <p>Tuesday's rout got a second leg from the source. Bloomberg said SK Hynix slid a daily-record 19% in Seoul after reporting lower-than-expected operating profit despite a six-fold surge, and earmarking at least $31 billion in capex this year. WSJ framed it bluntly: even $64 billion in quarterly profit is a disappointment when expectations run that hot. MarketWatch tied the weakness to excessive retail leverage, Chinese-competition fears and a failure to meet aggressive forecasts. The rout is bleeding into positioning: Yahoo Finance called it a chip crash exposing the brutal cost of leverage, and South Korea expanded measures to curb retail access to leveraged ETFs after the wipeout. NXP and ASM International both gave upbeat guidance that failed to impress, a sign the bar is now unforgiving. The buildout keeps scaling anyway: Bloomberg reported NextEra and Brookfield plan a $100 billion transformation of a shuttered Kentucky uranium-enrichment site into a data-center campus, and Bloom Energy surged after earnings doubled estimates on data-center demand. Microsoft, Meta and Qualcomm report tonight as the real test. The bulls aren't gone: ASMPT's chief said long-term AI-equipment demand is firmly intact, Seagate beat, and Moonshot AI hit a $35 billion valuation on a breakthrough model.</p>
+      <p>The bulls point to ASMPT's demand call, Bloom's blowout, Seagate's beat and Moonshot's momentum. The bears point to SK Hynix missing on record profit, tepid NXP and ASM reactions, the leverage unwind and a market Bloomberg says is losing patience with Big Tech capex right before Microsoft and Meta report.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand is still real):</strong> ASMPT's boss says long-term AI-equipment demand is firmly intact, pushing back on bubble fears, and SK Hynix insists memory-oversupply risk stays limited. Bloom Energy doubled estimates on data-center demand, Seagate beat, Moonshot AI just hit a $35 billion valuation, and NextEra and Brookfield committed to a $100 billion Kentucky campus. The physical spend keeps compounding, and a soft SK Hynix print is an expectations problem, not a demand one.</div>
+        <div class="bear"><strong>Bear (the spend outran the profits):</strong> SK Hynix crashed nearly 20% because even record $64 billion profit missed, and Bloomberg says the market is losing patience with Big Tech's spending just as Microsoft and Meta report tonight. NXP and ASM guidance couldn't clear the bar, Yahoo flags the brutal cost of leverage, and Korea is curbing leveraged ETFs after the wipeout. If tonight's capex guidance wobbles, the de-rating broadens.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-29/microsoft-meta-earnings-face-a-market-growing-skeptical-of-ai" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Microsoft, Meta Earnings Face a Market Growing Skeptical of AI</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks waver as the Fed call and AI earnings loom</strong></summary>
+      <div class="deal-body">
+        <p>US stocks wavered ahead of earnings from two of the world's biggest AI spenders and an interest-rate decision where markets still see room for a hike, Bloomberg reported, with Brent rallying toward $90 on the Middle East flare-up. The Dow leaned lower as Iran hostilities reignited and chips extended losses.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Waver as Fed Call and AI Earnings Loom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ford jumps on an earnings beat, upgrade and raised guidance</strong></summary>
+      <div class="deal-body">
+        <p>Ford (F) rallied after beating on the second quarter and lifting guidance, citing operational improvements, resilient pricing and a rich mix of profitable products, with the stock also catching an analyst upgrade. Management said the F-Series recovery is on track, a clean cyclical bright spot on a risk-off day.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/28/ford-motor-f-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Ford Raises Guidance After Q2 Earnings Beat, Says F-Series Recovery Is on Track</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Procter & Gamble tops EPS but revenue misses as volume stays flat</strong></summary>
+      <div class="deal-body">
+        <p>Procter & Gamble (PG) reported earnings per share above Wall Street estimates but revenue fell short as volume stayed unchanged. A soft top line from a consumer bellwether adds to the picture that the pressure isn't only in tech.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/29/procter-gamble-pg-q4-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Procter & Gamble Revenue Misses Estimates as Volume Stays Unchanged</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bloom Energy surges as earnings double estimates on data-center demand</strong></summary>
+      <div class="deal-body">
+        <p>Bloom Energy (BE) jumped after posting earnings more than double expectations and raising full-year guidance for the second straight quarter, a sign of rampant fuel-cell demand from data centers. A rare AI-adjacent name catching a bid as chips crater.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-28/bloom-surges-after-raising-guidance-as-earnings-double-estimates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bloom Surges on Higher Guidance as Earnings Double Estimates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Seagate shakes off AI-rally fears with a big earnings beat</strong></summary>
+      <div class="deal-body">
+        <p>Seagate (STX) beat handily and shrugged off the broader AI-selloff worries, standing out among the day's chip and hardware movers. A concrete demand data point on a session dominated by the SK Hynix wreck.</p>
+        <p class="deal-source"><a href="https://www.investors.com/news/technology/seagate-stock-stx-earnings-july-2026/?src=A00220&yptr=yahoo" target="_blank" rel="noopener noreferrer">Source: Investor's Business Daily -- Seagate Stock Shakes Off AI Rally Fears With Big Earnings Beat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Visa cuts 7% of its workforce in an AI efficiency push</strong></summary>
+      <div class="deal-body">
+        <p>Visa (V) plans to cut about 7% of its workforce, roughly 2,600 employees, as CEO Ryan McInerney streamlines the payments giant while AI reshapes work. A structural cost story that shows the AI theme cutting both ways, boosting margins even as it spooks chip investors.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/28/visa-is-cutting-7percent-of-employees-in-efficiency-push-as-ai-reshapes-work.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Visa Is Cutting 7% of Employees in Efficiency Push as AI Reshapes Work</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nike's China sales have fallen 30% as it cedes ground to local brands</strong></summary>
+      <div class="deal-body">
+        <p>Nike (NKE) has watched sales in what was once its fastest-growing region fall 30%, CNBC reported, as the brand loses relevance among young Chinese consumers and cedes share to smaller domestic labels. A reminder the China-competition theme goes well beyond semiconductors.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/29/nike-china-sales-decline.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Nike Was Once China's Sneaker King. Here's Why Its Sales Have Fallen 30%</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape is split again, with chips extending losses while the FTSE 100 hit an all-time high as an "anti-tech" index of banks and oil names rallied, and value beat growth year to date. The signal is that money isn't leaving equities, it's fleeing crowded AI hardware for cash-flow and commodity exposure. The real tests land within hours: the Fed at 2pm and Microsoft, Meta and Qualcomm after the close. If the earnings show capex converting to cash and Warsh holds, the rotation stabilizes; if guidance wobbles or Warsh surprises, the selloff broadens past semis.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Record Profit Can Still Crush a Stock</summary>
+      <p>SK Hynix reported profit up 557% and still fell nearly 20%, and WSJ summed it up perfectly: even $64 billion in quarterly profit is a disappointment for chip investors. Understanding how a record result can tank a stock is the difference between reading the headline number and reading the market. Stocks do not trade on results, they trade on results versus expectations. By the time a company reports, the market has already priced in a forecast built from analyst estimates, management guidance and the whisper number, the unofficial consensus that circulates among traders and is often higher than the published estimate. The stock reflects that expectation before the print lands. So the reaction is driven entirely by the gap between what was delivered and what was already assumed. Beat the bar and the stock rises even on falling profit; miss the bar and it falls even on record profit. That is exactly what happened to SK Hynix. Now layer in why the bar was so high. AI-exposed names had run enormous distances on the belief that memory and compute demand would compound almost without limit. When a stock triples, the price is capitalizing years of flawless execution. That leaves no cushion: to keep rising it has to keep beating an ever-climbing bar, and the moment it merely meets expectations the fuel runs out. Analysts had penciled in numbers so aggressive that a six-fold profit surge still came up short, and MarketWatch noted the stock fell partly on a failure to live up to aggressive forecasts rather than any collapse in the business. There is a second amplifier here specific to this rout: leverage. MarketWatch tied SK Hynix's slide to excessive retail leverage, and South Korea moved to curb access to leveraged ETFs after the wipeout. When investors buy a crowded name with borrowed money, a modest disappointment can trigger margin calls that force selling regardless of fundamentals, which turns a valuation reset into an air pocket. The forced selling makes the move look like a fundamental verdict when it is partly a positioning unwind. The practical lesson is to separate the business from the stock before an earnings date. Ask two questions. First, what is actually priced in, meaning how far has the stock run and how aggressive is consensus? Second, how much of the ownership is leveraged or crowded, which determines how violent a miss can get? A great business can be a terrible short-term trade if the bar is set at perfection, and a mediocre one can pop if expectations are on the floor. This is why guidance often matters more than the reported quarter: it resets the bar for next time. Watch tonight's Microsoft and Meta prints through this lens. The reported numbers will likely be huge, but the stocks will move on whether capex guidance and cloud growth clear a bar the market has already set sky-high. Record results are not the same as a good report, and expectations are the yardstick that decides.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/tech/even-64-billion-in-quarterly-profit-is-a-disappointment-for-chip-investors-91dcb5c4?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Even $64 Billion in Quarterly Profit Is a Disappointment for Chip Investors</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>SK Hynix plunges a record 19% as profit disappoints</strong></summary>
+      <div class="deal-body">
+        <p>SK Hynix shares slid a daily-record 19% in Seoul after the memory maker reported lower-than-expected operating profit for the second quarter and announced plans for higher spending, Bloomberg reported. The company earmarked at least $31 billion in capex this year after a six-fold surge in quarterly profit that still fell short.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-29/sk-hynix-drops-as-profit-disappoints-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix Drops as Profit Disappoints</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tech rout roils markets as SK Hynix insists oversupply risk is limited</strong></summary>
+      <div class="deal-body">
+        <p>The tech rout rolled through global markets after SK Hynix missed analyst expectations, FT reported, though the chip giant insisted the risk of memory oversupply remains limited. The FTSE 100 hit an all-time high as banks and oil names powered an "anti-tech" rebound from the Iran war selloff.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/e8e3a60a-059c-45b5-bbe3-49add14fd343?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Tech Rout Roils Markets After SK Hynix Profits Disappoint</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft and Meta earnings face a market growing skeptical of AI</strong></summary>
+      <div class="deal-body">
+        <p>Microsoft (MSFT) and Meta (META) are about to test investors' diminishing patience for Big Tech's spending on AI and the dwindling cash positions that result, Bloomberg reported. After months of asking who can spend the most, investors are increasingly asking whether the spend will pay off.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/microsoft-meta-earnings-face-a-market-growing-skeptical-of-ai" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Microsoft, Meta Earnings Face a Market Growing Skeptical of AI</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>NextEra and Brookfield to build a $100 billion Kentucky data campus</strong></summary>
+      <div class="deal-body">
+        <p>NextEra Energy (NEE) is teaming with Brookfield (BN) on a more than $100 billion transformation of a shuttered Cold War uranium-enrichment site in Kentucky into a data-center campus with its own generating plant, Bloomberg reported. The scale keeps feeding both the demand story and the capex-sustainability debate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/nextera-brookfield-to-build-100-billion-kentucky-data-campus" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- NextEra, Brookfield to Build $100 Billion Kentucky Data Campus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Moonshot AI hits a $35 billion valuation on a breakthrough model</strong></summary>
+      <div class="deal-body">
+        <p>China's Moonshot AI secured a $35 billion valuation after raising a larger-than-expected $3.5 billion, Bloomberg reported, riding momentum from its Kimi K3 model that sent ripples through Silicon Valley. A reminder the AI race isn't cooling even as the hardware trade wobbles.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/china-s-moonshot-ai-passes-funding-goal-to-hit-35-billion-value" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moonshot AI Surpasses Funding Goal to Hit $35 Billion Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ASMPT chief says AI equipment demand is intact as bubble fears rise</strong></summary>
+      <div class="deal-body">
+        <p>Chip-gear maker ASMPT's top boss said long-term demand for AI-driven equipment remains firmly intact, pushing back against growing investor fears of a bubble. A named industry counterpoint on a day the chip complex is being sold hard.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/asmpt-chief-sees-ai-equipment-demand-intact-as-bubble-fears-rise" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ASMPT Chief Sees AI Equipment Demand Intact as Bubble Fears Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft faces a UK probe over Copilot-linked price hikes</strong></summary>
+      <div class="deal-body">
+        <p>The UK's consumer and antitrust watchdog is investigating whether Microsoft (MSFT) misled customers into paying more for its productivity software after bundling in its Copilot AI product, Bloomberg reported. A regulatory overhang landing the same day Microsoft reports Q4.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/microsoft-faces-uk-probe-over-copilot-linked-price-hikes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Microsoft Faces UK Probe Over Copilot-Linked Price Hikes</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Wednesday July 29, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The noise, or the warning, is that SK Hynix crashed nearly 20% on record profit and a leverage unwind, while NXP and ASM couldn't clear the bar with upbeat guidance, showing how unforgiving the trade has become. The signal underneath is still mixed but not dead: ASMPT says AI-equipment demand is firmly intact, Bloom Energy doubled estimates on data-center pull, Seagate beat, and NextEra and Brookfield committed $100 billion to a Kentucky campus. The frame to watch: whether Microsoft, Meta and Qualcomm tonight prove the capex converts to cash, or whether a soft print confirms Bloomberg's read that the market is losing patience.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Treasury yields edge higher on rising oil ahead of the Fed</strong></summary>
+      <div class="deal-body">
+        <p>Treasury yields rose as fresh military escalation in the Middle East pushed oil prices higher, WSJ reported, with the dollar easing ahead of the interest-rate decision. The move partly unwinds Tuesday's dovish oil read as the war premium comes back.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/jgb-futures-edge-higher-amid-mixed-signals-dbce05cd?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. Treasury Yields Edge Higher on Rising Oil, Dollar Eases Ahead of Fed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A surprise Fed hike can't be ruled out, and the market can't read Warsh</strong></summary>
+      <div class="deal-body">
+        <p>Investor's Business Daily wrote a surprise rate hike can't be ruled out and weighed what it would mean for the S&P 500, while Bloomberg warned Fed watchers to gird for a lesson in reading Warsh in a high-stakes call. The base case is a hold, but conviction is unusually low.</p>
+        <p class="deal-source"><a href="https://www.investors.com/news/federal-reserve-meeting-july-surprise-rate-hike-possible-sp-500/?src=A00220&yptr=yahoo" target="_blank" rel="noopener noreferrer">Source: Investor's Business Daily -- Surprise Fed Rate Hike Can't Be Ruled Out; What It Means for S&P 500</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A US stats change is set to lower the Fed's preferred inflation gauge</strong></summary>
+      <div class="deal-body">
+        <p>Adjustments by the Bureau of Economic Analysis are set to lower the Fed's preferred inflation gauge, FT reported, easing pressure on the central bank to raise rates. A quiet but meaningful dovish tailwind arriving right at decision time.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/bf4c32f3-735d-4742-a5b6-65b404f70cc7?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US Stats Agency Change Set to Lower Fed's Preferred Inflation Gauge</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Australia's unexpectedly soft inflation puts a rate hike in doubt</strong></summary>
+      <div class="deal-body">
+        <p>Australia's core inflation came in cooler than anticipated last quarter, Bloomberg reported, giving the RBA room to assess the outlook and prompting traders to slash bets on another rate hike this year. A dovish read from a central bank that had leaned hawkish.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/australia-core-prices-cooler-than-expected-easing-rba-pressure" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Australia's Unexpectedly Soft Inflation Puts Rate Hike in Doubt</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euro-zone wage growth set to quicken into 2027, ECB says</strong></summary>
+      <div class="deal-body">
+        <p>Euro-area pay growth is poised to accelerate through early 2027 but stay far below prior peaks, the ECB said, as it gauges inflation resulting from the Iran war. A measured read that keeps the ECB cautious without flagging a wage-price spiral.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/euro-zone-wage-growth-set-to-quicken-into-next-year-ecb-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Euro-Zone Wage Growth Set to Quicken Into 2027, ECB Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Singapore upsizes its support package to $1.5 billion amid the oil shock</strong></summary>
+      <div class="deal-body">
+        <p>Singapore is nearly doubling its support package to help households and businesses defray higher costs from a protracted Middle East conflict, Bloomberg reported. A concrete fiscal read on how the oil shock is landing in the real economy.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/singapore-adds-700-million-in-economic-support-from-oil-shock" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Singapore Upsizes Support Package to $1.5 Billion Amid Oil Shock</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump plans a 50% levy on about $20 billion of Canadian imports</strong></summary>
+      <div class="deal-body">
+        <p>Trump plans a 50% tariff on roughly $20 billion of Canadian imports, Bloomberg reported, reopening the trade front just as markets juggle the Fed, oil and AI earnings. Another supply-side inflation risk for the Fed to weigh.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-29/us-and-canada-and-tariffs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US and Canada and Tariffs</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 29, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The dovish tug is Priya Misra saying the urgency to act is low, Esther George expecting a hold, a BEA methodology change that mechanically cools the PCE gauge and a soft Australian print. The hawkish counterweight is oil rallying back toward $90 on the Iran flare-up, inflation stuck at 4.1%, a fresh 50% Canada tariff threat, and Citadel and UBS betting Warsh surprises. The near-term referee is the FOMC itself: a hold validates the dovish read, while a surprise hike confirms the bears and jolts the front end.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Cost of Leverage Turns a Wobble Into a Crash</summary>
+      <p>Yahoo Finance called Wednesday's chip decline a crash exposing the brutal cost of leverage, and South Korea responded by expanding measures to curb retail access to leveraged ETFs after billions were wiped out. Understanding how leverage converts an ordinary disappointment into a violent, self-feeding crash is one of the most useful things a market reader can carry. Start with what leverage does. When you buy a stock with borrowed money, you amplify both gains and losses on the same position. A broker lends against your collateral and sets a maintenance margin, the minimum equity you must keep in the account. As long as the position holds up, nothing happens. But when the price falls enough that your equity drops below that threshold, you get a margin call: post more cash immediately or the broker sells your position to bring you back into compliance. That forced sale is the key mechanic, because it happens regardless of what you think the stock is worth. Now watch how that scales into a crash. When a crowded, heavily leveraged name like SK Hynix disappoints, the first leg down triggers margin calls across thousands of leveraged holders at once. Their forced selling pushes the price lower, which trips the next tier of margin calls, which forces more selling. That is a liquidation cascade: each wave of selling manufactures the next, and the move overshoots far past what the earnings miss alone would justify. MarketWatch tied SK Hynix's slide directly to excessive retail leverage, which is why a merely soft print produced a record 19% one-day drop. Leveraged ETFs pour fuel on this fire through a separate mechanism. A 2x or 3x fund promises a multiple of the daily return, and to keep that multiple it must rebalance its exposure every single day. When the underlying falls, the fund has to sell into the decline to maintain its leverage ratio, mechanically adding to the selling pressure right when the market is already down. That daily rebalancing means these products amplify moves in both directions and can accelerate a rout, which is exactly why Seoul moved to restrict retail access to them. There is a cross-asset echo too: CoinDesk reported that a single leveraged pre-market trade tied to a Korean chip name triggered $60 million in crypto liquidations, a reminder that leverage links markets that look unrelated. The practical lesson is to watch positioning, not just fundamentals, when you assess how far a selloff can run. Ask how leveraged and crowded a name is before an earnings date, because that tells you the size of the potential air pocket. A stock with modest borrowing behind it reprices in an orderly way on a miss; a stock riding heavy margin and leveraged-ETF flows can gap down violently on the same news. The tell that a rout is a leverage cascade rather than a fundamental verdict is speed and overshoot: prices that fall faster and further than the news warrants, then partially snap back once the forced selling exhausts. When you see that pattern, the market is unwinding positions, not repricing the business, and the two require very different responses.</p>
+      <p class="deal-source"><a href="https://finance.yahoo.com/markets/article/the-chip-crash-is-exposing-the-brutal-cost-of-leverage-chart-of-the-day-100000401.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- The Chip Crash Is Exposing the Brutal Cost of Leverage</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">SK Hynix crashed nearly 20% on a record profit that still missed, the Iran ceasefire broke overnight and sent Brent back toward $90, and the Fed decides at 2pm with Citadel and UBS flagging surprise-hike risk before Microsoft, Meta and Qualcomm report tonight; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/27</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/29</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/30</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/31</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin steadies above $64,000 as crypto looks to the Fed decision</strong></summary>
+      <div class="deal-body">
+        <p>BTC added about 0.75% and held above $64,000 ahead of the Fed's rate decision, CoinDesk reported, with inflation at 4.1% keeping a hike firmly on the table even as oil pressures ease and reignite. A calmer read than the AI-hardware complex is getting.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/29/bitcoin-steadies-above-usd64-000-as-crypto-looks-to-fed-interest-rate-decision" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Steadies Above $64,000 as Crypto Looks to Fed Interest-Rate Decision</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin rises as Korea's record chip crash leaves crypto untouched</strong></summary>
+      <div class="deal-body">
+        <p>SK Hynix fell 17% after profit rose 557% and still missed, but bitcoin was up about 1% and Korea's record chip crash left crypto untouched, CoinDesk reported. A relative-strength read that has bulls watching whether crypto keeps decoupling from the AI selloff.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/29/bitcoin-rises-toward-usd64-000-as-korea-s-record-chip-crash-leaves-crypto-untouched" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Rises Toward $64,000 as Korea's Record Chip Crash Leaves Crypto Untouched</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Firm behind the AI trade that caused $60 million in liquidations will cover losses</strong></summary>
+      <div class="deal-body">
+        <p>The company behind an AI-linked trade that triggered $60 million in crypto liquidations will cover all losses, CoinDesk reported, after a single Korean pre-market trade sent the mark price down 19%. The firm says its oracle worked exactly as designed, a vivid case of leverage linking chips and crypto.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/29/company-behind-ai-trade-that-caused-usd60-million-crypto-liquidations-to-cover-all-losses" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Company Behind AI Trade That Caused $60 Million Crypto Liquidations to Cover All Losses</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BNY targets the $8.6 trillion transfer-agency market on blockchain rails</strong></summary>
+      <div class="deal-body">
+        <p>The world's largest custodian, BNY, will add a digital ownership record for tokenized funds while keeping its existing system, targeting the $8.6 trillion transfer-agency market, CoinDesk reported. A major institutional step toward tokenized fund infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/29/bny-targets-usd8-6-trillion-transfer-agency-market-on-blockchain-rails" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BNY Targets $8.6 Trillion Transfer Agency Market on Blockchain Rails</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ionic Digital jumps 26% in a Nasdaq debut, giving Celsius claimholders an exit</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin miner Ionic Digital jumped 26% in its Nasdaq debut, reaching roughly $2.8 billion in market value and handing Celsius Network claimholders an exit route, CoinDesk reported. A rare clean primary-market win on a risk-off day.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/07/29/ionic-digital-jumps-26-in-nasdaq-debut-giving-celsius-network-claimholders-an-exit-route" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Ionic Digital Jumps 26% in Nasdaq Debut, Giving Celsius Network Claimholders an Exit Route</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley debuts ether and solana ETPs after bitcoin-fund success</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley launched low-cost ETH and SOL exchange-traded products after its bitcoin fund topped $381 million in assets, CoinDesk reported. Another sign traditional asset managers keep broadening crypto access even through the volatility.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/28/morgan-stanley-debuts-ether-and-solana-etps-after-bitcoin-fund-success" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Morgan Stanley Debuts Ether, Solana Exchange-Traded Products After Bitcoin Fund Success</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>NextEra / Brookfield -- $100 Billion Kentucky Data-Center Campus</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> NextEra Energy, the largest US power utility, is teaming with Brookfield on a more than $100 billion transformation of a shuttered Cold War uranium-enrichment site in Kentucky into a data-center campus with its own generating plant.</p>
+        <p><strong>Outlook:</strong> The buildout keeps scaling into the physical layer of AI even as public chip stocks sell off, with utilities and asset managers underwriting the power and land.</p>
+        <p><strong>What it means:</strong> The capex commitments are enormous and increasingly power-constrained, which is exactly why the sustainability of AI spending is the debate driving the tape.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/nextera-brookfield-to-build-100-billion-kentucky-data-campus" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- NextEra, Brookfield to Build $100 Billion Kentucky Data Campus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Grant Thornton / CBIZ -- $5 Billion All-Cash Take-Private</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Grant Thornton Advisors agreed to buy publicly listed CBIZ in an all-cash deal FT valued at $5 billion, the accounting sector's largest takeover in a generation.</p>
+        <p><strong>Outlook:</strong> Private-equity-backed consolidation of audit and consulting firms is accelerating as scale and technology investment become table stakes.</p>
+        <p><strong>What it means:</strong> Dealmaking is powering through the volatility, echoing Goldman Sachs' view that corporate confidence in M&A is rising despite the market noise.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/7bb6a7e3-a68d-4b23-aef5-7b93fa21559b?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Grant Thornton Seals Accounting Sector's Largest Takeover in a Generation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jersey Mike's -- $8 Billion IPO After a Blackstone Fast-Track</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> The sandwich chain is set to go public this week at an $8 billion valuation after Blackstone reduced expenses and put it on a fast track, WSJ reported.</p>
+        <p><strong>Outlook:</strong> The IPO window is holding open for well-prepped consumer names even through the risk-off turn in tech.</p>
+        <p><strong>What it means:</strong> A clean test of primary-market appetite for a defensive, cash-generative brand rather than another AI-adjacent listing.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/how-blackstone-put-jersey-mikes-on-a-fast-track-to-this-weeks-ipo-36ac1140?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- How Blackstone Put Jersey Mike's on a Fast Track to This Week's IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Schneider Electric / Shelly -- Smart-Device Maker Acquisition Talks</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Schneider Electric is in talks to acquire Shelly Group, a maker of smart devices for the home, according to people familiar with the matter.</p>
+        <p><strong>Outlook:</strong> Industrial giants keep buying into connected-home and energy-management technology to broaden their software and hardware reach.</p>
+        <p><strong>What it means:</strong> Another strategic bolt-on that shows corporate M&A appetite intact across sectors well beyond AI.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/schneider-electric-in-talks-to-buy-smart-device-maker-shelly" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Schneider Electric in Talks to Buy Smart Device Maker Shelly</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Verizon / Eaton Fiber -- $1.5 Billion Network Investment</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Bain Capital and Tillman Global Holdings are making a $1.5 billion investment in Eaton Fiber, a telecom operator supplying fiber-optic capacity to Verizon.</p>
+        <p><strong>Outlook:</strong> Private capital keeps funding the fiber backbone that underpins data traffic and, increasingly, AI connectivity.</p>
+        <p><strong>What it means:</strong> Infrastructure money is flowing into the plumbing beneath the AI boom, not just the data centers themselves.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/verizon-fiber-partners-to-invest-1-5-billion-in-network-venture" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Verizon Fiber Partners to Invest $1.5 Billion in Network Venture</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Citadel Securities -- still betting on a surprise Fed hike under Warsh</strong></summary>
+      <div class="deal-body">
+        <p>Citadel Securities' macro team says Wednesday's hike isn't about the data, it's about Warsh's best shot at making a surprise count before the market stops being surprised, CoinDesk reported, with UBS also flagging the risk. A high-conviction named call against the market's dovish read.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/29/citadel-bets-on-a-fed-rate-hike-wednesday-as-bitcoin-analysts-call-a-hold-someone-will-be-wrong" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Citadel Bets on a Fed Rate Hike Wednesday as Bitcoin Analysts Call a Hold</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan's Priya Misra -- the urgency for the Fed to act is low</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan Asset Management portfolio manager Priya Misra said the urgency for the Fed to act is low and looked ahead to how many dissents the decision could draw, Bloomberg reported. A named dovish read that expects a hold with internal disagreement.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-29/urgency-for-fed-to-act-is-low-misra-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Urgency for Fed to Act Is Low: Misra</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>HSBC's Max Kettner -- time to go all-in on stocks</strong></summary>
+      <div class="deal-body">
+        <p>HSBC strategists led by Max Kettner are betting on equities, arguing nothing seems to shake this market and that stocks have stayed resilient through geopolitical volatility and the tech pullback, MarketWatch reported. A named bull holding the line as chips crater.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/oil-is-up-40-and-tech-is-tumbling-why-its-time-to-go-all-in-on-stocks-according-to-these-bullish-strategists-41d812f7?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why It's Time to Go All-In on Stocks, According to These Bullish Strategists</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MFS's Robert Almeida -- a profit squeeze is coming for tech</strong></summary>
+      <div class="deal-body">
+        <p>MFS Investment Management's chief global investment strategist Robert Almeida said investors are focusing too much on the Fed when the real story is a shift in the capital cycle, and he's betting on unglamorous, non-tech stocks instead, MarketWatch reported. A named bear on Big Tech margins.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/a-profit-squeeze-is-coming-for-tech-this-manager-is-betting-on-these-unglamorous-stocks-instead-ea19a2ab?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- A Profit Squeeze Is Coming for Tech. This Manager Is Betting on These Unglamorous Stocks Instead</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Esther George -- inflation could let the Fed wait on hikes</strong></summary>
+      <div class="deal-body">
+        <p>Former Kansas City Fed President Esther George expects the Fed to hold steady, though she remains concerned about how long elevated inflation persists, Bloomberg reported. A named read from a former policymaker that leans toward patience over a hike.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-29/esther-george-says-inflation-could-let-fed-wait-on-hikes-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Inflation Could Let Fed Wait on Hikes, Esther George Says</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as SK Hynix's Miss Deepens the Chip Rout, Oil Rallies Back Toward $90 on the Iran Flare-Up, and the Fed Decides Into a Split Between Citadel's Surprise-Hike Call and JPMorgan's Low-Urgency Hold</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (buy the resilience):</strong> HSBC's Max Kettner says nothing shakes this market and it's time to go all-in on stocks, JPMorgan's Priya Misra sees low urgency for the Fed to act, and Esther George expects a hold. ASMPT says AI-equipment demand is firmly intact, the FTSE 100 hit a record on banks and oil, and value is beating growth. Money is rotating, not fleeing, and the buildout keeps scaling with NextEra's $100 billion campus.</div>
+        <div class="bear"><strong>Bear (the squeeze is coming):</strong> MFS's Robert Almeida warns a profit squeeze is coming for tech and is buying unglamorous names instead, and Citadel Securities plus UBS expect a surprise Warsh hike. SK Hynix crashed on record profit, NXP and ASM guidance couldn't clear the bar, oil is back toward $90, and Bloomberg says the market is losing patience with Big Tech spending right before Microsoft and Meta report.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>SK Hynix -19% on record profit miss; leverage cascade; Iran hits US bases; oil back to $90; Microsoft/Meta tonight</td><td>Bearish</td><td>~25,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Ford beat and upgrade; P&G revenue miss; Bloom Energy surge; Visa cuts 7%; FTSE record; value beats growth</td><td>Cautious</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Fed decision day; Citadel/UBS surprise-hike risk; Priya Misra low urgency; BEA stats change cools PCE gauge</td><td>Cautious</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Record profit still a disappointment; expectations vs results; NextEra $100B campus; MFS tech profit-squeeze call</td><td>Analytical</td><td>~8,500 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds above $64K as chips crash; Fed pivotal for BTC; $60M AI-trade liquidations covered; Morgan Stanley ETPs</td><td>Neutral</td><td>~12,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood stayed risk-off but split. r/wallstreetbets fixated on SK Hynix crashing nearly 20% on record profit, the leverage cascade and Iran striking US bases, with the Fed and tonight's earnings as the pressure points. r/stocks leaned into the rotation, cheering Ford's beat and Bloom Energy's surge against P&G's revenue miss and Visa's layoffs. r/investing weighed Citadel and UBS's surprise-hike risk against Priya Misra's low-urgency hold and the BEA stats change. r/SecurityAnalysis dug into how a record profit can still be a disappointment. r/CryptoCurrency was oddly calm as bitcoin held above $64,000 while chips bled. The swing factor is whether Warsh and the Big Tech prints calm the panic or confirm it.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a "Live" Central-Bank Meeting Freezes Markets, and How Traders Price a Decision They Can't Predict</h2>
+    <p>Bloomberg told Fed watchers to gird for a lesson in reading Warsh, and Priya Misra framed the whole session around how many dissents the decision might draw. The base case is a hold, but Citadel Securities and UBS think a surprise hike is genuinely possible, and inflation at 4.1% keeps it on the table. When a meeting is described as "live," it means the outcome is truly uncertain, and understanding how markets behave into that uncertainty explains why the tape wavers, why stocks wobble sideways, and why the reaction afterward can be violent. Start with how markets normally price a central-bank meeting. Most of the time, the decision is a near-certainty well in advance, because the central bank telegraphs it through speeches, guidance and data. Rate futures and the bond market embed that expectation, so by decision day the outcome is already in the price and the event itself is a non-event. The market has done its homework and moved on. A live meeting breaks that machinery. When officials give little guidance, as Bloomberg says Warsh has, the market cannot converge on a single expected outcome. Instead it has to hold two incompatible scenarios at once: a hold, which is dovish and would lift bonds and rate-sensitive stocks, and a hike, which is hawkish and would do the opposite. Because nobody can price both at full weight, traders reduce risk. They cut position sizes, hold more cash and stop making big directional bets, which is exactly why Bloomberg described stocks merely wavering ahead of the call. That paralysis is rational: the payoff of guessing wrong is large, so the safest move is to wait. This is also why implied volatility rises into a live meeting. Options prices reflect the market's expected range of outcomes, and when two very different results are both plausible, the priced-in range widens. Traders pay up for protection against a surprise, which lifts volatility gauges even before anything happens. The uncertainty itself has a cost, and you can see it in option premiums. Now consider the mechanics of the reaction. Because the market is split, whichever way the decision lands, a large group of positions is offside and has to adjust at once. If Warsh holds, the hike-hedgers unwind their protection and rate-sensitive assets rally as the dovish outcome gets fully priced. If he hikes, the opposite cascade fires. This is why live meetings produce outsized moves: the surprise forces a rapid repricing that a well-telegraphed decision never would. The size of the move is proportional to how split the market was going in. There is a subtlety specific to Warsh's situation. Citadel's argument is not that the data demands a hike, but that a surprise only works while the market can still be surprised, so a new chair has a narrow window to establish credibility. That is a reminder that central banks sometimes act for signaling reasons, not just mechanical ones, which makes a low-information chair even harder to read. The practical lesson: into a genuinely live meeting, expect thin conviction, wider ranges and a sharp move on the release. Watch rate futures for the implied hold-versus-hike odds, watch volatility gauges for how much surprise is priced, and size positions for the fact that you, like the market, cannot know the answer in advance.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-29/fed-watchers-gird-for-a-lesson-on-reading-warsh-in-high-stakes-rate-call" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Watchers Gird for a Lesson on Reading Warsh in High-Stakes Rate Call</a></p>
+    <p class="deal-source"><a href="https://www.investors.com/news/federal-reserve-meeting-july-surprise-rate-hike-possible-sp-500/?src=A00220&yptr=yahoo" target="_blank" rel="noopener noreferrer">Source: Investor's Business Daily -- Surprise Fed Rate Hike Can't Be Ruled Out; What It Means for S&P 500</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Fed decision (Wednesday, July 29, 2pm ET).</strong> A hold is expected but Citadel Securities and UBS flag surprise-hike risk; watch how Warsh frames the oil bounce against 4.1% inflation, how many dissents appear, and whether the BEA stats change tempers the tone.</li>
+      <li><strong>Core PCE and the BEA methodology shift.</strong> With FT reporting the stats change is set to lower the Fed's preferred gauge, watch whether the revised print eases the pressure to raise even as oil climbs.</li>
+      <li><strong>Jobs and month-end (Friday, July 31).</strong> Month-end rebalancing meets the payrolls read; watch whether the labor market gives the Fed cover to stay patient into August.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Microsoft, Meta and Qualcomm (tonight).</strong> Bloomberg frames them as the test of a market losing patience with AI spending; watch Azure and cloud growth, capex guidance and cash positions for proof the spend converts to cash.</li>
+      <li><strong>Amazon and Apple (Thursday).</strong> With Meta paying up on data-center debt and the chip complex cracking, watch AWS margins and capex plans for any wobble that broadens the selloff.</li>
+      <li><strong>Chip and hardware names.</strong> After SK Hynix's crash and tepid NXP and ASM reactions, watch how the memory and equipment makers guide and whether Seagate's and Bloom Energy's beats mark durable demand.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>IPO pipeline.</strong> Jersey Mike's $8 billion listing and Ionic Digital's Nasdaq pop test whether the primary window holds open through the risk-off turn.</li>
+      <li><strong>AI infra financing.</strong> NextEra and Brookfield's $100 billion Kentucky campus and Verizon's $1.5 billion fiber venture test whether debt costs keep rising as the AI capex debate sharpens.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran escalation.</strong> Iran struck US bases and Trump vowed a beating; watch whether the retaliation stays contained or sends Brent through $90, and whether Hormuz reopens for LNG flows.</li>
+      <li><strong>US-China tech curbs.</strong> Washington tightened restrictions on foreign robots and inverters weeks before a leaders' meeting; watch for escalation risk and the inflation read-through.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Jul 29, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-07-29 08:44 ET); Bloomberg Technology (20 fresh, newest 2026-07-29 07:25 ET); Bloomberg Economics (20 fresh, newest 2026-07-29 07:50 ET); CNBC Top News (11 fresh, newest 2026-07-29 08:04 ET); CNBC Finance (4 fresh, newest 2026-07-28 14:27 ET); MarketWatch Top Stories (10 fresh, newest 2026-07-29 08:30 ET); WSJ Markets (21 fresh, newest 2026-07-29 08:43 ET); Yahoo Finance (24 fresh, newest 2026-07-29 08:43 ET); FT Home (10 fresh, newest 2026-07-29 08:41 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-28 14:07 ET); CoinDesk (25 fresh, newest 2026-07-29 08:18 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): CNBC Economy (25 fetched, 0 in last 36h); Stratechery (10 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What broke the recent oil calm on Wednesday?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC+ agreed to boost its output sharply</span>
+      <span class="opt" data-opt="B">B. US crude inventories jumped to a record</span>
+      <span class="opt" data-opt="C">C. Iran struck US bases and drew retaliation</span>
+      <span class="opt" data-opt="D">D. China canceled its long-term supply contracts</span>
+      <div class="feedback"><strong>C is correct.</strong> FT and MarketWatch said Iran fired missiles at US bases, the US and Saudi Arabia hit Iran-backed militias in Iraq, and Brent rallied toward $90. OPEC+ made no output boost, inventories set no record, and China canceled nothing.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. Why did SK Hynix shares crash despite huge results?</strong></p>
+      <span class="opt" data-opt="A">A. Its record profit still missed analyst estimates</span>
+      <span class="opt" data-opt="B">B. It slashed its planned capital spending sharply</span>
+      <span class="opt" data-opt="C">C. China banned all imports of its memory chips</span>
+      <span class="opt" data-opt="D">D. It reported a surprise quarterly operating loss</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg and WSJ said profit rose 557% to record levels but still fell short of aggressive estimates, and the stock fell a record 19%. It actually raised capex to $31 billion, faced no import ban, and did not post a loss.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What is the Fed expected to do at Wednesday's meeting?</strong></p>
+      <span class="opt" data-opt="A">A. Deliver an immediate half-point rate cut</span>
+      <span class="opt" data-opt="B">B. It quietly raised rates before the meeting</span>
+      <span class="opt" data-opt="C">C. Accelerate its balance-sheet runoff plans</span>
+      <span class="opt" data-opt="D">D. Hold, though a surprise hike stays possible</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg says the base case is a hold, but Citadel Securities and UBS flag real surprise-hike risk under Warsh with inflation at 4.1%. There was no cut, no pre-meeting hike, and no balance-sheet acceleration.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasury yields edged higher into a live Fed decision as the Iran flare-up sent oil back up, with Citadel Securities and UBS flagging surprise-hike risk under Warsh while JPMorgan's Priya Misra says the urgency to act is low, Esther George expects a hold, and a US statistics change is set to lower the Fed's preferred inflation gauge.",
+    "sources": [
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/jgb-futures-edge-higher-amid-mixed-signals-dbce05cd?mod=rss_markets_main", "take": "Treasury yields rise on rising oil as the dollar eases ahead of the Fed." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-07-29/fed-watchers-gird-for-a-lesson-on-reading-warsh-in-high-stakes-rate-call", "take": "A hold is expected but a hike can't be ruled out under Warsh." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-07-29/urgency-for-fed-to-act-is-low-misra-video", "take": "JPMorgan's Priya Misra says the urgency to act is low." },
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/bf4c32f3-735d-4742-a5b6-65b404f70cc7?syn-25a6b1a6=1", "take": "A US stats change is set to lower the Fed's preferred inflation gauge." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-29/australia-core-prices-cooler-than-expected-easing-rba-pressure", "take": "Australia's soft inflation slashes RBA hike bets." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil rallied back toward $90 as the ceasefire cracked overnight, with Iran firing ballistic missiles at US bases, the US and Saudi Arabia striking Iran-backed militias in Iraq and Trump vowing a beating, while Ukraine hit two Russian refineries, wheat climbed a second day, and Pakistan and Bangladesh paid $1 billion more for LNG with Hormuz still closed.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/oil-prices-rise-after-u-s-and-saudi-arabia-attack-iran-backed-militias-in-iraq-f0f409ea?mod=mw_rss_topstories", "take": "Oil rises after the US and Saudi Arabia attack Iran-backed militias." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/b2fe912f-01ef-4daa-874e-a180dfeb728c?syn-25a6b1a6=1", "take": "Trump vows a beating for Iran after ballistic-missile strikes on US bases." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-29/ukraine-says-it-hit-major-rosneft-refinery-in-russia-s-ryazan", "take": "Ukraine hits two major Russian oil refineries after a short lull." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-07-29/pakistan-bangladesh-pay-1-billion-more-for-lng-as-hormuz-stays-closed", "take": "Pakistan and Bangladesh pay $1 billion more for LNG with Hormuz closed." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/business/energy-oil/how-china-went-from-dream-customer-to-a-nightmare-for-big-oil-e2d0260a?mod=rss_markets_main", "take": "China's crude demand is far more flexible than the market thought." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI-chip rout deepened as SK Hynix crashed nearly 20% despite a 557% profit surge because even $64 billion still missed estimates, with Microsoft, Meta and Qualcomm reporting tonight into a market growing skeptical of Big Tech's spending, while NextEra and Brookfield planned a $100 billion Kentucky data campus and ASMPT insisted AI equipment demand is intact.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-07-29/sk-hynix-drops-as-profit-disappoints-video", "take": "SK Hynix slides a record 19% as profit disappoints." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/tech/even-64-billion-in-quarterly-profit-is-a-disappointment-for-chip-investors-91dcb5c4?mod=rss_markets_main", "take": "Even $64 billion in quarterly profit disappoints chip investors." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-29/microsoft-meta-earnings-face-a-market-growing-skeptical-of-ai", "take": "Microsoft and Meta earnings face a market growing skeptical of AI." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-29/asmpt-chief-sees-ai-equipment-demand-intact-as-bubble-fears-rise", "take": "ASMPT chief sees AI equipment demand intact as bubble fears rise." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-29/nextera-brookfield-to-build-100-billion-kentucky-data-campus", "take": "NextEra and Brookfield plan a $100 billion Kentucky data campus." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["SK Hynix","Samsung","Micron","NXP","Seagate","Bloom Energy"],
+    "values": [-17.0, -5.5, -4.0, -3.2, 6.5, 12.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [25000, 15000, 14000, 8500, 12000],
+    "colors": ["bear","neutral","neutral","neutral","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["NextEra-Brookfield campus","Jersey Mike's IPO","Grant Thornton/CBIZ","Verizon Eaton Fiber"],
+    "values": [100, 8, 5, 1.5]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
