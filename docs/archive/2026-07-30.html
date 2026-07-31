@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Jul 30, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-30</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, July 30, 2026</h1>
+    <div class="meta">
+      <p>It's the morning after the Fed. Warsh held rates in a divided 9-3 vote, but his stripped-back press conference backfired and long-dated Treasury yields ripped to a 19-year high as investors doubt his resolve on inflation. The US launched a fresh wave of strikes on Iran overnight and oil jumped roughly 8%, while Microsoft's blowout cloud print and Meta's ballooning AI spend split Big Tech ahead of Apple and Amazon tonight.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The Fed held rates in a divided 9-3 vote, but Warsh's stripped-back press conference backfired and long-dated Treasury yields surged to a 19-year high as investors question whether the new chair will actually fight inflation",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Warsh's Posture on Interest Rates Sparks Market Inflation Fears", "angle": "Frames the selloff as a credibility problem, with the Dow down more than 2% after Warsh said rising bond yields already lifted borrowing costs.", "lean": -45, "pull": "Dow slides more than 2% after Fed chairman says rising bond yields have already lifted borrowing costs."},
+        {"outlet": "Financial Times", "headline": "US Borrowing Costs Hit 19-Year High as Fed Defies Inflation Fears", "angle": "Leads with the long end, arguing Warsh's minimal communication is eroding the Fed's influence on the Treasury market.", "lean": -40, "pull": "Central bank holds rates even as investors worry Iran war will ignite jolt of price growth."},
+        {"outlet": "Bloomberg", "headline": "Fed's Warsh Rebuked by Investors Craving a Real Inflation Fight", "angle": "Casts the bond dump as a market demand that Warsh back words with hikes, and flags PGIM's call for three September moves.", "lean": -50, "pull": "Warsh's bare-bones communication style has left investors doubting his commitment to curb inflation."},
+        {"outlet": "CNBC", "headline": "Divided Fed Holds Interest Rates Steady, but Three Members Voted to Hike", "angle": "Plays it straight on the 9-3 split, noting rising internal support for an increase even as the base case held.", "lean": -20, "pull": "Despite increasing support for a rate increase, the FOMC voted 9-3 to leave the federal funds rate unchanged."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Fed Held Rates in a Divided 9-3 Vote but Warsh's Bare-Bones Press Conference Backfired, Sending Long-Dated Treasury Yields to a 19-Year High as Jeffrey Gundlach Says the Bond Market Is Telling the Fed to Act and PGIM's Katharine Neiss Sees Three September Hikes, While the BOE Held 6-3 and the Euro Zone Posted Its Fastest Growth in Over a Year</h3>
+      </div>
+      <p>The live meeting resolved into the worst of both worlds for bonds. CNBC said the FOMC voted 9-3 to hold in a range of 3.5% to 3.75%, with three members dissenting to hike, but WSJ reported the Dow slid more than 2% after Warsh argued rising bond yields have already tightened financial conditions for him. FT said Warsh's stripped-back communication is already backfiring, eroding the Fed's grip on the Treasury market, and Bloomberg framed it as investors rebuking a chair who won't commit to a real inflation fight. The result was a long-end revolt: WSJ and Bloomberg both flagged the 30-year yield hitting a 19-year high, and Treasuries kept sliding this morning as traders brace for a key inflation print. The named bears are loud. CNBC reported Jeffrey Gundlach saying the divergent curve moves show the bond market is telling Warsh the Fed has to act, and PGIM's Katharine Neiss called the briefing weaker than expected and now sees a hawkish tilt with three sequential September hikes. Bloomberg said doubts about the Fed are pushing some funds toward Australia and Europe over Treasuries. The offset is abroad: the Bank of England held at 3.75% in a 6-3 vote as UK price pressures ease faster than expected, and the euro zone posted its fastest growth in over a year despite the Iran war.</p>
+      <p>The bull case for calmer yields is a BOE that's easing off, a euro zone shrugging off the oil shock, and a Fed content to wait. The bear case is a 19-year-high long end, Gundlach and PGIM demanding hikes, and a chair whose communication is bleeding credibility.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (patience is defensible):</strong> The BOE held at 3.75% in a 6-3 vote as domestic price pressures ease faster than predicted, and the euro area just posted its fastest growth in over a year while weathering the Iran war. If oil's spike proves transitory and the coming inflation print cooperates, the long-end selloff looks like an overshoot rather than a durable repricing, and Warsh's hold gets validated. Microsoft's strong print already lifted risk sentiment overnight.</div>
+        <div class="bear"><strong>Bear (the bond market is revolting):</strong> WSJ and FT flag the 30-year yield at a 19-year high after Warsh's press conference confused traders, and Bloomberg says investors are rebuking a chair who won't commit to fighting inflation. Jeffrey Gundlach says the curve is telling the Fed to act, PGIM's Katharine Neiss sees three September hikes, and funds are rotating out of Treasuries into Australia and Europe. Oil up 8% and the Iran war only sharpen the inflation fear.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-29/fed-s-warsh-rebuked-by-investors-craving-a-real-inflation-fight" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Warsh Rebuked by Investors Craving a Real Inflation Fight</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Jumps About 8% Overnight as the US Launches a Fresh Wave of Strikes on Iran After an Attack on American Forces in Jordan, With Iran Hitting Kuwait, Jordan Intercepting Five Missiles and the Conflict Widening Across the Region, While Saudi Arabia's Economy Contracts the Most Since 2020, Japan Trims Its Outlook, and Pakistan Wins Safe Passage for a Single LNG Cargo</h3>
+      </div>
+      <p>The war premium exploded again. Bloomberg reported the US hit dozens of military targets in a fresh wave of strikes on Iran in response to an attack on American forces in Jordan, and FT said the assault came a day after Tehran fired ballistic missiles at US bases and Trump vowed to deliver a beating. The conflict is spreading: Iran targeted a building in northern Kuwait, Jordan intercepted five missiles, and Bloomberg said oil held onto its overnight surge with fresh attacks also hitting ships loading Kazakh crude from a key Black Sea terminal. CoinDesk pegged the overnight oil move at roughly 8%. The macro damage is piling up: Bloomberg reported Saudi Arabia's economy posted its deepest quarterly contraction since the Covid pandemic as oil exports slumped, Japan trimmed its growth forecast on higher oil, India's finance ministry flagged renewed fiscal risks, and Ethiopian Airlines expects its revenue growth to halve. The lone de-escalation thread: Bloomberg said Pakistan negotiated with Iran to secure safe passage for at least one Qatari LNG shipment, a narrow diplomatic opening. WSJ separately argued China's crude demand is far more flexible than the market assumes, a longer-term cap on how high prices can run.</p>
+      <p>The bull read is that back channels are still open, Pakistan won safe passage, and China's flexible demand caps the upside. The bear read is that the US and Iran are now trading direct strikes, the conflict is spilling into Jordan and Kuwait, and oil up 8% is feeding straight into the inflation fear driving the bond selloff.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (channels are still open):</strong> Pakistan negotiated directly with Iran to secure safe passage for a Qatari LNG cargo, a sign diplomacy hasn't collapsed entirely. WSJ argues China's crude demand is far more flexible than the market assumes, which caps how high prices can climb. If the strikes stay tit-for-tat rather than escalating into a sustained campaign, the 8% oil spike fades and the inflation impulse the bond market fears drains back out.</div>
+        <div class="bear"><strong>Bear (direct fire, widening war):</strong> The US launched a fresh wave of strikes on dozens of Iranian targets after an attack on American forces in Jordan, and the fighting is spreading to Kuwait and Jordan. Oil jumped about 8% overnight, Saudi Arabia's economy contracted the most since 2020, Japan cut its outlook, and India flagged fiscal risk. Attacks are also hitting Black Sea crude loadings. The whole complex is repricing a widening war, not a truce.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/42e83b67-cfb8-46af-b50e-3ac77748ce38?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US Launches Strikes on Iran After Trump Vows to Deliver 'Beating'</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Big Tech Splits on the AI Trade as Microsoft Rallies Nearly 10% on Its Fastest Cloud Growth in Four Years While Holding the Line on Spending, but Meta Slides on the Lowest Free Cash Flow in Years and a Weak Revenue Forecast, With Samsung's Chip Profit Soaring 250-Fold on Worsening Memory Shortages and Apple and Amazon Set to Report Tonight</h3>
+      </div>
+      <p>The night's earnings drew a sharp line through the AI trade. Bloomberg said Microsoft's cloud unit grew at its fastest clip since 2022 with the pace still accelerating, and the stock jumped nearly 10% premarket as it held the line on spending, dragging Micron and Nvidia up with it and pulling S&P 500 futures higher. Meta went the other way: Bloomberg said Zuckerberg defended his AI bets to skeptical investors after a disappointing revenue forecast and the lowest free cash flow in years, and WSJ wrote that Meta's case for its spending keeps getting weaker as higher costs, borrowing constraints and pushback mount. FT said Meta shares tumbled as Zuckerberg tried to sell a vision built on personalized AI agents. The chip picture is split too: Bloomberg reported Samsung's semiconductor profit soared more than 250-fold and the company now expects memory shortages to worsen next year, yet MarketWatch noted the shares still can't catch a break amid doubts about the capex boom's longevity and cheap Chinese competition. Qualcomm gave a tepid forecast, Arm's beat left investors unmoved, and FT captured the Korean retail carnage under the headline "my life's screwed." The buildout keeps scaling anyway: the EU pledged €10 billion for new AI data centers and cloud provider Nscale agreed to buy Anyscale for $1.65 billion. Apple and Amazon report tonight as the next test.</p>
+      <p>The bulls point to Microsoft proving capex converts to cloud growth, Samsung's 250-fold surge and worsening shortages, and the EU's €10 billion commitment. The bears point to Meta's weakening case, tepid Qualcomm and Arm reactions, the Korean retail wipeout and BTIG's warning that any tech rebound could be a trap.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the spend is paying off):</strong> Microsoft's cloud grew at its fastest pace since 2022 while it held the line on spending, and the stock rallied nearly 10% and lifted Micron and Nvidia with it. Samsung's chip profit soared more than 250-fold and it sees memory shortages worsening into next year, the EU committed €10 billion to new AI data centers, and Nscale is buying Anyscale for $1.65 billion. When capex converts to cloud growth, the trade re-rates higher.</div>
+        <div class="bear"><strong>Bear (the bill is coming due):</strong> WSJ says Meta's case for its AI spending keeps getting weaker as costs climb and borrowing tightens, and the company posted its lowest free cash flow in years on a soft revenue forecast. Qualcomm guided tepidly, Arm's beat moved nobody, Samsung shares still can't rally on a record, and FT captured Korean retail despair. BTIG's Jonathan Krinsky warns a quick tech rebound could be a trap that opens another leg down.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/tech/ai/metas-case-for-its-ai-spending-keeps-getting-weaker-aa4b9a5c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Meta's Case for Its AI Spending Keeps Getting Weaker</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks gain as Microsoft results ease AI worries</strong></summary>
+      <div class="deal-body">
+        <p>US stock futures rose as strong growth at Microsoft (MSFT) reassured investors that expensive AI bets are starting to pay off, Bloomberg reported, outweighing inflation worries that are keeping 30-year Treasury yields elevated. S&P 500 futures were up about 0.7% into the open even as the long end kept selling off.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Gain as Microsoft Results Ease AI Worries</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta tumbles as Zuckerberg defends AI spend to skeptical investors</strong></summary>
+      <div class="deal-body">
+        <p>Meta (META) fell after giving a disappointing quarterly revenue forecast and posting its lowest free cash flow in years, Bloomberg reported, stepping up pressure on Zuckerberg to show the massive AI outlay is paying off. FT said the CEO leaned on a vision of personalized AI agents to justify the ballooning costs.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/06d941ed-8136-46a4-a2ec-44bea1b35c3b?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Meta Shares Tumble as Zuckerberg Tries to Sell His Vision for AI 'Agents'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Starbucks jumps as it raises its full-year outlook</strong></summary>
+      <div class="deal-body">
+        <p>Starbucks (SBUX) stock jumped after posting its fourth straight quarter of same-store sales growth and raising full-year guidance, CNBC reported, as the turnaround under CEO Brian Niccol gains traction. A clean consumer bright spot on a session dominated by AI and rates.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/29/starbucks-sbux-q3-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Starbucks Stock Jumps as Coffee Giant Raises Full-Year Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Carvana falls as 2026 guidance misses even after record quarter</strong></summary>
+      <div class="deal-body">
+        <p>Carvana (CVNA) shares fell after the auto retailer's full-year earnings guidance of $2.7 billion to $3 billion came in below Wall Street expectations, CNBC reported, despite record second-quarter results. A classic case of a strong print undercut by soft forward guidance.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/29/carvana-cvna-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Carvana Stock Falls as 2026 Earnings Guidance Misses Wall Street's Expectations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chipotle lifts same-store forecast but flags cyclospora hit</strong></summary>
+      <div class="deal-body">
+        <p>Chipotle (CMG) raised its same-store sales forecast but said cyclospora fears tied to a broader outbreak dented sales in late July, CNBC reported. The stock is down more than 7% this year, dragging its market value to roughly $44 billion.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/29/chipotle-mexican-grill-cmg-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Chipotle Hikes Same-Store Sales Forecast, Says Cyclospora Fears Hit Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hims and Hers falls 10% as the FTC sues over data and billing</strong></summary>
+      <div class="deal-body">
+        <p>Hims and Hers (HIMS) shares fell 10% after the FTC sued the company over alleged health-data sharing with Meta and Snap, billing practices and subscription cancellations, CNBC reported. A sharp regulatory hit to a high-flying telehealth name.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/29/hims-and-hers-ftc-lawsuit-stock.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Hims and Hers Shares Fall 10% as FTC Sues Company Over Data, Billing Practices</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ferrari raises guidance as special models drive results</strong></summary>
+      <div class="deal-body">
+        <p>Ferrari (RACE) raised full-year guidance as demand for limited-run models like the F80 and a pricier version of its Purosangue drove higher second-quarter results, Bloomberg reported. A luxury standout that keeps proving pricing power holds at the very top end.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/ferrari-lifts-profit-guidance-as-special-models-drive-results" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ferrari Sees Higher Earnings as Special Models Drive Results</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape is split three ways this morning. Microsoft's cloud beat is lifting the S&P 500 and dragging Nvidia and Micron up, but the 30-year yield sitting at a 19-year high is a headwind for everything long-duration, and Meta's slide shows the AI trade is no longer a monolith. The signal is that investors are now rewarding capex that visibly converts to revenue and punishing capex that doesn't. The real tests land tonight with Apple and Amazon, where AWS margins and iPhone demand meet a market that has turned surgical about which AI bets it will pay for.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Microsoft Soared and Meta Sank on the Same AI Story</summary>
+      <p>Both companies are spending enormous sums on AI, both reported after the close Wednesday, and yet Microsoft jumped nearly 10% while Meta tumbled. Understanding why the same underlying story produced opposite reactions is the key to reading this earnings season. The market is not asking who is spending the most on AI. It spent the past year asking exactly that, and the answer stopped being interesting. The question now is whether the spending is converting into revenue you can see, and the two prints answered it in opposite directions. Start with the mechanism that matters most: the relationship between capital expenditure and cash flow. When a company pours money into data centers and chips, that spending shows up immediately as a cash outflow and, over time, as depreciation that weighs on reported earnings. The bet is that the capacity will generate enough new revenue to more than repay the outlay. The market's job is to judge whether that payoff is arriving. Microsoft gave it proof: Bloomberg reported the cloud unit grew at its fastest pace since 2022 with the pace still accelerating, which means the capacity Microsoft built is being rented out and converting into recurring revenue. Crucially, Microsoft also held the line on spending, so investors saw growth accelerating without the cash burn getting worse. That combination, faster revenue and disciplined outlay, is exactly what a maturing capex cycle is supposed to look like, and the stock re-rated higher. Meta showed the opposite pattern. Bloomberg said it posted its lowest free cash flow in years alongside a disappointing revenue forecast, and WSJ argued its case for the spending keeps getting weaker as costs climb and borrowing tightens. Free cash flow is what's left after the capex is paid for, so a multi-year low means the spending is outrunning the cash the business generates. Worse, the revenue guidance was soft, so investors could not point to accelerating sales as the payoff. Zuckerberg's answer, per FT, was a vision of personalized AI agents, which is a promise about the future rather than a number in the present. Markets discount promises heavily when cash flow is falling and the cost of borrowing to fund the gap is rising. The practical lesson is to separate the spending from the return every time a heavy investor reports. Ask two questions. First, is revenue growth accelerating in the exact segment the capex feeds, which for Microsoft is cloud and for Meta is advertising and any new AI business? Second, what is happening to free cash flow, because that tells you whether the company is funding the buildout from its own operations or leaning on debt and reserves? When growth accelerates and free cash flow holds, the market pays up. When free cash flow craters and the payoff is still a slide-deck vision, it sells, no matter how large the reported profit. Apple and Amazon report tonight, and the same lens applies: watch whether AWS growth and margins justify the spend, not just the headline number.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/microsoft-reports-quarterly-cloud-revenue-that-beat-estimates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Microsoft's Cloud Accelerates to Fastest Growth Since 2022</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Microsoft's cloud accelerates to fastest growth since 2022</strong></summary>
+      <div class="deal-body">
+        <p>Microsoft (MSFT) reported cloud revenue that beat estimates, with the unit growing at its fastest clip in four years and the pace still accelerating, Bloomberg reported. It suggests the company's AI and computing services are making real inroads with customers, and the stock jumped about 9.8% premarket.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/futures-climb-with-boost-from-microsoft-s-surging-cloud-growth" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Futures Climb With Boost From Microsoft's Surging Cloud Growth</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Samsung's chip profit soars 250-fold on memory shortages</strong></summary>
+      <div class="deal-body">
+        <p>Samsung Electronics posted a more than 250-fold surge in chip profits, with quarterly operating income of 89.2 trillion won, and now expects memory shortages to worsen next year, Bloomberg reported. Yet MarketWatch noted the shares still can't catch a break amid doubts about the AI capex boom's longevity and cheap Chinese competition.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/samsung-s-chip-profit-soars-over-250-fold-on-ai-memory-shortages" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Samsung Chip Profit Soars 250-Fold During Relentless AI Buildout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Qualcomm gives a tepid profit forecast in a sign of phone woes</strong></summary>
+      <div class="deal-body">
+        <p>Qualcomm (QCOM), the largest maker of smartphone processors, gave a weak profit forecast for the current quarter, Bloomberg reported, signaling that component shortages and rising costs are taking a toll on its main market. Another chip name that couldn't clear the bar.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/qualcomm-profit-forecast-misses-estimates-in-sign-of-phone-woes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Qualcomm Gives Tepid Profit Forecast in Sign of Phone Woes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Arm's beat leaves investors unmoved on smartphone sluggishness</strong></summary>
+      <div class="deal-body">
+        <p>Arm Holdings (ARM) shares slid despite topping estimates after the company pointed to sluggishness in the smartphone industry, Bloomberg reported, overshadowing a lucrative push into data-center technology. A reminder that beats no longer guarantee a pop in chips.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-29/arm-outlook-leaves-investors-unmoved-despite-topping-estimates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Arm Earnings Leave Investors Unmoved Despite Topping Estimates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apple's earnings tonight test its status as the AI safety play</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street's sudden aversion to AI spending has made Apple (AAPL) this year's Big Tech star, Bloomberg reported, but earnings after the close Thursday could remind investors of the hurdles it still faces. The iPhone maker is the counterpoint to the capex-heavy names.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/apple-s-earnings-will-test-stock-s-status-as-the-ai-safety-play" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apple's Earnings Will Test Stock's Status as the AI Safety Play</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>EU pledges €10 billion for new AI data centers</strong></summary>
+      <div class="deal-body">
+        <p>The European Union invited companies to apply to build as many as seven AI data centers backed by €10 billion in public funds, Bloomberg reported, furthering the bloc's plan to cut reliance on overseas technology. Another sign the physical buildout keeps scaling even as public chip stocks wobble.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/eu-pledges-10-billion-in-public-funding-for-new-ai-data-centers" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- EU Pledges €10 Billion in Public Funding for New AI Data Centers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nscale to buy AI software startup Anyscale for $1.65 billion</strong></summary>
+      <div class="deal-body">
+        <p>Cloud provider Nscale agreed to acquire software startup Anyscale for $1.65 billion, Bloomberg reported, to help customers use AI computing power more efficiently. A deal that shows the AI infrastructure race staying hot at the software layer.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/nscale-to-buy-ai-software-startup-anyscale-for-1-65-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nscale to Buy AI Software Startup Anyscale for $1.65 Billion</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Thursday July 30, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The noise is the Korean retail carnage FT captured under "my life's screwed," the tepid Qualcomm and Arm reactions, and Samsung's inability to rally on a 250-fold profit surge, all showing how brutal the trade has become. The signal underneath is that the buildout still works when it converts: Microsoft's cloud grew at its fastest pace in four years while holding the line on spending, Samsung sees memory shortages worsening, the EU committed €10 billion, and Nscale bought Anyscale for $1.65 billion. The frame to watch tonight: whether Apple and Amazon prove capex turns into cash, or hand the bears another leg down.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Bond selloff extends after Warsh shakes investor confidence</strong></summary>
+      <div class="deal-body">
+        <p>Long-dated Treasury yields hit 19-year highs and the bond selloff extended after Warsh's press conference left the policy outlook murky, WSJ reported, even as stock futures advanced on Microsoft. The Dow slid more than 2% Wednesday as the Fed chair argued rising yields have already tightened conditions.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/warshs-posture-on-interest-rates-sparks-market-inflation-fears-60b9933c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Warsh's Posture on Interest Rates Sparks Market Inflation Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US borrowing costs hit a 19-year high as the Fed defies inflation fears</strong></summary>
+      <div class="deal-body">
+        <p>US borrowing costs hit a 19-year high after the central bank held rates even as investors worry the Iran war will ignite a jolt of price growth, FT reported. Traders warn Warsh's lack of guidance is eroding the Fed's influence on the Treasury market.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/c4eedbe8-6345-48b6-8d44-5cc5b0bea2c7?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US Borrowing Costs Hit 19-Year High as Fed Defies Inflation Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Divided Fed holds rates steady, but three members voted to hike</strong></summary>
+      <div class="deal-body">
+        <p>The FOMC voted 9-3 to leave the federal funds rate in a range of 3.5% to 3.75%, CNBC reported, with three members dissenting in favor of a hike despite the base-case hold. The split underscores rising internal support for tightening.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Divided Fed Holds Interest Rates Steady, but Three Members Voted to Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bank of England holds at 3.75% in a 6-3 vote as war clouds the outlook</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of England kept rates at 3.75% in a 6-3 vote, Bloomberg reported, balancing the threat from resurgent US-Iran tensions against signs UK price pressures are easing faster than predicted. The MPC signaled it could still lift borrowing costs if the war stokes persistent inflation.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/boe-holds-rates-in-split-vote-as-war-clouds-inflation-outlook" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOE Holds Rates in 6-3 Vote as War Clouds Inflation Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euro-zone growth defies the Iran war with fastest pace in over a year</strong></summary>
+      <div class="deal-body">
+        <p>The euro-area economy expanded more than anticipated in the second quarter, Bloomberg reported, demonstrating its ability to weather the fallout from the Iran war. A resilient read that gives the ECB room to stay cautious rather than cut.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/french-economy-rebounds-with-0-2-growth-in-second-quarter" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fastest Euro-Zone Growth in Over a Year Defies Iran Pressure</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed doubts push some funds to eye other markets over Treasuries</strong></summary>
+      <div class="deal-body">
+        <p>Some global bond investors are looking to shift toward markets like Australia and Europe as doubts grow over the Fed's ability to keep inflation under control, Bloomberg reported, adding to pressure on Treasuries. A concrete read on how the credibility question is moving capital.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/fed-doubts-push-some-funds-to-eye-overseas-bets-over-treasuries" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Doubts Push Some Funds to Eye Other Markets Over Treasuries</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Saudi economy shrinks the most since 2020 as the Iran war roils oil</strong></summary>
+      <div class="deal-body">
+        <p>Saudi Arabia's economy posted its deepest quarterly contraction since the Covid pandemic, driven by a sharp downturn in its oil industry, Bloomberg reported, a stark sign of the damage the US-Iran war is doing across the Gulf. The oil-shock read-through is now hitting producers, not just importers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/saudi-economy-shrinks-most-since-2020-as-war-roils-oil-exports" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Saudi Economy Shrinks as Gulf Reels From Iran War's Oil Chaos</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 30, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The dovish tug is a BOE that held on faster-than-expected UK disinflation, a euro zone growing despite the war, and a Fed content to keep policy steady. The hawkish counterweight is dominant right now: the 30-year at a 19-year high, oil up 8% on the Iran strikes, Jeffrey Gundlach saying the bond market is demanding action, PGIM's Katharine Neiss forecasting three September hikes, and funds rotating out of Treasuries. The near-term referee is the coming inflation print, which either validates the long-end revolt or gives Warsh cover to keep waiting.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Central Bank's Words Are a Policy Tool, and How Warsh's Minimalism Backfired</summary>
+      <p>The Fed held rates exactly where the market expected, and yet FT reported Warsh's communication is "already backfiring," while Bloomberg said investors dumped 30-year bonds in what amounted to a Bronx cheer. If the decision matched the forecast, why did the reaction turn hostile? The answer is that a central bank's words are a policy instrument in their own right, often more powerful than the rate move itself, and Warsh under-used the tool. Start with the mechanism. The Fed directly controls only one very short-term rate, the overnight federal funds rate. But the rates that actually matter for the economy, mortgages, corporate borrowing, the 30-year Treasury, are set by markets pricing the entire expected future path of policy. That path is a forecast, and the Fed shapes it through communication: the statement, the press conference, the projections and the tone. This is forward guidance, and it works because it tells markets not just what the Fed did today but what it intends to do next, which is what long rates are built on. When guidance is clear, markets converge on the Fed's intended path and long rates behave predictably. When guidance is thin, markets are left to guess, and they guess in the direction of their biggest fear. That is exactly the trap Warsh walked into. With inflation elevated and an oil shock brewing from the Iran war, the market's central fear is that the Fed will let inflation run. A chair worried about that fear would use the press conference to signal resolve, laying out conditions under which he would hike and reassuring investors he takes the mandate seriously. Warsh instead delivered what Bloomberg called a bare-bones briefing and what PGIM's Katharine Neiss called weaker than expected. In the absence of a credible signal, investors filled the vacuum with their worst-case read: that this Fed lacks the will to fight inflation. So they sold long-dated Treasuries, driving the 30-year yield to a 19-year high, and Jeffrey Gundlach said the curve was effectively telling Warsh he has to act. There is a deeper concept here called central-bank credibility. A central bank's power rests heavily on the market believing it will do what it says. When it has credibility, it can move long rates and inflation expectations with words alone, barely touching the policy rate. When credibility erodes, words stop working and the bank has to prove itself with action, which is more disruptive and more expensive. FT's framing that "the Fed is a player, not a referee" captures the stakes: a chair who won't communicate a clear reaction function forfeits the cheapest tool he has and forces the market to demand hikes instead. The practical lesson is that on decision day you should watch the communication as closely as the rate. A hold with hawkish, detailed guidance can tighten financial conditions more than a hike with dovish guidance. Read the statement changes, the tone of the press conference and how the long end reacts, because that reaction tells you whether the market believes the central bank, and belief is most of the machinery.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/57aac838-baee-406d-b4ac-c0ffda351aee?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Warsh's Stripped-Back Fed Communication 'Already Backfiring', Say Investors</a></p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/07/29/gundlach-says-the-bond-market-is-signaling-the-fed-has-to-act-on-inflation.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Jeffrey Gundlach Says the Bond Market Is Telling Warsh the Fed Has to Start Acting on Inflation</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The Fed held in a 9-3 vote but Warsh's press conference backfired and the 30-year yield hit a 19-year high, the US launched fresh strikes on Iran and oil jumped 8%, and Microsoft's cloud beat split Big Tech from Meta's slide ahead of Apple and Amazon tonight; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/27</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/29</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/30</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/31</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin holds near $64,000 as Microsoft's AI payoff lifts stocks</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held near $64,000 as S&P 500 futures gained and Nasdaq contracts rose, CoinDesk reported, with Microsoft up about 8% premarket after its cloud unit grew at the fastest pace in four years. Crypto stayed steady even as equities came off a correction.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/07/30/live-updates-bitcoin-holds-near-usd64-000-as-microsoft-s-ai-payoff-lifts-stocks" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Updates: Bitcoin Holds Near $64,000 as Microsoft's AI Payoff Lifts Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto's resilience tested as oil rises and the Fed signals rates could still climb</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held near $64,000 despite the Fed's hawkish split, Iranian ballistic missiles and an 8% overnight surge in oil that sent the Dow down 2.2% and the Nasdaq to a three-month low, CoinDesk reported. A notable decoupling from the equity and rates stress.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/30/crypto-s-resilience-tested-as-oil-rises-after-iran-strikes-fed-signals-rates-could-still-rise" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto's Resilience Tested as Oil Rises After Iran Strikes, Fed Signals Rates Could Still Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed-day whipsaw wipes out $286 million in leveraged bets</strong></summary>
+      <div class="deal-body">
+        <p>Price volatility around the Fed's rate decision cleared positions for roughly 90,000 traders, wiping out about $286 million in leveraged bets with unusually equal losses for bulls and bears, CoinDesk reported. Spot prices ended little changed over 24 hours despite the churn.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/30/bitcoin-ether-whipsaw-wipes-out-usd280-million-even-as-prices-remain-flat-over-24-hours" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin, Ether Whipsaw Wipes Out $286 Million in Leveraged Bets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin ETFs on track for their smallest monthly inflows ever</strong></summary>
+      <div class="deal-body">
+        <p>Spot bitcoin ETFs are on track for their smallest monthly inflows on record, CoinDesk reported, a sign the institutional bid has cooled sharply through the summer's volatility. A caution flag under the price's apparent calm.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/07/30/bitcoin-etfs-on-track-for-the-smallest-monthly-inflows-ever" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin ETFs on Track for the Smallest Monthly Inflows Ever</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Robinhood slides 4% despite an earnings beat as crypto revenue cools</strong></summary>
+      <div class="deal-body">
+        <p>Robinhood (HOOD) slid 4% despite beating estimates as crypto trading revenue fell 38% year over year to $100 million, CoinDesk reported, offset by stronger options, equities and prediction-market activity. A read on how cooling retail crypto is hitting the brokers.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/29/robinhood-slides-4-despite-earnings-beat-as-crypto-revenue-cools" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Robinhood Slides 4% Despite Earnings Beat as Crypto Revenue Cools</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>South Korea to tax crypto gains over $1,740 from 2027</strong></summary>
+      <div class="deal-body">
+        <p>South Korea plans to tax cryptocurrency gains above roughly $1,740 starting January 2027, CoinDesk reported, signaling it won't postpone the measure a fourth time as the battle moves to parliament. A policy overhang for one of crypto's most active retail markets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/07/30/south-korea-s-long-delayed-crypto-tax-set-to-start-in-2027" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- South Korea Plans to Tax Crypto Gains Over $1,740 as Political Battle Moves to Parliament</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Intercontinental Exchange / MarketAxess -- $6 Billion Acquisition</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Intercontinental Exchange (ICE) agreed to acquire MarketAxess, the electronic trading platform for fixed-income markets, for $6 billion, WSJ reported.</p>
+        <p><strong>Outlook:</strong> The deal extends ICE's grip on market infrastructure into corporate-bond trading just as electronic fixed-income volumes keep growing.</p>
+        <p><strong>What it means:</strong> Dealmaking is powering through the rates volatility, and exchange consolidation continues to concentrate the plumbing of global markets.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/intercontinental-exchange-to-buy-marketaxess-in-6-billion-deal-f5ff553a?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Intercontinental Exchange to Buy MarketAxess in $6 Billion Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>EU -- €10 Billion Public Funding for AI Data Centers</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> The European Union invited companies to build as many as seven AI data centers backed by €10 billion in public funds, Bloomberg reported, part of its push to cut reliance on overseas technology.</p>
+        <p><strong>Outlook:</strong> State-backed capital is now underwriting the AI buildout in Europe, echoing the scale of US private commitments.</p>
+        <p><strong>What it means:</strong> The physical layer of AI keeps expanding even as public chip stocks sell off, reinforcing the demand side of the capex debate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/eu-pledges-10-billion-in-public-funding-for-new-ai-data-centers" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- EU Pledges €10 Billion in Public Funding for New AI Data Centers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UBS -- New $3 Billion Buyback After Profit Beat</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> UBS announced a new $3 billion buyback after its investment bank and wealth units lifted profit, WSJ reported, with the program running to no later than the second quarter of 2027.</p>
+        <p><strong>Outlook:</strong> The Swiss group plans at least $1 billion of repurchases over the next three months, a sign of confidence in capital generation.</p>
+        <p><strong>What it means:</strong> Bank capital returns keep flowing even amid the bond-market turmoil, a steadier read than the tech tape.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/earnings/ubs-plans-new-3-billion-buyback-after-net-profit-rises-d2d4fca9?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- UBS Plans $3 Billion Buyback After Investment Bank, Wealth Units Lift Profit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nscale / Anyscale -- $1.65 Billion AI Software Acquisition</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Cloud provider Nscale agreed to buy software startup Anyscale for $1.65 billion, Bloomberg reported, to help customers use AI computing power more efficiently.</p>
+        <p><strong>Outlook:</strong> Consolidation is moving up the stack from hardware toward the orchestration software that makes AI infrastructure usable.</p>
+        <p><strong>What it means:</strong> The AI arms race is spending on efficiency, not just raw compute, a sign the buildout is maturing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/nscale-to-buy-ai-software-startup-anyscale-for-1-65-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nscale to Buy AI Software Startup Anyscale for $1.65 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CityFibre -- £900 Million Shareholder Raise</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> CityFibre, the UK's largest independent fiber challenger to BT's Openreach, is set to raise £900 million ($1.2 billion) from shareholders, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> Private capital keeps funding the fiber backbone that underpins data traffic and, increasingly, AI connectivity.</p>
+        <p><strong>What it means:</strong> Infrastructure money is flowing into the plumbing beneath the AI boom even as public equity risk appetite wobbles.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/cityfibre-said-to-raise-900-million-to-challenge-bt-s-openreach" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fiber Challenger CityFibre Set to Raise £900 Million</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Jeffrey Gundlach -- the bond market is telling Warsh the Fed has to act</strong></summary>
+      <div class="deal-body">
+        <p>DoubleLine's Jeffrey Gundlach said the divergent moves across the Treasury curve show investors' skepticism that the Fed will follow through on inflation, CNBC reported, and that the bond market is effectively telling Warsh he has to start acting. A named, high-conviction rates bear.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/29/gundlach-says-the-bond-market-is-signaling-the-fed-has-to-act-on-inflation.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Jeffrey Gundlach Says the Bond Market Is Telling Warsh the Fed Has to Start Acting on Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>PGIM's Katharine Neiss -- three sequential hikes coming in September</strong></summary>
+      <div class="deal-body">
+        <p>PGIM Credit's deputy head of global economics Katharine Neiss called Warsh's briefing weaker than expected and said the hawkish tilt will come in September with three sequential rate hikes, Bloomberg reported. A named bear laying out an explicit tightening path.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-30/pgim-sees-hawkish-fed-tilt-in-september-with-three-hikes-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- PGIM Sees Hawkish Fed Tilt in September With Three Hikes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jim Cramer -- this post-earnings selloff is a golden buying opportunity</strong></summary>
+      <div class="deal-body">
+        <p>CNBC's Jim Cramer said the post-earnings selloff is a golden buying opportunity, Yahoo Finance reported, arguing the panic around AI spending is overdone as the strongest names keep executing. A named bull leaning against the rotation.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/jim-cramer-says-post-earnings-221700892.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Jim Cramer Says This Post-Earnings Sell-Off Is a Golden Buying Opportunity</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BTIG's Jonathan Krinsky -- a quick tech rebound could be a trap</strong></summary>
+      <div class="deal-body">
+        <p>BTIG's Jonathan Krinsky warned that a bounce may be coming for the momentum stocks brought back to earth, but it could open up another selloff, MarketWatch reported. A named technical bear cautioning against chasing the rebound.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/wall-street-just-suffered-a-historic-crash-in-high-flying-stocks-here-is-why-a-quick-tech-rebound-could-be-a-trap-c021318a?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why a Quick Tech Rebound Could Be a Trap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>eToro's Josh Gilbert -- Meta is spending like a hyperscaler without the business</strong></summary>
+      <div class="deal-body">
+        <p>eToro's APAC and Middle East lead analyst Josh Gilbert said Meta is on hyperscaler-level spend without the hyperscaler business, Bloomberg reported, pointing to its lowest free cash flow in years as a sign of ballooning AI costs. A named bear on Meta's capex.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-30/gilbert-meta-on-hyperscaler-spend-without-the-business-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gilbert: Meta On Hyperscaler Spend Without the Business</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned After Warsh's Hold Sent Long Yields to a 19-Year High, the US Struck Iran and Oil Jumped 8%, and Microsoft's Cloud Beat Split Big Tech From Meta's Slide Ahead of Apple and Amazon</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (buy the shakeout):</strong> Jim Cramer calls the post-earnings selloff a golden buying opportunity, Microsoft's cloud beat proves capex converts to revenue and lifted Nvidia and Micron, and the euro zone posted its fastest growth in over a year. Samsung sees memory shortages worsening, the EU committed €10 billion, and the buildout keeps scaling. If Apple and Amazon confirm the payoff tonight, the rotation stabilizes.</div>
+        <div class="bear"><strong>Bear (the pressure is building):</strong> Jeffrey Gundlach says the bond market is demanding the Fed act, PGIM's Katharine Neiss sees three September hikes, and the 30-year yield sits at a 19-year high. BTIG's Jonathan Krinsky warns any tech bounce is a trap, and eToro's Josh Gilbert says Meta is spending like a hyperscaler without the business. Oil up 8% and the widening Iran war only sharpen the inflation risk.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Dow dropped 1,100+ on Fed day; Meta tanks on AI spend; Microsoft rips on cloud; oil +8% on Iran strikes; Apple/Amazon tonight</td><td>Volatile</td><td>~27,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Microsoft cloud beat vs Meta slide; Starbucks jumps; Carvana and Hims fall; Samsung 250-fold profit but shares can't rally</td><td>Cautious</td><td>~16,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Warsh press conference backfires; 30Y at 19-year high; Gundlach and PGIM call for hikes; funds rotate out of Treasuries</td><td>Bearish</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Capex vs free cash flow; why Microsoft soared and Meta sank; central-bank credibility; ICE-MarketAxess $6B</td><td>Analytical</td><td>~8,500 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds $64K through Fed and Iran; $286M in liquidations wiped out; ETF inflows smallest ever; Korea crypto tax</td><td>Neutral</td><td>~12,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned volatile and split. r/wallstreetbets whipsawed on the Dow's 1,100-point drop, Meta's tank and Microsoft's rip, with Apple and Amazon tonight as the next fuse. r/stocks parsed the Big Tech divergence and cheered Starbucks against Carvana and Hims falling. r/investing was the most bearish, fixated on Warsh's backfiring press conference, the 30-year at a 19-year high and Gundlach and PGIM demanding hikes. r/SecurityAnalysis dug into capex versus free cash flow and why Microsoft and Meta split. r/CryptoCurrency stayed oddly calm as bitcoin held $64,000 through the Fed and the Iran strikes. The swing factor is whether tonight's prints and the coming inflation data confirm the bond market's fear or ease it.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why the Fed Can Hold Rates and Still Lose Control of the Long End</h2>
+    <p>The Fed held its policy rate exactly where markets expected on Wednesday, and yet FT reported US borrowing costs hit a 19-year high, with the 30-year Treasury yield spiking as investors dumped long-dated bonds. That looks like a contradiction: if the central bank didn't move, why did the most important long-term interest rate in the world jump? The answer is one of the most useful things a market reader can understand, because it explains why the Fed's power over the economy is far more limited, and more dependent on trust, than the headlines suggest. Start with what the Fed actually controls. It sets the federal funds rate, an overnight rate that governs the shortest end of the yield curve. That is the only rate it moves directly. Everything longer, the 2-year, the 10-year, the 30-year, is set by the market, and those longer yields are what drive mortgages, corporate borrowing and the government's own funding cost. So there are really two different things happening on the curve. The short end reflects where the Fed has set policy today and where the market thinks it will set it over the next year or two. The long end reflects something else entirely: the market's expectations for average inflation and growth over decades, plus a cushion called the term premium. The term premium is the extra yield investors demand to hold a long bond rather than rolling short ones, and it rises when the future looks riskier or when investors fear inflation will erode their fixed payments. That distinction is the key to Wednesday. The Fed held the short rate, but the long end sold off because investors concluded the Fed is not committed to fighting inflation. When Warsh gave a bare-bones press conference and declined to signal resolve, and with oil surging 8% on the Iran strikes, the market's inflation expectations and term premium both jumped. Long-bond holders demanded a higher yield to compensate for the inflation they now fear the Fed will tolerate. The price of those bonds fell, and the yield rose to a 19-year high. This is the phenomenon old traders call the bond vigilantes: when investors lose faith that a central bank will keep prices stable, they sell long bonds and force yields up on their own, tightening financial conditions in defiance of the Fed. Jeffrey Gundlach captured it by saying the curve is telling Warsh the Fed has to act. Notice the perverse feedback here. Warsh actually argued that rising bond yields have already tightened conditions, so he doesn't need to hike. But the yields are rising precisely because the market doubts him. The more passive he appears, the more the vigilantes sell, which is the opposite of control. The practical lesson is to watch the whole curve, not just the policy rate. When the Fed holds and the short end is steady but the long end sells off, that is the market pricing an inflation-credibility problem, not a growth story. It tells you the central bank is losing its grip on expectations, which is a warning sign for every long-duration asset, from bonds to high-multiple tech. A Fed that holds can still be a Fed that's losing control.</p>
+    <p class="deal-source"><a href="https://www.ft.com/content/c4eedbe8-6345-48b6-8d44-5cc5b0bea2c7?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US Borrowing Costs Hit 19-Year High as Fed Defies Inflation Fears</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-30/kevin-warsh-delivers-a-perplexing-fed-briefing-and-gets-a-bronx-cheer" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kevin Warsh Delivers a 'Perplexing' Fed Briefing, and Gets a Bronx Cheer</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Key inflation print.</strong> Bloomberg says Treasuries kept sliding as traders brace for US inflation data that could cement fears the Fed is dragging its feet; watch whether the print validates the long-end revolt or gives Warsh cover to keep waiting.</li>
+      <li><strong>Bank of Japan (Friday, July 31).</strong> The BOJ is expected to stand pat, so watch whether Governor Ueda signals the next hike could come sooner than economists expect, a swing factor for global yields and the yen.</li>
+      <li><strong>Month-end (Friday, July 31).</strong> Month-end rebalancing meets a bond market at 19-year-high yields; watch for forced flows into or out of Treasuries as portfolios reset.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Apple and Amazon (tonight).</strong> Bloomberg frames Apple as the AI safety play facing real hurdles; watch AWS growth and margins at Amazon and iPhone demand at Apple for proof the AI spend converts to cash.</li>
+      <li><strong>Chip and hardware names.</strong> After Samsung's 250-fold profit surge and warnings of worsening memory shortages, watch whether memory and equipment makers can finally rally on results rather than sell the news.</li>
+      <li><strong>Consumer and financials.</strong> After Starbucks beat and Carvana missed on guidance, watch KKR, Ferrari and Labcorp-style names for how demand and pricing power hold up outside tech.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Deal flow.</strong> ICE's $6 billion MarketAxess buy, Nscale's $1.65 billion Anyscale deal and CityFibre's £900 million raise test whether M&A and financing hold up as long-end borrowing costs spike.</li>
+      <li><strong>Hedge-fund stress.</strong> FT reports Leopold Aschenbrenner's $20 billion AI-focused fund is seeking capital after the rout; watch whether the AI de-rating forces more redemptions or fundraising strain.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran escalation.</strong> The US struck dozens of Iranian targets after an attack on forces in Jordan, and the fighting is spreading to Kuwait; watch whether it stays tit-for-tat or drives Brent higher and deepens the Gulf downturn.</li>
+      <li><strong>US-China tech curbs.</strong> China threatened retaliation over a US humanoid-robot ban weeks before a leaders' meeting; watch for escalation risk and the inflation read-through.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Jul 30, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-07-30 07:30 ET); Bloomberg Technology (20 fresh, newest 2026-07-30 07:55 ET); Bloomberg Economics (20 fresh, newest 2026-07-30 07:50 ET); CNBC Top News (12 fresh, newest 2026-07-30 07:55 ET); CNBC Finance (7 fresh, newest 2026-07-29 22:52 ET); CNBC Economy (1 fresh, newest 2026-07-29 19:36 ET); MarketWatch Top Stories (10 fresh, newest 2026-07-30 07:46 ET); WSJ Markets (19 fresh, newest 2026-07-30 08:00 ET); Yahoo Finance (20 fresh, newest 2026-07-30 06:56 ET); FT Home (10 fresh, newest 2026-07-30 06:48 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-29 13:56 ET); CoinDesk (25 fresh, newest 2026-07-30 07:18 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Stratechery (10 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What did the Fed do at Wednesday's meeting?</strong></p>
+      <span class="opt" data-opt="A">A. Cut rates by a quarter point as growth slowed</span>
+      <span class="opt" data-opt="B">B. Held rates steady in a divided 9-3 vote</span>
+      <span class="opt" data-opt="C">C. Raised rates as three dissenters demanded</span>
+      <span class="opt" data-opt="D">D. Paused its balance-sheet runoff program</span>
+      <div class="feedback"><strong>B is correct.</strong> CNBC reported the FOMC voted 9-3 to leave the funds rate in a 3.5% to 3.75% range, with three members dissenting to hike. There was no cut, no rate increase, and no change to the runoff.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. Why did long-dated Treasury yields hit a 19-year high after a hold?</strong></p>
+      <span class="opt" data-opt="A">A. The Treasury sharply increased long-bond issuance</span>
+      <span class="opt" data-opt="B">B. Foreign central banks dumped their reserves</span>
+      <span class="opt" data-opt="C">C. Strong growth data lifted real yields broadly</span>
+      <span class="opt" data-opt="D">D. Investors doubt Warsh will fight inflation</span>
+      <div class="feedback"><strong>D is correct.</strong> FT and Bloomberg said Warsh's stripped-back press conference left investors doubting his inflation resolve, so they sold long bonds and pushed yields up. It was a credibility problem, not an issuance surge, reserve dump or a growth beat.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. How did Microsoft and Meta diverge on earnings?</strong></p>
+      <span class="opt" data-opt="A">A. Microsoft's cloud accelerated while Meta's costs spooked investors</span>
+      <span class="opt" data-opt="B">B. Both beat cleanly and rallied on cloud strength</span>
+      <span class="opt" data-opt="C">C. Meta beat while Microsoft cut its capex plans</span>
+      <span class="opt" data-opt="D">D. Both slid on weak advertising and cloud revenue</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg said Microsoft's cloud grew at its fastest pace since 2022 and the stock jumped, while Meta fell on a weak forecast and its lowest free cash flow in years. They did not both rally, Microsoft did not cut capex, and they did not both slide.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The Fed held rates in a divided 9-3 vote but Warsh's bare-bones press conference backfired, sending long-dated Treasury yields to a 19-year high as Jeffrey Gundlach says the bond market is telling the Fed to act and PGIM's Katharine Neiss sees three September hikes, while the BOE held 6-3 and the euro zone posted its fastest growth in over a year.",
+    "sources": [
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/stocks/warshs-posture-on-interest-rates-sparks-market-inflation-fears-60b9933c?mod=rss_markets_main", "take": "Dow slid more than 2% as Warsh's posture sparked inflation fears." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/c4eedbe8-6345-48b6-8d44-5cc5b0bea2c7?syn-25a6b1a6=1", "take": "US borrowing costs hit a 19-year high as the Fed defies inflation fears." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/07/29/gundlach-says-the-bond-market-is-signaling-the-fed-has-to-act-on-inflation.html", "take": "Gundlach says the bond market is telling Warsh the Fed must act." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-07-30/pgim-sees-hawkish-fed-tilt-in-september-with-three-hikes-video", "take": "PGIM sees a hawkish tilt in September with three hikes." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-30/boe-holds-rates-in-split-vote-as-war-clouds-inflation-outlook", "take": "The BOE holds at 3.75% as UK price pressures ease faster than expected." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil jumped about 8% overnight as the US launched a fresh wave of strikes on Iran after an attack on American forces in Jordan, with Iran hitting Kuwait and the conflict widening, while Saudi Arabia's economy contracted the most since 2020, Japan trimmed its outlook, and Pakistan won safe passage for a single LNG cargo.",
+    "sources": [
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/42e83b67-cfb8-46af-b50e-3ac77748ce38?syn-25a6b1a6=1", "take": "The US launches strikes on Iran after Trump vows to deliver a beating." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-07-30/us-renews-strikes-on-iran-as-conflict-widens-in-region-video", "take": "The US hits dozens of Iranian targets as the conflict widens across the region." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-30/saudi-economy-shrinks-most-since-2020-as-war-roils-oil-exports", "take": "Saudi Arabia's economy shrinks the most since 2020 as the war roils oil." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-30/pakistan-secures-safe-passage-for-lng-shipment-with-iran-deal", "take": "Pakistan secures safe passage for an LNG cargo through an Iran deal." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/business/energy-oil/how-china-went-from-dream-customer-to-a-nightmare-for-big-oil-e2d0260a?mod=rss_markets_main", "take": "China's crude demand is far more flexible than the market thought." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Big Tech split on the AI trade as Microsoft rallied nearly 10% on its fastest cloud growth in four years while holding the line on spending, but Meta slid on the lowest free cash flow in years and a weak revenue forecast, with Samsung's chip profit soaring 250-fold on worsening memory shortages and Apple and Amazon set to report tonight.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-30/futures-climb-with-boost-from-microsoft-s-surging-cloud-growth", "take": "Microsoft jumps as its cloud unit grows at the fastest clip in four years." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/tech/ai/metas-case-for-its-ai-spending-keeps-getting-weaker-aa4b9a5c?mod=rss_markets_main", "take": "Meta's case for its AI spending keeps getting weaker." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-30/samsung-s-chip-profit-soars-over-250-fold-on-ai-memory-shortages", "take": "Samsung's chip profit soars 250-fold as memory shortages worsen." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/samsung-delivers-record-setting-profits-but-the-shares-still-cant-catch-a-break-from-investors-daefa19a?mod=mw_rss_topstories", "take": "Samsung's record profit still can't win over skeptical investors." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-30/eu-pledges-10-billion-in-public-funding-for-new-ai-data-centers", "take": "The EU pledges €10 billion for new AI data centers." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Microsoft","Micron","Nvidia","Samsung","Qualcomm","Meta"],
+    "values": [9.8, 4.0, 3.0, -2.0, -5.0, -8.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [27000, 16000, 15000, 8500, 12000],
+    "colors": ["neutral","neutral","bear","neutral","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["EU AI data centers","ICE-MarketAxess","UBS buyback","Nscale-Anyscale","CityFibre raise"],
+    "values": [11, 6, 3, 1.65, 1.2]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
