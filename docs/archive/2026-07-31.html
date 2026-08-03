@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Fri Jul 31, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-07-31</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Friday, July 31, 2026</h1>
+    <div class="meta">
+      <p>It's month-end, and the AI trade closed a brutal July on a sharp upswing. Amazon jumped roughly 10% on a fifth straight quarter of accelerating cloud growth and South Korea's Kospi ripped a record 18% as chipmakers rebounded, but Apple slumped after supply shortages dented its forecast. Meanwhile three Fed dissenters went public demanding hikes, the BOJ held at 1% after Tokyo spent about $53 billion propping up the yen, and euro-area inflation strengthened on the oil spike.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "AI stocks staged a powerful rebound as Amazon's cloud beat and a record 18% Kospi surge in chipmakers closed a bruising month on a high, even as Apple slumped on supply shortages and Leopold Aschenbrenner's blown-up AI fund reminded everyone how fragile the trade had become",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Chips Stocks and Amazon Bolster Rebound in Tech", "angle": "Leads with the breadth of the bounce, framing a chip rebound and Amazon's jump as an upbeat end to a month marked by a steep derating.", "lean": 45, "pull": "Technology stocks rallied as a rebound in chipmakers carried into Friday, ending a month marked by a steep derating."},
+        {"outlet": "WSJ", "headline": "Microsoft Posts Biggest One-Day Market-Cap Gain for Any US Company", "angle": "Anchors the rebound in Microsoft's record $450 billion gain while flagging Warsh's bear steepener as no Goldilocks moment for stocks.", "lean": 30, "pull": "While the software company gained $450 billion in market value, Meta shares plunged and Apple dropped."},
+        {"outlet": "MarketWatch", "headline": "South Korea's Chip Giants Just Logged Their Biggest Rally Ever", "angle": "Uses the Kospi's best-ever day to ask what the historic snapback means for the durability of the global AI trade.", "lean": 35, "pull": "The Kospi saw its best-ever day on Friday, as the index came roaring back thanks to historic jumps in its big tech names."},
+        {"outlet": "Financial Times", "headline": "How Leopold Aschenbrenner, the Golden Child of the AI Trade, Was Laid Low", "angle": "Cuts against the euphoria, telling the story of a $20 billion AI fund's collapse and its rescue call to Ken Griffin.", "lean": -30, "pull": "The $20bn hedge fund manager's wild ride ended with a call to Ken Griffin."},
+        {"outlet": "CNBC", "headline": "Fed Officials Who Voted to Hike Rates Say Action Is Needed Now", "angle": "Reminds readers the rebound sits on top of an unresolved inflation fight, with three dissenters warning delay risks worse later.", "lean": -20, "pull": "Kashkari and Hammack joined Dallas Fed President Lorie Logan in dissenting against holding rates steady."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Three Fed Dissenters Go Public Demanding Hikes as Kashkari, Hammack and Logan Warn Waiting Risks Worse Policy Later, While Warsh's Bear Steepener Pushes Yields Up Again, the BOJ Holds at 1% After Tokyo Spends About $53 Billion on Yen Intervention, and Euro-Area Inflation Strengthens on the Oil Shock</h3>
+      </div>
+      <p>The rates story hardened this morning as the Fed's internal split spilled into public view. Bloomberg and CNBC reported that the three officials who dissented against Wednesday's hold, Cleveland's Beth Hammack, Minneapolis's Neel Kashkari and Dallas's Lorie Logan, released statements warning that supply shocks are driving inflation now and that waiting too long risks the need for even more aggressive policy later. WSJ said Treasury yields kept rising, led by the short end, as investors digested Warsh's communication, and framed the move as a bear steepener that is no Goldilocks moment for stocks. Abroad the picture is mixed. Bloomberg said the BOJ held its policy rate at 1% and Governor Ueda signaled a possible September move, but only after Tokyo spent roughly $53 billion intervening to prop up the yen, with apparent US help. The inflation drumbeat is getting louder in Europe too: Bloomberg reported euro-area inflation strengthened in July after the US-Iran ceasefire collapse boosted oil, and French inflation unexpectedly accelerated, both reinforcing bets the ECB will need to hike again. The lone soft spot is growth. CNBC noted US Q2 GDP slowed to 1.5% with June core inflation at 3.3%, and Bloomberg said Q2 employment costs grew at a steady pace, doing little to add to price pressure. The bond market is now caught between a credible inflation threat and a chair who won't lead the fight.</p>
+      <p>The bull case for calmer yields is steady labor costs, slowing growth and RBC's read that Fed-transition volatility is normal. The bear case is three dissenters shouting for hikes, a steepening curve, and euro-area and French inflation both accelerating on oil.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the panic is overdone):</strong> US Q2 GDP slowed to 1.5% and employment costs grew at only a steady pace, so the labor market is doing little to stoke inflation. MarketWatch reported RBC arguing it's normal for equities to struggle around Fed transitions and that the fresh volatility is opening a valuation opportunity. If growth keeps cooling and the oil impulse fades, the dissenters lose the argument and Warsh's hold looks vindicated rather than reckless.</div>
+        <div class="bear"><strong>Bear (three dissenters and a steepening curve):</strong> Kashkari, Hammack and Logan went public warning that waiting too long risks even more aggressive policy later, and WSJ calls Warsh's bear steepener no Goldilocks moment for stocks. Euro-area inflation strengthened and French inflation unexpectedly quickened on the oil shock, pushing the ECB toward another hike. Short-dated Treasury yields are climbing as the market prices a Fed that keeps falling behind a real inflation problem.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-31/fed-dissenters-say-hikes-needed-to-tackle-persistent-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Dissenters Say Rate Hikes Needed to Tame Stubborn Inflation</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>The US-Iran Ceasefire Collapse Keeps Oil Elevated and Feeds Straight Into Euro-Area Inflation, With Chevron and Exxon Steering War Windfalls Into Debt Reduction Rather Than Buybacks, the US Signaling It Won't Tap the Strategic Reserve in This Phase of the Hormuz Crisis, and Trump Now Threatening Price Interventions</h3>
+      </div>
+      <p>The oil premium is still doing the damage even as the front-line headlines quiet down. Bloomberg reported euro-area inflation strengthened in July after the collapse of the US-Iran ceasefire boosted oil, and French inflation unexpectedly accelerated on services and power, both reinforcing expectations the ECB will hike again. The producers are cashing in but staying cautious: Bloomberg said ExxonMobil and Chevron plowed blowout profits into debt reduction rather than big buyback increases, a sign Big Oil doubts how long the war-driven rally will last, and Chevron CEO Eimear Bonner said fuel-making margins should stay elevated as long as energy markets remain under stress. FT framed the earnings surge against rising political scrutiny, with Trump threatening price interventions ahead of the midterms. On policy, Bloomberg reported the US won't tap the Strategic Petroleum Reserve in this phase of the Hormuz crisis, removing one relief valve from the table. The crypto angle is sharpening the sanctions picture: CoinDesk reported the US sanctioned an Iran-linked bitcoin insurance scheme for Strait of Hormuz ships and tied a Dubai-based exchange to a $4 billion Iranian sanctions-evasion network. UK house prices even edged higher in July as buyers weathered war-linked borrowing costs better than expected, a small sign the shock isn't breaking everything.</p>
+      <p>The bull read is Big Oil steering windfalls to debt rather than betting on lasting high prices, and consumers so far absorbing the hit. The bear read is a collapsed ceasefire keeping oil elevated, euro inflation strengthening, and the US declining to release reserves.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the majors aren't betting on it lasting):</strong> ExxonMobil and Chevron chose debt reduction over big buyback hikes, a tell that Big Oil expects the war rally to fade rather than persist. UK house prices edged higher in July as buyers weathered war-linked borrowing costs better than expected. If the Hormuz phase stays contained and margins normalize, the oil impulse driving euro-area and French inflation drains out and the ECB's hawkish case softens.</div>
+        <div class="bear"><strong>Bear (the shock is now in the price data):</strong> The US-Iran ceasefire collapse boosted oil, euro-area inflation strengthened and French inflation unexpectedly accelerated on services and power, all reinforcing another ECB hike. The US won't tap the Strategic Petroleum Reserve in this phase of the Hormuz crisis, and Chevron sees fuel margins staying elevated under stress. The war premium is no longer a headline risk, it's showing up directly in July inflation prints.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-07-31/euro-area-inflation-strengthens-as-us-iran-strikes-boost-oil" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Euro-Area Inflation Strengthens as US-Iran Strikes Boost Oil</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Rebounds Hard as Amazon Jumps About 10% on a Fifth Straight Quarter of Accelerating Cloud Growth and South Korea's Kospi Rips a Record 18% With Samsung and SK Hynix up Over 23%, but Apple Slumps on Supply Shortages, Kioxia's Outlook Disappoints, and Leopold Aschenbrenner's $20 Billion AI Fund Collapses Into Citadel's Arms</h3>
+      </div>
+      <p>After a month of derating, the AI trade snapped back with force. Bloomberg said technology stocks rallied as a rebound in chipmakers carried into Friday, ending a brutal July on an upbeat note, and Amazon jumped roughly 10% after reporting a fifth straight quarter of accelerating cloud-computing revenue, easing worries it won't earn a return on massive AI spending. The chip complex led the charge: Bloomberg reported South Korea's Kospi surged an unprecedented 18% as Samsung and SK Hynix both jumped more than 23%, its best day ever, while WSJ noted the rally defied regulators' efforts to tame wild single-stock swings. Microsoft's Wednesday print, WSJ said, produced the biggest one-day market-cap gain for any US company at about $450 billion, and Bloomberg noted it kept data-center spending steady while peers ramp up. But the tape isn't all green. Bloomberg said Apple slumped after component shortages hurt its sales forecast, and Kioxia's disappointing outlook clouded optimism about the memory boom, hinting the price surge may be moderating. The cautionary tale of the month is Leopold Aschenbrenner: WSJ reported his Situational Awareness fund fell 67% in July and FT detailed how the golden child of the AI trade ended his wild ride with a rescue call to Ken Griffin, selling the bulk of his book to Citadel. Korea is doubling down anyway, planning to inject $13.9 billion into its wealth fund for AI bets.</p>
+      <p>The bulls point to Amazon's fifth straight cloud acceleration, the Kospi's record surge, Microsoft's history-making gain and Korea's $14 billion commitment. The bears point to Apple's supply-driven slump, Kioxia's soft outlook and Aschenbrenner's blowup as proof how fragile the trade still is.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the payoff is showing up):</strong> Amazon jumped about 10% on a fifth straight quarter of accelerating cloud growth, proof the AI spend converts to revenue, and Microsoft posted the biggest one-day market-cap gain in US history while holding data-center spending steady. The Kospi ripped a record 18% as Samsung and SK Hynix surged over 23%, and Korea is injecting $13.9 billion into AI bets. When the cloud numbers accelerate, the whole trade re-rates back up.</div>
+        <div class="bear"><strong>Bear (the fragility is real):</strong> Apple slumped after component shortages hurt its sales forecast, and Kioxia's disappointing outlook suggests the memory price surge is already moderating. Leopold Aschenbrenner's $20 billion Situational Awareness fund fell 67% in a single month and had to dump its book to Citadel to survive. A rebound this violent off a fund blowup and a chipmaker record can reverse just as fast, and CoinDesk's crowd is already buying bearish August protection.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/620bd668-d112-412d-aa52-22489b128d55?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- How Leopold Aschenbrenner, the Golden Child of the AI Trade, Was Laid Low</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Amazon jumps about 10% on fifth straight quarter of cloud growth</strong></summary>
+      <div class="deal-body">
+        <p>Amazon (AMZN) shares jumped after reporting cloud-computing revenue accelerated for a fifth consecutive quarter, Bloomberg reported, easing investor concern it won't earn a return on the huge expenditures needed to meet booming AI demand. The gain led the broader tech rebound into Friday's open.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/amazon-reports-fifth-straight-quarter-of-cloud-sales-growth" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Amazon Gains After Fifth Quarter of Cloud Sales Growth</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apple slides after supply shortages hurt its sales forecast</strong></summary>
+      <div class="deal-body">
+        <p>Apple (AAPL) tumbled in late trading after component shortages weighed on its sales outlook, Bloomberg reported, signaling industrywide supply constraints are taking a bigger toll than anticipated. The slump made Apple the notable laggard as the rest of Big Tech rebounded.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/apple-s-sales-disappoint-in-china-unit-services-business" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apple Slides After Supply Shortages Hurt Sales Forecast</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft posts biggest one-day market-cap gain for any US company</strong></summary>
+      <div class="deal-body">
+        <p>Microsoft (MSFT) gained about $450 billion in market value, the biggest one-day market-cap gain for any US company, WSJ reported, after its cloud unit accelerated. The move restored momentum to the AI boom even as Meta shares plunged and Apple dropped.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/microsoft-posts-biggest-one-day-market-cap-gain-for-any-u-s-company-b8713761?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Microsoft Posts Biggest One-Day Market-Cap Gain for Any US Company</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Rivian trims 2026 spending and narrows its loss guidance</strong></summary>
+      <div class="deal-body">
+        <p>Rivian (RIVN) reduced its 2026 spending plans and slightly narrowed its previously forecast losses for the year alongside second-quarter results, CNBC reported. A cost-discipline signal from an EV maker still burning cash on its ramp.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/30/rivian-rivn-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Rivian Reduces 2026 Spending Plans, Narrows Earnings Guidance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stellantis swings to profit on rising North American demand</strong></summary>
+      <div class="deal-body">
+        <p>Stellantis (STLA), the maker of Jeep, swung to a second-quarter profit boosted by rising demand in North America, CNBC reported. A turnaround read on the mass-market auto sector as pricing and volumes recover in its core region.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/30/stellantis-q2-earnings-autos-jeep.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Jeep Maker Stellantis Swings to Profit on Rising Demand in North America</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ferrari raises 2026 guidance after a Q2 earnings beat</strong></summary>
+      <div class="deal-body">
+        <p>Ferrari (RACE) lifted its 2026 guidance after beating second-quarter expectations amid healthy demand, CNBC reported, with pricier limited-run models driving results. A luxury standout that keeps proving pricing power holds at the very top end.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/30/ferrari-race-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Ferrari Raises 2026 Guidance After Q2 Earnings Beat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chevron and Exxon steer windfall profits into debt reduction</strong></summary>
+      <div class="deal-body">
+        <p>ExxonMobil (XOM) and Chevron (CVX) plowed blowout profits into debt reduction rather than huge buyback increases, Bloomberg reported, a sign of Big Oil's caution about how long war-driven price rallies will last. Chevron said fuel margins should stay elevated as long as energy markets remain under stress.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/exxonmobil-chevron-steer-windfall-profits-into-debt-reduction" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ExxonMobil, Chevron Steer Windfall Profits Into Debt Reduction</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape has flipped from Wednesday's panic to a broad tech rebound, but the split inside it matters more than the bounce. Amazon and Microsoft rallied because their cloud numbers accelerated, and the Kospi's record 18% surge shows how violently the chip complex can snap back. Apple's slump on supply shortages is the tell that the tape is now surgical about which AI names it will pay for. Underneath, short-dated yields are climbing again on the Fed dissenters, so a strong rebound in growth stocks is fighting a rising discount rate. The referee next week is the jobs report and the ISM data, which either cool the inflation fear or hand the dissenters their case.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a $450 Billion One-Day Gain and a Record 18% Kospi Day Are the Same Story</summary>
+      <p>On paper, Microsoft adding $450 billion of market value in a single session and South Korea's Kospi ripping a record 18% look like two unrelated events on opposite sides of the world. They are the same story, and understanding why explains what actually drives the AI trade. Start with the mechanism that connects them: the AI buildout is a supply chain, and value flows down it in a chain of dependencies. When Microsoft, Amazon and the other US hyperscalers report accelerating cloud revenue, they are telling the market that the enormous data centers they built are being rented out and are converting capital spending into recurring income. That validated demand does not stop at the hyperscaler. It flows one link down the chain to the companies that supply the physical guts of those data centers, and the two most important suppliers on earth are Samsung and SK Hynix, which dominate the high-bandwidth memory that AI accelerators cannot run without. So when Amazon's cloud accelerates for a fifth straight quarter, the read-through is not just that Amazon will make money. It is that Amazon will keep buying chips and memory, which means Samsung and SK Hynix have a longer runway of demand. That is why a strong US cloud print on Wednesday and Thursday translated into a Korean chip melt-up on Friday. The market spent July terrified that the whole chain was overbuilt, that the hyperscalers had spent ahead of real demand and would slam the brakes, which would starve the memory makers of orders. Every soft data point got extrapolated into that fear, and the derating hit the most leveraged part of the chain hardest, which is exactly why Korean chip stocks were among the biggest losers on the way down. The cloud beats broke that narrative. Once demand was visibly still accelerating at the top of the chain, the fear that the suppliers would be left holding idle capacity evaporated, and the stocks that had fallen furthest snapped back hardest. That is the arithmetic of an 18% index day: it is not new optimism so much as the violent unwind of a fear that turned out to be wrong. There are two lessons here. First, when you want to gauge the health of the AI trade, watch the demand signal at the top of the chain, the hyperscaler cloud growth, because it propagates downward to everything else. A memory maker's stock is ultimately a leveraged bet on hyperscaler capex. Second, be careful reading a huge single-day move as a verdict. The Kospi's record day and Microsoft's record gain both came off a month of steep derating, which means much of the move was recovering ground the market had given up on the way down, not breaking new ground. Apple's slump on the same day is the counterweight: its problem was physical supply shortages, not demand, which is why it did not rebound with the group. The chain rewards visible demand and punishes constrained supply, and it does both at high speed.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/south-koreas-chip-giants-just-logged-their-biggest-rally-ever-what-it-means-for-the-global-ai-trade-94d7e914?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- South Korea's Chip Giants Just Logged Their Biggest Rally Ever</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Kospi surges a record 18% as Samsung and SK Hynix rebound</strong></summary>
+      <div class="deal-body">
+        <p>South Korea's Kospi Index surged an unprecedented 18%, its best day ever, as Samsung and SK Hynix both jumped more than 23% in a chip rebound, Bloomberg reported. WSJ said the rally defied regulators' increasingly stringent restrictions on single-stock leveraged ETFs tracking the two chipmakers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-31/kospi-surges-18-on-ai-optimism-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kospi Surges 18% on AI Optimism</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Amazon gains after fifth straight quarter of cloud sales growth</strong></summary>
+      <div class="deal-body">
+        <p>Amazon (AMZN) shares jumped after cloud-computing revenue accelerated for a fifth straight quarter, Bloomberg reported, easing concerns it won't produce a return on huge AI expenditures. The print was the anchor of the broad tech rebound.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chips Stocks and Amazon Bolster Rebound in Tech</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft keeps data-center spending steady while peers ramp up</strong></summary>
+      <div class="deal-body">
+        <p>Microsoft (MSFT) balanced spending on AI against increasing cloud revenue, holding data-center outlays steady while rivals ramp up, Bloomberg reported, and the stock jumped. The discipline is what separated it from the capex names investors punished this month.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-07-31/microsoft-keeps-data-center-spending-steady-while-peers-ramp-up-ai-plans" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Microsoft Keeps Data Center Spending Steady While Peers Ramp Up AI Plans</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kioxia's outlook miss clouds optimism about the memory chip boom</strong></summary>
+      <div class="deal-body">
+        <p>Kioxia issued a disappointing earnings outlook after results missed expectations and set a 3-for-1 stock split, Bloomberg reported, a sign the unprecedented AI-driven surge in flash memory prices may be moderating. A caution flag under the chip euphoria.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/kioxia-sets-3-for-1-stock-split-after-profit-misses-estimates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kioxia's Outlook Miss Clouds Optimism About Memory Chip Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Situational Awareness down 67% in July after selling to Citadel</strong></summary>
+      <div class="deal-body">
+        <p>Leopold Aschenbrenner's Situational Awareness fell 67% in July in the AI stock rout, WSJ reported, telling investors it let them down after selling the bulk of its stocks to Citadel. FT detailed how assets swung from about $45 billion to $10 billion in a month.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/situational-awareness-down-67-in-july-in-ai-stock-rout-cd19901f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Situational Awareness Down 67% in July in AI Stock Rout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Korea plans $14 billion for its wealth fund's AI bets after the rout</strong></summary>
+      <div class="deal-body">
+        <p>South Korea plans to inject 20 trillion won, about $13.9 billion, into its sovereign wealth fund for strategic investments in AI, data centers and infrastructure, Bloomberg reported, expanding its mandate to domestic assets for the first time after the tech-stock rout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/korea-plans-14-billion-for-wealth-fund-s-ai-bets-after-rout" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Korea Plans $14 Billion for Wealth Fund's AI Bets After Rout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's MiniMax and ByteDance release dueling AI video models</strong></summary>
+      <div class="deal-body">
+        <p>MiniMax and ByteDance released updates to their competing AI video-generation models within hours of each other, Bloomberg reported, underscoring the aggressive advances that have made China a leader in the arena. DeepSeek separately rolled out a public beta API for its V4 Flash model.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/china-s-minimax-and-bytedance-release-dueling-ai-video-models" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's MiniMax and ByteDance Release Dueling AI Video Models</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Tech Movers -- Friday July 31, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The noise is the record 18% Kospi day and the 67% collapse of Aschenbrenner's fund, both spectacular but backward-looking evidence of how brutal July's derating was on the way down. The signal is that the demand at the top of the chain is still accelerating: Amazon's cloud grew for a fifth straight quarter and Microsoft held spending steady while its cloud sped up. The counter-signals worth watching are Apple's supply-driven slump and Kioxia's soft outlook, both pointing to constraints and moderating memory prices rather than falling demand. The frame for next week: whether the rebound is a durable re-rate or a violent snapback that fades once the fear-unwind runs out.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Fed dissenters say rate hikes are needed now against inflation</strong></summary>
+      <div class="deal-body">
+        <p>The three officials who dissented against Wednesday's hold, Cleveland's Beth Hammack, Minneapolis's Neel Kashkari and Dallas's Lorie Logan, warned that waiting too long to act against inflation risks the need for even more aggressive policy later, CNBC reported. They pointed to supply shocks driving prices now.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/31/fed-officials-who-voted-to-hike-rates-say-action-is-needed-now-against-inflation.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed Officials Who Voted to Hike Rates Say Action Is Needed Now</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Warsh's bear steepener is no Goldilocks moment for stocks</strong></summary>
+      <div class="deal-body">
+        <p>WSJ argued that the steepening curve under Warsh, with Microsoft popping and Apple dropping, is no Goldilocks setup for equities. Treasury yields rose Friday, led by the short end, as investors kept digesting Wednesday's decision and the chair's communication.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/kevin-warshs-bear-steepener-is-no-goldilocks-moment-for-stocks-fdd33606?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Kevin Warsh's Bear Steepener Is No Goldilocks Moment for Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOJ holds at 1% after Tokyo spends about $53 billion on the yen</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of Japan held its policy rate at 1% and Governor Ueda signaled a possible September move, Bloomberg reported, hours after government officials waded back into the currency market with apparent US help. BOJ data suggest Japan spent around $53 billion propping up the yen.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/boj-data-suggest-japan-intervention-of-about-8-45-trillion-yen" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOJ Data Point to Yen Intervention of Around $53 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euro-area inflation strengthens as US-Iran strikes boost oil</strong></summary>
+      <div class="deal-body">
+        <p>Euro-area inflation picked up in July after the collapse of a US-Iran ceasefire boosted oil prices, Bloomberg reported, reinforcing expectations the ECB will need to raise rates again. French inflation unexpectedly quickened on services and power, adding to the hawkish case.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/euro-area-inflation-strengthens-as-us-iran-strikes-boost-oil" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Euro-Area Inflation Strengthens as US-Iran Strikes Boost Oil</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US economy slowed to 1.5% in Q2 with June core inflation at 3.3%</strong></summary>
+      <div class="deal-body">
+        <p>US GDP growth slowed to a 1.5% annualized rate in the second quarter with June core inflation at 3.3%, CNBC reported, though the miss came largely from a decline in federal government spending and inventories. A cooling-growth print against still-sticky prices.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/30/us-economy-slowed-to-1point5percent-growth-rate-in-q2-june-core-inflation-at-3point3percent.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- US Economy Slowed to 1.5% Growth Rate in Q2; June Core Inflation at 3.3%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US employment costs grew at a steady pace in the second quarter</strong></summary>
+      <div class="deal-body">
+        <p>US labor-cost growth held steady in the second quarter, Bloomberg reported, indicating the job market is doing little to add to inflationary pressure. A modest dovish data point buried under the louder inflation headlines.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/us-employment-costs-grew-at-a-steady-pace-in-second-quarter" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Employment Costs Grew at a Steady Pace in Second Quarter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's factory activity unexpectedly contracts as slowdown spreads</strong></summary>
+      <div class="deal-body">
+        <p>China's factory activity contracted for the first time in five months and construction slumped to the lowest since the pandemic's start, Bloomberg reported, pointing to a further loss of momentum after last quarter's slowdown. The export rush that powered the Q2 rebound is unwinding.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/china-factory-activity-surprises-with-first-slump-in-five-months" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Factories, Builders Slump in Sign Slowdown Spreading</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (July 31, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The dovish tug is a US economy slowing to 1.5%, steady employment costs, and China's factory contraction hinting at softer global demand. The hawkish counterweight stays dominant: three Fed dissenters publicly demanding hikes, a steepening curve as short yields rise, and euro-area plus French inflation both accelerating on the oil shock. The BOJ's $53 billion yen intervention shows how much currency stress the divergence is creating. The near-term referee is next week's jobs report and ISM data, which either cool the inflation fear that's steepening the curve or hand Kashkari, Hammack and Logan their case for September.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: What a Bear Steepener Is, and Why It's the Worst Kind of Curve Move for Stocks</summary>
+      <p>WSJ described the post-Warsh Treasury move as a bear steepener and warned it is no Goldilocks moment for equities. To see why that specific shape matters, you have to understand that the yield curve can move in four distinct ways, and each one tells a different story about the economy and carries a different message for stocks. Start with the vocabulary. The curve plots yields from short maturities like the 2-year out to long ones like the 30-year. It can steepen, meaning the gap between long and short widens, or flatten, meaning the gap narrows. And it can do either in a bull move, where yields fall and bond prices rise, or a bear move, where yields rise and bond prices fall. Combine them and you get four patterns. A bull steepener, where short yields fall faster than long ones, usually means the market expects rate cuts and easier policy ahead, which is friendly to stocks. A bull flattener, where long yields fall faster, often signals growth fears and a flight to safety. A bear flattener, where short yields rise faster, is the classic sign the central bank is hiking into a slowing economy. And then there is the bear steepener, where long yields rise faster than short ones, which is what WSJ flagged. A bear steepener is the market saying it demands more compensation to hold long-dated debt, and it typically reflects rising inflation expectations and a fattening term premium rather than any expectation of near-term growth. That is the toxic combination for equities, and here is the mechanism. Stock prices are the present value of future cash flows discounted back at a rate anchored to long Treasury yields. When the long end rises, that discount rate rises, and the value of cash flows far in the future gets marked down hardest. The companies with the most of their value parked in distant future earnings, high-multiple growth and technology names, are precisely the ones most exposed. So a rising long end is a direct headwind to the exact stocks that have led this market. Worse, a bear steepener driven by inflation fear does not come with the offsetting comfort of a strong economy. A bull steepener lifts stocks because it signals easier policy and cheaper money. A bear steepener does the opposite: it raises the cost of capital while signaling that inflation, not growth, is forcing yields up. That is why WSJ called it no Goldilocks moment. The Fed held its short rate, so the front of the curve is anchored, but the long end is climbing because the market doubts the inflation fight, and the dissenters going public only sharpens that doubt. The practical takeaway is to name the curve move before you judge the tape. When you see long yields rising faster than short yields, especially with an oil shock in the background, that is a bear steepener, and it is a warning that the discount rate is grinding higher for reasons that offer stocks no compensation. A tech rebound running into a bear steepener is a rally fighting its own valuation math.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/kevin-warshs-bear-steepener-is-no-goldilocks-moment-for-stocks-fdd33606?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Kevin Warsh's Bear Steepener Is No Goldilocks Moment for Stocks</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/kevin-warshs-honeymoon-with-the-bond-market-is-already-over-23bd0c6a?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Kevin Warsh's Honeymoon With the Bond Market Is Already Over</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The AI trade rebounded hard as Amazon's cloud beat and a record 18% Kospi surge closed a brutal month up, while Apple slumped on supply shortages, three Fed dissenters went public demanding hikes, and the BOJ held after a $53 billion yen intervention; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 7/27</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 7/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 7/29</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 7/30</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 7/31</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin flat near $64,000 as the Kospi's record surge leaves crypto untouched</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held near $64,000, moving only a fraction of a percent in 24 hours even as Samsung and SK Hynix jumped over 23% and the Kospi ripped a record, CoinDesk reported. The decoupling from the equity melt-up continued into month-end.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/31/bitcoin-flat-near-usd64-000-as-kospi-s-record-17-surge-leaves-crypto-untouched" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Flat Near $64,000 as Kospi's Record Surge Leaves Crypto Untouched</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto on track for its best month in a year even as BTC dips</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin and ether fell as July drew to a close, but the broader CoinDesk 20 index is set to post its biggest monthly gain since July 2025, CoinDesk reported, with US index futures advancing. A strong month masked by a soft final session.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/31/bitcoin-ether-fall-equities-rally-with-broader-crypto-market-on-track-for-best-month-in-a-year" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin, Ether Fall, Equities Rally With Broader Crypto Market on Track for Best Month in a Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A $60,000 bitcoin put leads as the mood swings bearish for August</strong></summary>
+      <div class="deal-body">
+        <p>A bitcoin $60,000 put is leading options activity as sentiment turns bearish heading into August, CoinDesk reported. Traders are paying up for downside protection even as the month closes strong, a caution flag under the calm.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/07/31/bitcoin-usd60-000-put-leads-the-pack-as-mood-swings-bearish-for-august" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin $60,000 Put Leads the Pack as Mood Swings Bearish for August</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A wallet flaw drains $38 million of BTC in a 25-minute sweep</strong></summary>
+      <div class="deal-body">
+        <p>A hardware-wallet randomness bug turned supposedly unguessable seeds into guessable ones, draining 594 BTC worth about $38 million in a 25-minute sweep, CoinDesk reported. Longtime holders called it among the worst hits in bitcoin's history.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/07/31/major-bitcoin-wallet-flaw-drains-594-btc-in-25-minute-sweep" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Major Bitcoin Wallet Flaw Drains $38 Million Worth of BTC in 25-Minute Sweep</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Strategy books an $8.2 billion Q2 loss on bitcoin's price decline</strong></summary>
+      <div class="deal-body">
+        <p>Strategy (MSTR), the largest corporate bitcoin holder, booked an $8.2 billion second-quarter loss on the bitcoin price decline, CoinDesk reported, while saying it has built a cash reserve covering more than two years of dividend payments. Coinbase separately sank 5% after missing Q2 revenue estimates.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/07/30/strategy-books-usd8-2-billion-second-quarter-loss-on-bitcoin-price-decline" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Strategy Books $8.2 Billion Q2 Loss on Bitcoin Price Decline</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US sanctions an Iran-linked bitcoin scheme for Hormuz ships</strong></summary>
+      <div class="deal-body">
+        <p>The Treasury sanctioned the Hormuz Safe platform, which accepted bitcoin and other digital assets as part of an alleged sanctions workaround tied to IRGC-backed shipping controls, CoinDesk reported. A separate report tied a Dubai-based exchange to a $4 billion Iranian evasion network.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/07/31/u-s-sanctions-iran-linked-bitcoin-insurance-scheme-for-strait-of-hormuz-ships" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US Sanctions Iran-Linked Bitcoin Insurance Scheme for Strait of Hormuz Ships</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Anthropic -- $15 Billion Bank Loan for a Google-Backed Data Center</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Banks are in talks to lend $15 billion for a Google-backed Anthropic data center, WSJ reported, one of the largest financing packages yet for the AI buildout.</p>
+        <p><strong>Outlook:</strong> Debt is now funding the physical AI layer at hyperscaler scale, moving the capex bet onto bank balance sheets.</p>
+        <p><strong>What it means:</strong> Even as public AI stocks whipsaw, the private financing behind the buildout keeps expanding, reinforcing the demand side of the capex debate.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/microsofts-one-day-market-cap-gain-makes-history-2b3a5cb3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Microsoft's One-Day Market-Cap Gain Makes History (Anthropic Data Center Financing)</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Korea Sovereign Wealth Fund -- $13.9 Billion for AI Bets</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> South Korea plans to inject 20 trillion won, about $13.9 billion, into its sovereign wealth fund for strategic AI, data-center and infrastructure investments, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The mandate expands to domestic assets for the first time, a direct state response to the tech-stock rout.</p>
+        <p><strong>What it means:</strong> Public capital is stepping in to backstop the AI trade in Korea, mirroring the EU's data-center commitments a day earlier.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-30/korea-plans-14-billion-for-wealth-fund-s-ai-bets-after-rout" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Korea Plans $14 Billion for Wealth Fund's AI Bets After Rout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CBIZ / Grant Thornton -- $5 Billion Merger</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> CBIZ (CBZ) surged 17% on a $5 billion merger with Grant Thornton, Yahoo Finance reported, combining two large accounting and advisory platforms.</p>
+        <p><strong>Outlook:</strong> Professional-services consolidation continues as scale becomes the competitive edge in advisory and tax.</p>
+        <p><strong>What it means:</strong> Dealmaking is powering through the rates volatility, with strategic mergers still clearing even at elevated borrowing costs.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/cbiz-inc-cbz-surges-17-022516722.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- CBIZ Inc. Surges 17% on $5 Billion Grant Thornton Merger</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>FIFA Forward Enterprise -- Up to $4.2 Billion Stake Sale</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> FIFA plans to transfer major commercial and tournament operations into a new entity valued at about $20 billion, seeking as much as $4.2 billion from outside investors while retaining control, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The plan has drawn a UEFA boycott threat and criticism from the UK prime minister, with JPMorgan again central to the financing.</p>
+        <p><strong>What it means:</strong> Private capital keeps pushing into sports rights, but the governance backlash shows the limits of monetizing public institutions.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/07/30/uefa-threatens-world-cup-boycott-over-fifa-investment-plan.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- UEFA Threatens World Cup Boycott Over FIFA Private Equity Investment Plan</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Sainsbury's / Argos -- Sale to Swift Partners</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> J Sainsbury sold its Argos unit for little more than one-tenth of what it paid in 2016, Bloomberg reported, underscoring how online rivals including Temu have transformed UK general merchandise.</p>
+        <p><strong>Outlook:</strong> The grocer is shedding a struggling division to refocus on food retail as competition intensifies.</p>
+        <p><strong>What it means:</strong> A stark marker of how much value low-cost online platforms have stripped from legacy general retail.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/sainsbury-s-agrees-to-sell-argos-division-to-swift-partners" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Sainsbury's Offloads Struggling Argos Unit That Didn't Deliver</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Kashkari and Hammack -- waiting too long risks even more aggressive policy</strong></summary>
+      <div class="deal-body">
+        <p>Minneapolis Fed's Neel Kashkari and Cleveland's Beth Hammack, who dissented alongside Dallas's Lorie Logan, warned that supply shocks are driving inflation now and that waiting too long to act risks the need for even more aggressive policy later, Bloomberg reported. Three named policymakers laying out the hawkish case in public.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/fed-dissenters-say-hikes-needed-to-tackle-persistent-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Dissenters Say Rate Hikes Needed to Tame Stubborn Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>RBC -- fresh volatility is opening a valuation opportunity in stocks</strong></summary>
+      <div class="deal-body">
+        <p>RBC argued it's normal for equities to struggle around Federal Reserve leadership transitions and that the fresh volatility is opening a valuation opportunity in US stocks, MarketWatch reported. A named house leaning against the Fed-transition panic.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/why-fresh-volatility-means-a-valuation-opportunity-is-opening-up-in-u-s-stocks-9dbef149?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why Fresh Volatility Means a Valuation Opportunity Is Opening Up in US Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citi's Michael Ward -- Ford's stock rally has a lot more room to run</strong></summary>
+      <div class="deal-body">
+        <p>Citi analyst Michael Ward said Ford's (F) stock rally has a lot more room to run, Bloomberg reported, turning bullish on the automaker's momentum. A named single-stock bull cutting against the broad auto skepticism.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-07-31/ford-s-newest-bull-citi-sees-stock-rally-gaining-momentum" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ford's Newest Bull Citi Sees Stock Rally Gaining Momentum</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Leopold Aschenbrenner -- Situational Awareness down 67%, sells to Citadel</strong></summary>
+      <div class="deal-body">
+        <p>Leopold Aschenbrenner's Situational Awareness fell 67% in July in the AI stock rout, WSJ reported, telling investors it let them down after selling the bulk of its stocks to Ken Griffin's Citadel. FT said assets swung from about $45 billion to $10 billion in a month. A cautionary tale on concentrated AI leverage.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/situational-awareness-down-67-in-july-in-ai-stock-rout-cd19901f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Situational Awareness Down 67% in July in AI Stock Rout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ares CEO Michael Arougheti -- institutional demand for private credit is accelerating</strong></summary>
+      <div class="deal-body">
+        <p>Ares CEO Michael Arougheti said institutional demand for private credit is probably accelerating right now as investors see spreads widening and capital leaving the market, creating an opening to take share, Bloomberg reported. A named allocator reading opportunity in the volatility.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-07-31/ares-ceo-on-earnings-ai-deployment-private-credit-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ares CEO on Earnings, AI Deployment, Private Credit</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the AI Trade Rebounds off a Record Kospi Day and Amazon's Cloud Beat, Three Fed Dissenters Go Public Demanding Hikes, and Aschenbrenner's $20 Billion AI Fund Collapses Into Citadel</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (buy the volatility):</strong> RBC says Fed-transition volatility is normal and is opening a valuation opportunity, Citi's Michael Ward sees Ford's rally with room to run, and Ares CEO Michael Arougheti reads the widening spreads as a chance to take share in private credit. Amazon's fifth straight cloud acceleration and the Kospi's record surge show the AI demand signal is intact. If jobs and ISM cool the inflation fear, the rebound holds.</div>
+        <div class="bear"><strong>Bear (the fight isn't over):</strong> Kashkari, Hammack and Logan went public warning that waiting risks worse policy later, and WSJ's bear steepener is a direct headwind to the high-multiple names leading the bounce. Leopold Aschenbrenner's fund fell 67% and had to dump its book to Citadel, a reminder how fast concentrated AI leverage unwinds. Apple's supply slump and Kioxia's soft outlook show the trade is still fragile.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Amazon rips 10% on cloud; Kospi +18% record day; Apple slumps on supply; Microsoft's $450B one-day record; month-end squeeze</td><td>Bullish</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Tech rebound vs Apple slide; Ferrari and Stellantis beat; Rivian trims spend; Kioxia outlook miss caps chip euphoria</td><td>Optimistic</td><td>~17,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Three Fed dissenters demand hikes; Warsh bear steepener; euro inflation up; BOJ $53B yen intervention; Q2 GDP 1.5%</td><td>Cautious</td><td>~15,500 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Bear steepener mechanics; Aschenbrenner 67% blowup and Citadel rescue; Anthropic $15B data-center loan; CBIZ-Grant Thornton</td><td>Analytical</td><td>~9,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC flat at $64K through Kospi surge; best month in a year; $60K put and bearish August; $38M wallet flaw; Strategy $8.2B loss</td><td>Neutral</td><td>~12,500 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped from Wednesday's dread to a euphoric rebound. r/wallstreetbets rode Amazon's 10% pop, the Kospi's record 18% day and Microsoft's history-making gain, treating month-end as a squeeze. r/stocks cheered the tech bounce while parsing Apple's supply-driven slide and Kioxia's soft outlook. r/investing stayed cautious, fixated on the three Fed dissenters, the bear steepener and the BOJ's $53 billion yen intervention. r/SecurityAnalysis dug into the curve mechanics and Aschenbrenner's 67% blowup and Citadel rescue. r/CryptoCurrency was calm as bitcoin held $64,000 through the equity melt-up but flagged the $60,000 put and bearish August tilt. The swing factor is whether next week's jobs and ISM data confirm the rebound or reignite the inflation fear.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Concentrated AI Fund Can Fall 67% in a Month and How Forced Selling Amplifies a Rout</h2>
+    <p>WSJ reported that Leopold Aschenbrenner's Situational Awareness fell 67% in July, and FT said the fund's assets swung from about $45 billion to $10 billion in a single month before he sold the bulk of his stocks to Ken Griffin's Citadel. A 67% loss in one month, on a portfolio of real companies that mostly still exist and still have revenue, looks impossible until you understand two mechanisms that turn a bad month into a catastrophe: concentration and leverage, and the forced-selling spiral they can trigger. Start with concentration. A fund that is highly concentrated puts most of its capital into a small number of positions, in this case the AI trade. When those names move together, the portfolio has almost no cushion. Diversification works because losses in one holding are offset by gains or stability elsewhere, but a concentrated AI book has no offset when the whole theme derates at once. So the first amplifier is simply that everything the fund owned was falling together, with nothing to dampen it. The second and more dangerous amplifier is leverage, which means investing with borrowed money. Suppose a fund puts in one dollar of its own capital and borrows another dollar, so it controls two dollars of stock. If those stocks fall 20%, the position loses forty cents, but that forty cents comes entirely out of the fund's one dollar of equity, so the fund itself is down 40%, not 20%. Leverage multiplies both gains and losses relative to the capital at risk. Stack meaningful leverage on top of a concentrated book in a month when the theme falls hard, and a 67% drawdown stops looking impossible and starts looking like arithmetic. Now the spiral. When a leveraged fund's losses mount, its lenders and prime brokers demand more collateral, a margin call. To meet it, the fund has to sell assets. But selling into a falling market pushes prices down further, which deepens the fund's own losses, which triggers more margin calls, which forces more selling. This is a forced-selling feedback loop, and it does not care whether the underlying companies are good. The fund is selling because it has to, not because it wants to, and that indiscriminate selling drags down every name in the theme, hurting other funds holding the same stocks and spreading the stress. This is a big part of why the AI complex fell so violently in July: it was not just changed opinions about AI, it was leveraged holders being forced out. Here is the twist that ties to this week's rebound. WSJ reported that once Situational Awareness sold the bulk of its book to Citadel, other investors gained confidence to wade back in, and the AI trade snapped back. That is the flip side of the spiral. Forced selling by a distressed holder creates an overhang, a known block of stock that must be sold, and until it clears, buyers stay away. Once Citadel absorbed the block, the overhang was gone and the fear of more forced selling lifted, which is one reason the rebound was so sharp. The practical lesson is to watch positioning, not just fundamentals. When a theme falls far faster than the news justifies, ask whether leveraged, concentrated holders are being forced to sell. And when a distressed fund finally clears its book, that can mark the bottom, because the mechanical seller is gone.</p>
+    <p class="deal-source"><a href="https://www.ft.com/content/620bd668-d112-412d-aa52-22489b128d55?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- How Leopold Aschenbrenner, the Golden Child of the AI Trade, Was Laid Low</a></p>
+    <p class="deal-source"><a href="https://www.wsj.com/finance/investing/situational-awareness-down-67-in-july-in-ai-stock-rout-cd19901f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Situational Awareness Down 67% in July in AI Stock Rout</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>July jobs report (Friday, Aug 7).</strong> The first major post-Fed labor read; watch whether payrolls and wage growth cool the inflation fear steepening the curve or hand Kashkari, Hammack and Logan their case for a September hike.</li>
+      <li><strong>ISM manufacturing and services (early week).</strong> After US Q2 GDP slowed to 1.5% and China's factory activity contracted, the ISM prints test whether the global slowdown is spreading to US activity.</li>
+      <li><strong>Fed speakers.</strong> With three dissenters now public, watch every FOMC appearance for how deep the hawkish faction runs and whether the September base case is shifting.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Chip and hardware follow-through.</strong> After the Kospi's record 18% day and Kioxia's outlook miss, watch memory and equipment makers for whether the rebound holds or the moderating price cycle reasserts.</li>
+      <li><strong>Consumer and autos.</strong> After Ferrari and Stellantis beat and Rivian trimmed spending, watch remaining consumer and auto names for how demand and pricing power hold outside tech.</li>
+      <li><strong>Energy majors.</strong> With Exxon and Chevron steering war windfalls to debt rather than buybacks, watch smaller producers for whether they share Big Oil's caution about the rally's durability.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI financing.</strong> The $15 billion Anthropic data-center loan talks and Korea's $13.9 billion wealth-fund injection test how much debt and state capital will underwrite the buildout as public stocks whipsaw.</li>
+      <li><strong>Deal flow.</strong> CBIZ's $5 billion Grant Thornton merger, FIFA's contested stake sale and Sainsbury's Argos disposal test whether M&A holds up as short-dated borrowing costs climb.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Hormuz crisis.</strong> With the US-Iran ceasefire collapse keeping oil elevated and Washington declining to tap the SPR, watch whether the phase stays contained or drives Brent higher and deepens the inflation read-through.</li>
+      <li><strong>Currency stress.</strong> After Japan spent about $53 billion propping up the yen, watch for further BOJ or MOF intervention and any spillover into global rates from the policy divergence.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Fri Jul 31, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-07-31 08:33 ET); Bloomberg Technology (20 fresh, newest 2026-07-31 08:28 ET); Bloomberg Economics (20 fresh, newest 2026-07-31 08:32 ET); CNBC Top News (13 fresh, newest 2026-07-30 17:19 ET); CNBC Finance (6 fresh, newest 2026-07-31 08:40 ET); CNBC Economy (2 fresh, newest 2026-07-30 23:49 ET); MarketWatch Top Stories (10 fresh, newest 2026-07-31 08:48 ET); WSJ Markets (17 fresh, newest 2026-07-31 07:03 ET); Yahoo Finance (20 fresh, newest 2026-07-31 07:14 ET); FT Home (11 fresh, newest 2026-07-31 08:25 ET); Matt Levine Money Stuff (1 fresh, newest 2026-07-30 13:59 ET); CoinDesk (25 fresh, newest 2026-07-31 08:28 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Stratechery (10 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove the AI-trade rebound on Friday?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed surprised markets with a rate cut</span>
+      <span class="opt" data-opt="B">B. Apple's earnings blew past all expectations</span>
+      <span class="opt" data-opt="C">C. Amazon's cloud beat and a record Kospi surge</span>
+      <span class="opt" data-opt="D">D. Oil prices collapsed on an Iran ceasefire</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg said a chip rebound plus Amazon's fifth straight cloud-growth quarter lifted tech, with the Kospi ripping a record 18%. The Fed held rather than cut, Apple slumped on supply shortages, and the Iran ceasefire had collapsed, keeping oil elevated.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. Why is Warsh's bear steepener a headwind for stocks?</strong></p>
+      <span class="opt" data-opt="A">A. Rising long yields lift the discount rate on future cash flows</span>
+      <span class="opt" data-opt="B">B. It signals the Fed is about to cut rates sharply</span>
+      <span class="opt" data-opt="C">C. It means short yields are falling toward zero fast</span>
+      <span class="opt" data-opt="D">D. It reflects a strong economy pushing growth higher</span>
+      <div class="feedback"><strong>A is correct.</strong> In a bear steepener long yields rise faster than short ones, lifting the discount rate on distant cash flows and hitting high-multiple growth names hardest. It signals inflation fear, not cuts, not falling short yields, and offers no growth offset.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>3. How did Situational Awareness fall 67% in a single month?</strong></p>
+      <span class="opt" data-opt="A">A. A single fraud position was written down to zero</span>
+      <span class="opt" data-opt="B">B. Concentrated, leveraged AI bets faced forced selling</span>
+      <span class="opt" data-opt="C">C. Investors pulled all their money out at once</span>
+      <span class="opt" data-opt="D">D. The fund shorted Amazon right before its rally</span>
+      <div class="feedback"><strong>B is correct.</strong> WSJ and FT described a concentrated, leveraged AI book that fell hard as the theme derated, triggering margin calls and forced selling until it sold the bulk to Citadel. It was not a single fraud, a redemption run, or a bad short.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Three Fed dissenters went public demanding hikes as Kashkari, Hammack and Logan warned waiting risks worse policy later, while Warsh's bear steepener pushed yields up again, the BOJ held at 1% after Tokyo spent about $53 billion on yen intervention, and euro-area inflation strengthened on the oil shock.",
+    "sources": [
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/07/31/fed-officials-who-voted-to-hike-rates-say-action-is-needed-now-against-inflation.html", "take": "Fed dissenters say action is needed now against inflation." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/stocks/kevin-warshs-bear-steepener-is-no-goldilocks-moment-for-stocks-fdd33606?mod=rss_markets_main", "take": "Warsh's bear steepener is no Goldilocks moment for stocks." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-31/euro-area-inflation-strengthens-as-us-iran-strikes-boost-oil", "take": "Euro-area inflation strengthens as the oil shock feeds through." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-31/boj-data-suggest-japan-intervention-of-about-8-45-trillion-yen", "take": "The BOJ holds at 1% after a $53 billion yen intervention." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/why-fresh-volatility-means-a-valuation-opportunity-is-opening-up-in-u-s-stocks-9dbef149?mod=mw_rss_topstories", "take": "RBC says Fed-transition volatility opens a valuation opportunity." }
+    ]
+  },
+  "iran": {
+    "diverge": "The US-Iran ceasefire collapse keeps oil elevated and feeds into euro-area inflation, with Chevron and Exxon steering war windfalls into debt reduction rather than buybacks, the US signaling it won't tap the Strategic Reserve in this phase of the Hormuz crisis, and Trump now threatening price interventions.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-31/euro-area-inflation-strengthens-as-us-iran-strikes-boost-oil", "take": "Euro-area inflation strengthens as US-Iran strikes boost oil." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-07-31/us-strategic-petroleum-reserve-won-t-be-tapped-to-ease-prices-in-war-s-new-phase", "take": "The US won't tap the Strategic Petroleum Reserve in this phase." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/a417eb44-bffe-4584-b14e-570e76d3fb23?syn-25a6b1a6=1", "take": "Chevron and Exxon earnings soar as Trump threatens interventions." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-31/exxonmobil-chevron-steer-windfall-profits-into-debt-reduction", "take": "Big Oil steers windfalls to debt, doubting the rally lasts." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-31/uk-house-prices-edge-higher-in-july-nationwide-says", "take": "UK buyers weather war-linked borrowing costs better than expected." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade rebounded hard as Amazon jumped about 10% on a fifth straight quarter of accelerating cloud growth and South Korea's Kospi ripped a record 18% with Samsung and SK Hynix up over 23%, but Apple slumped on supply shortages, Kioxia's outlook disappointed, and Leopold Aschenbrenner's $20 billion AI fund collapsed into Citadel's arms.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-07-30/amazon-reports-fifth-straight-quarter-of-cloud-sales-growth", "take": "Amazon gains after a fifth straight quarter of cloud growth." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-07-31/kospi-surges-18-on-ai-optimism-video", "take": "The Kospi surges a record 18% as chipmakers rebound." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-30/apple-s-sales-disappoint-in-china-unit-services-business", "take": "Apple slides after supply shortages hurt its sales forecast." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-07-31/kioxia-sets-3-for-1-stock-split-after-profit-misses-estimates", "take": "Kioxia's outlook miss clouds optimism about the memory boom." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/620bd668-d112-412d-aa52-22489b128d55?syn-25a6b1a6=1", "take": "The golden child of the AI trade was laid low in the rout." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["SK Hynix","Samsung","Amazon","Microsoft","Kioxia","Apple"],
+    "values": [23.0, 23.0, 10.0, 2.0, -5.0, -3.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [29000, 17000, 15500, 9000, 12500],
+    "colors": ["bull","bull","neutral","neutral","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["Anthropic data center loan","Korea AI wealth fund","CBIZ-Grant Thornton","FIFA stake sale","Ondo acquisition"],
+    "values": [15, 13.9, 5, 4.2, 0.5]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
