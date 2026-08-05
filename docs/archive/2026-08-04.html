@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Tue Aug 4, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-04</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Tuesday, August 4, 2026</h1>
+    <div class="meta">
+      <p>It's a jobs week and an earnings deluge, with the July payrolls report landing Friday and the biggest wave of quarterly prints of the season crossing the tape this morning. Monday's Iran relief has reversed: Tehran denied planned talks, a vessel was struck in the Strait of Hormuz, and oil pushed back above $86, dragging Treasury yields up with it. Underneath, Bessent's public call for Fed help to defend the yen is redrawing the line between Treasury and the central bank.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Monday's Iran de-escalation reversed as Tehran denied any planned talks and a vessel was struck in the Strait of Hormuz, sending oil back above $86 and pulling Treasury yields up with it, even as an earnings deluge led by Palantir and Caterpillar kept US stocks pinned near record highs",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Stocks Hold Near Record Highs as Earnings Roll In", "angle": "Leans on the earnings strength holding stocks up despite the oil and Iran noise, treating the tape as resilient.", "lean": 35, "pull": "US stocks hovered near a record as investors turned their focus to corporate earnings after weeks of choppy trading."},
+        {"outlet": "WSJ", "headline": "Treasury Yields Rise, Dollar Firm as Oil Prices Increase", "angle": "Puts the rates and dollar move front and center, framing the Iran reversal as a fresh inflation and yield risk.", "lean": -25, "pull": "The 10-year Treasury yield rose as oil prices increased after Iran said there were no planned talks with the US."},
+        {"outlet": "MarketWatch", "headline": "Oil Prices Rise After Vessel Reports Being Hit in Strait of Hormuz", "angle": "Leads with the security incident, treating the strike as proof the geopolitical premium never really left.", "lean": -35, "pull": "The United Kingdom Maritime Trade Operations Center said a ship reported being struck by an unknown projectile in the waterway."},
+        {"outlet": "Financial Times", "headline": "Bessent's Yen Intervention Signals New Era of US Currency Activism", "angle": "Frames the joint yen action as a structural shift, with Washington now willing to break trades that push against its interests.", "lean": -10, "pull": "The bid to support Japan's currency shows the US is ready to scupper trades that push against its interests."},
+        {"outlet": "CNBC", "headline": "California's Diesel Prices Have Jumped Since the Iran War Started", "angle": "Anchors the war in real household costs, warning the fuel spike ripples across the country regardless of the headlines.", "lean": -30, "pull": "Consumers across the country could feel the impact of higher diesel from the busiest containership port."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasury Yields Rise Again as Oil Rebounds and the Yen Rescue Ties the Fed to the Treasury Market, With Bessent Publicly Seeking the Fed's Aid to Defend the Yen, BofA's Mark Cabana Warning Treasuries Resume Their Fall Without a Clear Fed Plan, Citi Arguing Japan Has Defense Tools Beyond Selling Treasuries, and Credit Bracing for $100 Billion of Fallen Angels</h3>
+      </div>
+      <p>The relief in rates that Monday's Iran truce delivered did not survive the reversal. WSJ reported the 10-year Treasury yield rose and the dollar firmed as oil climbed after Iran said there were no planned talks with the US, putting the inflation premium back into the curve. The bigger structural story is the yen rescue bleeding into US rates. Bloomberg reported Treasury Secretary Scott Bessent made an unusual public call for the Federal Reserve to boost a facility Japan can use to support its currency, putting fresh attention on the normally arm's-length ties between the two institutions, and FT framed the joint intervention as a new era of US currency activism. Citi pushed back on the scariest read, saying Japan has tools to defend the yen beyond liquidating its more than $1.1 trillion Treasury portfolio, which would take direct selling pressure off US bonds. The credibility fight is still live: Bloomberg carried BofA's Mark Cabana warning that Treasuries will resume their retreat if the Fed can't communicate a clearer plan to hit 2%, his you-can't-fool-the-bond line. And the plumbing is straining, with Bloomberg reporting roughly $100 billion of high-grade debt from names like Oracle and Stellantis now trading close to junk, and Scope noting most of the G-7 spends more on interest than defense. Bloomberg also flagged central banks seem happy to let bond markets do their policy work for them. Yields got their scare back the moment oil turned.</p>
+      <p>The bull case is Citi's point that Japan need not dump Treasuries, cooler Kalshi-implied jobs odds and strong US manufacturing pointing to a soft landing rather than a stall. The bear case is Cabana's warning that Treasuries resume falling without a Fed plan, the fallen-angel wave and a G-7 debt bill that keeps term premium elevated.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the yen fear is overdone):</strong> Citi says Japan has ways to defend the yen without selling its $1.1 trillion Treasury book, so the feared forced-selling channel into US yields may never open. US manufacturing expanded at its fastest pace since 2022, and CNBC noted Kalshi traders lean toward a cooler-than-expected July jobs print, which would let the front end settle. If the oil spike proves a headline blip rather than a trend, the inflation premium drains back out.</div>
+        <div class="bear"><strong>Bear (the plan is still missing):</strong> BofA's Mark Cabana warns Treasuries will resume their fall without a clearer Fed plan to hit 2%, and yields already turned up the moment oil rebounded. Bloomberg says $100 billion of high-grade debt is trading like junk with Oracle and Stellantis in the crosshairs, Scope notes most of the G-7 now spends more on interest than defense, and Bessent's public plea for Fed help signals real stress. A missing plan plus a heavy issuance calendar keeps term premium fat.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-03/treasuries-to-resume-fall-without-clear-fed-plan-bofa-s-cabana" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BofA's Cabana Sees Risk in Silent Fed: You Can't Fool the Bond</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>The Iran De-escalation Reverses as Tehran Denies Any Planned Talks and a Vessel Is Struck in the Strait of Hormuz, Sending Oil Back Above $86 and Erasing Monday's Relief, With Trump Calling His Offer a Last Chance, Bessent Saying a Deal May Be Near, Aramco Moving to Expand Export Capacity, and Asia's Energy-Starved Nations Going Dark</h3>
+      </div>
+      <p>Monday's truce trade unwound almost as fast as it formed. MarketWatch reported oil prices rose after a ship reported being struck by an unknown projectile in the Strait of Hormuz, and WSJ and Yahoo said crude climbed back above $86 after Iran said there were no planned talks with the US. Bloomberg reported oil first erased gains when Qatar said draft language on a potential US-Iran deal had begun circulating, then stressed no direct talks are currently planned, and Trump called his latest offer of talks a last chance for Iran. Emerging-market stocks and currencies stayed under pressure as the impasse lifted oil. The real-economy damage is deepening, not fading: Bloomberg reported Asia's energy-starved nations are going dark as Hormuz tensions drag on and that oil can't fall fast enough for the region to keep the lights on, while Saudi Aramco said it is looking at options to expand export capacity as the war disrupts flows and Houthis threaten Red Sea shipments. The EU is eyeing winter LNG buys with storage at a near two-decade low after the war disrupted summer stockpiling, and CNBC noted California diesel prices have jumped with ripple effects nationwide. Bessent still says a deal may be near, which is why oil kept whipsawing all session. The premium never actually left.</p>
+      <p>The bull read is that draft deal language is circulating, Bessent says a deal may be near and Oman-brokered Hormuz talks are reportedly progressing. The bear read is Tehran denying talks, a vessel struck in the strait, oil back above $86, Aramco scrambling to reroute flows and Asian grids going dark.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (a deal is still on the table):</strong> Bloomberg reported Qatar says draft language on a potential US-Iran deal has begun circulating, Bessent says a deal may be near, and talks between Iran and Oman on getting more ships through Hormuz are said to be progressing well. Trump framing his offer as a last chance is pressure, not a door closing. If the diplomatic track reengages, oil rolls back over and the inflation impulse that turned yields up this morning fades again.</div>
+        <div class="bear"><strong>Bear (the strait is still a war zone):</strong> Iran denied any planned talks, a vessel was struck by a projectile in Hormuz, and oil pushed back above $86 with emerging markets under pressure. Bloomberg says Asia's energy-starved nations are going dark, Aramco is hunting for ways to expand export capacity around disrupted flows, and EU gas storage sits near a two-decade low. This is a live conflict with a control chokepoint, and one bad headline reprices the whole inflation path.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/oil-prices-rise-after-vessel-reports-being-hit-in-strait-of-hormuz-db6ce867?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Oil Prices Rise After Vessel Reports Being Hit in Strait of Hormuz</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Earnings Validate the AI Buildout as Palantir Reports Otherworldly Demand and Caterpillar Posts Record Data-Center Revenue, With Microsoft's Efficiency Payoff and BlackRock Staying Overweight, but Meta Lifting Capex Guidance to $130 Billion, Huawei Warning of the Physical Chip Limit Nvidia Will Soon Hit, and Spotify Missing as the Split Between Winners and Spenders Sharpens</h3>
+      </div>
+      <p>After July's rout the AI trade came into earnings needing proof, and the marquee prints delivered. Bloomberg reported Palantir jumped after it boosted full-year revenue and income forecasts and described commercial demand as otherworldly, and MarketWatch said Caterpillar's stock surged after its biggest earnings beat in five years as data-center construction drove record revenue, with Yahoo noting the power unit as the standout. Stratechery's Ben Thompson called Microsoft's earnings compelling for their clarity of strategy, lower costs and tangible applications, the efficiency payoff the market wanted to see. The buyside stayed committed: Bloomberg reported BlackRock's Wei Li said the firm has not changed its conviction on the AI thesis and stays overweight despite rising commoditization and capacity risks, NewEdge's Cameron Dawson said Mag 7 valuations have room to normalize higher, and MarketWatch said Citadel Securities' Scott Rubner thinks the brutal summer reset is over and it is time to buy again. The caution is real too. Yahoo reported Meta lifted capex guidance to $130 billion as Zuckerberg defended selling compute while buying more, the spending-ahead side of the split, Bloomberg said Huawei's top scientist warned of the physical limits Nvidia will soon face, and Spotify fell after weak user and income forecasts. The boom is intact, but the market is paying for delivered demand, not promises.</p>
+      <p>The bulls point to Palantir's otherworldly demand, Caterpillar's record data-center revenue, Microsoft's efficiency payoff, BlackRock's Wei Li staying overweight and Citadel's Rubner calling the reset over. The bears point to Meta's $130 billion capex, Huawei's chip-limit warning, Spotify's miss and MarketWatch's note that the Mag 7 just fell together for the first time since ChatGPT launched.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the demand is showing up in the numbers):</strong> Palantir raised guidance on otherworldly commercial demand, Caterpillar posted its biggest beat in five years on data-center construction, and Microsoft delivered the efficiency payoff Stratechery flagged. BlackRock's Wei Li is staying overweight AI, NewEdge's Cameron Dawson sees room for Mag 7 multiples to normalize higher, and Citadel Securities' Scott Rubner says the summer reset is done and it is time to buy. The monetization is finally arriving in the reports, not the pitch decks.</div>
+        <div class="bear"><strong>Bear (the spending keeps climbing):</strong> Meta lifted capex guidance to $130 billion, the classic spending-ahead-of-payoff signal, and Spotify fell on soft forecasts. Bloomberg carried Huawei's top scientist warning of the physical limit Nvidia will soon hit, a longer-run cap on the compute story, and MarketWatch noted the Mag 7 just declined in unison for the first time since ChatGPT arrived. Asian equities sold off on AI-trade jitters overnight, so the divergence is far from resolved.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/caterpillar-is-killing-it-and-data-center-demand-is-driving-record-revenue-161b84d1?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Caterpillar Is Killing It, and Data-Center Demand Is Driving Record Revenue</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Caterpillar surges about 9% on record revenue as data-center demand lifts its power unit</strong></summary>
+      <div class="deal-body">
+        <p>Caterpillar (CAT) stock jumped roughly 9% after its biggest earnings beat in five years, with demand for data-center construction and power generation driving record revenue, MarketWatch and Yahoo reported. A stunning reversal for a name that had shed nearly a quarter of its value as an AI selloff proxy just days ago.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/live/earnings-live-updates-130425228.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Caterpillar Stock Surges 9% as AI Build-Out Boosts Power Unit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Palantir jumps after describing commercial demand as otherworldly and raising guidance</strong></summary>
+      <div class="deal-body">
+        <p>Palantir (PLTR) shares rose after the company boosted full-year revenue and income forecasts and CEO Alex Karp called commercial demand for its data-analytics tools otherworldly, Bloomberg reported, with US commercial business booming. A decisive answer for a former momentum darling that had lost more than 40% from its peak.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-03/palantir-raises-outlook-karp-calls-business-sales-otherworldy" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Palantir Jumps After Otherworldly Demand Lifts Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>McDonald's beats but names a new US chief as growth in its largest market slows</strong></summary>
+      <div class="deal-body">
+        <p>McDonald's (MCD) topped estimates and named 26-year veteran Skye Anderson as US president to accelerate growth, CNBC reported, but sales growth slowed as budget-conscious consumers stayed under stress. The stock is down more than 11% this year, with market cap around $191 billion.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/04/mcdonalds-mcd-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- McDonald's Earnings Beat Estimates, Chain Announces New US Head</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Pfizer and Merck both top estimates on new drug strength</strong></summary>
+      <div class="deal-body">
+        <p>Pfizer (PFE) beat and hiked the low end of revenue guidance on strength in Eliquis and other drugs, while cutting its Covid-product outlook to $4 billion, CNBC reported. Merck (MRK) raised its revenue outlook on Keytruda strength but trimmed profit guidance for a charge tied to its Terns Pharmaceuticals acquisition.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/04/pfizer-pfe-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Pfizer Tops Estimates, Hikes Low End of Revenue Guidance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Spotify falls after user and income forecasts miss estimates</strong></summary>
+      <div class="deal-body">
+        <p>Spotify (SPOT) shares fell in premarket trading after the world's largest music streamer gave disappointing forecasts for third-quarter active users and operating income, Bloomberg reported, even as users climbed 12% following splashy product announcements. A rare stumble for a consumer-tech name that had been running hot.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/spotify-users-climb-12-following-splashy-product-announcements" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Spotify Falls After User and Income Forecasts Miss Estimates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>HSBC resumes buybacks as quarterly profit soars to $10.1 billion</strong></summary>
+      <div class="deal-body">
+        <p>HSBC (HSBC) posted sharply higher pretax profit of $10.1 billion and plans a $1 billion share buyback, WSJ and FT reported, with wealth management and insurance in Hong Kong powering Europe's biggest lender. Profit rose especially sharply in the business of supporting affluent clients.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/0da95788-cde6-4e1a-af89-1faced91178e?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- HSBC Resumes Share Buybacks as Quarterly Profits Soar to $10.1bn</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citadel Securities says the brutal summer reset is over and it's time to buy again</strong></summary>
+      <div class="deal-body">
+        <p>Citadel Securities strategist Scott Rubner said the stock market's brutal summer reset is finally over, arguing markets got a technical reset and he is ready to recommend buying stocks again, MarketWatch reported. A well-followed flows read turning constructive just as earnings roll in near record highs.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-stock-markets-brutal-summer-reset-is-finally-over-here-is-why-citadel-securities-says-it-is-time-to-buy-again-f6a8d101?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Stock Market's Brutal Summer Reset Is Finally Over</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape opened resilient this morning, with the Dow lifted by Caterpillar's massive beat and Palantir's otherworldly quarter even as oil climbed and yields rose, and that resilience is the story. Strip out the Iran whipsaw and the earnings deluge is doing the work that the geopolitical relief did on Monday, showing that delivered AI demand can hold stocks near records without help from crude. But the split is intact: Caterpillar and Palantir on the winners' side, Meta's $130 billion capex and Spotify's miss on the other. Citadel Securities calling the reset over sets up Friday's jobs report as the referee. If payrolls come in cooler as Kalshi traders expect, the buy-the-reset call gets its confirmation; a hot print reopens the Fed-credibility fight while oil is already back above $86.
+    </div>
+    <details class="dive">
+      <summary>Deeper: How Data-Center Demand Turned Caterpillar From an AI Casualty Into an AI Winner in a Week</summary>
+      <p>A week ago Bloomberg was framing Caterpillar as a warning sign, a stock that had shed nearly a quarter of its value as investors soured on it as an AI infrastructure proxy. This morning MarketWatch reported it posted its biggest earnings beat in five years and surged about 9% because data-center construction drove record revenue. Nothing about the company changed in a week, so the round trip is worth unpacking, because it shows exactly how the market prices an indirect AI play and why those stocks swing harder than the chipmakers themselves. Start with why Caterpillar is an AI name at all. It does not make chips or models. It makes the engines, generators and heavy equipment that build and power data centers, and its power-systems unit sells the large gensets that provide backup and, increasingly, primary electricity for AI facilities that utilities cannot supply fast enough. So Caterpillar sits one layer removed from the AI demand, selling the physical picks and shovels. That distance is the whole story. When the market is enthusiastic about AI, it bids up not just the direct beneficiaries but the whole supply chain behind them, and the further out you sit from the actual revenue, the more your valuation rests on the assumption that the buildout continues. When sentiment cracked in July, the selling ran down that same chain in reverse, and it hit the indirect names hardest precisely because their AI revenue was an assumption rather than a booked number. The market marked Caterpillar down as if the data-center capex cycle might stall, even though nothing in its order book had actually deteriorated. Now the earnings arrive, and they replace the assumption with a fact. Record revenue driven by the power unit is hard data that the buildout is not slowing, it is accelerating, and it is flowing straight to Caterpillar's bottom line. The moment that number prints, the stock does not just recover the fear-driven discount, it re-rates on proof, which is why a 9% jump can follow a report rather than precede it. This is the same arithmetic that separated the tech winners from the spenders last week, viewed from the industrial side. The market had been pricing timing risk, the gap between committed spending and realized revenue, and Caterpillar's beat collapsed that gap by showing the revenue is here now. The practical lesson is about how to read indirect AI exposure. A picks-and-shovels stock gives you leverage to a theme without owning the most expensive names, but that leverage cuts both ways: it amplifies enthusiasm on the way up and amplifies doubt on the way down, because your thesis depends on someone else's capex plan you cannot see directly. The way to cut through the swings is to wait for the order book to speak. When Meta guides capex to $130 billion and Caterpillar reports record power-unit revenue in the same week, those two facts are the same fact seen from opposite ends of the supply chain, and they tell you the physical buildout is real regardless of what the share prices did in July.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/caterpillar-is-killing-it-and-data-center-demand-is-driving-record-revenue-161b84d1?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Caterpillar Is Killing It, and Data-Center Demand Is Driving Record Revenue</a></p>
+      <p class="deal-source"><a href="https://finance.yahoo.com/technology/articles/mark-zuckerberg-tells-investors-why-113000485.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Zuckerberg Tells Investors Why Meta Is Selling Compute and Still Buying More as Capex Rises to $130B</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Meta lifts capex guidance to $130 billion as Zuckerberg defends selling compute</strong></summary>
+      <div class="deal-body">
+        <p>Mark Zuckerberg told investors why Meta (META) is selling compute to others while still buying more, as the company raised full-year capex guidance to $130 billion, Yahoo Finance reported. The spending-ahead-of-payoff signal that keeps Meta on the cautious side of the AI-earnings split.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/articles/mark-zuckerberg-tells-investors-why-113000485.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Zuckerberg Tells Investors Why Meta Is Selling Compute and Still Buying More</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft's earnings show the efficiency payoff investors wanted</strong></summary>
+      <div class="deal-body">
+        <p>Microsoft's (MSFT) earnings were compelling because they showed clarity of strategy, lower costs and tangible applications, Stratechery's Ben Thompson wrote, contrasting the efficiency payoff with Meta's timing problems. The reason it works, he added, is scarier for rivals: monetization is arriving now.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/microsoft-earnings-microsoft-vs-meta-the-efficiency-payoff/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- Microsoft Earnings, Microsoft vs. Meta, The Efficiency Payoff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia and Dell back AI cloud startup Volta at a $2.4 billion valuation</strong></summary>
+      <div class="deal-body">
+        <p>Volta Infra Holdings raised $300 million in venture funding and secured an additional $5 billion in financing to help a wider mix of companies access costly AI chips, valuing it at $2.4 billion, Bloomberg reported. Andreessen Horowitz and Altimeter co-led, with Nvidia (NVDA) and Michael Dell participating.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/nvidia-dell-back-ai-cloud-startup-volta-at-2-4-billion-value" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia, Dell Back AI Cloud Startup Volta at $2.4 Billion Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Huawei's top scientist warns of the physical chip limit Nvidia will soon face</strong></summary>
+      <div class="deal-body">
+        <p>Huawei's top semiconductor scientist warned of the looming physical limits that Western chipmakers including Nvidia (NVDA) face in the pursuit of more powerful processors, Bloomberg reported, in a rare public appearance streamed in China. A longer-run cap on the compute story underpinning the AI trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/huawei-s-top-scientist-warns-of-chip-limit-nvidia-will-soon-face" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Huawei's Top Scientist Warns of Chip Limit Nvidia Will Soon Face</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CoreWeave enters Asia with its first Indonesian data centers</strong></summary>
+      <div class="deal-body">
+        <p>AI cloud company CoreWeave (CRWV) is entering the Asian market with its first data centers in the region, expanding into a rapidly growing part of the world clamoring for computing power, Bloomberg reported. A geographic push that extends the buildout beyond the US and Europe.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/coreweave-to-enter-asian-market-with-indonesian-data-centers" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CoreWeave to Enter Asian Market With Indonesian Data Centers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Inside Google's $200 billion Wall Street finance machine for Anthropic</strong></summary>
+      <div class="deal-body">
+        <p>Private credit, chip leases and data-center guarantees underpin a vast new model for AI spending, FT reported, detailing the $200 billion financing machine Google (GOOGL) has built around Anthropic. A look at how the buildout is being funded off balance sheet through structured debt.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/549f2e23-5aa2-49c7-9ea6-a9784ab7087c?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Inside Google's $200bn Wall Street Finance Machine for Anthropic</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI hits back at Apple over an oddly personal trade-secrets fight</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI pushed back at Apple (AAPL) in an escalating trade-secrets clash, FT reported, after an AI partnership over devices gave way to acrimony that OpenAI called oddly personal. The dispute deepens just as Apple prepares to launch Siri AI into the chatbot race this fall.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/7da4af42-178d-431a-91db-7e82eecc98dd?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- OpenAI Hits Back at Apple Over Oddly Personal Trade Secrets Fight</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings Movers -- Tuesday August 4, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The noise is the overnight Asian AI-trade selloff and the Iran-driven risk chop lifting and dropping the whole complex. The signal is the earnings confirming which side of the split each name is on: Microsoft's efficiency payoff and Caterpillar's record power-unit revenue on the winners' side, Meta's $130 billion capex and Spotify's soft forecast on the spenders' side. BlackRock's Wei Li staying overweight while flagging rising commoditization and capacity risk is the frame worth holding, because it separates conviction in the thesis from conviction in every stock. The counter-signal is Huawei's warning of a coming physical chip limit, a reminder the compute curve is not infinite. FT's look at Google's $200 billion Anthropic financing machine shows how much of the buildout now rides on structured debt.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Treasury yields rise and the dollar firms as oil climbs on the Iran reversal</strong></summary>
+      <div class="deal-body">
+        <p>The 10-year Treasury yield rose and the dollar firmed as oil prices increased after Iran said there were no planned talks with the US, WSJ reported. The move erased Monday's relief and put the energy-driven inflation premium back into the curve ahead of Friday's jobs report.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/jgbs-edge-higher-tracking-gains-in-u-s-treasurys-89af7200?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury Yields Rise, Dollar Firm as Oil Prices Increase</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bessent makes an unusual public call for the Fed's help to defend the yen</strong></summary>
+      <div class="deal-body">
+        <p>Treasury Secretary Scott Bessent's call for the Federal Reserve to boost a facility Japan can use to support its currency put renewed attention on the ties between the two institutions, which usually operate at arm's length, Bloomberg reported. A rare public request that blurs the Treasury-Fed line.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-03/bessent-seeks-fed-help-in-defending-yen-in-unusual-call" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bessent Seeks Fed's Aid to Defend Yen in Unusual Public Call</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>FT calls the yen intervention a new era of US currency activism</strong></summary>
+      <div class="deal-body">
+        <p>The bid to support Japan's currency shows the US is ready to scupper trades that push against its interests, FT reported, framing Bessent's yen intervention as a new era of currency activism. WSJ separately said investors remain skeptical the yen's rally holds without higher BOJ rates.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/1be83506-b897-4c26-97cc-445d7354ee6f?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Bessent's Yen Intervention Signals New Era of US Currency Activism</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citi says Japan has yen-defense tools beyond selling Treasuries</strong></summary>
+      <div class="deal-body">
+        <p>Japan has alternative tools to defend the yen without liquidating its more than $1.1 trillion US Treasury portfolio, according to Citigroup, Bloomberg reported. The read takes some feared forced-selling pressure off US bonds even as the joint intervention continues.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/citi-says-japan-has-yen-defense-tools-beyond-treasury-sales" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citi Says Japan Has Yen Defense Tools Beyond Treasury Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Credit braces for fallen angels as $100 billion trades like junk</strong></summary>
+      <div class="deal-body">
+        <p>Oracle and Stellantis are among a group of high-grade companies whose debt has traded close to junk levels, putting the bond market on watch for a new era of fallen angels, Bloomberg reported. A stress signal in credit as roughly $100 billion sits on the downgrade watch line.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/credit-braces-for-fallen-angels-as-100-billion-trades-like-junk" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Credit Braces for Fallen Angels as $100 Billion Trades Like Junk</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US manufacturing hits strongest pace since 2022 but inflation worries deepen</strong></summary>
+      <div class="deal-body">
+        <p>US manufacturing activity expanded in July at the fastest pace in more than four years as demand, production and hiring surged, Bloomberg reported, but CNBC said the survey's price commentary described inflation worries as worse than the pandemic era, adding to pressure on the Fed.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/03/manufacturing-survey-shows-inflation-worries-adding-to-pressure-on-fed.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Manufacturing Survey Shows Inflation Worries Worse Than Pandemic Era</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kalshi traders bet the July jobs report comes in slightly cooler</strong></summary>
+      <div class="deal-body">
+        <p>Speculators on Kalshi place just under 50-50 odds that employers added more than 80,000 jobs in July, leaning toward a slightly cooler print than economists expect, CNBC reported. A prediction-market read on Friday's referee for the Fed-credibility debate.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/03/kalshi-traders-think-july-jobs-will-come-in-cooler-than-estimates.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Kalshi Traders Think July Jobs Report Will Come in Slightly Cooler</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 4, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish tug got stronger this morning, with the Iran reversal pushing oil back above $86 and lifting yields, US manufacturing running at its fastest since 2022, and a factory survey describing inflation worries as worse than the pandemic era. The dovish counterweight is a Kalshi lean toward a cooler July jobs print and Citi's argument that Japan need not dump Treasuries to defend the yen. Underneath it all is the Bessent-Fed entanglement, an unusual public call for central-bank help that ties Treasury's currency defense to the same institution whose credibility Cabana is questioning. The $100 billion fallen-angel watch shows the stress is reaching credit. Friday's jobs report is the referee that either confirms the cooler read or reignites the inflation fight.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Bessent Asking the Fed to Help Defend the Yen Is a Bigger Deal Than It Sounds</summary>
+      <p>Bloomberg reported that Treasury Secretary Scott Bessent made an unusual public call for the Federal Reserve to boost a facility Japan can use to support its currency, and FT framed the whole episode as a new era of US currency activism. On the surface this reads as a technical footnote about a swap line. It is not. It touches the deepest fault line in US economic policy, the wall between the Treasury, which is political, and the Fed, which is supposed to be independent, and understanding the mechanism shows why the request is loaded at exactly this moment. Start with the plumbing. When Japan wants to buy yen to prop up its currency, it needs dollars to sell. It holds plenty in reserves, mostly parked in US Treasuries, but selling those bonds outright pushes US yields up, which is the last thing Washington wants while it is issuing enormous amounts of debt. The alternative is a central-bank swap line. The Fed can lend dollars to the Bank of Japan against yen collateral, giving Japan the dollars it needs to intervene without dumping Treasuries into the market. That is the facility Bessent wants expanded. Mechanically it is elegant: it lets Japan defend the yen while sparing the US bond market the selling pressure Citi says can otherwise be avoided. Now the problem. Swap lines are the Fed's tool, extended at the Fed's discretion for reasons of financial stability, not to serve the Treasury's currency or trade goals. When the Treasury Secretary publicly asks the Fed to expand one to defend a specific ally's exchange rate, he is asking an independent central bank to take a side in what is partly a trade and currency negotiation. Bloomberg noted Bessent's yen rescue is expected to boost US pressure on Japan over trade and rates, which is precisely the kind of political objective the swap line was never meant to advance. Doing it in public, rather than through the quiet institutional channels these two bodies normally use, turns a routine liquidity tool into a statement about who is steering. This lands at a fraught time. The Fed under Warsh is already fighting a credibility problem, with BofA's Cabana warning that Treasuries will resume falling without a clearer inflation plan. A central bank seen bending its balance sheet to the Treasury's foreign-policy aims risks eroding exactly the independence that anchors long-term inflation expectations, and that anchor is what keeps the term premium contained. So the request creates a bind: help Japan and look politically captured, or refuse and let the yen problem fester into US markets. The practical lesson is to read currency interventions as tests of institutional boundaries, not just price levels. The dollars can come from selling Treasuries, which strains the bond market, or from a Fed swap line, which strains Fed independence. Neither is free. When a Treasury Secretary asks for the second option out loud, watch how the Fed responds, because the answer tells you how much of the wall between fiscal and monetary policy is still standing, and that wall matters far more for long yields than any single intervention.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-03/bessent-seeks-fed-help-in-defending-yen-in-unusual-call" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bessent Seeks Fed's Aid to Defend Yen in Unusual Public Call</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/citi-says-japan-has-yen-defense-tools-beyond-treasury-sales" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citi Says Japan Has Yen Defense Tools Beyond Treasury Sales</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The Iran de-escalation reversed as Tehran denied planned talks and a vessel was struck in Hormuz, pushing oil back above $86 and lifting yields, while an earnings deluge led by Palantir and Caterpillar kept stocks near record highs and Bessent asked the Fed for help defending the yen; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/3</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/4</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/5</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/6</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/7</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin rises toward $64,000 as Coldcard fears and Strategy sales recede</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin advanced toward $64,000 as the market settled following the weekend Coldcard wallet hack and Strategy's sales, though sentiment remained in extreme fear, CoinDesk reported. Every major token except ether was green on the week even as Asian equities sold off on AI-trade jitters.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/04/bitcoin-rises-toward-usd64-000-as-coldcard-exploit-strategy-sales-recede-ada-advances" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Rises Toward $64,000 as Coldcard Exploit, Strategy Sales Recede</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Coldcard urges users to move bitcoin as the active exploit continues</strong></summary>
+      <div class="deal-body">
+        <p>Coldcard's maker confirmed the flaw behind roughly $114 million in losses remains live, with specific models and firmware still exposed, and urged users to move their bitcoin, CoinDesk reported. A dormant 2013 wallet moved $31 million as holders scrambled to secure coins.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/08/04/coldcard-urges-users-to-move-bitcoin-as-active-wallet-exploit-continues" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Coldcard Urges Users to Move Bitcoin as Active Wallet Exploit Continues</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>First US spot bitcoin ETF set to close as inflows dwindle</strong></summary>
+      <div class="deal-body">
+        <p>Hashdex's DEFI, the smallest US spot bitcoin ETF at $14.7 million under management, will close as inflows dwindle and investors chase AI returns, CoinDesk reported. For contrast, BlackRock's IBIT holds $47.08 billion, a sign of how concentrated the winning funds have become.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/04/first-u-s-spot-bitcoin-etf-to-close-as-inflows-dwindle-investors-chase-ai-returns" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- First US Spot Bitcoin ETF to Close as Inflows Dwindle</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock debuts tokenized access to $311 billion of European money market funds</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock is bringing blockchain technology to its flagship money market funds in Europe, offering tokenized access to $311 billion of assets, CoinDesk reported. It follows this week's expansion of BlackRock's US tokenized cash platform, another sign of Wall Street pushing digital-asset rails into the mainstream.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/04/blackrock-debuts-tokenized-access-to-usd311-billion-of-money-market-funds-in-europe" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BlackRock Debuts Tokenized Access to $311 Billion of Money Market Funds in Europe</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US-Japan intervention revives yen carry-trade fears for bitcoin</strong></summary>
+      <div class="deal-body">
+        <p>The coordinated US-Japan action sent the yen sharply higher and revived carry-trade fears, but CoinDesk reported bitcoin's recent correlation suggests dollar strength, not the carry trade, may be the bigger risk. Japan may have spent as much as $36.6 billion buying yen in the first joint action since 1998.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/03/u-s-japan-intervention-revives-yen-carry-trade-fears-for-bitcoin" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US-Japan Intervention Revives Yen Carry Trade Fears for Bitcoin</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Circle slides after a Morgan Stanley downgrade and price-target cut</strong></summary>
+      <div class="deal-body">
+        <p>Circle (CRCL) shares fell after Morgan Stanley downgraded the stock and cut its price target, warning that tokenized money market funds, Open USD and slower USDC growth could weigh on the stablecoin issuer's earnings, CoinDesk reported. A cautious call as tokenized cash competition intensifies.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/03/circle-internet-slides-after-morgan-stanley-downgrade-cut-in-price-target" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Circle Slides After Morgan Stanley Downgrade, Cut in Price Target</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Visa / BioCatch -- $2.4 Billion Fraud-Defense Acquisition</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Visa (V) agreed to buy fraud-detection firm BioCatch, which uses AI to fight scams, for $2.4 billion in cash, WSJ and CNBC reported, amid a surge in AI-powered fraud.</p>
+        <p><strong>Outlook:</strong> The deal extends Visa's fast-growing value-added services business, one of its quickest-expanding divisions.</p>
+        <p><strong>What it means:</strong> AI is now driving both the threat and the defense in payments, and the incumbents are paying up to own the security layer.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/visa-to-buy-fraud-defense-platform-biocatch-in-2-4-billion-deal-5e36f6e3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Visa to Buy Fraud Defense Platform BioCatch in $2.4 Billion Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bending Spoons / Airtable -- $2.25 Billion Software Acquisition</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> App developer Bending Spoons agreed to buy software firm Airtable for an equity value of $2.25 billion, Bloomberg reported, a sharp decline from the startup's 2021 peak valuation.</p>
+        <p><strong>Outlook:</strong> The acquirer known for buying and restructuring software assets adds a well-known no-code platform at a compressed price.</p>
+        <p><strong>What it means:</strong> The 2021 growth-tech cohort is still repricing lower, and disciplined buyers are consolidating names that never grew into their private marks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/bending-spoons-to-buy-software-firm-airtable-for-2-3-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bending Spoons to Buy Software Firm Airtable for $2.3 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan Chase -- $750 Billion US Housing Investment Pledge</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> JPMorgan Chase (JPM) said it will invest $750 billion to boost US housing supply and homeownership, WSJ reported, aiming to finance one million affordable units and lend to 200,000 first-time buyers through 2035.</p>
+        <p><strong>Outlook:</strong> The multi-year commitment targets the supply shortfall that has kept housing affordability stretched.</p>
+        <p><strong>What it means:</strong> A large bank leaning into housing finance is a bet on durable mortgage and construction-lending demand even at elevated rates.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/jpmorgan-chase-to-invest-750-billion-to-boost-u-s-housing-supply-homeownership-11a389e5?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- JPMorgan Chase to Invest $750 Billion to Boost US Housing Supply</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BP -- $4 Billion US Biogas Sale as Profits More Than Double</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> BP (BP) plans to sell its $4 billion US biogas business as quarterly profits more than doubled to $5.7 billion on the oil-price and refining boom, FT and Bloomberg reported, with several approaches for its North Sea assets.</p>
+        <p><strong>Outlook:</strong> The disposal sharpens BP's portfolio toward core oil and gas as the Iran war lifts refining margins.</p>
+        <p><strong>What it means:</strong> Higher-for-longer oil is funding a strategic reshuffle, with majors shedding lower-return renewables units into strength.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/fa298199-b824-4ca9-a3a0-440eb320ac61?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- BP to Sell $4bn US Biogas Business as Profits More Than Double</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apollo -- Dealmaking Spree Drives Fee Revenue to a Record</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Apollo Global Management (APO) reported record fee-related revenue as it vies to be one of Wall Street's largest lenders, Bloomberg reported, powered by a dealmaking spree.</p>
+        <p><strong>Outlook:</strong> The private-credit engine keeps compounding fee income even as public-market volatility persists.</p>
+        <p><strong>What it means:</strong> Private capital continues to take share of lending, and the fee-based model is proving resilient through the choppy tape.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/apollo-s-dealmaking-spree-drives-fee-related-revenue-to-a-record" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apollo's Dealmaking Spree Drives Fee-Related Revenue to a Record</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>BofA's Mark Cabana -- Treasuries resume falling without a clearer Fed plan</strong></summary>
+      <div class="deal-body">
+        <p>Mark Cabana, head of US rates strategy at BofA Global Research, said Treasuries will resume their retreat if the Fed can't do a better job communicating how it will meet its 2% inflation target, Bloomberg reported, repeating his you-can't-fool-the-bond warning. A named strategist keeping the credibility problem at the center of the rates trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-03/treasuries-to-resume-fall-without-clear-fed-plan-bofa-s-cabana" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BofA's Cabana Sees Risk in Silent Fed: You Can't Fool the Bond</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock's Wei Li -- staying overweight AI despite rising risks</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock Global Chief Investment Strategist Wei Li said the firm has not changed its conviction in the overall AI thesis and is staying overweight, even as risks of commoditization and capital capacity have risen in recent weeks, Bloomberg reported. A named house holding the line without adding.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-04/blackrock-overweight-ai-despite-higher-risks-li-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BlackRock Overweight AI Despite Higher Risks, Li Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citadel Securities' Scott Rubner -- the summer reset is over, time to buy</strong></summary>
+      <div class="deal-body">
+        <p>Citadel Securities strategist Scott Rubner said the market got a technical reset and the brutal summer selloff is finally over, recommending buying stocks again, MarketWatch reported. A flows-focused desk turning constructive as earnings hold the tape near record highs.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-stock-markets-brutal-summer-reset-is-finally-over-here-is-why-citadel-securities-says-it-is-time-to-buy-again-f6a8d101?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Stock Market's Brutal Summer Reset Is Finally Over</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>NewEdge's Cameron Dawson -- Mag 7 valuations have room to normalize higher</strong></summary>
+      <div class="deal-body">
+        <p>Cameron Dawson, CIO at NewEdge Wealth, said the turnaround in technology stocks leaves room for Magnificent Seven valuations to move higher and lift the broader tech sector and S&P 500, Bloomberg reported. A named allocator reading the July reset as a setup rather than a top.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-04/mag-7-valuations-have-room-to-normalize-dawson-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Mag 7 Valuations Have Room to Normalize, Dawson Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bernstein -- another leg lower for crypto if the Clarity Act stalls</strong></summary>
+      <div class="deal-body">
+        <p>Bernstein said failure to pass the Clarity Act this year would likely send crypto markets lower, though it expects US regulators to accelerate rulemaking, CoinDesk reported. A named broker tying the next crypto move to a legislative catalyst rather than price technicals.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/08/03/bernstein-sees-another-leg-lower-for-crypto-markets-if-clarity-act-stalls" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bernstein Sees Another Leg Lower for Crypto Markets If Clarity Act Stalls</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the Iran Truce Reverses and Oil Rebounds, Earnings From Palantir and Caterpillar Validate the AI Buildout, and Bessent's Public Call for Fed Help Reopens Questions About Central-Bank Independence</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the reset is a buying window):</strong> Citadel Securities' Scott Rubner says the brutal summer reset is over and it is time to buy, NewEdge's Cameron Dawson sees room for Mag 7 multiples to rise, and BlackRock's Wei Li is staying overweight AI. Palantir's otherworldly demand and Caterpillar's record data-center revenue prove the buildout is real, and Citi says Japan need not dump Treasuries to defend the yen. If Friday's jobs print comes in cooler, the constructive case holds.</div>
+        <div class="bear"><strong>Bear (the risks are all still live):</strong> BofA's Mark Cabana warns Treasuries resume falling without a clearer Fed plan, Bessent's public plea for Fed help signals real stress and blurs central-bank independence, and $100 billion of high-grade debt is trading like junk. Oil is back above $86 after Iran denied talks and a vessel was struck in Hormuz, Bernstein sees another leg lower for crypto if the Clarity Act stalls, and a factory survey calls inflation worries worse than the pandemic.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Caterpillar rips 9% on data centers; Palantir otherworldly quarter; earnings deluge near record highs; SpaceX first print due</td><td>Bullish</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Meta capex to $130B; Microsoft efficiency payoff; Spotify miss; McDonald's slows; Mag 7 fell together first time since ChatGPT</td><td>Mixed</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Iran reversal lifts oil above $86; Bessent asks Fed to help defend yen; yields rise; Kalshi bets cooler July jobs</td><td>Cautious</td><td>~13,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Fallen angels $100B trading like junk; G7 interest exceeds defense; fed-Treasury independence; Google's $200B Anthropic machine</td><td>Analytical</td><td>~8,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>Coldcard exploit still live near $114M; BTC recovers toward $64K; first spot BTC ETF closing; Cramer dumps on quantum fear</td><td>Cautious</td><td>~12,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood leaned bullish on the earnings, with r/wallstreetbets piling into Caterpillar's 9% pop and Palantir's otherworldly quarter as the tape held near records despite the Iran reversal. r/stocks stayed mixed, weighing Microsoft's efficiency payoff against Meta's $130 billion capex and MarketWatch's note that the Mag 7 fell in unison for the first time since ChatGPT launched. r/investing kept its guard up over oil back above $86, Bessent's unusual call for Fed help and rising yields, with a Kalshi lean toward a cooler jobs print the one dovish thread. r/SecurityAnalysis dug into the $100 billion fallen-angel watch and central-bank independence. r/CryptoCurrency steadied as bitcoin recovered toward $64,000 even with the Coldcard flaw still live. The swing factor is Friday's jobs report against a fresh oil spike.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: How Fallen Angels Work, and Why $100 Billion Trading Like Junk Is a Signal Worth Watching</h2>
+    <p>Bloomberg reported that credit markets are bracing for a new era of fallen angels, with roughly $100 billion of high-grade debt from names like Oracle and Stellantis now trading close to junk levels. The phrase sounds dramatic, and the mechanism behind it is one of the most underappreciated sources of forced selling in all of finance, so it is worth walking through. A fallen angel is a bond that was rated investment grade, meaning triple-B minus or higher, and then gets downgraded to high yield, or junk. That single ratings notch matters far more than one letter should, because of who is legally allowed to own each type of bond. Start with the ownership rules. Enormous pools of capital, pension funds, insurance companies, and many bond index funds, are governed by mandates that permit only investment-grade holdings. Those mandates are not suggestions; they are written into fund charters and regulatory capital rules. So when a bond crosses the line from triple-B to double-B, a whole category of holders is not merely disinclined to own it, they are forbidden to, and they have to sell. That creates a wave of mechanical, price-insensitive selling that hits all at once, right when the issuer's credit is already deteriorating. The buyers on the other side are high-yield funds, but they demand a much higher yield to take on junk-rated risk, so the bond's price drops sharply and its yield jumps. This is why a downgrade can trigger a move far larger than the change in actual default risk would justify. Now connect it to what the market is doing before the downgrade even happens. When Bloomberg says $100 billion is trading like junk while still officially rated investment grade, it means investors are front-running the forced selling. They see the credit weakening, they anticipate the downgrade and the mandate-driven dumping that follows, and they sell early to avoid being caught, which pushes the bond's spread toward junk levels ahead of the rating agencies. The market is effectively pricing the downgrade before it is announced. That gap between where a bond trades and where it is rated is a real-time credit-stress gauge, and a widening one tells you the market has lost confidence faster than the agencies have moved. Why does this matter beyond the individual names? Because fallen angels are a classic late-cycle amplifier. When borrowing costs are high and growth is slowing, more triple-B issuers slip toward the edge, and since the triple-B tier has swollen over the past decade as companies borrowed heavily while keeping just enough rating to stay investment grade, there is an unusually large pile of debt sitting right at the cliff. A cluster of downgrades can force selling that widens spreads across the whole credit market, tightens financial conditions and feeds back into the real economy through higher corporate borrowing costs. The practical lesson is to watch the spread between where high-grade bonds trade and where they are rated. When solid names like Oracle start changing hands at junk-like yields, the market is warning that the investment-grade label is getting thin, and that the forced-selling machinery could kick in if the downgrades arrive. It is a quieter signal than an equity selloff, but it often moves first.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/credit-braces-for-fallen-angels-as-100-billion-trades-like-junk" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Credit Braces for Fallen Angels as $100 Billion Trades Like Junk</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/most-of-g-7-is-spending-more-on-interest-than-defense-scope-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Most of G-7 Is Spending More on Interest Than Defense, Scope Says</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>July jobs report (Friday, Aug 7).</strong> The first major post-Fed labor read; Kalshi traders lean toward a slightly cooler print, so watch whether payrolls and wages hand the doves cover or reopen the credibility fight against Warsh.</li>
+      <li><strong>RBI and RBA rate decisions (Wednesday).</strong> India's central bank is seen holding as it gauges whether the Iran-war energy spike spills into broader inflation, a template for how oil is complicating easing cycles worldwide.</li>
+      <li><strong>Fed-Treasury independence watch.</strong> With Bessent publicly asking the Fed to expand a yen-support facility, watch how the central bank responds and whether the line between fiscal and monetary policy holds.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>SpaceX's first-ever earnings (Tuesday).</strong> More about Musk's commentary and Tesla-merger speculation than the numbers, with real potential to move Tesla and the broader momentum trade.</li>
+      <li><strong>The deluge continues.</strong> After Palantir, Caterpillar, Microsoft, Pfizer and Merck, watch each name land on the monetization-ahead or spending-ahead side of the AI split, with Meta's $130 billion capex the cautionary marker.</li>
+      <li><strong>Consumer bellwethers.</strong> After McDonald's flagged budget-conscious stress, watch whether other consumer names confirm a squeezed shopper as diesel and fuel costs ripple through.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI infrastructure financing.</strong> FT's look at Google's $200 billion Anthropic machine and the Volta raise test how far structured debt and private credit can stretch to fund the buildout.</li>
+      <li><strong>Fallen-angel watch.</strong> With $100 billion of high-grade debt trading like junk, watch for any actual downgrade of Oracle, Stellantis or peers that could trigger forced selling.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran talks.</strong> Trump called his offer a last chance while Iran denied planned talks and a vessel was struck in Hormuz; watch whether draft deal language firms up or the strait escalates, because oil and the inflation read-through hinge on it.</li>
+      <li><strong>Yen and currency stress.</strong> After the joint intervention and Bessent's Fed request, watch for further action, BOJ signals and any spillover into Treasury yields from the policy divergence.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Tue Aug 4, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-04 07:55 ET); Bloomberg Technology (20 fresh, newest 2026-08-04 07:30 ET); Bloomberg Economics (19 fresh, newest 2026-08-04 07:00 ET); CNBC Top News (11 fresh, newest 2026-08-04 07:38 ET); CNBC Finance (4 fresh, newest 2026-08-03 15:20 ET); CNBC Economy (1 fresh, newest 2026-08-03 12:54 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-04 07:51 ET); WSJ Markets (19 fresh, newest 2026-08-04 08:00 ET); Yahoo Finance (25 fresh, newest 2026-08-04 07:42 ET); FT Home (10 fresh, newest 2026-08-04 06:54 ET); Matt Levine Money Stuff (1 fresh, newest 2026-08-03 14:13 ET); CoinDesk (25 fresh, newest 2026-08-04 08:00 ET); Stratechery (2 fresh, newest 2026-08-04 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What sent oil back above $86 on Tuesday?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC agreed to cut output sharply at an emergency meeting</span>
+      <span class="opt" data-opt="B">B. Bessent confirmed a fully signed US-Iran nuclear deal</span>
+      <span class="opt" data-opt="C">C. Iran denied planned talks and a vessel was hit in Hormuz</span>
+      <span class="opt" data-opt="D">D. The US reimposed a total embargo on Iranian crude exports</span>
+      <div class="feedback"><strong>C is correct.</strong> WSJ and MarketWatch reported oil climbed after Iran said there were no planned talks with the US and a ship reported being struck by a projectile in the Strait of Hormuz. OPEC did not meet, Bessent only said a deal may be near, and there was no new embargo.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. Why is Bessent's public call for Fed help notable?</strong></p>
+      <span class="opt" data-opt="A">A. It ties the Fed's balance sheet to defending Japan's yen</span>
+      <span class="opt" data-opt="B">B. It forces Japan to sell its entire US Treasury portfolio</span>
+      <span class="opt" data-opt="C">C. It signals the Fed will cut interest rates in September</span>
+      <span class="opt" data-opt="D">D. It ends the Bank of Japan's control over its own policy</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported Bessent asked the Fed to boost a swap facility Japan can use, an unusual public request that blurs the normally arm's-length Treasury-Fed line. Citi noted Japan need not sell its Treasuries, and nothing implied a September cut or an end to BOJ autonomy.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>3. What drove Caterpillar's record revenue and roughly 9% jump?</strong></p>
+      <span class="opt" data-opt="A">A. A large buyback funded by selling its finance arm</span>
+      <span class="opt" data-opt="B">B. Surging demand for data-center construction and power</span>
+      <span class="opt" data-opt="C">C. Federal infrastructure spending on highways and bridges</span>
+      <span class="opt" data-opt="D">D. Price increases pushed through across its mining fleet</span>
+      <div class="feedback"><strong>B is correct.</strong> MarketWatch and Yahoo reported Caterpillar's biggest beat in five years came from data-center construction and power-generation demand tied to the AI buildout. It was not a buyback, federal highway spending, or mining price hikes that drove the record.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasury yields rise again as oil rebounds and the yen rescue ties the Fed to the Treasury market, with Bessent publicly seeking the Fed's aid to defend the yen, BofA's Mark Cabana warning Treasuries resume their fall without a clear Fed plan, Citi arguing Japan has defense tools beyond selling Treasuries, and credit bracing for $100 billion of fallen angels.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-03/treasuries-to-resume-fall-without-clear-fed-plan-bofa-s-cabana", "take": "Cabana says Treasuries resume falling without a clearer Fed plan." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/jgbs-edge-higher-tracking-gains-in-u-s-treasurys-89af7200?mod=rss_markets_main", "take": "Treasury yields rise, dollar firms as oil prices increase." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-04/credit-braces-for-fallen-angels-as-100-billion-trades-like-junk", "take": "Credit braces for fallen angels as $100 billion trades like junk." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-04/citi-says-japan-has-yen-defense-tools-beyond-treasury-sales", "take": "Citi says Japan has yen tools beyond selling Treasuries." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/08/03/kalshi-traders-think-july-jobs-will-come-in-cooler-than-estimates.html", "take": "Kalshi traders lean toward a cooler July jobs print." }
+    ]
+  },
+  "iran": {
+    "diverge": "The Iran de-escalation reverses as Tehran denies any planned talks and a vessel is struck in the Strait of Hormuz, sending oil back above $86 and erasing Monday's relief, with Trump calling his offer a last chance, Bessent saying a deal may be near, Aramco moving to expand export capacity, and Asia's energy-starved nations going dark.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/oil-prices-rise-after-vessel-reports-being-hit-in-strait-of-hormuz-db6ce867?mod=mw_rss_topstories", "take": "Oil rises after a vessel is hit in the Strait of Hormuz." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/features/2026-08-03/asia-s-energy-starved-nations-go-dark-as-hormuz-tensions-drag-on", "take": "Asia's energy-starved nations go dark as Hormuz tensions drag on." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-04/aramco-says-july-attacks-had-no-material-impact-on-operations", "take": "Aramco moves to expand export capacity as the war snarls flows." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-03/latest-oil-market-news-and-analysis-for-aug-4", "take": "Qatar says draft language on a potential US-Iran deal is circulating." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-04/the-pulse-8-4-2026-video", "take": "Trump calls his Iran talks offer a last chance." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Earnings validate the AI buildout as Palantir reports otherworldly demand and Caterpillar posts record data-center revenue, with Microsoft's efficiency payoff and BlackRock staying overweight, but Meta lifting capex guidance to $130 billion, Huawei warning of the physical chip limit Nvidia will soon hit, and Spotify missing as the split between winners and spenders sharpens.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/caterpillar-is-killing-it-and-data-center-demand-is-driving-record-revenue-161b84d1?mod=mw_rss_topstories", "take": "Caterpillar posts record revenue on data-center demand." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-03/palantir-raises-outlook-karp-calls-business-sales-otherworldy", "take": "Palantir jumps after otherworldly demand lifts its outlook." },
+      { "name": "Stratechery", "lean": "bull", "url": "https://stratechery.com/2026/microsoft-earnings-microsoft-vs-meta-the-efficiency-payoff/", "take": "Microsoft delivers the efficiency payoff investors wanted." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/technology/articles/mark-zuckerberg-tells-investors-why-113000485.html", "take": "Meta lifts capex guidance to $130 billion." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-04/huawei-s-top-scientist-warns-of-chip-limit-nvidia-will-soon-face", "take": "Huawei warns of the physical chip limit Nvidia will soon face." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Caterpillar","Palantir","Merck","HSBC","Meta","Spotify"],
+    "values": [9.0, 6.0, 4.0, 3.0, -3.0, -5.5]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [26000, 15000, 13000, 8000, 12000],
+    "colors": ["bull","neutral","neutral","neutral","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["JPMorgan Housing","BP Biogas","Visa-BioCatch","Volta Raise","Bending Spoons-Airtable"],
+    "values": [750, 4.0, 2.4, 2.4, 2.25]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
