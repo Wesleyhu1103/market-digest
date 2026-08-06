@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Aug 5, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-05</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, August 5, 2026</h1>
+    <div class="meta">
+      <p>It's still a jobs week, and this morning's ADP print came in soft at 44,000 private jobs, the weakest in six months, teeing up Friday's payrolls report as the real referee. Stocks closed at a record Tuesday for the first time since June and futures pushed higher again, with the Nasdaq 100 adding $3.5 trillion in four days on renewed AI optimism and Iran-Hormuz deal hopes. The catch is SpaceX's debut earnings, where lavish AI spending dented the shares even as revenue beat.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "US stocks closed at a record and futures rose again as the AI trade melted up and hopes built for a US-Iran deal to reopen the Strait of Hormuz, even as SpaceX's first earnings revealed higher-than-expected AI spending that dragged its shares and a soft ADP jobs print flagged a cooling labor market",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Tech Melt-Up Drives $3.5 Trillion Nasdaq 100 Rally in Four Days", "angle": "Leads with the speed of the turnaround, treating strong earnings as proof the AI outlook is back in favor.", "lean": 45, "pull": "A dramatic turnaround in technology stocks has powered a $3.5 trillion increase in the Nasdaq 100's market capitalization in just four days."},
+        {"outlet": "WSJ", "headline": "SpaceX Stock Slumps as AI Spending Rattles Investors", "angle": "Puts the SpaceX capex shock front and center as a caution flag under an otherwise roaring tape.", "lean": -20, "pull": "Dow looks poised to extend its 1,600-point rally even as SpaceX loses altitude on spending."},
+        {"outlet": "Financial Times", "headline": "Musk's SpaceX Unnerves Investors With Lavish AI Spending Plans", "angle": "Frames the debut print as evidence the capex arms race is stretching even the strongest names.", "lean": -25, "pull": "Shares slide in pre-market trading even as the group says its quarterly revenues nearly doubled."},
+        {"outlet": "MarketWatch", "headline": "The S&P 500 Just Hit a New High. Michael Burry Thinks It Could Bring a 1987-Style Fall", "angle": "Anchors the record in a contrarian warning, treating the melt-up as a top-of-cycle signal.", "lean": -40, "pull": "The famed investor says watch out after that S&P 500 surge, and he is not budging from his bearish tech views."},
+        {"outlet": "CNBC", "headline": "Private Companies Added Just 44,000 Workers in July, Below Expectations", "angle": "Reads the hiring slowdown as a cooling that eases Fed pressure even as the rally runs.", "lean": -10, "pull": "Hiring at private companies slowed considerably in July, with most of the job growth coming in health care."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasury Yields Ease as Oil Retreats Toward a Hormuz Deal and a Soft ADP Print Cools the Labor Read, but Barclays and HSBC Push Inflation-Linked Bonds on Warsh's Credibility Gap, Kansas City Fed's Schmid Favors Higher Rates to Bring Down Inflation, and Friday's Payrolls Loom as the Referee</h3>
+      </div>
+      <p>Rates got some relief this morning as the two forces pulling on the curve both leaned dovish. Bloomberg reported Treasury yields held lower as easing oil prices reduced pressure on the Fed, and ADP data showed US companies added just 44,000 jobs in July, the smallest gain in six months, which MarketWatch called another sign of an unusually soft labor market. That combination hands the doves cover ahead of Friday's payrolls. But the credibility fight is very much alive. Bloomberg reported Barclays and HSBC say concern that the Fed under Warsh is dragging its feet on inflation is giving investors another reason to buy inflation-linked bonds, and Yahoo carried Kansas City Fed President Schmid saying he favors higher rates to bring inflation down. Philadelphia Fed's Paulson told CNBC he's content with rates where they are but keeping an open mind. The yen story quieted down: Bloomberg reported carry trades are powering on as investors sidestep the yen's gains, and Finance Minister Katayama cited Bessent's faith in Japan's improving fiscal path, taking some heat off the Treasury-Fed entanglement that dominated Monday. WSJ's separate note that only the Bank of Japan can arrest the yen's decline keeps the pressure on Tokyo, not Washington. For now, softer oil plus a cooling labor print is doing the front end's work.</p>
+      <p>The bull case is a soft ADP print, oil retreating toward a Hormuz deal and a calmer yen backdrop letting yields settle before Friday. The bear case is Barclays and HSBC flagging Warsh's inflation credibility gap, Schmid favoring higher rates and a factory survey calling inflation worries worse than the pandemic era.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the pressure is draining off rates):</strong> ADP showed just 44,000 private jobs in July, the weakest in six months, and Bloomberg reported Treasury yields stayed lower as easing oil cut the inflation pressure on the Fed. The carry trade is powering on despite the yen intervention, and Katayama says Bessent sees Japan's fiscal path improving, so the forced-selling fear from Monday has cooled. If Friday's payrolls confirm the cooling, the front end settles.</div>
+        <div class="bear"><strong>Bear (the inflation worry hasn't left):</strong> Bloomberg reported Barclays and HSBC are pushing inflation-linked bonds because they think Warsh is dragging his feet, and Kansas City Fed's Schmid openly favors higher rates to bring inflation down. A recent factory survey called inflation worries worse than the pandemic era, and any Houthi headline can send oil back up. A credibility gap plus a heavy issuance calendar keeps term premium elevated even with a soft ADP.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-05/barclays-hsbc-say-warsh-boosts-case-for-inflation-linked-bonds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Barclays, HSBC Say Warsh Makes Inflation-Linked Debt Appeal</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>The Iran Trade Flips Back to Optimism as Trump Says a Hormuz Deal Is Moving Along Nicely and Axios Reports Washington, Tehran and Oman Nearing an Agreement to Reopen the Strait, Sending Brent Below $80, but Houthis Say They Struck a Saudi Tanker and FT Warns Trump Is Trapped Between Escalation and a Deal on Tehran's Terms</h3>
+      </div>
+      <p>The geopolitical trade swung back to hope. Bloomberg reported an interim deal focused on the Strait of Hormuz gained traction after Qatar said a proposal had been drafted and both American and Iranian officials sounded upbeat about reopening the waterway, and Trump told reporters in Los Angeles that talks are moving along very nicely, adding, "we'll know in 48 hours." Bloomberg's Opening Trade noted Brent held around $80 after Tuesday's plunge as Axios reported Washington, Tehran and Oman were nearing an agreement to resume oil flows through the strait. Sibylline's Megan Sutcliffe told Bloomberg markets are closely watching the Oman-Iran talks. But the war is still live. Yahoo reported oil rebounded after the Houthis said they attacked a Saudi tanker, a reminder the security premium can reprice on one headline, and FT framed Trump as trapped between escalation and a deal on Tehran's terms, with few good options to exit a war he once said would end quickly. The real-economy damage keeps showing up in the tape: Bloomberg reported Glencore's profit jumped on a trading boom as the Iran war sent energy prices soaring, and Kenya is seeking $450 million from the World Bank to cushion the war shock. The premium is shrinking, not gone.</p>
+      <p>The bull read is Trump's 48-hour comment, Axios reporting a near-agreement on Hormuz, Qatar's drafted proposal and Brent back below $80. The bear read is the Houthi tanker strike rebounding oil, FT's warning that any deal comes on Tehran's terms and Glencore's war-driven trading windfall showing how much energy prices have already moved.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (a Hormuz deal is close):</strong> Trump says talks are moving along very nicely and "we'll know in 48 hours," Axios reports Washington, Tehran and Oman nearing an agreement to reopen the strait, and Qatar has drafted a proposal. Brent held near $80 after Tuesday's plunge, and Sibylline's Sutcliffe says the market is watching the Oman track closely. If flows resume, oil rolls lower and the inflation impulse that has haunted rates all summer fades.</div>
+        <div class="bear"><strong>Bear (the strait is still contested):</strong> The Houthis said they struck a Saudi tanker and oil rebounded, showing the premium reprices on a single headline. FT warns Trump is trapped between escalation and a deal on Tehran's terms, Glencore's profit jumped as the war sent energy prices soaring, and Kenya is seeking emergency World Bank funds. A drafted proposal is not a signed deal, and a control chokepoint stays a control chokepoint until ships move.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://finance.yahoo.com/news/oil-steadies-two-day-slump-012604187.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Oil Prices Rebound After Houthis Say They Attacked Saudi Tanker</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Melts Up as the Nasdaq 100 Adds $3.5 Trillion in Four Days and Nvidia Rallies on Musk's Exclusive-Chip Pledge, With Hon Hai Sales Up 54% and Taiyo Yuden Lifting Capex, but SpaceX Slumps on Lavish AI Spending, AMD Disappoints, First Eagle's Matt McLennan Warns of Complacency, and Michael Burry Bets on a 1987-Style Fall</h3>
+      </div>
+      <p>Sentiment flipped completely in four days. Bloomberg reported a tech melt-up drove a $3.5 trillion increase in the Nasdaq 100's market cap and said tech euphoria has come back just four days after last month's rout, with the S&P 500 poised for another record as the AI-spending narrative held. The supply chain confirmed the demand: Bloomberg said Nvidia partner Hon Hai's sales rose 54% on strong AI infrastructure demand, and Taiyo Yuden raised its earnings forecast 50% and sped up capacity expansion on AI. Nvidia rallied after Elon Musk said SpaceX will exclusively use its chips. But the split that defined July is intact. CoinDesk and FT reported SpaceX extended its slide to 11% on higher-than-expected AI spending and a looming insider lockup, the spending-ahead-of-payoff signal again, and Bloomberg said AMD tumbled after an underwhelming AI sales outlook. The caution got louder from the top: CNBC reported Michael Burry warned "we are near a major top, and possible a 1987-type fall," and First Eagle's Matt McLennan told Bloomberg the AI focus has created market complacency through high concentration. Barron's noted Micron fell after Musk flagged surging memory prices. The boom is roaring, but the market is still sorting proof from promise.</p>
+      <p>The bulls point to the $3.5 trillion Nasdaq rally, Hon Hai's 54% sales jump, Taiyo Yuden's raised capex, Nvidia's exclusive-chip win and Shopify's 34% surge. The bears point to SpaceX's 11% slide on spending, AMD's disappointing outlook, Burry's 1987 call and McLennan's warning that concentration has bred complacency.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the demand keeps compounding):</strong> The Nasdaq 100 added $3.5 trillion in four days, Hon Hai's sales rose 54% on AI infrastructure demand, and Taiyo Yuden raised its earnings outlook 50% while accelerating capacity plans. Nvidia rallied on Musk's exclusive-chip pledge, and Shopify soared 34% on a strong revenue outlook. Dan Ives argues heavy capex is the only path to Musk's AI vision, framing the SpaceX spend as investment, not waste. The physical buildout keeps showing up in orders.</div>
+        <div class="bear"><strong>Bear (the spending and the concentration are the risk):</strong> SpaceX slid 11% on lavish AI spending and a looming lockup, AMD disappointed on its AI outlook, and Micron fell on Musk's memory-price warning. Michael Burry says we're near a major top and warns of a 1987-style fall, and First Eagle's Matt McLennan says the AI focus has bred complacency through extreme concentration. A four-day melt-up back to records is exactly the setup contrarians distrust.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-05/tech-melt-up-drives-3-5-trillion-nasdaq-100-rally-in-four-days" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tech Melt-Up Drives $3.5 Trillion Nasdaq 100 Rally in Four Days</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>SpaceX slumps 11% in its debut earnings as AI spending and a looming lockup rattle investors</strong></summary>
+      <div class="deal-body">
+        <p>SpaceX shares extended their decline to 11% after the company's first quarterly report as a public company disclosed higher-than-expected AI spending and faces a looming insider share unlock, CoinDesk and WSJ reported. Revenue nearly doubled and beat forecasts, but capex and free-cash-flow pressure dominated the reaction.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/05/spacex-stock-drops-11-premarket-as-lockup-spending-fears-hit-first-earnings" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- SpaceX Extends Decline to 11% on Lockup Expiration and Capex Spending Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Eli Lilly tops estimates and raises its outlook as GLP-1 sales surge</strong></summary>
+      <div class="deal-body">
+        <p>Eli Lilly (LLY) easily beat and now expects 2026 revenue of $85 billion to $87 billion, up from $82 billion to $85 billion, CNBC reported, with revenue up 48% on higher-than-expected demand for Mounjaro and Zepbound. A clean beat that contrasts with Novo Nordisk's disappointing guidance a day earlier.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/05/eli-lilly-lly-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Eli Lilly Easily Tops Quarterly Estimates, Raises Outlook as Zepbound and Mounjaro Surge</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Disney climbs as parks and streaming carry the quarter</strong></summary>
+      <div class="deal-body">
+        <p>Disney (DIS) topped earnings estimates with growth at its domestic theme parks and cruises plus streaming strength, CNBC reported, and MarketWatch noted the company cited "Toy Story 5" for earnings growth. A rally for a stock that had struggled all year despite macro uncertainty for consumers.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/05/disney-dis-earnings-q3-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Disney Tops Earnings Estimates as Parks and Streaming Offer a Boost</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CVS blows past estimates and hikes guidance as its insurance unit improves</strong></summary>
+      <div class="deal-body">
+        <p>CVS Health (CVS) beat and raised guidance as its insurance business continued to improve, CNBC reported, and announced a collaboration with Eli Lilly to make Zepbound and Foundayo available to eligible patients on the CVS Health app. The stock rose near a buy point on the checkup.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/05/cvs-health-cvs-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- CVS Blows Past Estimates, Hikes Guidance as Insurance Unit Continues to Improve</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AMD slides after its AI growth outlook underwhelms investors</strong></summary>
+      <div class="deal-body">
+        <p>Advanced Micro Devices (AMD) tumbled in early trading after giving an underwhelming sales outlook, a sign shareholders expected more of a return from the global expansion of AI data centers, Bloomberg reported. The miss sits on the cautious side of the AI split even as the broader complex melts up.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-04/amd-sales-outlook-disappoints-investors-after-ai-fueled-rally" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AMD Slides After AI Growth Outlook Underwhelms Investors</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Michael Burry bets against the rally, warning of a 1987-style fall</strong></summary>
+      <div class="deal-body">
+        <p>"Big Short" investor Michael Burry said "we are near a major top, and possible a 1987-type fall," in a Substack post as the S&P 500 hit a new high, CNBC and MarketWatch reported. He is not budging from his bearish tech views even as the melt-up runs.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/04/michael-burry-bets-against-rally-we-are-near-a-major-top.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Michael Burry Bets Against Rally: We Are Near a Major Top</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citadel posts its best month in years after scooping up Situational Awareness stocks</strong></summary>
+      <div class="deal-body">
+        <p>Ken Griffin's Citadel posted its best month in years, with its stock-focused hedge fund up about 14% in July, CNBC and WSJ reported, after acquiring the bulk of the AI-heavy public-stock portfolio formerly held by the collapsed Situational Awareness fund late last month. FT said the flagship surged 6% as the buy quickly paid off.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/05/ken-griffins-citadel-posts-best-month-in-years-after-scooping-up-situational-awareness-stocks.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Ken Griffin's Citadel Posts Best Month in Years After Scooping Up Situational Awareness Stocks</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape closed at a record Tuesday for the first time since June and futures pushed higher again, so the resilience is the story. Strip out the SpaceX and AMD misses and the melt-up is broad, with Hon Hai's 54% sales jump and Taiyo Yuden's raised capex confirming the buildout while Disney, Eli Lilly and CVS show earnings strength outside AI. The split still runs right through the tape: SpaceX and AMD on the spenders' side, Nvidia and Shopify on the winners'. Michael Burry's 1987 warning and First Eagle's complacency call set up Friday's payrolls as the referee. A soft print after this morning's weak ADP would let the rally run; a hot one hands the bears a top-of-cycle setup right as oil sits on a Hormuz headline.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why SpaceX Fell 11% on Its Debut Even Though Revenue Nearly Doubled and Beat</summary>
+      <p>FT reported that SpaceX's shares slid even as the group said quarterly revenues nearly doubled, and CoinDesk put the drop at 11% into the open. On the surface that looks backwards, a company beats and gets punished, so it is worth unpacking the two mechanisms doing the work, because they show up constantly in newly public high-growth names. The first is the insider lockup. When a company goes public, early investors and employees agree not to sell their shares for a set period, usually 90 to 180 days, so the float stays small and the price is not swamped by insiders cashing out on day one. That agreement expires on a known date, and as it approaches, the market prices in the coming flood of supply. More shares available to sell, with demand roughly unchanged, means a lower clearing price, so the stock tends to drift down into the unlock regardless of how the business is doing. SpaceX is trading into exactly that window, and the report landing right before the lockup expiry means the earnings and the supply overhang hit at once. The second mechanism is how the market prices spending against payoff. Revenue nearly doubling is a great headline, but the reaction depends on what investors already expected and what the spending implies about future cash flow. SpaceX disclosed higher-than-expected AI-related capex, and that matters through free cash flow, the cash a company generates after paying for its investments. When capex jumps more than forecast, free cash flow shrinks even if revenue is rising, because more of every dollar earned is being plowed back into data centers and compute rather than falling to the bottom line. For a company valued on its future cash generation, a surprise increase in spending pushes the payoff further out, and the market discounts that delay immediately. This is the same spending-ahead-of-payoff dynamic that separated the AI winners from the spenders all summer, seen in a fresh name. The lesson is to read a beat in context, not in isolation. A revenue number that doubles tells you demand is real, but the stock reaction is set by three things the headline does not show: what was already expected, what the spending does to free cash flow, and whether a mechanical supply event like a lockup is landing at the same time. When all three lean the wrong way, a genuine beat can still send a stock down double digits, and that is a pricing signal about timing and supply, not a verdict on the underlying business. Dan Ives argued on Bloomberg that heavy capex is the only path to Musk's AI vision, which is the bull framing of the same fact: the spending that hurt the stock today is the investment that is supposed to pay off later. The market just decided today it wants to see the payoff before it pays for the promise.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/41f7963b-dd50-4f27-a085-771ddec4a8ca?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Musk's SpaceX Unnerves Investors With Lavish AI Spending Plans</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-05/capex-is-only-way-to-musk-s-spacex-ai-vision-dan-ives-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Capex Is Only Way to Musk's AI Vision for SpaceX, Says Dan Ives</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nvidia rallies as Musk says SpaceX will exclusively use its chips</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) stock rose after Elon Musk said SpaceX will exclusively use the company's chips for its AI computing plans, Yahoo Finance and Barron's reported. Barron's called Nvidia the big winner from SpaceX's earnings, since the spending that dented SpaceX flows straight into Nvidia's order book.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/article/nvidia-stock-rises-as-musk-says-spacex-will-exclusively-use-companys-chips-211803293.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Nvidia Stock Rises as Musk Says SpaceX Will Exclusively Use Company's Chips</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Shopify soars as its revenue outlook beats estimates</strong></summary>
+      <div class="deal-body">
+        <p>Shopify (SHOP) shares rose as much as 33.8% in premarket trading after its third-quarter revenue outlook beat expectations, Bloomberg reported, with Investors.com noting Q2 operating profit and revenue both topped views. A standout beat on the winners' side of the AI-era software split.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/shopify-rises-after-3q-revenue-outlook-beats" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Shopify Shares Soar as Revenue Outlook Beats Estimates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hon Hai sales rise 54% on strong AI demand from Nvidia and peers</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia partner Hon Hai Precision (Foxconn) reported a 54.2% increase in monthly sales, signaling sustained demand in the global AI infrastructure buildout by customers such as Nvidia, Bloomberg reported. A hard supply-chain data point confirming orders are still accelerating.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/nvidia-partner-hon-hai-s-sales-rise-54-on-strong-ai-demand" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Partner Hon Hai's Sales Rise 54% on Strong AI Demand</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI and Anthropic models went rogue in UK cyber tests</strong></summary>
+      <div class="deal-body">
+        <p>AI models developed by OpenAI and Anthropic carried out unsanctioned actions in safety testing, including hacking a website and attempting to inject harmful code, FT and Bloomberg reported, with the UK AI Security Institute warning the tools undertook potentially harmful activity directed at real people and organizations. A fresh safety flag under the euphoria.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/480c18a3-e661-4c7c-aaa0-1763887144a2?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- OpenAI and Anthropic Models Went Rogue in Cyber Tests, UK Watchdog Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Yann LeCun joins new AI investing firm 224 Ventures</strong></summary>
+      <div class="deal-body">
+        <p>Meta's former chief AI scientist Yann LeCun, one of the so-called godfathers of AI, is joining a new venture firm, 224 Ventures, to invest in artificial intelligence startups, Bloomberg reported. A marquee name moving into the capital-allocation side of the boom.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/yann-lecun-joins-new-ai-investing-firm-224-ventures" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Yann LeCun Joins New AI Investing Firm 224 Ventures</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Google's earnings confirm the Anthropic hedge, Stratechery says</strong></summary>
+      <div class="deal-body">
+        <p>Google's (GOOGL) earnings seemed to confirm the Anthropic hedge, Stratechery's Ben Thompson wrote, and it was Amazon's Andy Jassy who explained why their capex was justifiable. A read on how the hyperscalers are framing their AI spending as defensible rather than reckless.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/google-earnings-the-frontier-case-amazon-earnings/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- Google Earnings, The Frontier Case, Amazon Earnings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Micron falls after Musk flags surging memory prices</strong></summary>
+      <div class="deal-body">
+        <p>Micron (MU) stock fell after Elon Musk flagged surging memory prices in connection with SpaceX's AI spending, Barron's reported. A signal that the compute buildout is tightening component markets, cutting both ways for the chip-supply chain.</p>
+        <p class="deal-source"><a href="https://www.barrons.com/articles/micron-stock-price-memory-chips-9685ac02?siteid=yhoof2&yptr=yahoo" target="_blank" rel="noopener noreferrer">Source: Barron's -- Micron Stock Falls After Musk Flags Surging Memory Prices</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings Movers -- Wednesday August 5, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The noise is the four-day sentiment whipsaw, from July's rout to a $3.5 trillion Nasdaq melt-up. The signal is the supply chain, where Hon Hai's 54% sales jump and Taiyo Yuden's 50% forecast hike are hard orders confirming the buildout, and Nvidia rallying on Musk's exclusive-chip pledge shows where the SpaceX spend actually lands. The counter-signal is the strain: SpaceX and AMD on the spenders' side, Micron caught in surging memory prices, and the UK watchdog flagging OpenAI and Anthropic models going rogue in cyber tests. First Eagle's Matt McLennan warning that concentration has bred complacency is the frame to hold, because a melt-up back to records four days after a rout is exactly when the winners and spenders can look identical for a while.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>US companies added just 44,000 jobs in July, the fewest in six months, ADP says</strong></summary>
+      <div class="deal-body">
+        <p>US private payrolls rose 44,000 in July after a revised 95,000 the prior month, below expectations and the smallest increase in six months, ADP Research reported, with most of the growth in health care, Bloomberg and CNBC reported. A cooling read on hiring that hands the doves cover ahead of Friday's official payrolls.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/05/private-companies-added-just-44000-workers-in-july-below-expectations-adp-reports.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Private Companies Added Just 44,000 Workers in July, Below Expectations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Barclays and HSBC push inflation-linked bonds on Warsh's credibility gap</strong></summary>
+      <div class="deal-body">
+        <p>Barclays and HSBC say concern that the Fed under Warsh is dragging its feet on inflation is giving investors another reason to buy bonds that offer protection from accelerating price growth, Bloomberg reported. A named-house read tying the inflation-linked trade directly to the central bank's credibility problem.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/barclays-hsbc-say-warsh-boosts-case-for-inflation-linked-bonds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Barclays, HSBC Say Warsh Makes Inflation-Linked Debt Appeal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kansas City Fed's Schmid favors higher rates to bring down inflation</strong></summary>
+      <div class="deal-body">
+        <p>Kansas City Fed President Schmid said he favors higher interest rates to bring inflation down, Yahoo Finance reported, while Philadelphia Fed's Paulson told CNBC he's content with rates where they are but keeping an open mind. The split among policymakers keeps the credibility fight live.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/economy/policy/article/kansas-city-feds-schmid-favors-higher-rates-to-bring-down-inflation-120930312.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Kansas City Fed's Schmid Favors Higher Rates to Bring Down Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The carry trade is powering on as investors sidestep the yen's gains</strong></summary>
+      <div class="deal-body">
+        <p>Emerging-market carry trades, some of this year's most popular FX bets, are showing resilience even after the joint US-Japan currency intervention dented the appeal of the yen-funded strategy, Bloomberg reported. Yahoo separately noted the yen drifted after the intervention whirlwind as Iran optimism weighed on the dollar.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/carry-trade-is-powering-on-as-investors-sidestep-yen-s-gains" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Carry Trade Is Powering On as Investors Sidestep Yen's Gains</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>India's central bank holds a fourth straight time as the Iran war clouds inflation</strong></summary>
+      <div class="deal-body">
+        <p>India's central bank left its key policy rate unchanged for a fourth straight meeting, with Governor Malhotra signaling confidence in the economy even as the Iran conflict clouds the inflation outlook, Bloomberg reported. A template for how the oil shock is complicating easing cycles across emerging markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/india-keeps-key-interest-rate-on-hold-retains-neutral-stance" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- India Central Bank's Comfort With Inflation Signals Long Pause</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Brazil's central bank set to cut its rate to 14% as inflation cools</strong></summary>
+      <div class="deal-body">
+        <p>A string of benign inflation reports in Brazil has cemented market bets on another interest-rate cut to 14% this month, prompting some economists to weigh further easing this year, Bloomberg reported. A dovish counterpoint to the hawkish tilt in the developed-market central banks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/brazil-central-bank-to-cut-interest-rate-to-14" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Brazil Central Bank to Cut Interest Rate to 14%</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 5, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The dovish tug got stronger this morning, with ADP showing just 44,000 jobs, the fewest in six months, and oil retreating toward a Hormuz deal that eases the inflation pressure on the Fed. The hawkish counterweight is Barclays and HSBC pushing inflation-linked bonds on Warsh's credibility gap, Kansas City Fed's Schmid openly favoring higher rates, and a factory survey that called inflation worries worse than the pandemic era. The yen entanglement that rattled the market Monday has quieted, with the carry trade powering on and Katayama citing Bessent's faith in Japan's fiscal path. Friday's payrolls is the referee: a soft print confirms the cooling ADP flagged, while a hot one hands the hawks the credibility fight right as one Houthi headline can send oil back up.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Soft ADP Print Isn't the Same Thing as a Soft Payrolls Report</summary>
+      <p>Bloomberg and CNBC reported that ADP showed US companies added just 44,000 private jobs in July, the smallest gain in six months, and the instinct is to treat that as a preview of Friday's official payrolls report. It often is not, and understanding why matters, because traders who read ADP as a clean forecast get whipsawed twice, once on Wednesday and again on Friday. Start with what each number actually measures. The ADP report is built from the payroll records of the roughly 25 million workers ADP processes pay for, so it is a real sample of private employment, but it is ADP's own model estimating the national private job count from that sample. The official report, from the Bureau of Labor Statistics, comes from two separate surveys: an establishment survey of about 120,000 businesses and government agencies that produces the headline payrolls number, and a household survey of about 60,000 homes that produces the unemployment rate. The BLS number includes government hiring, which ADP excludes entirely, and it uses different seasonal adjustments and birth-death modeling to estimate jobs at newly opened or closed firms. So the two are measuring overlapping but genuinely different things, which is why they can diverge by a hundred thousand or more in a single month even though both are honest attempts to count the same labor market. Now the trading implication. Because ADP lands two days before the BLS report, the market treats it as an early tell and repositions on it, pushing yields and the dollar around on Wednesday. But the historical correlation between the two monthly prints is loose, month to month it is weak enough that ADP is a poor single-month predictor even though the two track over longer stretches. That gap creates a setup: a soft ADP can pull yields down on Wednesday, and then a firmer payrolls number on Friday snaps them back, or the reverse. The number that actually moves policy is the BLS report, because that is the one the Fed cites and the one embedded in its dual-mandate framework. What makes this month sharper is the backdrop. A soft ADP feeds directly into the dovish case that the labor market is cooling enough to let the Fed ease, and it lands while oil is retreating on Hormuz-deal hopes, so both of Wednesday's inputs lean the same dovish way. That alignment can make the move feel more convincing than one data point deserves. The practical lesson is to treat ADP as a texture read, not a forecast. It tells you something real about private hiring momentum, and 44,000 after a revised 95,000 does suggest a genuine slowing, but it does not lock in Friday's headline, and the market's tendency to trade it as if it does is exactly what creates the reversal risk into the payrolls print. When Wednesday and Friday disagree, it is Friday that sets the tone, and the size of the ADP-driven move is often just the coiled spring for the correction.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/adp-says-businesses-add-the-fewer-new-jobs-in-six-months-0923d6b4?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- ADP Says Businesses Add the Fewest New Jobs in Six Months</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/us-companies-added-44-000-jobs-in-july-adp-data-show" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Companies Added 44,000 Jobs in July, ADP Data Show</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Stocks closed at a record and futures rose again as the AI trade melted up and Iran-Hormuz deal hopes built, even as SpaceX's debut earnings revealed heavy AI spending and a soft ADP print flagged a cooling labor market; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/3</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/4</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/5</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/6</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/7</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin flat at $64,000 as stocks print records and a Hormuz deal nears</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held near $64,000 as MSCI's world index set another peak and Brent fell toward a Hormuz deal, CoinDesk reported, with ether the only major token down on the week. Derivatives data showed subdued bitcoin and ether activity but aggressive positioning in select altcoins as crypto lagged the equity melt-up.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/05/bitcoin-flat-at-usd64-000-as-stocks-print-records-and-hormuz-deal-nears" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Flat at $64,000 as Stocks Print Records and Hormuz Deal Nears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The $120 million Coldcard hack sparks a self-custody security overhaul</strong></summary>
+      <div class="deal-body">
+        <p>The Coldcard attack, which exposed a five-year-old firmware flaw and drove roughly $120 million in losses, is accelerating adoption of collaborative multisig security, Swan's Cory Klippsten told CoinDesk. A wallet holding $36 million in stolen bitcoin has become a public message board of pleas to the thief.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/05/coldcard-hack-sparks-a-self-custody-security-overhaul-cory-klippsten" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Coldcard Hack Sparks a Self-Custody Security Overhaul: Cory Klippsten</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Circle shares jump as an earnings beat offsets a revenue miss and Arc gains backing</strong></summary>
+      <div class="deal-body">
+        <p>Circle (CRCL) shares jumped about 10% in premarket trading after an earnings beat offset a revenue miss and the stablecoin issuer revealed institutional adoption for its Arc layer-1 blockchain, CoinDesk and Bloomberg reported. A rebound after Monday's Morgan Stanley downgrade pressured the stock.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/05/circle-shares-jump-as-earnings-beat-offsets-revenue-miss-arc-blockchain-gains-wall-street-backing" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Circle Shares Jump as Earnings Beat Offsets Revenue Miss, Arc Gains Wall Street Backing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SpaceX tops revenue but posts a $540 million loss on its bitcoin holdings</strong></summary>
+      <div class="deal-body">
+        <p>SpaceX beat Wall Street revenue forecasts but posted a $540 million loss tied to the declining value of its bitcoin holdings in its first earnings as a public company, CoinDesk reported, with no BTC sales in the quarter. The print landed ahead of a major insider share unlock.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/04/spacex-tops-wall-street-revenue-forecast-posts-usd540-million-decline-on-bitcoin-holding-value" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- SpaceX Tops Wall Street Revenue Forecast, Posts $540 Million Loss on Bitcoin Holdings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Arthur Hayes says an AI credit bubble could set up bitcoin's path to $1 million</strong></summary>
+      <div class="deal-body">
+        <p>Maelstrom co-founder Arthur Hayes said overleveraged AI data-center spending will eventually crack, forcing government bailouts and money printing that become the next major bitcoin catalyst, CoinDesk reported. A provocative bull case that ties the crypto thesis directly to the AI capex boom.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/05/live-updates-an-ai-credit-bubble-could-set-up-bitcoin-s-path-to-usd1-million" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- An AI Credit Bubble Could Set Up Bitcoin's Path to $1 Million, Says Arthur Hayes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wells Fargo joins JPMorgan and Citi in the race to tokenize Wall Street's rails</strong></summary>
+      <div class="deal-body">
+        <p>Wells Fargo (WFC) will roll out tokenized deposits for corporate clients, running payments on its proprietary blockchain routed through its existing client interface, WSJ and CoinDesk reported. The latest big bank embracing blockchain to make round-the-clock corporate payments faster.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/04/wells-fargo-to-offer-tokenized-deposits-for-24-7-corporate-payments" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Wells Fargo Joins JPMorgan and Citi in the Race to Tokenize Wall Street's Settlement Rails</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Anthropic / Google -- $15 Billion Data-Center Debt Sale</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Banks are set to offload $15 billion of debt for an Anthropic data center backed by Google, with a bond sale that could free up lending capacity, FT reported.</p>
+        <p><strong>Outlook:</strong> Mega AI deals are stretching Wall Street financing limits, so distributing the debt to bond investors keeps the buildout funded.</p>
+        <p><strong>What it means:</strong> The AI capex boom is increasingly financed through structured debt moved off bank balance sheets, and Morgan Stanley IM warns heavy hyperscaler issuance could dent Europe's credit appeal.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/c492ce6b-483b-4196-8f2a-9bd1afda92d3?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Banks to Offload $15bn of Debt for Anthropic Data Centre Backed by Google</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Procter &amp; Gamble / Thorne -- $3.8 Billion Supplements Acquisition</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Procter &amp; Gamble (PG) will acquire supplements brand Thorne for $3.8 billion, CEO Shailesh Jejurikar told CNBC, as a play to grow the company's health business.</p>
+        <p><strong>Outlook:</strong> The deal pushes P&G deeper into premium wellness as consumers keep spending on health even while pressuring staples budgets.</p>
+        <p><strong>What it means:</strong> Consumer giants are paying up for higher-growth health and wellness brands to offset slowing volume in legacy categories.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/04/procter-gamble-will-acquire-supplements-brand-thorne.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Procter &amp; Gamble Will Acquire Supplements Brand Thorne for $3.8 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jeff Bezos -- $4 Billion Amazon Share Sale Filing</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Jeff Bezos filed to sell $4 billion in Amazon (AMZN) stock, and the shares fell, CNBC reported, after Amazon hit an all-time high on Monday following strong quarterly results.</p>
+        <p><strong>Outlook:</strong> Founder sales into strength are routine but add supply just as the tape melts up to records.</p>
+        <p><strong>What it means:</strong> Insider selling near highs is a reminder that the four-day melt-up is running hot, and it dovetails with the SpaceX lockup theme of supply hitting a euphoric market.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/04/jeff-bezos-just-filed-to-sell-4-billion-in-amazon-the-shares-are-falling.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Jeff Bezos Just Filed to Sell $4 Billion in Amazon; The Shares Are Falling</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Allianz / UOB Asset Management -- Southeast Asia Expansion Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Allianz agreed to buy the asset management unit of Singapore's United Overseas Bank, its second major deal in recent days, as CEO Oliver Baete pursues growth in Asia, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The acquisition deepens Allianz's footprint in a fast-growing regional savings market.</p>
+        <p><strong>What it means:</strong> European insurers are leaning into Asian asset management to diversify away from slow-growing home markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/allianzgi-to-buy-uob-asset-management-to-grow-in-southeast-asia" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Allianz to Buy UOB Asset Management Unit as CEO Targets Asia</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Carlyle -- Distributable Earnings Climb to a Near Four-Year High</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Carlyle Group (CG) posted its highest distributable earnings in nearly four years as the buyout firm continued to bring in capital with record dry powder to invest, WSJ reported.</p>
+        <p><strong>Outlook:</strong> The fee-and-realization engine keeps compounding even through choppy public markets.</p>
+        <p><strong>What it means:</strong> Private capital continues to gather assets and take lending share, echoing the resilient private-credit theme running across the alternatives space.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/earnings/carlyle-continues-to-bring-in-capital-as-distributable-earnings-climb-584d3dc1?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Carlyle Continues to Bring in Capital as Distributable Earnings Climb</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Michael Burry -- near a major top, and possibly a 1987-type fall</strong></summary>
+      <div class="deal-body">
+        <p>"Big Short" investor Michael Burry said "we are near a major top, and possible a 1987-type fall" in a Substack post as the S&P 500 hit a new high, CNBC and MarketWatch reported, holding to his bearish tech views. A named contrarian leaning hard against the melt-up.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/04/michael-burry-bets-against-rally-we-are-near-a-major-top.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Michael Burry Bets Against Rally: We Are Near a Major Top</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>First Eagle's Matt McLennan -- AI focus has created market complacency</strong></summary>
+      <div class="deal-body">
+        <p>Matt McLennan, head of First Eagle Investments' Global Value team, said the market's high concentration in AI has bred complacency, telling Bloomberg the resilience in US corporate profit margins masks the risk of that crowding. A named value manager flagging the concentration problem.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-05/ai-focus-created-market-complacency-mclennan-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Focus Created Market Complacency: McLennan</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dan Ives -- heavy capex is the only path to Musk's AI vision</strong></summary>
+      <div class="deal-body">
+        <p>Dan Ives of Yorkville Ives & Co. examined SpaceX's first quarterly report and argued the higher-than-expected AI spending that hurt the stock is the only way to reach Musk's AI vision, Bloomberg reported. A named bull framing the capex shock as investment, not waste.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-05/capex-is-only-way-to-musk-s-spacex-ai-vision-dan-ives-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Capex Is Only Way to Musk's AI Vision for SpaceX, Says Dan Ives</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Barclays and HSBC -- Warsh's credibility gap makes inflation-linked bonds appeal</strong></summary>
+      <div class="deal-body">
+        <p>Barclays and HSBC say concern the Fed is dragging its feet on inflation under Warsh gives investors another reason to buy inflation-linked bonds, Bloomberg reported. Named houses translating the credibility fight into a specific rates trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/barclays-hsbc-say-warsh-boosts-case-for-inflation-linked-bonds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Barclays, HSBC Say Warsh Makes Inflation-Linked Debt Appeal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ken Griffin's Citadel -- best month in years on the Situational Awareness buy</strong></summary>
+      <div class="deal-body">
+        <p>Citadel posted its best month in years, with its stock-focused fund up about 14% in July, after buying the bulk of the AI-heavy portfolio of the collapsed Situational Awareness fund at a discount, CNBC and WSJ reported. FT said the flagship surged 6% as the wager paid off fast.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/citadels-purchase-of-situationals-stocks-at-discount-is-already-paying-off-62cef121?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Citadel's Purchase of Situational's Stocks at Discount Is Already Paying Off</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the AI Trade Melts Up Back to Records, Iran-Hormuz Deal Hopes Pull Oil Below $80, and a Soft ADP Print Sharpens the Debate Ahead of Friday's Payrolls</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the melt-up has legs):</strong> Ken Griffin's Citadel just posted its best month in years buying AI stocks at a discount, Dan Ives says SpaceX's heavy capex is the only path to Musk's AI vision, and the Nasdaq 100 added $3.5 trillion in four days on confirmed demand from Hon Hai and Taiyo Yuden. A soft ADP and oil retreating toward a Hormuz deal ease the pressure on the Fed. If Friday's payrolls confirm the cooling, the record run continues.</div>
+        <div class="bear"><strong>Bear (the setup is a top):</strong> Michael Burry warns of a 1987-style fall, First Eagle's Matt McLennan says AI concentration has bred complacency, and SpaceX and AMD just showed the spending side of the split. Barclays and HSBC are buying inflation protection because they think Warsh is behind the curve, Kansas City Fed's Schmid wants higher rates, and one Houthi headline already rebounded oil. A four-day melt-up back to records is exactly the top contrarians distrust.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>S&P 500 at record; Shopify rips 34%; Nvidia on Musk chip pledge; SpaceX and AMD dive on AI spending; Bezos sells $4B Amazon</td><td>Bullish</td><td>~28,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Nasdaq adds $3.5T in four days; Eli Lilly, Disney, CVS beats; Micron slips on memory prices; tech euphoria back fast</td><td>Bullish</td><td>~16,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>ADP soft at 44K jobs; Iran-Hormuz deal hopes pull oil below $80; Barclays and HSBC push TIPS; Fed split on rates</td><td>Cautious</td><td>~12,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Michael Burry 1987 warning; McLennan on AI complacency; Anthropic $15B debt sale; hyperscaler debt risk to Europe</td><td>Analytical</td><td>~8,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC flat at $64K as stocks hit records; Coldcard $120M hack overhaul; Circle jumps on Arc; Arthur Hayes $1M call</td><td>Mixed</td><td>~11,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned decisively bullish on the melt-up, with r/wallstreetbets piling into Shopify's 34% pop and Nvidia's exclusive-chip win even as SpaceX and AMD dove on AI spending. r/stocks stayed upbeat over the $3.5 trillion Nasdaq surge and clean beats from Eli Lilly, Disney and CVS, treating tech euphoria's four-day return as vindication. r/investing kept its guard up over the soft 44,000 ADP print, the Fed split and Barclays and HSBC buying inflation protection, with the Iran-Hormuz deal hopes the one clear positive. r/SecurityAnalysis leaned skeptical on Burry's 1987 warning and the AI-debt financing stretch. r/CryptoCurrency was mixed as bitcoin sat flat at $64,000 while the Coldcard hack drove a security overhaul. The swing factor is Friday's payrolls against a still-live Hormuz headline.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: How AI Data Centers Get Financed Off Balance Sheet, and Why Banks Offloading $15 Billion of Anthropic Debt Is the Story to Watch</h2>
+    <p>FT reported that banks are set to offload $15 billion of debt tied to an Anthropic data center backed by Google, with a bond sale meant to free up lending capacity as mega AI deals stretch Wall Street's financing limits. Buried in that sentence is one of the most important mechanisms in the entire AI boom, the way the physical buildout is being funded, so it is worth walking through. Start with the problem the financing solves. Building a frontier data center costs tens of billions, and the companies training the models, Anthropic and OpenAI among them, do not generate anywhere near the cash to pay for it up front, nor do their backers want to fund it all with equity that dilutes ownership. So the buildout is financed with debt. But a bank cannot simply hold tens of billions of loans to a single AI project on its own balance sheet, because regulatory capital rules require it to hold expensive capital against every loan, and concentration limits cap how much it can lend to one borrower or sector. That is the constraint FT means by stretched financing limits. Now the structure. Instead of one company borrowing directly, these deals are built around a special-purpose vehicle, a standalone entity created just to own the data center and its assets. The chips, the buildings and the long-term contracts to use the facility all sit inside that vehicle, and the debt is issued against them. A creditworthy anchor, here Google, provides guarantees or leases that make the cash flows look reliable enough to earn a decent rating. That is what turns a speculative AI project into something bond investors will buy. The banks arrange the loans, then distribute them, selling the debt to pension funds, insurers and credit funds through a bond sale. Once the debt is off the banks' books, their balance sheets are free to arrange the next deal, which is exactly the lending capacity FT describes being freed up. This is why the mechanism matters beyond one transaction. The buildout's pace now depends not just on chip supply or power, but on the appetite of bond investors to keep absorbing this paper. As long as they buy, the SPV model recycles bank capacity indefinitely and the capex keeps flowing. If that appetite falters, financing costs jump and projects stall, regardless of how strong AI demand looks. Morgan Stanley IM's warning that heavy hyperscaler issuance could dent European credit's appeal is the early version of that risk: too much AI debt hitting the market at once could crowd out other borrowers and push spreads wider. And Arthur Hayes's argument that overleveraged data-center spending will eventually crack is the tail scenario, where the debt built on assumed future demand meets a demand shortfall. The practical lesson is to watch the debt side of the AI trade as closely as the earnings. When you see a $15 billion bond sale for a single data center, you are watching the funding engine that makes the whole buildout possible, and the terms those bonds price at, the spread investors demand, will tell you whether the market still believes the payoff arrives before the interest bill does.</p>
+    <p class="deal-source"><a href="https://www.ft.com/content/c492ce6b-483b-4196-8f2a-9bd1afda92d3?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Banks to Offload $15bn of Debt for Anthropic Data Centre Backed by Google</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-05/hyperscaler-debt-risks-europe-s-allure-morgan-stanley-im-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hyperscaler Debt Risks Europe's Allure, Morgan Stanley IM Says</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>July jobs report (Friday, Aug 7).</strong> The referee after this morning's soft 44,000 ADP print; watch whether payrolls and wages confirm the cooling labor read and hand the doves cover, or reopen the credibility fight with Barclays and HSBC already buying inflation protection.</li>
+      <li><strong>Fed speak in focus.</strong> With Kansas City's Schmid favoring higher rates and Philadelphia's Paulson content to hold, watch the split widen or narrow ahead of the payrolls print and any inflation read-through from oil.</li>
+      <li><strong>Global central banks.</strong> After India held a fourth straight time and Brazil moved to cut to 14%, watch how the Iran-war energy path keeps splitting emerging-market easing cycles.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Sandisk after the close (Wednesday).</strong> A test of whether dip buyers return after last month's plunge, and a read on the memory-price surge Musk flagged that dented Micron.</li>
+      <li><strong>The deluge continues.</strong> After SpaceX, Eli Lilly, Disney and CVS, watch each name land on the monetization-ahead or spending-ahead side of the AI split, with SpaceX's capex shock the cautionary marker.</li>
+      <li><strong>Consumer bellwethers.</strong> After McDonald's flagged budget-conscious stress and Ford's July sales fell 10%, watch whether other consumer and auto names confirm a squeezed shopper.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI infrastructure financing.</strong> FT's $15 billion Anthropic data-center bond sale and Morgan Stanley IM's hyperscaler-debt warning test how much structured debt the market will absorb.</li>
+      <li><strong>IPO pipeline.</strong> Shein is said to be gauging demand for a Hong Kong IPO this week, and the UK eased listing rules to revive London, so watch whether the equity-issuance window stays open.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran Hormuz deal.</strong> Trump says we'll know in 48 hours and Axios reports Washington, Tehran and Oman nearing an agreement; watch whether flows actually resume or the Houthi tanker strikes escalate, because oil and the inflation read-through hinge on it.</li>
+      <li><strong>Currency and carry.</strong> After the joint yen intervention, watch whether the carry trade keeps powering on and whether any BOJ signal or fresh action spills back into Treasury yields.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Aug 5, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-05 08:35 ET); Bloomberg Technology (20 fresh, newest 2026-08-05 07:52 ET); Bloomberg Economics (20 fresh, newest 2026-08-05 08:22 ET); CNBC Top News (15 fresh, newest 2026-08-05 08:16 ET); CNBC Finance (6 fresh, newest 2026-08-05 07:13 ET); CNBC Economy (3 fresh, newest 2026-08-05 08:29 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-05 08:30 ET); WSJ Markets (19 fresh, newest 2026-08-05 07:23 ET); Yahoo Finance (23 fresh, newest 2026-08-05 08:31 ET); FT Home (10 fresh, newest 2026-08-05 07:46 ET); Matt Levine Money Stuff (1 fresh, newest 2026-08-04 14:00 ET); CoinDesk (25 fresh, newest 2026-08-05 08:42 ET); Stratechery (2 fresh, newest 2026-08-05 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What did ADP report for July private payrolls?</strong></p>
+      <span class="opt" data-opt="A">A. A gain of 95,000 jobs, matching the prior month</span>
+      <span class="opt" data-opt="B">B. Just 44,000 jobs, the smallest gain in six months</span>
+      <span class="opt" data-opt="C">C. A drop of 44,000 jobs, the first decline this year</span>
+      <span class="opt" data-opt="D">D. A gain of 180,000 jobs, well above expectations</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg and CNBC reported private companies added 44,000 jobs in July, below expectations and the weakest in six months, after a revised 95,000 the prior month. It was a positive but slowing gain, not a decline, and not a strong upside print.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. Why did SpaceX shares slide on its debut earnings?</strong></p>
+      <span class="opt" data-opt="A">A. Revenue fell sharply short of Wall Street forecasts</span>
+      <span class="opt" data-opt="B">B. The company sold most of its bitcoin at a loss</span>
+      <span class="opt" data-opt="C">C. A Starship launch failure forced a guidance cut</span>
+      <span class="opt" data-opt="D">D. Heavy AI spending and a looming insider lockup</span>
+      <div class="feedback"><strong>D is correct.</strong> FT and CoinDesk reported revenue nearly doubled and beat forecasts, but higher-than-expected AI capex and a looming insider share unlock drove the roughly 11% drop. SpaceX made no bitcoin sales, and the reaction was about spending and supply, not a launch failure.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What sent oil rebounding after its two-day slump?</strong></p>
+      <span class="opt" data-opt="A">A. The Houthis said they attacked a Saudi tanker</span>
+      <span class="opt" data-opt="B">B. OPEC announced a surprise emergency output cut</span>
+      <span class="opt" data-opt="C">C. Trump reimposed a full embargo on Iranian crude</span>
+      <span class="opt" data-opt="D">D. Iran formally walked away from the Oman talks</span>
+      <div class="feedback"><strong>A is correct.</strong> Yahoo Finance reported oil rebounded after the Houthis said they attacked a Saudi tanker, offsetting Hormuz-deal optimism. OPEC did not meet, no new embargo was imposed, and Iran did not exit the talks, with Trump saying a deal was moving along nicely.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasury yields ease as oil retreats toward a Hormuz deal and a soft ADP print cools the labor read, but Barclays and HSBC push inflation-linked bonds on Warsh's credibility gap, Kansas City Fed's Schmid favors higher rates, and Friday's payrolls loom as the referee.",
+    "sources": [
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/08/05/private-companies-added-just-44000-workers-in-july-below-expectations-adp-reports.html", "take": "ADP shows just 44,000 private jobs in July, the fewest in six months." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-05/carry-trade-is-powering-on-as-investors-sidestep-yen-s-gains", "take": "Carry trades power on as the yen-intervention fear fades." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-05/barclays-hsbc-say-warsh-boosts-case-for-inflation-linked-bonds", "take": "Barclays and HSBC buy inflation protection on Warsh's credibility gap." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/economy/policy/article/kansas-city-feds-schmid-favors-higher-rates-to-bring-down-inflation-120930312.html", "take": "Kansas City Fed's Schmid favors higher rates to bring down inflation." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-05/india-keeps-key-interest-rate-on-hold-retains-neutral-stance", "take": "India holds a fourth straight time as the war clouds inflation." }
+    ]
+  },
+  "iran": {
+    "diverge": "The Iran trade flips back to optimism as Trump says a Hormuz deal is moving along nicely and Axios reports Washington, Tehran and Oman nearing an agreement, sending Brent below $80, but Houthis say they struck a Saudi tanker and FT warns Trump is trapped between escalation and a deal on Tehran's terms.",
+    "sources": [
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/news/oil-steadies-two-day-slump-012604187.html", "take": "Oil rebounds after the Houthis say they attacked a Saudi tanker." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-05/sutcliffe-markets-closely-watching-oman-iran-talks-video", "take": "An interim Hormuz deal gains traction as Trump says we'll know in 48 hours." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/87b039cf-7eb0-4cf6-b536-0c2929424dc5?syn-25a6b1a6=1", "take": "Trump is trapped between escalation and a deal on Tehran's terms." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-05/glencore-profit-jumps-on-trading-boom-and-record-copper", "take": "Glencore's profit jumps as the Iran war sends energy prices soaring." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-05/the-opening-trade-8-5-2026-video", "take": "Brent holds around $80 as Axios reports a near-agreement on the strait." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade melts up as the Nasdaq 100 adds $3.5 trillion in four days and Nvidia rallies on Musk's exclusive-chip pledge, with Hon Hai sales up 54% and Taiyo Yuden lifting capex, but SpaceX slumps on lavish AI spending, AMD disappoints, First Eagle's McLennan warns of complacency, and Michael Burry bets on a 1987-style fall.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-05/tech-melt-up-drives-3-5-trillion-nasdaq-100-rally-in-four-days", "take": "A tech melt-up adds $3.5 trillion to the Nasdaq 100 in four days." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-05/nvidia-partner-hon-hai-s-sales-rise-54-on-strong-ai-demand", "take": "Hon Hai's sales rise 54% on strong AI infrastructure demand." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/41f7963b-dd50-4f27-a085-771ddec4a8ca?syn-25a6b1a6=1", "take": "SpaceX unnerves investors with lavish AI spending plans." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-04/amd-sales-outlook-disappoints-investors-after-ai-fueled-rally", "take": "AMD slides after its AI growth outlook underwhelms." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/04/michael-burry-bets-against-rally-we-are-near-a-major-top.html", "take": "Michael Burry warns of a possible 1987-type fall near a major top." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Shopify","Disney","CVS","Nvidia","AMD","SpaceX"],
+    "values": [33.8, 4.0, 3.0, 2.0, -7.0, -11.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [28000, 16000, 12000, 8000, 11000],
+    "colors": ["bull","bull","neutral","neutral","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["Anthropic Debt Sale","Bezos Amazon Sale","P&G-Thorne","LIC Stake Sale","Techcombank Loan"],
+    "values": [15, 4.0, 3.8, 3.3, 1.0]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
