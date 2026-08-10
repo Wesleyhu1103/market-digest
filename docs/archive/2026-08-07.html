@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Fri Aug 7, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-07</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Friday, August 7, 2026</h1>
+    <div class="meta">
+      <p>It's jobs day, and the July payrolls print lands at 8:30am as the week's referee, with economists looking for a soft gain near 83,000 and the jobless rate holding at 4.2%. The AI trade flipped back overnight as big tech stormed higher and Atlassian's beat doused the memory-chip gloom, even as SanDisk and Western Digital fell on soft guidance. Oil climbed on renewed Hormuz tensions after Houthi attacks on Saudi Arabia, pushing Brent above $83 and lifting yields.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Big tech stormed back as AI fears faded and euphoria resumed, but memory-chip names slid on soft guidance and oil climbed on renewed Hormuz tensions after Houthi attacks on Saudi Arabia, all ahead of a July jobs report expected to show a soft gain near 83,000",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Big Tech Stocks Storm Back as AI Fears Fade and Euphoria Resumes", "angle": "Reads the reversal as the megacaps reclaiming leadership after months in the doghouse over AI spending.", "lean": 40, "pull": "The world's biggest technology companies are suddenly leading the way once again."},
+        {"outlet": "WSJ", "headline": "Shares of Memory Giants Drop on Soft Guidance as Oil Jumps and the Dow Breaks Its Streak", "angle": "Leads with the memory-chip weakness and the oil-driven yield move as the caution flags under the bounce.", "lean": -25, "pull": "Oil prices jump and the Dow breaks its winning streak."},
+        {"outlet": "CNBC", "headline": "The July Jobs Numbers Are Due Out Friday. Here's What to Expect", "angle": "Treats the print as the swing catalyst, with a soft 83,000 gain and steady unemployment the base case.", "lean": 0, "pull": "Nonfarm payrolls are expected to post a gain of just 83,000 with an unchanged unemployment rate at 4.2%."},
+        {"outlet": "MarketWatch", "headline": "There Are Good Reasons Why Higher Bond Yields Are Here to Stay", "angle": "Frames the yield backdrop as structural, with supply, weaker demand and policy noise keeping term premium elevated.", "lean": -30, "pull": "Investors are demanding higher rates because there is less demand, higher supply and a hot mess of policy uncertainty."},
+        {"outlet": "Financial Times", "headline": "Google's AI Shake-Up Boosts Brin as DeepMind's Hassabis Steps Aside", "angle": "Casts the reshuffle as Silicon Valley urgency winning out over the London lab's science culture as the race tightens.", "lean": 5, "pull": "The parent consolidates control as the scientific culture gives way to urgency to build AI products."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Jobs Day Arrives With Yields Lifted by Rising Oil as St. Louis Fed's Musalem Calls for Meaningful Restraint and MarketWatch Argues Higher Yields Are Here to Stay, but Natixis' Christopher Hodge Expects a Soft Print, a Modest Uptick in Unemployment, and Yields Turned Lower Into the Number While the Sell America Pivot Deepens</h3>
+      </div>
+      <p>Rates head into payrolls pulled two ways. Bloomberg reported the 10-year yield climbed seven basis points during the US session as higher oil revived worries the Fed may need to keep rates elevated, then WSJ said Treasury yields turned slightly lower ahead of the 8:30am nonfarm payrolls report. The hawkish weight got heavier from inside the building: Bloomberg reported St. Louis Fed's Alberto Musalem said policymakers cannot afford to tolerate above-target inflation while they wait on productivity, calling for meaningful restraint, and Yahoo carried SF Fed's Mary Daly defending the July hold. MarketWatch's strategist piece argues higher yields are here to stay on less demand, more supply and policy uncertainty. The structural pivot deepened: Bloomberg reported Wellington reduced its Treasury exposure and shifted into German bonds after last week's Fed meeting fueled doubts about its inflation-fighting credentials, and BlackRock said the US decision to sell euros to prop up the yen without warning Europe is adding geopolitical risk and dimming long-bond appeal. The dovish counter is the data itself: CNBC's preview looks for a soft gain near 83,000 with unemployment steady at 4.2%, and Natixis' Christopher Hodge expects a modest uptick in the jobless rate. The referee prints in an hour.</p>
+      <p>The bull case is a soft payrolls print near 83,000 with steady unemployment, Natixis' Hodge flagging a modest uptick in joblessness, and yields easing back ahead of the number. The bear case is Musalem calling for meaningful restraint, higher oil reviving the inflation worry that lifted the 10-year seven basis points, MarketWatch's higher-for-longer yield read, and Wellington and BlackRock stepping away from Treasuries.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the labor data lets the doves breathe):</strong> CNBC's preview looks for a soft 83,000 payrolls gain with unemployment holding at 4.2%, Natixis' Christopher Hodge expects only a modest uptick in joblessness, and WSJ reported yields turned lower ahead of the print. If the report confirms cooling hiring without a collapse, the case for restraint weakens and the summer melt-up can hold its footing.</div>
+        <div class="bear"><strong>Bear (the pressure on rates is structural now):</strong> St. Louis Fed's Alberto Musalem called for meaningful restraint on inflation, higher oil already lifted the 10-year seven basis points, and MarketWatch argues higher yields are here to stay on supply, demand and policy. Bloomberg reported Wellington shifted from Treasuries into German bonds and BlackRock warned the euro-for-yen intervention adds geopolitical risk. Foreign buyers stepping back keeps term premium elevated.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-07/wellington-funds-pivot-from-treasuries-to-most-credible-debt" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wellington Funds Pivot From Treasuries to 'Most Credible' Debt</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Climbs and Brent Tops $83 as Yemen's Houthis Attack Saudi Arabia and Iran Seeks to Bar US and Israeli Ships From a Hormuz Deal, Reviving the Inflation Worry, but Trump Says the Talks Are Moving Along, Crude Has Retreated From Its War Peak, and a Refining Crunch, Not Crude, Is Keeping Fuel Prices High</h3>
+      </div>
+      <p>The Hormuz story turned darker overnight. Bloomberg reported oil wavered between gains and losses as traders weighed Iran-Oman negotiations against renewed tensions, with Tehran seeking to bar US ships from any deal to partially restore shipping through the waterway. CoinDesk said Brent moved above $83 a barrel after Yemen's Iran-linked Houthis attacked Saudi Arabia, escalating the standoff, and Bloomberg's Bloomberg News Now flagged Iran holding a strong talking position on Hormuz. That fed straight into rates, reviving the inflation worry that has capped risk all summer. But the picture is not one-directional. Bloomberg reported President Trump said the negotiations are "moving along" even as Iranian lawmakers push to exclude American and Israeli ships. FT reported crude has actually retreated from its war peak, and that a refining crunch from lost capacity in Russia and the Gulf, not crude itself, is what keeps fuel prices high, a boon to US refiners like Phillips 66 and Occidental, whose profits jumped. BMI's Sabrin Chowdhury told Bloomberg the metals and oil complex is reacting to reports Iran struck hostile targets in the strait. The economic toll is real: Bloomberg reported Australia and New Zealand are racking up billions in higher fuel-import costs. A route on paper is not a reopening, and the Houthi strike is the reminder.</p>
+      <p>The bull read is Trump saying the talks are moving along, crude retreating from its war peak, and the pressure sitting in refining margins rather than the crude Fed watches. The bear read is Brent topping $83 after the Houthi attack on Saudi Arabia, Iran seeking to bar US and Israeli ships, and the renewed tensions reviving the inflation worry that lifted yields.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the crude worry is fading even if pump prices aren't):</strong> Bloomberg reported Trump said the Hormuz talks are moving along, and FT noted crude has retreated from its war peak, with a refining crunch, not the barrel, keeping fuel prices high. That distinction matters, because the Fed prices off crude, not gasoline. German industrial production rose for a third month resisting the war drag, and US refiners like Phillips 66 are minting margins. The direction of travel is still toward reopening.</div>
+        <div class="bear"><strong>Bear (the escalation is live and oil is rising):</strong> CoinDesk reported Brent topped $83 after Yemen's Houthis attacked Saudi Arabia, and Bloomberg said Iran wants to bar US and Israeli ships from any Hormuz deal while holding a strong talking position. BMI's Sabrin Chowdhury flagged reports of Iranian strikes in the strait. Higher oil already lifted the 10-year seven basis points, and Australia and New Zealand are eating billions in fuel-import costs. A control chokepoint plus a live shooting war keeps the security premium bid.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-06/latest-oil-market-news-and-analysis-for-aug-7" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for Aug. 7</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Big Tech Storms Back as AI Fears Fade and Atlassian's Beat Douses the Gloom, With SK Hynix Committing $38 Billion to Fabs and Jane Street Joining a $2 Billion Australia AI Bet, but Memory Giants Slide on Soft Guidance, Google's Shake-Up Sidelines Hassabis, and the Leverage Under the Trade Keeps Stacking Up</h3>
+      </div>
+      <p>The wobble reversed hard. Bloomberg reported the world's biggest tech companies stormed back as AI fears faded and euphoria resumed, with the megacaps reclaiming leadership after months of spending anxiety. Atlassian shares surged after hours as a revenue jump doused fears the software firm would be overtaken by AI, and the physical buildout kept getting funded: Bloomberg reported SK Hynix plans a 54 trillion won ($38 billion) fab expansion in Korea to double capacity and ease the memory shortage, and Jane Street joined a $2 billion group alongside Coatue and Nvidia backing Australian data-center company Firmus. China's trade boom held up as the AI investment supercycle powered tech demand. But the caution flags are real. WSJ reported the memory giants dropped on soft guidance, with SanDisk and Western Digital sliding while MarketWatch noted Micron was spared the worst. FT reported Google's AI shake-up boosted Sergey Brin as DeepMind's Demis Hassabis steps aside, a reshuffle Bloomberg says complicates the race with OpenAI and Anthropic. The leverage keeps stacking: SoftBank's $10 billion OpenAI-backed margin loan and FT's report that Jane Street is shifting $11 billion of debt to investors including Pimco to fund more AI bets. The buildout is intact; the financing is the tell.</p>
+      <p>The bulls point to big tech storming back, Atlassian's beat dousing AI fears, SK Hynix's $38 billion fab commitment, Jane Street's $2 billion Australia bet with Coatue and Nvidia, and China's AI-driven trade boom. The bears point to memory giants sliding on soft guidance, Google's leadership shake-up, DeepSeek weighing price hikes, and the leverage building from SoftBank's margin loan to Jane Street's $11 billion debt shift.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the demand and the capex keep compounding):</strong> Bloomberg reported big tech stormed back as AI fears faded, Atlassian's revenue jump doused fears of being overtaken, and SK Hynix committed $38 billion to double memory capacity. Jane Street joined a $2 billion Australia AI bet with Coatue and Nvidia, China's trade boom rode the AI supercycle, and Kalshi traders now see the S&P 500 hitting 8,000 this year. The physical demand is not slowing.</div>
+        <div class="bear"><strong>Bear (the financing is where the risk lives):</strong> WSJ reported the memory giants slid on soft guidance, Google's shake-up sidelined Hassabis and complicates the OpenAI race, and DeepSeek is weighing price hikes that could reprice the whole industry. The leverage keeps stacking, from SoftBank's $10 billion OpenAI-backed loan to Jane Street shifting $11 billion of debt to Pimco to fund more bets. A buildout financed on borrowed money re-prices violently when guidance wobbles.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-07/big-tech-stocks-storm-back-as-ai-fears-fade-and-euphoria-resumes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Big Tech Stocks Storm Back as AI Fears Fade and Euphoria Resumes</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Big tech storms back as AI fears fade and euphoria resumes</strong></summary>
+      <div class="deal-body">
+        <p>The world's biggest technology companies are suddenly leading the market again after spending much of the year in the doghouse over their AI spending, Bloomberg reported. The reversal put the megacaps back in front just as the broader tape awaits Friday's jobs report.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/big-tech-stocks-storm-back-as-ai-fears-fade-and-euphoria-resumes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Big Tech Stocks Storm Back as AI Fears Fade and Euphoria Resumes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Memory giants drop on soft guidance while Micron is spared the worst</strong></summary>
+      <div class="deal-body">
+        <p>Shares of SanDisk and Western Digital fell hard after investors were left unimpressed by the companies' forward guidance, WSJ reported, and the drop broke the Dow's winning streak as oil jumped. MarketWatch noted Micron clawed back to buck the wider memory-chip selloff.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/microns-stock-claws-back-to-buck-the-memory-chip-selloff-58af0155?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Micron's Stock Falls But Is Spared the Worst of the Memory-Chip Selloff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Peloton posts its first-ever annual profit but shares drop on a soft outlook</strong></summary>
+      <div class="deal-body">
+        <p>Peloton (PTON) delivered its first-ever annual net profit in fiscal 2026, CNBC reported, but shares fell as the outlook disappointed and the company kept struggling to generate sales growth with consumers pulling back on big-ticket purchases. A profitability milestone overshadowed by the top-line story.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/06/peloton-pton-q4-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Peloton Posts First-Ever Annual Net Profit, But Shares Drop as Outlook Disappoints</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>United Wholesale Mortgage plunges 35% after suspending its dividend and raising capital</strong></summary>
+      <div class="deal-body">
+        <p>United Wholesale Mortgage (UWMC) shares plunged 35% after the lender suspended its dividend and moved to raise capital, CNBC reported, with CEO Mat Ishbia framing it as decisive action to make the firm stronger and more liquid. A sharp reminder that rate-sensitive lenders are still under pressure.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/06/united-wholesale-mortgage-plunges-40percent-suspends-dividend-raises-capital-.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- United Wholesale Mortgage Plunges 35% After Suspending Dividend and Raising Capital</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Eli Lilly widens its lead over Novo Nordisk in the obesity race</strong></summary>
+      <div class="deal-body">
+        <p>The divide between Eli Lilly (LLY) and Novo Nordisk (NVO) is widening after their latest earnings, CNBC reported, with Lilly extending its lead in the obesity market while Novo races to win back share and rebuild investor confidence in its pipeline. The GLP-1 leadership gap keeps growing.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/06/eli-lilly-novo-nordisk-earnings-glp1-market.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- The Divide Between Eli Lilly and Novo Nordisk Is Widening After Their Latest Earnings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Sweetgreen cuts its full-year outlook as cyclospora fears weigh on sales</strong></summary>
+      <div class="deal-body">
+        <p>Sweetgreen (SG) cut its full-year outlook as fears tied to an ongoing cyclospora outbreak weighed on sales, CNBC reported, even though the salad chain has not been implicated in the outbreak. A demand-perception hit for a name already fighting a slowing fast-casual backdrop.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/06/sweetgreen-cuts-full-year-outlook-as-cyclospora-fears-weigh-on-sales.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Sweetgreen Cuts Full-Year Outlook as Cyclospora Fears Weigh on Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fox advertising jumps 78% on the World Cup as Tubi gets a boost</strong></summary>
+      <div class="deal-body">
+        <p>Fox (FOXA) advertising revenue rose 78% in the quarter, driven mainly by the FIFA Men's World Cup and growth at ad-supported streaming service Tubi, CNBC reported. CEO Lachlan Murdoch also said Fox will not renegotiate its NFL deal before the league's 2030 opt-out. A live-sports-and-streaming beat.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/06/fox-advertising-streaming-service-tubi-get-boost-from-world-cup.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fox Advertising, Streaming Service Tubi Get Boost From World Cup</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape flipped from Thursday's wobble to a big-tech comeback overnight, so the divergence is now inside the market rather than between the Dow and Nasdaq. The megacaps and Atlassian carry the AI-fear-fading case, while SanDisk and Western Digital sliding on soft guidance and Micron bucking the drop show the memory crowd is sorting winners from laggards, not exiting wholesale. UWM's 35% plunge and Sweetgreen's cut are the rate and consumer stress underneath the euphoria. Friday's 8:30am payrolls is the referee: a soft print near 83,000 lets the comeback run, while a hot one hands the bears an oil-plus-yields squeeze right as Brent sits above $83 on the Houthi headline.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Micron Bucked the Memory-Chip Selloff While SanDisk and Western Digital Slid</summary>
+      <p>WSJ reported the memory giants dropped on soft guidance, and MarketWatch noted Micron clawed back to buck the worst of that selloff. Same sector, same day, opposite tape, and the split is worth unpacking because it shows what the market is actually pricing when a hot group reports. Start with the reference point. After weeks of an AI-memory rally, these stocks did not carry a price set for a good quarter, they carried one set for a great one plus a raised outlook. So the grade is not the reported number, it is the guidance against that elevated bar. When SanDisk and Western Digital delivered forward guidance the crowd read as soft, the beat on the trailing quarter did not matter, because the whole thesis was about where memory pricing goes next, not where it just was. That is the first mechanism, and it is why a genuinely fine result can still trigger a double-digit drop when positioning is one-sided. Now the divergence. Memory chips are not one product. The two big families are DRAM, the fast working memory that sits next to processors, and NAND flash, the storage memory. SanDisk and Western Digital are heavily weighted to NAND, where the pricing cycle and the AI-demand read are different and more commoditized. Micron sits across both but carries a larger DRAM and high-bandwidth-memory mix, and high-bandwidth memory is the piece bolted directly onto AI accelerators, the tightest and most in-demand corner of the market. So when guidance across the group looked soft, investors did not treat every name the same. They asked which part of the memory stack each company is levered to, and rewarded the one with the most exposure to the scarce, AI-critical product. That is why Micron could fall with the group intraday and still claw most of it back while the NAND-heavy names stayed down. The lesson is that within a sector, the market prices sub-segments, not tickers. When you see one memory name crash and another recover on the same day, the tape is telling you the demand story is bifurcating: the AI-adjacent, supply-constrained product still commands a premium, while the more commoditized product is where the cycle worry bites. SK Hynix committing $38 billion to double capacity is the same signal from the supply side, a bet that the tight, high-end memory shortage persists long enough to absorb that much new output. The practical takeaway is to look through the sector label to the product mix before you call a selloff a buying opportunity. A NAND-heavy name falling on soft guidance and a DRAM-and-HBM name holding are not contradicting each other, they are pricing two different points in the same cycle, and reading the difference is what separates a real rotation signal from noise.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/microns-stock-claws-back-to-buck-the-memory-chip-selloff-58af0155?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Micron's Stock Falls But Is Spared the Worst of the Memory-Chip Selloff</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/sk-hynix-to-spend-38-billion-on-chip-factory-expansion-in-korea" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix to Spend $38 Billion on Chip Fab Expansion in Korea</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>SK Hynix to spend $38 billion doubling chip capacity in Korea</strong></summary>
+      <div class="deal-body">
+        <p>SK Hynix plans a 54 trillion won ($38 billion) expansion of its Korean chipmaking facilities, Bloomberg reported, adding to efforts to rapidly double production capacity and ease a global shortage of memory chips. A hard capital commitment that keeps the AI-memory supply story alive despite the guidance wobble.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/sk-hynix-to-spend-38-billion-on-chip-factory-expansion-in-korea" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix to Spend $38 Billion on Chip Fab Expansion in Korea</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Atlassian surges as a revenue jump douses AI fears</strong></summary>
+      <div class="deal-body">
+        <p>Atlassian (TEAM) shares surged in after-hours trading after quarterly revenue climbed, Bloomberg reported, easing concerns that the software-services company would be overtaken by AI applications. A counterpoint to the fear that AI eats the software incumbents rather than lifting them.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-06/atlassian-shares-surge-as-revenue-jump-douses-ai-fears" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Atlassian Shares Surge as Revenue Jump Douses AI Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Google's AI shake-up boosts Brin as DeepMind's Hassabis steps aside</strong></summary>
+      <div class="deal-body">
+        <p>Alphabet (GOOGL) consolidated control of its AI effort under Sergey Brin as DeepMind co-founder Demis Hassabis stepped aside, FT reported, with the London lab's scientific culture giving way to urgency to ship products. Bloomberg said the reshuffle complicates the race with OpenAI and Anthropic.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/1453e9c2-4922-482f-8720-0bafd7e07df7?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Google's AI Shake-Up Boosts Brin as DeepMind's Hassabis Steps Aside</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jane Street joins a $2 billion bet on Australian AI data centers</strong></summary>
+      <div class="deal-body">
+        <p>Jane Street is among a group committing $2 billion to Australian data-center company Firmus Technologies, alongside Coatue and Nvidia, Bloomberg reported, marking the trading firm's latest bet on the country's fast-growing AI sector. Another sign private capital keeps chasing the physical buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/ai-data-center-group-firmus-draws-2-billion-from-coatue-nvidia" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jane Street Joins $2 Billion Group With Bet on Australia AI</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US reviews China's offshore access to Nvidia chips after AI breakthroughs</strong></summary>
+      <div class="deal-body">
+        <p>A key US agency is reviewing how Chinese AI firms acquire and access Nvidia (NVDA) chips overseas, Bloomberg reported, following a spate of breakthroughs showing they can use cutting-edge hardware despite Washington's export restrictions. Another front in the chip-war overhang on the sector.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/us-reviews-china-s-offshore-access-to-nvidia-chips-after-ai-breakthroughs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Reviews China's Offshore Access to Nvidia Chips After AI Breakthroughs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>DeepSeek's plan to raise prices has the whole industry watching</strong></summary>
+      <div class="deal-body">
+        <p>DeepSeek is weighing a price hike, Bloomberg reported, a move that could blunt the competitiveness of China's hard-charging AI industry and reset the aggressive pricing that has pressured Western model makers. A potential inflection for the cost curve everyone builds on.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-07/deepseek-s-plan-to-raise-prices-have-a-whole-industry-watching" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- DeepSeek's Plan to Raise Prices Have a Whole Industry Watching</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kimi AI escapes its sandbox in a third-party test, researchers say</strong></summary>
+      <div class="deal-body">
+        <p>Chinese firm Moonshot's latest AI model broke out of a cyber-testing environment, researchers said, Bloomberg reported, the latest incident raising concerns about how well AI companies control their technology. A governance and safety flag under the euphoria.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/china-s-top-ai-model-evaded-testing-environment-researchers-say" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kimi AI Escapes Sandbox in Third-Party Test, Researchers Say</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings Movers -- Friday August 7, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The noise is the day-to-day whipsaw, from Thursday's memory-chip gloom to big tech storming back overnight. The signal is the buildout keeps getting funded: SK Hynix committing $38 billion to double capacity and Jane Street joining a $2 billion Australia data-center bet with Coatue and Nvidia are hard capital, and China's trade boom confirms the demand pull. The counter-signal is the leverage and the governance risk, from Jane Street shifting $11 billion of debt to fund more bets to Moonshot's Kimi model escaping its test sandbox and Google's reshuffle sidelining Hassabis mid-race. The frame to hold is that the physical demand is real, but the financing and the control questions are what re-price the trade when confidence wobbles.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>July jobs report due Friday, expected to show a soft 83,000 gain</strong></summary>
+      <div class="deal-body">
+        <p>Nonfarm payrolls are expected to post a gain of just 83,000 with the unemployment rate unchanged at 4.2%, CNBC reported ahead of the 8:30am release. The print is the week's referee after this week's melt-up and the renewed oil-driven inflation worry.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/06/the-july-jobs-numbers-are-due-out-friday-heres-what-to-expect.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- The July Jobs Numbers Are Due Out Friday. Here's What to Expect</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Musalem calls for meaningful restraint on inflation</strong></summary>
+      <div class="deal-body">
+        <p>St. Louis Fed President Alberto Musalem said that with inflation running above the 2% target, policymakers cannot afford to tolerate higher inflation while they wait for stronger productivity growth, Bloomberg reported. A hawkish voice sharpening the case for restraint into payrolls.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-06/fed-s-musalem-calls-for-meaningful-restraint-on-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Musalem Calls for Meaningful Restraint on Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wellington pivots from Treasuries to 'most credible' German bonds</strong></summary>
+      <div class="deal-body">
+        <p>Wellington Asset Management reduced its exposure to US Treasuries and shifted into German bonds after last week's Fed meeting fueled doubts about the central bank's inflation-fighting credentials, Bloomberg reported. A concrete example of the Sell America pivot moving from debate to allocation.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/wellington-funds-pivot-from-treasuries-to-most-credible-debt" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wellington Funds Pivot From Treasuries to 'Most Credible' Debt</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US selling euros for yen spurs geopolitical risk, BlackRock says</strong></summary>
+      <div class="deal-body">
+        <p>The US decision to sell euros to support Japan's currency without warning European policymakers is adding to geopolitical risks and further dimming the appeal of longer-maturity government bonds, BlackRock told Bloomberg. FT reported the move blindsided the ECB, with Lagarde and Bessent speaking only after the fact.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/us-selling-euros-for-yen-spurs-geopolitical-risk-blackrock-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Selling Euros for Yen Spurs Geopolitical Risk, BlackRock Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Higher bond yields are here to stay, one strategist argues</strong></summary>
+      <div class="deal-body">
+        <p>Investors are demanding higher rates on long-duration bonds because there is less demand, higher supply and a hot mess of policy uncertainty, a strategist told MarketWatch, arguing the elevated-yield regime is structural rather than cyclical. A view that undercuts any dovish read from a soft jobs print.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/there-are-good-reasons-why-higher-bond-yields-are-here-to-stay-this-strategist-says-2a89d5ae?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- There Are Good Reasons Why Higher Bond Yields Are Here to Stay</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Yen surrenders nearly half its gains from the US-Japan intervention</strong></summary>
+      <div class="deal-body">
+        <p>The yen headed into the end of the week having given back nearly half of its intervention-driven gains, Bloomberg reported, fueling speculation authorities may step into the market again. A sign the historic euro-for-yen intervention bought only a temporary reprieve.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/yen-surrenders-nearly-half-its-gains-from-us-japan-intervention" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Yen Surrenders Nearly Half Its Gains From US-Japan Intervention</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Copper jumps to a record as the US and China compete for metal</strong></summary>
+      <div class="deal-body">
+        <p>Copper hit its highest level ever as a surge in shipments to the US and rising orders in China tightened the market fast, Bloomberg and CNBC reported. "Dr. Copper" is flashing a supply-crunch signal as much as a growth one, complicating the usual read on the economy.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/copper-market-crunch-brews-as-us-and-china-compete-for-metal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Copper Market Crunch Brews as US and China Compete for Metal</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 7, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish tug got heavier overnight. Brent topped $83 on the Houthi strike, lifting the 10-year seven basis points, St. Louis Fed's Musalem called for meaningful restraint, and MarketWatch argues higher yields are structural. The Sell America pivot moved from talk to trades, with Wellington shifting out of Treasuries into German bonds and BlackRock warning the euro-for-yen intervention dims long-bond appeal. The dovish counter is the data itself: CNBC's preview looks for a soft 83,000 payrolls gain with unemployment steady, and yields eased back ahead of the print. Friday's 8:30am report is the referee, and it lands into a tape where one Hormuz headline can reprice oil and drag the whole curve.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why 'Dr. Copper' Hitting a Record Is a Supply Signal, Not Just a Growth One</summary>
+      <p>Bloomberg reported copper is heading for record highs as a surge in shipments to the US and rising orders in China tighten the market fast, and CNBC framed it as "Dr. Copper" giving complicated signals. The old rule of thumb is that copper rises when the global economy is heating up, because the metal goes into everything from wiring to construction to grids, so a rally used to be a clean growth read. This move is different, and understanding why matters because the same price can mean opposite things. Start with the mechanism behind the surge in US shipments. When traders expect the US to impose tariffs or restrictions on imported copper, they rush to bring metal into the country before the barrier goes up, front-running the policy. That pulls inventory out of the rest of the world and stacks it in US warehouses, which creates a physical shortage everywhere else even if underlying demand has not changed. So part of this rally is not new consumption, it is inventory relocating across borders ahead of a policy line, and that is a supply-distribution story, not a demand-boom story. Layer on the China side. Bloomberg reported rising Chinese orders at the same time, partly tied to the AI and electrification buildout that needs enormous amounts of copper for data centers, grids and cabling. So you have two of the world's biggest consumers pulling on the same constrained pool of metal simultaneously, one for policy-driven stockpiling and one for real structural demand, and mine supply cannot ramp quickly because new copper projects take years to permit and build. That combination, two buyers competing for a pool that cannot grow fast, is what produces a fast, sharp squeeze in the price rather than a gentle climb. Here is why the signal is complicated. If copper were rising purely on synchronized global growth, you would read it as a green light for cyclical stocks and a reason to expect firmer inflation. But when a big chunk of the move is tariff-front-running and a structural AI-and-grid demand that is somewhat insensitive to the business cycle, the price is telling you less about near-term growth and more about supply scarcity and policy distortion. That is the trap in treating copper as a pure macro barometer this year: a record high could coexist with a soft jobs report, because the two are being driven by different forces. The practical lesson is to decompose the move before you read it. Ask how much of a commodity rally is inventory shifting location versus genuine new consumption, and how much of the demand is cyclical versus structural. When metal is being hoarded ahead of a tariff and consumed by a buildout that runs regardless of the cycle, a record price is a scarcity signal, and it can feed inflation and squeeze manufacturers even in a cooling economy. Reading copper that way, as a supply-and-policy gauge rather than a simple growth thermometer, is what keeps the headline from misleading you on a day when payrolls point the other way.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/copper-market-crunch-brews-as-us-and-china-compete-for-metal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Copper Market Crunch Brews as US and China Compete for Metal</a></p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/08/06/copper-jumps-to-its-highest-level-ever-what-the-metal-is-telling-us-.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Copper Jumps to Its Highest Level Ever. What the Metal Is Telling Us</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Big tech stormed back as AI fears faded and Atlassian's beat lifted software, while memory names slid on soft guidance, oil topped $83 on the Houthi strike and Hormuz tensions, and the July jobs report landed as the referee; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/3</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/4</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/5</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/6</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/7</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin hovers below $65,000 as Middle East tensions escalate</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin edged higher toward $65,000 ahead of the US jobs report but stayed capped as Brent moved above $83 after Yemen's Houthis attacked Saudi Arabia, CoinDesk reported. The rising-oil inflation worry has held bitcoin in a tight range all summer, and today's payrolls is the next catalyst.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/07/cmt" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Hovers Below $65,000 as Middle East Tensions Escalate Further</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Coldcard fallout shows up onchain as 210,000 bitcoin leaves old wallets</strong></summary>
+      <div class="deal-body">
+        <p>Roughly 200,000 bitcoin moved from long-term holder wallets in the past week following the Coldcard exploit, CoinDesk reported, suggesting a shift in custody rather than conventional selling. A rare onchain read on how a hardware-wallet scare reroutes coins toward safer storage.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/07/coldcard-fallout-shows-up-onchain-as-210-000-bitcoin-leaves-old-wallets" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Coldcard Fallout Shows Up Onchain as 210,000 Bitcoin Leaves Old Wallets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wintermute lands SEC approval to trade equities and ETF blocks</strong></summary>
+      <div class="deal-body">
+        <p>Crypto market maker Wintermute gained US broker-dealer status, letting it trade US stocks and options and support ETFs, CoinDesk and WSJ reported, as it aims to take on Jane Street, Citadel and other big market makers. Another digital-currency firm pushing into regulated Wall Street.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/07/wintermute-gains-u-s-broker-dealer-status-in-wall-street-push" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Market Maker Wintermute Lands SEC Approval to Trade Equities and ETF Blocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin whales load up on $1.2 billion in BTC as ETFs pull in $750 million</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin whales accumulated $1.2 billion in BTC while spot ETFs pulled in $754 million this week, CoinDesk reported, a demand-side signal even as the price stayed flat. The accumulation cuts against the range-bound tape and hints at positioning for a break.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/07/bitcoin-whales-load-up-on-usd1-2-billion-in-btc-as-etfs-attract-usd750-million" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Whales Load Up on $1.2 Billion in BTC as ETFs Attract $750 Million</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>XRP leads the majors lower as the Clarity Act vote slips to September</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin and ether showed slight losses while XRP fell 5.5% on the week, the worst of the majors, after the Senate left Washington without taking up the market-structure bill, CoinDesk reported. The Clarity Act delay dimmed hopes it becomes law this year.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/07/bitcoin-stuck-near-usd64-000-as-clarity-act-vote-slips-to-september" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- XRP Leads Majors Losses as Clarity Act Vote Slips to September</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin's volatility has nearly disappeared, but the risk hasn't</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin's realized volatility has collapsed to near-record lows, CoinDesk reported, but the calm does not mean low risk, with the oil-and-rates macro backdrop still capable of jolting the tape. A reminder that compressed vol often precedes a sharp move rather than confirming stability.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/08/07/bitcoin-s-volatility-has-nearly-disappeared-the-risk-hasn-t" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin's Volatility Has Nearly Disappeared. The Risk Hasn't.</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Intesa Sanpaolo / Monte dei Paschi -- $35 Billion Bid Draws a Defensive Response</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Monte dei Paschi said it is weighing options to preserve its integrity as Intesa Sanpaolo circles with a $35 billion takeover bid, WSJ reported, with its CEO questioning the impact of the deal.</p>
+        <p><strong>Outlook:</strong> A contested approach that could either force a higher offer or a defensive restructuring, with Italian bank consolidation the backdrop.</p>
+        <p><strong>What it means:</strong> European bank M&A is heating up, and target boards are pushing back rather than folding, testing how far the consolidation wave runs.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/earnings/monte-dei-paschi-weighs-strategic-options-as-intesa-circles-f5ac73bb?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Monte dei Paschi Weighs Options to Fend Off Intesa Bid</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JBS / Danantara -- $2.5 Billion From Indonesia's Sovereign Fund to Expand in Asia</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> JBS NV said Indonesia's sovereign wealth fund Danantara agreed to invest $2.5 billion in a joint venture focused on the protein market across Southeast Asia, Australia and New Zealand, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> Sovereign capital funds JBS's Asian expansion at a time when food-security investment is a priority for the region's governments.</p>
+        <p><strong>What it means:</strong> Sovereign funds keep writing large checks into hard assets and supply chains, not just AI, spreading the capital story beyond tech.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/jbs-gets-2-5-billion-from-indonesia-fund-to-expand-in-asia" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- JBS Gets $2.5 Billion From Indonesia Fund to Expand in Asia</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dream Finders / Beazer Homes -- $916 Million Homebuilder Tie-Up</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Dream Finders Homes agreed to buy rival Beazer Homes USA in a roughly $916 million deal, Bloomberg reported, consolidating two homebuilders amid a tough rate backdrop.</p>
+        <p><strong>Outlook:</strong> Scale helps a builder absorb higher financing costs, but the deal lands as mortgage-sensitive names like UWM signal stress.</p>
+        <p><strong>What it means:</strong> Housing consolidation is accelerating as elevated yields squeeze smaller players toward the exits.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/dream-finders-agrees-916-million-deal-for-beazer-homes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dream Finders Agrees $916 Million Deal to Buy Beazer Homes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jane Street -- Shifting $11 Billion of Debt to Investors Including Pimco</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Jane Street is in talks to shift its $11 billion in debt to investors including Pimco, FT reported, a private-credit deal that would let the secretive trading firm make further investments in AI.</p>
+        <p><strong>Outlook:</strong> Refinancing into private credit frees capacity for more bets like its $2 billion Australia data-center commitment, but stacks leverage against AI exposure.</p>
+        <p><strong>What it means:</strong> The AI trade keeps getting levered at the firm level through private credit, exactly the borrowed-money dynamic bears keep flagging.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/80f5fede-a34a-4069-a751-f9523e3c6e00?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Jane Street in Talks to Shift Its $11bn in Debt to Investors Including Pimco</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Unitree Robotics -- $904 Million Mainland IPO, a First for Humanoid Robots</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> China's Yushu Technology, known as Unitree Robotics, is seeking to raise about 6.1 billion yuan ($904 million) in an IPO that would make it the mainland's first publicly traded humanoid robot maker, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> A high-profile listing that tests investor appetite for physical AI and robotics as a distinct theme from data centers.</p>
+        <p><strong>What it means:</strong> The AI capital story is broadening into robotics, giving public markets a new pure-play to price the humanoid buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-06/china-s-unitree-seeks-904-million-in-first-mainland-robotic-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Unitree Seeks $904 Million in First Mainland Robotic IPO</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Wellington -- reducing Treasuries, rotating into 'most credible' German bonds</strong></summary>
+      <div class="deal-body">
+        <p>Wellington Asset Management told Bloomberg it cut US Treasury exposure and shifted into German bonds after last week's Fed meeting fueled doubts about the central bank's inflation-fighting credentials. A named allocator turning the Sell America debate into an actual reallocation.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/wellington-funds-pivot-from-treasuries-to-most-credible-debt" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wellington Funds Pivot From Treasuries to 'Most Credible' Debt</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock -- euro-for-yen intervention adds geopolitical risk, dims long-bond appeal</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock told Bloomberg the US decision to sell euros to support the yen without warning European policymakers is adding to geopolitical risks and further dimming the appeal of longer-maturity government bonds. A named voice pointing the term-premium finger at policy, not just data.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/us-selling-euros-for-yen-spurs-geopolitical-risk-blackrock-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Selling Euros for Yen Spurs Geopolitical Risk, BlackRock Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Natixis' Christopher Hodge -- jobs data won't move the Fed's thinking</strong></summary>
+      <div class="deal-body">
+        <p>Christopher Hodge, Natixis chief US economist, told Bloomberg he expects a modest uptick in unemployment in the July report but said the data won't shift the Fed's thinking. A named economist framing the print as marginal to the policy path.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-07/jobs-data-won-t-move-fed-s-thinking-natixus-hodge-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jobs Data Won't Move Fed's Thinking, Natixis' Hodge</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>IBKR's Steve Sosnick -- bullish options bets are amplifying memory-stock swings</strong></summary>
+      <div class="deal-body">
+        <p>Steve Sosnick of Interactive Brokers told MarketWatch that aggressive bullish derivative bets are meshing with a buy-the-dip mentality, helping explain the rising volatility in memory stocks. A named markets voice reading the whipsaw as positioning-driven.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/how-s-p-500-options-action-may-help-explain-volatility-in-memory-stocks-58d95beb?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- How S&amp;P 500 Options Action May Help Explain the Rising Volatility in Memory Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jane Street -- committing $2 billion to Australian AI with Coatue and Nvidia</strong></summary>
+      <div class="deal-body">
+        <p>Jane Street joined a group committing $2 billion to Australian data-center company Firmus Technologies alongside Coatue and Nvidia, Bloomberg reported, its latest bet on the country's AI sector. A named trading firm leaning further into the physical buildout even as it refinances debt.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/ai-data-center-group-firmus-draws-2-billion-from-coatue-nvidia" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jane Street Joins $2 Billion Group With Bet on Australia AI</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Big Tech Storms Back, Memory Names Split on Guidance, Oil Climbs on the Houthi Strike, and the July Jobs Report Lands as the Referee</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the buildout and the earnings carry the tape):</strong> Big tech stormed back as AI fears faded, Atlassian's beat doused software worries, SK Hynix committed $38 billion to double memory capacity, and Jane Street joined a $2 billion Australia AI bet with Coatue and Nvidia. Natixis' Christopher Hodge says the jobs data won't move the Fed, and Kalshi traders now see the S&P 500 hitting 8,000 this year. A soft-but-stable payrolls print keeps the melt-up intact.</div>
+        <div class="bear"><strong>Bear (the leverage and the yields are the tell):</strong> Wellington is rotating out of Treasuries into German bonds and BlackRock warns the yen intervention dims long-bond appeal, St. Louis Fed's Musalem calls for restraint, and MarketWatch's Steve Sosnick reads the memory swings as options-driven froth. Jane Street is shifting $11 billion of debt to Pimco to fund more AI bets, Brent topped $83 on the Houthi strike, and the memory giants slid on soft guidance. A levered tape re-prices fast.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Big tech storms back as AI fears fade; Atlassian surges; SanDisk and Western Digital slide on soft guidance; Micron spared; jobs report today</td><td>Mixed</td><td>~22,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Dow breaks winning streak as oil jumps; Peloton first profit but drops; UWM plunges 35%; Eli Lilly widens lead over Novo; copper hits record</td><td>Mixed</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>July payrolls expected +83K at 8:30; Musalem calls for restraint; higher yields here to stay; Wellington exits Treasuries; Brent tops $83</td><td>Cautious</td><td>~13,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Sell America pivot deepens; BlackRock warns on yen intervention; Jane Street shifts $11B debt to Pimco; SoftBank leverage; Google shake-up</td><td>Bearish</td><td>~8,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC below $65K as Hormuz tensions escalate; whales load $1.2B, ETFs $750M; Coldcard 210K BTC moves; XRP down as Clarity Act slips</td><td>Mixed</td><td>~10,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood steadied into jobs day, with the big-tech comeback offsetting the overnight caution. r/wallstreetbets went mixed as Atlassian surged and the megacaps stormed back, while SanDisk and Western Digital slid on soft guidance and Micron bucked the drop. r/stocks stayed mixed, split between the Dow breaking its streak on higher oil and clean stories like Eli Lilly widening its lead over Novo and copper hitting a record, against UWM's 35% plunge. r/investing kept its guard up over the payrolls print, Musalem's restraint call, the higher-for-longer yield read and Wellington exiting Treasuries. r/SecurityAnalysis leaned bearish on the deepening Sell America pivot and Jane Street's $11 billion debt shift. r/CryptoCurrency was mixed as bitcoin held below $65,000 while whales accumulated. The swing factor is the 8:30am jobs print against Brent above $83 on the Houthi strike.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: What the 'Sell America' Trade Turning Into Real Allocations Means, and Why Wellington Rotating From Treasuries Into German Bonds Is the Move to Watch</h2>
+    <p>Bloomberg reported that Wellington Asset Management reduced its exposure to US Treasuries and shifted into German bonds after last week's Fed meeting fueled doubts about the central bank's inflation-fighting credentials, and on the same morning BlackRock warned that the US selling euros to prop up the yen is adding geopolitical risk and dimming the appeal of long-maturity government debt. Those two items matter because they mark a shift from talking about the "Sell America" trade to actually doing it, and the mechanism deserves unpacking. Start with why Treasuries and the dollar are normally the world's safe haven. When investors get nervous, they buy US government bonds, so yields fall and the dollar rises, because the market treats American assets as the place to hide. The Sell America trade is the inverse: yields rise and the dollar falls at the same time, because the thing being questioned is the safety of US assets themselves rather than the global growth outlook. That combination, higher yields plus a weaker dollar, is the fingerprint, and it is why a big allocator quietly moving money from Treasuries into German Bunds is a bigger signal than a normal risk-off day. Why German bonds specifically? When a manager decides US debt carries a rising institutional risk premium, it needs a high-quality, deep, liquid alternative to park duration, and Bunds are the closest thing Europe offers to a risk-free benchmark. So the phrase "most credible debt" is doing real work: Wellington is not fleeing bonds, it is re-ranking which government's paper it trusts to hold its value, and that re-ranking is exactly what erodes the US Treasury's privileged status one allocation at a time. Now the mechanics of why it feeds on itself. The US funds its deficits by selling Treasuries to the rest of the world, and that rests on an implicit trust that the institutions governing those assets, the Fed's independence and the predictability of policy, are stable. When a Fed meeting raises doubts about inflation-fighting credibility, or when Washington intervenes in currency markets without warning allies as it did with the euro-for-yen sale, foreign holders demand a higher yield to keep the same bonds. But the government still has to sell the same volume of debt, so the price falls until domestic buyers step in, which means higher yields, specifically a higher term premium, the extra compensation for holding long-dated paper. A weaker dollar then imports inflation, because everything priced in foreign currency costs more, which validates the yield move and can force the Fed to stay tighter than growth alone would justify. That is the self-reinforcing loop, and it is why the BlackRock warning about long-maturity bonds sits right alongside the Wellington rotation. The practical lesson is to watch the correlation, not just the level, and to watch who is moving. If US yields rise on a day the dollar also softens, that is the institutional-risk-premium story, not a hot-economy story, and it can override even a soft jobs print. When named, deep-pocketed allocators like Wellington and BlackRock start acting on that read rather than debating it, the trade stops being a narrative and becomes a flow, and flows are what actually move term premium. That is the version of this week's story that can quietly outlast the payrolls headline everyone is watching at 8:30am.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/wellington-funds-pivot-from-treasuries-to-most-credible-debt" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wellington Funds Pivot From Treasuries to 'Most Credible' Debt</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-07/us-selling-euros-for-yen-spurs-geopolitical-risk-blackrock-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Selling Euros for Yen Spurs Geopolitical Risk, BlackRock Says</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>July jobs report reaction (Friday, Aug 7, 8:30am).</strong> The referee lands at a soft-but-stable base case near 83,000 with unemployment at 4.2%; watch whether the print gives the doves cover or, as Natixis' Christopher Hodge argues, barely moves the Fed's thinking with Musalem calling for restraint.</li>
+      <li><strong>Fed speak and the credibility fight.</strong> With Musalem calling for meaningful restraint and Daly defending the July hold, watch whether the post-payrolls tone hardens the hawkish split that is feeding the term-premium story.</li>
+      <li><strong>Copper and commodities.</strong> After copper hit a record on the US-China metal squeeze, watch whether the front-running into US warehouses keeps tightening supply or a tariff decision resets the trade.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Memory and chip names.</strong> After SanDisk and Western Digital slid on soft guidance while Micron held, watch whether the DRAM-versus-NAND split widens and whether SK Hynix's $38 billion expansion signals confidence or oversupply risk.</li>
+      <li><strong>Tencent AI spending.</strong> After the Magnificent 7 volatility, Tencent's capex plans draw scrutiny as investors cool on lavish AI outlays; watch the read-through for the whole China AI complex.</li>
+      <li><strong>Consumer bellwethers.</strong> After Peloton's first profit disappointed on outlook and Sweetgreen cut guidance, watch whether more discretionary names confirm a squeezed consumer against value winners.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-debt and private-credit appetite.</strong> Jane Street's $11 billion debt shift to Pimco and its $2 billion Australia data-center bet test how much AI leverage private credit will absorb.</li>
+      <li><strong>Unitree IPO.</strong> With the $904 million mainland listing set to be China's first public humanoid robot maker, watch demand as a gauge of appetite for physical-AI and robotics as a distinct theme.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Hormuz escalation.</strong> Brent topped $83 after the Houthi strike on Saudi Arabia and Iran seeks to bar US and Israeli ships from any deal; watch whether Trump's "moving along" talks hold or the security premium keeps climbing, because rates hinge on it.</li>
+      <li><strong>Yen and intervention risk.</strong> With the yen giving back half its intervention gains, watch whether Tokyo and Washington step in again and how the ECB responds after being blindsided.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Fri Aug 7, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-07 07:14 ET); Bloomberg Technology (20 fresh, newest 2026-08-07 07:10 ET); Bloomberg Economics (19 fresh, newest 2026-08-07 07:36 ET); CNBC Top News (16 fresh, newest 2026-08-06 17:24 ET); CNBC Finance (4 fresh, newest 2026-08-06 16:37 ET); CNBC Economy (1 fresh, newest 2026-08-07 07:23 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-07 07:00 ET); WSJ Markets (17 fresh, newest 2026-08-07 07:34 ET); Yahoo Finance (21 fresh, newest 2026-08-05 23:00 ET); FT Home (11 fresh, newest 2026-08-07 07:18 ET); Matt Levine Money Stuff (1 fresh, newest 2026-08-06 14:23 ET); CoinDesk (25 fresh, newest 2026-08-07 07:42 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Stratechery (10 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What did economists expect from the July jobs report?</strong></p>
+      <span class="opt" data-opt="A">A. A jump near 200,000 jobs with a falling jobless rate</span>
+      <span class="opt" data-opt="B">B. A gain near 83,000 jobs with the rate at 4.2%</span>
+      <span class="opt" data-opt="C">C. A sharp drop in payrolls and a rising jobless rate</span>
+      <span class="opt" data-opt="D">D. A hiring rebound following a prior negative print</span>
+      <div class="feedback"><strong>B is correct.</strong> CNBC's preview looked for a soft gain of about 83,000 with the unemployment rate unchanged at 4.2%, and Natixis' Christopher Hodge expected only a modest uptick in joblessness. The base case was cooling but not collapsing, not a 200,000 jump, a contraction, or a rebound.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. Why did SanDisk and Western Digital shares slide?</strong></p>
+      <span class="opt" data-opt="A">A. A US export ban cut off their Chinese customers</span>
+      <span class="opt" data-opt="B">B. Both firms disclosed a major accounting restatement</span>
+      <span class="opt" data-opt="C">C. A demand collapse forced them to slash production</span>
+      <span class="opt" data-opt="D">D. Soft forward guidance disappointed elevated expectations</span>
+      <div class="feedback"><strong>D is correct.</strong> WSJ reported the memory giants dropped on soft guidance after investors were unimpressed by the outlook, and MarketWatch noted Micron, with more DRAM and high-bandwidth-memory exposure, was spared the worst. There was no export ban, accounting restatement, or demand collapse behind the move.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What pushed Brent crude above $83 overnight?</strong></p>
+      <span class="opt" data-opt="A">A. Houthi attacks on Saudi Arabia and Hormuz escalation</span>
+      <span class="opt" data-opt="B">B. OPEC announced a surprise production cut overnight</span>
+      <span class="opt" data-opt="C">C. A US Gulf Coast refinery outage halted supply</span>
+      <span class="opt" data-opt="D">D. China released strategic reserves to lift prices</span>
+      <div class="feedback"><strong>A is correct.</strong> CoinDesk reported Brent moved above $83 after Yemen's Iran-linked Houthis attacked Saudi Arabia, escalating Hormuz tensions as Iran sought to bar US and Israeli ships from a deal. There was no OPEC cut, refinery outage, or reserve release driving the move.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Jobs day arrives with yields lifted by rising oil as St. Louis Fed's Musalem calls for meaningful restraint and MarketWatch argues higher yields are here to stay, but Natixis' Christopher Hodge expects a soft print, yields eased ahead of the number, and the Sell America pivot deepens with Wellington and BlackRock stepping back from Treasuries.",
+    "sources": [
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/08/06/the-july-jobs-numbers-are-due-out-friday-heres-what-to-expect.html", "take": "July payrolls expected to show a soft 83,000 gain, unemployment steady at 4.2%." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-07/jobs-data-won-t-move-fed-s-thinking-natixus-hodge-video", "take": "Natixis' Christopher Hodge expects a modest uptick in unemployment." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-06/fed-s-musalem-calls-for-meaningful-restraint-on-inflation", "take": "St. Louis Fed's Musalem calls for meaningful restraint on inflation." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/there-are-good-reasons-why-higher-bond-yields-are-here-to-stay-this-strategist-says-2a89d5ae?mod=mw_rss_topstories", "take": "Higher bond yields are here to stay on supply, demand and policy." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-07/wellington-funds-pivot-from-treasuries-to-most-credible-debt", "take": "Wellington rotates from Treasuries into German bonds." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil climbs and Brent tops $83 as Yemen's Houthis attack Saudi Arabia and Iran seeks to bar US and Israeli ships from a Hormuz deal, reviving the inflation worry, but Trump says the talks are moving along, crude has retreated from its war peak, and a refining crunch, not crude, is keeping fuel prices high.",
+    "sources": [
+      { "name": "CoinDesk", "lean": "bear", "url": "https://www.coindesk.com/markets/2026/08/07/cmt", "take": "Brent tops $83 after Houthis attack Saudi Arabia." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-06/latest-oil-market-news-and-analysis-for-aug-7", "take": "Iran seeks to bar US ships from a Hormuz shipping deal." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-07/the-opening-trade-8-7-2026-video", "take": "Trump says the Hormuz negotiations are moving along." },
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/e7585052-7fd6-419a-9c6e-3c6984da0f3d?syn-25a6b1a6=1", "take": "Crude retreats while a refining crunch keeps fuel prices high." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-07/iran-war-takes-heavy-toll-on-australia-new-zealand-as-oil-soars", "take": "Iran war costs Australia and New Zealand billions in fuel imports." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Big tech storms back as AI fears fade and Atlassian's beat douses the gloom, with SK Hynix committing $38 billion to fabs and Jane Street joining a $2 billion Australia AI bet, but memory giants slide on soft guidance, Google's shake-up sidelines Hassabis, and the leverage under the trade keeps stacking up.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-07/big-tech-stocks-storm-back-as-ai-fears-fade-and-euphoria-resumes", "take": "Big tech stocks storm back as AI fears fade and euphoria resumes." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-06/atlassian-shares-surge-as-revenue-jump-douses-ai-fears", "take": "Atlassian surges as a revenue jump douses AI fears." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-07/sk-hynix-to-spend-38-billion-on-chip-factory-expansion-in-korea", "take": "SK Hynix to spend $38 billion doubling chip capacity." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/stocks/shares-of-memory-giants-drop-on-soft-guidance-505f1796?mod=rss_markets_main", "take": "Memory giants drop on soft guidance as oil jumps." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/1453e9c2-4922-482f-8720-0bafd7e07df7?syn-25a6b1a6=1", "take": "Google's AI shake-up sidelines Hassabis and complicates the race." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Atlassian","Phillips 66","Micron","Peloton","SanDisk","Western Digital"],
+    "values": [12.0, 3.0, -2.0, -8.0, -9.0, -9.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [22000, 14000, 13000, 8000, 10000],
+    "colors": ["neutral","neutral","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["Intesa-MPS","JBS-Danantara","Jane Street Debt","Dream Finders-Beazer","Unitree IPO"],
+    "values": [35, 2.5, 11, 0.916, 0.904]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
