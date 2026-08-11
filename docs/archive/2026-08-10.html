@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Aug 10, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-10</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, August 10, 2026</h1>
+    <div class="meta">
+      <p>CPI is the week's referee, due Tuesday, and it lands with stocks wavering near record highs after Friday's surprise jobs contraction trimmed the market's rate-hike bets. JPMorgan lifted its S&P 500 target to 8,000 on the AI-capex payoff, and Q2 profits boomed. Oil pushed above $84 as a Strait of Hormuz reopening stayed elusive and gold held above $4,300.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Stocks hovered near record highs and JPMorgan raised its S&P 500 target to 8,000 as the AI-capex payoff showed up in Q2 profits, while Friday's surprise jobs contraction eased rate-hike bets and oil pushed above $84 on doubts the Strait of Hormuz reopens soon, all ahead of Tuesday's CPI print",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "JPMorgan Strategists Raise S&P 500 Target as AI Capex Pays Off", "angle": "Reads the target hike as evidence the AI buildout is now converting into real earnings power.", "lean": 45, "pull": "Strong corporate earnings and the payoff from massive artificial intelligence spending justify a higher target."},
+        {"outlet": "MarketWatch", "headline": "The U.S. Economy Is Shedding Jobs. Here's Why That's Good News for Stocks", "angle": "Frames the labor weakness as bullish because it lets the Fed ease off its hiking bias.", "lean": 30, "pull": "A weaker labor market may mean the Fed can cut rates amid benign wage inflation, says 22V."},
+        {"outlet": "WSJ", "headline": "Oil Rises Amid Growing Doubts That Strait of Hormuz Can Reopen Soon", "angle": "Leads with the supply-disruption risk keeping crude bid as the diplomatic path stalls.", "lean": -25, "pull": "Oil prices rose amid growing doubts that the Strait of Hormuz can reopen soon."},
+        {"outlet": "Financial Times", "headline": "Mark Zuckerberg Attacks 'Closed' AI Rivals as Meta Returns to Open Models", "angle": "Casts the essay as Zuckerberg betting open, cheap models beat the doomers and the closed labs.", "lean": 10, "pull": "Meta's founder casts OpenAI and Anthropic as foils in his pitch for freely available AI."},
+        {"outlet": "Bloomberg", "headline": "The Deluge of AI Debt Has Big Names Seeking New Strategies to Avoid Selloffs", "angle": "Warns the financing under the AI trade is piling up faster than the market can absorb it cleanly.", "lean": -30, "pull": "BlackRock wasn't about to let fast-trading investors spoil its Meta financing victory."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Stocks Waver Near Records After Friday's Surprise Jobs Contraction Trims Rate-Hike Bets, With 22V and Westpac's Illiana Jain Reading the Weakness as Cover for the Fed to Stand Down, but Macquarie's Thierry Wizman Says a December Hike Is Still Live, New Fed Chair Kevin Warsh's Credibility Shock Lingers, and Tuesday's CPI Is the Referee</h3>
+      </div>
+      <p>Rates head into CPI with the hiking bias suddenly on the back foot. Bloomberg reported the US labor market contracted in Friday's report, a surprise that eased worries about a Federal Reserve rate hike and let gold hold above $4,300 and copper hold near $14,000 a ton. The dovish read got louder: MarketWatch carried 22V arguing a weaker labor market is good news for stocks because it lets the Fed ease off amid benign wage inflation, and Westpac's Illiana Jain told Bloomberg the Fed is unlikely to raise rates rapidly after the print. But the hawkish counter is very much alive. Macquarie's Thierry Wizman told Bloomberg a December hike is possible, noting the Fed likes to change direction alongside a fresh Summary of Economic Projections. Bloomberg Economics framed the softening as a third straight cruel summer, the kind of mid-year fade that pushed the Fed into brief cuts the last two years. Overhanging it all is the regime shift: Yahoo reported new Fed Chair Kevin Warsh sparked a credibility shock on Wall Street after his latest rate decision, and Fed Governor Cook was grilled again. Tuesday's CPI decides whether the contraction reads as disinflation or just weakness inside a still-sticky, oil-fed inflation backdrop.</p>
+      <p>The bull case is Friday's jobs contraction easing rate-hike bets, 22V and Westpac's Jain reading the weakness as room for the Fed to stand down, and gold and copper firming as the hike premium bleeds out. The bear case is Macquarie's Wizman keeping a December hike live, Warsh's credibility shock unsettling the curve, and Tuesday's CPI landing in an oil-fed inflation backdrop that has kept the Fed leaning hawkish all year.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the labor fade takes the hike off the table):</strong> Bloomberg reported Friday's jobs contraction eased rate-hike concerns, and gold held above $4,300 while copper held near $14,000 as the premium drained. MarketWatch's 22V says a softer labor market is good for stocks because the Fed can ease amid benign wage inflation, and Westpac's Illiana Jain expects the Fed to hold rather than tighten. If CPI cools too, the hiking bias that has capped the tape all year finally lifts.</div>
+        <div class="bear"><strong>Bear (the hike is only paused, not cancelled):</strong> Macquarie's Thierry Wizman told Bloomberg a December hike is still on the table and the Fed likes to move alongside a fresh SEP. New Fed Chair Kevin Warsh's credibility shock has Wall Street on edge, oil above $84 keeps feeding the inflation impulse, and central banks from the RBA to Manila are running hawkish holds. A hot CPI Tuesday flips the whole read back to restraint.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/the-u-s-economy-is-shedding-jobs-why-thats-good-news-for-stocks-a7f4773c?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The U.S. Economy Is Shedding Jobs. Here's Why That's Good News for Stocks</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Pushes Above $84 as Doubts Grow the Strait of Hormuz Can Reopen Soon and Trump's Low-Key Pivot Leaves the Market in Limbo, but CoinDesk Says Iran-Oman Deal Talk Eased Concerns Overnight, China's Oil-Shock Inflation Is Fading, and the Euro Zone Shrugged Off the War</h3>
+      </div>
+      <p>The Hormuz standoff dragged into another week without a resolution. Bloomberg reported crude passed $84 a barrel as a deal to reopen the strait remained elusive, and WSJ said oil rose amid growing doubts the waterway can reopen soon, bolstering supply-disruption fears. Bloomberg's newsletter framed it bluntly: Trump's low-key pivot leaves Hormuz oil in limbo, with the President betting he can wait Iran out and prolonging the uncertainty. WSJ reported Iranian demands are disrupting Trump's plan to end the war, and Bloomberg flagged an Iran security shake-up. Yet the picture is not one-way. CoinDesk reported bitcoin steadied above $65,000 and Nasdaq futures gained on reports Iran may strike a deal with Oman to reopen the strait, a headline that eased risk sentiment overnight. The macro damage is also fading: Bloomberg Economics reported China's inflation cooled as the oil shock of the Iran war started to ease, and a Bloomberg survey sees the euro zone quickening after shrugging off the war in the second quarter. The tension is that the barrel keeps bidding on the security premium even as the economic drag rolls off.</p>
+      <p>The bull read is CoinDesk's Iran-Oman deal talk easing Hormuz concerns overnight, China's oil-shock inflation fading, and the euro zone shrugging off the war. The bear read is crude above $84 with the strait no closer to reopening, Trump waiting Iran out and leaving the market in limbo, and Iranian demands disrupting the path to a deal.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the war drag is rolling off even if crude stays bid):</strong> CoinDesk reported Iran-Oman deal talk eased Hormuz concerns and lifted risk assets overnight, Bloomberg Economics said China's oil-shock inflation is fading, and a Bloomberg survey sees the euro zone quickening after resisting the war. If a reopening deal firms up, the security premium in crude unwinds fast and the inflation impulse feeding the Fed's hawkish lean fades with it.</div>
+        <div class="bear"><strong>Bear (the chokepoint is still shut and crude is climbing):</strong> Bloomberg reported oil passed $84 with a Hormuz reopening elusive, and WSJ said doubts the strait can reopen soon are keeping supply fears bid. Trump's decision to wait Iran out leaves the market in limbo, and WSJ reported Iranian demands are disrupting his plan to end the war. A closed chokepoint plus $84 crude keeps the inflation worry live right into CPI.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/stocks/oil-rises-amid-growing-doubts-that-strait-of-hormuz-can-reopen-soon-295798e5?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Oil Rises Amid Growing Doubts That Strait of Hormuz Can Reopen Soon</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>JPMorgan Lifts Its S&P 500 Target to 8,000 as the AI-Capex Payoff Shows in Q2 Profits, TSMC Sales Jump 45%, and Unitree's IPO Draws 5,526x Retail Demand, but Bloomberg Warns of an AI-Debt Deluge, WSJ Flags Strain in Private Credit, and Fresh Safety Breaches Feed the Governance Worry</h3>
+      </div>
+      <p>The AI trade came back to full euphoria. Bloomberg reported JPMorgan strategists raised their S&P 500 target for the second time in two months, to 8,000, citing strong earnings and the payoff from massive AI spending, and Investor's Business Daily noted Q2 profits boomed. The demand signal kept confirming: Bloomberg reported TSMC's monthly sales rose 45% as AI-hardware demand stayed strong despite market volatility, Sony and TSMC are in talks to spend a combined $6.4 billion on a Japanese image-sensor plant, and Yushu Technology, known as Unitree Robotics, drew retail demand 5,526 times its Shanghai IPO offering as China's humanoid makers held 97% of global shipments in the first half. FT reported Mark Zuckerberg attacked closed AI rivals and pushed Meta back toward open models, releasing a laptop-runnable Muse Glimmer model. But the financing and governance flags kept stacking. Bloomberg reported a deluge of AI debt has big names like BlackRock hunting new strategies to avoid selloffs, WSJ said private credit is under growing strain with default rates hitting recent highs, and Cloudflare moved to sell $2.175 billion of convertible notes. Bloomberg also reported AI safety fears are growing after breaches at Hugging Face, Anthropic and Meta. The buildout is paying off; the leverage under it is the tell.</p>
+      <p>The bulls point to JPMorgan's 8,000 target, the AI-capex payoff in Q2 profits, TSMC's 45% sales jump, Sony and TSMC's $6.4 billion plant, and Unitree's 5,526x IPO demand. The bears point to Bloomberg's AI-debt deluge warning, WSJ's private-credit strain, Cloudflare stacking $2.175 billion of convertibles, and the safety breaches feeding the governance worry.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the capex is finally converting to earnings):</strong> Bloomberg reported JPMorgan raised its S&P 500 target to 8,000 on the AI-spending payoff, TSMC sales jumped 45% on strong AI-hardware demand, and Sony and TSMC are committing $6.4 billion to a sensor plant. Unitree's Shanghai IPO drew 5,526x retail demand and China humanoid makers hold 97% of shipments. The physical demand and the profit follow-through are both real and both accelerating.</div>
+        <div class="bear"><strong>Bear (the debt is piling up faster than the market can absorb):</strong> Bloomberg reported an AI-debt deluge has BlackRock and others engineering new ways to avoid selloffs, WSJ said private credit is under growing strain with defaults at recent highs, and Cloudflare is selling $2.175 billion of convertibles. Safety breaches at Hugging Face, Anthropic and Meta are stoking governance fears, and Super Micro keeps sliding. A buildout financed on borrowed money re-prices violently.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-10/jpmorgan-strategists-raise-s-p-500-target-as-ai-capex-pays-off" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- JPMorgan Strategists Raise S&P 500 Target as AI Capex Pays Off</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks waver near record highs as futures point to more gains ahead of CPI</strong></summary>
+      <div class="deal-body">
+        <p>Stocks paused near record highs with traders looking to Tuesday's CPI print as bets on a Fed rate hike eased, Bloomberg reported, while WSJ said US futures were ticking up with oil also higher. Asia finished higher and Europe was mixed as the DAX extended Friday's record.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-09/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Waver Near Record Highs, Crude Oil Advances: Markets Wrap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan lifts its S&P 500 target to 8,000 as the AI-capex payoff shows up</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street's biggest bank raised its year-end S&P 500 target from 7,800 to 8,000, MarketWatch reported, the second lift in two months, with strategists citing strong corporate earnings and the payoff from massive AI spending. A concrete vote of confidence in the melt-up as Q2 profits boomed.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/wall-streets-biggest-bank-just-raised-its-expectations-for-the-stock-market-cac6d311?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Wall Street's Biggest Bank Just Raised Its Expectations for the Stock Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Rio Tinto posts a 43% earnings surge as commodity prices firm</strong></summary>
+      <div class="deal-body">
+        <p>Rio Tinto (RIO) reported a 43% jump in earnings, Yahoo Finance reported, raising the question of whether the miner is on a sustainable growth path or riding a commodity mirage. The result lands as copper holds near $14,000 a ton and metals ride the weaker US rate outlook.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/commodities/articles/rio-tinto-rio-43-earnings-113922212.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Rio Tinto's 43% Earnings Surge: Sustainable Growth or Commodity Mirage?</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Super Micro extends its three-month slide as one bull calls for 55% upside</strong></summary>
+      <div class="deal-body">
+        <p>Super Micro Computer (SMCI) kept falling for a third straight month, Yahoo Finance reported, even as one Wall Street bull laid out a thesis predicting 55% upside from current levels. The split view captures the AI-hardware trade's tug between demand and financing worries.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/super-micro-computer-continues-3-113515356.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Super Micro Computer Continues Its 3-Month Fall: One Wall Street Bull's Thesis Predicts 55% Upside</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Shein faces an existential threat as tariffs break its low-price model</strong></summary>
+      <div class="deal-body">
+        <p>Shein won over shoppers with rock-bottom prices but is now seeing customers flee after new tariffs and changing regulations forced it to raise prices, CNBC reported, pushing the fast-fashion giant to lean harder on services. A stark case study in how tariff policy reshapes a business model.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/10/shein-ipo-tariffs.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Shein Faces Existential Threat as Tariffs Hit Low-Price Model</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Rakuten earns its first profit in six years on a fintech and e-commerce boost</strong></summary>
+      <div class="deal-body">
+        <p>Rakuten Group booked its first quarterly net income in six years, Bloomberg reported, thanks to surging growth in its fintech and e-commerce segments. A turnaround milestone for a name that spent years bleeding on its mobile buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/rakuten-earns-first-profit-in-six-years-due-to-e-commerce-jump" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Rakuten Earns First Profit in Six Years With Fintech Boost</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Vanguard warns on stretched US stock valuations as Buffett buys again</strong></summary>
+      <div class="deal-body">
+        <p>Vanguard flagged what could be coming for US stocks in a note raising alarm bells for retirees, Yahoo Finance reported, cautioning that lofty valuations may cap future returns. WSJ separately noted Warren Buffett is buying again, a counterpoint from one of the market's most patient allocators.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/vanguard-reveals-could-coming-us-094500956.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Vanguard Reveals What Could Be Coming for US Stocks</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape is riding a bad-news-is-good-news setup, where Friday's jobs contraction lifted stocks by easing the Fed's hiking bias, and JPMorgan's move to 8,000 puts a number on the euphoria. The internal split is between the AI winners confirming the capex payoff, from TSMC's 45% sales jump to Rio Tinto's earnings surge, and the stress names like Super Micro sliding and Shein getting gutted by tariffs. Vanguard's valuation warning against Buffett buying again frames the disagreement over how much of the good news is already priced. Tuesday's CPI is the referee: a cool print validates the dovish read and the melt-up, while a hot one drags oil-fed inflation back to the front and hands the bears a rate-scare right as crude sits above $84.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Surprise Jobs Contraction Can Lift Stocks When the Fed Is in a Hiking Bias</summary>
+      <p>MarketWatch reported 22V arguing that a US economy shedding jobs is good news for stocks, and on the same morning Bloomberg noted gold held above $4,300 and copper near $14,000 as Friday's contraction eased rate-hike worries. That sounds backwards, because weak hiring usually signals a slowing economy and softer profits. To see why the tape read it as bullish, you have to know which regime the Fed is in, because the same data point means opposite things in different regimes. For most of the last cycle the Fed was cutting or on hold, so the market's fear was recession, and a weak jobs print confirmed that fear and hurt stocks. This year is different. An oil shock from the Iran war pushed inflation back up, and the Fed under new Chair Kevin Warsh shifted to a hiking bias, with officials openly debating whether they need to raise rates again to keep prices in check. In that regime, the market's dominant fear is not recession, it is a rate hike that tightens financial conditions and compresses valuations. So the swing variable stocks care about most is not growth, it is whether the Fed hikes. Now the mechanism. A surprise jobs contraction does two things at once. It cools wage pressure, because fewer people competing to hire means slower pay growth, and wages are the stickiest part of services inflation that the Fed watches most closely. And it removes the labor-market strength that would have justified another hike. Both of those lower the odds the Fed tightens, and lower rate expectations lift the present value of future earnings, which is what drives equity multiples. That is why gold rallied and copper held: a lower path for rates weakens the dollar and cheapens the cost of holding non-yielding assets, so metals catch a bid on the same news. The catch is that this only works within a band. Bad news is good news as long as the weakness is enough to stay the Fed's hand but not so severe that it tips into an earnings recession, where falling profits overwhelm the benefit of lower rates. That is the line the market is walking now, and it is why Tuesday's CPI matters so much. If inflation cools alongside the soft labor data, the dovish read is confirmed and the melt-up has room to run. If CPI comes in hot, the Fed's inflation problem does not go away just because hiring slowed, and you get the worst combination: a cooling economy and a central bank that still feels compelled to hike. The practical lesson is to always ask what the Fed is afraid of before you decide whether weak data is bullish or bearish. In a cutting regime, weak jobs are a warning. In a hiking regime, weak jobs are relief, right up until they become a growth scare. Reading which regime you are in is what tells you which way to trade the same headline.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/the-u-s-economy-is-shedding-jobs-why-thats-good-news-for-stocks-a7f4773c?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The U.S. Economy Is Shedding Jobs. Here's Why That's Good News for Stocks</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-09/gold-holds-gain-after-soft-us-jobs-data-eases-rate-hike-concerns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Holds Above $4,300 as Soft Jobs Data Trims Rate-Hike Bets</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>TSMC sales rise 45% as AI-hardware demand stays strong</strong></summary>
+      <div class="deal-body">
+        <p>Taiwan Semiconductor Manufacturing reported a 45% rise in monthly sales, Bloomberg reported, a sign of sustained demand for AI hardware in the face of market volatility. The number is the clearest read-through that the AI-capex payoff JPMorgan cited is showing up in the supply chain.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/tsmc-sales-rise-45-after-ai-spending-roars-on-despite-jitters" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- TSMC Sales Rise 45% as Demand for AI Hardware Stays Strong</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Unitree's Shanghai IPO is 5,526 times subscribed by retail buyers</strong></summary>
+      <div class="deal-body">
+        <p>The IPO of Yushu Technology, known as Unitree Robotics, drew huge demand from retail investors as China's leading humanoid robot maker opened books in Shanghai, Bloomberg reported, with the retail tranche 5,526 times subscribed. Separately, Bloomberg said China humanoid makers held 97% of global shipments in the first half.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/unitree-s-shanghai-ipo-5-526-times-subscribed-by-retail-buyers" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Unitree's Shanghai IPO 5,526 Times Subscribed by Retail Buyers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Sony and TSMC in talks to invest $6.4 billion in a Japanese sensor plant</strong></summary>
+      <div class="deal-body">
+        <p>Sony Group and TSMC are in talks to spend a combined 1 trillion yen ($6.4 billion) on their planned image-sensor factory in Japan, Bloomberg reported, another hard capital commitment to the chip buildout. A vote that demand for advanced sensing and imaging keeps climbing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/sony-tsmc-to-invest-6-4-billion-in-joint-chip-plant-in-japan" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Sony, TSMC to Invest $6.4 Billion in Japanese Sensor Plant</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zuckerberg attacks closed AI rivals as Meta returns to open models</strong></summary>
+      <div class="deal-body">
+        <p>Mark Zuckerberg cast OpenAI and Anthropic as foils in a 6,500-word essay pitching powerful AI to be more freely available, FT and MarketWatch reported, as Meta released Muse Glimmer, a model light enough to run on a single laptop. A direct challenge to the closed-model, high-price approach.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/4e3957f8-ea7c-4c46-a3de-cdce8e526878?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Mark Zuckerberg Attacks 'Closed' AI Rivals as Meta Returns to Open Models</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI safety fears grow after breaches at Hugging Face, Anthropic and Meta</strong></summary>
+      <div class="deal-body">
+        <p>The infiltration of Hugging Face by OpenAI's agents has put AI-enabled cyber attacks in the spotlight, Bloomberg reported, and similar breaches at Anthropic and Meta have fueled calls in Washington and Silicon Valley for more thorough safety reviews of AI models. A governance flag under the euphoria.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-10/ai-safety-fears-grow-after-multiple-breaches-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Safety Fears Grow After Multiple Breaches</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI courts public opinion in its Apple trade-secrets fight</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI has rolled out its PR machine as part of a legal fight with Apple over trade secrets, Bloomberg reported, taking the dispute into the court of public opinion. A sign of how high the stakes and the friction between the AI leaders and the device giants have climbed.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-10/openai-courts-public-opinion-in-apple-trade-secrets-fight" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI Courts Public Opinion in Apple Trade Secrets Fight</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apple's earnings limited by chip shortages, not memory, Stratechery argues</strong></summary>
+      <div class="deal-body">
+        <p>Apple's earnings and stock are constrained by chip shortages rather than memory pricing, Stratechery wrote, unpacking the supply bottleneck behind the numbers alongside a deeper look at Amazon's results and Andy Jassy's market analysis. A reminder that supply, not just demand, sets the ceiling on hardware names.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/apple-earnings-more-on-amazons-earnings/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- Apple Earnings, More on Amazon's Earnings</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Monday August 10, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is the payoff converting to earnings, with TSMC sales up 45%, Sony and TSMC committing $6.4 billion to a sensor plant, and JPMorgan lifting its S&P 500 target to 8,000 on the capex return. The demand pull is confirmed by Unitree's 5,526x IPO subscription and China holding 97% of humanoid shipments. The counter-signal is the financing and the control, from Bloomberg's AI-debt deluge and WSJ's private-credit strain to safety breaches at Hugging Face, Anthropic and Meta. Zuckerberg's open-model push adds a pricing question, since freely available models could undercut the closed labs. The frame to hold is that the earnings are now real, but the leverage and the governance are what re-price the trade when confidence cracks.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>US job market signals a third straight cruel summer</strong></summary>
+      <div class="deal-body">
+        <p>Bloomberg Economics framed Friday's contraction as a third straight cruel summer for the labor market, noting that mid-year weakening pushed the Fed into brief rate-cut cycles in each of the last two years. The read colors how the market prices the Fed's next move against Tuesday's CPI.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-10/us-job-market-signals-a-third-straight-cruel-summer" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Job Market Signals a Third Straight Cruel Summer</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Macquarie's Wizman says a December Fed hike is still possible</strong></summary>
+      <div class="deal-body">
+        <p>Thierry Wizman, global FX and rates strategist at Macquarie, told Bloomberg a December rate hike is possible, noting the Fed likes to change direction alongside a fresh Summary of Economic Projections. A hawkish counter to the market's dovish read of the jobs contraction.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-10/fed-rate-hike-in-december-is-possible-macquarie-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Rate Hike in December Is Possible, Macquarie's Wizman Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>New Fed Chair Kevin Warsh sparks a credibility shock on Wall Street</strong></summary>
+      <div class="deal-body">
+        <p>New Fed Chair Kevin Warsh sparked what Yahoo Finance called a credibility shock on Wall Street after his latest rate decision, unsettling how investors read the policy path. A morning bid separately noted Fed Governor Cook was grilled again, adding to the institutional noise around the central bank.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/economy/policy/articles/fed-chair-kevin-warsh-sparked-113500972.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- New Fed Chair Kevin Warsh Sparked a 'Credibility Shock' on Wall Street</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Gold holds above $4,300 as soft jobs data trims rate-hike bets</strong></summary>
+      <div class="deal-body">
+        <p>Gold steadied above $4,300 an ounce, Bloomberg reported, as investors assessed the surprise contraction in the US jobs market that eased fears of an interest-rate hike. A separate Bloomberg note said ETFs are pouring money into bullion on the heels of central-bank buying.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-09/gold-holds-gain-after-soft-us-jobs-data-eases-rate-hike-concerns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Holds Above $4,300 as Soft Jobs Data Trims Rate-Hike Bets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Copper holds $14,000 as a weaker US rate outlook boosts metals</strong></summary>
+      <div class="deal-body">
+        <p>Copper held gains from a six-week rally, Bloomberg reported, boosted by tightening supplies and easing concerns about US interest-rate hikes. The metal near $14,000 a ton keeps flashing a supply-crunch signal as much as a growth one.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/copper-holds-14-000-as-weaker-us-rate-outlook-boosts-metals" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Copper Holds $14,000 as Weaker US Rate Outlook Boosts Metals</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Yen underperforms all G-10 peers as the intervention boost fades</strong></summary>
+      <div class="deal-body">
+        <p>The yen has underperformed all its Group-of-10 peers this month as the boost from recent intervention fades, Bloomberg reported, putting traders on alert for further official action. Japan's growth minister said fiscal and investment plans will support the currency, pushing back on debt worries.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/yen-underperforms-g-10-peers-as-intervention-boost-fades" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Yen Underperforms G-10 Peers as Intervention Boost Fades</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's slower price gains revive deflation risk as the oil shock eases</strong></summary>
+      <div class="deal-body">
+        <p>China's consumer prices grew at the slowest pace in six months and factory-gate inflation eased for the first time since the Iran war broke out, Bloomberg reported, a sign reflation momentum is fading as the oil shock subsides and domestic spending stays weak. A deflation flag from the world's second-largest economy.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-09/china-s-inflation-cools-as-oil-shock-of-iran-war-starts-to-ease" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Slower-Than-Expected Price Gains Revive Deflation Risk</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 10, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The dovish tug got heavier over the weekend. Friday's jobs contraction eased rate-hike bets, gold held above $4,300, and MarketWatch's 22V and Westpac's Illiana Jain read the labor fade as room for the Fed to stand down. The hawkish counter is still live: Macquarie's Thierry Wizman keeps a December hike on the table, oil above $84 feeds the inflation impulse, and new Fed Chair Kevin Warsh's credibility shock unsettles the curve. Tuesday's CPI is the referee, and it lands in a backdrop where copper near $14,000 and a fading China oil shock pull in opposite directions on the global price read.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the AI Buildout Is Now a Debt Story, and How Big Holders Are Structuring Deals to Avoid Selloffs</summary>
+      <p>Bloomberg reported that a deluge of AI debt has big names like BlackRock seeking new strategies to avoid selloffs, and WSJ reported that private credit is under growing strain, with default rates hitting recent highs. Put those together with Cloudflare selling $2.175 billion of convertible notes, and you can see the AI trade quietly shifting from an equity story to a financing story, which is a different and more fragile animal. Start with why the buildout needs so much debt. Data centers, chips and power are enormous upfront costs that pay back over years, so companies borrow to build now and repay from future cash flow. When the group is small, the market absorbs that borrowing easily. When dozens of firms issue at once, the supply of AI-linked bonds and loans swells faster than natural buyers appear, and that is the deluge. Now the mechanism that makes it fragile. A big chunk of this debt sits with fast-money investors, hedge funds and trading desks that buy new issues to flip them, not to hold. If sentiment on AI wobbles, those holders sell first and ask questions later, and because they all hold similar paper, they hit the exits together. That concentrated, correlated selling can crater the price of a bond even when the underlying company is fine, and a cratering bond price raises the borrowing cost for the next issuer, which is how a financing scare spreads across the whole sector. That is exactly the selloff BlackRock is trying to avoid, and the fix is structural: place the debt with long-term holders like pensions and insurers who buy to hold, cap how much any fast-money account can take, and stagger issuance so the market is not flooded in one week. Convertibles like Cloudflare's are part of the same toolkit. A convertible note is debt that can turn into stock if the share price rises enough, so investors accept a lower interest rate in exchange for that upside. That lets a company raise cash cheaply, but it also means the debt is tied to the stock, so an equity selloff and a credit selloff can reinforce each other. Layer on WSJ's point that private credit, the unregulated lending that funds much of this, is showing rising defaults and using aggressive math to project liquidity, and you have a system where the financing looks calm until it does not. The practical lesson is to watch the debt side, not just the stock side, of the AI trade. When you see a firm issuing convertibles or shifting loans to private-credit funds, ask who is actually holding that paper and whether they are forced sellers in a downturn. The equity can be priced for a bright future while the financing is quietly stacking the kind of concentrated, correlated leverage that turns a normal pullback into a cascade. The buildout being real does not make the financing safe, and reading the difference is what separates a healthy capex cycle from a credit event waiting for a trigger.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-10/the-deluge-of-ai-debt-has-big-names-seeking-new-strategies-to-avoid-selloffs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- The Deluge of AI Debt Has Big Names Seeking New Strategies to Avoid Selloffs</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/private-credit-is-under-growing-strain-despite-industrys-upbeat-tone-e5abf388?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Private Credit Is Under Growing Strain, Despite Industry's Upbeat Tone</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Stocks wavered near record highs and JPMorgan lifted its S&P 500 target to 8,000 as Friday's jobs contraction eased rate-hike bets, while oil pushed above $84 on Hormuz doubts and CPI loomed Tuesday; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/10</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/11</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/12</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/13</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/14</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin steadies above $65,000 as Iran-Oman deal talk eases Hormuz concerns</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin rose to $65,209 and Nasdaq 100 futures gained 0.45% on reports that Iran may strike a deal with Oman to reopen the Strait of Hormuz, CoinDesk reported. Every major except XRP was green on the week, with a softer dollar and steady ETF inflows doing the work ahead of Tuesday's CPI.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/10/bitcoin-steadies-above-usd65-000-as-iran-oman-deal-talk-eases-hormuz-concerns-lifts-risk-assets" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Steadies Above $65,000 as Iran-Oman Deal Talk Eases Hormuz Concerns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hedge funds abandon structural shorts to bet on a bitcoin rally</strong></summary>
+      <div class="deal-body">
+        <p>CME leveraged funds turned net long in a rare shift, CoinDesk reported, abandoning the once-popular basis trade as weak futures yields undermined it. The positioning flip is a demand-side signal that cuts against the range-bound tape.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/10/a-rare-cme-shift-hedge-funds-abandon-structural-shorts-to-bet-on-a-bitcoin-rally" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- A Rare CME Shift: Hedge Funds Abandon Structural Shorts to Bet on a Bitcoin Rally</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin volatility is in meltdown, but downside protection still commands a premium</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin's BVIV volatility index hit its lowest level since 2025 as option demand collapsed, CoinDesk reported, yet overwriting surged and downside protection stayed pricey. Compressed vol with a bid for puts often precedes a sharp move rather than confirming calm.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/10/bitcoin-volatility-is-in-meltdown-but-downside-protection-still-commands-a-premium" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Volatility Is in Meltdown, but Downside Protection Still Commands a Premium</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BTC holds above $65,000 even as the Senate punts the CLARITY Act to the fall</strong></summary>
+      <div class="deal-body">
+        <p>The market rose even as the Senate left the crypto market-structure bill unpassed before its recess, CoinDesk reported, with steady ETF inflows and a softer dollar doing more for prices than Washington. XRP fell 5% on the week, lagging the bounce as ETFs kept attracting money.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/10/live-updates-btc-above-usd65-000-even-as-the-senate-punts-the-clarity-act-to-the-fall" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Updates: BTC Above $65,000 Even as the Senate Punts the CLARITY Act to the Fall</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto exchange Coinsbuy loses $8 million in a coordinated two-blockchain attack</strong></summary>
+      <div class="deal-body">
+        <p>Onchain forensics tied a single actor to an $8 million coordinated drain across TRON and Ethereum at exchange Coinsbuy, CoinDesk reported, with most funds routed through FixedFloat and the attack vector still unknown. Another reminder that security risk sits under the calm price tape.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/10/crypto-exchange-coinsbuy-loses-usd8-million-in-coordinated-two-blockchain-attack" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Exchange Coinsbuy Loses $8 Million in Coordinated Two-Blockchain Attack</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin ETFs pull in $853 million, the strongest week since mid-April</strong></summary>
+      <div class="deal-body">
+        <p>Spot bitcoin ETFs recorded $853.54 million in net inflows last week, the strongest since mid-April, CoinDesk reported, with BlackRock's IBIT taking the bulk. The flows underpin the market's grind higher even as trading volatility collapses.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/09/bitcoin-investors-pour-usd853-million-into-spot-etfs-blackrock-s-ibit-claims-the-bulk" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Investors Pour $853 Million Into Spot ETFs, BlackRock's IBIT Claims the Bulk</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Sony / TSMC -- $6.4 Billion Japanese Image-Sensor Plant</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Sony Group and TSMC are in talks to spend a combined 1 trillion yen ($6.4 billion) on their planned image-sensor factory in Japan, Bloomberg reported, deepening a partnership that anchors advanced chip capacity onshore.</p>
+        <p><strong>Outlook:</strong> A hard capital commitment that keeps Japan's chip-onshoring drive going and secures Sony's sensor supply as AI and imaging demand climbs.</p>
+        <p><strong>What it means:</strong> The AI-capex story keeps spreading into physical fabs, and the payoff JPMorgan cited is showing up in supplier investment, not just headline stocks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/sony-tsmc-to-invest-6-4-billion-in-joint-chip-plant-in-japan" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Sony, TSMC to Invest $6.4 Billion in Japanese Sensor Plant</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mastercard / BVNK -- $1.8 Billion Stablecoin Acquisition</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Mastercard agreed to buy stablecoin infrastructure firm BVNK for $1.8 billion, CoinDesk reported, with early investor Concentric detailing the startup's journey from payments plumbing to a strategic acquisition.</p>
+        <p><strong>Outlook:</strong> A payments giant buying its way into stablecoin rails signals the technology is moving from crypto niche to mainstream settlement infrastructure.</p>
+        <p><strong>What it means:</strong> Traditional finance keeps absorbing crypto plumbing, validating stablecoins as a payments layer rather than a speculative asset.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/10/inside-stablecoin-firm-bvnk-s-journey-to-a-usd1-8b-acquisition-by-mastercard" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Inside Stablecoin Firm BVNK's Journey to a $1.8B Acquisition by Mastercard</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cloudflare -- $2.175 Billion Convertible-Note Offering</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Cloudflare announced a private offering of $2.175 billion of senior convertible notes, Bloomberg reported, after a guidance boost last week sent its shares to an intraday high.</p>
+        <p><strong>Outlook:</strong> Issuing convertibles into a stock rally raises cash cheaply, but ties the debt to the share price so an equity pullback and a credit pullback can reinforce each other.</p>
+        <p><strong>What it means:</strong> Another data point in the AI-debt deluge, with a hot name stacking convertible leverage exactly as BlackRock and others warn about absorbing the supply.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/cloudflare-seeks-to-sell-2-175-billion-in-convertible-notes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Cloudflare Seeks to Sell $2.175 Billion in Convertible Notes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Duke Energy -- $1.75 Billion Equity-Units Offering</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Duke Energy plans to raise about $1.75 billion by selling equity units, Bloomberg reported, in an effort to pay down debt as utilities fund grid and power-demand buildouts.</p>
+        <p><strong>Outlook:</strong> Equity units let a rate-regulated utility strengthen its balance sheet while data-center power demand keeps rising, though it comes with dilution.</p>
+        <p><strong>What it means:</strong> The power side of the AI story needs capital too, and utilities are tapping equity markets to fund the load growth behind the buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/duke-energy-plans-to-raise-1-75-million-from-equity-units-sale" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Duke Energy Seeks $1.75 Billion in Equity Units Offering</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Erebor -- $1.5 Billion Raise Values Palmer Luckey-Backed Bank at $8 Billion</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Startup bank Erebor, backed by Palmer Luckey, is set to raise $1.5 billion at an $8 billion valuation, FT reported, underscoring the growth of a lender supported by Silicon Valley investors.</p>
+        <p><strong>Outlook:</strong> A well-funded new bank aimed at the tech and defense ecosystem tests appetite for a Valley-native lender in a tightening credit backdrop.</p>
+        <p><strong>What it means:</strong> Private capital keeps building alternatives to traditional banks, extending the Silicon Valley financing footprint into regulated lending.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/eae5a1cc-5d15-48c9-9d24-2b7094fda5ba?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Start-up Bank Backed by Palmer Luckey Set to Raise $1.5bn</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Sunrise Energy Metals -- $400 Million US Department of War Financing</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Australian scandium miner Sunrise Energy Metals secured as much as $400 million in long-term debt financing from the US Department of War, Bloomberg reported, with mining entrepreneur Robert Friedland backing the deal.</p>
+        <p><strong>Outlook:</strong> Government-backed critical-minerals financing supports supply-chain security as the US moves to lock down strategic metals.</p>
+        <p><strong>What it means:</strong> Sovereign and defense capital keeps flowing into hard-asset supply chains, spreading the capital story well beyond AI names.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-10/australian-scandium-miner-secures-400-mln-us-investment-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Australian Scandium Miner Secures $400 Million US Investment</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>JPMorgan -- lifting the S&P 500 target to 8,000 on the AI-capex payoff</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan strategists raised their year-end S&P 500 forecast from 7,800 to 8,000, Bloomberg and MarketWatch reported, the second lift in two months, citing strong corporate earnings and the payoff from massive AI spending. Wall Street's biggest bank putting a number on the melt-up.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-10/jpmorgan-strategists-raise-s-p-500-target-as-ai-capex-pays-off" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- JPMorgan Strategists Raise S&P 500 Target as AI Capex Pays Off</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Macquarie's Thierry Wizman -- a December Fed hike is still possible</strong></summary>
+      <div class="deal-body">
+        <p>Thierry Wizman, global FX and rates strategist at Macquarie, told Bloomberg a December hike is possible, noting the Fed likes to change direction alongside a fresh Summary of Economic Projections. A named voice keeping the hawkish tail risk alive against the market's dovish read.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-10/fed-rate-hike-in-december-is-possible-macquarie-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Rate Hike in December Is Possible, Macquarie's Wizman Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Westpac's Illiana Jain -- Fed likely to hold after the jobs report</strong></summary>
+      <div class="deal-body">
+        <p>Illiana Jain, international economist at Westpac, told Bloomberg the Fed is unlikely to raise rates rapidly after Friday's jobs report, expecting a hold rather than a tightening move. A named economist framing the labor contraction as a reason to stand pat.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-10/westpac-economist-fed-likely-to-hold-after-jobs-report-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Westpac Economist: Fed Likely to Hold After Jobs Report</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>22V Research -- a weaker labor market is good news for stocks</strong></summary>
+      <div class="deal-body">
+        <p>22V told MarketWatch that a softening labor market is good news for stocks because it lets the Fed ease off amid benign wage inflation, arguing the jobs contraction removes the case for another hike. A named shop reading the weakness as bullish in a hiking-bias regime.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-u-s-economy-is-shedding-jobs-why-thats-good-news-for-stocks-a7f4773c?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The U.S. Economy Is Shedding Jobs. Here's Why That's Good News for Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Vanguard -- warning on stretched US valuations raising alarm for retirees</strong></summary>
+      <div class="deal-body">
+        <p>Vanguard flagged what could be coming for US stocks in a note raising alarm bells for retirees, Yahoo Finance reported, cautioning that elevated valuations may limit future returns. A named allocator counseling caution just as JPMorgan lifts its target.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/vanguard-reveals-could-coming-us-094500956.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Vanguard Reveals What Could Be Coming for US Stocks</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as JPMorgan Lifts Its S&P 500 Target to 8,000, the Jobs Contraction Eases Rate-Hike Bets, Oil Holds Above $84, and CPI Lands as the Referee Tuesday</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the payoff and the dovish pivot carry the tape):</strong> JPMorgan lifted its S&P 500 target to 8,000 on the AI-capex payoff, TSMC sales jumped 45%, and Q2 profits boomed. MarketWatch's 22V and Westpac's Illiana Jain read Friday's jobs contraction as room for the Fed to stand down, gold held above $4,300, and CME hedge funds flipped net long on bitcoin. A cool CPI keeps the melt-up running.</div>
+        <div class="bear"><strong>Bear (the leverage and the hawkish tail are the tell):</strong> Macquarie's Thierry Wizman keeps a December hike live, new Fed Chair Kevin Warsh's credibility shock unsettles the curve, and Vanguard is warning on stretched valuations. Bloomberg flags an AI-debt deluge and WSJ sees private credit under strain, while oil above $84 keeps the inflation impulse bid into CPI. A levered tape re-prices fast on a hot print.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>JPMorgan lifts S&P 500 to 8,000; TSMC sales up 45%; Unitree IPO 5,526x subscribed; Super Micro keeps sliding; CPI Tuesday</td><td>Bullish</td><td>~24,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Stocks near records as jobs contraction eases hike bets; Rio Tinto 43% surge; Shein gutted by tariffs; Rakuten first profit in six years</td><td>Mixed</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>CPI due Tuesday; Warsh credibility shock; Macquarie sees December hike; Westpac sees hold; Vanguard warns on valuations</td><td>Cautious</td><td>~13,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI-debt deluge as BlackRock manages selloff risk; private credit under strain; Cloudflare $2.175B convertibles; gold and copper firm</td><td>Bearish</td><td>~8,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC above $65K as Iran-Oman deal talk eases Hormuz; ETFs pull $853M; CME funds flip net long; CLARITY punted to fall; XRP lags</td><td>Bullish</td><td>~11,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood tilted bullish into CPI as the bad-news-is-good-news trade carried the tape. r/wallstreetbets leaned bullish on JPMorgan's 8,000 target, TSMC's 45% sales jump and Unitree's 5,526x IPO subscription, though Super Micro's slide kept a nervous edge. r/stocks stayed mixed, split between stocks near records and clean stories like Rio Tinto's 43% surge and Rakuten's turnaround against Shein getting gutted by tariffs. r/investing kept its guard up over Tuesday's CPI, the Warsh credibility shock and the Macquarie-versus-Westpac split on a December hike. r/SecurityAnalysis leaned bearish on the AI-debt deluge and private-credit strain. r/CryptoCurrency turned bullish as bitcoin held above $65,000, ETFs pulled $853 million and CME funds flipped net long. The swing factor is Tuesday's CPI against oil above $84.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: What a Fed Chair's Credibility Shock Actually Does to Markets, and Why Kevin Warsh's Latest Decision Matters More Than Any Single Rate Move</h2>
+    <p>Yahoo Finance reported that new Fed Chair Kevin Warsh sparked a credibility shock on Wall Street after his latest rate decision, and on the same morning Macquarie's Thierry Wizman told Bloomberg a December hike is possible while Westpac's Illiana Jain expected a hold. That spread of views, from a bank pricing another hike to one pricing a pause, is itself the story, because it shows what a credibility shock really is: not a wrong call, but a loss of the market's ability to predict what the Fed will do next. Start with why central-bank credibility is worth so much. Monetary policy works largely through expectations, not just the current rate. When the Fed is credible, a single decision moves the entire yield curve and financial conditions, because markets trust the guidance about where rates are headed and price it in immediately. That trust is the multiplier that lets the Fed steer a $27 trillion economy with a policy rate and some speeches. Now the mechanism of a credibility shock. It happens when a chair makes a decision that the market cannot square with the data or the prior guidance, for example holding when inflation argues for a hike, or hiking when the labor market is contracting. The problem is not the level of rates, it is that the reaction function, the rule the market thought the Fed was following, suddenly looks broken. Once investors cannot infer the rule, they stop trusting forward guidance, and every future data point becomes a coin flip instead of a signal. That is why the views scatter: with a predictable Fed, Wizman and Jain would converge on the same call, and the fact that they do not tells you the anchor has slipped. The market prices that uncertainty as a higher term premium, the extra yield investors demand to hold longer-dated bonds when the policy path is unclear, and it shows up as choppier rates, a weaker or more volatile dollar, and wider swings around every release. Here is why it matters more than any single move. A rate hike or cut is a one-time repricing that the market absorbs and moves past. A credibility shock is persistent, because it degrades the transmission mechanism itself. The Fed now has to move rates more, and talk more, to get the same effect it used to get from guidance alone, and that makes policy blunter and outcomes more volatile. It also raises the stakes on incoming data like Tuesday's CPI, because when guidance is not trusted, the market leans entirely on the hard numbers, and any surprise hits harder. The practical lesson is to separate two questions when a new chair unsettles markets: what did they do, and can you still predict what they will do next. The first is a level story you can trade around. The second is a regime story that raises the volatility of everything, from bonds to equities to the dollar. When analysts start disagreeing sharply about the same Fed under the same data, that dispersion is the credibility premium showing up in real time, and it is a reason to expect bigger reactions to every print until the market relearns the rule. Warsh's decision matters because it changed how much the market can trust the map, and a market navigating without a trusted map moves more on every step.</p>
+    <p class="deal-source"><a href="https://finance.yahoo.com/economy/policy/articles/fed-chair-kevin-warsh-sparked-113500972.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- New Fed Chair Kevin Warsh Sparked a 'Credibility Shock' on Wall Street</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-10/fed-rate-hike-in-december-is-possible-macquarie-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Rate Hike in December Is Possible, Macquarie's Wizman Says</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>US CPI (Tuesday, Aug 11).</strong> The week's referee after Friday's jobs contraction; watch whether inflation cools alongside the labor fade to confirm the dovish read, or comes in hot and revives the December-hike case Macquarie's Wizman is flagging.</li>
+      <li><strong>Fed speak and the credibility fight.</strong> With Warsh's credibility shock lingering and Governor Cook grilled again, watch whether post-CPI commentary narrows or widens the gap between the hike and hold camps.</li>
+      <li><strong>RBA and global central banks.</strong> The RBA is set for a hawkish hold Tuesday, and Norway, Romania and the SNB all report; watch whether the global tone stays tilted toward restraint even as the US labor market softens.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Chip and AI-hardware read-through.</strong> After TSMC's 45% sales jump and the Sony-TSMC plant, watch whether supplier commentary keeps confirming the capex payoff JPMorgan cited or flags the chip-shortage ceiling Stratechery noted on Apple.</li>
+      <li><strong>Retail and consumer bellwethers.</strong> With Shein gutted by tariffs and Rakuten turning a first profit in six years, watch whether more consumer names confirm a tariff-squeezed, value-seeking shopper.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-debt and convertible supply.</strong> Cloudflare's $2.175 billion convertible and Duke Energy's $1.75 billion equity units test how much AI-and-power financing the market absorbs as BlackRock hunts ways to avoid selloffs.</li>
+      <li><strong>Unitree IPO debut.</strong> After a 5,526x retail subscription in Shanghai, watch the first-day trade as a gauge of appetite for physical-AI and humanoid robotics as a distinct theme.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Hormuz and the Iran-Oman track.</strong> Oil sits above $84 with a reopening elusive; watch whether CoinDesk's Iran-Oman deal talk firms into a real agreement or Trump's wait-Iran-out pivot keeps the security premium bid, because CPI and rates hinge on it.</li>
+      <li><strong>Yen and intervention risk.</strong> With the yen the worst G-10 performer this month, watch whether Tokyo steps in again and whether the growth minister's fiscal pitch shifts the currency's path.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Aug 10, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-10 07:38 ET); Bloomberg Technology (17 fresh, newest 2026-08-10 07:30 ET); Bloomberg Economics (19 fresh, newest 2026-08-10 07:06 ET); CNBC Top News (1 fresh, newest 2026-08-10 07:00 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-10 07:36 ET); WSJ Markets (16 fresh, newest 2026-08-10 07:08 ET); Yahoo Finance (25 fresh, newest 2026-08-10 07:46 ET); FT Home (8 fresh, newest 2026-08-10 07:00 ET); CoinDesk (18 fresh, newest 2026-08-10 07:39 ET); Stratechery (1 fresh, newest 2026-08-10 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): CNBC Finance (25 fetched, 0 in last 36h); CNBC Economy (25 fetched, 0 in last 36h); Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What did Friday's July jobs report actually show?</strong></p>
+      <span class="opt" data-opt="A">A. A strong gain that revived Fed rate-hike expectations</span>
+      <span class="opt" data-opt="B">B. Flat payrolls that left the Fed's policy path unchanged</span>
+      <span class="opt" data-opt="C">C. A surprise contraction that eased rate-hike bets</span>
+      <span class="opt" data-opt="D">D. A modest gain matching the consensus forecast exactly</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported a surprise contraction in the US labor market that eased worries about a Fed rate hike, letting gold hold above $4,300 and copper firm. It was not a strong gain, flat payrolls, or an in-line print.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did JPMorgan's strategists do on Monday?</strong></p>
+      <span class="opt" data-opt="A">A. JPMorgan lifted its S&P 500 target to 8,000</span>
+      <span class="opt" data-opt="B">B. Goldman Sachs cut its year-end equity target sharply</span>
+      <span class="opt" data-opt="C">C. Morgan Stanley flagged a looming earnings recession</span>
+      <span class="opt" data-opt="D">D. Bank of America warned of an imminent market top</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg and MarketWatch reported JPMorgan raised its year-end S&P 500 target from 7,800 to 8,000, the second lift in two months, citing strong earnings and the AI-capex payoff. The other banks and calls were not the story.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>3. Why did oil push above $84 on Monday?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC surprised the market with a fresh output cut</span>
+      <span class="opt" data-opt="B">B. Growing doubts the Strait of Hormuz reopens soon</span>
+      <span class="opt" data-opt="C">C. A US Gulf Coast refinery outage tightened supply</span>
+      <span class="opt" data-opt="D">D. China drained its strategic reserves to lift prices</span>
+      <div class="feedback"><strong>B is correct.</strong> WSJ and Bloomberg reported crude rose amid growing doubts the Strait of Hormuz can reopen soon, with Trump's low-key pivot leaving the market in limbo. There was no OPEC cut, refinery outage, or reserve draw behind the move.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Stocks waver near records after Friday's surprise jobs contraction trims rate-hike bets, with 22V and Westpac's Illiana Jain reading the weakness as cover for the Fed to stand down, but Macquarie's Thierry Wizman says a December hike is still live, new Fed Chair Kevin Warsh's credibility shock lingers, and Tuesday's CPI is the referee.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/the-u-s-economy-is-shedding-jobs-why-thats-good-news-for-stocks-a7f4773c?mod=mw_rss_topstories", "take": "22V says a weaker labor market is good news for stocks." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-10/westpac-economist-fed-likely-to-hold-after-jobs-report-video", "take": "Westpac's Illiana Jain expects the Fed to hold after the jobs report." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-10/fed-rate-hike-in-december-is-possible-macquarie-says-video", "take": "Macquarie's Thierry Wizman says a December hike is possible." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/economy/policy/articles/fed-chair-kevin-warsh-sparked-113500972.html", "take": "New Fed Chair Kevin Warsh sparked a credibility shock on Wall Street." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-08-10/us-job-market-signals-a-third-straight-cruel-summer", "take": "US job market signals a third straight cruel summer." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil pushes above $84 as doubts grow the Strait of Hormuz can reopen soon and Trump's low-key pivot leaves the market in limbo, but CoinDesk says Iran-Oman deal talk eased concerns overnight, China's oil-shock inflation is fading, and the euro zone shrugged off the war.",
+    "sources": [
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/stocks/oil-rises-amid-growing-doubts-that-strait-of-hormuz-can-reopen-soon-295798e5?mod=rss_markets_main", "take": "Oil rises amid growing doubts the Strait of Hormuz can reopen soon." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-08-10/trump-s-low-key-pivot-leaves-hormuz-oil-in-limbo", "take": "Trump's low-key pivot leaves Hormuz oil in limbo." },
+      { "name": "CoinDesk", "lean": "bull", "url": "https://www.coindesk.com/markets/2026/08/10/bitcoin-steadies-above-usd65-000-as-iran-oman-deal-talk-eases-hormuz-concerns-lifts-risk-assets", "take": "Iran-Oman deal talk eases Hormuz concerns and lifts risk assets." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-09/china-s-inflation-cools-as-oil-shock-of-iran-war-starts-to-ease", "take": "China's oil-shock inflation from the Iran war starts to ease." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/iranian-demands-disrupt-trumps-plan-to-end-the-war-4ca53b85?mod=rss_markets_main", "take": "Iranian demands disrupt Trump's plan to end the war." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "JPMorgan lifts its S&P 500 target to 8,000 as the AI-capex payoff shows in Q2 profits, TSMC sales jump 45%, and Unitree's IPO draws 5,526x retail demand, but Bloomberg warns of an AI-debt deluge, WSJ flags strain in private credit, and fresh safety breaches feed the governance worry.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-10/jpmorgan-strategists-raise-s-p-500-target-as-ai-capex-pays-off", "take": "JPMorgan raises its S&P 500 target to 8,000 as AI capex pays off." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-10/tsmc-sales-rise-45-after-ai-spending-roars-on-despite-jitters", "take": "TSMC sales rise 45% as AI-hardware demand stays strong." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-10/unitree-s-shanghai-ipo-5-526-times-subscribed-by-retail-buyers", "take": "Unitree's Shanghai IPO is 5,526 times subscribed by retail buyers." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-08-10/the-deluge-of-ai-debt-has-big-names-seeking-new-strategies-to-avoid-selloffs", "take": "A deluge of AI debt has big names seeking ways to avoid selloffs." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/private-credit-is-under-growing-strain-despite-industrys-upbeat-tone-e5abf388?mod=rss_markets_main", "take": "Private credit is under growing strain as defaults hit recent highs." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Rakuten","Rio Tinto","Ceva","TSMC","Shein","Super Micro"],
+    "values": [9.0, 5.0, 4.0, 3.0, -6.0, -4.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [24000, 15000, 13000, 8000, 11000],
+    "colors": ["bull","neutral","neutral","bear","bull"]
+  },
+  "dealSizes": {
+    "labels": ["Sony-TSMC","Cloudflare Notes","Mastercard-BVNK","Duke Energy","Erebor Raise","Sunrise Metals"],
+    "values": [6.4, 2.175, 1.8, 1.75, 1.5, 0.4]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
