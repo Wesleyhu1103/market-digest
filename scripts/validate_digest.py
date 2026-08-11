@@ -63,6 +63,22 @@ def validate_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
     return missing
 
 
+def validate_archive_runtime_paths(html: str, html_path: Optional[Path]) -> list[str]:
+    """Archive snapshots live one level down, so root data fetches need ../."""
+    if not html_path or html_path.parent.name != "archive":
+        return []
+
+    bad: list[str] = []
+    patterns = [
+        (r"""fetch\(\s*['"]fred-data\.json['"]""", "fetch('fred-data.json')"),
+        (r"""fetch\(\s*['"]archive/manifest\.json['"]""", "fetch('archive/manifest.json')"),
+    ]
+    for pat, label in patterns:
+        if re.search(pat, html):
+            bad.append(label)
+    return bad
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
@@ -114,6 +130,9 @@ def main():
     failures = 0
     for missing in validate_local_assets(html, html_path):
         print(f"FAIL local asset: {missing}")
+        failures += 1
+    for ref in validate_archive_runtime_paths(html, html_path):
+        print(f"FAIL archive runtime path: {ref} must resolve from docs root")
         failures += 1
 
     js_bundle = collect_js(html, html_path)
