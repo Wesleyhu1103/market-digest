@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Aug 12, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-12</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, August 12, 2026</h1>
+    <div class="meta">
+      <p>July CPI is today's referee, and it lands with Wall Street split down the middle on whether the Fed hikes in September. Oil sits near $90 after Trump claimed the US has "total control" of the Strait of Hormuz and the IEA doubled its shortfall estimate. Blowout results from CoreWeave and Super Micro revived the AI trade overnight and lifted futures.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Divided Wall Street braced for July CPI as the single print threatens to decide whether the Fed hikes in September, with oil near $90 feeding the inflation worry even as a run of cooler readings and softer housing argues the trend is bending the other way",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Divided Wall Street Seeks Fed Clues in Pivotal Inflation Report", "angle": "Frames the print as the tiebreaker in a market that cannot agree whether September brings a hike or a hold.", "lean": 0, "pull": "Wall Street could hardly be more divided over whether the Federal Reserve will raise interest rates next month."},
+        {"outlet": "CNBC", "headline": "An Inflation Report Wednesday Should Be a Big Deal for the Fed", "angle": "Leans on economist expectations for only a modest July increase, tilting toward the cooling read.", "lean": 30, "pull": "The consumer price index is expected to show only a modest increase for July."},
+        {"outlet": "Financial Times", "headline": "Boston Fed's Collins Would Back a September Rate Rise if Inflation Stays Hot", "angle": "Gives the hawkish camp a named voice and ties it to poorer households struggling with prices.", "lean": -40, "pull": "Boston central bank branch head Susan Collins would back a September interest rate rise if inflation remains hot."},
+        {"outlet": "WSJ", "headline": "Tech Earnings Buoy Stock Futures Ahead of CPI Inflation Data", "angle": "Reads the tape as the AI trade carrying risk appetite right up to the print.", "lean": 25, "pull": "Results from Super Micro and CoreWeave rekindle the AI trade ahead of the inflation data."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>A Divided Wall Street Braces for July CPI as the Print Threatens to Decide the September Hike, With Citi's Andrew Hollenhorst Seeing a Cooling Trend and Norway Extending Its Rate Pause, but Boston Fed's Susan Collins Would Back a Hike if Inflation Stays Hot and Oil Near $90 Keeps the Price Impulse Live</h3>
+      </div>
+      <p>CPI day arrived with the Street unusually split. Bloomberg reported Wall Street could hardly be more divided over whether the Fed raises rates next month, and Yahoo's "Morning Bid: Inflation obscures all" said the single print now dominates everything else on the tape. The dovish camp has a run of data behind it: Citi's Andrew Hollenhorst told Bloomberg TV a cool reading would confirm a trend toward cooling inflation that differs sharply from the Fed's hawkish talk, Bloomberg reported US existing-home sales fell to a three-month low as elevated rates bite, and Norway's central bank looks set to extend its rate pause as core prices cool. The hawkish camp is equally loud. FT reported Boston Fed's Susan Collins would back a September rate rise if inflation stays hot, and CNBC argued the AI data-center buildout is itself an inflation pressure that complicates the Fed's fight. Oil near $90 on the Hormuz standoff keeps a fresh price impulse in the mix, and Pictet's strategist told Bloomberg a September hike is on the table even after noisy payrolls. Treasuries steadied ahead of the number with the 10-year little changed. The print decides which camp wins the argument.</p>
+      <p>The bull case is Citi's Hollenhorst calling out a cooling trend, existing-home sales at a three-month low, improving household delinquencies, and Norway extending its pause, all arguing the Fed can hold. The bear case is Boston Fed's Collins ready to hike if inflation stays hot, oil near $90 feeding the price impulse, the AI buildout adding cost pressure, and a hot CPI reviving the September hike.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the cooling trend still caps rates):</strong> Citi's Andrew Hollenhorst told Bloomberg a cool July reading would confirm a trend toward cooling inflation that clashes with the Fed's hawkish rhetoric. Bloomberg reported existing-home sales at a three-month low and NY Fed data showing household delinquencies improving, while Norway looks set to extend its pause as core prices cool. If CPI comes in soft, the hold camp wins and the recent yield backup fades.</div>
+        <div class="bear"><strong>Bear (a hot print revives the September hike):</strong> FT reported Boston Fed's Susan Collins would back a September rate rise if inflation stays hot, and CNBC argued the costly AI buildout is itself stoking inflation and complicating the Fed's job. Oil near $90 on the Hormuz standoff feeds the price impulse directly, and Pictet's strategist says a September hike is live. A firm CPI puts the tightening case squarely back on the table.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-12/traders-brace-for-pivotal-cpi-as-fed-hike-hangs-in-balance" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Divided Wall Street Seeks Fed Clues in Pivotal Inflation Report</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Holds Near $90 as Trump Claims the US Owns the Strait of Hormuz and Threatens Iran, With the IEA Doubling Its Shortfall Estimate and Ship Attacks Resuming, but Talks Remain in Play, Crude Only Wavered, and Bloomberg Says France and Europe Are Holding Up Against the War Drag</h3>
+      </div>
+      <p>The chokepoint standoff hardened again. Bloomberg reported Trump told reporters the US has "total control over the Hormuz Strait," saying "we own it" and warning Iran could "get blown away," as Washington and Tehran stayed deadlocked. The supply signal got worse underneath the rhetoric: Bloomberg reported the IEA now sees global oil inventories tumbling this quarter at more than twice the previously estimated rate, a 1.8 million barrel-a-day shortfall as renewed hostilities and maritime disruptions undermine the production recovery. Yahoo reported crude rose after fresh ship attacks with US-Iran talks still deadlocked, and WSJ said Iran is bracing for worsening economic malaise to withstand the pressure. The fallout is spreading: Bloomberg reported internal UK Treasury modeling shows the economy barely growing next year if Hormuz stays disrupted, and Russia's budget gap widened despite an oil windfall. The bull thread is that the barrel only wavered rather than spiking, gold merely steadied, and negotiators are still at the table with a deal to restore energy flows the prize. FT reported JD Vance even pressed Ukraine to halt tanker strikes to protect crude flows. The whole complex is trading every headline out of the talks.</p>
+      <p>The bull read is oil only wavering rather than breaking higher, talks still live over restoring Hormuz flows, and Europe's economies holding up better than the war-stagflation forecasts feared. The bear read is Trump claiming total control and threatening Iran, the IEA doubling its shortfall estimate to 1.8 million barrels a day, ship attacks resuming, and the UK facing a war-driven growth downgrade.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the barrel is not confirming the rhetoric):</strong> Bloomberg reported oil only wavered as traders kept weighing the prospect of a deal to restore Hormuz flows, and gold merely steadied rather than spiking. France's central bank sees the economy maintaining momentum on cooler inflation, and negotiators remain at the table. If Trump's "we own it" line is posturing ahead of a settlement, the security premium unwinds and the inflation impulse fades with it.</div>
+        <div class="bear"><strong>Bear (supply is tightening as the standoff escalates):</strong> Bloomberg reported the IEA doubled its shortfall estimate to 1.8 million barrels a day as renewed hostilities and maritime disruptions bite, and Trump claimed total control of the strait while threatening Iran. Yahoo reported crude rose on fresh ship attacks with talks deadlocked, and internal UK modeling warns of a war-driven growth downgrade. Oil near $90 keeps the CPI risk live.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://finance.yahoo.com/news/oil-rises-doubts-over-us-063114070.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Oil Prices Rise After Ship Attacks, US-Iran Talks Deadlock</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>CoreWeave and Super Micro Blowouts Revive the AI Trade as Hon Hai Beats and BofA Pledges $250 Billion, With a T. Rowe Manager Seeing 1998 Not the Dot-Com Bust, but CNBC Flags China Chip-Depreciation Risk in Nvidia's $500 Billion Plan, Stratechery Calls It Risky Business, and WSJ Says Red-Hot Power Stocks Are Losing Steam</h3>
+      </div>
+      <p>The AI trade came roaring back on hard numbers. Bloomberg reported CoreWeave surged after quarterly sales grew faster than expected, up 16% on a $2.58 billion revenue quarter per CoinDesk, and Super Micro gave a revenue forecast that topped the rosiest projections. Nvidia partner Hon Hai posted a profit beat on sustained AI spending, and Norway's $2.3 trillion wealth fund reported its best quarter since 2020 on its Nvidia, Apple and Microsoft holdings. The capital pledges kept coming: WSJ reported Bank of America will deploy $250 billion to bolster AI and energy infrastructure, and a T. Rowe Price fund manager told MarketWatch AI capex could hit $1.6 trillion next year, arguing the setup looks more like 1998 than the dot-com bust because hyperscalers can fund the spend with short payback. But the skeptics stayed specific. CNBC warned Jensen Huang's $500 billion GPU-as-collateral plan faces a big China risk if his chips depreciate faster than lenders assume, Stratechery's Ben Thompson called the financing "risky business," and WSJ said red-hot power stocks are losing steam as the data-center backlash builds. Norway's own CEO told Bloomberg he is more nervous on AI valuations even after record returns. The demand is real; the fight is over how the buildout gets financed and priced.</p>
+      <p>The bulls point to CoreWeave's 16% pop on a $2.58 billion quarter, Super Micro topping the rosiest estimates, Hon Hai's beat, BofA's $250 billion pledge, and T. Rowe's 1998-not-2000 call. The bears point to CNBC flagging China chip-depreciation risk in Nvidia's $500 billion plan, Stratechery's risky-business warning, WSJ's fading power stocks, and Norway's CEO turning more nervous on AI valuations.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the earnings confirm the demand):</strong> Bloomberg reported CoreWeave surged on faster-than-expected sales growth and Super Micro topped the rosiest revenue projections, with Hon Hai beating on sustained AI spending. WSJ said Bank of America will deploy $250 billion into AI and energy, and a T. Rowe Price manager sees capex hitting $1.6 trillion next year with hyperscalers earning high returns on short payback. This looks like 1998, not the bubble top.</div>
+        <div class="bear"><strong>Bear (the financing and the depreciation are the tell):</strong> CNBC warned Nvidia's $500 billion GPU-collateral plan faces a China risk if chips depreciate faster than lenders model, and Stratechery's Ben Thompson called it risky business that expands the buildout's leverage. WSJ reported red-hot power stocks losing steam on the data-center backlash, and Norway's CEO said he is more nervous on AI valuations despite record returns. The structure re-prices hard when confidence turns.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.cnbc.com/2026/08/11/nvidia-ai-funding-jensen-huang-china-risk.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Why Jensen Huang's $500 Billion AI Financing Plan Faces a Big Risk From China</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stock futures climb before CPI as AI results revive tech</strong></summary>
+      <div class="deal-body">
+        <p>Equity futures advanced as upbeat results from AI infrastructure firms revived appetite for tech stocks ahead of the July inflation print, Bloomberg reported. WSJ noted CoreWeave and Super Micro rekindled the AI trade, though futures stayed muted on the Dow with the Nasdaq leading the gains.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-11/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stock Futures Climb Before Key Inflation Data</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CoreWeave surges 16% on a $2.58 billion revenue quarter</strong></summary>
+      <div class="deal-body">
+        <p>CoreWeave (CRWV) jumped 16% after quarterly sales grew faster than anticipated to $2.58 billion, with operating-margin upside, Bloomberg and CoinDesk reported. The beat lifted AI-infrastructure peers IREN and Cipher as investors favored compute over crypto, a clean read that the buildout demand is still accelerating.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/12/coreweave-surges-16-on-usd2-58-billion-revenue-quarter-as-ai-infrastructure-demand-eclipses-crypto" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- CoreWeave Surges 16% on $2.58 Billion Revenue Quarter as AI Infrastructure Demand Eclipses Crypto</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Super Micro rallies after a sales outlook that tops the rosiest projection</strong></summary>
+      <div class="deal-body">
+        <p>Super Micro (SMCI) gave a current-quarter revenue forecast that beat even the most optimistic analyst estimate, Bloomberg reported, a sign the AI server boom keeps bolstering sales. MarketWatch rounded up Wall Street's reaction as the stock rallied, with the beat reinforcing the day's AI-trade revival.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/super-micro-stock-is-rallying-after-results-heres-what-wall-street-is-saying-631e9253?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Super Micro Stock Is Rallying After Results. Here's What Wall Street Is Saying</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>GM strikes a deal worth up to $4.5 billion to secure its supply chain</strong></summary>
+      <div class="deal-body">
+        <p>General Motors (GM) reached a parts deal worth up to $4.5 billion designed to avoid the supply-chain troubles that have dogged automakers for years, CNBC reported. The move locks in components after a stretch of global disruptions, trading upfront cost for production certainty.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/11/gm-makes-4point5-billion-parts-deal-to-bolster-supply-chain.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- GM Reaches Up to $4.5 Billion Parts Deal Designed to Avoid Supply Chain Troubles</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Red-hot power stocks are losing steam as the data-center backlash builds</strong></summary>
+      <div class="deal-body">
+        <p>The stocks of power-plant owners, one of the year's hottest AI plays, are losing momentum, WSJ reported, as a growing backlash against data centers complicates the picture. It is an early crack in the "power is the AI bottleneck" trade that had lifted utilities alongside chips.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/energy-oil/red-hot-power-stocks-are-losing-steam-a4677f03?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Red-Hot Power Stocks Are Losing Steam</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Healthcare is now an AI short in disguise, WSJ argues</strong></summary>
+      <div class="deal-body">
+        <p>Big healthcare companies are increasingly trading opposite to tech, WSJ reported, so a bet against healthcare has effectively become a levered bet on the AI trade. A neat illustration of how one crowded theme now sets the direction for the sectors funding away from it.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/healthcare-investing-is-now-an-ai-short-in-disguise-104cb020?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Healthcare Investing Is Now an AI Short in Disguise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tata Sons chairman steps down, deepening a leadership crisis</strong></summary>
+      <div class="deal-body">
+        <p>Natarajan Chandrasekaran will step down as chairman of Tata Sons when his term ends in February 2027, Bloomberg and FT reported, leaving India's $180 billion conglomerate leaderless amid a boardroom dispute with Noel Tata. The exit lands as the group spearheads India's push into high-tech sectors.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/89c3c50c-1fc5-4673-b67d-ddc0b824c6c5?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Tata Chair to Step Down as Succession Row Escalates</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape is caught between an AI trade that just got fresh proof and a CPI print that can override it. CoreWeave's 16% pop on a $2.58 billion quarter, Super Micro topping the rosiest estimates and Hon Hai's beat all confirm the buildout demand, while BofA's $250 billion pledge keeps the capital flowing. But WSJ's fading power stocks and healthcare-as-AI-short thesis show how uneven the internals are, and oil near $90 hands the inflation hawks a live talking point into the number. A cool CPI lets the AI melt-up run and treats crude as noise; a hot one plus $90 oil hands the bears a September-hike scare.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Single CPI Print Can Move Rate-Hike Odds So Violently When the Fed Is Data-Dependent and Divided</summary>
+      <p>Bloomberg reported Wall Street could hardly be more divided over whether the Fed raises rates next month, and Yahoo's Morning Bid said the July print now obscures everything else. That is unusual, because most CPI reports pass with a shrug. To see why this one carries so much weight, you have to understand how a data-dependent central bank actually forms expectations, and what happens when it sits on a knife's edge. Start with how the market prices a future Fed move. The odds of a September hike are not a coin flip pulled from thin air, they are a running sum of everything the market knows about inflation and the labor market, expressed as a probability embedded in fed funds futures. When the incoming data leans one way, that probability drifts steadily, and each new report nudges it a little. But when the data is genuinely mixed, the way it is now with soft payrolls, cooling home sales and improving delinquencies on one side and oil near $90 and a hawkish Boston Fed on the other, the probability sits near 50%. And a probability near 50% is exactly where a single data point moves the most, because there is no accumulated conviction to absorb the surprise. That is the mechanical reason today's number matters so much: the Fed is balanced right at the tipping point, so the print does not just adjust the odds, it can flip them. Now the composition. The headline CPI captures everything including food and energy, so an oil spike shows up there first, which is why crude near $90 has the hawks nervous. But the Fed watches core inflation, which strips out food and energy, because it is a cleaner read on the underlying trend that policy can actually influence. Within core, the largest and stickiest component is shelter, and services ex-housing is what officials scrutinize for signs that wage pressure is keeping prices elevated. So a report can look hot on the headline because of gasoline yet cool underneath, or the reverse, and which layer moves determines whether Susan Collins gets her hike or Andrew Hollenhorst gets his cooling trend. That is why traders parse the internals, not just the top line. There is a second effect worth naming: implied volatility. Ahead of a binary event like this, options that expire right after the release get expensive, because the market is pricing a big potential move in either direction. Once the number lands and the uncertainty resolves, that volatility premium collapses fast regardless of the direction, a phenomenon options traders call the "vol crush." It is why a stock or index can barely move on an in-line print even though everyone was braced for fireworks. The practical lesson is to read a divided-Fed CPI as a regime decision, not a routine data point. When the hike odds sit near half, the print is the tiebreaker, and the reaction in two-year yields tells you which way the Fed just leaned. Watching the core and services components rather than the headline is how you separate an oil-driven scare from a genuine reacceleration, and that distinction is the whole game today.</p>
+      <p class="deal-source"><a href="https://finance.yahoo.com/economy/policy/articles/morning-bid-inflation-obscures-104502792.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Morning Bid: Inflation Obscures All</a></p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/08/11/an-inflation-report-wednesday-should-be-a-big-deal-for-the-fed-heres-what-to-expect.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- An Inflation Report Wednesday Should Be a Big Deal for the Fed. Here's What to Expect</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nvidia's $500 billion financing plan faces a big depreciation risk from China</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) CEO Jensen Huang is pitching GPUs as long-term collateral to unlock $500 billion in funding, CNBC reported, but the model rests on how slowly his chips depreciate. Bloomberg noted Counterpoint's Neil Shah argues Wall Street's involvement eases the concern over the circular financing underpinning the AI boom.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/11/nvidia-ai-funding-jensen-huang-china-risk.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Why Jensen Huang's $500 Billion AI Financing Plan Faces a Big Risk From China</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hon Hai beats on profit as AI hardware demand stays strong</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia partner Hon Hai (Foxconn) reported a better-than-expected jump in quarterly profit, Bloomberg reported, signaling robust global demand for AI hardware. Alongside CoreWeave and Super Micro, it is a third supply-chain read confirming the AI-infrastructure pull is still accelerating, not fading.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/nvidia-partner-hon-hai-s-profit-beats-on-sustained-ai-spending" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Partner Hon Hai Scores Profit Beat on AI Spending Surge</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tencent sustains 11% revenue growth to bankroll its AI buildout</strong></summary>
+      <div class="deal-body">
+        <p>Tencent's revenue grew a faster-than-projected 11% on a WeChat ad surge and resilient games, Bloomberg reported, keeping the pace it needs to finance a costly AI services and infrastructure buildout. Bloomberg separately flagged investors still want evidence Tencent is closing the AI gap on leaders.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/tencent-sales-top-estimates-on-wechat-ad-surge-resilient-games" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tencent Sustains Revenue Growth to Bankroll Costly AI Investment</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI coding startup Lovable raises $400 million at a $13.3 billion valuation</strong></summary>
+      <div class="deal-body">
+        <p>Swedish coding startup Lovable raised fresh capital at a $13.3 billion valuation, Bloomberg reported, arming it to compete with larger rivals like Anthropic. Bloomberg separately noted Cognition AI is in early talks to lift its valuation more than 50% to at least $40 billion, both signs venture money is chasing AI coding hard.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/ai-coding-startup-lovable-raises-400-million-at-13-3-billion-valuation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Coding Startup Lovable Raises $400 Million at $13.3 Billion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI compute becomes a tradable asset class as CME launches futures</strong></summary>
+      <div class="deal-body">
+        <p>CME is partnering with Silicon Data to introduce two compute futures contracts on Oct. 5, pending review, CNBC reported, turning AI computing power into a tradable asset class. It gives Nvidia's GPU-as-collateral pitch a spot-price reference, a key building block for underwriting compute like a commodity.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/11/ai-computing-power-becomes-a-tradable-asset-class-as-cme-starts-futures.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- AI Computing Power Is Becoming a Tradable Asset Class as CME Launches Futures Contracts</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wintermute plans a $1 billion AI and trading-infrastructure investment</strong></summary>
+      <div class="deal-body">
+        <p>Crypto market maker Wintermute intends to invest about $1 billion in high-frequency trading and AI data-center infrastructure over five years, Bloomberg reported, as it diversifies into traditional markets after a digital-assets slump. Another crypto-native firm pivoting capital toward compute.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/wintermute-plans-1-billion-ai-investment-to-compete-on-wall-street" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wintermute Plans $1 Billion AI Investment to Compete on Wall Street</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Vacuum-pump and specialty-gas makers become the new AI winners</strong></summary>
+      <div class="deal-body">
+        <p>European makers of vacuum pumps, heat exchangers and specialty gases are cementing their spot as lesser-known AI-boom winners, Bloomberg reported, offering exposure to the buildout away from crowded chip names. Bloomberg separately flagged peak-memory fears pushing Samsung and SK Hynix toward bigger cash returns.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/vacuum-pump-makers-gases-producers-are-the-new-ai-winners" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Vacuum Pump Makers, Producers of Gases Are the New AI Winners</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Wednesday August 12, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is a run of hard earnings, with CoreWeave up 16% on a $2.58 billion quarter, Super Micro topping the rosiest estimates and Hon Hai beating on sustained AI spending, all confirming the demand is not slowing. The capital keeps arriving too, from BofA's $250 billion pledge to Lovable's $13.3 billion round and CME turning compute into a tradable asset class. The counter-signal is the financing and depreciation debate, with CNBC flagging China chip-depreciation risk in Nvidia's $500 billion plan and WSJ reporting power stocks losing steam on the data-center backlash. The frame to hold is that the earnings prove the demand, but the collateral value and the funding structure are what re-price the trade if confidence turns.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>A divided Wall Street seeks Fed clues in a pivotal CPI report</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street could hardly be more divided over whether the Fed hikes next month, Bloomberg reported, but agrees Wednesday's inflation report will go a long way toward shaping the decision. Treasuries steadied ahead of the number, with the 10-year yield little changed.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/traders-brace-for-pivotal-cpi-as-fed-hike-hangs-in-balance" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Divided Wall Street Seeks Fed Clues in Pivotal Inflation Report</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Boston Fed's Susan Collins would back a September hike if inflation stays hot</strong></summary>
+      <div class="deal-body">
+        <p>Boston Fed branch head Susan Collins said she would support a September rate rise if inflation remains hot, FT reported, while noting poorer Americans are struggling to make ends meet. A named hawkish voice raising the stakes on the July print.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/56c300d3-3632-476e-96d6-da84d4558bda?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Poorer Americans Are Struggling to Make Ends Meet, Top Fed Official Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The costly AI buildout is complicating the Fed's inflation fight</strong></summary>
+      <div class="deal-body">
+        <p>Tech leaders say AI will drive down costs, CNBC reported, but slow corporate adoption and the data-center buildout are creating inflation pressures that complicate the Fed's job. It ties the AI-capex boom directly to the rate debate, framing the buildout as a near-term price risk.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/12/ais-costly-buildout-complicates-the-feds-inflation-fight.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- AI's Costly Buildout Complicates the Fed's Inflation Fight</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The IEA warns oil markets face a wider shortfall</strong></summary>
+      <div class="deal-body">
+        <p>Global oil inventories will tumble this quarter at more than twice the previously estimated rate, Bloomberg reported the IEA saying, a 1.8 million barrel-a-day shortfall as renewed Middle East hostilities and maritime disruptions undermine the production recovery. The supply signal keeps crude near $90 into CPI.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-11/latest-oil-market-news-and-analysis-for-aug-12" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for Aug. 12</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US existing-home sales fall to a three-month low</strong></summary>
+      <div class="deal-body">
+        <p>Sales of previously owned US homes fell to a three-month low in July, Bloomberg reported, as elevated prices and mortgage rates kept weighing on the market. A dovish data point arguing the rate backdrop is already cooling demand ahead of the CPI print.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-11/us-sales-of-previously-owned-homes-decline-to-three-month-low" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Previously Owned Home Sales Decline to Three-Month Low</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Norway set to extend its rate pause as core prices cool</strong></summary>
+      <div class="deal-body">
+        <p>Norway's central bank will probably hold its key rate for a second straight meeting after underlying inflation proved surprisingly benign, Bloomberg reported. India's July inflation also stayed within the RBI's target band, both counterpoints to the day's hawkish US chatter.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/norway-to-extend-rate-pause-as-core-prices-cool-decision-guide" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Norway to Extend Rate Pause as Core Prices Cool</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bessent-Takaichi divide threatens the joint yen rescue</strong></summary>
+      <div class="deal-body">
+        <p>Even as the US and Japan moved with rare unity to strengthen the yen, a fundamental tension between Scott Bessent and Sanae Takaichi over the BOJ risks undermining their efforts, Bloomberg reported. Eurizon's Stephen Jen still calls the intervention a watershed that keeps the yen off its four-decade low.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/bessent-takaichi-split-on-boj-risks-undermining-joint-yen-rescue" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bessent-Takaichi Divide on Optimal BOJ Path Threatens Yen Rescue</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 12, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The rate debate sits on a knife's edge into CPI. The dovish tug is a run of cooler data, with Citi's Andrew Hollenhorst calling out a cooling trend, existing-home sales at a three-month low, improving household delinquencies, and Norway and India holding within target. The hawkish tug is Boston Fed's Susan Collins ready to hike if inflation stays hot, oil near $90 on the IEA's wider shortfall, and CNBC's point that the AI buildout itself adds cost pressure. Treasuries steadied with the 10-year little changed, gold held over $4,400, and the yen wobbled on the Bessent-Takaichi split. The July print is the referee that breaks the tie.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why an Oil Shortfall Feeds Inflation Through More Than Just the Price at the Pump</summary>
+      <p>Bloomberg reported the IEA now sees global oil inventories tumbling this quarter at more than twice its earlier estimate, a 1.8 million barrel-a-day shortfall driven by renewed Middle East hostilities and maritime disruptions. That is the kind of number that keeps the Fed's hawks nervous, and it is worth understanding why an oil shock is uniquely awkward for a central bank, because it hits inflation through two very different channels that call for opposite responses. Start with the direct channel, which is the obvious one. When crude is scarce, gasoline, diesel and jet fuel prices rise, and those show up almost immediately in the headline CPI. This is a first-round effect, and it is mechanical: less supply, higher price, higher measured inflation. A central bank can largely look through a first-round energy spike, because if it is a one-time jump in the level of prices rather than an ongoing acceleration, it fades out of the year-over-year comparison after twelve months. That is why officials focus on core inflation, which strips energy out. Now the harder channel, the second-round effect. Oil is not just a consumer good, it is an input to almost everything that gets produced or shipped. Higher fuel costs raise the price of trucking, air freight, plastics, fertilizer and manufacturing, and those cost increases get passed into the prices of goods and services that have nothing obviously to do with energy. This is how an oil shock leaks from the headline into the core, slowly and with a lag. Worse, if workers see their fuel and grocery bills climbing and demand higher wages to compensate, and firms grant those raises and then raise prices again to protect margins, you get a wage-price feedback loop. That is the second-round effect the Fed genuinely fears, because it is self-sustaining and does not fade on its own. This is the dilemma. An oil shock is simultaneously inflationary and contractionary, because higher energy costs also act like a tax that drains household spending power and squeezes corporate margins, which slows growth. A central bank fighting the inflation side by hiking makes the growth hit worse, and one supporting growth by holding risks letting the second-round effects entrench. There is no clean answer, which is exactly why the IEA's shortfall matters to the CPI debate: it raises the odds that this is not a quick spike that fades but a sustained supply squeeze that feeds through to core over months. The practical lesson is to watch whether an energy shock stays contained in the headline or bleeds into core services, because that distinction determines whether the Fed can look through it or has to respond. If today's CPI shows energy up but core services still cooling, the hawks lose their strongest argument, and the oil story becomes a level shift the Fed can tolerate. If core services are firming alongside the energy jump, that is the early signal of second-round pass-through, and it is what would tip Susan Collins and her camp toward a September hike.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-11/latest-oil-market-news-and-analysis-for-aug-12" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for Aug. 12</a></p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/08/12/ais-costly-buildout-complicates-the-feds-inflation-fight.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- AI's Costly Buildout Complicates the Fed's Inflation Fight</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">A divided Wall Street braced for July CPI as the print threatened to decide the September hike, while CoreWeave and Super Micro beats revived the AI trade and oil held near $90 on the Hormuz standoff; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.70%, bear confirmed; below 4.56%, bull confirmed. Iran/Oil: if Brent closes above $80, bear confirmed; below $70, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/10</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/11</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/12</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/13</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/14</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin holds near $64,000 as CPI looms and a Harmony exploit rattles altcoins</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin was little changed near $64,000 with markets quiet ahead of the July inflation print, oil near $90 and Harmony nursing a fresh exploit, CoinDesk reported. Weeks of sideways trading have crushed volatility, leaving Wednesday's CPI as the next potential catalyst.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/12/bitcoin-holds-near-usd64-000-as-u-s-inflation-data-looms-harmony-exploit-rattles-altcoins" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Holds Near $64,000 as US Inflation Data Looms, Harmony Exploit Rattles Altcoins</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Public miners have added $1.78 billion of selling pressure to bitcoin</strong></summary>
+      <div class="deal-body">
+        <p>Public bitcoin miners are an underappreciated source of supply hitting the market right at the margin, CoinDesk reported, having added $1.78 billion of selling pressure. It helps explain why BTC has stalled even as ETF inflows offset some of the flow into Wednesday's print.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/12/one-overlooked-group-has-added-usd1-78-billion-of-selling-pressure-to-bitcoin-market" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- One Overlooked Group Has Added $1.78 Billion of Selling Pressure to Bitcoin Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Harmony's ONE dives 40% after an attack mints a quarter of supply</strong></summary>
+      <div class="deal-body">
+        <p>Harmony's ONE token dropped roughly 40% after an attacker appeared to mint tokens equal to a quarter of the supply, CoinDesk reported, with the team working with exchanges to freeze funds and prepare a fix. A separate XRP bridge was drained for $200,000 in the same window, a rough day for chain security.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/12/harmony-s-one-falls-26-after-attacker-allegedly-mints-4-billion-tokens" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Harmony's ONE Dives 40% After an Attack Appears to Mint a Quarter of Supply</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fidelity moves to add staking and payouts to its ether ETF</strong></summary>
+      <div class="deal-body">
+        <p>Fidelity is moving to add staking with quarterly payouts to its near-$900 million ether ETF, CoinDesk reported, keeping 85% of gross staking rewards for holders. It is a sign issuers are racing to make ETH ETFs yield-bearing now that staking is on the table.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/12/fidelity-moves-to-add-staking-quarterly-payouts-to-near-usd900-million-ether-etf" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Fidelity Moves to Add Staking, Quarterly Payouts to Near $900 Million Ether ETF</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto.com rolls out tokenized stock derivatives as exchanges push into equities</strong></summary>
+      <div class="deal-body">
+        <p>Crypto.com launched tokenized stock derivatives, CoinDesk reported, joining a tokenized-stock market that has grown 600% in a year, though its products offer price exposure rather than share ownership. The line between crypto venues and equity brokers keeps blurring.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/12/crypto-com-rolls-out-tokenized-stock-derivatives-as-crypto-exchanges-push-into-equities" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto.com Rolls Out Tokenized Stock Derivatives as Crypto Exchanges Push Into Equities</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>XRP futures bets hit their highest since October ahead of CPI</strong></summary>
+      <div class="deal-body">
+        <p>XRP trading could get spicy after the CPI report as futures positioning hit its highest since October, CoinDesk reported. The crowded bet leaves the token exposed to a sharp move in either direction once the inflation print resolves the market's tight range.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/08/12/xrp-trading-could-get-spicy-after-cpi-report-as-futures-bets-hit-highest-since-october" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- XRP Trading Could Get Spicy After CPI Report as Futures Bets Hit Highest Since October</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Bank of America -- $250 Billion AI and Energy Infrastructure Pledge</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Bank of America will deploy $250 billion to bolster AI and energy infrastructure, WSJ reported, joining rivals rolling out pledges to back investments in US critical industries.</p>
+        <p><strong>Outlook:</strong> A pledge of this size signals big-bank appetite to finance the buildout through loans and capital markets, not just watch it from the sidelines, adding depth to the pool of AI-infrastructure funding.</p>
+        <p><strong>What it means:</strong> The AI-and-power capital story is now a marquee-bank commitment, reinforcing that the buildout is increasingly a credit story running alongside the equity trade.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/bank-of-america-to-deploy-250-billion-to-bolster-ai-and-energy-infrastructure-d8471732?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Bank of America to Deploy $250 Billion to Bolster AI and Energy Infrastructure</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>GM -- Up to $4.5 Billion Parts Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> General Motors struck a parts agreement worth up to $4.5 billion designed to avoid the supply-chain troubles that have dogged automakers for years, CNBC reported.</p>
+        <p><strong>Outlook:</strong> Locking in components trades higher upfront cost for production certainty, a defensive move after a stretch of global disruptions rather than an expansion bet.</p>
+        <p><strong>What it means:</strong> Even outside the AI theme, big manufacturers are paying up for supply security, a reminder that resilience now carries a price on the balance sheet.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/11/gm-makes-4point5-billion-parts-deal-to-bolster-supply-chain.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- GM Reaches Up to $4.5 Billion Parts Deal Designed to Avoid Supply Chain Troubles</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lovable -- $400 Million Raise at a $13.3 Billion Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Swedish AI coding startup Lovable raised $400 million at a $13.3 billion valuation, Bloomberg reported, arming it to compete with larger rivals like Anthropic.</p>
+        <p><strong>Outlook:</strong> The round funds a land-grab in AI coding, where Cognition is separately in talks at a $40 billion valuation, a segment venture money is chasing hard.</p>
+        <p><strong>What it means:</strong> Private AI valuations keep climbing even as public-market skeptics warn on the buildout's leverage, a divergence worth watching.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/ai-coding-startup-lovable-raises-400-million-at-13-3-billion-valuation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Coding Startup Lovable Raises $400 Million at $13.3 Billion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Erebor -- $1.5 Billion Raise at a $9.5 Billion Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Crypto-friendly bank Erebor is in talks to raise $1.5 billion at a $9.5 billion valuation, CoinDesk reported via FT, after deposits grew from $1.1 billion in March to $4.6 billion by July.</p>
+        <p><strong>Outlook:</strong> The rapid deposit growth from crypto, AI and defense clients gives it a fast-scaling niche, though the valuation prices in continued expansion.</p>
+        <p><strong>What it means:</strong> Capital keeps flowing to banks serving the crypto-and-AI overlap, a slice of finance the mainstream banks have been slow to court.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/11/crypto-friendly-bank-erebor-in-talks-to-raise-usd1-5-billion-at-usd9-5-billion-valuation-ft" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto-Friendly Bank Erebor in Talks to Raise $1.5 Billion at $9.5 Billion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zetwerk -- $400 Million India IPO Filing</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Indian contract manufacturer Zetwerk is preparing to publicly file for an IPO that could raise as much as $400 million, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The listing taps investor appetite for India's manufacturing scale-up, testing public demand for a contract-manufacturing platform.</p>
+        <p><strong>What it means:</strong> India's IPO pipeline stays busy even as the Tata leadership crisis unsettles the country's largest conglomerate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/zetwerk-is-said-to-plan-public-filing-for-400-million-india-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Zetwerk Is Said to Plan Public Filing for $400 Million India IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jumia -- $50 Million Equity Raise From IFC and Axian</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> African e-commerce company Jumia secured $50 million in fresh equity from its biggest shareholder and the World Bank's IFC, Bloomberg reported, as it pushes toward its first profit.</p>
+        <p><strong>Outlook:</strong> The capital and the IFC endorsement extend Jumia's runway toward profitability in a hard operating region.</p>
+        <p><strong>What it means:</strong> Development-finance capital is backing frontier e-commerce even as growth funding tightens elsewhere.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/jumia-wins-ifc-axian-backing-in-50-million-equity-fundraising" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jumia Wins IFC, Axian Backing in $50 Million Equity Fundraising</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Citi's Andrew Hollenhorst -- a cool print confirms a cooling trend</strong></summary>
+      <div class="deal-body">
+        <p>Citi chief US economist Andrew Hollenhorst told Bloomberg TV that a cool July reading, which he expects, would confirm a trend toward cooling inflation that differs sharply from what some Fed officials have been signaling. A named dovish voice arguing the data undercuts the hawkish talk.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-12/citi-s-hollenhorst-sees-trend-toward-cooling-inflation-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citi's Hollenhorst Sees Trend Toward Cooling Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Boston Fed's Susan Collins -- ready to hike in September if inflation stays hot</strong></summary>
+      <div class="deal-body">
+        <p>Boston Fed branch head Susan Collins said she would back a September rate rise if inflation remains hot, FT reported, while noting poorer Americans are struggling to make ends meet. A named policy hawk raising the stakes on the July print.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/56c300d3-3632-476e-96d6-da84d4558bda?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Poorer Americans Are Struggling to Make Ends Meet, Top Fed Official Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>T. Rowe Price fund manager -- AI capex hits $1.6 trillion, echoes 1998 not the bust</strong></summary>
+      <div class="deal-body">
+        <p>A T. Rowe Price fund manager told MarketWatch AI capex could hit $1.6 trillion next year, arguing hyperscalers can comfortably fund the spend and earn high returns on a short payback, so the setup looks more like 1998 than the dot-com bust. A named bull on the sustainability of the buildout.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/ai-capex-could-hit-1-6-trillion-next-year-says-fund-manager-who-sees-more-echoes-of-1998-than-the-dot-com-bust-0576b598?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- AI Capex Could Hit $1.6 Trillion Next Year, Says Fund Manager Who Sees More Echoes of 1998</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Norges Bank's Nicolai Tangen -- more nervous even after record returns</strong></summary>
+      <div class="deal-body">
+        <p>Nicolai Tangen, CEO of Norway's $2.3 trillion wealth fund, told Bloomberg he is more nervous on future risks including AI valuations, inflation and geopolitics, even as the fund posted its best quarter since 2020 on tech holdings. A named allocator flagging caution at the top.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-12/norway-oil-fund-ceo-says-record-first-half-as-good-as-it-gets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Norway Oil Fund CEO Says He's More Nervous After Record Returns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citadel Securities' Scott Rubner -- a leverage buildup is on the horizon</strong></summary>
+      <div class="deal-body">
+        <p>Citadel Securities strategist Scott Rubner, who called the stock-market reset, now sees leverage building again as big hedge funds and institutional managers push the market higher, MarketWatch reported. A named voice warning that positioning, not fundamentals, is the risk to watch.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/citadel-securities-called-the-stock-market-reset-now-it-says-leverage-may-build-up-again-988eec86?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Citadel Securities Called the Stock-Market Reset. Now It Sees a Leverage Buildup on the Horizon</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as CoreWeave and Super Micro Beats Revive the AI Trade, Oil Holds Near $90, and a Divided Fed Waits on the July CPI Print</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the earnings and the cooling data carry the tape):</strong> CoreWeave surged 16% on a $2.58 billion quarter, Super Micro topped the rosiest estimates, and Hon Hai beat, all confirming AI demand. Citi's Andrew Hollenhorst sees a cooling inflation trend, a T. Rowe Price manager calls capex $1.6 trillion echoing 1998, and BofA is pledging $250 billion. A cool CPI keeps the melt-up running and validates the hold camp.</div>
+        <div class="bear"><strong>Bear (the leverage, the oil, and the hawks are the tell):</strong> Boston Fed's Susan Collins is ready to hike in September if inflation stays hot, oil near $90 on the IEA's wider shortfall feeds the price impulse, and CNBC flags China chip-depreciation risk in Nvidia's $500 billion plan. Norges Bank's Nicolai Tangen is more nervous on AI valuations, and Citadel's Scott Rubner sees leverage rebuilding. A hot CPI re-prices the crowded trade fast.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>CoreWeave up 16% on $2.58B quarter; Super Micro tops rosiest outlook; Hon Hai beat; AI trade roars back into CPI</td><td>Bullish</td><td>~27,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Futures muted before CPI; oil near $90 on Hormuz; GM $4.5B parts deal; WSJ says power stocks losing steam</td><td>Mixed</td><td>~15,500 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Divided Wall Street on September hike; Collins would hike if hot; Hollenhorst sees cooling; existing-home sales dip</td><td>Cautious</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>CNBC flags China chip-depreciation risk in Nvidia's $500B plan; Stratechery risky business; Tangen more nervous</td><td>Bearish</td><td>~9,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC stuck near $64K into CPI; Harmony ONE dives 40%; public miners add $1.78B selling; XRP futures crowded</td><td>Bearish</td><td>~10,500 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood split between the AI-earnings revival and the CPI wait. r/wallstreetbets leaned bullish on CoreWeave's 16% pop, Super Micro's beat and Hon Hai's profit surge, taking the results as proof the buildout demand is accelerating. r/stocks stayed mixed as futures went muted before the print, oil hovered near $90 and WSJ flagged power stocks losing steam. r/investing kept its guard up over the divided-Fed CPI, weighing Collins against Hollenhorst. r/SecurityAnalysis leaned bearish on the China chip-depreciation warning and Tangen's caution. r/CryptoCurrency turned bearish as bitcoin stalled near $64,000, Harmony's ONE crashed and miners added supply. The swing factor is the July print against oil near $90.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: How AI Compute Is Being Turned Into a Tradable Asset Class, Why CME's New Futures Matter for Nvidia's $500 Billion Plan, and Where the Whole Structure Can Break</h2>
+    <p>CNBC reported that CME will introduce two compute futures contracts on Oct. 5, pending review, partnering with Silicon Data to make AI computing power a tradable asset class. That sounds abstract, but it is a load-bearing piece of the same story as Jensen Huang's pitch to raise $500 billion by using Nvidia GPUs as collateral, and it is worth understanding why a futures market matters, because it is the missing ingredient that would let Wall Street underwrite compute the way it underwrites oil or electricity. Start with the problem. To lend against an asset, a lender needs to know two things: what it is worth today, and what it will be worth if the borrower defaults and the lender has to sell it. For a barrel of oil or a megawatt-hour of power, that is easy, because there is a liquid, transparent spot and futures market quoting the price every second. For AI compute, that reference did not exist. You could rent GPU time from CoreWeave, but there was no standardized, market-clearing price for a unit of compute, which made it hard to model what a data center full of chips would earn or fetch in a fire sale. A futures market fixes that. When CME lists compute futures, it creates a public, forward-looking price curve for compute, so anyone financing GPUs can point to a market quote instead of a guess. Here is the mechanism, and why it links to Huang's collateral idea. If compute has a traded price, a lender can do three things it could not before. First, it can value the cash flow a data center generates, because the rental income is now benchmarked to a market rate rather than a private contract. Second, it can hedge, meaning a data-center owner worried that compute prices fall can sell futures to lock in revenue, which makes the cash flow more predictable and therefore more bankable. Third, it can estimate a recovery value, because if the borrower defaults, the futures curve tells the lender roughly what the compute those chips produce is worth. Together, those turn a pile of fast-depreciating electronics into something closer to an infrastructure asset with a modelable return, which is exactly the reclassification Huang needs to unlock $500 billion of outside financing. Now the fragility, which is what CNBC's China angle and Stratechery's warning both circle. The whole edifice rests on the compute price staying high enough to service the debt and on the chips holding resale value. Both are shaky. A futures market cuts in the other direction too: it lets the price fall visibly and fast if a supply glut or a demand air-pocket hits, and a transparent falling price can trigger margin calls and forced selling the way it does in oil. And GPU depreciation is brutal, because Nvidia ships faster chips every year, so today's collateral can be technically obsolete before the loan matures, and the futures curve would price that decay in real time. The practical lesson is that turning compute into a tradable asset is a genuine financial innovation, but transparency is double-edged. A liquid price makes compute financeable, yet it also makes the buildout's leverage visible and repriceable by the minute, so the same market that unlocks the $500 billion is the one that would mark it down fastest if demand or chip values crack. Watching that futures curve after October will be the cleanest real-time read on whether the AI-financing bet is holding.</p>
+    <p class="deal-source"><a href="https://www.cnbc.com/2026/08/11/ai-computing-power-becomes-a-tradable-asset-class-as-cme-starts-futures.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- AI Computing Power Is Becoming a Tradable Asset Class as CME Launches Futures Contracts</a></p>
+    <p class="deal-source"><a href="https://www.cnbc.com/2026/08/11/nvidia-ai-funding-jensen-huang-china-risk.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Why Jensen Huang's $500 Billion AI Financing Plan Faces a Big Risk From China</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>US CPI (Wednesday, Aug 12).</strong> Today's referee for the divided Fed; watch whether core services keep cooling to hand Citi's Andrew Hollenhorst his trend, or oil near $90 pushes the print hot enough to back Boston Fed's Susan Collins and a September hike.</li>
+      <li><strong>PPI and jobless claims (later this week).</strong> After CPI, watch producer prices and weekly claims for confirmation of whether the disinflation trend is intact or the oil pass-through is starting to bleed into pipeline costs.</li>
+      <li><strong>Fed speak after the print.</strong> With Collins hawkish and the Street split near 50%, watch whether post-CPI commentary consolidates around a September hold or a hike.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>AI-hardware read-through continues.</strong> After CoreWeave, Super Micro and Hon Hai beats, watch chip-equipment and memory names for confirmation the buildout pull is broad, plus Samsung and SK Hynix commentary on peak-memory fears and cash returns.</li>
+      <li><strong>US retail bellwethers.</strong> Big-box and consumer names report into mid-August; watch whether a tariff-squeezed, value-seeking shopper shows up against the AI-capex melt-up.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-financing follow-through.</strong> BofA's $250 billion pledge, Nvidia's $500 billion collateral plan and CME's October compute futures test how fast the buildout's credit story develops.</li>
+      <li><strong>IPO and venture pipeline.</strong> Watch Zetwerk's $400 million India IPO filing, Lovable's $13.3 billion round and Cognition's $40 billion talks for whether private AI valuations keep climbing against public-market caution.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Hormuz and the Trump-Iran standoff.</strong> Oil sits near $90 after Trump claimed the US owns the strait and the IEA doubled its shortfall estimate; watch whether talks yield a deal to restore flows or ship attacks keep the security premium bid.</li>
+      <li><strong>Yen and the Bessent-Takaichi split.</strong> With the joint yen rescue strained by the BOJ-path disagreement, watch whether the currency holds off its four-decade low or intervention doubts resurface.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Aug 12, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-12 07:38 ET); Bloomberg Technology (20 fresh, newest 2026-08-12 07:05 ET); Bloomberg Economics (20 fresh, newest 2026-08-12 07:33 ET); CNBC Top News (6 fresh, newest 2026-08-11 18:42 ET); CNBC Finance (8 fresh, newest 2026-08-12 06:00 ET); CNBC Economy (2 fresh, newest 2026-08-12 07:00 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-12 07:30 ET); WSJ Markets (16 fresh, newest 2026-08-12 06:59 ET); Yahoo Finance (25 fresh, newest 2026-08-12 07:49 ET); FT Home (8 fresh, newest 2026-08-12 05:46 ET); Matt Levine Money Stuff (1 fresh, newest 2026-08-11 14:30 ET); CoinDesk (25 fresh, newest 2026-08-12 07:44 ET); Stratechery (2 fresh, newest 2026-08-12 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove the AI trade higher into Wednesday's session?</strong></p>
+      <span class="opt" data-opt="A">A. Nvidia raised its full-year revenue guidance</span>
+      <span class="opt" data-opt="B">B. The Fed signaled a rate cut was coming</span>
+      <span class="opt" data-opt="C">C. CoreWeave and Super Micro beat sales estimates</span>
+      <span class="opt" data-opt="D">D. China lifted its ban on chip imports</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported CoreWeave surged on faster-than-expected sales growth and Super Micro's outlook topped the rosiest projections, reviving the AI trade. Nvidia did not raise guidance, the Fed signaled nothing on cuts, and there was no China import move.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did Trump say about the Strait of Hormuz?</strong></p>
+      <span class="opt" data-opt="A">A. The US has total control over the waterway</span>
+      <span class="opt" data-opt="B">B. He agreed to lift the blockade of Iranian ports</span>
+      <span class="opt" data-opt="C">C. He would leave the strait to allied navies</span>
+      <span class="opt" data-opt="D">D. Iran had accepted his reparations demand</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported Trump told reporters the US has "total control over the Hormuz Strait," saying "we own it" as talks stayed deadlocked. He did not lift the blockade, cede control, or announce any Iranian acceptance.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. Why could the July CPI be pivotal for the Fed?</strong></p>
+      <span class="opt" data-opt="A">A. It sets the Treasury's next auction size</span>
+      <span class="opt" data-opt="B">B. A cool print eliminates all rate-cut odds</span>
+      <span class="opt" data-opt="C">C. It determines the government shutdown deadline</span>
+      <span class="opt" data-opt="D">D. It shapes whether the Fed hikes in September</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg reported a divided Wall Street sees the print going a long way toward shaping the Fed's next move on a September hike. It does not set auction sizes or shutdown deadlines, and a cool print would raise, not eliminate, easing odds.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "A divided Wall Street braces for July CPI as the single print threatens to decide the September hike, with Citi's Andrew Hollenhorst seeing a cooling trend and Norway extending its rate pause, but Boston Fed's Susan Collins would back a hike if inflation stays hot and oil near $90 keeps the price impulse live.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-12/traders-brace-for-pivotal-cpi-as-fed-hike-hangs-in-balance", "take": "A divided Wall Street sees the CPI print shaping whether the Fed hikes in September." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/56c300d3-3632-476e-96d6-da84d4558bda?syn-25a6b1a6=1", "take": "Boston Fed's Susan Collins would back a September rate rise if inflation stays hot." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/12/ais-costly-buildout-complicates-the-feds-inflation-fight.html", "take": "The costly AI buildout is adding inflation pressure that complicates the Fed's fight." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-12/citi-s-hollenhorst-sees-trend-toward-cooling-inflation-video", "take": "Citi's Andrew Hollenhorst sees a trend toward cooling inflation." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-11/us-sales-of-previously-owned-homes-decline-to-three-month-low", "take": "US existing-home sales fell to a three-month low as rates bite." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil holds near $90 as Trump claims the US owns the Strait of Hormuz and threatens Iran, with the IEA doubling its shortfall estimate and ship attacks resuming, but talks remain in play, crude only wavered, and Europe is holding up against the war drag.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-12/the-opening-trade-8-12-2026-video", "take": "Trump claimed the US has total control over the Hormuz Strait as talks stayed deadlocked." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-11/latest-oil-market-news-and-analysis-for-aug-12", "take": "The IEA doubled its shortfall estimate to 1.8 million barrels a day." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/news/oil-rises-doubts-over-us-063114070.html", "take": "Oil rose after fresh ship attacks with US-Iran talks deadlocked." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-11/gold-steadies-as-traders-watch-us-inflation-for-rate-hike-clues", "take": "Crude only wavered and gold steadied as traders weighed a deal to reopen Hormuz." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-11/french-economy-set-to-maintain-momentum-central-bank-says", "take": "France's economy is set to maintain momentum on cooler inflation." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "CoreWeave and Super Micro blowouts revive the AI trade as Hon Hai beats and BofA pledges $250 billion, with a T. Rowe manager seeing 1998 not the dot-com bust, but CNBC flags China chip-depreciation risk in Nvidia's $500 billion plan, Stratechery calls it risky business, and WSJ says red-hot power stocks are losing steam.",
+    "sources": [
+      { "name": "CoinDesk", "lean": "bull", "url": "https://www.coindesk.com/markets/2026/08/12/coreweave-surges-16-on-usd2-58-billion-revenue-quarter-as-ai-infrastructure-demand-eclipses-crypto", "take": "CoreWeave surged 16% on a $2.58 billion revenue quarter." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-11/super-micro-gives-sales-forecast-that-tops-rosiest-projections", "take": "Super Micro gave a revenue forecast topping the rosiest projections." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/ai-capex-could-hit-1-6-trillion-next-year-says-fund-manager-who-sees-more-echoes-of-1998-than-the-dot-com-bust-0576b598?mod=mw_rss_topstories", "take": "AI capex could hit $1.6 trillion next year, echoing 1998 not the dot-com bust." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/11/nvidia-ai-funding-jensen-huang-china-risk.html", "take": "Nvidia's $500 billion GPU-collateral plan faces a China chip-depreciation risk." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/business/energy-oil/red-hot-power-stocks-are-losing-steam-a4677f03?mod=rss_markets_main", "take": "Red-hot power stocks are losing steam on the data-center backlash." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["CoreWeave","Super Micro","IREN","Hon Hai","Tencent","Power Stocks"],
+    "values": [16.0, 12.0, 8.0, 4.0, 3.0, -5.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [27000, 15500, 14000, 9000, 10500],
+    "colors": ["bull","neutral","neutral","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["BofA AI/Energy","GM Parts Deal","Erebor Raise","Lovable Raise","Zetwerk IPO","Jumia Raise"],
+    "values": [250, 4.5, 1.5, 0.4, 0.4, 0.05]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
