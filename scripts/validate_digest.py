@@ -63,6 +63,22 @@ def validate_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
     return missing
 
 
+def validate_archive_runtime_paths(js_body: str, html_path: Optional[Path]) -> list[str]:
+    """Return archive-unsafe runtime data fetches found in the JS bundle."""
+    if not html_path or html_path.parent.name != "archive":
+        return []
+
+    bad: list[str] = []
+    patterns = [
+        (r"""fetch\(\s*['"]fred-data\.json['"]""", "fetch('fred-data.json')"),
+        (r"""fetch\(\s*['"]archive/manifest\.json['"]""", "fetch('archive/manifest.json')"),
+    ]
+    for pat, label in patterns:
+        if re.search(pat, js_body):
+            bad.append(label)
+    return bad
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
@@ -117,6 +133,9 @@ def main():
         failures += 1
 
     js_bundle = collect_js(html, html_path)
+    for ref in validate_archive_runtime_paths(js_bundle, html_path):
+        print(f"FAIL archive runtime path: {ref} must resolve from docs root")
+        failures += 1
 
     main_block = re.search(r"<main>[\s\S]*?</main>", html, re.DOTALL)
     if not main_block:
