@@ -95,6 +95,26 @@ class StaticAssetPathTests(unittest.TestCase):
         self.assertIn('href="../css/digest.css?v=20260817"', rewritten)
         self.assertIn('src="https://cdn.example/app.js?v=1"', rewritten)
 
+    def test_archive_snapshots_do_not_fetch_data_from_archive_directory(self):
+        bad_patterns = (
+            "fetch('fred-data.json'",
+            'fetch("fred-data.json"',
+            "loadFred('fred-data.json'",
+            'loadFred("fred-data.json"',
+            "return 'fred-data.json'",
+            'return "fred-data.json"',
+            "fetch('archive/manifest.json'",
+            'fetch("archive/manifest.json"',
+        )
+        offenders = []
+        for path in sorted((ROOT / "docs" / "archive").glob("2026-*.html")):
+            text = path.read_text(errors="ignore")
+            for pattern in bad_patterns:
+                if pattern in text:
+                    offenders.append(f"{path.relative_to(ROOT)} contains {pattern}")
+
+        self.assertEqual(offenders, [])
+
 
 if __name__ == "__main__":
     unittest.main()
