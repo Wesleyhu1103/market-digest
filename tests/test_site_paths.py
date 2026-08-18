@@ -37,7 +37,7 @@ class SitePathTests(unittest.TestCase):
 
     def test_runtime_fetches_use_site_root_helper(self):
         checks = {
-            "docs/js/archive.js": ["mdSitePath(rel)", "sitePath('archive/manifest.json')"],
+            "docs/js/archive.js": ["mdSitePath(rel)", "window.location.pathname"],
             "docs/js/charts-macro.js": ["mdSitePath('fred-data.json')", "loadFred('fred-data.json')"],
             "docs/js/verdict-updater.js": ["mdSitePath('archive/' + iso + '.html')", "fetch('archive/'"],
         }
