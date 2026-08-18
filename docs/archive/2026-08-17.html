@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Aug 17, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-17</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, August 17, 2026</h1>
+    <div class="meta">
+      <p>Retail earnings week opens with Target, Walmart and Home Depot due and the Fed's July minutes landing Wednesday, so the data calendar is light but the read-throughs are heavy. Anthropic's revenue surge past $11.5 billion has the AI trade running hot and the dollar sliding to a three-month low on fading Fed hike bets. The US-Iran 60-day truce is lapsing with no deal, grinding Hormuz shipping to a near halt and reviving the oil threat.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Anthropic's Q2 revenue surge past $11.5 billion fueled a fresh AI-led rally and pushed the dollar to a three-month low on fading Fed hike bets, but an ECB warning of an AI-driven correction and a $1.5 trillion wave of AI debt keeping Treasury yields high warn the melt-up is running on borrowed money",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Stock Futures Rise as Anthropic Fuels AI Optimism", "angle": "Reads Anthropic's revenue growth as proof AI spending stays sustained.", "lean": 45, "pull": "Stellar revenue growth at Anthropic bolstered the view that massive spending on AI will be sustained."},
+        {"outlet": "WSJ", "headline": "Open-Weight AI Won't Crimp Demand for Picks and Shovels", "angle": "Argues the infrastructure winners cash in regardless of the model fight.", "lean": 35, "pull": "Some of the boom's biggest beneficiaries can cash in whether open models proliferate or not."},
+        {"outlet": "Financial Times", "headline": "The Next China Shock Will Come From Open-Source AI", "angle": "Frames cheap Chinese open-weight models as a threat to the US moat.", "lean": -25, "pull": "Countries adopting Chinese models will also absorb Chinese standards and governance."},
+        {"outlet": "Bloomberg", "headline": "AI Rally Set to Trigger Stock-Market Correction, ECB Blog Says", "angle": "Reads the blistering tech rally as a correction risk with euro-zone spillover.", "lean": -50, "pull": "A correction is likely after a blistering rally and could carry severe consequences."},
+        {"outlet": "CNBC", "headline": "AI Debt Sales Keep Treasury Yields High", "angle": "Ties the melt-up to a borrowing binge that is crowding out other issuers.", "lean": -30, "pull": "Corporate offerings reach almost $1.5 trillion year to date, up 36% from a year earlier."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Goldman Calls a September Fed Hike Very Unlikely and the Dollar Slides to a Three-Month Low as Fading Tightening Bets Lift Emerging Currencies to a Record, but a $1.5 Trillion AI Debt Wave Is Crowding Out Treasuries, Bloomberg Says Bonds Face a Bigger Threat Than the Fed, and China's Slowdown Deepens</h3>
+      </div>
+      <p>The front end kept leaning dovish. CoinDesk reported Goldman Sachs now calls a September rate increase very unlikely after a run of softer US data, and Bloomberg's morning brief said the bank sees markets as too hawkish on the Fed's odds of hiking. The relief showed up in currencies: Bloomberg reported the dollar extended its slide to the weakest level in three months as traders scaled back tightening bets, and an index of emerging-market currencies hit a fresh record on the same fading-hike story. But the long end tells a different tale. Bloomberg reported AI-related debt sales have reached almost $1.5 trillion year to date, up 36% from a year earlier, and are keeping Treasury yields high through the old crowding-out channel where heavy corporate issuance leaves less room for everyone else. A separate Bloomberg piece said AI is driving up yields because it just touches everything, and another warned bonds face a bigger threat than the Fed as global rates climb, with a former Japanese currency chief arguing the BOJ should hike at every meeting toward 2%. RBC's Lori Calvasina told Bloomberg US consumer resilience is starting to show cracks ahead of retail earnings, and Bloomberg reported China's economy weakened across the board to start the second half. The Fed may hold, but the supply is doing the tightening.</p>
+      <p>The bull case is Goldman calling a September hike very unlikely, the dollar at a three-month low, and EM currencies at a record on fading tightening bets. The bear case is the $1.5 trillion AI debt wave crowding out Treasuries, Bloomberg warning bonds face a bigger threat than the Fed, and Calvasina flagging cracks in the consumer.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the Fed is done and the risk trade is running):</strong> CoinDesk reported Goldman Sachs sees a September hike as very unlikely on softer data, and Bloomberg said the bank views the market as too hawkish. The dollar slid to a three-month low and emerging-market currencies hit a fresh record as tightening bets faded, per Bloomberg. With the front end pricing a hold, the pressure on risk assets eases and the AI rally gets room to run into the Fed minutes.</div>
+        <div class="bear"><strong>Bear (the supply is doing the tightening):</strong> Bloomberg reported AI debt sales reached almost $1.5 trillion year to date, up 36%, and are crowding out Treasuries to keep yields high regardless of the Fed. A separate note warned bonds face a bigger threat than the Fed as global rates climb, a former BOJ-adjacent official urged hikes at every meeting, and RBC's Lori Calvasina sees cracks in the consumer. A Fed hold does nothing to fix a supply-driven long end.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/newsletters/2026-08-17/ai-debt-sales-are-keeping-us-treasury-yields-high" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Debt Sales Are Keeping US Treasury Yields High</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>The US-Iran 60-Day Truce Lapses With No Deal as Hormuz Shipping Grinds to a Near Halt and Fresh Fighting Flares in Lebanon, Reviving the Oil Threat, but Kushner Pushes a Gaza Peace Plan, Israel's Economy Rebounds From Its War Slump, and Trump Readies an Economic Isolation Plan for Iran</h3>
+      </div>
+      <p>The war premium is creeping back into view. CoinDesk reported shipping through the Strait of Hormuz has ground to a near halt as the 60-day truce lapses with no deal, reviving the oil-price risk that has capped risk assets all summer, and Bloomberg said oil edged higher as fresh fighting in Lebanon and attacks on vessels in the Strait muddied the outlook for ending the US-Iran war. Bloomberg's Opening Trade flagged Mideast peace prospects waning after Israel said it killed a senior Hezbollah commander and Israeli strikes in southern Lebanon killed eleven people. There are calmer threads. FT reported Jared Kushner is set to hold talks with Netanyahu after meeting a Hamas leader, pushing Washington's Gaza peace plan, and Bloomberg reported Israel's economy rebounded in the second quarter after the contraction its Iran campaign sparked. But the escalation risk is live: Bloomberg said Trump is readying an unprecedented economic isolation plan for Iran and told the Pentagon to substantially reduce joint drills with South Korea, citing frustration Seoul had not backed his war with Iran. Bloomberg also reported Thai growth slowed to 1.9% as higher energy prices countered stimulus, a reminder the oil channel is already biting Asia. The truce clock ran out, and the plumbing through Hormuz is choking again.</p>
+      <p>The bull read is Kushner pushing a Gaza peace plan, Israel's economy rebounding, and a diplomatic path still open. The bear read is the truce lapsing with no deal, Hormuz shipping near a halt, fresh Lebanon fighting, and Trump readying an economic isolation plan for Iran.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (diplomacy is still on the table):</strong> FT reported Kushner will meet Netanyahu after talks with a Hamas leader to push Washington's peace plan, and Bloomberg said Israel's economy already rebounded from the contraction the Iran war caused. If the diplomatic track firms and shipping resumes, the security premium that has capped risk all summer unwinds and the oil drag on Asian growth stays contained.</div>
+        <div class="bear"><strong>Bear (the truce is dead and the Strait is choking):</strong> CoinDesk reported Hormuz shipping has ground to a near halt as the 60-day truce lapses with no deal, and Bloomberg said oil edged higher on fresh Lebanon fighting and vessel attacks. Trump is readying an economic isolation plan for Iran and cutting South Korea drills, per Bloomberg, and Thai growth already slowed to 1.9% on higher energy prices. The escalation path is wide open.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.coindesk.com/markets/2026/08/17/live-updates-bitcoin-flat-near-usd63-500-but-the-flows-have-quietly-turned" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Updates: Bitcoin Flat Near $63,500; Lapsing US-Iran Ceasefire Revives the Oil Threat</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Anthropic's Revenue Surges Past $11.5 Billion in Q2 to Fuel a Fresh AI Rally as Nvidia Calls on Wall Street to Finance the Chip Boom and Alger's Ankur Crawford Backs the Compute Cycle, but the ECB Warns the Blistering Rally Will Trigger a Correction, an 'AI Stock God' Fund Blew Up on Two Names, and China's Open-Weight Models Erode the US Moat</h3>
+      </div>
+      <p>The AI trade led the tape into the new week. Bloomberg reported technology stocks lifted global equities after stellar revenue growth at Anthropic, whose Q2 revenue surged to over $11.5 billion, bolstered the view that massive AI spending will be sustained. The capital keeps escalating to match: Bloomberg reported Nvidia is calling on Wall Street to finance the AI chip boom, getting creative to help customers pay for its semiconductors, and Alphabet hired banks for a debut A$5 billion Aussie-dollar bond as US tech firms binge on debt to fund the buildout. Alger's Ankur Crawford told Bloomberg how she reads AI and compute investment cycles, and MarketWatch flagged Goldman's list of 20 stocks primed to capture the productivity payoff as adoption spreads beyond infrastructure. The skeptics got louder, though. Bloomberg reported researchers at the European Central Bank warned a correction is likely after a blistering tech rally and could carry severe consequences for the euro zone. MarketWatch detailed an investor dubbed the AI stock god whose fund held 56% in just two stocks before it blew up on the cusp of a sector correction. And Bloomberg said China's open-weight models are prompting Nvidia and Meta to reconsider their strategy, a tacit admission the US moat is not holding, with FT calling open-source AI the next China shock. BlackRock's Helen Jewell told Bloomberg diversification is the key to riding out the volatile trade. Demand is real; the concentration and the moat are the tell.</p>
+      <p>The bulls point to Anthropic's $11.5 billion Q2, Nvidia and Alphabet tapping debt markets to fund the buildout, Alger's Crawford backing the compute cycle, and Goldman's productivity-payoff basket. The bears point to the ECB's correction warning, the AI stock god fund blowing up on two names, and China's open-weight models eroding the US moat.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the revenue and the capital keep confirming demand):</strong> Bloomberg reported Anthropic's Q2 revenue surged past $11.5 billion, fueling the view that AI spending stays sustained, and Nvidia is enlisting Wall Street to finance the chip boom while Alphabet debuts an A$5 billion bond. Alger's Ankur Crawford backs the compute cycle and Goldman flagged 20 productivity-payoff names. WSJ argues the picks-and-shovels winners cash in whether open models proliferate or not.</div>
+        <div class="bear"><strong>Bear (the concentration and the moat are the tell):</strong> Bloomberg reported the ECB warned a blistering rally makes a correction likely with severe euro-zone spillover, and MarketWatch detailed an AI stock god fund that held 56% in two names before it blew up. Bloomberg said China's open-weight models forced Nvidia and Meta to rethink strategy, a tacit admission the moat is cracking, and FT called it the next China shock. BlackRock's Helen Jewell says diversify to survive the volatility.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-17/ai-rally-set-to-trigger-stock-market-correction-ecb-blog-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Rally Set to Trigger Stock-Market Correction, ECB Blog Says</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stock futures rise as Anthropic fuels AI optimism</strong></summary>
+      <div class="deal-body">
+        <p>Technology stocks lifted global equities after stellar revenue growth at Anthropic, whose Q2 revenue topped $11.5 billion, bolstered the view that massive AI spending will be sustained, Bloomberg reported. WSJ noted the Nasdaq-100 and S&amp;P 500 futures advanced while Dow futures lagged, with the dollar touching a three-month low ahead of retail earnings and Fed minutes.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-16/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stock Futures Rise as Anthropic Fuels AI Optimism</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tesla stock climbs again as Morgan Stanley sends a blunt message</strong></summary>
+      <div class="deal-body">
+        <p>Tesla (TSLA) is climbing again, with Yahoo Finance flagging six catalysts that could push it higher. Yet Morgan Stanley sent what Yahoo called a blunt message to investors, a reminder the bounce lands with skepticism still priced in as the value-seeking consumer gets tested this week.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/tesla-stock-climbing-again-6-112045457.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Tesla Stock Is Climbing Again and These 6 Catalysts Could Push It Higher</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bill Ackman doubles down on his top stakes in Q2</strong></summary>
+      <div class="deal-body">
+        <p>Billionaire Bill Ackman doubled down on his highest-conviction holdings in the second quarter, Yahoo Finance reported. Separately, Ackman said Netflix won the streaming wars after he lost $400 million dumping the stock, a case study in the cost of exiting a compounder early.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-doubles-down-020300181.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Billionaire Bill Ackman Doubles Down on These Stocks in Q2</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Atlassian and Cloudflare defy the SaaSpocalypse</strong></summary>
+      <div class="deal-body">
+        <p>Atlassian (TEAM) and Cloudflare (NET) are pushing back against enterprise-tech fears that AI would gut software demand, Yahoo Finance reported. The pair are the counter-evidence to the SaaSpocalypse thesis, showing some software names still grow into the AI wave rather than getting cannibalized by it.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/saaspocalypse-defied-atlassian-cloudflare-push-101315374.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- SaaSpocalypse Defied: Atlassian and Cloudflare Push Back Against Enterprise Tech Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Home improvement's hangover could last as China slows again</strong></summary>
+      <div class="deal-body">
+        <p>The home-improvement slowdown may linger, WSJ reported ahead of Home Depot's results this week, as elevated rates keep big-ticket renovation demand soft. The note also flagged that China's economy slowed again, a double dose of demand worry into retail earnings week.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/home-improvements-hangover-could-last-90cb961d?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Home Improvement's Hangover Could Last</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>WuXi AppTec doubles as investors bet it is too big to ban</strong></summary>
+      <div class="deal-body">
+        <p>WuXi AppTec (2359.HK) has rallied 100% as investors bet the firm stays central to the global supply of obesity and cancer drugs, Bloomberg reported, even after the Pentagon designated it a Chinese military company. The GLP-1 chokehold thesis is overpowering the geopolitical headwind.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-16/wuxi-apptec-s-100-stock-rally-defies-geopolitical-headwinds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- 'Too Big to Ban' WuXi AppTec Gains 100% on GLP-1 Chokehold</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>First Gen slumps a record 19% after parent rejects KKR offer</strong></summary>
+      <div class="deal-body">
+        <p>Shares of Philippine renewable-energy firm First Gen closed with their biggest one-day drop since 2009 after its parent rejected KKR's offer to buy more shares and take it private, Bloomberg reported. A rare failed take-private that punished holders betting on a premium.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/first-gen-falls-by-record-19-after-parent-rejected-kkr-offer" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Philippines' First Gen Slumps After Parent Rejects KKR Offer</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> Anthropic's Q2 revenue surge lit the AI trade back up, with tech futures leading, the dollar at a three-month low, and Goldman calling a September hike very unlikely. But the internals are uneven: the ECB warned the blistering rally invites a correction, an AI stock god fund blew up on two names, and WSJ flagged that home-improvement demand and China both keep slowing. The next test is retail earnings from Target, Walmart and Home Depot and Wednesday's Fed minutes, which will show whether the value-seeking consumer that RBC's Calvasina says is cracking can keep carrying the tape while the long end stays pinned by AI debt supply.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Concentrated AI Bets Like the 'AI Stock God' Fund Blow Up So Violently</summary>
+      <p>MarketWatch reported this week that an investor dubbed the AI stock god ran a fund with 56% of its money in just two stocks, and more than three quarters in five names, all effectively one big bet on AI, right before a sector correction blew it up. That pattern is worth dissecting, because it shows how concentration turns a good thesis into a fragile portfolio, and the mechanism applies well beyond one fund. Start with why concentration is seductive. If you have genuine conviction that AI is the defining trade of the decade, spreading your capital across fifty names dilutes your best ideas. Putting most of it into the two or three companies you believe in hardest maximizes your upside if you are right, and in a rising market that looks like genius as the winners compound faster than any diversified benchmark. The AI stock god earned the nickname precisely because concentration paid off spectacularly on the way up. Here is the trap. Concentration does not just amplify returns, it amplifies the variance of returns in both directions, and the math is asymmetric. A position that is 30% of your book only needs to fall by a third to knock 10% off the whole fund, and when several oversized positions are really the same bet, they do not diversify each other at all. They move together, because they respond to the same catalyst. When AI sentiment turned, all five names in that fund fell at once, so the losses stacked rather than offsetting, and a portfolio that looked diversified across tickers was actually one undiversified factor bet. The second layer is leverage and liquidity. Concentrated funds chasing momentum often use leverage or crowded positions, and when the drawdown hits, they may be forced to sell into a falling market to meet margin or redemptions. That selling pushes prices lower, which triggers more selling, a reflexive loop that turns an orderly correction into a blowup. The bitcoin futures market CoinDesk described this week, with open interest far outpacing volume, is the same crowded-club, tiny-exit problem in a different asset. The practical lesson connects straight to the day's news. Steve Eisman's warning that the AI boom leans on just OpenAI and Anthropic, and the ECB's warning that a blistering rally invites a correction, are both really warnings about concentration risk at the market level, not just the fund level. When an index gets top-heavy in a handful of correlated AI names, the whole market inherits the same fragility that sank the AI stock god. BlackRock's Helen Jewell made the constructive point: diversification into UK equities, European banks and health care is what lets a portfolio ride out the volatility rather than get carried out by it. The takeaway is not that concentration is always wrong, but that position sizing determines survival. A thesis can be completely correct and still ruin you if you size it so large that a normal drawdown becomes a permanent loss.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/investor-dubbed-ai-stock-god-had-56-of-his-funds-in-these-two-stocks-before-it-blew-up-07472f46?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Investor Dubbed 'AI Stock God' Had 56% of His Funds in These Two Stocks Before It Blew Up</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-17/diversification-is-key-to-riding-out-ai-trade-blackrock-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Diversification Is Key to Riding Out AI Trade: BlackRock</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nvidia calls on Wall Street to finance the AI chip boom</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) is getting creative to help customers pay for its semiconductors, Bloomberg reported, enlisting Wall Street to finance the AI chip boom as the buildout's capital needs outrun cash flow. It is a sign vendor and structured financing are becoming central to keeping the compute cycle funded.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-17/nvidia-calls-on-wall-street-to-finance-ai-chip-boom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Calls on Wall Street to Finance AI Chip Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's open-weight models force Nvidia and Meta to rethink strategy</strong></summary>
+      <div class="deal-body">
+        <p>China's open-weight AI models are prompting US players to reconsider their strategy, Bloomberg reported, with recent releases from Nvidia and Meta a tacit admission that the US moat is not holding. FT separately called open-source AI the next China shock, spreading Chinese standards and governance to adopters.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-17/china-s-open-weight-ai-models-are-prompting-us-players-to-reconsider-their-strategy" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Open-Weight AI Models Are Prompting US Players to Reconsider Their Strategy</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stripe clinches a $7 billion deal to buy OpenRouter</strong></summary>
+      <div class="deal-body">
+        <p>Stripe has finalized an agreement to acquire OpenRouter for more than $7 billion, Bloomberg reported, buying a startup that helps companies switch between AI models. Stratechery framed it as an implicit bet on a future market of models and a shot at aggregation.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-16/stripe-nears-deal-to-buy-ai-firm-openrouter-for-over-7-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stripe Clinches Over $7 Billion Deal to Buy AI Firm OpenRouter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alphabet hires banks for a debut Aussie-dollar bond as tech binges on debt</strong></summary>
+      <div class="deal-body">
+        <p>Alphabet (GOOGL) is looking to raise about A$5 billion in its first Australian bond offering, Bloomberg reported, as US tech firms binge on debt to fuel AI spending. The debut deal is another marker that the buildout is increasingly a credit story spread across global funding markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/alphabet-hires-banks-for-inaugural-aussie-dollar-bond-sale" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet Hires Banks for Inaugural Aussie Dollar Bond Sale</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alibaba sells its gaming arm for $1.5 billion to fund the AI pivot</strong></summary>
+      <div class="deal-body">
+        <p>Alibaba (BABA) is selling its gaming arm in a deal worth at least $1.5 billion, Bloomberg reported, redirecting capital into its pivot to AI. It underscores how even the Chinese incumbents are shedding non-core units to concentrate spending on the compute race.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/alibaba-to-sell-gaming-arm-for-1-5-billion-in-boost-to-ai-pivot" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba to Sell Gaming Arm for $1.5 Billion in Boost to AI Pivot</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CXMT's rise to China's most valuable firm heralds a new tech era</strong></summary>
+      <div class="deal-body">
+        <p>Memory-chip maker CXMT's ascent to the top of Chinese markets heralds a shift away from private-sector giants toward hardware companies aligned with Beijing's strategic ambitions, Bloomberg reported. A signal the state-backed hardware buildout is now the center of gravity in China tech.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/cxmt-s-rise-to-china-s-most-valuable-firm-heralds-new-tech-era" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CXMT's Rise to Most Valuable China Firm Heralds New Tech Era</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman flags 20 stocks primed for the AI productivity payoff</strong></summary>
+      <div class="deal-body">
+        <p>The AI productivity payoff is coming, MarketWatch reported, and Goldman Sachs named 20 stocks primed to capture the gains as adoption spreads. The pitch is that investors have chased infrastructure plays so far and are underweight the productivity beneficiaries poised to benefit next.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-ai-productivity-payoff-is-coming-here-are-20-stocks-primed-to-capture-the-gains-as-adoption-spreads-443842ac?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The AI Productivity Payoff Is Coming. Here Are 20 Stocks Primed to Capture the Gains</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Monday August 17, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is escalating demand and revenue, with Anthropic's Q2 topping $11.5 billion, Nvidia enlisting Wall Street to fund the chip boom, and Alphabet debuting a bond to bankroll capex. The counter-signal is the funding and the moat, with the ECB warning a correction is likely, an AI stock god fund blowing up on two names, and China's open-weight models forcing Nvidia and Meta to rethink strategy. WSJ's argument that the picks-and-shovels winners cash in either way is the reminder that infrastructure demand can hold even as the model economics get squeezed. The frame to hold is that revenue keeps confirming, while concentration and a cracking moat are what re-price the trade if confidence turns.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Goldman says a September Fed hike is very unlikely</strong></summary>
+      <div class="deal-body">
+        <p>A September rate increase is very unlikely, Goldman Sachs said after a run of softer US data, CoinDesk reported, calling it good news for risk assets. Bloomberg's morning brief said the bank sees markets as too hawkish on the odds the Fed hikes at all.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/17/september-fed-interest-rate-increase-is-very-unlikely-goldman-sachs-says" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- September Fed Interest-Rate Increase Is 'Very Unlikely,' Goldman Sachs Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dollar slides to a three-month low as tightening bets fade</strong></summary>
+      <div class="deal-body">
+        <p>The dollar fell to its weakest level in three months as investors scaled back expectations for further Fed rate increases following softer data, Bloomberg reported. Bloomberg separately noted emerging-market currencies rose to a fresh record on the same fading-hike story.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/dollar-extends-slide-as-traders-scale-back-fed-tightening-bets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dollar Extends Slide as Traders Scale Back Fed Tightening Bets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI debt sales are keeping US Treasury yields high</strong></summary>
+      <div class="deal-body">
+        <p>Corporate AI-related debt offerings have reached almost $1.5 trillion year to date, up 36% from a year earlier, Bloomberg reported, and are keeping Treasury yields elevated. A companion piece said AI is driving up yields through the old crowding-out channel because it just touches everything.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/ai-is-driving-up-treasury-yields-it-just-touches-everything" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Is Driving Up Treasury Yields: 'It Just Touches Everything'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bonds face a bigger threat than the Fed as global rates climb</strong></summary>
+      <div class="deal-body">
+        <p>As investors debate whether the Fed hikes, market expectations for tightening are building around the world and spelling trouble for bonds, Bloomberg reported. A former Japanese currency chief argued the BOJ should raise rates at every meeting toward 2% to narrow the gap with the US.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-16/bonds-face-a-bigger-threat-than-the-fed-as-global-rates-climb" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bonds Face Bigger Threat Than the Fed as Global Rates Climb</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's economic woes mount with a disappointing start to the half</strong></summary>
+      <div class="deal-body">
+        <p>China's economy got off to a sluggish start in the second half, Bloomberg reported, with industrial output, consumption and investment all worse than forecast, reviving pressure on policymakers to add support. It complicates the AI-hardware bright spot led by names like CXMT.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/china-s-economy-extends-slowdown-by-weakening-across-the-board" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Economic Woes Mount With Disappointing Start to Half</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Japan's growth slows, complicating the BOJ's rate-hike messaging</strong></summary>
+      <div class="deal-body">
+        <p>Japan's economic growth unexpectedly slowed in the three months through June, Bloomberg reported, a result that may complicate the Bank of Japan's communications as it weighs its next rate increase. Bloomberg noted the Mideast conflict is clouding the outlook further.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-16/japan-s-economic-growth-slows-as-mideast-conflict-clouds-outlook" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Japan's Slower Growth Complicates BOJ's Messaging on Rate Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>RBC's Lori Calvasina sees consumer resilience starting to crack</strong></summary>
+      <div class="deal-body">
+        <p>RBC head of US equity strategy Lori Calvasina told Bloomberg US consumer resilience is starting to show cracks ahead of this week's retail earnings, though she still sees no impediments to the buy America trade. A nuanced read into Target, Walmart and Home Depot.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-17/us-consumer-resilience-starting-to-show-cracks-rbc-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Consumer Resilience Starting to Show Cracks, Says RBC's Calvasina</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 17, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The near-term debate leans dovish. The easing tug is Goldman calling a September hike very unlikely, the dollar sliding to a three-month low, emerging-market currencies at a record, and China's slowdown capping global demand. The tightening tug sits at the long end, with AI debt sales near $1.5 trillion crowding out Treasuries, Bloomberg warning bonds face a bigger threat than the Fed as global rates climb, and Japan's BOJ pressure building. The tell is whether the front-end relief and the record risk appetite can outrun a long end pinned by a corporate borrowing binge into Wednesday's Fed minutes.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: How the AI Borrowing Binge Is Crowding Out Treasuries and Keeping Yields High</summary>
+      <p>Bloomberg reported this week that AI-related corporate debt sales have reached almost $1.5 trillion year to date, up 36% from a year earlier, and that this borrowing is keeping US Treasury yields high through a mechanism economists call crowding out. That phrase gets used loosely, so it is worth walking through exactly how a wave of corporate bond issuance can lift the yield the government pays, because it reframes why rates can stay elevated even if the Fed holds. Start with the basic supply-and-demand of the bond market. At any moment there is a finite pool of savings looking to buy fixed-income assets, from pension funds and insurers to foreign central banks and money-market funds. Bonds compete for that pool, and the price of a bond moves inversely to its yield. When a lot of new bonds hit the market at once, sellers have to offer higher yields to attract enough buyers to absorb the extra supply, the same way a store cuts prices to clear excess inventory. More issuance, all else equal, means higher yields. Now add the AI layer. Companies like Nvidia's customers, Alphabet and the hyperscalers are issuing enormous amounts of debt to fund data centers, chips and power, and Bloomberg's own reporting shows Nvidia is even enlisting Wall Street to structure financing so customers can pay for its semiconductors. That is $1.5 trillion of new corporate paper competing for the same savings pool that also has to absorb the government's own heavy Treasury issuance. Here is the crowding-out link. When corporate demand for capital surges, it pushes up the general level of interest rates because borrowers are collectively bidding for a limited supply of savings. Treasuries are not immune; they have to offer competitive yields to keep attracting buyers who now have juicy AI-related corporate bonds as an alternative. So the government's borrowing cost rises not because the Fed hiked, but because private borrowing is soaking up the lending capacity. That is why Bloomberg says AI touches everything: the capex boom reaches all the way into the risk-free rate. The important insight is that this decouples long-end yields from Fed policy. The market can be convinced the Fed will hold or even cut, as Goldman now expects, and yet the 10- and 30-year can stay stubbornly high because the pressure is coming from supply, not from the policy rate. That is exactly the tension in today's tape: a dovish front end and fading hike bets sitting alongside a long end that will not fall. The practical lesson is to separate the two drivers when you read rates. If yields are high because the Fed is fighting inflation, a dovish pivot brings them down. If yields are high because a private borrowing binge is crowding out the market, then even a Fed pause leaves them elevated, and the only real relief comes from the capex wave slowing or the savings pool growing. For equity investors, the sting is that the same AI boom lifting stocks is helping keep the discount rate high, which is a quiet headwind hiding inside the bull case.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-17/ai-debt-sales-are-keeping-us-treasury-yields-high" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Debt Sales Are Keeping US Treasury Yields High</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/ai-is-driving-up-treasury-yields-it-just-touches-everything" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Is Driving Up Treasury Yields: 'It Just Touches Everything'</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Anthropic's revenue surge fueled a fresh AI rally and pushed the dollar to a three-month low as Goldman called a September hike very unlikely, while the US-Iran truce lapsed and a $1.5 trillion AI debt wave kept the long end pinned; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/18</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin tracks the equity bounce but a $390 million ETF outflow week keeps bulls on the back foot</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin tracked a bounce in equities, CoinDesk reported, but a $390 million ETF outflow streak and roughly 10% odds on landmark crypto legislation left the market searching for direction. The price hovered near $63,500 to $64,000 even as flows quietly turned negative.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/17/bitcoin-tracks-equity-bounce-but-usd390-million-etf-outflow-week-keeps-bulls-on-back-foot" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Tracks Equity Bounce, but $390 Million ETF Outflow Week Keeps Bulls on Back Foot</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lapsing US-Iran ceasefire revives the oil threat that has capped crypto</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin sat flat near $63,500 as shipping through the Strait of Hormuz ground to a near halt with the 60-day truce lapsing and no deal, CoinDesk reported, reviving the oil-price risk that has capped crypto all summer. The macro overhang is back just as ETF flows turn.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/17/live-updates-bitcoin-flat-near-usd63-500-but-the-flows-have-quietly-turned" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Updates: Bitcoin Flat Near $63,500; Lapsing US-Iran Ceasefire Revives the Oil Threat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Strategy and Metaplanet are betting on math, not price</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin's biggest corporate holders, Strategy and Metaplanet, are betting on the math of their accumulation models rather than near-term price, CoinDesk reported. The framing recasts the treasury names as leveraged accumulation vehicles rather than pure price plays as they nurse drawdowns.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/08/17/bitcoin-s-biggest-holders-strategy-and-metaplanet-are-betting-on-math-not-price" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin's Biggest Holders, Strategy and Metaplanet, Are Betting on Math, Not Price</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin futures look like a crowded club with a tiny exit</strong></summary>
+      <div class="deal-body">
+        <p>The bitcoin futures market may face a dangerous liquidity mismatch as open interest outpaces trading volume by a wide margin, CoinDesk reported. It is the classic crowded-club, tiny-exit problem that can turn an orderly pullback into a violent unwind if positioning reverses.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/17/the-bitcoin-futures-market-has-a-crowded-club-tiny-exit-problem-and-it-could-cause-pain" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- The Bitcoin Futures Market Looks Like a Crowded Club With a Tiny Exit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A Trump-linked crypto venture wins a preliminary bank-charter nod</strong></summary>
+      <div class="deal-body">
+        <p>A Trump-linked crypto venture received preliminary approval for a bank charter, Yahoo Finance reported, a step that would give a crypto-adjacent firm direct access to the banking system. It lands as CoinDesk noted the SEC's stalled Reg Crypto keeps the broader rulebook in limbo.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/crypto/articles/trump-linked-crypto-venture-gets-111854165.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Trump-Linked Crypto Venture Gets Preliminary Nod for Bank Charter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitpanda fined in Austria's first published MiCA enforcement case</strong></summary>
+      <div class="deal-body">
+        <p>Bitpanda was fined 70,000 euros in Austria's first published MiCA enforcement action, CoinDesk reported, for failing to file a mandatory white paper on time and omitting disclosures in marketing. An early marker of how Europe's new crypto rulebook will be policed.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/17/bitpanda-fined-eur70-000-in-austria-s-first-published-mica-enforcement-case" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitpanda Fined €70,000 in Austria's First Published MiCA Enforcement Case</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Stripe -- $7 Billion Acquisition of OpenRouter</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Stripe finalized an agreement to buy OpenRouter, a startup that helps companies switch between AI models, for more than $7 billion, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> Stratechery framed the deal as an implicit bet on a future market of many models and a chance for Stripe to become an aggregation layer over AI inference.</p>
+        <p><strong>What it means:</strong> A payments giant buying an AI-routing platform signals the value in the AI stack is shifting toward the orchestration layer, not just the models themselves.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/stripe-acquiring-openrouter-aggregating-ai-flipping-the-business-model/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- Stripe Acquiring OpenRouter, Aggregating AI?, Flipping the Business Model</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alphabet -- A$5 Billion Debut Aussie-Dollar Bond</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Alphabet hired banks to raise about A$5 billion in its first Australian bond offering, Bloomberg reported, as US tech firms binge on debt to fund AI spending.</p>
+        <p><strong>Outlook:</strong> Tapping a new currency market widens Alphabet's funding base for capex and diversifies the investor pool for the AI buildout beyond dollar and euro debt.</p>
+        <p><strong>What it means:</strong> The AI capex story keeps deepening as a global credit story, with hyperscalers reaching into every available funding market to bankroll compute.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/alphabet-hires-banks-for-inaugural-aussie-dollar-bond-sale" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet Hires Banks for Inaugural Aussie Dollar Bond Sale</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alibaba -- $1.5 Billion Sale of Its Gaming Arm</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Alibaba is selling its gaming arm in a deal worth at least $1.5 billion to boost its pivot to AI, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The divestiture frees capital and management focus for AI investment as the Chinese incumbent races to keep pace with the compute buildout.</p>
+        <p><strong>What it means:</strong> Even China's e-commerce leader is shedding non-core assets to concentrate spending on AI, a sign the capex race is reshaping corporate portfolios globally.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/alibaba-to-sell-gaming-arm-for-1-5-billion-in-boost-to-ai-pivot" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba to Sell Gaming Arm for $1.5 Billion in Boost to AI Pivot</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>PayPal -- In Sale Talks With a Stripe and Advent Consortium</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> PayPal is reportedly in sale talks with a consortium including Stripe and Advent, Yahoo Finance reported, a potential blockbuster in payments consolidation.</p>
+        <p><strong>Outlook:</strong> A deal would reshape the payments landscape and hand Stripe scale in consumer wallets, though regulatory scrutiny of such a tie-up would be intense.</p>
+        <p><strong>What it means:</strong> The fintech sector is entering a consolidation phase, with legacy platforms becoming targets as AI-native and scaled players hunt for distribution.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/paypal-reportedly-sale-talks-consortium-113114294.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- PayPal Reportedly in Sale Talks With Consortium Including Stripe and Advent</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ascend Sport -- Up to $740 Million Reverse Merger</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Switzerland's Ascend Sport Technology is exploring a reverse merger with a listed shell that could value it at 500 million to 600 million Swiss francs, or up to $740 million, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> A reverse merger would give the firm a public listing without a traditional IPO, a faster route to market amid a busy European deal calendar.</p>
+        <p><strong>What it means:</strong> Reverse mergers are back as an alternative listing path for mid-cap European names looking to access public capital quickly.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/ascend-sport-said-to-mull-listing-in-up-to-740-million-merger" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ascend Sport Said to Mull Listing in Up to $740 Million Merger</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Robotera -- Hong Kong IPO Plans as Robot Tech Booms</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Chinese robotics startup Robotera, backed by HSG and CDH Investments, is planning a Hong Kong IPO, Bloomberg reported, as a wave of robotics firms look to go public.</p>
+        <p><strong>Outlook:</strong> The listing would ride the humanoid and robotics enthusiasm, giving investors a fresh pure-play as the decade-of-the-robot thesis gains traction.</p>
+        <p><strong>What it means:</strong> The AI-hardware IPO pipeline is broadening from chips into robotics, with Hong Kong positioning itself as the venue for Chinese hardware listings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/hsg-backed-robotera-is-said-to-mull-hk-ipo-as-robot-tech-booms" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- HSG-Backed Robotera Is Said to Mull HK IPO as Robot Tech Booms</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Goldman Sachs -- a September hike is very unlikely, markets are too hawkish</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs says a September rate increase is very unlikely after softer US data, CoinDesk reported, and Bloomberg said the bank views markets as too hawkish on the odds the Fed hikes at all. A named voice for the dovish front-end camp.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/17/september-fed-interest-rate-increase-is-very-unlikely-goldman-sachs-says" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- September Fed Interest-Rate Increase Is 'Very Unlikely,' Goldman Sachs Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The ECB -- a blistering AI rally makes a correction likely</strong></summary>
+      <div class="deal-body">
+        <p>Researchers at the European Central Bank warned a stock-market correction is likely after a blistering rally in technology and could carry severe consequences for the euro zone, Bloomberg reported. A named institutional skeptic flagging concentration risk at the market level.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/ai-rally-set-to-trigger-stock-market-correction-ecb-blog-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Rally Set to Trigger Stock-Market Correction, ECB Blog Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>RBC's Lori Calvasina -- cracks in the consumer, but no impediment to buy America</strong></summary>
+      <div class="deal-body">
+        <p>RBC head of US equity strategy Lori Calvasina told Bloomberg US consumer resilience is starting to show cracks ahead of retail earnings, yet she sees no impediments to the buy America trade. A nuanced read balancing consumer risk against the equity case.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-17/us-consumer-resilience-starting-to-show-cracks-rbc-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Consumer Resilience Starting to Show Cracks, Says RBC's Calvasina</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock's Helen Jewell -- diversify to ride out the AI trade</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock CIO of fundamental equities international Helen Jewell told Bloomberg that portfolio diversification is key to riding out the volatile AI trade, pointing to UK equities, European banks and health care rather than a single-sector bet. A named voice against concentration.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-17/diversification-is-key-to-riding-out-ai-trade-blackrock-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Diversification Is Key to Riding Out AI Trade: BlackRock</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alger's Ankur Crawford -- read the AI and compute investment cycle</strong></summary>
+      <div class="deal-body">
+        <p>Alger EVP and portfolio manager Ankur Crawford told Bloomberg how she builds strategy around understanding AI and compute investment cycles, and the power of learning from mistakes. A named bull who frames the buildout as a multi-year cycle to underwrite.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-17/ankur-crawford-on-the-power-of-mistakes-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ankur Crawford on the Power of Mistakes</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Anthropic's Revenue Surge Fuels a Fresh AI Rally, Goldman Calls a September Hike Very Unlikely, and the ECB Warns the Blistering Tape Invites a Correction</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (revenue and easy policy carry the tape):</strong> Anthropic's Q2 topped $11.5 billion, Nvidia is enlisting Wall Street to fund the chip boom, and Goldman calls a September hike very unlikely with the dollar at a three-month low. Alger's Ankur Crawford backs the compute cycle, RBC's Lori Calvasina still sees no impediment to buy America, and Goldman flagged 20 productivity-payoff names as adoption spreads beyond infrastructure.</div>
+        <div class="bear"><strong>Bear (concentration and supply are the tell):</strong> The ECB warned a blistering rally invites a correction with euro-zone spillover, and MarketWatch's AI stock god fund blew up on two names. AI debt sales near $1.5 trillion are crowding out Treasuries, Calvasina sees cracks in the consumer, and China's open-weight models are eroding the US moat. BlackRock's Helen Jewell says diversify, because a crowded trade re-prices fast.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Anthropic $11.5B fuels AI rally; Tesla climbs on 6 catalysts; Stripe buys OpenRouter; WuXi doubles; dollar at three-month low</td><td>Bullish</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Retail earnings week (Target, Walmart, Home Depot); Goldman productivity 20 stocks; consumer cracks; Bill Ackman doubles down</td><td>Mixed</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>AI debt near $1.5T crowding out Treasuries; bonds face bigger threat than Fed; Fed minutes Wednesday; China slows again</td><td>Cautious</td><td>~13,500 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>ECB correction warning; AI stock god fund blew up on two names; China open-weight models erode US moat; private credit strain</td><td>Bearish</td><td>~9,500 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC near $63,500; $390M ETF outflow week; Hormuz halt revives oil threat; futures crowded club; Trump crypto bank charter</td><td>Bearish</td><td>~10,500 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood split between an AI-led melt-up and a wary rates-and-consumer tape. r/wallstreetbets leaned bullish on Anthropic's $11.5 billion, Tesla's bounce and the Stripe-OpenRouter deal, taking the dollar's slide as a green light. r/stocks stayed mixed heading into Target, Walmart and Home Depot earnings with consumer cracks in view. r/investing kept its guard up over the $1.5 trillion AI debt wave crowding out Treasuries and Wednesday's Fed minutes. r/SecurityAnalysis leaned bearish on the ECB correction warning and the AI stock god blowup. r/CryptoCurrency turned bearish as bitcoin sat near $63,500 with a $390 million ETF outflow week and the Hormuz oil threat back. The swing factor is whether retail earnings validate the consumer or confirm the cracks.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: How Anthropic's Q2 Revenue Surge Past $11.5 Billion Fuels the AI Bull Case, Why Fast Revenue Growth Does Not Automatically Justify the Valuations Around It, and Where the Gap Between Top-Line Momentum and Profitability Quietly Raises the Risk of a Correction Like the One the ECB Warned About</h2>
+    <p>Bloomberg reported that Anthropic's Q2 revenue surged to over $11.5 billion, and that the number lifted global equities because it bolstered the view that massive AI spending will be sustained. That single figure is doing a lot of work in the bull case, so it is worth pulling apart what a revenue run rate actually proves and what it does not, because the same day brought an ECB warning that a blistering rally makes a correction likely. Start with why the number is genuinely bullish. Revenue is the cleanest signal that customers will pay for a product, and rapid revenue growth at an AI lab like Anthropic validates the entire capex chain beneath it. If the lab is selling that much, then the chips, data centers and power that Nvidia, Alphabet and others are financing have real demand pulling them through, not just speculative buildout. That is why the market treats a revenue surge as confirmation the spending is sustainable, and why the picks-and-shovels names rallied alongside it. Here is the distinction that matters. Revenue is not profit, and a run rate is not a valuation. Fast top-line growth tells you demand exists, but it says nothing on its own about how much it costs to generate that revenue. AI labs spend enormous sums on compute, talent and training runs, and if the cost of serving each customer rises alongside revenue, the business can grow its top line for years without ever throwing off free cash flow. The US-China price war, where cheaper open-weight models pressure the labs to cut prices, is exactly the force that can keep revenue climbing while margins stay thin or negative. So a $11.5 billion run rate is a demand signal, not a profitability signal. Now connect that to valuation, which is where correction risk lives. A stock or a private mark is worth the present value of future cash flows, not future revenue. When investors capitalize a fast-growing revenue line at a rich multiple, they are implicitly assuming that revenue will eventually convert into fat profits at scale. If that conversion is slower or smaller than assumed, because competition compresses pricing or compute costs stay high, the future cash flows shrink and the valuation has to come down even if revenue keeps growing. That is the gap the ECB is warning about: prices that embed a smooth path from revenue growth to durable profit, in a rally so concentrated that a disappointment in a few anchor names can reprice the whole index. The practical lesson is to read a revenue milestone as necessary but not sufficient. Anthropic's surge is real evidence that AI demand is not a mirage, and it deserves the weight the bulls give it. But the durable question is unit economics: what does it cost to serve that revenue, and how fast can price competition erode it. When you see a headline run rate, the follow-up to hunt for is gross margin, the trajectory of compute costs, and whether pricing power is holding or slipping. A business growing revenue while margins expand is compounding value; one growing revenue while margins compress is buying its growth, and the market eventually charges for the difference.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-16/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stock Futures Rise as Anthropic Fuels AI Optimism</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/ai-rally-set-to-trigger-stock-market-correction-ecb-blog-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Rally Set to Trigger Stock-Market Correction, ECB Blog Says</a></p>
+    <p class="deal-source"><a href="https://www.ft.com/content/2f705a5a-2c4e-4bca-b08a-ed9372ef3b2e" target="_blank" rel="noopener noreferrer">Source: Financial Times -- The Next China Shock Will Come From Open-Source AI</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Fed minutes, Wednesday.</strong> With Goldman calling a September hike very unlikely and markets scaling back tightening bets, the July FOMC minutes are the week's key catalyst for whether the dovish front-end read holds or the deficit-and-supply hawks get fresh cover.</li>
+      <li><strong>The long end versus AI debt supply.</strong> After AI-related issuance hit almost $1.5 trillion year to date, watch whether the crowding-out pressure keeps yields elevated even as the dollar slides and hike bets fade.</li>
+      <li><strong>Global growth cross-currents.</strong> China's economy weakened across the board to start the half and Japan's growth slowed; watch whether the softening tilts central banks dovish or feeds the risk-off case the ECB is flagging.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Target, Walmart and Home Depot.</strong> The retail bellwethers report this week; watch whether the value-seeking shopper shows up or confirms the cracks RBC's Lori Calvasina sees, with home-improvement demand already a WSJ worry.</li>
+      <li><strong>AI-hardware and software read-through.</strong> After Anthropic's $11.5 billion print, watch memory and chip names plus software bellwethers like Atlassian and Cloudflare for whether the SaaSpocalypse fears keep fading.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-buildout financing.</strong> After Alphabet's debut Aussie-dollar bond and Nvidia enlisting Wall Street to fund chip purchases, watch whether the tech debt binge keeps widening and how the Stripe-OpenRouter and PayPal talks develop.</li>
+      <li><strong>Robotics and reverse-merger pipeline.</strong> Watch Robotera's planned Hong Kong IPO and Ascend Sport's reverse merger for whether the robotics and alternative-listing wave keeps building.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Hormuz and the lapsed truce.</strong> With the 60-day US-Iran truce expired and shipping near a halt, watch whether Kushner's Gaza peace push gains traction or Trump's economic isolation plan for Iran escalates and keeps the oil premium bid.</li>
+      <li><strong>Lebanon and the wider Mideast.</strong> After fresh Israel-Hezbollah fighting flared, watch the conflict spread and any vessel attacks for renewed inflation and risk-off pressure into a light data week.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Aug 17, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-17 07:20 ET); Bloomberg Technology (19 fresh, newest 2026-08-17 07:02 ET); Bloomberg Economics (13 fresh, newest 2026-08-17 07:00 ET); CNBC Top News (2 fresh, newest 2026-08-17 07:00 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-17 07:15 ET); WSJ Markets (11 fresh, newest 2026-08-17 07:25 ET); Yahoo Finance (19 fresh, newest 2026-08-17 07:31 ET); FT Home (9 fresh, newest 2026-08-17 04:26 ET); CoinDesk (16 fresh, newest 2026-08-17 07:28 ET); Stratechery (1 fresh, newest 2026-08-17 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): CNBC Finance (25 fetched, 0 in last 36h); CNBC Economy (25 fetched, 0 in last 36h); Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What fueled Monday's rally in stock futures?</strong></p>
+      <span class="opt" data-opt="A">A. A surprise Fed rate cut over the weekend</span>
+      <span class="opt" data-opt="B">B. Anthropic's revenue surged past $11.5 billion</span>
+      <span class="opt" data-opt="C">C. Oil prices collapsed on an Iran ceasefire deal</span>
+      <span class="opt" data-opt="D">D. China reported much stronger growth data</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg reported technology stocks lifted equities after Anthropic's Q2 revenue surged past $11.5 billion. There was no weekend rate cut, oil actually edged higher as the truce lapsed, and China's data disappointed.</div>
+    </div>
+    <div class="q" data-correct="C">
+      <p><strong>2. What did Goldman Sachs say about the September Fed meeting?</strong></p>
+      <span class="opt" data-opt="A">A. A rate hike is now fully priced in</span>
+      <span class="opt" data-opt="B">B. The Fed will likely cut rates by half a point</span>
+      <span class="opt" data-opt="C">C. A rate increase looks very unlikely</span>
+      <span class="opt" data-opt="D">D. Officials will pause quantitative tightening</span>
+      <div class="feedback"><strong>C is correct.</strong> CoinDesk reported Goldman sees a September hike as very unlikely after softer data, and Bloomberg said the bank views markets as too hawkish. Goldman did not call a hike priced in, forecast a cut, or flag a QT pause.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why are AI-related debt sales pushing Treasury yields higher?</strong></p>
+      <span class="opt" data-opt="A">A. Heavy corporate borrowing crowds out other issuers</span>
+      <span class="opt" data-opt="B">B. The Fed is selling its bond holdings to fund AI</span>
+      <span class="opt" data-opt="C">C. Foreign buyers stopped purchasing US debt entirely</span>
+      <span class="opt" data-opt="D">D. AI companies are defaulting on existing bonds</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported AI issuance near $1.5 trillion is crowding out Treasuries, forcing higher yields to attract buyers. It is not Fed selling, a foreign buyer boycott, or defaults driving the move.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Goldman calls a September Fed hike very unlikely and the dollar slides to a three-month low as fading tightening bets lift emerging currencies to a record, but a $1.5 trillion AI debt wave is crowding out Treasuries, Bloomberg says bonds face a bigger threat than the Fed, and China's slowdown deepens.",
+    "sources": [
+      { "name": "CoinDesk", "lean": "bull", "url": "https://www.coindesk.com/markets/2026/08/17/september-fed-interest-rate-increase-is-very-unlikely-goldman-sachs-says", "take": "Goldman says a September rate increase is very unlikely after softer data." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-17/dollar-extends-slide-as-traders-scale-back-fed-tightening-bets", "take": "The dollar slid to a three-month low as tightening bets faded." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-17/emerging-currencies-rise-to-record-high-as-fed-hike-bets-ease", "take": "Emerging-market currencies hit a fresh record on fading Fed hike bets." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-08-17/ai-debt-sales-are-keeping-us-treasury-yields-high", "take": "AI debt sales near $1.5 trillion are crowding out Treasuries and keeping yields high." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-16/bonds-face-a-bigger-threat-than-the-fed-as-global-rates-climb", "take": "Bonds face a bigger threat than the Fed as global rates climb." }
+    ]
+  },
+  "iran": {
+    "diverge": "The US-Iran 60-day truce lapses with no deal as Hormuz shipping grinds to a near halt and fresh fighting flares in Lebanon, reviving the oil threat, but Kushner pushes a Gaza peace plan, Israel's economy rebounds, and Trump readies an economic isolation plan for Iran.",
+    "sources": [
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/eea1da3e-1c1c-4957-ad9d-f0372b2694f0?syn-25a6b1a6=1", "take": "Kushner will meet Netanyahu after talks with a Hamas leader to push a peace plan." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-16/israel-economy-rebounds-after-contraction-sparked-by-iran-war", "take": "Israel's economy rebounded in the second quarter after its war-driven slump." },
+      { "name": "CoinDesk", "lean": "bear", "url": "https://www.coindesk.com/markets/2026/08/17/live-updates-bitcoin-flat-near-usd63-500-but-the-flows-have-quietly-turned", "take": "Hormuz shipping ground to a near halt as the truce lapsed, reviving the oil threat." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-16/latest-oil-market-news-and-analysis-for-june-17", "take": "Oil edged higher on fresh Lebanon fighting and attacks on vessels in the Strait." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-17/bloomberg-news-now-video", "take": "Trump readies an unprecedented economic isolation plan for Iran." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Anthropic's revenue surges past $11.5 billion in Q2 to fuel a fresh AI rally as Nvidia calls on Wall Street to finance the chip boom and Alger's Ankur Crawford backs the compute cycle, but the ECB warns the blistering rally will trigger a correction, an AI stock god fund blew up on two names, and China's open-weight models erode the US moat.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-16/stock-market-today-dow-s-p-live-updates", "take": "Anthropic's Q2 revenue topped $11.5 billion, fueling the view AI spending is sustained." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-08-17/nvidia-calls-on-wall-street-to-finance-ai-chip-boom", "take": "Nvidia is enlisting Wall Street to finance the AI chip boom." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/tech/ai/open-weight-ai-wont-crimp-demand-for-picks-and-shovels-523e6410?mod=rss_markets_main", "take": "Picks-and-shovels winners cash in whether open models proliferate or not." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-17/ai-rally-set-to-trigger-stock-market-correction-ecb-blog-says", "take": "The ECB warns a blistering rally makes a correction likely." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/investor-dubbed-ai-stock-god-had-56-of-his-funds-in-these-two-stocks-before-it-blew-up-07472f46?mod=mw_rss_topstories", "take": "An AI stock god fund held 56% in two stocks before it blew up." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["WuXi AppTec","Cloudflare","Atlassian","Tesla","First Gen","Ulvac"],
+    "values": [100.0, 8.0, 6.0, 3.0, -19.0, -15.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [26000, 15000, 13500, 9500, 10500],
+    "colors": ["bull","neutral","neutral","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Stripe/OpenRouter","Alphabet A$ Bond","Alibaba Gaming","Ascend Sport Merger","MCX India Platform"],
+    "values": [7.0, 3.6, 1.5, 0.74, 0.021]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
