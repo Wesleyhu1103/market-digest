@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Tue Aug 18, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-18</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Tuesday, August 18, 2026</h1>
+    <div class="meta">
+      <p>Retail earnings roll on with Home Depot already beating and Walmart and Target still due, while Wednesday brings the July Fed minutes and a White House crypto summit. The dominant thread is a global bond rout that drove 30-year Treasury yields to their highest since 2007 on inflation, deficit and AI-issuance fears. Oil holding above $90 as US-Iran peace prospects dim is draining risk appetite and dragging equities lower.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "A global bond rout pushed long-dated government yields to multidecade highs, with the US 30-year at its highest since 2007 and German and French borrowing costs at 15-year peaks, as inflation fears, spendthrift deficits and a wave of AI debt issuance collided with oil above $90 and dimming US-Iran peace prospects to drain risk appetite",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Bond Slump Sends Long-Term Debt Costs to Highest in Decades", "angle": "Frames long-maturity bonds as the epicenter of investor angst about inflation and the debt-laden AI boom.", "lean": -50, "pull": "Governments are paying the price as long-dated debt sits at the epicenter of investor angst."},
+        {"outlet": "WSJ", "headline": "U.S. Stock Futures Drop and the Global Bond Rout Deepens", "angle": "Ties the equity slide to rising borrowing costs and renewed Middle East tension.", "lean": -45, "pull": "Growing fiscal deficits, inflation fears and massive AI spending push up borrowing costs."},
+        {"outlet": "Financial Times", "headline": "Global Bond Sell-Off Deepens Amid Fears Over Inflation and AI Issuance", "angle": "Reads the rout as structural, driven by supply and inflation rather than a single central bank.", "lean": -40, "pull": "Long-term government borrowing costs hit multi-decade highs."},
+        {"outlet": "MarketWatch", "headline": "U.S. 30-Year Treasury Yield Hits Highest Level Since 2007", "angle": "Pins the move on inflation worry and heavier debt supply hitting fixed income.", "lean": -35, "pull": "Concerns about inflation and more debt supply is hitting the fixed income sector."},
+        {"outlet": "Bloomberg", "headline": "Energy Stocks Are the Best Portfolio Diversifier, Koesterich Says", "angle": "Argues bonds have stopped hedging but the expansion survives even $100 oil.", "lean": 15, "pull": "Bonds are not working as a hedge, but $100 oil would not derail the US expansion."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>A Global Bond Rout Drives 30-Year Treasury Yields to Their Highest Since 2007 and German and French Borrowing Costs to 15-Year Peaks on Inflation, Deficits and AI Issuance, With BlackRock's Koesterich Warning Bonds Have Stopped Hedging, but German Investor Optimism Is Rising, JPMorgan Says the US Still Leads, and UK Food Inflation Just Hit a Two-Year Low</h3>
+      </div>
+      <p>The long end broke this week and dragged everything with it. Bloomberg reported a bond slump sent long-term borrowing costs to their highest in decades, with 30-year US Treasury yields at the loftiest since 2007, French costs at 2008 levels and German peers back at 2011. MarketWatch pinned the US 30-year move on inflation worry plus heavier debt supply, and FT called it a global sell-off driven by fears over inflation and AI issuance. The structural read is that bond investors are demanding higher premiums to finance spendthrift governments and a debt-laden AI buildout all at once. Bloomberg's Ven Ram walked through why the forces are global, not domestic, and Yahoo's Chart of the Day said the bond market is now daring the Fed to hike. BlackRock's Russ Koesterich told Bloomberg bonds are not working as a hedge, with 30-year yields at their highest since 2007, and he now sees energy stocks as the best portfolio diversifier. There are calmer threads underneath. German investor optimism rose more than expected as the economy gains traction, JPMorgan's Madison Faller said the US remains core for portfolios on growth and margins, and UK food inflation slowed to its lowest since October 2024. But foreign holdings of Treasuries fell in June led by Japan, and Germany just sold 30-year paper at a 15-year high. The Fed debate barely matters when the term premium is doing the work.</p>
+      <p>The bull case is German investor optimism rising, JPMorgan's Faller backing the US as core, and UK food inflation cooling to a two-year low. The bear case is 30-year Treasury yields at their highest since 2007, a synchronized global rout, foreign buyers stepping back, and BlackRock's Koesterich warning bonds have stopped hedging equities.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the disinflation and growth pieces still hold):</strong> Bloomberg reported German investor optimism rose more than expected on signs the recovery is gaining traction, and UK food inflation slowed to its lowest since October 2024 as shoppers hunt for deals. JPMorgan's Madison Faller says the US remains core for portfolios on growth, resilience and fat margins. If inflation cools and the growth engine holds, the yield spike looks like an overshoot that mean-reverts once the supply is absorbed.</div>
+        <div class="bear"><strong>Bear (the term premium is doing the tightening):</strong> Bloomberg reported long-term borrowing costs hit their highest in decades, with the US 30-year at 2007 levels and Europe at multiyear peaks, on inflation, deficits and AI issuance. Foreign holdings of Treasuries fell led by Japan, Germany sold 30-year bonds at a 15-year high, and BlackRock's Russ Koesterich warns bonds have stopped hedging so he prefers energy. A Fed pause does nothing when the whole curve is repricing supply and inflation risk.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-18/bond-rout-sends-long-term-borrowing-costs-to-highest-in-decades" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Slump Sends Long-Term Debt Costs to Highest in Decades</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>US-Iran Peace Prospects Dim as Trump Signals No Interest in Extending the Truce, Pushing Brent Above $91 and Reinforcing Bets That Central Banks Stay Tight, With ECB's Lane Now Seeing Inflation Near 3% All Year on the Iran War, but BlackRock's Koesterich Says Even $100 Oil Won't Derail the US Expansion and Jet-Fuel Costs Are Easing</h3>
+      </div>
+      <p>The war premium is back at the center of the tape. Bloomberg's Opening Trade said little prospect of an imminent US-Iran breakthrough reinforced expectations that central banks will need to stay tight, and Bloomberg's Francine Lacqua flagged that Trump is not interested in a truce extension. WSJ reported oil prices and Treasury yields rose together on Middle East concerns, and CoinDesk noted Brent topped $91 as the conflict escalated. The macro spillover is already showing up: ECB Chief Economist Philip Lane told Bloomberg euro-zone inflation is likely to hold well above the 2% target near 3% for the rest of 2026 because of the Iran war, and Bloomberg reported Canadian inflation accelerated to 3% on a gasoline rebound tied to the Middle East. South African business confidence edged higher but the commerce chamber warned inflation from the Iran war is still a headwind, and Bloomberg's emerging-assets gauge snapped a four-day advance as higher oil and the bond rout combined to weigh on risk. There are offsets. BlackRock's Russ Koesterich said he does not see even $100 oil derailing the US expansion, and FT reported airlines are in a standoff over price cuts as jet-fuel costs ease. But the diplomatic path looks stalled, and the oil channel is feeding straight into the inflation and rates story.</p>
+      <p>The bull read is BlackRock's Koesterich arguing $100 oil won't derail the US, easing jet-fuel costs, and a still-open diplomatic door. The bear read is Trump signaling no truce extension, Brent above $91, ECB's Lane lifting his inflation call on the war, and Canadian inflation back at 3% on gasoline.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the oil shock is survivable):</strong> BlackRock's Russ Koesterich told Bloomberg he does not see $100 oil derailing the US expansion, and FT reported airlines are in a standoff over fares as jet-fuel costs ease, a sign the energy pass-through is already fading at the margin. If diplomacy re-engages and Brent settles back, the security premium that is pressuring bonds and equities unwinds and the inflation scare proves temporary.</div>
+        <div class="bear"><strong>Bear (the truce is dead and oil is feeding inflation):</strong> Bloomberg reported Trump is not interested in extending the truce, and WSJ said oil and yields rose together on Middle East concerns with Brent above $91. ECB's Philip Lane now sees euro-zone inflation near 3% all year on the Iran war, Canadian inflation reaccelerated to 3% on gasoline, and Bloomberg's emerging-assets rally stalled. Higher oil is reinforcing the case for tighter policy everywhere.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/investing/oil-prices-treasury-yields-rise-with-mideast-concerns-cecc3e36?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Oil Prices, Treasury Yields Rise With Mideast Concerns</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Anthropic's Annualized Revenue Tops $65 Billion Ahead of Its IPO, More Than Sevenfold Higher Than a Year Ago, and Nvidia Backs a New OpenAI Data Center to Keep the Compute Cycle Funded, but China's DeepSeek, Qwen and Moonshot Are Closing the Gap, Apple's Anti-AI Stance Turned From Asset to Baggage, European Chip Stocks Slid, and AI Debt Issuance Is Helping Drive the Bond Rout</h3>
+      </div>
+      <p>The AI demand signal keeps escalating even as the tape wobbles. Bloomberg reported Anthropic is on track for annualized revenue of more than $65 billion, up more than sevenfold from its pace late last year, ahead of a planned IPO, and Stratechery said the numbers continue to amaze as Nvidia backs another frontier-lab data center to keep the buildout financed. The capital story is deepening: Alphabet kicked off a debut Australian-dollar bond offering priced at a pickup over its dollar debt as AI spending soars. But the counter-signals piled up. Bloomberg detailed why China's DeepSeek, Qwen and Moonshot worry US rivals, cheaper and more adaptable models now nearly as proficient, and reported Baidu posted a fifth straight revenue drop as its AI lag widened. Xiaomi's profit dove more than 40% on a memory crunch, European chip stocks fell sharply, and Bloomberg said Apple's anti-AI positioning, which powered the stock in the first half, has flipped into stock-market baggage. Underneath it all, the same AI issuance funding the buildout is part of what FT and Bloomberg blame for the global bond rout. Demand is undeniable, but the moat, the funding cost and the concentration are all being tested at once. Pony AI's robotaxi revenue hit a record and jumped 69%, a reminder the real-world payoff is arriving in pieces.</p>
+      <p>The bulls point to Anthropic's $65 billion run rate, Nvidia backing another OpenAI data center, Alphabet tapping a new bond market, and Pony AI's record robotaxi revenue. The bears point to China's DeepSeek, Qwen and Moonshot closing the gap, Baidu's fifth straight revenue drop, Xiaomi's memory-driven profit dive, and AI debt helping fuel the bond rout.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (revenue and capital keep confirming):</strong> Bloomberg reported Anthropic's annualized revenue tops $65 billion ahead of its IPO, up sevenfold in a year, and Stratechery said Nvidia is backing another OpenAI data center to keep compute funded. Alphabet is opening a fresh currency market for its capex, and Pony AI's robotaxi revenue jumped 69% to a record. The demand pulling chips, power and data centers through is real and still accelerating.</div>
+        <div class="bear"><strong>Bear (the moat and the funding cost are cracking):</strong> Bloomberg detailed why China's DeepSeek, Qwen and Moonshot worry US rivals as cheaper models catch up, reported Baidu's fifth straight revenue drop, and Xiaomi's profit dive on a memory crunch. European chip stocks slid, Apple's anti-AI stance became stock-market baggage, and the same AI debt issuance is helping push long-dated yields to multidecade highs. The buildout is getting more expensive just as the moat narrows.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-17/anthropic-revenue-run-rate-surpasses-65-billion-ahead-of-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Anthropic's Annualized Revenue Tops $65 Billion Before IPO</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks fall as a bond selloff and rising oil sap risk appetite</strong></summary>
+      <div class="deal-body">
+        <p>Technology stocks drove declines in global equities as long-dated bond yields pushed further into multidecade highs and oil prices extended their climb, draining appetite for risky assets, Bloomberg reported. WSJ said US stocks slipped as a Middle East peace impasse offset the AI-share surge, with Nasdaq-100 futures leading the drop.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Fall as Bond Selloff Saps Risk Appetite</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Home Depot beats estimates and reaffirms guidance despite a frozen housing market</strong></summary>
+      <div class="deal-body">
+        <p>Home Depot (HD) beat Wall Street on the top and bottom lines, CNBC reported, with comparable sales up 1.7% and adjusted earnings ahead of expectations, and reaffirmed its guidance even amid what it called frozen housing-market conditions. A resilient print into a week dominated by rates and the consumer.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/18/home-depot-hd-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Home Depot Reaffirms Guidance Amid 'Frozen Housing Market Conditions'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apple's anti-AI position becomes stock-market baggage</strong></summary>
+      <div class="deal-body">
+        <p>Apple (AAPL) tore through the first half of the year precisely because it was seen as an anti-AI play as investors doubted the trade, Bloomberg reported, but sentiment has flipped and the shares are now struggling. FT separately said antitrust rulings are starting to bite into Apple's $100 billion services business.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/apple-s-anti-ai-position-suddenly-becomes-stock-market-baggage" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apple's Anti-AI Position Is Becoming Stock Market Baggage</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alibaba jumps 5% as Alipay launches a new merchant platform</strong></summary>
+      <div class="deal-body">
+        <p>Alibaba (BABA) rose the most in two weeks after the launch of a new Alipay ecommerce platform boosted optimism ahead of its June-quarter earnings this week, Bloomberg reported. A rare bright spot for China tech as Baidu and Xiaomi reported weaker numbers on the same day.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/alibaba-shares-jump-5-as-alipay-launches-new-merchant-platform" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba Shares Jump 5% as Alipay Launches New Merchant Platform</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>European chip stocks weaken as the AI trade cools</strong></summary>
+      <div class="deal-body">
+        <p>European chip stocks fell sharply in early trade with losses deepening through the session, WSJ reported, tracking Wall Street's declines as the bond rout and Middle East tension weighed on the AI complex. The move underlines how fast the semiconductor trade re-prices when yields spike.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/nikkei-falls-0-7-tracking-wall-streets-losses-4f0d7ddd?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- European Chip Stocks Weaken</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SpaceX draws fresh disclosures as Nvidia and Harvard reveal stakes</strong></summary>
+      <div class="deal-body">
+        <p>Intesa Sanpaolo disclosed a roughly $966 million SpaceX stake for the first time, Bloomberg reported, joining Nvidia and Harvard among revealed holders as SpaceX rose 4.5%. Yahoo Finance flagged a five-star analyst setting an alarming price target, a reminder the private-market darling now moves public portfolios.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/intesa-s-spacex-stake-worth-almost-1-billion-at-end-of-june" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Intesa's SpaceX Stake Worth Almost $1 Billion at End of June</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Paramount seeks a $1.88 billion bond to cover its WBD merger delay</strong></summary>
+      <div class="deal-body">
+        <p>Paramount agreed to post a $1.88 billion bond from state attorneys general to cover the costs of delaying its Warner Bros. Discovery acquisition to as late as June 2027 while the case heads to trial, CNBC reported. Prediction-market traders now put roughly one-in-four odds on the bid failing.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/17/paramount-bond-merger-delay-costs.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Paramount Seeks $1.88 Billion Bond From State AGs to Cover WBD Merger Delay</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape flipped from last week's AI melt-up to a rates-and-oil selloff, with 30-year Treasury yields at their highest since 2007, Brent above $91, and tech stocks leading global declines. Home Depot's beat and reaffirmed guidance offered a resilient-consumer counterweight, but Apple's flip from anti-AI asset to baggage and the slide in European chips show how quickly the AI trade re-prices when the discount rate jumps. The next tests are Walmart and Target earnings and Wednesday's Fed minutes, which land into a market where BlackRock's Koesterich says bonds have stopped hedging and the term premium is doing the tightening.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Spike in Long-Dated Yields Hits AI and Growth Stocks the Hardest</summary>
+      <p>This week's rout, with 30-year Treasury yields at their highest since 2007 and European long bonds at multiyear peaks, hammered technology stocks more than the broad market, and the reason is worth unpacking because it explains why the same AI trade that led on the way up leads on the way down. Start with how a stock gets its value. A share is worth the present value of the cash the company will generate over its whole life, and to compare a dollar earned years from now with a dollar earned today, you discount future cash flows back using a rate anchored to long-term government yields. That discount rate is the gravity of the equity market. When it rises, every future dollar is worth less today, and prices fall. Here is the growth-stock wrinkle. A mature value name like Home Depot throws off most of its cash in the near term, so a higher discount rate shaves relatively little off its value. A high-growth AI or chip name is the opposite: the bulk of its expected cash flows sit far out in the future, when the buildout supposedly turns into fat profits. Discounting those distant flows is far more sensitive to the rate you use, because compounding a higher discount rate over ten or twenty years crushes the present value of money that arrives late. That mathematical fact, called duration, is why growth stocks behave like long-dated bonds. When the 30-year yield jumps, the longest-duration equities fall hardest, which is exactly why European chips slid and Apple's flip mattered. The second layer is the funding cost. The AI buildout is increasingly a credit story, with Alphabet marketing a debut Australian bond and Nvidia backing data-center financing. When long-dated yields rise, the cost of all that debt rises too, so the same capex that looked accretive at low rates gets more expensive to fund and the projected returns compress. Higher yields hit the numerator, by raising borrowing costs, and the denominator, by raising the discount rate, at the same time. The third layer is that AI issuance is part of what is pushing yields up in the first place, the crowding-out dynamic. That makes the loop reflexive: the buildout borrows heavily, the borrowing lifts yields, and the higher yields re-price the very stocks doing the borrowing. The practical lesson is to watch the long end, not just the Fed, when you own growth. A dovish Fed can coexist with a brutal repricing of tech if the term premium is climbing on deficits, inflation and supply, because it is the long-dated discount rate, not the overnight policy rate, that sets equity gravity. When you see the 30-year spike, expect the highest-multiple, longest-duration names to move the most, in both directions.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-18/why-long-dated-bonds-are-at-epicenter-of-investor-angst-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Why Long-Dated Bonds Are at Center of Investor Angst</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/nikkei-falls-0-7-tracking-wall-streets-losses-4f0d7ddd?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- European Chip Stocks Weaken</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Anthropic's annualized revenue tops $65 billion ahead of its IPO</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic is on track to generate annualized revenue of more than $65 billion based on current performance, Bloomberg reported, up more than sevenfold from its pace at the end of last year, as it moves toward a planned IPO. The run rate is the clearest evidence yet that AI demand is scaling fast.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/anthropic-revenue-run-rate-surpasses-65-billion-ahead-of-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Anthropic's Annualized Revenue Tops $65 Billion Before IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia backs a new OpenAI data center as the compute cycle keeps escalating</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) struck another deal, this time backing a new OpenAI data center, Stratechery reported, extending the pattern of the chipmaker helping finance the buildout that drives its own demand. Stratechery said Anthropic's revenue continues to amaze and mused that data may finally be the new oil.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/nvidia-backs-openai-data-center-anthropic-news-google-buys-spirit-airlines-data/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- Nvidia Backs OpenAI Data Center, Anthropic News, Google Buys Spirit Airlines Data</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's DeepSeek, Qwen and Moonshot worry US AI rivals</strong></summary>
+      <div class="deal-body">
+        <p>Chinese AI models are cheaper and more adaptable than the preeminent US platforms, and studies suggest they are now almost as proficient, Bloomberg reported, a shift that has US rivals rethinking their strategy. The gap that once justified the US moat is narrowing faster than expected.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/why-china-s-deepseek-qwen-and-moonshot-are-a-worry-for-us-ai-rivals" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Why China's DeepSeek, Qwen and Moonshot Are a Worry for US AI Rivals</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Baidu posts a fifth straight revenue drop as its AI lag widens</strong></summary>
+      <div class="deal-body">
+        <p>Baidu (BIDU) reported revenue falling for a fifth consecutive quarter, Bloomberg reported, reflecting a weakening position in ads as well as AI development against rivals like Moonshot. The result underscores how quickly incumbents can fall behind once the model race accelerates.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/baidu-posts-fifth-straight-sales-drop-after-ai-lags-rivals" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Baidu Posts Fifth Straight Revenue Drop After AI Lag Widens</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Xiaomi's profit dives 42% as the memory crunch worsens</strong></summary>
+      <div class="deal-body">
+        <p>Xiaomi posted its third consecutive profit decline, down about 43%, Bloomberg reported, as a persistent global memory shortage took a heavy toll on one of the world's top smartphone makers. The squeeze shows the AI-driven memory shortage is now biting hardware makers well outside the data center.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/xiaomi-profit-falls-after-memory-crunch-hits-smartphone-demand" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Xiaomi Profit Dives After Memory Crunch Worsens Downturn</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Pony AI's robotaxi revenue hits a record with sales up 69%</strong></summary>
+      <div class="deal-body">
+        <p>Pony AI's robotaxi sales reached a quarterly high, now accounting for a third of total revenue, Bloomberg reported, with overseas momentum accelerating and revenue up 69%. A rare data point that the real-world AI payoff is arriving in pieces, not just in model benchmarks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/pony-ai-s-robotaxi-revenue-reaches-record-as-sales-jump-69" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Pony AI's Robotaxi Revenue Reaches Record as Sales Jump 69%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Etched, a $21 billion 'kids in chips' startup, scoops up Nvidia talent</strong></summary>
+      <div class="deal-body">
+        <p>Etched, founded by Harvard dropouts and now valued at $21 billion, has its own in-office data center and signed quant-trading firm Jane Street as its first customer while poaching Nvidia talent, WSJ reported. A sign the challenger layer of the chip stack is heating up around specialized inference silicon.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/ai/a-21-billion-kids-in-chips-startup-is-scooping-up-nvidia-talent-4d099f12?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- A $21 Billion 'Kids in Chips' Startup Is Scooping Up Nvidia Talent</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Tuesday August 18, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is still demand and revenue, with Anthropic's run rate past $65 billion, Nvidia backing another OpenAI data center, and Pony AI's robotaxi sales hitting a record. The counter-signal is the moat and the cost stack, with China's DeepSeek, Qwen and Moonshot closing the proficiency gap, Baidu's fifth straight revenue drop, and Xiaomi's memory-crunch profit dive. Layer on the bond rout, part of which is blamed on AI issuance, and Apple's flip from anti-AI hero to laggard, and the frame is that the buildout keeps confirming demand while the funding cost, the competition and the concentration all get tested at once.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>US 30-year Treasury yield hits its highest since 2007 in a global sell-off</strong></summary>
+      <div class="deal-body">
+        <p>The US 30-year Treasury yield rose to its highest level since 2007 amid a global bond sell-off, MarketWatch reported, pinning the move on concerns about inflation and heavier debt supply hitting the fixed-income sector. WSJ said global government bond yields hit multiyear highs as Middle East tension lifted oil.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/u-s-30-year-treasury-yield-hits-highest-level-since-2007-amid-global-bond-sell-off-f8dfb1df?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- U.S. 30-Year Treasury Yield Hits Highest Level Since 2007 Amid Global Bond Sell-Off</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bond slump sends long-term borrowing costs to their highest in decades</strong></summary>
+      <div class="deal-body">
+        <p>Longer-maturity bonds are at the epicenter of investor angst about everything from inflation to the debt-laden AI boom, and governments are paying the price, Bloomberg reported. FT framed the sell-off as structural, driven by fears over inflation and AI issuance rather than any one central bank.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/bond-rout-sends-long-term-borrowing-costs-to-highest-in-decades" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Slump Sends Long-Term Debt Costs to Highest in Decades</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Germany sells 30-year bonds at the highest yield since 2011</strong></summary>
+      <div class="deal-body">
+        <p>Germany's borrowing costs hit a 15-year high in a major sale of long-dated bonds, Bloomberg reported, as investors fret about rising government debt and persistent inflation. WSJ added that the German 10-year Bund yield also hit a 15-year high as euro-zone yields climbed with Treasuries.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/germany-is-set-to-sell-30-year-bonds-at-highest-yield-since-2011" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Germany Sells 30-Year Bonds at the Highest Yield Since 2011</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB's Lane sees inflation hovering near 3% for the rest of the year</strong></summary>
+      <div class="deal-body">
+        <p>ECB Chief Economist Philip Lane said consumer-price increases are likely to hold well above the 2% target near 3% for the rest of 2026, Bloomberg reported, citing the Iran war. It hardens the case that higher oil is keeping central banks from easing even as growth softens.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/ecb-s-lane-says-inflation-to-hover-around-3-for-rest-of-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Lane Says Inflation to Hover Near 3% for Rest of Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Foreign holdings of Treasuries fell in June, led by a drop in Japan</strong></summary>
+      <div class="deal-body">
+        <p>Foreign holdings of US Treasuries fell in June from the prior month, led by declines in stockpiles owned by Japan and China, Bloomberg reported. The pullback in overseas demand adds to the supply pressure now driving long-dated yields to multidecade highs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/foreign-holdings-of-treasuries-fell-in-june-led-by-japan-drop" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Foreign Holdings of Treasuries Fell in June, Led by Japan Drop</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's slowdown deepens as momentum 'collapses' beyond tech</strong></summary>
+      <div class="deal-body">
+        <p>China's economy showed across-the-board weakness in July with growth likely slipping further below target, Bloomberg reported, prompting Premier Li Qiang to urge officials to ramp up support. A tech boom is failing to lift the sectors untouched by the global AI buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/china-s-economy-extends-slowdown-by-weakening-across-the-board" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Slowdown Deepens With Momentum 'Collapsing' Beyond Tech</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The bond market is daring the Fed to hike</strong></summary>
+      <div class="deal-body">
+        <p>Yahoo Finance's Chart of the Day argued the bond market is now daring the Fed to hike, with long-dated yields pricing in inflation and supply risk faster than policymakers are willing to act. Canadian inflation reaccelerating to 3% on a gasoline rebound underlined the oil pass-through.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/article/the-bond-market-is-daring-the-fed-to-hike-chart-of-the-day-100000601.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- The Bond Market Is Daring the Fed to Hike: Chart of the Day</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 18, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The tightening tug now dominates. Long-dated yields hit multidecade highs on inflation, deficits and AI issuance, Germany sold 30-year paper at a 15-year high, foreign buyers stepped back, ECB's Lane lifted his inflation call on the Iran war, and Yahoo says the bond market is daring the Fed to hike. The easing tug is thinner: China's slowdown deepening, UK payrolls falling and food inflation cooling all point to softer global demand that could eventually cap yields. The tell into Wednesday's Fed minutes is whether the term premium keeps climbing on supply and oil or the growth cracks force a dovish reassessment.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: How the Term Premium Turned Bonds From a Hedge Into a Source of Risk</summary>
+      <p>BlackRock's Russ Koesterich told Bloomberg this week that bonds are not working as a hedge, with 30-year Treasury yields at their highest since 2007, and that he now prefers energy stocks as a diversifier. That statement quietly overturns one of the deepest assumptions in portfolio construction, so it is worth unpacking the mechanism behind it, because it explains why a bond rout and an equity selloff are happening together rather than offsetting. Start with the classic sixty-forty logic. For decades, when stocks fell it was usually because growth was slowing, and slowing growth meant the Fed would cut rates, which pushed bond prices up. So bonds rose when stocks fell, and the two assets hedged each other. That relationship depends on one crucial condition: that the thing scaring markets is weak growth, not high inflation. When inflation is the driver, the correlation flips. Now bring in the term premium, which is the extra yield investors demand to hold a long-dated bond rather than rolling short-term paper. That premium compensates for two big uncertainties: what inflation will average over the bond's life, and whether there will be enough buyers for all the debt being issued. When inflation looks sticky and governments plus AI borrowers are flooding the market with new supply, investors demand a fatter term premium, which means higher yields and lower bond prices. That is exactly the setup Bloomberg and FT describe: deficits, inflation fears and AI issuance all pushing the premium up at once. Here is why it breaks the hedge. In an inflation-and-supply-driven selloff, the same force that lifts yields, higher expected inflation, also hurts stocks by raising the discount rate on future earnings. So bonds and equities fall together, and the investor who owned bonds precisely to cushion an equity drawdown gets hit on both sides. That is what Koesterich means when he says bonds have stopped hedging. The correlation that made the sixty-forty portfolio reliable was a feature of a low-inflation world, and it does not hold when inflation and supply are in the driver's seat. The practical response he offers is instructive. If bonds no longer diversify, you need an asset that rises when the thing hurting stocks is inflation and geopolitics, and energy fits: oil above $90 is both a cause of the inflation scare and a tailwind for energy earnings, so energy stocks can climb while bonds and tech fall. That is diversification by finding a different driver, not by reaching for the traditional safe asset. The lesson for a reader watching this tape is to identify what is actually scaring the market before deciding what protects you. In a growth scare, bonds still work. In an inflation-and-supply scare like this week, they can amplify your losses, and the real diversifiers are the assets levered to the very force doing the damage. Knowing which regime you are in is the whole game.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-18/energy-stocks-are-best-portfolio-diversifier-koesterich-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Energy Stocks Are Best Portfolio Diversifier: Koesterich</a></p>
+      <p class="deal-source"><a href="https://www.ft.com/content/61354e68-c4ba-4716-b849-b332608c8c65?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Global Bond Sell-Off Deepens Amid Fears Over Inflation and AI Issuance</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">A global bond rout pushed 30-year Treasury yields to their highest since 2007 on inflation, deficit and AI-issuance fears as oil held above $90 and US-Iran peace prospects dimmed, while Anthropic's run rate topped $65 billion; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/18</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin pauses at $64,000 as rising yields and oil drag equities lower</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held around $64,000, down 0.6% on the day, as Nasdaq-100 futures slipped 1.1% under the weight of the bond rout and higher oil, CoinDesk reported. The FOMC's July minutes and a White House crypto summit are both due Wednesday, leaving the market range-bound for now.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/18/bitcoin-pauses-at-usd64-000-as-rising-yields-oil-drag-equities-lower" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Pauses at $64,000 as Rising Yields, Oil Drag Equities Lower</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin scores a rare win over the S&amp;P 500</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin rose 2.6% on Monday while the S&amp;P 500 fell 0.5%, CoinDesk reported, breaking its recent pattern of lagging US stocks. The relative outperformance came as the equity tape buckled under rising long-dated yields, a small sign crypto is decoupling from beta stress.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/18/bitcoin-scored-a-rare-win-over-s-and-p-500-on-monday" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Scores a Rare Win Over S&amp;P 500 With 2.6% Rise Versus 0.5% Fall</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The bitcoin price level where leveraged bulls could get whacked</strong></summary>
+      <div class="deal-body">
+        <p>Bulls are stacking longs while liquidity thins, CoinDesk reported, and one key level could trigger large liquidations if it breaks. It is the same crowded-positioning, thin-exit setup that turns an orderly pullback into a violent cascade when leverage unwinds.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/18/the-bitcoin-price-level-where-leveraged-bulls-could-get-whacked" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- The Bitcoin Price Level Where Leveraged Bulls Could Get Whacked</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>XRP sinks below $1 for the first time since 2024</strong></summary>
+      <div class="deal-body">
+        <p>XRP slipped below $1 for the first time since 2024 even as Korea's Jeonbuk Bank adopted Ripple's 24/7 cross-border payment service for business remittances, CoinDesk reported. Real-world adoption did little to arrest the token's slide as risk appetite drained across majors.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/18/xrp-slips-below-usd1-even-as-korean-regional-bank-adopts-ripple-payments" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- XRP Sinks Below $1 for First Time Since 2024 Even as Korean Bank Adopts Ripple Payments</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US Treasury proposes its first GENIUS Act stablecoin rule</strong></summary>
+      <div class="deal-body">
+        <p>The US Treasury proposed a rule to establish core definitions and jurisdictions under the GENIUS Act stablecoin law Congress completed last year, CoinDesk reported. It is a concrete step in building out the federal rulebook that stablecoin issuers have been waiting on.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/08/17/u-s-treasury-department-proposes-genius-act-stablecoin-rule" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- U.S. Treasury Department Proposes GENIUS Act Stablecoin Rule</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Monad offered early investors up to $60 million to cash out and almost all said no</strong></summary>
+      <div class="deal-body">
+        <p>Ethereum rival Monad offered early investors up to $60 million to cash out three months before token unlocks begin, CoinDesk reported, and almost all declined even with MON trading below its public-sale price. A vote of confidence, or a bet the unlock overhang clears without them.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/18/monad-an-ethereum-rival-offered-early-investors-up-to-usd60-million-to-cash-out-almost-all-said-no" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Monad Offered Early Investors Up to $60 Million to Cash Out. Almost All Said No</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Nvidia -- Backing a New OpenAI Data Center</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Nvidia struck another deal to back a new OpenAI data center, Stratechery reported, extending its pattern of helping finance the compute buildout that drives its own chip demand.</p>
+        <p><strong>Outlook:</strong> Vendor and lab-linked financing is becoming central to keeping the capex cycle funded as the numbers outrun customer cash flow.</p>
+        <p><strong>What it means:</strong> The AI buildout is increasingly a circular credit story, with the chipmaker underwriting the demand for its own product, a dynamic bulls call ecosystem-building and bears call vendor financing risk.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/nvidia-backs-openai-data-center-anthropic-news-google-buys-spirit-airlines-data/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- Nvidia Backs OpenAI Data Center, Anthropic News, Google Buys Spirit Airlines Data</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alphabet -- A$5 Billion Debut Aussie-Dollar Bond</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Alphabet started marketing its debut Australian debt at a yield pickup over its US dollar notes, Bloomberg reported, embarking on another multibillion-dollar fundraising amid skyrocketing AI spending.</p>
+        <p><strong>Outlook:</strong> Tapping a fresh currency market widens the investor base for capex, though it lands in a week when long-dated yields are pushing borrowing costs to multidecade highs.</p>
+        <p><strong>What it means:</strong> Even the cash-rich hyperscalers are reaching into every funding market to bankroll compute, deepening the AI-as-credit-story theme just as bond markets sour.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-17/alphabet-kicks-off-aussie-dollar-bond-sale-as-ai-spending-soars" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet's Australian Bond Offers Pickup Over Dollar Debt</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Paramount -- $1.88 Billion Bond to Cover WBD Merger Delay</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Paramount agreed to post a $1.88 billion bond from state attorneys general to cover the costs of delaying its Warner Bros. Discovery acquisition to as late as June 2027 while the case heads to trial, CNBC reported.</p>
+        <p><strong>Outlook:</strong> Prediction-market traders now put roughly one-in-four odds on the bid failing, higher than before 12 states sued but below the post-delay peak.</p>
+        <p><strong>What it means:</strong> The bond quantifies the cost of regulatory limbo, and the rising failure odds show how antitrust scrutiny is reshaping the economics of big media consolidation.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/17/paramount-bond-merger-delay-costs.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Paramount Seeks $1.88 Billion Bond From State AGs to Cover Costs of WBD Merger Delay</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mark Cuban-Backed Physical-AI Startup -- $500 Million SPAC Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A Mark Cuban-backed startup making hardware and software to safely control autonomous robots plans to go public via a blank-check vehicle valuing it at $500 million, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The listing rides the physical-AI and robotics wave, giving public investors a pure-play as the decade-of-the-robot thesis gains traction.</p>
+        <p><strong>What it means:</strong> The AI IPO pipeline keeps broadening from chips into robotics and physical AI, with SPACs re-emerging as a fast route to market for hardware names.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/mark-cuban-backed-physical-ai-startup-nears-500-million-spac-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Mark Cuban-Backed 'Physical AI' Startup Nears $500 Million SPAC Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>LimX Dynamics -- Up to $300 Million Hong Kong IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Alibaba-backed robot maker LimX Dynamics confidentially filed for a Hong Kong IPO to raise as much as $300 million, Bloomberg reported, adding to a wave of Chinese robotics companies lining up to go public.</p>
+        <p><strong>Outlook:</strong> Hong Kong is positioning itself as the venue for Chinese hardware and robotics listings, though Bloomberg separately flagged the sector's tough commercial test.</p>
+        <p><strong>What it means:</strong> The robotics listing pipeline is crowding in even as questions grow about whether the machines can turn marathon-and-backflip demos into real revenue.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/alibaba-backed-robot-maker-limx-said-to-plan-up-to-300-million-hong-kong-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba-Backed Robot Maker LimX Said to Plan Up to $300 Million Hong Kong IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Texas Stock Exchange -- First Primary ETF Listings</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> The Texas Stock Exchange notched its first primary listings as two small ETFs focused on the state's economy announced plans to transfer to the upstart marketplace, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The listings are a symbolic milestone for the challenger exchange as it looks to build credibility against the NYSE and Nasdaq.</p>
+        <p><strong>What it means:</strong> Exchange competition is intensifying, and even small primary wins matter for a new venue trying to prove it can anchor real capital-markets activity.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/texas-stock-exchange-lures-two-etfs-in-first-primary-listings" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Texas Stock Exchange Lures Two ETFs in First Primary Listings</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>BlackRock's Russ Koesterich -- bonds have stopped hedging, energy is the best diversifier</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock Global Allocation Fund manager Russ Koesterich told Bloomberg bonds are not working as a hedge, with 30-year Treasury yields at their highest since 2007, and he now sees energy stocks as the best portfolio diversifier while arguing $100 oil would not derail the US expansion.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-18/energy-stocks-are-best-portfolio-diversifier-koesterich-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Energy Stocks Are Best Portfolio Diversifier: Koesterich</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan's Madison Faller -- the US still drives equity gains</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan Private Bank strategist Madison Faller told Bloomberg the US remains core for portfolios given its exposure to growth and innovation, economic resilience and higher corporate profit margins, while taking a more selective approach to Europe. A named bull on US leadership through the volatility.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-18/jpmorgan-s-faller-sees-us-driving-equity-market-gains-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- JPMorgan's Faller Sees US Driving Equity Market Gains</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB's Philip Lane -- inflation to hover near 3% all year on the Iran war</strong></summary>
+      <div class="deal-body">
+        <p>ECB Chief Economist Philip Lane told Bloomberg euro-zone inflation is likely to hold well above the 2% target near 3% for the rest of 2026 because of the Iran war. A named policy voice reinforcing that higher oil keeps central banks from easing even as growth softens.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/ecb-s-lane-says-inflation-to-hover-around-3-for-rest-of-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Lane Says Inflation to Hover Near 3% for Rest of Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Pimco's Christian Stracke -- wealth firms are retreating from private credit</strong></summary>
+      <div class="deal-body">
+        <p>Wealth managers are beating a retreat from private credit and hunting for alternatives, Pimco's Christian Stracke told Bloomberg, still reeling from sudden exit restrictions at several major direct-lending funds earlier this year. A named caution flag on the private-credit boom just as public bond yields spike.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/pimco-s-stracke-says-wealth-firms-running-shy-of-private-credit" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Pimco's Stracke Says Wealth Firms Running Shy of Private Credit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BofA Fund Manager Survey -- managers say gold is undervalued</strong></summary>
+      <div class="deal-body">
+        <p>A growing share of fund managers believe gold is undervalued, WSJ reported citing Bank of America's survey, even as gold slipped below $4,400 with easing Fed-hike expectations pressuring the dollar. A named-survey read that the crowd is leaning toward real assets as bonds stop hedging.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/commodities-futures/gold-gains-as-easing-fed-hike-expectations-pressure-dollar-a99082c0?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Fund Managers Say Gold Is Undervalued, BofA Survey Says</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as a Global Bond Rout Sends Long-Dated Yields to Multidecade Highs, Oil Holds Above $90, and Anthropic's Run Rate Tops $65 Billion Into Wednesday's Fed Minutes</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (US growth and AI demand still lead):</strong> JPMorgan's Madison Faller says the US remains core on growth, resilience and margins, BlackRock's Koesterich argues even $100 oil won't derail the expansion, and Home Depot beat and reaffirmed guidance. Anthropic's run rate topped $65 billion, Nvidia is backing another OpenAI data center, and German investor optimism is rising. The demand engine is intact even with the bond wobble.</div>
+        <div class="bear"><strong>Bear (the term premium and oil are tightening for the Fed):</strong> BlackRock's Koesterich warns bonds have stopped hedging, ECB's Lane sees inflation near 3% all year on the Iran war, and Pimco's Stracke flags a retreat from private credit. Long-dated yields are at multidecade highs, foreign buyers are stepping back, and BofA's survey shows managers reaching for gold. A crowded, long-duration equity market re-prices fast when the discount rate jumps.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Bond rout tanks tech; Apple flips to AI laggard; European chips slide; SpaceX stakes disclosed; oil above $90</td><td>Bearish</td><td>~24,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Home Depot beats; Walmart and Target on deck; Fed minutes Wednesday; Anthropic run rate $65B; Alibaba jumps 5%</td><td>Mixed</td><td>~16,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>30Y Treasury highest since 2007; bonds stop hedging; term premium; foreign buyers step back; gold undervalued</td><td>Cautious</td><td>~14,500 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Global bond rout on deficits and AI issuance; China DeepSeek/Qwen/Moonshot close the gap; Pimco private-credit retreat</td><td>Bearish</td><td>~9,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC near $64,000; rare win over S&amp;P; leveraged-longs liquidation level; XRP below $1; GENIUS Act stablecoin rule</td><td>Mixed</td><td>~11,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood soured as the bond rout swamped last week's AI melt-up. r/wallstreetbets turned bearish as tech led the slide, Apple flipped to an AI laggard and oil topped $90. r/stocks stayed mixed, cheering Home Depot's beat and Alibaba's pop while bracing for Walmart, Target and Wednesday's Fed minutes. r/investing kept its guard up over 30-year yields at 2007 levels and the warning that bonds have stopped hedging, leaning toward gold. r/SecurityAnalysis leaned bearish on the deficit-and-AI-issuance rout and China's models closing the gap. r/CryptoCurrency was mixed as bitcoin held $64,000 and even beat the S&amp;P, offset by a leveraged-longs liquidation risk and XRP breaking $1. The swing factor is whether the Fed minutes calm the long end or feed the tightening scare.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Long-Dated Government Bond Yields Can Surge to Multidecade Highs Even When the Central Bank Is on Hold, How Fiscal Deficits, Sticky Inflation and a Wave of AI Debt Issuance Compound Into a Rising Term Premium, and What That Means for Stocks When Bonds Stop Cushioning the Fall</h2>
+    <p>This week a global bond rout drove the US 30-year Treasury yield to its highest since 2007, French borrowing costs to 2008 levels and German bonds back to 2011, and Bloomberg, FT and MarketWatch all traced it to the same trio of forces: fiscal deficits, sticky inflation and a wave of AI-related debt issuance. It is worth walking through how those forces combine, because the episode shows something that confuses a lot of readers, which is how long-term yields can climb hard while the debate over the next Fed move barely moves. Start by splitting a long-term yield into its parts. A 30-year yield is roughly the average short-term rate investors expect over the next 30 years, plus a term premium, the extra compensation they demand for locking their money up that long. The first piece is about central-bank policy. The second piece is about everything else: inflation uncertainty, supply and the risk that either surprises you. When people say yields are rising even though the Fed is on hold, they mean the term premium is doing the work, not the expected-policy piece. Now layer in the three drivers. Fiscal deficits mean governments must issue more bonds to fund spending, and more supply, all else equal, forces sellers to offer higher yields to clear the market, exactly like a store cutting prices to move excess inventory. Sticky inflation means investors demand a higher yield just to protect their purchasing power over decades, and this week ECB's Philip Lane raising his inflation call to near 3% on the Iran war, plus Canadian inflation reaccelerating on gasoline, fed that fear directly. The AI issuance piece is the newest twist: hyperscalers and their financiers are flooding the market with corporate bonds to fund the buildout, and Alphabet marketing a debut Australian bond is a live example, so that private supply competes with government paper for the same finite pool of savings. Add a fourth quiet factor, foreign buyers stepping back, with Bloomberg reporting Japan and China trimmed Treasury holdings in June, and you have more supply chasing fewer buyers. The result is a self-reinforcing rise in the term premium that no single central bank controls, which is why Bloomberg stressed the forces are global. Here is why it matters for stocks. When yields rise because of a growth scare, the Fed usually cuts and bonds rally, cushioning an equity selloff. But when they rise on inflation and supply, bonds and stocks fall together, because the higher discount rate hurts equities while the inflation fear hurts bonds. That is precisely why BlackRock's Russ Koesterich said bonds have stopped hedging and pivoted to energy. The practical lesson is to decompose a yield move before you react. If the expected-policy piece is falling but the yield is still climbing, the story is term premium, and the cure is not a dovish Fed but slower issuance, cooler inflation or the return of price-insensitive buyers. Until one of those turns, a hold from the Fed does little, and the longest-duration assets, from the 30-year bond to the highest-multiple growth stocks, keep bearing the brunt.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-18/bond-yields-are-hitting-multidecade-highs-around-the-world" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Yields Are Hitting Multidecade Highs Around the World</a></p>
+    <p class="deal-source"><a href="https://www.ft.com/content/61354e68-c4ba-4716-b849-b332608c8c65?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Global Bond Sell-Off Deepens Amid Fears Over Inflation and AI Issuance</a></p>
+    <p class="deal-source"><a href="https://www.marketwatch.com/story/u-s-30-year-treasury-yield-hits-highest-level-since-2007-amid-global-bond-sell-off-f8dfb1df?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- U.S. 30-Year Treasury Yield Hits Highest Level Since 2007</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Fed minutes, Wednesday.</strong> With the bond market daring the Fed to hike and long-dated yields at multidecade highs, the July FOMC minutes are the week's key catalyst for whether officials sound the alarm on inflation and supply or lean back toward patience.</li>
+      <li><strong>The long end versus the term premium.</strong> After 30-year Treasury yields hit their highest since 2007 and Germany sold 30-year paper at a 15-year high, watch whether the supply-and-inflation-driven rout keeps steepening curves worldwide.</li>
+      <li><strong>Global growth cross-currents.</strong> China's slowdown deepened with Li Qiang urging more support, UK payrolls fell and Japan is weighing hikes; watch whether softening demand eventually caps yields or just feeds the risk-off case.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Walmart and Target.</strong> The retail bellwethers report this week after Home Depot beat and reaffirmed guidance amid a frozen housing market; watch whether the value-seeking shopper holds up as the consumer signal into a rates-heavy tape.</li>
+      <li><strong>China tech and Alibaba.</strong> After Baidu's fifth straight revenue drop and Xiaomi's memory-crunch profit dive, watch Alibaba's June-quarter print for whether the Alipay platform launch and AI pivot are translating into numbers.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-buildout financing.</strong> After Alphabet's debut Aussie-dollar bond and Nvidia backing another OpenAI data center, watch whether tech debt issuance keeps widening even as it helps push borrowing costs to multidecade highs.</li>
+      <li><strong>Robotics and SPAC pipeline.</strong> Watch LimX Dynamics' Hong Kong IPO and the Mark Cuban-backed physical-AI SPAC for whether the robotics listing wave holds up against the sector's commercial test.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Iran and the oil premium.</strong> With Trump signaling no interest in a truce extension and Brent above $91, watch whether the conflict escalates further and keeps feeding the inflation-and-rates story that is pressuring bonds.</li>
+      <li><strong>Canada tariff deadline, August 19.</strong> With auto rules blocking a deal before the deadline, watch whether new US tariffs on Canadian goods land and add another inflation and trade-friction thread into a light data week.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Tue Aug 18, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-18 07:15 ET); Bloomberg Technology (20 fresh, newest 2026-08-18 07:11 ET); Bloomberg Economics (19 fresh, newest 2026-08-18 07:00 ET); CNBC Top News (8 fresh, newest 2026-08-18 06:53 ET); CNBC Finance (3 fresh, newest 2026-08-18 06:53 ET); CNBC Economy (1 fresh, newest 2026-08-18 06:15 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-18 07:15 ET); WSJ Markets (17 fresh, newest 2026-08-18 07:10 ET); Yahoo Finance (25 fresh, newest 2026-08-18 07:21 ET); FT Home (9 fresh, newest 2026-08-18 07:00 ET); CoinDesk (25 fresh, newest 2026-08-18 07:21 ET); Stratechery (2 fresh, newest 2026-08-18 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="D">
+      <p><strong>1. What pushed long-dated government bond yields to multidecade highs this week?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed unexpectedly raised its policy rate</span>
+      <span class="opt" data-opt="B">B. A surge in safe-haven demand for bonds</span>
+      <span class="opt" data-opt="C">C. Foreign central banks bought record amounts</span>
+      <span class="opt" data-opt="D">D. Inflation, deficits and heavy AI debt issuance</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg, FT and MarketWatch tied the rout to fiscal deficits, sticky inflation and a wave of AI issuance. The Fed did not hike, demand was not surging, and foreign buyers like Japan and China actually trimmed holdings.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did Home Depot report in its second quarter?</strong></p>
+      <span class="opt" data-opt="A">A. It beat estimates and reaffirmed its guidance</span>
+      <span class="opt" data-opt="B">B. It missed on both revenue and earnings badly</span>
+      <span class="opt" data-opt="C">C. It cut guidance on collapsing renovation demand</span>
+      <span class="opt" data-opt="D">D. It suspended its dividend to conserve cash</span>
+      <div class="feedback"><strong>A is correct.</strong> CNBC reported Home Depot beat on the top and bottom lines with comparable sales up 1.7% and reaffirmed guidance despite frozen housing conditions. It did not miss, cut guidance, or touch its dividend.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>3. What did Bloomberg report about Anthropic's revenue ahead of its IPO?</strong></p>
+      <span class="opt" data-opt="A">A. It fell sharply amid open-source competition</span>
+      <span class="opt" data-opt="B">B. It topped a $65 billion run rate, up sevenfold</span>
+      <span class="opt" data-opt="C">C. It stayed flat as pricing pressure bit margins</span>
+      <span class="opt" data-opt="D">D. It was withheld from investors before the IPO</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg reported Anthropic is on track for annualized revenue above $65 billion, up more than sevenfold from late last year. Revenue did not fall or stay flat, and the figure was disclosed, not withheld.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "A global bond rout drove 30-year Treasury yields to their highest since 2007 and German and French borrowing costs to 15-year peaks on inflation, deficits and AI issuance, with BlackRock's Koesterich warning bonds have stopped hedging, but German investor optimism is rising, JPMorgan says the US still leads, and UK food inflation just hit a two-year low.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-18/bond-rout-sends-long-term-borrowing-costs-to-highest-in-decades", "take": "Long-term borrowing costs hit their highest in decades on inflation and the AI boom." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/u-s-30-year-treasury-yield-hits-highest-level-since-2007-amid-global-bond-sell-off-f8dfb1df?mod=mw_rss_topstories", "take": "The US 30-year yield hit its highest since 2007 on inflation and supply." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-18/energy-stocks-are-best-portfolio-diversifier-koesterich-video", "take": "BlackRock's Koesterich says bonds have stopped hedging, prefers energy." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-18/germany-s-investor-outlook-improves-as-economy-gains-traction", "take": "German investor optimism rose more than expected on a firming recovery." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-18/jpmorgan-s-faller-sees-us-driving-equity-market-gains-video", "take": "JPMorgan's Faller says the US remains core for portfolios on growth and margins." }
+    ]
+  },
+  "iran": {
+    "diverge": "US-Iran peace prospects dim as Trump signals no interest in extending the truce, pushing Brent above $91 and reinforcing bets central banks stay tight, with ECB's Lane seeing inflation near 3% all year, but BlackRock's Koesterich says even $100 oil won't derail the US and jet-fuel costs are easing.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-18/energy-stocks-are-best-portfolio-diversifier-koesterich-video", "take": "Koesterich does not see $100 oil derailing the US expansion." },
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/9d8f4215-4d19-43df-ab81-b9f8adb057c8?syn-25a6b1a6=1", "take": "Airlines are in a standoff over fares as jet-fuel costs ease." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-18/the-pulse-8-18-2026-video", "take": "Trump is not interested in extending the US-Iran truce." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/oil-prices-treasury-yields-rise-with-mideast-concerns-cecc3e36?mod=rss_markets_main", "take": "Oil prices and Treasury yields rose together on Middle East concerns." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-18/ecb-s-lane-says-inflation-to-hover-around-3-for-rest-of-year", "take": "ECB's Lane sees euro-zone inflation near 3% all year on the Iran war." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Anthropic's annualized revenue tops $65 billion ahead of its IPO and Nvidia backs a new OpenAI data center to keep the compute cycle funded, but China's DeepSeek, Qwen and Moonshot are closing the gap, Apple's anti-AI stance turned to baggage, European chip stocks slid, and AI debt is helping drive the bond rout.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-17/anthropic-revenue-run-rate-surpasses-65-billion-ahead-of-ipo", "take": "Anthropic's run rate tops $65 billion, up sevenfold in a year, ahead of an IPO." },
+      { "name": "Stratechery", "lean": "bull", "url": "https://stratechery.com/2026/nvidia-backs-openai-data-center-anthropic-news-google-buys-spirit-airlines-data/", "take": "Nvidia backs another OpenAI data center to keep the buildout funded." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-18/pony-ai-s-robotaxi-revenue-reaches-record-as-sales-jump-69", "take": "Pony AI's robotaxi revenue hit a record with sales up 69%." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-18/why-china-s-deepseek-qwen-and-moonshot-are-a-worry-for-us-ai-rivals", "take": "China's DeepSeek, Qwen and Moonshot are cheaper and nearly as proficient." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-18/apple-s-anti-ai-position-suddenly-becomes-stock-market-baggage", "take": "Apple's anti-AI positioning flipped from asset to stock-market baggage." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Alibaba","SpaceX","Home Depot","Apple","European Chips","Xiaomi"],
+    "values": [5.0, 4.5, 1.0, -2.5, -3.5, -4.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [24000, 16000, 14500, 9000, 11000],
+    "colors": ["bear","neutral","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["Alphabet A$ Bond","Paramount WBD Bond","Intesa SpaceX Stake","Cuban Physical AI SPAC","LimX HK IPO"],
+    "values": [3.6, 1.88, 0.97, 0.5, 0.3]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
