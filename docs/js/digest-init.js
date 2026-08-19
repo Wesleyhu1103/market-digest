@@ -94,6 +94,7 @@ function saveVerdictFeedback() {
   ];
   const todayLabel = (window.DigestDate && DigestDate.editionDayLabel()) || '';
   const etTodayIso = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  const scoreboardAnchorIso = (window.mdScoreboardAnchorIso && mdScoreboardAnchorIso()) || etTodayIso;
 
   // Day states: bull | bear | lean-bull | lean-bear | neu (mixed) | pending.
   // The scoreboard painter (verdict-updater.js) stamps data-verdict on every
@@ -127,10 +128,10 @@ function saveVerdictFeedback() {
       const day = cells[0].textContent.trim();
       days.push({ day, iso: rowIso(day), reads: cells.slice(1, 4).map(cellState) });
     });
-    const todayRow = days.find(d => d.iso === etTodayIso);
-    if (todayRow) {
+    const todayRow = days.find(d => d.iso === scoreboardAnchorIso);
+    if (todayRow && scoreboardAnchorIso === etTodayIso) {
       todayRow.live = true;
-    } else {
+    } else if (scoreboardAnchorIso === etTodayIso) {
       // Table doesn't cover today (weekend/holiday view) — read the live cards.
       const liveMap = { bonds: 'bonds', iran: 'iran-oil', aicapex: 'ai-capex' };
       const liveRead = nk => {
