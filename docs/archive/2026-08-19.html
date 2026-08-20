@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Aug 19, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-19</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, August 19, 2026</h1>
+    <div class="meta">
+      <p>The July FOMC minutes land at 2pm ET into a bond market that finally steadied after driving 30-year Treasury yields to 19-year highs, though Wall Street says the rout is not done. Retail earnings kept splitting the consumer read, with Target beating and raising guidance while Lowe's cut its outlook. A semiconductor selloff spread to Asia overnight as Samsung and SK Hynix slumped 7%, and an escalating UAE-Iran clash pushed oil to a near three-week high even as Trump paused his threatened Canada tariffs.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Global bonds stabilized after a rout that drove US 30-year Treasury yields to 19-year highs, but Wall Street strategists warned the selloff is only getting started as fiscal deficits, sticky inflation and heavy AI debt issuance keep long-dated yields elevated, a semiconductor selloff spread to Asia, and traders await the July Fed minutes for clues on the rate path",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Why Wall Street Thinks the Brutal Bond Rout Is Just Getting Started", "angle": "Reads the pause as a breather in a structural repricing that looks a lot like 2007.", "lean": -55, "pull": "With yields on 30-year Treasurys at 19-year highs, investors predict a new era in the bond market."},
+        {"outlet": "Bloomberg", "headline": "Stocks Waver as Oil Keeps Bonds Under Pressure", "angle": "Frames the tape as cautious with long-dated bonds still pressured by higher oil.", "lean": -20, "pull": "Long-dated bonds remained under pressure as higher oil prices kept traders cautious."},
+        {"outlet": "MarketWatch", "headline": "The Bond Selloff Is Rattling Investors, but Don't Expect a Deeper Stock Downturn", "angle": "Fundstrat's Mark Newton offers technical evidence that it is not time to panic.", "lean": 25, "pull": "It's not time to panic about surging bond yields driving a deeper stock rout."},
+        {"outlet": "CNBC", "headline": "Bond Market Pressure Is Squeezing Main Street as Wall Street Waits on Warsh", "angle": "Ties long-end yields to real borrowing costs and a growing political problem.", "lean": -40, "pull": "Debt, AI spending and energy are turning the bond market into a political problem."},
+        {"outlet": "CoinDesk", "headline": "Global Bond Yields Surge as Debt Fears Test Bitcoin's Hedge Narrative", "angle": "Links multidecade-high borrowing costs to $40 trillion US debt and AI issuance.", "lean": -30, "pull": "Long-term borrowing costs are reaching multi-decade highs as US debt approaches $40 trillion."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Global Bonds Stabilize After the Rout Drove 30-Year Treasury Yields to 19-Year Highs, but Wall Street Says the Selloff Is Just Getting Started as Deficits, Inflation and AI Issuance Keep the Long End Elevated Into the July Fed Minutes, With Deutsche Bank's Uleer and Fundstrat's Newton Telling Clients Not to Panic While Iceland, Sweden and the BOJ Lean Toward More Hikes</h3>
+      </div>
+      <p>The long end caught its breath but the mood stayed defensive. WSJ reported global bonds stabilized after the selloff, then followed with two pieces arguing Wall Street sees no end in sight, noting 30-year Treasury yields at 19-year highs in a market that looks a lot like 2007. Bloomberg's markets wrap said stocks wavered as higher oil kept long-dated bonds under pressure, and its newsletter flagged that the hot safety play is now a short-dated bond as traders seek shelter from the long end. The dollar softened as the bond market steadied ahead of the Fed minutes, and mortgage rates stayed surprisingly calm despite the volatility. CNBC framed the deeper problem as bond-market pressure squeezing Main Street while Wall Street waits on Warsh, with debt, AI spending and energy turning long yields into a political issue. The central-bank drift is toward tightening, not easing: Iceland hiked to 8% on Iran-war fuel costs, Sweden kept a 2026 hike on the table, the RBA's Hauser warned rates will rise if prices fail to ease, and Mizuho expects the BOJ to hike more often, possibly next month. The counter-voices are getting louder too. Deutsche Bank's Maximilian Uleer called the market boring but not concerning with volatility at a 20-year low, arguing stocks can power through the rate rise as long as Brent stays below $100, and Fundstrat's Mark Newton told MarketWatch it is not time to panic.</p>
+      <p>The bull case is Deutsche Bank's Uleer and Fundstrat's Newton telling clients not to panic, bonds stabilizing, the dollar softening and mortgage rates staying calm. The bear case is Wall Street warning the rout is only getting started, 30-year yields at 19-year highs, the safety trade fleeing into short-dated paper, and Iceland, Sweden and the BOJ all leaning toward more hikes.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the stabilization is real and the panic is overdone):</strong> WSJ said global bonds stabilized after the selloff, the dollar softened as the market steadied into the Fed minutes, and mortgage rates stayed surprisingly calm. Deutsche Bank's Maximilian Uleer called the tape boring but not concerning with volatility at a 20-year low and said stocks can power through the rate rise while Brent is under $100, and Fundstrat's Mark Newton offered technical evidence that it is not time to panic. If the minutes read patient, the term-premium scare fades.</div>
+        <div class="bear"><strong>Bear (the repricing has further to run):</strong> WSJ reported Wall Street sees no end in sight, with 30-year Treasury yields at 19-year highs in a market that looks like 2007, and Bloomberg said the hot safety play is now a short-dated bond because the long end is untouchable. CNBC framed the squeeze reaching Main Street as Wall Street waits on Warsh, while Iceland hiked to 8%, Sweden kept a hike on the table and the BOJ is expected to move faster. Deficits, inflation and AI issuance keep the term premium climbing regardless of the Fed.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/investing/wall-street-sees-no-end-in-sight-to-the-global-bond-selloff-a1b5d1e3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Wall Street Sees No End in Sight to the Global Bond Selloff</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>US-Iran Tension Escalates as the UAE Suspends Trade After Missiles Fell Near the Gulf State and Tehran Weighs Striking US Assets in Europe, Pushing Oil to a Near Three-Week High and Reinforcing Bets Central Banks Stay Tight, but Saudi Aramco Restored Full Allocations to European Refiners and Deutsche Bank's Uleer Says Stocks Are Fine While Brent Holds Below $100</h3>
+      </div>
+      <p>The war premium widened rather than faded. FT reported the UAE suspended trade with Iran after saying Tehran fired missiles that fell into the sea near the Gulf state, and separately that Iran is weighing military strikes on US assets in Europe if Trump escalates, with many in Tehran seeing renewed conflict as inevitable. Bloomberg said oil rose to its highest in almost three weeks as the UAE-Iran spat heightened regional tensions with the six-month conflict still unresolved, and reported three China-linked supertankers U-turned in the Strait of Hormuz as shipping risks stayed elevated and normalization prospects dimmed after Trump's hard line. The macro pass-through kept showing up: Iceland's central bank hiked to 8% citing rising fuel costs from the Iran war, Sweden's Riksbank kept a hike on the table for the same reason, and South Africa's central bank weighed the war's fallout even as July inflation there cooled more than expected. There are offsets. Bloomberg reported Saudi Aramco notified at least three European refiners it will supply full contractual crude next month, easing regional supply worries while Gulf and Red Sea flows are disrupted, and Deutsche Bank's Maximilian Uleer argued equities face no serious threat from oil as long as Brent holds below $100. The diplomatic path looks blocked, and the oil channel is feeding straight back into the rates story.</p>
+      <p>The bull read is Saudi Aramco restoring full allocations to Europe, Deutsche Bank's Uleer setting a $100 Brent threshold before stocks worry, and South African inflation cooling. The bear read is the UAE suspending Iran trade, Tehran weighing strikes on US assets in Europe, oil at a near three-week high, tankers U-turning in Hormuz, and Iceland and Sweden citing the war to stay hawkish.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (supply is holding and the shock is contained):</strong> Bloomberg reported Saudi Aramco told at least three European refiners it will deliver full contractual volumes next month, easing supply fears even as Gulf and Red Sea flows are disrupted. Deutsche Bank's Maximilian Uleer says stocks face no serious threat from oil while Brent stays below $100, and South African inflation cooled more than expected in July. If the physical market keeps clearing, the security premium unwinds and the inflation scare proves temporary.</div>
+        <div class="bear"><strong>Bear (the conflict is widening and oil is feeding inflation):</strong> FT reported the UAE suspended trade with Iran after missiles fell near the Gulf state and that Tehran is weighing strikes on US assets in Europe, while Bloomberg said oil hit a near three-week high and three China-linked supertankers U-turned in Hormuz. Iceland hiked to 8% and Sweden kept a hike on the table, both citing Iran-war fuel costs. Higher oil is reinforcing the case for tighter policy everywhere.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/8dbbeb9a-290a-4edd-b731-44ce3e31ecf5?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- UAE Suspends Trade With Iran After Saying It Fired Missiles at Gulf State</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>A Semiconductor Selloff Spreads to Asia as Samsung and SK Hynix Slump 7% and SK Hynix Unveils a $29 Billion Buyback to Steady Its Stock, While OpenAI Trails Anthropic as Losses Deepen and Altman Pauses Frontier Training, Alphabet Pays a Record Near 7% for a Debut Aussie Bond, and China's Unitree Surges 600% in Its Robot IPO Debut</h3>
+      </div>
+      <p>The AI trade is being tested on price, funding cost and competition all at once. Bloomberg reported the global semiconductor selloff extended to Asia, with Samsung and SK Hynix down more than 7% in Seoul after US chipmakers sent the Philadelphia Semiconductor Index down 5% and the Kospi tumbled roughly 6%. SK Hynix moved to calm the market with a 40 trillion won ($29 billion) buyback after its shares fell more than 50% in two months, a defensive gesture rather than a demand signal. The funding cost is climbing too: Alphabet paid just under 7% to sell its debut Australian-dollar bond, its highest-ever coupon on a note, underscoring how hyperscaler cash demands are lifting borrowing costs everywhere. CoinDesk reported OpenAI now trails Anthropic as its losses deepen and Sam Altman paused frontier reinforcement-learning training to strengthen safety controls, a rare sign of the leader easing off the accelerator. Bloomberg detailed the political side, with data-center opposition set to create stock-market winners and losers and tech mounting a charm offensive to save the trillion-dollar buildout, while Kuaishou earnings fell a third on AI and creator costs. The demand still shows up in pieces: Analog Devices topped views on strong data-center chip sales, South Korea's think tank raised growth on the AI-fueled export boom, and China's Unitree Robotics surged about 600% in its Shanghai IPO debut. CNBC noted retail investors are sticking with the AI trade but adding downside protection.</p>
+      <p>The bulls point to Analog Devices beating on data-center chips, South Korea lifting growth on the AI export boom, SK Hynix's confidence buyback, and Unitree's blockbuster robot debut. The bears point to the chip selloff spreading to Asia, OpenAI's deepening losses and paused training, Alphabet paying a record near 7% to fund capex, and data-center political opposition.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand keeps confirming underneath the tape):</strong> Analog Devices topped estimates on strong data-center and industrial chip sales, South Korea's state think tank raised its growth forecast above the government's on the AI-fueled semiconductor boom, and SK Hynix backed its stock with a $29 billion buyback. China's Unitree surged about 600% at its debut in a market Morgan Stanley thinks could be worth $5 trillion by 2050. The order books and export data still point up.</div>
+        <div class="bear"><strong>Bear (price, funding and competition are all cracking):</strong> Bloomberg reported the chip selloff spread to Asia with Samsung and SK Hynix down more than 7%, CoinDesk said OpenAI trails Anthropic as losses deepen and Altman paused frontier training, and Alphabet paid a record near 7% to fund its buildout. Data-center political opposition is set to pick winners and losers, and retail investors are adding downside protection. The buildout is getting more expensive and more contested at once.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/videos/2026-08-19/chip-selloff-extends-to-asia-as-samsung-sk-hynix-slump-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chip Selloff Extends to Asia as Samsung, SK Hynix Slump</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks waver as oil keeps long-dated bonds under pressure</strong></summary>
+      <div class="deal-body">
+        <p>Stocks wavered and long-dated bonds stayed under pressure as higher oil prices kept traders cautious after days of yields at multidecade highs, Bloomberg reported. WSJ said US stock futures were flat with investors focused on retailer earnings and the July Fed minutes, while a global tech selloff lost some momentum in Europe.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Waver as Oil Keeps Bonds Under Pressure</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Target hikes its outlook as sales rebound and a tariff refund lifts profit</strong></summary>
+      <div class="deal-body">
+        <p>Target (TGT) posted better-than-expected second-quarter sales and raised its full-year outlook, helped by a large tariff refund that boosted the bottom line, CNBC reported. MarketWatch credited a grocery overhaul with winning back shoppers, though the stock still slipped as investors questioned the durability of the turnaround.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/19/target-tgt-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Target Hikes Outlook as Sales Rebound and Tariff Refund Boosts Bottom Line</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lowe's cuts its outlook as a soft housing market curbs demand</strong></summary>
+      <div class="deal-body">
+        <p>Lowe's (LOW) cut its full-year outlook after results missed Wall Street estimates, Bloomberg reported, as a stubbornly weak housing market eroded home-improvement performance and management flagged pressure in DIY spending. The miss contrasted with Home Depot's reaffirmed guidance a day earlier, splitting the housing-linked consumer read.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/lowe-s-cuts-outlook-as-soft-housing-market-curbs-demand" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Lowe's Cuts Outlook as Soft Housing Market Curbs Demand</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chip selloff extends to Asia as Samsung and SK Hynix slump 7%</strong></summary>
+      <div class="deal-body">
+        <p>A global semiconductor selloff deepened as investors retreated from one of the year's hottest trades, Bloomberg reported, with Samsung and SK Hynix down more than 7% in Seoul after the Philadelphia Semiconductor Index fell 5% and the Kospi tumbled around 6%. The move shows how fast the AI complex re-prices when yields spike.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-19/chip-selloff-extends-to-asia-as-samsung-sk-hynix-slump-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chip Selloff Extends to Asia as Samsung, SK Hynix Slump</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SK Hynix unveils a $29 billion buyback to steady its stock</strong></summary>
+      <div class="deal-body">
+        <p>SK Hynix announced plans to buy back 40 trillion won ($29 billion) of shares and return more profit to investors, WSJ reported, in what it called South Korea's largest stock buyback, moving to stabilize a share price that had fallen more than 50% in two months. The chipmaker will repurchase and cancel up to 24 million shares.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/sk-hynix-plans-more-than-28-billion-share-buyback-641a2e06?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- SK Hynix Plans More Than $28 Billion Share Buyback</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Analog Devices tops views on strong data-center and industrial chip sales</strong></summary>
+      <div class="deal-body">
+        <p>Analog Devices (ADI) beat fiscal third-quarter estimates on strong data-center and industrial chip sales, Investor's Business Daily reported. The beat offered a demand counterweight to the memory-driven chip selloff, a reminder the AI buildout is still pulling analog and connectivity silicon through the supply chain.</p>
+        <p class="deal-source"><a href="https://www.investors.com/news/technology/adi-stock-analog-devices-fiscal-q3-2026-earnings/?src=A00220&yptr=yahoo" target="_blank" rel="noopener noreferrer">Source: Investor's Business Daily -- Analog Devices Tops Views on Strong Data Center, Industrial Chip Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Disney-owned ABC sues the FCC over an alleged retaliatory campaign</strong></summary>
+      <div class="deal-body">
+        <p>Disney's (DIS) ABC filed a First Amendment lawsuit against the FCC, CNBC reported, claiming the agency's investigation and early broadcast-license renewals amount to a retaliatory campaign over its programming. The suit escalates the clash between major media owners and regulators into an open legal fight.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/18/disney-abc-first-amendment-lawsuit-fcc.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Disney-Owned ABC Files First Amendment Lawsuit Against FCC</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape settled into a standoff, with long-dated bonds stabilizing but stocks wavering as oil held near a three-week high and chips led losses across Asia. Target's beat and raised guidance and Analog Devices' data-center strength gave the bulls a resilient-demand counterweight, while Lowe's cut and SK Hynix's defensive $29 billion buyback showed where the strain is concentrated. The next test is the 2pm Fed minutes, which land into a market where Wall Street says the bond rout is not finished and Deutsche Bank's Uleer counters that stocks can power through while Brent stays below $100.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Memory Chipmakers Fall Hardest When the AI Trade Re-Prices</summary>
+      <p>The chip selloff that started on Wall Street tore through Seoul overnight, with Samsung and SK Hynix down more than 7% while the broader market fell far less, and the reason memory names lead both the rally and the retreat is worth unpacking because it explains why SK Hynix answered a stock slide with a $29 billion buyback rather than a demand update. Start with what memory is. DRAM and high-bandwidth memory are commodities, nearly identical from one maker to the next, so their price is set by the balance of supply and demand rather than by brand or switching costs. That makes memory the most cyclical corner of semiconductors. When AI demand surges, memory prices spike, margins fatten fast, and the stocks run because a commodity producer's profit is leveraged to price. But leverage cuts both ways. A small swing in the selling price of a chip flows almost entirely to the bottom line, so when investors start to doubt the pace of the buildout, they mark down the memory names first and hardest, because the same operating leverage that inflated profits on the way up deflates them on the way down. That is the mechanical reason SK Hynix fell more than 50% in two months while the index fell a fraction of that. Now layer in duration, the idea that a stock is worth the present value of cash it will earn far into the future. Memory makers are pricing in years of AI-driven demand, so a big chunk of their value sits in distant cash flows, and when long-dated yields jump to multidecade highs the discount rate on those future profits rises and the present value shrinks. High cyclicality plus long duration is the worst combination in a rising-rate, doubting-demand tape, which is exactly this week's setup. Against that, a buyback is a specific tool. When a company buys back and cancels its own shares, it shrinks the share count, so the same future profit is divided among fewer shares and earnings per share rise even if total earnings do not. It also sends a signal: management is telling the market it thinks the stock is cheap and it is willing to spend real cash to prove it, which can put a floor under a falling price. SK Hynix's $29 billion program does both, defending the multiple while returning capital, but notice what it does not do. A buyback cannot change the memory price cycle or the level of long-dated yields, the two forces actually driving the stock. The practical lesson is to separate a financial-engineering response from a fundamental one. When a cyclical name answers a selloff with a buyback, it is managing the share count and sentiment, not the underlying demand. Watch memory spot prices and the long end of the curve to know whether the fundamentals are turning, and treat the buyback as a floor attempt, not an all-clear.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/sk-hynix-announces-28-6-billion-share-buy-back-on-ai-boom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix Moves to Calm Market With $29 Billion Share Buyback</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/business/sk-hynix-plans-more-than-28-billion-share-buyback-641a2e06?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- SK Hynix Plans More Than $28 Billion Share Buyback</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Unitree Robotics surges about 600% in its Shanghai IPO debut</strong></summary>
+      <div class="deal-body">
+        <p>Unitree Robotics surged roughly 600% in its Shanghai trading debut after raising 6.1 billion yuan ($904 million), Bloomberg reported, becoming the first listed humanoid robot maker in mainland China. Founder Wang Xingxing's fortune jumped $13 billion in a day as investors looked past new US curbs on his company's robots.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/unitree-robotics-set-to-debut-after-904-million-shanghai-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Unitree Robotics Surges 460% After $904 Million Shanghai IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI trails Anthropic as losses deepen and Altman pauses frontier training</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI now trails Anthropic as its losses widen and intensifying competition bites, CoinDesk reported, coinciding with Sam Altman pausing frontier reinforcement-learning training while the company strengthens safety controls. A rare sign the field's leader is easing off the accelerator just as rivals gain ground.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/19/openai-trails-anthropic-as-losses-deepen-and-altman-pauses-frontier-ai-training" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- OpenAI Trails Anthropic as Losses Deepen and Altman Pauses Frontier AI Training</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia tries to spur the AI boom into the future</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) is working to extend demand for its technology into a period when chips will be plentiful, Bloomberg reported, backing frontier labs and data centers to keep the compute cycle funded well beyond the current supply crunch. The playbook keeps the chipmaker underwriting the demand for its own product.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-19/nvidia-tries-to-spur-the-ai-boom-into-the-future" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Tries to Spur the AI Boom Into the Future</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tech mounts a charm offensive to save the trillion-dollar AI buildout</strong></summary>
+      <div class="deal-body">
+        <p>Companies are now fighting to push through data-center projects in the face of growing local opposition, Bloomberg reported, warning the political fight will create stock-market winners and losers. Pennsylvania has moved to restrict data-center construction, adding a permitting-and-power constraint to the capex story.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/features/2026-08-19/tech-tries-charm-offensive-to-save-trillion-dollar-ai-buildout" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tech Tries Charm Offensive to Save Trillion-Dollar AI Buildout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kuaishou earnings drop by a third on AI and creator costs</strong></summary>
+      <div class="deal-body">
+        <p>Kuaishou earnings fell the most in five years, Bloomberg reported, hit by higher revenue-sharing payouts to creators while AI outlays drove spending up more than a third. The result shows how the AI spending wave is squeezing margins at China's content platforms even as they chase the technology.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/kuaishou-earnings-drop-by-a-third-hit-by-ai-and-creator-costs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kuaishou Earnings Drop by a Third, Hit by AI and Creator Costs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cerebras bets its specialized chips can outpace GPUs as AI agents spread</strong></summary>
+      <div class="deal-body">
+        <p>Cerebras, a post-IPO bust, is pinning its comeback on a new chip built for the inference era, MarketWatch reported, betting its specialized silicon will outpace traditional GPUs as AI agents become more widespread. A live example of the challenger layer trying to crack Nvidia's grip on inference workloads.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/cerebrass-stock-has-been-a-post-ipo-bust-its-comeback-hinges-on-this-new-chip-a25a7ca4?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Cerebras's Stock Has Been a Post-IPO Bust. Its Comeback Hinges on This New Chip</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China recovers a rocket booster on land for the first time, closing on SpaceX</strong></summary>
+      <div class="deal-body">
+        <p>China recovered a rocket booster on land for the first time, Bloomberg reported, a major step toward catching up with US companies like Elon Musk's SpaceX. The milestone underscores how fast China's hardware and aerospace programs are narrowing gaps once seen as durable US advantages.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/china-recovers-rocket-on-land-in-push-to-catch-up-with-spacex" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China Rocket Comes Home for First Time, Closing in on SpaceX</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Wednesday August 19, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is still demand, with Analog Devices beating on data-center chips, South Korea lifting growth on the AI export boom, and Unitree's 600% robot debut confirming appetite for the next hardware frontier. The counter-signal is the cost and competition stack, with the chip selloff spreading to Asia, OpenAI's losses deepening as it trails Anthropic and pauses training, Alphabet paying a record near 7% to fund capex, and data-center opposition set to pick winners and losers. Layer on SK Hynix's defensive buyback and Kuaishou's AI-driven earnings drop, and the frame is that demand keeps confirming while the funding cost, the competition and the politics all get tested at once.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Global government bond yields hit multiyear highs before stabilizing</strong></summary>
+      <div class="deal-body">
+        <p>Global government bond yields rose to multiyear highs before losing some steam in late US trading as investors grappled with rising economic uncertainty, WSJ reported, with the 30-year Treasury at 19-year highs. A separate WSJ piece said Wall Street sees no end in sight to the selloff even after the pause.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/global-government-bond-yields-hit-multiyear-highs-2b47888a?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Global Government Bond Yields Hit Multiyear Highs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bond traders seek shelter as shorter-dated debt becomes the safety play</strong></summary>
+      <div class="deal-body">
+        <p>The hot safety play is now a short-dated bond, Bloomberg reported, as traders flee the long end where deficits, inflation and AI issuance keep repricing yields. The dollar softened as the bond market steadied ahead of the Fed minutes, and mortgage rates stayed surprisingly calm despite the volatility.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-19/shorter-is-better-to-bond-traders-seeking-shelter" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Shorter Is Better to Bond Traders Seeking Shelter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bond-market pressure is squeezing Main Street as Wall Street waits on Warsh</strong></summary>
+      <div class="deal-body">
+        <p>A selloff in long-term Treasurys is raising borrowing costs and exposing how debt, AI spending and energy are turning the bond market into a political problem, CNBC reported. The analysis frames the long end, not the policy rate, as the channel now reaching households and small businesses.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/18/bond-market-treasury-yields-warsh-main-street.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Bond Market Pressure Is Squeezing Main Street as Wall Street Waits on Warsh</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UK inflation climbs to a four-month high as energy bills surge</strong></summary>
+      <div class="deal-body">
+        <p>UK inflation accelerated in July after energy bills surged, Bloomberg reported, ending a short respite for households and hardening the case that the Iran war's energy pass-through is reigniting price pressure. UK house prices also posted their first fall this year as higher mortgage costs bit.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/uk-inflation-climbs-to-four-month-high-as-energy-bills-rise" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UK Inflation Climbs to Four-Month High as Energy Bills Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Iceland hikes its key rate to 8% as Iran-war fuel costs feed a wage-price spiral</strong></summary>
+      <div class="deal-body">
+        <p>Iceland's central bank raised borrowing costs for the third time this year to 8%, Bloomberg reported, citing rising fuel costs from the Iran war that risk further feeding a wage-price spiral. Sweden's Riksbank separately signaled it is ready to hike this year for the same reason, underlining the hawkish drift.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/iceland-hikes-key-rate-to-8-to-lower-risk-of-prices-spiraling" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Iceland Hikes Key Rate to 8% to Lower Risk of Prices Spiraling</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump pauses threatened 50% tariffs on Canada after a last-minute deal</strong></summary>
+      <div class="deal-body">
+        <p>Trump said a deal was reached with Canada and paused his threatened 50% levies on billions of dollars of goods, FT reported, following intense talks with Mark Carney that averted the tariffs before the deadline. The reprieve removes one near-term trade-friction and inflation thread from a light data week.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/8a256a34-5e8d-459a-80a3-78ba6aa121af?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Trump Says Deal Reached With Canada and Pauses Tariffs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman finds AI is starting to weigh on employment across developed economies</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs studied where AI is squeezing labor markets and found the technology is starting to weigh on employment across developed economies, CNBC reported. The finding adds a softening-demand thread beneath the inflation scare, one that could eventually help cap yields if it broadens.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/19/goldman-ai-impact-employment-jobs.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Goldman Studied Where AI Is Squeezing Labor Markets. Here's What It Found</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 19, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The tightening tug still dominates, but it paused for breath. Long-dated yields hit multiyear highs before losing steam, traders fled into short-dated paper, UK inflation climbed to a four-month high, and Iceland hiked to 8% while Sweden and the BOJ leaned hawkish on Iran-war fuel costs. The easing tug got a little stronger: Goldman found AI starting to weigh on developed-market employment, South African inflation cooled, US housing softened, and Trump paused the Canada tariffs. The tell into the 2pm Fed minutes is whether officials sound the alarm on inflation and supply or the growth and labor cracks pull them toward patience.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Global Wave of Rate Hikes Is Feeding the Long-End Selloff, Not Calming It</summary>
+      <p>It looks paradoxical: central banks from Iceland to Sweden are raising rates or threatening to, the BOJ is expected to hike faster, and yet the thing scaring bond markets this week is long-dated yields surging on their own. If the central banks are being aggressive, why are long bonds falling instead of rallying on the promise of inflation being contained? The answer is in the difference between what a rate hike controls and what a long-dated yield reflects. A central-bank hike sets the overnight rate, the price of very short-term money, and it works by making borrowing today more expensive to cool demand. A 30-year yield is something else: it is roughly the market's guess at the average short rate over three decades plus a term premium for the risk of holding that long. When a central bank hikes because inflation is proving sticky, as Iceland did explicitly on Iran-war fuel costs, it is confirming the very fear that pushes the term premium up. The hike says the inflation problem is real and persistent enough to require action, which makes investors demand more compensation to lock money up for decades, not less. So a hawkish surprise can lift long yields rather than lower them. There is a second layer. Rate hikes that are driven by a supply-side shock like oil are the least reassuring kind, because the central bank is raising rates into an economy where the price pressure is coming from energy, not overheating demand. That combination, tightening policy plus a cost-push shock, raises the risk of a policy mistake in either direction: hike too much and you crush growth, hike too little and inflation spirals. Uncertainty about which path officials take is itself a reason to demand a fatter term premium. Now add the supply of bonds. Governments running wide deficits and AI hyperscalers issuing debt at a record pace, like Alphabet paying near 7% for an Australian bond, are flooding the market with long-dated paper at the same moment. More supply needs higher yields to clear, independent of what any central bank does with the overnight rate. Stack these together and you get this week's picture: coordinated hawkishness, a cost-push oil shock, and heavy issuance all pushing the long end up while the short end is anchored by policy. That is why the curve can steepen even as central banks tighten. The practical lesson is to stop treating a rate hike as automatically bullish for bonds. When the hike confirms a supply-driven inflation problem and lands alongside heavy issuance, the long end sells off, and the traders fleeing into short-dated paper that Bloomberg described are doing the rational thing: staying close to the part of the curve the central bank actually controls and avoiding the part the term premium is repricing.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-19/shorter-is-better-to-bond-traders-seeking-shelter" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Shorter Is Better to Bond Traders Seeking Shelter</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/why-wall-street-thinks-the-brutal-bond-rout-is-just-getting-started-c84e9131?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Why Wall Street Thinks the Brutal Bond Rout Is Just Getting Started</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Global bonds stabilized after the rout drove 30-year Treasury yields to 19-year highs, but Wall Street says the selloff is not done as oil held near a three-week high on the UAE-Iran clash and a chip selloff spread to Asia; verdicts resolve at today's close after the 2pm Fed minutes…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/18</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin holds above $64,000 as bond yields surge and Fed minutes come into focus</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held steady above $64,000 as global bond yields surged and traders awaited the July Fed minutes for clues on the rate path, CoinDesk reported. US Treasury yields retreated from their multidecade highs intraday, but volatility stayed pinned near the bottom of its range.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/08/19/fed-decision-making-comes-into-focus-as-bitcoin-holds-steady-bond-yields-surge" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Fed Decision Making Comes Into Focus as Bitcoin Holds Steady, Bond Yields Surge</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin is stuck in a six-week range with volatility at multiyear lows</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin remained stuck in a six-week range as surging Treasury yields rattled equities and traders awaited the Fed minutes, CoinDesk reported, with realized volatility dropping to multiyear lows. The calm reflects a market tug-of-war with no clear winner as risk appetite drains elsewhere.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/19/bitcoin-stuck-in-a-six-week-range-as-global-bond-yields-hit-highest-levels-for-decades" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Stuck in a Six-Week Range as Global Bond Yields Hit Highest Levels for Decades</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The SEC proposes its first major crypto rule in a surprise announcement</strong></summary>
+      <div class="deal-body">
+        <p>The Securities and Exchange Commission issued a Regulation Crypto proposal in a surprise move, CoinDesk reported, after canceling a meeting days earlier meant to vote on it. It marks the agency's first attempt at a comprehensive framework, a milestone the industry has waited on for years.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/08/18/r" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- U.S. SEC Proposes First Major Crypto Rule in Surprise Announcement</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ripple raises $275 million in senior notes for its prime brokerage push</strong></summary>
+      <div class="deal-body">
+        <p>Ripple Prime raised $275 million in its debut senior-note offering, CoinDesk reported, with the investment-grade-rated notes drawing institutional investors across key markets. The debt sale funds Ripple's build-out of prime-brokerage services, a sign crypto infrastructure firms are tapping traditional credit markets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/19/ripple-raises-usd275-million-in-debut-debt-offering-for-its-prime-brokerage-arm" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Ripple Raises $275 Million in Senior Notes for Prime Brokerage Push</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citi plans to launch bitcoin custody for institutional clients this year</strong></summary>
+      <div class="deal-body">
+        <p>Citi plans to let institutional clients hold bitcoin alongside traditional assets through a new Custody+ platform later this year, CoinDesk reported. It is another sign the TradFi-crypto divide is blurring as major banks build the plumbing for institutional digital-asset holdings.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/18/citi-plans-to-launch-bitcoin-custody-for-institutional-clients-later-this-year" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Citi Plans to Launch Bitcoin Custody for Institutional Clients Later This Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A Maya Protocol exploit drains $11 million from the cross-chain network</strong></summary>
+      <div class="deal-body">
+        <p>A chain of six flaws let an attacker credit a Maya Protocol pool with nearly 50 million tokens that were never funded, draining bitcoin and other assets and cutting pool value by about $11 million, CoinDesk reported. Another reminder that cross-chain infrastructure remains the sector's soft underbelly.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/19/maya-protocol-exploit-drains-bitcoin-and-other-assets-as-pool-value-drops-usd11-million" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Maya Protocol Exploit Drains Bitcoin and Other Assets as Pool Value Drops $11 Million</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>SK Hynix -- $29 Billion Share Buyback</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SK Hynix unveiled a 40 trillion won ($29 billion) buyback, what it calls South Korea's largest, to stabilize a stock that fell more than 50% in two months, WSJ reported.</p>
+        <p><strong>Outlook:</strong> The memory maker will repurchase and cancel up to 24 million shares between August 20 and November 19, shrinking the float even as the chip cycle wobbles.</p>
+        <p><strong>What it means:</strong> A buyback defends the share count and signals management confidence, but it cannot change memory pricing or long-dated yields, the forces actually driving the stock.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/sk-hynix-announces-28-6-billion-share-buy-back-on-ai-boom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix Moves to Calm Market With $29 Billion Share Buyback</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alphabet -- Debut Aussie-Dollar Bond at a Record Near 7%</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Alphabet paid just under 7% to borrow longer-dated funds in its debut Australian-dollar bond, its highest-ever coupon on a note, Bloomberg reported, as hyperscaler cash demands feed costlier funding worldwide.</p>
+        <p><strong>Outlook:</strong> Tapping a fresh currency market widens the investor base for AI capex, but it lands as long-dated yields sit at multidecade highs.</p>
+        <p><strong>What it means:</strong> Even the cash-rich hyperscalers are paying up to bankroll compute, deepening the AI-as-credit-story theme just as bond markets stay sour.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/alphabet-set-to-sell-long-aussie-bond-at-record-near-7-cost" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet Sells Long Aussie Bond With Record Yield Near 7%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Unitree Robotics -- $904 Million Shanghai IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Unitree Robotics raised 6.1 billion yuan ($904 million) and surged about 600% on debut, Bloomberg reported, becoming the first listed humanoid robot maker in mainland China.</p>
+        <p><strong>Outlook:</strong> The listing rides a robotics wave Morgan Stanley estimates could be worth $5 trillion by 2050, and it feeds a strong Hong Kong and mainland IPO pipeline.</p>
+        <p><strong>What it means:</strong> The China robotics listing boom is intensifying even as US export curbs target the sector, a new front in the tech-supremacy race.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/unitree-robotics-set-to-debut-after-904-million-shanghai-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Unitree Robotics Surges 460% After $904 Million Shanghai IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bain Capital's Proterial -- $1.3 Billion Japan Wire Business Sale</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Bain Capital-owned Proterial is considering selling its wire, cable and automotive-parts businesses for about $1.3 billion, Bloomberg reported, the latest major Japan deal as the government pushes companies to boost value.</p>
+        <p><strong>Outlook:</strong> A sale would let Bain crystallize a return while feeding Japan's busy carve-out pipeline.</p>
+        <p><strong>What it means:</strong> Japan corporate-governance reform keeps generating asset sales, giving private equity a steady supply of deals in a market long known for holding on.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/bain-unit-proterial-seeks-1-3-billion-from-japan-wire-firm-sale" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bain Unit Proterial Seeks $1.3 Billion From Japan Firm Sale</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ripple Prime -- $275 Million Debut Senior Notes</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Ripple Prime raised $275 million in its inaugural senior-note offering, CoinDesk reported, with the investment-grade-rated notes drawing institutional buyers across key markets.</p>
+        <p><strong>Outlook:</strong> The proceeds fund Ripple's prime-brokerage build-out, a bid to serve institutions holding crypto alongside traditional assets.</p>
+        <p><strong>What it means:</strong> Crypto infrastructure firms are now tapping the same investment-grade debt markets as banks, another sign the TradFi-crypto divide is closing.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/19/ripple-raises-usd275-million-in-debut-debt-offering-for-its-prime-brokerage-arm" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Ripple Raises $275 Million in Senior Notes for Prime Brokerage Push</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>EQT -- Majority Stake in Melbourne Storm Rugby League Club</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Swedish buyout firm EQT took a majority stake in Melbourne Storm, one of Australia's leading rugby league clubs, Bloomberg reported, moving into a niche corner of global sports.</p>
+        <p><strong>Outlook:</strong> The deal extends private capital's push into sports franchises as investors chase media rights and fan-monetization upside.</p>
+        <p><strong>What it means:</strong> Buyout firms keep broadening beyond traditional targets into sports and entertainment assets, betting on scarce, brand-driven cash flows.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/eqt-takes-majority-stake-in-melbourne-storm-rugby-league-club" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- EQT Takes Majority Stake in Melbourne Storm Rugby League Club</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Deutsche Bank's Maximilian Uleer -- stocks can power through the rate rise</strong></summary>
+      <div class="deal-body">
+        <p>Deutsche Bank's head of European equity research Maximilian Uleer told Bloomberg equities face no serious threat from higher bond yields or oil as long as Brent stays below $100, calling the market boring but not concerning with volatility at a 20-year low. A named bull arguing the selloff is overdone.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/deutsche-bank-s-uleer-says-stocks-can-power-through-rate-rise" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Deutsche Bank's Uleer Says Stocks Can Power Through Rate Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fundstrat's Mark Newton -- it is not time to panic on bond yields</strong></summary>
+      <div class="deal-body">
+        <p>Fundstrat's Mark Newton told MarketWatch it is not time to panic about surging bond yields driving a deeper stock rout, offering technical evidence to back his case. A named voice pushing back against the view that the bond selloff must drag equities sharply lower.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-bond-selloff-is-rattling-investors-but-heres-why-they-shouldnt-expect-a-deeper-stock-downturn-43139350?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Bond Selloff Is Rattling Investors, but Here's Why They Shouldn't Expect a Deeper Stock Downturn</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock's Evy Hambro -- the copper uptrend can continue</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock's head of thematic and sector investing Evy Hambro told Bloomberg the trend is very much your friend on copper, describing a very tight market and warning investors not to dismiss the rally as too late. A named commodity bull leaning into the metals story as bonds stop hedging.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-19/copper-s-upward-trend-can-continue-blackrock-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Copper's Upward Trend Can Continue, BlackRock Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mizuho's markets head -- expect the BOJ to hike more often</strong></summary>
+      <div class="deal-body">
+        <p>Mizuho Financial Group expects the Bank of Japan to pick up the pace of rate hikes, with the next as soon as next month, its markets head told Bloomberg, as a weak yen and inflation prompt faster action. A named call reinforcing the global hawkish drift pressuring long-dated bonds.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-18/mizuho-markets-head-expects-boj-to-raise-rates-soon-more-often" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Mizuho Markets Head Expects BOJ to Raise Rates More Often</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CNBC read -- retail investors stick with the AI trade but add protection</strong></summary>
+      <div class="deal-body">
+        <p>Mom-and-pop investors remain bullish on AI and tech but some are adding downside protection, CNBC reported, a sign the retail crowd is not capitulating on the buildout even as it hedges against a deeper pullback. A gauge that conviction survives while caution rises.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/19/retail-investors-stick-with-ai-trade-but-appear-more-cautious.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Retail Investors Aren't Entirely Giving Up on AI Trade, but They Appear More Cautious</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Global Bonds Stabilize After Hitting 19-Year Yield Highs, Oil Holds Near a Three-Week High on the UAE-Iran Clash, and a Chip Selloff Spreads to Asia Into the July Fed Minutes</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the selloff is overdone and demand holds):</strong> Deutsche Bank's Maximilian Uleer says stocks can power through the rate rise while Brent stays below $100 with volatility at a 20-year low, and Fundstrat's Mark Newton says it is not time to panic. BlackRock's Evy Hambro sees copper's uptrend continuing, Target beat and raised guidance, Analog Devices topped on data-center chips, and retail investors are hedging rather than fleeing. The demand engine looks intact.</div>
+        <div class="bear"><strong>Bear (the tightening drift and oil are still in charge):</strong> Wall Street says the bond rout is just getting started, Mizuho expects the BOJ to hike more often, and Iceland and Sweden are leaning hawkish on Iran-war fuel costs. The chip selloff spread to Asia, Lowe's cut guidance, and long-dated yields sit at 19-year highs while traders shelter in short-dated paper. A crowded, long-duration equity market re-prices fast when the discount rate jumps and oil pushes higher.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Chip selloff hits Asia; SK Hynix $29B buyback; Unitree 600% robot IPO; Target beats but drops; oil near 3-week high</td><td>Bearish</td><td>~23,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Target hikes outlook; Lowe's cuts; Fed minutes 2pm; Analog Devices beats; Trump pauses Canada tariffs</td><td>Mixed</td><td>~16,500 (est.)</td></tr>
+          <tr><td>r/investing</td><td>30Y at 19-year highs but stabilizing; short-dated bonds the safety play; Wall Street sees no end; dollar softens</td><td>Cautious</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Memory-chip cyclicality and buyback defense; OpenAI trails Anthropic; Alphabet pays near 7%; data-center opposition</td><td>Bearish</td><td>~9,500 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds $64K; volatility at cycle lows; SEC proposes Regulation Crypto; Citi bitcoin custody; Maya exploit</td><td>Mixed</td><td>~11,500 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood stayed defensive but less panicked as the bond rout paused. r/wallstreetbets leaned bearish as the chip selloff spread to Asia, SK Hynix answered with a buyback and even Target's beat couldn't hold the stock. r/stocks stayed mixed, weighing Target's raised guidance and Trump's Canada tariff pause against Lowe's cut and a nervous wait for the 2pm Fed minutes. r/investing kept its guard up over 30-year yields near 19-year highs but noted the stabilization, the softer dollar and traders sheltering in short-dated paper. r/SecurityAnalysis leaned bearish on memory cyclicality, OpenAI trailing Anthropic and Alphabet's costly funding. r/CryptoCurrency was mixed as bitcoin held $64,000 with volatility at cycle lows, cheered by the SEC's Regulation Crypto proposal and Citi custody but shaken by the Maya exploit. The swing factor is whether the minutes calm the long end or reignite the tightening scare.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why the July Fed Minutes Can Move Markets More Than the Rate Decision They Describe, How Traders Mine a Three-Week-Old Document for the Path Ahead, and Why a Dovish or Hawkish Read Lands Differently When the Long End Is Already Repricing on Its Own</h2>
+    <p>At 2pm ET the Fed releases the minutes of its July meeting, and even though the rate decision itself is weeks old and already known, the document can jolt Treasuries, the dollar and stocks. It is worth walking through why a backward-looking record still matters, because this episode shows how markets extract forward-looking information from it, and why the reaction depends on what the bond market is already doing. Start with what the minutes are. The rate decision tells you what the committee did. The minutes, published three weeks later, tell you why, and crucially how divided the committee was and what conditions individual members said would change their vote. That is the forward-looking part. Traders are not re-reading a decision they already priced; they are hunting for the reaction function, the if-then logic that tells them how the Fed will respond to the data still to come. If the minutes reveal that several members were close to dissenting, or that the committee flagged specific triggers like oil-driven inflation or a softening labor market, the market updates its odds for the next few meetings, and those odds are what move prices today. Now layer in this week's context. Long-dated yields have surged to 19-year highs on deficits, sticky inflation and AI issuance, forces the Fed does not directly control, while the front end is anchored by policy. That split changes how the minutes land. If the minutes read hawkish, showing members worried about persistent inflation, the market may push short-term rate expectations up, which can actually relieve some long-end pressure because a credibly tough Fed lowers long-run inflation fears. If the minutes read dovish, suggesting the committee is ready to look through the oil shock and hold or cut, short-term expectations fall, but long-dated yields could rise further because a Fed that tolerates inflation makes the term premium fatter. That is the counterintuitive part: in a supply-and-inflation regime, a dovish Fed can steepen the curve rather than rally bonds. There is also the Warsh factor CNBC flagged, the market waiting on leadership and the reaction function itself being uncertain, which raises the stakes of every clue about how officials think. The practical way to read the release is to separate the two ends of the curve. Watch whether the two-year yield, which tracks policy expectations, moves in the same direction as the thirty-year, which tracks inflation and supply. If they move together, the market is treating the minutes as a clean signal about the whole path. If they split, with the front end falling and the long end rising, the market is telling you it doubts the Fed can contain the term-premium story no matter what it signals. The lesson is that a rate decision tells you where policy is, but the minutes tell you where it might go, and in a regime where the long end is repricing on its own, the same words can be read as reassuring at the front and alarming at the back. Read both ends before you conclude the Fed was dovish or hawkish.</p>
+    <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/bonds-chip-stocks-steady-ahead-of-fed-meeting-minutes-258030f3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. Stock Futures Flat Amid Retail Industry Earnings</a></p>
+    <p class="deal-source"><a href="https://www.cnbc.com/2026/08/18/bond-market-treasury-yields-warsh-main-street.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Bond Market Pressure Is Squeezing Main Street as Wall Street Waits on Warsh</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-19/shorter-is-better-to-bond-traders-seeking-shelter" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Shorter Is Better to Bond Traders Seeking Shelter</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>July Fed minutes, today 2pm ET.</strong> With the bond market daring the Fed and long-dated yields near 19-year highs, the minutes are the day's key catalyst for whether officials sound the alarm on inflation and supply or lean back toward patience as growth and labor cracks widen.</li>
+      <li><strong>Jackson Hole symposium, Thursday to Saturday.</strong> The Fed's annual gathering lands into a bond rout Wall Street says is not over; watch for any signal on the reaction function as the market waits on Warsh.</li>
+      <li><strong>The long end versus short-dated shelter.</strong> After 30-year yields hit 19-year highs and traders fled into short-dated paper, watch whether the curve keeps steepening on supply and oil or the stabilization holds.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Retail read continues.</strong> After Target beat and raised guidance while Lowe's cut, watch remaining retail prints for whether the value-seeking, housing-linked consumer is splitting further as a signal into a rates-heavy tape.</li>
+      <li><strong>Chip earnings and memory pricing.</strong> After the selloff spread to Asia and SK Hynix launched a $29 billion buyback, watch semiconductor prints and memory spot prices for whether the AI demand signal or the cyclical downturn wins.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-buildout financing.</strong> After Alphabet paid a record near 7% for its debut Aussie bond, watch whether hyperscaler debt issuance keeps widening even as it helps push borrowing costs to multidecade highs.</li>
+      <li><strong>Robotics and IPO pipeline.</strong> After Unitree surged 600% on debut and HKEX flagged a strong pipeline, watch whether the robotics and China-tech listing wave holds up against the sector's commercial test.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Iran and the oil premium.</strong> With the UAE suspending Iran trade, Tehran weighing strikes on US assets in Europe, and oil near a three-week high, watch whether the conflict escalates and keeps feeding the inflation-and-rates story.</li>
+      <li><strong>Canada trade reprieve.</strong> After Trump paused the threatened 50% tariffs following a deal with Carney, watch whether the truce holds and removes one inflation and trade-friction thread from a light data week.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Aug 19, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-19 07:25 ET); Bloomberg Technology (20 fresh, newest 2026-08-19 07:02 ET); Bloomberg Economics (20 fresh, newest 2026-08-19 07:00 ET); CNBC Top News (9 fresh, newest 2026-08-19 06:45 ET); CNBC Finance (7 fresh, newest 2026-08-19 07:09 ET); CNBC Economy (1 fresh, newest 2026-08-18 07:51 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-19 07:22 ET); WSJ Markets (16 fresh, newest 2026-08-19 07:30 ET); Yahoo Finance (23 fresh, newest 2026-08-19 07:22 ET); FT Home (9 fresh, newest 2026-08-19 04:28 ET); CoinDesk (25 fresh, newest 2026-08-19 07:14 ET); Stratechery (2 fresh, newest 2026-08-19 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What did Target report in its second quarter?</strong></p>
+      <span class="opt" data-opt="A">A. It missed on sales and cut its full-year outlook</span>
+      <span class="opt" data-opt="B">B. It suspended guidance amid tariff uncertainty</span>
+      <span class="opt" data-opt="C">C. It beat on sales and raised its full-year outlook</span>
+      <span class="opt" data-opt="D">D. It flagged collapsing demand from GLP-1 users</span>
+      <div class="feedback"><strong>C is correct.</strong> CNBC reported Target beat on sales and raised its full-year outlook, helped by a large tariff refund. It did not miss, suspend guidance, or blame GLP-1 users, though the stock still slipped on turnaround doubts.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>2. What happened at Unitree Robotics' Shanghai IPO debut?</strong></p>
+      <span class="opt" data-opt="A">A. It priced below range and fell on its debut</span>
+      <span class="opt" data-opt="B">B. Its shares surged roughly 600% on the day</span>
+      <span class="opt" data-opt="C">C. It postponed the listing amid US export curbs</span>
+      <span class="opt" data-opt="D">D. It listed in Hong Kong to raise $3 billion</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg reported Unitree surged about 600% on its Shanghai debut after raising $904 million, becoming mainland China's first listed humanoid robot maker. It did not fall, postpone, or list in Hong Kong.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Where are bond traders seeking shelter from the long-end selloff?</strong></p>
+      <span class="opt" data-opt="A">A. In short-dated bonds near the policy rate</span>
+      <span class="opt" data-opt="B">B. In 30-year Treasurys at 19-year-high yields</span>
+      <span class="opt" data-opt="C">C. In foreign central banks buying record Treasuries</span>
+      <span class="opt" data-opt="D">D. In long-dated bonds after yields fell hard</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported the hot safety play is now a short-dated bond, close to the part of the curve the Fed controls. The long end is what traders are fleeing, and foreign buyers have been trimming, not adding.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Global bonds stabilized after the rout drove 30-year Treasury yields to 19-year highs, but Wall Street says the selloff is just getting started as deficits, inflation and AI issuance keep the long end elevated into the July Fed minutes, with Deutsche Bank's Uleer and Fundstrat's Newton telling clients not to panic while Iceland, Sweden and the BOJ lean toward more hikes.",
+    "sources": [
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/wall-street-sees-no-end-in-sight-to-the-global-bond-selloff-a1b5d1e3?mod=rss_markets_main", "take": "Wall Street sees no end in sight to the global bond selloff." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-08-19/shorter-is-better-to-bond-traders-seeking-shelter", "take": "The hot safety play is now a short-dated bond as traders flee the long end." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/18/bond-market-treasury-yields-warsh-main-street.html", "take": "Bond-market pressure is squeezing Main Street as Wall Street waits on Warsh." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/the-bond-selloff-is-rattling-investors-but-heres-why-they-shouldnt-expect-a-deeper-stock-downturn-43139350?mod=mw_rss_topstories", "take": "Fundstrat's Newton says it's not time to panic about a deeper stock rout." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-19/deutsche-bank-s-uleer-says-stocks-can-power-through-rate-rise", "take": "Deutsche Bank's Uleer says stocks can power through while Brent is below $100." }
+    ]
+  },
+  "iran": {
+    "diverge": "US-Iran tension escalates as the UAE suspends trade after missiles fell near the Gulf state and Tehran weighs striking US assets in Europe, pushing oil to a near three-week high, but Saudi Aramco restored full allocations to European refiners and Deutsche Bank's Uleer says stocks are fine while Brent holds below $100.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-19/saudis-give-full-oil-allocations-to-at-least-three-europe-buyers", "take": "Saudi Aramco restored full crude allocations to at least three European refiners." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-19/deutsche-bank-s-uleer-says-stocks-can-power-through-rate-rise", "take": "Uleer says equities face no serious threat while Brent stays below $100." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/8dbbeb9a-290a-4edd-b731-44ce3e31ecf5?syn-25a6b1a6=1", "take": "The UAE suspended trade with Iran after missiles fell near the Gulf state." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/9ea0cde8-129e-4d88-976f-e367b7dd4d2c?syn-25a6b1a6=1", "take": "Iran is weighing strikes on US assets in Europe if Trump escalates." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-19/iceland-hikes-key-rate-to-8-to-lower-risk-of-prices-spiraling", "take": "Iceland hiked to 8% citing Iran-war fuel costs feeding a wage-price spiral." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "A semiconductor selloff spread to Asia as Samsung and SK Hynix slumped 7% and SK Hynix unveiled a $29 billion buyback, while OpenAI trails Anthropic as losses deepen and Altman pauses frontier training, Alphabet paid a record near 7% for a debut Aussie bond, and China's Unitree surged 600% in its robot IPO debut.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-18/unitree-robotics-set-to-debut-after-904-million-shanghai-ipo", "take": "Unitree surged about 600% on debut as the first mainland humanoid robot listing." },
+      { "name": "Investors", "lean": "bull", "url": "https://www.investors.com/news/technology/adi-stock-analog-devices-fiscal-q3-2026-earnings/?src=A00220&yptr=yahoo", "take": "Analog Devices topped views on strong data-center and industrial chip sales." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-19/chip-selloff-extends-to-asia-as-samsung-sk-hynix-slump-video", "take": "The chip selloff spread to Asia with Samsung and SK Hynix down more than 7%." },
+      { "name": "CoinDesk", "lean": "bear", "url": "https://www.coindesk.com/markets/2026/08/19/openai-trails-anthropic-as-losses-deepen-and-altman-pauses-frontier-ai-training", "take": "OpenAI trails Anthropic as losses deepen and Altman pauses frontier training." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-19/alphabet-set-to-sell-long-aussie-bond-at-record-near-7-cost", "take": "Alphabet paid a record near 7% for its debut Australian-dollar bond." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Unitree","Analog Devices","Target","Kuaishou","SK Hynix","Samsung"],
+    "values": [600.0, 4.0, -2.0, -5.0, -7.0, -7.2]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [23000, 16500, 14000, 9500, 11500],
+    "colors": ["bear","neutral","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["SK Hynix Buyback","Bain Proterial Sale","Unitree Shanghai IPO","Ripple Senior Notes","Metaplanet US Deal"],
+    "values": [29.0, 1.3, 0.9, 0.275, 0.135]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
