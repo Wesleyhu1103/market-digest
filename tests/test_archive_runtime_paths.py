@@ -66,6 +66,16 @@ class ArchiveRuntimePathTests(unittest.TestCase):
         self.assertIn("mdSitePath('archive/' + iso + '.html')", verdict_js)
         self.assertNotIn("fetch('archive/' + iso + '.html'", verdict_js)
 
+    def test_archived_html_does_not_fetch_root_data_from_archive_directory(self):
+        forbidden = ("fetch('fred-data.json'", 'fetch("fred-data.json"', "fetch('archive/manifest.json'", 'fetch("archive/manifest.json"')
+        offenders = []
+        for path in sorted((ROOT / "docs" / "archive").glob("*.html")):
+            text = path.read_text()
+            for needle in forbidden:
+                if needle in text:
+                    offenders.append(f"{path.relative_to(ROOT)}: {needle}")
+        self.assertEqual(offenders, [])
+
 
 if __name__ == "__main__":
     unittest.main()
