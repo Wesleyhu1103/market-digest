@@ -62,6 +62,43 @@ class ValidateDigestTests(unittest.TestCase):
 
             self.assertEqual(missing, [])
 
+    def test_validate_archive_runtime_paths_flags_archive_relative_data_fetches(self):
+        module = load_validate_digest()
+        with tempfile.TemporaryDirectory() as tmp:
+            archive = Path(tmp) / "docs" / "archive"
+            archive.mkdir(parents=True)
+            html_path = archive / "2026-07-07.html"
+            html = """
+            <script>
+              fetch('fred-data.json', { cache: 'no-store' });
+              fetch("archive/manifest.json", { cache: "no-store" });
+            </script>
+            """
+
+            bad = module.validate_archive_runtime_paths(html, html_path)
+
+            self.assertEqual(
+                bad,
+                ["fetch('fred-data.json')", "fetch('archive/manifest.json')"],
+            )
+
+    def test_validate_archive_runtime_paths_accepts_root_relative_data_fetches(self):
+        module = load_validate_digest()
+        with tempfile.TemporaryDirectory() as tmp:
+            archive = Path(tmp) / "docs" / "archive"
+            archive.mkdir(parents=True)
+            html_path = archive / "2026-07-07.html"
+            html = """
+            <script>
+              fetch('../fred-data.json', { cache: 'no-store' });
+              fetch("../archive/manifest.json", { cache: "no-store" });
+            </script>
+            """
+
+            bad = module.validate_archive_runtime_paths(html, html_path)
+
+            self.assertEqual(bad, [])
+
 
 if __name__ == "__main__":
     unittest.main()
