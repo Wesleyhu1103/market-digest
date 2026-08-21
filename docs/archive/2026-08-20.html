@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Aug 20, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-20</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, August 20, 2026</h1>
+    <div class="meta">
+      <p>Scott Bessent's Treasury doubled its buybacks of longer-dated debt, the most interventionist move by a Treasury chief in decades, and it dove yields off 19-year highs a day after the July Fed minutes showed officials ready to hike if inflation does not cool. The relief rippled everywhere: bitcoin broke out above $72,000 as $3 billion in shorts got torched, and emerging-market currencies hit a record. Trump then declared "economic war" on Iran, pushing Brent to about $93, while Walmart earnings headline a retail read that has already split Target and Lowe's.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Treasury Secretary Scott Bessent doubled the government's buybacks of longer-dated debt in the most interventionist move by a Treasury chief in decades, sparking a bond rally that pulled 30-year yields off 19-year highs, weakened the dollar, torched $3 billion in crypto shorts and sent bitcoin above $72,000, but JPMorgan, Bloomberg and WSJ analysts warned the relief is a short-lived circuit breaker that fails to address $40 trillion in US debt and sticky inflation",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Bessent Leans Into His Role as America's Bond Trader in Chief", "angle": "Frames the buyback as a bold, credibility-on-the-line intervention after yields hit near two-decade highs.", "lean": -10, "pull": "The Treasury Department signals its willingness to intervene after yields hit nearly two-decade highs."},
+        {"outlet": "Bloomberg", "headline": "Bessent Plan May Be Short-Lived Remedy for Bond Slump", "angle": "Says the rally may prove fleeting given persistent fiscal woes and sticky inflation.", "lean": -35, "pull": "The global bond rally triggered by Bessent's plan may prove short lived, with analysts citing persistent fiscal woes."},
+        {"outlet": "MarketWatch", "headline": "Treasury's Bond Buyback Blitz May End Up Driving Yields Higher, Warns JPMorgan", "angle": "JPMorgan's Barry and Hunter argue the move was not even needed and could backfire.", "lean": -45, "pull": "Strategists Jay Barry and Jason Hunter are predicting fallout from a move they see as not even needed."},
+        {"outlet": "CNBC", "headline": "US Government Debt Passes $40 Trillion, More Than Doubling in a Decade", "angle": "Ties the intervention to a debt load that has doubled in ten years.", "lean": -30, "pull": "US government debt passed $40 trillion, more than doubling in a decade."},
+        {"outlet": "CoinDesk", "headline": "Bitcoin Breaks Out of Six-Week Range, Tops $71,000 as $3 Billion in Shorts Get Wiped Out", "angle": "Reads the buyback as a risk-on trigger that ended weeks of compression.", "lean": 45, "pull": "Six weeks of compression ended in the largest short liquidation since at least 2021."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Scott Bessent Doubles Treasury Buybacks of Long-Dated Debt in the Most Interventionist Move in Decades, Diving Yields Off 19-Year Highs, Weakening the Dollar and Torching $3 Billion in Crypto Shorts, but JPMorgan's Barry and Hunter, Bloomberg Analysts and WSJ Warn the Relief Is a Short-Lived Circuit Breaker as US Debt Tops $40 Trillion and Yields Tick Back Up</h3>
+      </div>
+      <p>The bond scare met a state response. Bloomberg said Bessent has become the most interventionist Treasury secretary in decades, and WSJ described him leaning into a role as America's bond trader in chief after the Treasury signaled it would step up buybacks of 10-to-30-year debt. Yields dove, US stocks rose as the buyback calmed the tape, Moderna and Merck surged on mRNA cancer-vaccine data, and the risk-on wave lit up crypto and emerging markets: bitcoin broke out above $72,000 as $3 billion in bearish bets got wiped out, and EM currencies hit a fresh record as a soft dollar burnished the carry trade. The skeptics moved fast. MarketWatch reported JPMorgan's Jay Barry and Jason Hunter warned the buyback blitz was not even needed and may end up driving yields higher, Bloomberg called the plan at best a circuit breaker for a slump rooted in fiscal woes and sticky inflation, and WSJ ran two-new studies arguing the Treasury market's safe-haven status is fading. By Thursday morning yields had ticked back up, Brent crude sat near $93, and CNBC noted US debt just crossed $40 trillion. The cross-currents kept coming: India's RBI rattled its bond market with hawkish minutes, Sweden's Riksbank held but restated a hike is possible on Iran-war inflation, and Bloomberg said the dollar risks becoming the biggest loser from Bessent's bid to tame yields. Evercore's Krishna Guha called the move a complication for Warsh that will not change the September Fed decision.</p>
+      <p>The bull case is the intervention working on the tape, with yields diving, stocks and bitcoin ripping, the dollar soft and Guha saying the Fed path is intact. The bear case is JPMorgan, Bloomberg and WSJ warning the relief is fleeting, yields ticking back up, $40 trillion in debt, a fading safe-haven bid, and the RBI and Riksbank leaning hawkish.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the intervention broke the panic):</strong> WSJ said stocks rose as the Treasury buybacks calmed yields off 19-year highs, Moderna surged, and CoinDesk reported bitcoin broke out above $72,000 as $3 billion in shorts got liquidated and ETFs drew their biggest inflows in months. EM currencies hit a record on a softer dollar, and Evercore's Krishna Guha said the move complicates things for Warsh but will not change the September decision. When the biggest buyer signals it will step in, the term-premium spiral pauses.</div>
+        <div class="bear"><strong>Bear (a circuit breaker, not a cure):</strong> MarketWatch reported JPMorgan's Jay Barry and Jason Hunter warned the buyback may drive yields higher and was not even needed, Bloomberg called it a short-lived remedy for a fiscal-and-inflation problem, and WSJ said the Treasury's safe-haven status is fading. Yields ticked back up Thursday, US debt crossed $40 trillion, and the RBI and Riksbank leaned hawkish. Buybacks do not shrink the deficit or the supply of long-dated paper.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/investing/bessent-leans-into-his-role-as-americas-bond-trader-in-chief-633f28a4?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Bessent Leans Into His Role as America's Bond Trader in Chief</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Trump Declares an "Economic D-Day" Against Iran and the UAE Suspends Trade, Pushing Brent to About $93 and a Near Four-Week High and Reinforcing the Inflation-and-Rates Story, but the Bundesbank Says the Energy Shock Is Not Yet Feeding German Wages and Sweden's Riksbank Held Rates Even as It Kept a Hike on the Table</h3>
+      </div>
+      <p>The war premium widened again on a fresh escalation. FT reported Trump announced a new drive to isolate and crush Iran's economy, with the UAE, long a crucial trading hub for Tehran, suspending commercial ties, and Bloomberg described the White House framing it as an "economic D-Day." MarketWatch said oil jumped after Trump warned any country supporting Iran's economy would face tremendous consequences, and Bloomberg noted crude climbed to its highest in almost four weeks as the measures crimped Middle East supply, with Brent near $93. The macro pass-through kept flowing into the rates story: Sweden's Riksbank held for a twelfth month but repeated it stands ready to hike this year if the Iran war lifts inflation, and Exxon warned Kazakhstan's top oil field is near peak, tightening the medium-term supply picture. There are offsets. The Bundesbank said the energy shock from the Middle East conflict is not yet fueling broader German wage inflation, a sign the second-round effects central banks fear have not arrived in the euro area's largest economy, and it added that the German economy is finally on a path to recovery. The oil channel is still the cleanest transmission line from geopolitics into the inflation-and-yields debate, and Trump's economic-warfare move just widened it.</p>
+      <p>The bull read is the Bundesbank finding no second-round wage effects, Germany turning a corner, and the Riksbank choosing to hold. The bear read is Trump's economic war on Iran, the UAE suspending trade, Brent near a four-week high, Kazakh supply peaking, and the Riksbank keeping a hike on the table on war-driven inflation.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the shock is not yet spreading):</strong> The Bundesbank said the Middle East energy shock is not feeding broader German wage inflation and that Germany is finally on a path to recovery, and Sweden's Riksbank chose to hold rates rather than hike. If the pass-through stays confined to the oil price and off the wage-setting process, the inflation scare proves a one-off and central banks can look through it.</div>
+        <div class="bear"><strong>Bear (the conflict is escalating into supply):</strong> FT reported Trump's new drive to crush Iran's economy and the UAE suspending trade, while Bloomberg and MarketWatch said oil jumped to a near four-week high on crimped Middle East supply. Exxon warned Kazakhstan's top field is near peak, and the Riksbank kept a hike on the table explicitly on Iran-war inflation risk. Higher oil keeps reinforcing the case for tighter policy just as the Treasury tries to cap yields.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/785aafd1-705a-47da-b016-032d66e449c0?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Trump Announces New Drive to Isolate and Crush Iranian Economy</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Samsung and SK Hynix Prep Record Shareholder Returns After the AI-Hardware Selloff While Alibaba's Profit Dives 75% and Ant's Flattens on AI Spending, Chinese Models From Moonshot and ZAI Close the Gap at a 75% Discount, and Meta Emerges as One of Microsoft's Biggest AI Customers as Japan's Chip Exports Boom</h3>
+      </div>
+      <p>The AI trade rebounded on price but the earnings math kept cutting both ways. Bloomberg reported Samsung and SK Hynix are preparing record shareholder returns after investors dumped their shares on doubts about the sustainability of AI hardware spending, and South Korean tech led an emerging-market rebound as the buyback wave lifted sentiment. SK Hynix also struck a tentative union deal with a 6.3% pay raise. Japan's exports grew at their fastest since 2022 on robust chip and car demand, confirming the hardware pull. But the spending is showing up as margin pain: Alibaba's profit dived more than 75% after it ratcheted up AI outlays into a Chinese consumption slowdown, and Jack Ma-backed Ant's profit flattened on AI and expansion costs. The competitive picture is tightening too. Bloomberg reported Chinese models from Moonshot and ZAI now build passable websites at a 75% discount to Claude, and a broader piece argued China is rapidly catching the US on price if not yet quality. On the US side, Meta has quietly become one of Microsoft's largest AI customers, underscoring how concentrated compute demand still is, while WSJ flagged the risks in hyperscalers' off-grid power push and MarketWatch questioned how AMD will finance its bet on dirt-cheap AI chips. The funding layer keeps growing, with Muon Space raising $250 million from Google and Salesforce and Callosum pulling $100 million to make AI tasks cheaper.</p>
+      <p>The bulls point to record chip shareholder returns, Japan's export boom, Korea leading the EM rebound, Meta's concentrated compute demand and fresh AI funding rounds. The bears point to Alibaba's 75% profit dive, Ant's flat earnings, Chinese models undercutting on price, off-grid power risks and AMD's financing question.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand and returns are both showing up):</strong> Bloomberg reported Samsung and SK Hynix are preparing record shareholder returns and Korean tech led an EM rebound, Japan's exports grew at the fastest pace since 2022 on chips, and Meta has become one of Microsoft's biggest AI customers. Muon Space raised $250 million and Callosum $100 million, and SK Hynix locked in a union pay deal. The order books, export data and capital keep confirming the buildout.</div>
+        <div class="bear"><strong>Bear (the spending is eating the earnings):</strong> Alibaba's profit dived more than 75% and Ant's flattened as AI outlays outran a Chinese consumption slowdown, Bloomberg said, while Moonshot and ZAI now match frontier models at a 75% discount. WSJ flagged risks in hyperscalers' off-grid power push and MarketWatch questioned how AMD funds its cheap-chip bet. The buildout is compressing margins and inviting cheaper competition at the same time.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-20/alibaba-s-revenue-climbs-9-in-testament-to-china-s-ai-boom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba's Profit Dives 75% After Amping Up AI Spending</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks rise as Treasury buybacks calm bond yields and Moderna surges</strong></summary>
+      <div class="deal-body">
+        <p>US stocks rose after the government said it would buy back more longer-dated bonds, easing pressure on a market that had pushed borrowing costs to near two-decade highs, WSJ reported. Moderna and Merck surged on mRNA cancer-vaccine results, adding a biotech kicker to the relief rally.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/u-s-stocks-gain-as-treasury-buybacks-calm-bond-yields-moderna-surges-402249fb?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. Stocks Up as Treasury Buybacks Calm Bond Yields; Moderna Surges</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasury rally fades as oil puts inflation risk back in focus</strong></summary>
+      <div class="deal-body">
+        <p>A rebound in long-dated Treasuries ran out of steam and US stock futures struggled for direction as rising oil prices put inflation risks back on investors' radar, Bloomberg reported. By Thursday morning yields had ticked back up and Brent sat near $93, testing how durable the buyback relief really is.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stocks Waver as Treasury Rally Starts to Fade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Walmart hikes full-year outlook and pledges to use its tariff refund to hold prices</strong></summary>
+      <div class="deal-body">
+        <p>Walmart (WMT) raised its full-year outlook and said it will use a huge tariff refund to keep prices low, CNBC reported, offering a read on a K-shaped consumer. The pledge positions the retailer to defend share while the value-seeking shopper keeps trading down.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/20/walmart-wmt-q2-2027-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Walmart Hikes Full-Year Outlook, Says It Will Use Huge Tariff Refund to Keep Prices Low</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Target says its turnaround is picking up steam with help from a tariff refund</strong></summary>
+      <div class="deal-body">
+        <p>Target (TGT) posted better-than-expected second-quarter sales and raised its full-year outlook, helped by a large tariff refund, CNBC reported, with management saying the turnaround is gaining traction. The beat sits against Lowe's soft print, splitting the consumer read down housing lines.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/19/target-tgt-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Target Says Its Turnaround Is Picking Up Steam With Help From a Big Tariff Refund</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lowe's gives a muted outlook as it flags pressure in home-improvement spending</strong></summary>
+      <div class="deal-body">
+        <p>Lowe's (LOW) reported mixed results and a muted outlook, CNBC reported, as it continued to see pressure in home-improvement spending across a soft housing market. The cautious guide contrasted with Home Depot's steadier tone and Target's raised outlook.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/19/lowes-low-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Lowe's Gives Muted Outlook as It Sees Pressure in Home Improvement Spending</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Deere narrows its profit outlook as a farm recovery is seen in 2027</strong></summary>
+      <div class="deal-body">
+        <p>Deere (DE) raised the lower end of its annual profit outlook as a stabilizing agriculture sector points to a more pronounced rebound in farm machinery next year, Bloomberg reported. The narrowed guide signals the ag cycle is bottoming even as this year's demand stays soft.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/deere-narrows-profit-outlook-as-farm-recovery-seen-in-2027" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Deere Narrows Profit Outlook as Farm Recovery Seen in 2027</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Carvana slides as a Mark Walter probe fuels investor jitters</strong></summary>
+      <div class="deal-body">
+        <p>Carvana (CVNA) shares were on pace for a roughly 10% weekly loss as scrutiny of investor Mark Walter raised questions about what could happen to his stake if the probe pressures him to raise cash, CNBC reported. A single-name overhang that has nothing to do with the underlying used-car business.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/19/carvana-shares-on-pace-for-10percent-weekly-loss-as-mark-walter-probe-fuels-investor-jitters.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Carvana Shares Under Pressure as Mark Walter Probe Fuels Investor Jitters</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape swung from fear to relief and back toward caution. The Treasury buyback dove yields and lifted stocks, Moderna and Merck surged on vaccine data, and the risk-on wave torched crypto shorts, but by Thursday morning yields ticked back up and Brent near $93 put inflation risk back in view. Walmart's raised outlook and Target's turnaround gave bulls a resilient-consumer read, while Lowe's soft guide and Carvana's probe overhang showed where the strain sits. The next test is whether the buyback relief holds against Trump's economic war on Iran and a $40 trillion debt backdrop that JPMorgan says the intervention cannot fix.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Record Chip Buyback and a Treasury Buyback Answer Very Different Problems</summary>
+      <p>This week put two kinds of buybacks in the same headlines, and it is worth separating them because they work on completely different problems even though they share a word. Samsung and SK Hynix are preparing record shareholder returns after their stocks got hammered on doubts about AI hardware spending, and the Treasury doubled its buybacks of long-dated debt to tame a yield spike. Both are called buybacks, both spend cash to purchase securities, and both are meant to steady a falling price, but the mechanics diverge sharply. Start with a corporate buyback. When a company buys back and cancels its own shares, it shrinks the share count, so the same future profit is divided among fewer shares and earnings per share rise even if total earnings do not. It also sends a signal, telling the market management thinks the stock is cheap enough to spend real cash defending. For a cyclical memory maker whose profit is leveraged to commodity chip prices, that is a way to put a floor under sentiment while the pricing cycle plays out. But notice the limit: a chip buyback cannot change DRAM prices or the pace of AI capex, the forces actually driving the stock. It manages the share count and the mood, not the demand. A Treasury buyback is a different animal. The government is not trying to lift its own earnings per share; it has none. It buys back outstanding long-dated bonds to change the supply of paper in the market. Long yields are set partly by how much duration investors must absorb, so when the Treasury purchases 10-to-30-year bonds it takes some of that duration off the market's hands, which can lower the yield the remaining bonds must offer to clear. In effect it is doing on the fiscal side something close to what a central bank does when it buys bonds, leaning against the term premium. That is why the announcement dove yields and lit up every risk asset from stocks to bitcoin at once. Here too there is a limit, and it is the one JPMorgan's strategists pressed on. A buyback swaps one government liability for another; it does not shrink the deficit, cut the total stock of debt, or lower inflation. If the market believes the underlying supply of new issuance and the inflation path are unchanged, the relief fades and yields drift back up, which is exactly what happened by Thursday morning. The practical lesson is to ask what problem each buyback can actually solve. A corporate buyback addresses the share count and confidence, never the business cycle. A Treasury buyback addresses the near-term supply of duration, never the deficit that creates it. In both cases the price can steady for a while, but the fundamental force, memory pricing for one and fiscal supply for the other, keeps running underneath. Treat either buyback as a floor attempt, and watch the thing it cannot touch to know whether the floor holds.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-20/samsung-sk-hynix-prepare-record-shareholder-returns-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Samsung, SK Hynix Prepare Record Shareholder Returns</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/heres-the-real-problem-with-stock-buybacks-0383bedb?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Here's the Real Problem With Stock Buybacks</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Alibaba's profit dives 75% after ramping up AI spending</strong></summary>
+      <div class="deal-body">
+        <p>Alibaba's (BABA) profit plunged more than 75% after China's e-commerce leader ratcheted up AI spending while grappling with a broad Chinese consumption slowdown, Bloomberg reported, even as revenue climbed 9%. The split shows the AI buildout is real but eating straight into margins.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/alibaba-s-revenue-climbs-9-in-testament-to-china-s-ai-boom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba's Profit Dives 75% After Amping Up AI Spending</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Samsung and SK Hynix prepare record shareholder returns after the selloff</strong></summary>
+      <div class="deal-body">
+        <p>Samsung and SK Hynix are preparing record shareholder returns after investors sent their stocks tumbling over doubts about the sustainability of AI hardware spending, Bloomberg reported. SK Hynix separately reached a tentative union deal featuring a 6.3% pay raise, easing one labor overhang.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-20/samsung-sk-hynix-prepare-record-shareholder-returns-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Samsung, SK Hynix Prepare Record Shareholder Returns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta has quietly become one of Microsoft's largest AI customers</strong></summary>
+      <div class="deal-body">
+        <p>Meta (META) has become one of Microsoft's (MSFT) biggest AI customers, Bloomberg reported, underscoring how demand for the technology remains concentrated within the tech industry itself. The tie-up shows even the largest AI spenders still rent capacity from each other to meet compute needs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/meta-has-quietly-become-one-of-microsoft-s-largest-ai-customers" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta Has Quietly Become One of Microsoft's Largest AI Customers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chinese models from Moonshot and ZAI close the gap at a 75% discount</strong></summary>
+      <div class="deal-body">
+        <p>Chinese AI models from Moonshot and ZAI can now build passable websites at a 75% discount to Anthropic's Claude, Bloomberg reported, part of a broader finding that China is rapidly catching the US on price if not yet on quality. Cheaper capable models pressure Western labs' pricing power.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-20/moonshot-zai-close-to-openai-and-anthropic-model-performance" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moonshot, ZAI Close to OpenAI and Anthropic Model Performance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jack Ma-backed Ant's profit flattens after AI and expansion costs</strong></summary>
+      <div class="deal-body">
+        <p>Ant Group barely grew quarterly profit after increasing investment in AI across its healthcare, large-language-model and payment services, Bloomberg reported. A second Chinese-tech print in a day showing AI outlays outrunning the earnings they are supposed to power.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/jack-ma-backed-ant-s-profit-flattened-after-ai-expansion-costs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jack Ma-Backed Ant's Profit Flattened After AI, Expansion Costs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Unitree sees humanoid robots reaching mass market within a decade</strong></summary>
+      <div class="deal-body">
+        <p>Fresh off its blockbuster Shanghai debut, Unitree's founder said humanoid robots will reach mass-market popularity within a decade once makers solve the problems limiting their usefulness, Bloomberg reported. Industry focus is shifting from viral entertainment toward factory and household utility.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/unitree-founder-sees-robots-reaching-mass-market-within-decade" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Unitree Sees Robots Reaching Mass Market Within Decade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Muon Space raises $250 million with Google and Salesforce backing</strong></summary>
+      <div class="deal-body">
+        <p>Satellite startup Muon Space closed a $250 million round from Alphabet's Google and Salesforce Ventures after launching 11 satellites and opening a California factory, Bloomberg reported. The raise shows growth capital still flowing to space and data infrastructure adjacent to the AI buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/muon-space-raises-250-million-with-google-salesforce-backing" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Muon Space Raises $250 Million With Google, Salesforce Backing</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Thursday August 20, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is still demand, with Japan's chip exports at their fastest since 2022, Korean tech leading the EM rebound, Meta renting heavily from Microsoft, and Muon Space and Callosum both closing fresh rounds. The counter-signal is the earnings math, with Alibaba's profit down more than 75% and Ant's flat as AI outlays outrun revenue, and Chinese models from Moonshot and ZAI matching frontier quality at a 75% discount. Layer on WSJ's warning about off-grid power risks and MarketWatch's question about how AMD funds cheap chips, and the frame is that the compute pull is real while the margin, competition and financing tests keep sharpening.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Bessent becomes the most interventionist Treasury chief in decades</strong></summary>
+      <div class="deal-body">
+        <p>With a slew of unexpected maneuvers, Scott Bessent has emerged as the most interventionist Treasury secretary in markets in decades, Bloomberg reported, putting his credibility on the line to quell a damaging rise in borrowing costs. WSJ said he is leaning into a role as America's bond trader in chief.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/bessent-becomes-most-interventionist-treasury-chief-in-decades" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bessent Becomes Most Interventionist Treasury Chief in Decades</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasury buyback might only briefly tame yields, analysts warn</strong></summary>
+      <div class="deal-body">
+        <p>Market relief at the unexpected intervention could prove short-lived because it fails to address high debt and government spending, WSJ reported. MarketWatch said JPMorgan's Jay Barry and Jason Hunter went further, warning the buyback blitz may drive yields higher and was not even needed.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/treasury-buyback-might-only-briefly-tame-yields-e35657c5?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury Buyback Might Only Briefly Tame Yields</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US government debt passes $40 trillion, more than doubling in a decade</strong></summary>
+      <div class="deal-body">
+        <p>US government debt crossed $40 trillion for the first time, more than doubling in ten years, CNBC reported, the fiscal backdrop the Treasury intervention is trying to manage. The milestone is exactly what skeptics point to when they call the buyback a circuit breaker, not a cure.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/19/us-government-debt-passes-40-trillion-mark-for-the-first-time.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- US Government Debt Passes $40 Trillion, More Than Doubling in a Decade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed minutes show officials saw the need for a hike if inflation does not cool</strong></summary>
+      <div class="deal-body">
+        <p>The July FOMC minutes showed officials saw a need to raise rates if inflation fails to cool, CNBC reported, a hawkish tilt that landed the same day as the Treasury buyback. The two events pull in opposite directions on the path for yields into September.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/19/fed-minutes-july-2026-officials-saw-need-for-rate-hike-if-inflation-doesnt-cool.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed Officials Saw Need for Rate Hike if Inflation Doesn't Cool, Minutes Show</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Oil jumps after Trump declares economic war on Iran</strong></summary>
+      <div class="deal-body">
+        <p>Oil prices jumped after Trump said any country supporting Iran's economy would face tremendous consequences, MarketWatch reported, part of a package of measures to crush Tehran's economy. Bloomberg said crude hit its highest in almost four weeks with Brent near $93 as the conflict crimped supply.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/oil-prices-jump-after-trump-declares-economic-war-on-iran-457e7ad9?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Oil Prices Jump After Trump Declares Economic War on Iran</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Riksbank holds rate but restates the chance of a hike this year</strong></summary>
+      <div class="deal-body">
+        <p>Sweden's Riksbank held borrowing costs for a twelfth month but repeated it stands ready to tighten this year if the Iran war triggers a pickup in inflation, Bloomberg reported. The hold-with-a-warning underlines how the oil channel keeps a hawkish option alive across Europe.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/riksbank-holds-rate-and-restates-chance-of-hike-this-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Riksbank Holds Rate and Restates Chance of Hike This Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>RBI's hawkish minutes rattle bonds and put rate hikes in play</strong></summary>
+      <div class="deal-body">
+        <p>India's central bank wrong-footed investors by opening the door to rate increases, Bloomberg reported, a striking shift that sent bond yields higher. The move adds India to the global hawkish drift and shows how quickly communication surprises can reprice a bond market.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/rbi-s-hawkish-minutes-rattle-bond-market-put-rate-hikes-in-play" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- RBI's Hawkish Minutes Rattle Bonds, Put Rate Hikes in Play</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 20, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The state stepped in and the market cheered, then hesitated. The Treasury buyback dove yields off 19-year highs, weakened the dollar and lifted risk, and the Bundesbank found no wage pass-through from the Iran shock in Germany. Pulling the other way, JPMorgan and WSJ warned the relief is fleeting, US debt crossed $40 trillion, the July Fed minutes flagged a possible hike, the RBI turned hawkish, the Riksbank kept a hike on the table, and Trump's economic war on Iran pushed Brent near $93. The tell is whether the buyback keeps a lid on the long end or the fiscal-and-oil forces underneath push yields back to the highs.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Capping Yields Can Cost You the Dollar</summary>
+      <p>Bloomberg reported that the dollar risks becoming the biggest loser from Bessent's bid to tame yields, and the mechanism is worth walking through because it explains why gold, bitcoin and emerging-market currencies all rallied the same day the Treasury announced its buyback. Start with what makes a currency attractive to hold. Foreign investors buy dollars in part to earn the yield on dollar-denominated assets, chiefly Treasuries. A high, freely-set yield is compensation for holding US paper, and it draws capital in, which supports the currency. Now imagine the government signaling it will lean against that yield by buying back long-dated bonds whenever borrowing costs climb too far. It is essentially telling the market there is a ceiling on how high yields can go. That does two things at once. It removes some of the reward for holding the bond, because the upside in yield is capped, and it raises a question about whether the level of rates is being set by fundamentals or by policy. When investors suspect a yield is being held artificially low relative to inflation, the real return, the yield minus inflation, looks worse, and the currency becomes less appealing to hold. Capital that was drawn in by high yields starts to look elsewhere. Where does it go? Into assets that benefit when a currency's purchasing power is in doubt. Gold is the classic one, described as the reciprocal of the dollar, so a weaker dollar and doubts about real returns lift it directly. Bitcoin has increasingly traded as a similar debasement hedge, which is part of why it broke out above $72,000 on the buyback news. Emerging-market currencies gain too, because a soft dollar makes the carry trade, borrowing cheaply in dollars to earn higher yields abroad, more profitable, and Bloomberg noted EM currencies hit a fresh record as exactly that trade got more appealing. This is the tradeoff at the heart of yield-curve management. A government can lean on the long end to lower borrowing costs, but if the market decides the yield no longer compensates for inflation and fiscal risk, the pressure does not disappear; it moves to the currency. You can cap the price of money in one market, but the imbalance shows up in the exchange rate instead. The practical lesson is to watch the dollar and gold together as a check on whether a yield intervention is being trusted. If yields fall and the dollar holds firm, the market believes the fundamentals justify lower rates. If yields fall while the dollar slides and gold and bitcoin climb, the market is telling you it thinks the yield is being suppressed and is repricing the currency to compensate. This week's move, yields down, dollar down, gold and bitcoin up, is the second pattern, which is why the skeptics call the relief a circuit breaker rather than a fix.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/dollar-risks-becoming-biggest-loser-from-bessent-s-bond-buying" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dollar Seen Paying the Price for Treasury Bid to Tame Yields</a></p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/why-bessents-treasury-operations-have-breathed-life-back-into-the-gold-trade-d0a8419e?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why Bessent's Treasury Operations Have Breathed Life Back Into the Gold Trade</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Bessent's Treasury doubled buybacks of long-dated debt, diving yields off 19-year highs and torching $3 billion in crypto shorts as bitcoin topped $72,000, but skeptics call it a short-lived fix as US debt tops $40 trillion, Trump declares economic war on Iran and Brent sits near $93; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/18</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin breaks out of its six-week range and tops $71,000 as $3 billion in shorts get wiped</strong></summary>
+      <div class="deal-body">
+        <p>Six weeks of price compression ended in the largest short liquidation since at least 2021, CoinDesk reported, with $3 billion of bearish bets forced to buy back into thin supply after the Treasury doubled its bond buybacks. The breakout flipped a market that VanEck had flagged as flashing capitulation signals days earlier.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/20/bitcoin-breaks-out-of-six-week-range-tops-usd71-000-as-usd3-billion-in-shorts-get-wiped-out" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Breaks Out of Six-Week Range, Tops $71,000 as $3 Billion in Shorts Get Wiped Out</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin hits $72,000 as Strategy and Coinbase extend the rally</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin reached $72,000, up about 15% since Monday, reclaiming several key technical and on-chain levels as bullish momentum built, CoinDesk reported. Strategy and Coinbase continued to climb alongside the token, restoring the equity-crypto feedback loop that had gone quiet in July.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/20/bitcoin-approaches-usd72-000-as-strategy-and-coinbase-continue-rally" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Hits $72,000 as Strategy and Coinbase Continue Rally</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin ETFs draw $700 million in their biggest inflows in months</strong></summary>
+      <div class="deal-body">
+        <p>Spot bitcoin ETFs pulled in $517 million and ether funds $189 million on August 19, the strongest daily hauls in months, CoinDesk reported, as the broad rally torched $2.7 billion in bearish bets. The inflows confirm real allocation, not just leveraged short-covering, behind the move.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/08/20/live-updates-bitcoin-etfs-draw-usd517-million-ether-pulls-usd189-million-in-biggest-inflows-in-months" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin ETFs Draw $700 Million in Biggest Inflows in Months</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump pushes Congress on the Clarity Act as HYPE jumps 11%</strong></summary>
+      <div class="deal-body">
+        <p>At a White House crypto event, Trump pushed Congress to move on the Clarity Act, CoinDesk reported, and said the CFTC is working to bring Hyperliquid into the US under federal rules, sending HYPE up 11%. A key procedural vote on the bill is scheduled for September 15.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/08/19/trump-pushes-congress-to-move-on-clarity-act-during-white-house-crypto-event" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Trump Pushes Congress to Move on Clarity Act During White House Crypto Event</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Elon Musk's X is exploring stablecoins to pay influencers</strong></summary>
+      <div class="deal-body">
+        <p>Elon Musk's X is exploring using stablecoins to pay influencers and content providers, CoinDesk reported, according to a person who also works with other social platforms testing the same. Another sign consumer platforms are eyeing stablecoins as a payments rail for creator economies.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/20/elon-musk-s-x-is-exploring-stablecoins-to-pay-influencers-and-content-providers" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Elon Musk's X Is Exploring Stablecoins to Pay Influencers and Content Providers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BitGo secures a South Korea virtual-asset license, a global first</strong></summary>
+      <div class="deal-body">
+        <p>BitGo secured a South Korea virtual-asset license, saying it is the first global crypto company to do so, CoinDesk reported. Backed by Hana Financial Group and SK Telecom, BitGo Korea built a locally registered entity from scratch to serve institutional and enterprise clients rather than acquiring one.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/20/bitgo-secures-south-korea-virtual-asset-license-says-it-s-the-first-global-crypto-company-to-do-so" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BitGo Secures South Korea Virtual Asset License, Says It's the First Global Crypto Company to Do So</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>CapitaLand and IOI -- $1.9 Billion One Raffles Place Purchase</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> CapitaLand Investment and Malaysia's IOI Properties are nearing a deal to buy the iconic One Raffles Place office development in Singapore's commercial center, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The roughly $1.9 billion trophy-office trade shows appetite for prime Asian commercial real estate is returning even with global borrowing costs elevated.</p>
+        <p><strong>What it means:</strong> Landmark assets are trading again as investors bet on scarcity and rental resilience in Singapore, a signal for the wider Asia property recovery.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/capitaland-and-ioi-close-to-buying-singapore-1-9-billion-one-raffles-place" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CapitaLand and IOI Close to Buying Singapore $1.9 Billion One Raffles Place</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Thai PM's Family Firm -- $1.5 Billion Data-Center Bids</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Stecon Group plans to bid for three data-center construction projects worth a combined 49.8 billion baht ($1.5 billion), Bloomberg reported, betting on the sector to drive growth as tech investment surges in Thailand.</p>
+        <p><strong>Outlook:</strong> The bids ride Southeast Asia's data-center boom, extending the AI-buildout capex story into a new regional market.</p>
+        <p><strong>What it means:</strong> The compute buildout keeps pulling construction and power spending across Asia, widening the base of companies leveraged to AI infrastructure.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/thai-pm-anutin-s-family-firm-eyes-1-5-billion-data-center-bids" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Thai PM's Family Firm Eyes $1.5 Billion Data Center Bids</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ethena -- $1 Billion FalconX Facility for USDe</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Ethena is diversifying the backing of its USDe stablecoin with a $1 billion warehouse facility from FalconX, CoinDesk reported, moving beyond crypto funding rates for its yield.</p>
+        <p><strong>Outlook:</strong> The facility channels on-chain capital into overcollateralized institutional loans, giving USDe a new and steadier return source.</p>
+        <p><strong>What it means:</strong> Stablecoin issuers are broadening their collateral toward traditional-style credit, a maturation step after the DeFi yield strains of the spring.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/19/beyond-crypto-funding-rates-ethena-diversifies-usde-backing-with-usd1-billion-falconx-facility" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Ethena Diversifies USDe Backing With $1 Billion FalconX Facility</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Muon Space -- $250 Million Round From Google and Salesforce</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Satellite startup Muon Space closed a $250 million round from Alphabet's Google and Salesforce Ventures, Bloomberg reported, after launching 11 satellites and opening a California factory.</p>
+        <p><strong>Outlook:</strong> The capital funds a manufacturing ramp as demand grows for Earth-observation and connectivity infrastructure adjacent to AI.</p>
+        <p><strong>What it means:</strong> Strategic tech backers are funding the space and data layer of the buildout, extending capex beyond chips and data centers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/muon-space-raises-250-million-with-google-salesforce-backing" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Muon Space Raises $250 Million With Google, Salesforce Backing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CVC and Prudential -- Standard Life Pension Risk-Transfer Partnership</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Standard Life agreed to set up a partnership with a consortium led by CVC Capital Partners and Prudential Financial, Bloomberg reported, the latest tie-up between an insurer and private-capital firms entering the UK pension risk-transfer market.</p>
+        <p><strong>Outlook:</strong> The deal channels private capital into a booming market for offloading corporate pension liabilities.</p>
+        <p><strong>What it means:</strong> Private capital keeps pushing deeper into insurance and pension balance sheets, chasing long-duration, spread-based returns.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/cvc-led-group-to-back-standard-life-s-uk-pension-risk-transfers" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CVC, Prudential to Back Standard Life Pension Risk Transfers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Callosum -- $100 Million to Make AI Tasks Cheaper</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Callosum, which makes software to match specific AI tasks with different models and chips, raised $100 million in early financing including from the UK's public AI fund, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The startup targets the cost problem directly, routing workloads to the cheapest capable model-and-chip pairing.</p>
+        <p><strong>What it means:</strong> Investors are funding the layer that optimizes AI spending, a direct response to the margin pressure showing up in Alibaba's and Ant's results.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/ai-startup-callosum-raises-100-million-to-make-ai-tasks-cheaper" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Startup Callosum Raises $100 Million to Make AI Tasks Cheaper</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Evercore's Krishna Guha -- the Treasury move is not a Fed game changer for September</strong></summary>
+      <div class="deal-body">
+        <p>Evercore ISI's Krishna Guha told Bloomberg the Treasury's move to increase purchases of 10-to-30-year debt certainly complicates things for Chairman Warsh but will not affect the central bank's September rate decision. A named voice arguing the intervention and the Fed path are separate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-20/treasury-move-not-a-fed-game-changer-for-september-guha-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Treasury Action Not a Fed Game Changer for September, Says Evercore's Guha</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Academy Securities' Peter Tchir -- Warsh needs to launch Operation Twist</strong></summary>
+      <div class="deal-body">
+        <p>Academy Securities' Peter Tchir called the Treasury's buyback increase kind of mediocre and told Bloomberg the Fed needs to talk about cutting rates and take hikes off the table, urging a version of Operation Twist. A named dove pushing for the central bank to do more of the heavy lifting.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-20/fed-s-warsh-needs-to-launch-operation-twist-tchir-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Warsh Needs to Launch Operation Twist, Academy's Tchir Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UBS's Bhanu Baweja -- earnings push stocks higher before 2027 margin risk</strong></summary>
+      <div class="deal-body">
+        <p>UBS chief strategist Bhanu Baweja told Bloomberg strong US earnings growth should push stocks even higher before the outlook gets murkier in 2027, when margins could come under pressure. A named bull for the near term who flags a specific later-cycle risk rather than an imminent one.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-20/ubs-s-baweja-says-margin-pressure-is-a-risk-for-stocks-in-2027" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UBS's Baweja Says Margin Pressure Is a Risk for Stocks in 2027</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan's Jay Barry and Jason Hunter -- the buyback blitz may drive yields higher</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan strategists Jay Barry and Jason Hunter told MarketWatch the Treasury's bond-buyback blitz may end up driving yields higher and was not even needed, predicting fallout from the move. A named bear team arguing the intervention treats a symptom, not the fiscal cause.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/treasurys-bond-buyback-blitz-may-end-up-driving-yields-higher-warns-jpmorgan-heres-their-investment-advice-b8f507be?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Treasury's Bond Buyback Blitz May End Up Driving Yields Higher, Warns JPMorgan</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OKX Europe's Erald Ghoos -- capital is rotating from AI back to bitcoin</strong></summary>
+      <div class="deal-body">
+        <p>OKX Europe CEO Erald Ghoos told CoinDesk crypto's bottom is near as AI hype fades, arguing US crypto rules could blow new life into the market amid a rotation of capital from AI back into bitcoin. A named voice tying this week's breakout to a cross-asset rotation as much as the Treasury move.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/20/crypto-s-bottom-is-near-as-ai-hype-fades-okx-europe-ceo-says" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto's Bottom Is Near as AI Hype Fades, OKX Europe CEO Says</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned After Bessent's Treasury Buyback Dove Yields Off 19-Year Highs and Sent Bitcoin Above $72,000, With Trump Declaring Economic War on Iran, Brent Near $93 and US Debt Topping $40 Trillion</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the intervention bought real breathing room):</strong> Evercore's Krishna Guha says the Treasury move does not derail the September Fed path, UBS's Bhanu Baweja sees strong earnings pushing stocks higher into 2027, and OKX's Erald Ghoos sees capital rotating from AI back into bitcoin as US rules improve. Yields dove, stocks rose, ETFs drew their biggest inflows in months and EM currencies hit a record. The state just proved it will step in.</div>
+        <div class="bear"><strong>Bear (the fix is a circuit breaker):</strong> JPMorgan's Jay Barry and Jason Hunter warn the buyback may drive yields higher and was not even needed, and Academy's Peter Tchir calls it mediocre and wants the Fed to do more. US debt topped $40 trillion, the July minutes flagged a hike, the RBI turned hawkish and Trump's economic war on Iran pushed Brent near $93. Baweja himself flags 2027 margin risk. The fiscal and oil forces underneath are untouched.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Bitcoin tops $72K, $3B shorts wiped; Treasury buyback dives yields; Moderna surges; oil jumps on Iran</td><td>Bullish</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Walmart hikes outlook; Target beats, Lowe's soft; Deere narrows guide; Carvana probe overhang</td><td>Mixed</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Bessent buyback vs $40T debt; JPMorgan says yields go higher; dollar slides; Fed minutes flag hike</td><td>Cautious</td><td>~13,500 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Alibaba profit -75% on AI; Ant flat; Chinese models undercut at 75% discount; off-grid power risk</td><td>Bearish</td><td>~9,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC breakout above $72K; ETF inflows biggest in months; Clarity Act push; HYPE +11%; BitGo Korea</td><td>Bullish</td><td>~19,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped risk-on as the Treasury stepped in. r/wallstreetbets turned bullish as bitcoin broke $72,000, $3 billion in shorts got torched and the buyback dove yields, while Moderna's surge added a squeeze. r/CryptoCurrency was the loudest bull, cheering the biggest ETF inflows in months, Trump's Clarity Act push and BitGo's Korea license. r/stocks stayed mixed, weighing Walmart's raised outlook and Target's beat against Lowe's softness and the Carvana overhang. r/investing kept its guard up, noting $40 trillion in debt, JPMorgan's warning that yields could climb again and a sliding dollar. r/SecurityAnalysis leaned bearish on Alibaba's 75% profit dive, Ant's flat earnings and Chinese models undercutting frontier labs on price. The swing factor is whether the buyback keeps a lid on yields or the fiscal-and-oil forces underneath pull them back to the highs.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: How a Treasury Debt Buyback Actually Lowers Long-Term Yields, Why It Is Not the Same as Fed Bond-Buying or Paying Down the Debt, and Why Analysts Call Bessent's Intervention a Circuit Breaker Rather Than a Cure</h2>
+    <p>The single event that moved every market this week was the Treasury doubling its buybacks of long-dated debt, and it is worth walking through the mechanism because it is easy to confuse with two other things it is not: Federal Reserve bond-buying and paying down the national debt. Start with what a Treasury buyback is. The government offers to repurchase specific outstanding bonds, usually older, less-liquid issues in the 10-to-30-year range, paying holders cash and retiring those particular securities. It funds this by issuing other debt, typically shorter-dated bills and notes. So the total stock of debt does not shrink; the government is swapping the composition of what it owes, taking long-dated bonds out of the market and putting shorter-dated paper in. Now the transmission to yields. A long-term yield is set partly by how much duration, the sensitivity to interest-rate risk, investors collectively must hold. When there is a glut of long-dated bonds relative to demand, yields have to rise to entice buyers to absorb all that duration. By buying back long bonds and issuing short ones instead, the Treasury reduces the amount of duration the market has to carry, which eases the upward pressure on long yields. That is why the announcement pulled 30-year yields off 19-year highs almost immediately. It is, in effect, a fiscal-side version of what a central bank does when it buys bonds to lean against the term premium. But here is the crucial difference from Fed action. When the Fed buys bonds it creates new bank reserves to pay for them, expanding the money supply; it can conjure the cash. The Treasury has no such power. It must fund every buyback dollar by issuing other debt, so it is only shifting where investors bear the risk, from the long end to the short end, not removing risk from the system. And the difference from paying down the debt is starker still: a buyback funded by new issuance leaves the total owed unchanged, which is why CNBC's note that debt just crossed $40 trillion sits right next to the buyback story. This is the heart of why JPMorgan's Jay Barry and Jason Hunter, Bloomberg's analysts and WSJ all called the relief potentially short-lived. The forces that drove yields to two-decade highs, wide deficits, sticky inflation and heavy issuance, are untouched by a swap of long bonds for short ones. Worse, loading up on short-dated issuance raises the government's rollover risk and can unsettle the front end, and signaling a yield ceiling can weaken the dollar as investors doubt the yield is being set freely. The practical lesson is to read a buyback as a tool that manages the shape and near-term supply of the curve, not the size of the debt or the path of inflation. It can genuinely lower long yields for a while by absorbing duration, which is real and not a trick, but it does not create money like the Fed or reduce what is owed like a surplus would. When you see yields fall on a buyback, ask what happened to the short end and the dollar, because that is where the pressure moves if the market decides the underlying problem was never addressed.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-19/bessent-becomes-most-interventionist-treasury-chief-in-decades" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bessent Becomes Most Interventionist Treasury Chief in Decades</a></p>
+    <p class="deal-source"><a href="https://www.wsj.com/finance/investing/treasury-buyback-might-only-briefly-tame-yields-e35657c5?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury Buyback Might Only Briefly Tame Yields</a></p>
+    <p class="deal-source"><a href="https://www.cnbc.com/2026/08/19/us-government-debt-passes-40-trillion-mark-for-the-first-time.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- US Government Debt Passes $40 Trillion, More Than Doubling in a Decade</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Treasury buyback follow-through, daily.</strong> After the intervention dove yields, watch whether the long end stays capped or drifts back up as JPMorgan warned; the tell is whether the 10-year holds its lower range while the dollar and short end absorb the pressure.</li>
+      <li><strong>PCE inflation and Fed speakers.</strong> With the July minutes flagging a possible hike, watch the core PCE print and any Warsh commentary for whether officials lean toward the inflation risk or the labor cracks Goldman flagged.</li>
+      <li><strong>Global hawkish drift.</strong> After the RBI's hawkish minutes and the Riksbank keeping a hike on the table, watch other central-bank communications for whether the Iran-oil pass-through keeps tightening bias alive abroad.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Retail read wraps up.</strong> After Walmart raised its outlook, Target beat and Lowe's went soft, watch the remaining retail prints for whether the value-seeking, K-shaped consumer keeps splitting along housing and income lines.</li>
+      <li><strong>Nvidia and chip results.</strong> With Samsung and SK Hynix prepping record shareholder returns and Alibaba and Ant showing AI eating margins, watch upcoming chip and hyperscaler prints for whether demand or the cost of the buildout wins the tape.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-buildout financing.</strong> After Muon Space and Callosum closed rounds and Thai firms chased $1.5 billion in data-center bids, watch whether capital keeps flowing to the compute, power and space layers even as borrowing costs stay elevated.</li>
+      <li><strong>Crypto rally durability.</strong> After bitcoin topped $72,000 on record ETF inflows and short liquidations, watch whether the Clarity Act momentum and Treasury-driven risk appetite hold or the move fades with the buyback relief.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Iran economic war and oil.</strong> With Trump declaring an economic D-Day on Iran, the UAE suspending trade and Brent near $93, watch whether the measures crimp supply further and keep feeding the inflation-and-rates story.</li>
+      <li><strong>North Korea and the region.</strong> After Pyongyang launched a missile barrage and dismissed Trump's overture, watch whether the added tension spills into risk sentiment in Asian markets.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Aug 20, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-20 07:30 ET); Bloomberg Technology (20 fresh, newest 2026-08-20 07:02 ET); Bloomberg Economics (19 fresh, newest 2026-08-20 07:18 ET); CNBC Top News (4 fresh, newest 2026-08-20 07:13 ET); CNBC Finance (6 fresh, newest 2026-08-19 22:39 ET); CNBC Economy (2 fresh, newest 2026-08-19 18:34 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-20 07:15 ET); WSJ Markets (15 fresh, newest 2026-08-20 07:30 ET); Yahoo Finance (19 fresh, newest 2026-08-19 19:00 ET); FT Home (9 fresh, newest 2026-08-20 06:43 ET); CoinDesk (25 fresh, newest 2026-08-20 07:31 ET); Stratechery (1 fresh, newest 2026-08-19 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What did the Treasury do that sparked this week's bond rally?</strong></p>
+      <span class="opt" data-opt="A">A. It raised the federal funds target rate by a quarter point</span>
+      <span class="opt" data-opt="B">B. It doubled its buybacks of longer-dated Treasury debt</span>
+      <span class="opt" data-opt="C">C. It cut issuance of short-dated Treasury bills sharply</span>
+      <span class="opt" data-opt="D">D. It sold gold reserves to fund the bond purchases</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg and WSJ reported the Treasury doubled its buybacks of 10-to-30-year debt, diving yields off 19-year highs. Setting the funds rate is the Fed's job, and the buyback is funded by issuing more short-dated paper, not selling gold.</div>
+    </div>
+    <div class="q" data-correct="C">
+      <p><strong>2. What happened to bitcoin after the Treasury intervention?</strong></p>
+      <span class="opt" data-opt="A">A. It fell below $60,000 as risk appetite drained away</span>
+      <span class="opt" data-opt="B">B. It stayed pinned in its multiweek range near $64,000</span>
+      <span class="opt" data-opt="C">C. It broke out above $72,000 as shorts got liquidated</span>
+      <span class="opt" data-opt="D">D. It flash-crashed after the Fed minutes turned hawkish</span>
+      <div class="feedback"><strong>C is correct.</strong> CoinDesk reported bitcoin broke out of its six-week range above $72,000, with $3 billion in shorts wiped out and ETFs drawing their biggest inflows in months. It did not fall, stay range-bound, or crash on the minutes.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What did Trump announce regarding Iran this week?</strong></p>
+      <span class="opt" data-opt="A">A. He declared economic war to crush Iran's economy</span>
+      <span class="opt" data-opt="B">B. He lifted all sanctions in a surprise peace deal</span>
+      <span class="opt" data-opt="C">C. He paused tariffs on Iran after Gulf state talks</span>
+      <span class="opt" data-opt="D">D. He ordered direct military strikes on Iranian oil fields</span>
+      <div class="feedback"><strong>A is correct.</strong> FT and MarketWatch reported Trump announced a drive to isolate and crush Iran's economy, with the UAE suspending trade and oil jumping near $93. He did not lift sanctions, pause tariffs, or order strikes on oil fields.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Scott Bessent doubled Treasury buybacks of long-dated debt in the most interventionist move in decades, diving yields off 19-year highs, weakening the dollar and torching $3 billion in crypto shorts, but JPMorgan's Barry and Hunter, Bloomberg analysts and WSJ warn the relief is a short-lived circuit breaker as US debt tops $40 trillion and yields tick back up.",
+    "sources": [
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/treasury-buyback-might-only-briefly-tame-yields-e35657c5?mod=rss_markets_main", "take": "Market relief could prove short-lived because it fails to address high debt and spending." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-20/bessent-s-plan-at-best-circuit-breaker-for-global-bond-slump", "take": "The bond rally may prove short-lived given persistent fiscal woes and sticky inflation." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/treasurys-bond-buyback-blitz-may-end-up-driving-yields-higher-warns-jpmorgan-heres-their-investment-advice-b8f507be?mod=mw_rss_topstories", "take": "JPMorgan's Barry and Hunter warn the buyback may drive yields higher and was not needed." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/u-s-stocks-gain-as-treasury-buybacks-calm-bond-yields-moderna-surges-402249fb?mod=rss_markets_main", "take": "Stocks rose as Treasury buybacks calmed yields off near two-decade highs." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-20/treasury-move-not-a-fed-game-changer-for-september-guha-video", "take": "Evercore's Guha says the move complicates things but won't change the September Fed decision." }
+    ]
+  },
+  "iran": {
+    "diverge": "Trump declared an economic war against Iran and the UAE suspended trade, pushing Brent to about $93 and a near four-week high and reinforcing the inflation-and-rates story, but the Bundesbank says the energy shock is not yet feeding German wages and Sweden's Riksbank held rates even as it kept a hike on the table.",
+    "sources": [
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/785aafd1-705a-47da-b016-032d66e449c0?syn-25a6b1a6=1", "take": "Trump announced a new drive to isolate and crush Iran's economy as the UAE suspended ties." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/oil-prices-jump-after-trump-declares-economic-war-on-iran-457e7ad9?mod=mw_rss_topstories", "take": "Oil jumped after Trump warned countries supporting Iran's economy would face consequences." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-20/riksbank-holds-rate-and-restates-chance-of-hike-this-year", "take": "The Riksbank held but repeated it stands ready to hike if the Iran war lifts inflation." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-20/bundesbank-sees-no-second-round-effects-from-iran-war-via-wages", "take": "The Bundesbank says the energy shock is not yet fueling broader German wage inflation." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-20/german-economy-finally-on-path-to-recovery-bundesbank-says", "take": "The German economy is finally on a path to recovery, the Bundesbank said." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Samsung and SK Hynix prep record shareholder returns after the AI-hardware selloff while Alibaba's profit dives 75% and Ant's flattens on AI spending, Chinese models from Moonshot and ZAI close the gap at a 75% discount, and Meta emerges as one of Microsoft's biggest AI customers as Japan's chip exports boom.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-20/samsung-sk-hynix-prepare-record-shareholder-returns-video", "take": "Samsung and SK Hynix are preparing record shareholder returns after the selloff." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-20/japan-s-exports-grow-at-fastest-pace-since-2022-on-cars-chips", "take": "Japan's exports grew at the fastest pace since 2022 on robust chip and car demand." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-20/alibaba-s-revenue-climbs-9-in-testament-to-china-s-ai-boom", "take": "Alibaba's profit dived more than 75% after ramping up AI spending." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-20/jack-ma-backed-ant-s-profit-flattened-after-ai-expansion-costs", "take": "Ant's profit flattened after increased AI and expansion costs." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-08-20/moonshot-zai-close-to-openai-and-anthropic-model-performance", "take": "Chinese models from Moonshot and ZAI match frontier quality at a 75% discount." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Moderna","SK Hynix","Samsung","Deere","Alibaba","Pop Mart"],
+    "values": [12.0, 5.0, 4.0, 2.0, -3.0, -8.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [26000, 15000, 13500, 9000, 19000],
+    "colors": ["bull","neutral","neutral","bear","bull"]
+  },
+  "dealSizes": {
+    "labels": ["One Raffles Place","Thai Data Center","Ethena FalconX","Muon Space","Callosum"],
+    "values": [1.9, 1.5, 1.0, 0.25, 0.1]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
