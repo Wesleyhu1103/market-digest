@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Aug 26, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-26</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, August 26, 2026</h1>
+    <div class="meta">
+      <p>It's the biggest day of the week: Nvidia reports this afternoon and core PCE lands this morning, both feeding straight into Warsh's Jackson Hole debut Thursday. Oil fell for a third day with Brent down near $85 as Iran and Oman discussed reopening Hormuz shipping, cooling the inflation channel. Early signs suggest Bessent's bond buyback is working, with Morgan Stanley cutting its long-bond shorts even as Druckenmiller, Pimco and Citadel warn it fights the market.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Bessent's expanded bond buyback is showing early signs of working as Treasury yields fall and Morgan Stanley cuts its long-bond shorts, but Druckenmiller, Pimco and Citadel warn the intervention fights the market and sets up a painful unwind, while the FT says it puts the Treasury on a collision course with Warsh's Fed",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "The Bessent Put Might Actually Be Working for the Bond Market", "angle": "Reads early market metrics and positioning as evidence the surprise buyback is having a real impact on yields.", "lean": 30, "pull": "Early signs suggest the Treasury Secretary's surprise moves are making an impact."},
+        {"outlet": "WSJ", "headline": "Tech Stocks Lead Major Indexes Higher as Treasury Yield Notches Biggest Decline Since June", "angle": "Ties the calmer rates tape and equity bounce to falling oil and easing inflation fears.", "lean": 25, "pull": "The benchmark Treasury yield notches its biggest decline since June."},
+        {"outlet": "MarketWatch", "headline": "Wall Street's Massive Bet Against Long-Term Bonds Is a Recipe for a Painful Bearish Unwind, Says Citadel Securities", "angle": "Frames the one-sided short as fuel for a squeeze that could push yields lower still.", "lean": 20, "pull": "A bet that appears to be one-sided against long-term bonds could be setting up for a painful unwind."},
+        {"outlet": "CNBC", "headline": "Stanley Druckenmiller Leads Doubters Who Think Bessent's Bond Ploys Will Fail", "angle": "Highlights the growing chorus of derision arguing the intervention only bought a modest dip in yields.", "lean": -30, "pull": "The bond market interventions have generated a modest decline in yields along with a growing chorus of derision."},
+        {"outlet": "Financial Times", "headline": "Bessent's Bond Intervention Puts US Treasury on Collision Course With Fed", "angle": "Reads the buyback as undercutting Warsh's fight against inflation, a fiscal-monetary clash.", "lean": -35, "pull": "Increased purchases of debt threaten to undermine central bank chief Kevin Warsh's bid to tame inflation."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Bessent Put Shows Early Signs of Working as the Benchmark Treasury Yield Notches Its Biggest Decline Since June and Morgan Stanley's Vishal Khanduja Cuts His Long-Bond Shorts Because Bessent Will Do Whatever It Takes, but Druckenmiller Leads the Doubters, Pimco's Andrew Balls Can't See Why the Treasury Would Buy, Citadel Warns of a Painful Unwind and the FT Says the Buyback Puts Treasury on a Collision Course With Warsh's Fed Two Days Before PCE and Jackson Hole</h3>
+      </div>
+      <p>The intervention is starting to bite even as the credibility fight rages. Bloomberg wrote the Bessent put might actually be working, with key market metrics and positioning showing the surprise buyback is having an impact, and WSJ noted the benchmark Treasury yield notched its biggest decline since June as oil and inflation fears retreated. The clearest tell came from a bear folding: Bloomberg reported Morgan Stanley Investment Management's Vishal Khanduja, a top-performing fixed-income investor, is scaling back his bets against long-term bonds because Bessent is prepared to do whatever it takes to keep yields from rising. MarketWatch added that Citadel Securities strategist Frank Flight thinks Wall Street's one-sided short against long bonds is a recipe for a painful bearish unwind, which would push yields lower still. But the skeptics are louder than ever. CNBC said Druckenmiller leads a growing chorus of doubters who think the ploys will fail, WSJ noting he even used AI to sharpen the critique and was kind of proud of it. Pimco's Andrew Balls told Bloomberg it is not 100% clear to him why the Treasury would increase purchases of long-dated bonds in what he calls a healthy market. FT went structural, warning the intervention puts the Treasury on a collision course with Warsh's Fed by loosening financial conditions the central bank wants tight, and Fed's Tom Barkin said rising debt will bring an eventual reckoning. Bloomberg said Warsh's peers will use Jackson Hole to highlight global inflation risk, with ECB's Isabel Schnabel already saying rates must rise more. This morning's PCE is the swing.</p>
+      <p>The bull case is the Bessent put working, yields down the most since June, Khanduja cutting shorts, and Citadel flagging a painful short unwind. The bear case is Druckenmiller leading the doubters, Pimco unsure why Treasury is buying, the FT warning of a Fed collision course, Barkin's reckoning, and Jackson Hole leaning hawkish.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the put is working):</strong> Bloomberg said the Bessent put might actually be working, and WSJ said the 10-year yield fell the most since June as oil eased. Morgan Stanley's Vishal Khanduja is cutting his long-bond shorts because Bessent will do whatever it takes, and Citadel's Frank Flight warns the one-sided short sets up a painful unwind that drags yields lower. If PCE cooperates and Warsh soothes nerves, the calmer read holds.</div>
+        <div class="bear"><strong>Bear (it fights the market):</strong> CNBC said Druckenmiller leads a growing chorus of doubters, Pimco's Andrew Balls can't see why the Treasury would even buy in a healthy market, and the FT warns the buyback puts Treasury on a collision course with Warsh's Fed. Fed's Barkin says rising debt brings a reckoning, and Jackson Hole peers plus ECB's Schnabel are leaning hawkish. Loosening conditions the Fed wants tight is a policy clash, not a fix.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/a50df99b-0621-44ea-a7c7-c9c685e2eba1?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Bessent's Bond Intervention Puts US Treasury on Collision Course With Fed</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Falls for a Third Day With Brent Retreating Near $85 as Iran and Oman Discuss a Deal to Resume Strait of Hormuz Shipping and Container Ships Return to the Red Sea, but China Builds a CIPS Hedge Against Washington's Iran Sanctions, CNOOC's Profit Rises on War-Inflated Prices, UK Energy Bills Jump 4% on Middle East Gas and Schnabel Cites the Conflict as an Upside Inflation Risk</h3>
+      </div>
+      <p>The war premium kept draining as diplomacy flickered back to life. Bloomberg reported oil fell for a third day as Iran and Oman discussed a potential deal to resume shipping through the Strait of Hormuz, and WSJ said Brent retreated near $85, with US stocks rising as oil and inflation fears eased. Bloomberg also flagged container ships returning to the Red Sea after years of Houthi-driven diversions around southern Africa, another sign the physical squeeze is loosening. But the sanctions fight is far from over. CNBC reported China needs US dollars yet is building a hedge against Washington's leverage, expanding its CIPS payment rails so Beijing can keep trading with Iran even as the US pressures Chinese banks. Bloomberg said India, the world's biggest rice exporter, sees Iran demand defying the sanctions risk, shipments holding up despite higher prices. The inflation channel is still hot underneath: Bloomberg reported CNOOC's first-half profit rose on war-inflated energy prices, UK household energy bills will jump 4% in October as the Middle East conflict lifts wholesale gas, Japan's business service prices accelerated on conflict-driven pressure, and ECB's Isabel Schnabel named the lengthy Middle East conflict as an upside inflation risk that means rates must rise more. Bloomberg also warned global fuel markets have little margin for error with US refineries running near their limits. For now the barrel is telling the calmer story, but the second-round inflation from the war is still working through the pipes.</p>
+      <p>The bull read is oil down a third day, an Iran-Oman Hormuz deal in talks, and container ships returning to the Red Sea. The bear read is China building a CIPS sanctions hedge, CNOOC's war-boosted profit, UK bills jumping 4%, Japan service prices accelerating, and Schnabel citing the conflict as an inflation risk.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the shock keeps cooling):</strong> Bloomberg said oil fell a third day as Iran and Oman discussed reopening Hormuz shipping, and container ships are returning to the Red Sea. WSJ said Brent near $85 helped US stocks rise as inflation fears retreated. India's rice trade shows commerce routing around the sanctions rather than seizing up. If the Hormuz talks hold, the premium keeps bleeding out.</div>
+        <div class="bear"><strong>Bear (the inflation is baked in):</strong> CNBC said China is building a CIPS hedge to keep trading with Iran, Bloomberg said CNOOC's profit rose on war-inflated prices, and UK energy bills jump 4% in October on Middle East gas. Japan's service prices accelerated on the conflict and ECB's Schnabel named it an upside inflation risk demanding higher rates. The barrel may be calm, but the second-round price pressure is still spreading.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.cnbc.com/2026/08/25/china-iran-us-sanctions-banks-cips.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- China Needs US Dollars but Is Building a Hedge Against Washington's Sanctions</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Nvidia Reports This Afternoon With WSJ Saying the $1.5 Trillion Question Its Earnings Can't Answer Hangs Over the Whole Market, Bloomberg Reporting AI Investment Now Competes With Governments for Capital and Huawei Bidding to Build Egypt's AI Data Centers, but BlackRock's Wei Li Calls Nvidia a Scarcity Seller With Real Pricing Power and Anthropic Tells Investors It Sees Over $30 Trillion in Potential Revenue</h3>
+      </div>
+      <p>The AI trade sat on its hands ahead of the single most important print of the quarter. Bloomberg said US stocks struggled for direction and Treasuries slipped as traders held back before Nvidia's report and this morning's PCE. WSJ framed the stakes as the $1.5 trillion question its earnings can't answer, the gap between the capital pouring into the buildout and the revenue that has to eventually justify it, and in a separate piece said Microsoft is leaving investors flying blind on its AI businesses from capex to its flagship cloud. Bloomberg Economics went macro, arguing AI investment now competes directly with governments for capital, which is exactly why Bessent's buyback and the AI boom are two sides of the same funding squeeze. The geopolitics widened too: Bloomberg reported Huawei has bid to build AI data centers for Egypt's government, drawing alarm in Washington as officials scramble to assemble a counteroffer. Yahoo laid out four reasons Nvidia stock is lagging and quoted Louis Navellier with a blunt message on the chipmaker's reign into the print. But the bulls are dug in. BlackRock's Wei Li told Bloomberg she stays optimistic on the AI trade because Nvidia is a scarcity seller with earnings pricing power and momentum, doing far better than the scarcity buyers. WSJ reported Anthropic is expected to tell investors it sees over $30 trillion in potential revenue, topping SpaceX's eye-popping estimate, and China's MiniMax said revenue surged 283% in the first half. Stratechery flagged fresh Apple and OpenAI hardware as new pressure on Nvidia. This afternoon's number is the swing catalyst for an index leaning on one name.</p>
+      <p>The bulls point to Wei Li calling Nvidia a scarcity seller with pricing power, Anthropic's $30 trillion revenue vision, and MiniMax's 283% surge. The bears point to WSJ's $1.5 trillion question, Microsoft flying blind on AI, AI competing with governments for capital, Huawei's Egypt bid, and Navellier's blunt warning.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (scarcity still commands pricing):</strong> BlackRock's Wei Li told Bloomberg Nvidia is a scarcity seller with earnings pricing power and momentum, doing far better than the scarcity buyers. WSJ said Anthropic sees over $30 trillion in potential revenue and MiniMax's sales jumped 283%, real demand behind the spend. If Nvidia delivers this afternoon, the pause into the print looks like a coiled spring.</div>
+        <div class="bear"><strong>Bear (the funding is the risk):</strong> WSJ said the $1.5 trillion question the earnings can't answer hangs over the market and that Microsoft is leaving investors flying blind on AI. Bloomberg said AI investment now competes with governments for capital, and Huawei's Egypt bid shows the competitive threat widening. Yahoo laid out four reasons the stock is lagging with Navellier sending a blunt warning. A market this concentrated is one disappointing number from a repricing.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/tech/ai/the-1-5-trillion-question-nvidias-earnings-cant-answer-a3a951c3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The $1.5 Trillion Question Nvidia's Earnings Can't Answer</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Tech stocks lead indexes higher as the 10-year yield falls the most since June</strong></summary>
+      <div class="deal-body">
+        <p>US stocks rose as another drop in oil and tepid economic data quelled inflation concerns, WSJ reported, with tech leading major indexes higher and the benchmark Treasury yield notching its biggest decline since June. The rally leans heavily on falling rates into Nvidia's print.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/tech-stocks-lead-major-indexes-higher-6291aac9?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Tech Stocks Lead Major Indexes Higher</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dick's Sporting Goods plunges 30% on a big earnings miss</strong></summary>
+      <div class="deal-body">
+        <p>Dick's Sporting Goods (DKS) fell 30% after fiscal second-quarter earnings missed Wall Street expectations, CNBC reported, with the retailer citing a challenging environment in footwear. The collapse is a sharp read on a US consumer stretched by higher prices.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/25/dicks-sporting-goods-dks-earnings-q2-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Dick's Sporting Goods Stock Falls 30% as Retailer Misses Expectations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Intuit slides as cost-conscious customers flee TurboTax</strong></summary>
+      <div class="deal-body">
+        <p>Intuit (INTU) shares slid in early Wednesday trade as customers fleeing TurboTax over price weighed on the software maker, MarketWatch reported. The exodus flags pricing pushback from a value-seeking consumer even at a sticky subscription business.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/customers-are-fleeing-turbotax-over-price-and-intuits-stock-is-sliding-a37dcce0?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Customers Are Fleeing TurboTax Over Price, and Intuit's Stock Is Sliding</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SAP slumps as UBS downgrades on a slow AI rollout</strong></summary>
+      <div class="deal-body">
+        <p>SAP (SAP) slumped to become the worst-performing large-cap European stock after a UBS analyst downgraded it, criticizing the German database giant's slow rollout of AI-based tools, MarketWatch reported. The move shows the market punishing incumbents seen as late to monetize AI.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/sap-stock-slumps-as-ubs-downgrades-stock-on-slow-move-into-ai-ed5bd4ab?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- SAP Stock Slumps as UBS Downgrades on Slow Move Into AI</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Paramount's Ellison stuck at the final hurdle for WBD</strong></summary>
+      <div class="deal-body">
+        <p>An antitrust challenge from a group of state attorneys general has left Paramount CEO David Ellison hunting for a way to close his deal for Warner Bros. Discovery, CNBC reported. So far he cannot clear it, and the holdup threatens to freeze broader media M&A.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/24/paramount-ceo-david-ellison-wbd-acquisition-final-hurdle.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Paramount CEO David Ellison Is at the Final Hurdle Before Buying WBD</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mark Walter's troubles disrupt the insurance world's hottest trade</strong></summary>
+      <div class="deal-body">
+        <p>Investors are questioning a $4.1 billion takeover of Brighthouse Financial because of parallels to Mark Walter, WSJ reported, whose troubles are disrupting the insurance sector's hottest trade. The wobble tests appetite for private-capital-backed life-insurance dealmaking.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/mark-walters-troubles-are-disrupting-the-insurance-worlds-hottest-trade-7aa61866?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Mark Walter's Troubles Are Disrupting the Insurance World's Hottest Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Four reasons Nvidia stock is lagging into its report</strong></summary>
+      <div class="deal-body">
+        <p>Yahoo Finance laid out four reasons Nvidia (NVDA) stock is lagging heading into Wednesday's print, from rising costs to rivals building their own chips, and quoted Louis Navellier with a blunt message on the chipmaker's reign. The setup frames the highest-stakes earnings of the quarter.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/article/4-reasons-nvidia-stock-is-lagging-093542775.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- 4 Reasons Nvidia Stock Is Lagging</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape rose as Brent near $85 eased inflation fears and the 10-year yield fell the most since June, but the whole market is holding its breath for Nvidia this afternoon. Dick's 30% crash, Intuit's TurboTax exodus and SAP's AI-downgrade slump all flagged a value-seeking consumer and impatience with laggards, while Paramount's WBD hurdle kept a media-M&A chill in view. The next test is whether Nvidia's print reignites the AI trade or confirms the $1.5 trillion funding worry now visible across the index.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Whole Market Can Ride on One Company's Single Earnings Report</summary>
+      <p>Nvidia reports this afternoon and traders across every asset class are treating it as a macro event rather than a company update, which sounds absurd until you understand index concentration. A capitalization-weighted index like the S&P 500 does not treat its members equally; it weights each by market value, so the largest companies swing the index far more than the smallest. When a handful of megacap technology names grow to represent a quarter or more of the index by weight, the index stops being a broad average and becomes, in practice, a leveraged bet on those few names. Nvidia sits at the extreme of that concentration, which is why a single earnings report can move the entire market. Here is the mechanism. If Nvidia is, say, seven percent of the index and its stock moves ten percent on the print, that one move alone shifts the index by roughly seven-tenths of a percent before any other stock trades. But the effect does not stop at the arithmetic. Nvidia is the reference stock for the whole AI complex, so its guidance on data-center demand, gross margins and the Rubin ramp gets read as a verdict on every hyperscaler, chip supplier, power provider and neocloud that has staked its capital plan on the buildout continuing. A strong number tells the market the spend is being met with real demand and pricing power, which lifts the entire chain. A weak number, or soft guidance, tells the market the $1.5 trillion question WSJ posed still has no answer, and the doubt spreads instantly from Nvidia to everything downstream of it. Two amplifiers make the day even more binary. The first is passive flows. Trillions of dollars sit in index funds that must hold Nvidia in proportion to its weight, so when active traders reprice the stock, passive vehicles mechanically follow, and the concentration that lifted the index on the way up works just as hard on the way down. The second is options positioning. Dealers who sold protection into a high-implied-volatility event must hedge, and their hedging can exaggerate the post-report move in whichever direction the number sends the stock, a feedback loop that has nothing to do with fundamentals. The practical lesson is to size a concentrated index for what it actually is. When one company can move the whole benchmark by a percent on its own results, you are not holding a diversified basket, you are holding a diversified basket plus a large, undiversified position in a single name and its entire ecosystem. That is fine when the leader delivers and dangerous when it stumbles. Reading a market that pauses ahead of one company's print, as Bloomberg described traders doing today, is reading a market that knows its own fate is tied to a number it cannot yet see, and that awareness is itself why volume dries up and everything waits.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-25/asian-stocks-set-to-gain-as-oil-extends-declines-markets-wrap" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stocks and Treasuries Slip as Nvidia, PCE Loom</a></p>
+      <p class="deal-source"><a href="https://finance.yahoo.com/markets/article/nvidia-earnings-could-reveal-its-fastest-growing-business-isnt-chips-chart-of-the-day-100000332.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Nvidia Earnings Could Reveal Its Fastest-Growing Business Isn't Chips</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>The $1.5 trillion question Nvidia's earnings can't answer</strong></summary>
+      <div class="deal-body">
+        <p>The gap between the capital pouring into the AI buildout and the revenue that must eventually justify it is the $1.5 trillion question Nvidia's (NVDA) earnings can't answer, WSJ reported. The frame casts the print as a demand check for the whole AI complex, not just one company.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/ai/the-1-5-trillion-question-nvidias-earnings-cant-answer-a3a951c3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The $1.5 Trillion Question Nvidia's Earnings Can't Answer</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft is leaving investors flying blind on its AI businesses</strong></summary>
+      <div class="deal-body">
+        <p>From capex to its flagship cloud platform, Microsoft (MSFT) stands out for its lack of transparency on AI, WSJ reported, leaving investors flying blind on how much the spend is actually earning. The opacity feeds the payback anxiety hanging over the sector.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/ai/microsoft-is-leaving-investors-flying-blind-on-its-ai-businesses-3607360a?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Microsoft Is Leaving Investors Flying Blind on Its AI Businesses</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Anthropic expected to tell investors it sees over $30 trillion in potential revenue</strong></summary>
+      <div class="deal-body">
+        <p>AI startup Anthropic is likely to tell investors it sees over $30 trillion in potential revenue, WSJ reported, an estimate that would top SpaceX's eye-popping number. The projection is a bull-case anchor for the scale of the AI opportunity.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/ai/anthropic-expected-to-tell-investors-it-sees-over-30-trillion-in-potential-revenue-a611efea?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Anthropic Expected to Tell Investors It Sees Over $30 Trillion in Potential Revenue</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Huawei bids to build Egypt's AI data centers, alarming Washington</strong></summary>
+      <div class="deal-body">
+        <p>Huawei has bid to build AI data centers for the Egyptian government's military and surveillance use, Bloomberg reported, showcasing its global chip ambitions and drawing alarm in Washington, where officials are scrambling to assemble a counteroffer. The bid widens the US-China AI export fight.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-26/huawei-egypt-ai-ascend-chips-test-us-tech-diplomacy-nvidia-amd-microsoft" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Huawei AI Data Center Bid in Egypt Spurs US to Mull Counter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock's Wei Li says Nvidia is a scarcity seller with pricing power</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock global chief investment strategist Wei Li told Bloomberg she stays optimistic on the AI trade because Nvidia is a scarcity seller doing far better than the scarcity buyers, with price increases showing real earnings pricing power and momentum. A named bull framing the bar into the print.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-26/blackrock-s-li-says-nvidia-has-earnings-pricing-power-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Has Earnings Pricing Power, BlackRock's Li Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MiniMax sales nearly quadruple in China's crowded AI race</strong></summary>
+      <div class="deal-body">
+        <p>Chinese AI upstart MiniMax saw revenue surge 283% in the first half of 2026, Bloomberg reported, even as it trailed rivals like Z.AI in releasing top-tier large language models. The jump shows fierce demand and competition inside China's homegrown AI stack.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-26/minimax-sales-nearly-quadruple-in-crowded-race-for-chinaai-lead" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- MiniMax Sales Nearly Quadruple in Crowded Race for China AI Lead</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bill Gates calls for human-reserved jobs to shield labor from AI</strong></summary>
+      <div class="deal-body">
+        <p>Bill Gates published a 6,000-word essay calling for human-reserved jobs to protect the labor force, warning AI will usher in one of the most turbulent times in human history, FT reported. The intervention adds a prominent voice to the debate over AI's economic disruption.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/42c449c6-03f6-4097-9eae-e119447e8aa5?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Bill Gates Calls for Human-Reserved Jobs to Protect Labour Force From AI</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Wednesday August 26, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is still real demand and pricing, with BlackRock's Wei Li calling Nvidia a scarcity seller with earnings power, Anthropic projecting over $30 trillion in potential revenue, and MiniMax's 283% surge. The counter-signal is transparency and funding risk, with WSJ's $1.5 trillion question, Microsoft flying blind on AI, and Bloomberg warning AI investment now competes with governments for capital. The frame into this afternoon's print is a buildout funded at scale while the question of whether the revenue arrives grows louder.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>The Bessent put might actually be working for the bond market</strong></summary>
+      <div class="deal-body">
+        <p>Early signs suggest Bessent's surprise moves to expand bond buybacks are making an impact, Bloomberg reported, with key market metrics and positioning pointing to real traction in tamping down borrowing costs. The read is that the intervention is landing, at least for now.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-26/the-bessent-put-might-actually-be-working-for-the-bond-market" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- The Bessent Put Might Actually Be Working for the Bond Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley's Khanduja cuts long-bond shorts on the buyback move</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley Investment Management's Vishal Khanduja, a top-performing fixed-income investor, is scaling back his bets against long-term US bonds, Bloomberg reported, saying Bessent is prepared to do whatever it takes to keep yields from rising. A named bear folding is a strong signal the put is working.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-26/morgan-stanley-s-khanduja-cuts-long-bond-bets-on-bessent-buyback-move" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Morgan Stanley's Khanduja Cuts Long-Bond Bets on Bessent Buyback Move</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citadel Securities warns the one-sided short in long bonds could unwind painfully</strong></summary>
+      <div class="deal-body">
+        <p>Citadel Securities strategist Frank Flight told MarketWatch that Wall Street's massive, seemingly one-sided bet against long-term bonds is a recipe for a painful bearish unwind. A crowded short that gets squeezed would push yields lower still, reinforcing Bessent's aim.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/wall-streets-massive-bet-against-long-term-bonds-is-a-recipe-for-a-painful-bearish-unwind-says-citadel-securities-430dc145?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Wall Street's Bet Against Long-Term Bonds Is a Recipe for a Painful Unwind, Says Citadel Securities</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Druckenmiller leads the doubters, and used AI to sharpen the critique</strong></summary>
+      <div class="deal-body">
+        <p>Stanley Druckenmiller leads a growing chorus of doubters who think Bessent's bond ploys will fail, CNBC reported, with the interventions generating only a modest decline in yields. WSJ added that the legendary investor sharpened his surprising critique with the help of AI and was kind of proud of it.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/25/stanley-druckenmiller-leads-doubters-who-think-bessents-bond-ploys-will-fail.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Stanley Druckenmiller Leads Doubters Who Think Bessent's Bond Ploys Will Fail</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Warsh's peers to highlight global inflation risk at Jackson Hole</strong></summary>
+      <div class="deal-body">
+        <p>Central bankers gathering in Jackson Hole will emphasize a global rethink on inflation and the prospect of higher borrowing costs in the face of new threats, Bloomberg reported. The hawkish backdrop sets a hard stage for Warsh's debut ahead of PCE.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-26/warsh-s-peers-to-highlight-global-inflation-risk-at-jackson-hole" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Warsh's Peers to Highlight Global Inflation Risk at Jackson Hole</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Barkin says rising US debt will lead to an eventual reckoning</strong></summary>
+      <div class="deal-body">
+        <p>Richmond Fed President Tom Barkin said there will eventually be a reckoning if US debt keeps rising, though it is hard to know when, Bloomberg reported. The comment underscores the fiscal worry underneath the buyback debate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-25/fed-s-barkin-says-rising-us-debt-will-lead-to-eventual-reckoning" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Barkin Says Rising US Debt Will Lead to Eventual Reckoning</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Canada hits hundreds of US-made items with retaliatory tariffs</strong></summary>
+      <div class="deal-body">
+        <p>Canada will place counter-tariffs on more than 700 US-made products in retaliation for a new set of White House import taxes, Bloomberg reported, as the trade war escalates. WSJ headlined it "Canada Strikes Back," a fresh upside risk to US prices into the midterms.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-25/canada-is-hitting-hundreds-of-us-made-items-with-tariffs-read-the-list" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Canada Is Hitting Hundreds of US-Made Items With Tariffs</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 26, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The buyback is starting to bite. Bloomberg says the Bessent put might actually be working, Morgan Stanley's Khanduja cut his shorts, Citadel flagged a painful short unwind, and the 10-year fell the most since June as oil eased. Pulling the other way, Druckenmiller leads the doubters, Pimco's Balls can't see the logic, the FT warns of a collision course with Warsh's Fed, and Barkin sees a debt reckoning coming. The tell into this morning's PCE and Warsh's Jackson Hole debut is whether the long end stays anchored or the skeptics reassert the level fundamentals justify.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Treasury Buying Bonds Can Undercut the Fed Fighting Inflation</summary>
+      <p>FT warned that Bessent's expanded bond buyback puts the Treasury on a collision course with Warsh's Fed, and the mechanism behind that clash is worth understanding because it is a genuine conflict of purpose between two arms of the government. Start with what each side is trying to do. The Federal Reserve sets short-term interest rates and manages its balance sheet to control inflation. When inflation runs hot, the Fed wants financial conditions tight, meaning higher borrowing costs, lower asset prices and less liquidity sloshing around, because tighter conditions cool demand and bring prices back to target. The Treasury, separately, manages the government's debt: how much to issue, at what maturities, and now, through buybacks, whether to repurchase outstanding bonds. When the Treasury buys back long-dated bonds, it reduces the supply the market has to hold, which pushes their prices up and their yields down, and it pushes cash out to the sellers, adding liquidity. Here is the collision. Lower long-end yields and more liquidity are, by definition, looser financial conditions, which is exactly what the Fed is trying to avoid while it fights inflation. So the Treasury is stepping on the monetary brake pedal at the same moment the Fed is pressing it, and the two can end up working against each other. If the Treasury succeeds in dragging long yields down while inflation is still above target, it effectively eases policy that the Fed wants tight, and the central bank may have to compensate by keeping short rates higher for longer to offset the loosening. That is the practical meaning of a collision course: the fiscal authority and the monetary authority pulling the rate structure in opposite directions. There is a deeper danger the skeptics keep raising, which is central-bank independence. Markets price government bonds partly on their trust that monetary policy is set to control inflation rather than to make the government's borrowing cheaper. When the Treasury openly intervenes to hold yields down, investors can start to suspect that the fiscal and monetary sides are coordinating to suppress the cost of debt, which is the textbook definition of fiscal dominance. Once that suspicion takes hold, investors demand more compensation for holding bonds and for holding the currency, and that pressure shows up first in gold, in the dollar and in inflation expectations, not in the yield the Treasury is trying to pin down. That is why Pimco's Andrew Balls saying he cannot see why the Treasury would even buy in a healthy market matters: it signals professional doubt about the motive. The practical lesson is to watch whether the buyback lowers yields cleanly or whether the relief leaks into gold, the dollar and breakevens instead. If yields fall while those other gauges stay calm, the intervention is working on its own terms. If yields dip but gold climbs and the dollar softens, the market is telling you it reads the buyback as fiscal dominance, and the Treasury has bought a lower headline yield at the cost of the credibility that makes low yields durable in the first place.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/a50df99b-0621-44ea-a7c7-c9c685e2eba1?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Bessent's Bond Intervention Puts US Treasury on Collision Course With Fed</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-26/pimco-points-to-low-volatility-in-healthy-bond-market-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Pimco's Balls Points to Low Volatility in a Healthy Bond Market</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Stocks rose as Brent slid near $85 and the 10-year fell the most since June, the Bessent put showed early signs of working as Morgan Stanley cut its shorts, oil fell a third day on Iran-Oman Hormuz talks, and bitcoin took a breather at $79,000; Nvidia earnings this afternoon, PCE this morning and Jackson Hole loom; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/24</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/25</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/26</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/27</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin takes a breather at $79,000 after a 23% seven-day run</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin fell to $79,000 on Wednesday after adding 23% in seven days, CoinDesk reported, cooling off as August ETF inflows climbed above $3 billion and demand held steady. The pause follows the surge sparked by Bessent's buyback expansion.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/26/bitcoin-takes-a-breather-after-adding-23-in-7-days-as-etf-demand-holds-steady" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Takes a Breather After Adding 23% in 7 Days as ETF Demand Holds Steady</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A $6.4 billion bitcoin options expiry Friday could amplify volatility</strong></summary>
+      <div class="deal-body">
+        <p>Friday's $6.4 billion bitcoin options expiry follows the surge from $62,000 to $80,000, CoinDesk reported, leaving market makers with heavy exposure to manage around several key strike prices. The setup could whipsaw prices into month-end.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/25/a-massive-usd6-4-billion-bitcoin-options-expiry-on-friday-could-amplify-volatility" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- A Massive $6.4 Billion Bitcoin Options Expiry on Friday Could Amplify Volatility</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto greed gauge hits its highest since just before October's $19 billion wipeout</strong></summary>
+      <div class="deal-body">
+        <p>The Fear &amp; Greed Index reached 74 on Tuesday after sitting at 27 less than two weeks ago, CoinDesk reported, showing how fast traders swung from caution to chasing risk. The last time it ran this hot preceded a $19 billion liquidation cascade.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/26/crypto-greed-gauge-hits-highest-since-just-before-october-s-usd19-billion-wipeout" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Greed Gauge Hits Highest Since Just Before October's $19 Billion Wipeout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Strategy cuts net leverage to near zero as cash nearly matches debt</strong></summary>
+      <div class="deal-body">
+        <p>Strategy (MSTR) cut net leverage to near zero as its cash pile nearly matched its convertible debt, CoinDesk reported, building close to four years of preferred-dividend coverage while continuing to repurchase STRC below par. The treasury firm is de-risking into the rally.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/26/strategy-cuts-net-leverage-to-near-zero-as-cash-nearly-matches-convertible-debt" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Strategy Cuts Net Leverage to Near Zero as Cash Nearly Matches Convertible Debt</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zcash pulls back 8% as its Grayscale ETF goes live</strong></summary>
+      <div class="deal-body">
+        <p>Zcash pulled back 8% as its Grayscale spot ETF began NYSE trading, CoinDesk reported, capping a 60% rally to an eight-year high as traders sold the news with leverage stacked into the move. A classic buy-the-rumor unwind on the listing.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/26/live-updates-zcash-pulls-back-8-as-its-grayscale-etf-goes-live-capping-a-60-rally" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Zcash Pulls Back 8% as Its Grayscale ETF Goes Live, Capping a 60% Rally</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Revolut begins rolling out its EURR euro stablecoin in Europe</strong></summary>
+      <div class="deal-body">
+        <p>Revolut began rolling out its EURR euro stablecoin to a select group of customers in Denmark, Poland and Portugal, CoinDesk reported, giving euro stablecoins a mainstream push. The move deepens the fight for Europe's on-chain payments rails.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/26/euro-stablecoins-get-a-mainstream-push-as-revolut-begins-rolling-out-eurr-in-europe" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Euro Stablecoins Get a Mainstream Push as Revolut Begins Rolling Out EURR in Europe</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Victory Capital -- $7 Billion Deal to Buy First Eagle Investments</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Victory Capital Holdings agreed to acquire First Eagle Investments for about $7 billion, WSJ reported, in a deal creating one of the largest publicly traded traditional asset managers in the US.</p>
+        <p><strong>Outlook:</strong> The combined firm would hold roughly $571 billion in total client assets, giving Victory scale to compete on cost and distribution.</p>
+        <p><strong>What it means:</strong> Consolidation in traditional asset management keeps accelerating as fee pressure pushes managers to bulk up.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/victory-capital-to-buy-first-eagle-for-7-billion-ff0286f0?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Victory Capital to Buy First Eagle for $7 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mota-Engil -- Congo Copper Rail Concession Backed by Up to $1 Billion in US Financing</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Mota-Engil is set to sign a 30-year concession to operate a key Democratic Republic of Congo copper and cobalt railway, Bloomberg reported, potentially backed with up to $1 billion of US financing.</p>
+        <p><strong>Outlook:</strong> Federal backing signals policy urgency around securing critical-minerals logistics for electrification and AI data-center power.</p>
+        <p><strong>What it means:</strong> Washington is putting balance-sheet weight behind copper supply chains, tying industrial policy to the energy and AI buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-26/mota-engil-said-to-win-deal-for-us-backed-congo-copper-railway" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Mota-Engil Said to Win Deal for US-Backed Congo Copper Rail</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Brighthouse Financial -- $4.1 Billion Takeover Rattled by Mark Walter's Troubles</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Investors are questioning a $4.1 billion takeover of Brighthouse Financial because of parallels to Mark Walter, WSJ reported, whose troubles are disrupting the insurance world's hottest trade.</p>
+        <p><strong>Outlook:</strong> The wobble tests appetite for private-capital-backed life-insurance deals that have driven a wave of sector M&A.</p>
+        <p><strong>What it means:</strong> Idiosyncratic risk at a single sponsor can freeze a whole class of deals when the model relies on trust in the backers.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/mark-walters-troubles-are-disrupting-the-insurance-worlds-hottest-trade-7aa61866?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Mark Walter's Troubles Are Disrupting the Insurance World's Hottest Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Blackbird Ventures -- Record A$1.05 Billion Fund for Early-Stage Tech</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Blackbird Ventures closed a regional-record A$1.05 billion fund, Bloomberg reported, to back early-stage technology companies across Australia and New Zealand.</p>
+        <p><strong>Outlook:</strong> Partner Samantha Wong said the firm will capitalize on AI themes and support startups with global ambitions.</p>
+        <p><strong>What it means:</strong> Venture capital keeps flowing to AI-adjacent startups well beyond the US megacaps, widening the funding base for the buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-26/blackbird-ventures-on-a-1-05b-fund-raise-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Blackbird Ventures on A$1.05B Fund Raise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Copper -- Crypto Custody Firm Draws Bids Well Below Its $500 Million Ask</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Crypto custody firm Copper, once valued at $2.5 billion, has potential buyers but offers are running well below its $500 million asking price, CoinDesk reported.</p>
+        <p><strong>Outlook:</strong> Being marketed by Cantor Fitzgerald, the process shows how far private crypto-infrastructure valuations have reset from their peak.</p>
+        <p><strong>What it means:</strong> The gap between ask and bid signals lingering caution on crypto plumbing even as token prices rally.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/25/crypto-custody-firm-copper-has-potential-buyers-but-offers-are-way-below-its-usd500-million-asking-price" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Custody Firm Copper Has Potential Buyers, but Offers Are Way Below Its $500 Million Asking Price</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Banco BPM -- Says Monte dei Paschi Bid Recognizes No Premium</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Banco BPM signaled skepticism toward a takeover bid from rival Banca Monte dei Paschi, Bloomberg reported, saying the price offered was essentially the same as its market valuation.</p>
+        <p><strong>Outlook:</strong> The pushback complicates Italy's bank-consolidation drive, with BPM arguing the deal does not recognize a premium.</p>
+        <p><strong>What it means:</strong> European bank M&A remains contentious as targets hold out for better terms amid a wealth-management boom.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-26/banco-bpm-says-paschi-bid-does-not-recognize-a-premium-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Banco BPM Says Paschi's Offer Does Not Recognize a Premium</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Stanley Druckenmiller -- leads the doubters who think the bond ploys will fail</strong></summary>
+      <div class="deal-body">
+        <p>Stanley Druckenmiller leads a growing chorus of doubters who think Bessent's bond interventions will fail, CNBC reported, arguing they have delivered only a modest decline in yields. WSJ added the legendary investor sharpened the critique using AI and was kind of proud of it. A named bear tearing into his former protege.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/ai/druckenmillers-surprising-critique-of-bessent-was-delivered-with-the-help-of-ai-9dd0a4fd?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Druckenmiller's Surprising Critique of Bessent Was Delivered With the Help of AI</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley's Vishal Khanduja -- cutting long-bond shorts on the buyback</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley Investment Management's Vishal Khanduja, a top-performing fixed-income investor, is scaling back his bets against long-term US bonds, Bloomberg reported, saying Bessent is prepared to do whatever it takes to keep yields from rising. A named voice conceding the intervention has teeth.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-26/morgan-stanley-s-khanduja-cuts-long-bond-bets-on-bessent-buyback-move" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Morgan Stanley's Khanduja Cuts Long-Bond Bets on Bessent Buyback Move</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citadel Securities' Frank Flight -- the one-sided short is a recipe for a painful unwind</strong></summary>
+      <div class="deal-body">
+        <p>Citadel Securities strategist Frank Flight told MarketWatch that Wall Street's massive, one-sided bet against long-term bonds could set up a painful bearish unwind, meaning a short squeeze that drags yields lower. A named voice framing positioning as fuel for Bessent's aim.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/wall-streets-massive-bet-against-long-term-bonds-is-a-recipe-for-a-painful-bearish-unwind-says-citadel-securities-430dc145?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Wall Street's Bet Against Long-Term Bonds Is a Recipe for a Painful Unwind, Says Citadel Securities</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock's Wei Li -- Nvidia is a scarcity seller with earnings pricing power</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock global chief investment strategist Wei Li told Bloomberg she stays optimistic on the AI trade because Nvidia is a scarcity seller doing far better than the scarcity buyers, with price increases proving real earnings pricing power. A named bull into the print.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-26/blackrock-s-li-says-nvidia-has-earnings-pricing-power-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Has Earnings Pricing Power, BlackRock's Li Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Louis Navellier -- a blunt message on Nvidia's reign before earnings</strong></summary>
+      <div class="deal-body">
+        <p>Growth investor Louis Navellier delivered a blunt message on Nvidia's reign ahead of Wednesday's report, Yahoo Finance reported, cautioning that the chipmaker's dominance faces mounting pressure from costs and competition. A named voice tempering the bull case into the print.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/louis-navellier-blunt-message-nvidia-214700439.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Louis Navellier Has Blunt Message on Nvidia's Reign Before Earnings</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the Bessent Put Shows Early Signs of Working and Bears Fold, Oil Falls on Hormuz Talks, Nvidia Reports This Afternoon and Warsh Prepares His Jackson Hole Debut Into PCE</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the put works and scarcity sells):</strong> Bloomberg says the Bessent put might actually be working, and Morgan Stanley's Vishal Khanduja is cutting his long-bond shorts because Bessent will do whatever it takes. Citadel's Frank Flight says the one-sided short could unwind painfully, dragging yields lower still. BlackRock's Wei Li calls Nvidia a scarcity seller with real pricing power, and Anthropic sees over $30 trillion in potential revenue. If PCE cools and Nvidia delivers, the calmer read and the AI bull case both hold.</div>
+        <div class="bear"><strong>Bear (credibility and funding are the risks):</strong> Druckenmiller leads the doubters who think the ploys fail, Pimco's Andrew Balls can't see why the Treasury would buy, and the FT warns of a collision course with Warsh's Fed. Louis Navellier sends a blunt warning on Nvidia, WSJ poses the $1.5 trillion question, and Barkin sees a debt reckoning. With PCE this morning and a hawkish Jackson Hole ahead, the risks are stacked against complacency.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Nvidia earnings this afternoon; Dick's -30% crash; SAP and Intuit slump; four reasons NVDA lags</td><td>Mixed</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Tech leads as 10Y falls most since June; Brent near $85; Paramount-WBD hurdle; Victory-First Eagle $7B</td><td>Cautious</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Bessent put working vs Druckenmiller doubters; Morgan Stanley cuts shorts; FT Fed collision course; PCE today</td><td>Mixed</td><td>~14,500 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>WSJ $1.5T question; Microsoft flying blind on AI; AI competes with governments for capital; Huawei Egypt</td><td>Bearish</td><td>~9,500 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC breather at $79K after 23% run; $6.4B Friday options expiry; greed gauge at 74; Zcash sells the ETF news</td><td>Bullish</td><td>~21,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood was all anticipation into Nvidia and PCE. r/wallstreetbets split between the afternoon print and the pain in Dick's, SAP and Intuit, while r/stocks leaned constructive on falling yields and the tech-led bounce. r/investing turned into a debate over whether the Bessent put is actually working, with Morgan Stanley's fold on one side and Druckenmiller's doubters on the other. r/SecurityAnalysis stayed the loudest bear on the $1.5 trillion question, Microsoft's opacity and AI crowding out government funding. r/CryptoCurrency ran bullish but wary as bitcoin cooled to $79,000 with a $6.4 billion expiry and a hot greed gauge looming. The swing factor is Nvidia's number and Warsh's Jackson Hole tone.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why AI Investment Now Competes With Governments for Capital, and How a Global Savings Pool Gets Divided Between the Buildout and the Deficit</h2>
+    <p>Bloomberg Economics made a striking claim today: AI investment now competes directly with governments for capital, which is why Bessent is racing Big Tech to keep funding the nation's debt. That framing sounds abstract until you understand that the world's pool of investable savings, while enormous, is finite at any moment, and every dollar of it can only be lent or invested once. When two giant borrowers reach into the same pool at the same time, they bid against each other, and the price they compete on is the interest rate. That is the mechanism connecting the AI buildout to the bond market, and it explains why the two dominant stories of the week are really one story. Start with the demand side. The US government must issue trillions of dollars of Treasury debt every year to fund its deficit and roll over maturing bonds. At the same time, hyperscalers, neoclouds and chip financiers are raising staggering sums to build data centers, buy GPUs and secure power, increasingly through the same corporate bond and private credit markets that compete with Treasuries for investor cash. Both are drawing on the same global savings pool: pension funds, insurers, sovereign wealth funds, foreign central banks and money-market vehicles. When AI borrowers issue more debt, they absorb capital that would otherwise have gone into Treasuries, and to attract enough buyers, all borrowers have to offer higher yields. That upward pressure on rates is exactly what Bessent's buyback is fighting, which is why the AI-debt boom and the Treasury's yield problem are two ends of the same rope. Now see why the competition matters for prices. If the savings pool grew as fast as the combined demand from governments and AI, rates could stay stable. But when demand for capital outruns the supply of savings, the clearing price, the interest rate, rises until enough lenders are enticed and enough marginal borrowers are priced out. This is the crowding-out effect: heavy borrowing by one party raises the cost of capital for everyone, and it can squeeze out productive private investment that cannot clear the higher hurdle. It also flips the usual comfort about corporate credit. Investors often assume there is always room for a good bond, but when AI issuance is measured in the hundreds of billions and government issuance in the trillions, even a deep market feels the strain, which is precisely the credit-market stress that has surfaced in recent weeks. The practical lesson is to watch the two demands together, not separately. When you see a wave of AI data-center financing, do not read it only as a tech story; read it as new competition for the same capital the Treasury needs, which puts upward pressure on the very yields Bessent is trying to suppress. And when you see the Treasury intervene to hold yields down, understand it is trying to win a bidding war against Big Tech for a limited pool of savings. The tell is whether new savings, from higher household saving, foreign inflows or a weaker appetite for other assets, are expanding the pool fast enough to satisfy both. If they are not, one side gets crowded out, and the market decides which one by moving the rate until the demand for capital and the supply of savings finally balance.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-26/artificial-intelligence-investment-now-competes-with-governments-for-capital" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Artificial Intelligence Investment Now Competes With Governments for Capital</a></p>
+    <p class="deal-source"><a href="https://www.wsj.com/tech/ai/the-1-5-trillion-question-nvidias-earnings-cant-answer-a3a951c3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The $1.5 Trillion Question Nvidia's Earnings Can't Answer</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-26/the-bessent-put-might-actually-be-working-for-the-bond-market" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- The Bessent Put Might Actually Be Working for the Bond Market</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Core PCE inflation, this morning.</strong> The Fed's preferred gauge lands right into Warsh's Jackson Hole debut; with Brent near $85 easing inflation fears but Canada's tariffs and the Middle East conflict pushing the other way, watch whether the print leans on the inflation risk or the cooling read.</li>
+      <li><strong>Jackson Hole and Warsh's debut, Thursday.</strong> Bloomberg says Warsh's peers will highlight global inflation risk and higher borrowing costs, and the FT warns his fight is on a collision course with Bessent's buyback; the dollar and the long end are the scoreboard.</li>
+      <li><strong>US-Canada trade war.</strong> After Canada slapped counter-tariffs on more than 700 US products, watch whether the escalation feeds into US prices ahead of the midterms with no talks in sight.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Nvidia earnings, this afternoon.</strong> After a lagging run into the print, watch whether the Rubin ramp and durable demand answer the $1.5 trillion question WSJ posed, since BlackRock's Wei Li calls it a scarcity seller while Navellier warns the reign is under pressure.</li>
+      <li><strong>Retail and consumer reads.</strong> After Dick's crashed 30% and TurboTax customers fled Intuit, watch whether the next batch of results confirms a value-seeking, price-sensitive US consumer.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Asset-manager consolidation.</strong> After Victory Capital agreed to buy First Eagle for $7 billion, watch whether fee pressure drives more scale-seeking deals across traditional managers.</li>
+      <li><strong>AI and critical-minerals financing.</strong> After Blackbird's record A$1.05 billion fund and up to $1 billion of US backing for a Congo copper rail, watch whether capital keeps flowing to the buildout even as it competes with the deficit for savings.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Iran-Oman Hormuz talks and oil.</strong> With crude down a third day on a potential shipping deal and container ships returning to the Red Sea, watch whether the premium keeps bleeding out or China's CIPS sanctions hedge reignites the fight.</li>
+      <li><strong>BOK and Australia rate decisions.</strong> After Australia's inflation overshoot and a Bank of Korea call going down to the wire, watch for back-to-back hikes that could swing the won, the Aussie and carry trades.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Aug 26, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-26 07:31 ET); Bloomberg Technology (20 fresh, newest 2026-08-26 07:02 ET); Bloomberg Economics (20 fresh, newest 2026-08-26 07:00 ET); CNBC Top News (9 fresh, newest 2026-08-25 16:44 ET); CNBC Finance (4 fresh, newest 2026-08-26 03:11 ET); CNBC Economy (2 fresh, newest 2026-08-25 13:15 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-26 07:31 ET); WSJ Markets (18 fresh, newest 2026-08-26 07:30 ET); Yahoo Finance (21 fresh, newest 2026-08-26 07:20 ET); FT Home (9 fresh, newest 2026-08-26 03:52 ET); Matt Levine Money Stuff (1 fresh, newest 2026-08-25 14:09 ET); CoinDesk (25 fresh, newest 2026-08-26 07:14 ET); Stratechery (2 fresh, newest 2026-08-26 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. Why did oil fall for a third straight day on Wednesday?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC surprised the market with a large output hike</span>
+      <span class="opt" data-opt="B">B. Iran and Oman discussed a deal to reopen Hormuz shipping</span>
+      <span class="opt" data-opt="C">C. The US lifted its secondary sanctions on Iran</span>
+      <span class="opt" data-opt="D">D. China halted all crude imports from the Gulf</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg reported oil fell for a third day as Iran and Oman discussed a potential deal to resume shipping through the Strait of Hormuz, with container ships also returning to the Red Sea. There was no OPEC hike, sanctions lift, or China import halt behind the drop.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did Morgan Stanley's Vishal Khanduja do in response to Bessent's buyback?</strong></p>
+      <span class="opt" data-opt="A">A. He cut his bets against long-term US bonds</span>
+      <span class="opt" data-opt="B">B. He added to his short position against Treasuries</span>
+      <span class="opt" data-opt="C">C. He sold his entire stake in gold miners</span>
+      <span class="opt" data-opt="D">D. He shifted his fund fully into cash reserves</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported Khanduja, a top-performing fixed-income investor, is scaling back his bets against long-term bonds because Bessent is prepared to do whatever it takes to keep yields from rising. He did not add shorts, sell gold, or move to cash.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. How did BlackRock's Wei Li frame Nvidia ahead of its earnings?</strong></p>
+      <span class="opt" data-opt="A">A. As overvalued and due for a sharp correction</span>
+      <span class="opt" data-opt="B">B. As a scarcity buyer squeezed by rising costs</span>
+      <span class="opt" data-opt="C">C. As a value stock the market keeps overlooking</span>
+      <span class="opt" data-opt="D">D. As a scarcity seller with real pricing power</span>
+      <div class="feedback"><strong>D is correct.</strong> Wei Li told Bloomberg she stays optimistic on the AI trade because Nvidia is a scarcity seller doing far better than the scarcity buyers, with price increases showing earnings pricing power. She did not call it overvalued, a scarcity buyer, or a value stock.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Bessent's expanded bond buyback showed early signs of working as the benchmark Treasury yield fell the most since June and Morgan Stanley's Vishal Khanduja cut his long-bond shorts, but Druckenmiller led the doubters, Pimco's Andrew Balls couldn't see why the Treasury would buy, Citadel warned of a painful short unwind, and the FT said the buyback puts the Treasury on a collision course with Warsh's Fed ahead of PCE and Jackson Hole.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-08-26/the-bessent-put-might-actually-be-working-for-the-bond-market", "take": "The Bessent put might actually be working for the bond market." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-26/morgan-stanley-s-khanduja-cuts-long-bond-bets-on-bessent-buyback-move", "take": "Morgan Stanley's Khanduja cuts long-bond shorts as Bessent will do whatever it takes." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/wall-streets-massive-bet-against-long-term-bonds-is-a-recipe-for-a-painful-bearish-unwind-says-citadel-securities-430dc145?mod=mw_rss_topstories", "take": "Citadel says the one-sided short in long bonds could unwind painfully, dragging yields lower." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/25/stanley-druckenmiller-leads-doubters-who-think-bessents-bond-ploys-will-fail.html", "take": "Druckenmiller leads a growing chorus of doubters who think the ploys will fail." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/a50df99b-0621-44ea-a7c7-c9c685e2eba1?syn-25a6b1a6=1", "take": "The buyback puts the Treasury on a collision course with Warsh's Fed." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil fell for a third day with Brent near $85 as Iran and Oman discussed a deal to resume Strait of Hormuz shipping and container ships returned to the Red Sea, but China built a CIPS hedge against Washington's sanctions, CNOOC's profit rose on war-inflated prices, UK energy bills jumped 4% on Middle East gas, and ECB's Schnabel cited the conflict as an upside inflation risk.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-25/latest-oil-market-news-and-analysis-for-aug-26", "take": "Oil fell a third day as Iran and Oman discussed reopening Hormuz shipping." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/u-s-stocks-rise-as-oil-inflation-fears-retreat-502d4d57?mod=rss_markets_main", "take": "US stocks rose as another drop in oil quelled inflation concerns." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/25/china-iran-us-sanctions-banks-cips.html", "take": "China is building a CIPS hedge to keep trading with Iran despite US sanctions." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-26/uk-households-face-highest-winter-bills-since-january-2024", "take": "UK energy bills jump 4% in October as the Middle East conflict lifts gas prices." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-26/ecb-s-schnabel-says-rates-must-rise-more-on-resilient-economy", "take": "ECB's Schnabel says the Middle East conflict is an upside inflation risk demanding higher rates." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Nvidia reports this afternoon with WSJ saying the $1.5 trillion question its earnings can't answer hangs over the market, Microsoft leaving investors flying blind on AI and Bloomberg reporting AI investment now competes with governments for capital, but BlackRock's Wei Li calls Nvidia a scarcity seller with real pricing power and Anthropic tells investors it sees over $30 trillion in potential revenue.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-26/blackrock-s-li-says-nvidia-has-earnings-pricing-power-video", "take": "BlackRock's Wei Li calls Nvidia a scarcity seller with earnings pricing power." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/tech/ai/anthropic-expected-to-tell-investors-it-sees-over-30-trillion-in-potential-revenue-a611efea?mod=rss_markets_main", "take": "Anthropic is expected to tell investors it sees over $30 trillion in potential revenue." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/tech/ai/the-1-5-trillion-question-nvidias-earnings-cant-answer-a3a951c3?mod=rss_markets_main", "take": "The $1.5 trillion question Nvidia's earnings can't answer hangs over the market." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/tech/ai/microsoft-is-leaving-investors-flying-blind-on-its-ai-businesses-3607360a?mod=rss_markets_main", "take": "Microsoft is leaving investors flying blind on its AI businesses." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-08-26/artificial-intelligence-investment-now-competes-with-governments-for-capital", "take": "AI investment now competes with governments for capital." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["MiniMax","Copper","Nvidia","SAP","Intuit","Dick's"],
+    "values": [12.0, 0.5, -0.8, -3.5, -4.0, -30.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [26000, 15000, 14500, 9500, 21000],
+    "colors": ["neutral","neutral","neutral","bear","bull"]
+  },
+  "dealSizes": {
+    "labels": ["Victory-First Eagle","Brighthouse","Mota-Engil Rail","Blackbird Fund","Copper Custody"],
+    "values": [7.0, 4.1, 1.0, 0.68, 0.5]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
