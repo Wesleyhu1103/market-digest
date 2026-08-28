@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Aug 27, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-27</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, August 27, 2026</h1>
+    <div class="meta">
+      <p>Nvidia's blowout print is the whole tape this morning: a 70% growth forecast for next fiscal year sent chip and software stocks and even bitcoin higher, easing fears the AI spend is peaking. Warsh's first Jackson Hole speech lands tomorrow, and yesterday's core PCE cooled to 3.3% against a 3.6% estimate. Oil steadied as Hormuz flows improve, but Russia is preparing to escalate in Ukraine and wheat hit a three-year high.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Nvidia reported a blowout quarter and forecast about 70% revenue growth next fiscal year, defending its financial support of AI companies and rebutting criticism of circular financing, a print that lifted chips, software and bitcoin and eased fears the AI spending cycle is losing momentum, even as skeptics point to costly chips, cheap tokens and a still-missing broad AI payoff",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Nvidia Reports Blowout Quarter, Says Demand for AI Chips Is Getting Even Hotter", "angle": "Reads the 70% guide and the defense of circular financing as proof the buildout has more room to run.", "lean": 45, "pull": "Shares rallied as the chip giant forecast 70% revenue growth next year and defended its financial support of AI companies."},
+        {"outlet": "Financial Times", "headline": "Nvidia Forecasts 70% Sales Growth Fuelled by Relentless AI Boom", "angle": "Frames the beat as a direct rebuttal of the circular-financing critique that dogged the stock into the print.", "lean": 40, "pull": "Chip giant rebuts criticism of circular financing deals as it beats Wall Street expectations."},
+        {"outlet": "CNBC", "headline": "Nvidia Shares Surge 8% on Earnings Beat, Lifting Technology Stocks and Bitcoin", "angle": "Highlights the risk-on ripple as the beat lifted the whole AI-infrastructure complex and crypto.", "lean": 35, "pull": "Nvidia's earnings beat and strong outlook lifted technology stocks, bitcoin and AI infrastructure companies."},
+        {"outlet": "Bloomberg", "headline": "Nvidia Sees AI-Fueled Demand Boosting Sales 70% Next Year", "angle": "Notes the estimate-topping forecast still had to fight to wow a market braced for perfection.", "lean": 20, "pull": "The estimate-topping forecast eased concerns that AI spending is poised to lose momentum."},
+        {"outlet": "The Economist", "headline": "Cheap Tokens, Costly Chips and a Missing AI Payoff", "angle": "Pushes back on the euphoria, arguing token prices are collapsing while build costs stay high.", "lean": -30, "pull": "The price of AI is collapsing, while the cost of building it is not."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Nvidia Delivers a Blowout Quarter and Forecasts About 70% Revenue Growth Next Fiscal Year, Defending Its Support of AI Companies and Rebutting the Circular-Financing Critique, With Salesforce and CrowdStrike Surging and Bitcoin Lifted, but Alphabet Sheds $692 Billion on AI Questions, Bloomberg Flags a Credit-Default-Swap Market Surging on AI Spend and the Economist Warns Token Prices Are Collapsing While Chip Costs Are Not</h3>
+      </div>
+      <p>The single most important print of the quarter landed and the bulls got their number. Bloomberg said Nvidia forecast revenue will grow about 70% next fiscal year, easing concerns that AI spending is poised to lose momentum, and WSJ reported the chip giant defended its financial support of AI companies as demand for its chips gets even hotter. FT framed the beat as a direct rebuttal of the circular-financing criticism that had dogged the stock, and CoinDesk noted the roughly 8% surge lifted technology stocks, AI-infrastructure names and bitcoin together. The follow-through was broad: MarketWatch said Goldman Sachs and Citigroup raised their Nvidia price targets, Salesforce jumped after Citigroup and Jefferies lifted theirs, and CrowdStrike and Okta ran on their own results, while Kioxia and Sandisk unveiled a $31.4 billion Japanese memory expansion to meet AI demand. But the doubts did not vanish. Bloomberg reported Alphabet lost $692 billion in market value as AI questions rise, a reminder the trade is picking winners and losers rather than lifting everything. Bloomberg Technology flagged a credit-default-swap market surging as Big Tech marches toward trillions in planned AI spend, a sign of pressure building in the plumbing. The Economist argued the price of AI is collapsing while the cost of building it is not, leaving equity investors to work out who gets caught in between, and WSJ detailed Nvidia's $279 billion supply-chain gamble as a bet with real downsides. Even so, this morning the tape is leaning bull.</p>
+      <p>The bulls point to Nvidia's 70% guide, its rebuttal of circular financing, Goldman and Citigroup raising targets, Salesforce and CrowdStrike surging, and Kioxia-Sandisk's $31 billion expansion. The bears point to Alphabet shedding $692 billion, a CDS market surging on AI spend, the Economist's cheap-tokens-costly-chips warning, and Nvidia's $279 billion supply-chain gamble.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the cycle runs longer):</strong> Bloomberg said Nvidia guided to about 70% revenue growth next fiscal year and WSJ said demand for its chips is getting even hotter, with the company defending its AI financing. FT called the beat a rebuttal of the circular-financing critique, Goldman and Citigroup lifted targets, and Salesforce and CrowdStrike surged on their own prints. If the leader delivers this cleanly, the buildout has more room to run.</div>
+        <div class="bear"><strong>Bear (the payoff is still missing):</strong> Bloomberg said Alphabet shed $692 billion as AI questions rise and flagged a credit-default-swap market surging on AI spend. The Economist warned token prices are collapsing while chip costs stay high, and WSJ called Nvidia's $279 billion supply-chain commitment a gamble. A market this concentrated rewards one name while punishing another, and the revenue that justifies the spend still has not shown up broadly.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/72908915-5e4a-457c-8c3a-aee8917a664a?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Nvidia Forecasts 70% Sales Growth Fuelled by Relentless AI Boom</a></div>
+    </div>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Warsh's First Jackson Hole Speech Lands Tomorrow With Apollo's Torsten Slok Expecting a Hawkish Flavor and Framework Guidance, KC Fed's Jeff Schmid Calling Inflation Stubborn and Sticky and Saying Policy Isn't Restrictive Even After Core PCE Cooled to 3.3%, WSJ Saying Warsh Has to Pick a Side in the Bond-Market Battle, but MarketWatch Argues Beaten-Down Treasurys Are Due for an Epic Rebound Rally</h3>
+      </div>
+      <p>The rates debate now runs straight into Warsh's debut on the mountain. Yesterday's core PCE cooled to 3.3% against a 3.6% estimate, CNBC reported, a softer read that should help the doves. But the Fed voices leaned the other way. Bloomberg said KC Fed President Jeff Schmid called inflation stubborn and sticky and said the policy rate is not in restrictive territory, stopping just short of calling for a hike. Apollo chief economist Torsten Slok told Bloomberg he expects Warsh to deliver framework guidance instead of forward guidance with a hawkish flavor to his outlook. MarketWatch framed the symposium as Warsh's chance to win over his own colleagues and investors who remain wary of his approach and his White House ties, while WSJ said Warsh has to pick a side in the bond-market battle between the Treasury's buyback and the market. The global backdrop is hawkish too: Bloomberg reported the ECB discussed whether mildly restrictive policy is needed, the Bank of Korea delivered a back-to-back hike, and the Philippine central bank hiked a third straight time. Yields rose in Europe ahead of the meeting, and WSJ noted Treasurys are having an even uglier summer abroad, with France, Italy, the UK and Japan under the heaviest pressure. Against all that, MarketWatch made the contrarian case that beaten-down Treasurys may be due for an epic rebound rally even as the debt math snowballs. Warsh's tone tomorrow is the swing.</p>
+      <p>The bull read is core PCE cooling to 3.3%, MarketWatch's call that Treasurys are due for a rebound, and a softer inflation trajectory. The bear read is Schmid calling inflation sticky and policy not restrictive, Slok expecting a hawkish Warsh, WSJ saying he must pick a side, and yields rising globally into the meeting.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the rebound is coming):</strong> Core PCE cooled to 3.3% against a 3.6% estimate, and MarketWatch argued two charts show beaten-down Treasurys are due for an epic rebound rally. If Warsh sounds measured rather than combative tomorrow, the long end can catch a bid and the summer selloff can reverse. A softer inflation path is the setup the bond bulls have waited for.</div>
+        <div class="bear"><strong>Bear (sticky inflation, hawkish chair):</strong> Bloomberg said Schmid called inflation stubborn and sticky and policy not restrictive, and Apollo's Torsten Slok expects a hawkish flavor from Warsh. WSJ said Warsh has to pick a side, the ECB weighed mildly restrictive policy, and BOK and the Philippines both hiked. Treasurys are uglier abroad, yields rose into the meeting, and the debt math keeps snowballing. The path of least resistance is higher.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/investing/kevin-warsh-has-to-pick-a-side-in-the-bond-market-battle-d1229f20?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Kevin Warsh Has to Pick a Side in the Bond-Market Battle</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Oil Steadies as Traders Weigh Progress on Increasing Energy Flows Through the Strait of Hormuz Against Disruptions to Russian Supplies, Nasdaq Futures Get a Lift From Falling Oil, but Bloomberg Reports Russia Is Preparing to Escalate the War in Ukraine After Concluding Peace Talks Are Dead, Wheat Hits a Three-Year High and Gold and Bitcoin Rally Together on the Debasement Trade</h3>
+      </div>
+      <p>The geopolitical tape split in two this morning. On the calming side, Bloomberg said oil steadied as traders weighed progress on increasing energy flows through the Strait of Hormuz, and WSJ noted Nasdaq futures were buoyed in part by falling oil. On the escalating side, Bloomberg Technology reported Russia is preparing to escalate attacks on Ukraine after concluding negotiations for a peace deal have reached a dead end, weighing intensified ballistic-missile strikes on Kyiv and infrastructure targets. That threat is already showing up in commodities: Bloomberg said wheat hit a fresh three-year high in Chicago on fears the war could further disrupt supplies from one of the world's most important breadbaskets, and Russian supply disruptions were pulling against the Hormuz relief in the oil complex. The debasement trade is running underneath all of it. Yahoo reported gold and bitcoin rallied together as the debasement trade returned, Bloomberg said gold's small share of Western portfolios means even modest inflows could send prices sharply higher, and South African precious-metal miners are set for their best month in decades. India's fiscal math, Bloomberg noted, has actually improved from the worst-case scenarios officials feared at the height of the Iran war. For now oil is telling the calmer story, but Russia's escalation and a three-year high in wheat keep the inflation channel live.</p>
+      <p>The bull read is oil steadying on Hormuz flow progress and falling crude lifting Nasdaq futures. The bear read is Russia preparing to escalate the Ukraine war, wheat at a three-year high, Russian supply disruptions, and gold and bitcoin rallying on the return of the debasement trade.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the shock keeps cooling):</strong> Bloomberg said oil steadied on progress increasing energy flows through the Strait of Hormuz, and WSJ said falling oil helped buoy Nasdaq futures. India's fiscal outlook has improved from the worst-case scenarios feared at the height of the Iran war. If Hormuz keeps normalizing, the energy premium keeps bleeding out of the inflation picture.</div>
+        <div class="bear"><strong>Bear (a new front reopens):</strong> Bloomberg said Russia is preparing to escalate the war in Ukraine after peace talks hit a dead end, wheat hit a three-year high on supply fears, and Russian supply disruptions are pulling against the Hormuz relief. Gold and bitcoin are rallying together on the debasement trade. A fresh escalation in Europe's breadbasket and energy corridor is a new upside inflation risk just as the Middle East one cools.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-27/wheat-hits-three-year-high-as-russia-prepares-to-escalate-war" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wheat Hits Three-Year High as Russia Prepares to Escalate War</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Tech stocks rise as Nvidia's bullish outlook powers the AI trade</strong></summary>
+      <div class="deal-body">
+        <p>US stocks advanced as a bullish outlook from Nvidia (NVDA) bolstered confidence that the rapid growth in AI spending is likely to run for longer, Bloomberg reported, with the shares up around 8% and index futures climbing. The relief lifted the whole megacap-tech complex into the open.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/us-stock-futures-climb-as-nvidia-s-outlook-lifts-tech-sector" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stock Futures Climb as Nvidia's Outlook Lifts Tech Sector</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alphabet loses $692 billion in market value as AI questions rise</strong></summary>
+      <div class="deal-body">
+        <p>For much of the last year Alphabet (GOOGL) was the Big Tech stock to beat as investors bet it was the likeliest AI winner, Bloomberg reported, but the shares have shed $692 billion in value as questions mount. The divergence from Nvidia shows the trade is sorting winners from losers, not lifting everything.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/alphabet-loses-692-billion-in-market-value-as-ai-questions-rise" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet Loses $692 Billion in Market Value as AI Questions Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Salesforce jumps as Citigroup and Jefferies raise targets</strong></summary>
+      <div class="deal-body">
+        <p>Salesforce (CRM) climbed in premarket trade after earnings, MarketWatch reported, with Citigroup and Jefferies both lifting price targets and Wall Street parsing its Anthropic relationship. The move added a software leg to the Nvidia-driven tech rally.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/salesforce-stock-is-jumping-what-wall-street-is-saying-about-its-earnings-and-its-anthropic-relationship-853ada85?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Salesforce Stock Is Jumping: What Wall Street Is Saying</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Best Buy tops estimates and raises its outlook on computing strength</strong></summary>
+      <div class="deal-body">
+        <p>Best Buy (BBY) beat quarterly estimates and raised its full-year outlook, CNBC reported, citing a stronger-than-expected first half led by computing demand. The upbeat guide is a rare bright read on a value-seeking US consumer.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/best-buy-bby-q2-2027-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Best Buy Tops Quarterly Estimates, Raises Outlook as Computing Shows Strength</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Moderna capitalizes on a stock jump with a $2 billion offering</strong></summary>
+      <div class="deal-body">
+        <p>Moderna (MRNA) plans to raise $2 billion selling notes exchangeable for shares, Bloomberg reported, using proceeds to invest in its cancer-vaccine business and repay debt. The raise rides a share rebound to fund the pipeline.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/moderna-to-offer-2-billion-in-convertibles-to-boost-cancer-work" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moderna Capitalizes on Stock Jump With $2 Billion Offering</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Paramount-WBD merger stuck in limbo on an antitrust suit</strong></summary>
+      <div class="deal-body">
+        <p>Paramount Skydance's acquisition of Warner Bros. Discovery is stalled by an antitrust lawsuit, CNBC reported, leaving WBD in limbo at a pivotal moment for media. The delay keeps a chill over broader media dealmaking.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/26/paramount-merger-delay-wbd-limbo.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Lost in Limbo: Where the Paramount Merger Delay Leaves WBD</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>American Airlines faces a reckoning as a merger drops off the table</strong></summary>
+      <div class="deal-body">
+        <p>American Airlines (AAL) faces a reckoning with a merger off the table and its turnaround uncertain, Yahoo Finance reported, even as it adds seven new international routes on its XLR planes for 2027. The strategic questions overshadow the network expansion.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/american-airlines-faces-reckoning-merger-123055651.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- American Airlines Faces a Reckoning: Merger Off the Table, Turnaround Uncertain</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The whole tape hangs on one number that finally landed, and it landed bull. Nvidia's roughly 8% surge and 70% growth guide lifted Salesforce, CrowdStrike, the memory names and even bitcoin, while Goldman and Citigroup raised targets. But Alphabet shedding $692 billion on the same trade is the warning underneath the rally: the market is picking AI winners and losers, not lifting everything. The next test is whether Warsh's Jackson Hole tone tomorrow leaves the risk-on read intact.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Nvidia Can Soar While Alphabet Sheds $692 Billion on the Same AI Trade</summary>
+      <p>On the same morning Nvidia rallied roughly 8% on a blowout guide, Bloomberg reported Alphabet had shed $692 billion in market value on AI questions. That looks contradictory if you think of AI as a single trade that rises and falls together, but it is not. The AI complex is a stack of very different businesses, and the market prices each on where it sits in the value chain and how defensible its position is. Nvidia sells the picks and shovels: the GPUs every hyperscaler, neocloud and lab must buy to compete. Its pricing power comes from scarcity, and its revenue is booked up front as customers commit capital to the buildout. When Nvidia guides to 70% growth, it is telling the market the spending is still flowing toward it, which is unambiguously good for the seller of the scarce input. Alphabet sits somewhere very different. It is both a buyer of that compute and a company whose core cash machine, search advertising, is arguably threatened by the very technology it is spending billions to build. Every dollar Alphabet pours into data centers is a dollar of capex that depresses free cash flow today in exchange for an uncertain payoff, and the market has begun to ask whether AI-driven answers erode the search queries and ad clicks that fund the whole enterprise. So the same wave that guarantees Nvidia's near-term revenue creates existential questions for a company whose moat AI might dissolve. This is the crucial distinction between selling the input and betting the business on the output. The seller of a scarce input gets paid regardless of whether any individual buyer's AI strategy works, because the buyers are competing so hard they all have to keep purchasing. The buyers, by contrast, are in a winner-take-most race where the spending is certain but the returns are not, and the market discounts that asymmetry by rewarding the toll collector and punishing the toll payers whose end markets look shaky. The practical lesson is to stop treating AI as one position and start mapping where a company sits. Ask whether it sells the scarce input or consumes it, whether its existing cash flows are protected or threatened by the technology, and whether its capex buys a durable advantage or just keeps it in a race it might lose. Two stocks can both be central to AI and move in opposite directions on the same day because one is collecting the tolls and the other is paying them while defending a moat under attack. Reading a market that lifts Nvidia and sinks Alphabet at once is reading a market that has stopped buying the theme and started pricing the mechanics, which is usually a sign the trade is maturing from euphoria into discrimination.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/alphabet-loses-692-billion-in-market-value-as-ai-questions-rise" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet Loses $692 Billion in Market Value as AI Questions Rise</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-26/nvidia-estimate-topping-forecast-fails-to-wow-investors" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Sees AI-Fueled Demand Boosting Sales 70% Next Year</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nvidia forecasts 70% sales growth and rebuts the circular-financing critique</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) forecast about 70% revenue growth next fiscal year and beat Wall Street expectations, FT reported, rebutting criticism of its circular-financing deals with AI companies. The guide eased fears the AI spending cycle is losing steam.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/72908915-5e4a-457c-8c3a-aee8917a664a?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Nvidia Forecasts 70% Sales Growth Fuelled by Relentless AI Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia's $279 billion supply-chain gamble</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) is using its financial muscle to win the supply battle through $279 billion in commitments, WSJ reported, a bet that locks in capacity but comes with real downsides if demand softens. The scale shows how far the leader is leaning into the cycle.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/ai/nvidias-279-billion-supply-chain-gamble-cbe316d2?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nvidia's $279 Billion Supply-Chain Gamble</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kioxia and Sandisk plan a $31 billion Japan memory-chip expansion</strong></summary>
+      <div class="deal-body">
+        <p>Kioxia and Sandisk plan to spend more than 5 trillion yen, about $31.4 billion, to ratchet up production in Japan, Bloomberg reported, boosting output of a critical AI data-center memory component in short supply. The commitment underlines demand well beyond Nvidia.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/kioxia-plans-new-chip-facility-in-japan-to-meet-ai-memory-demand" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kioxia, Sandisk Plan $31 Billion Japan Memory Chip Expansion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Z.ai surges 8% after releasing a model that runs only on Chinese chips</strong></summary>
+      <div class="deal-body">
+        <p>Chinese AI company Z.ai jumped 8% after releasing a new model that runs only on Chinese chips, CNBC reported, saying it had already launched the model globally in stealth mode for a week. The move shows China building an AI stack independent of US silicon.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/zai-shares-surge-new-ai-model-using-chinese-chips.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Z.ai Shares Surge 8% After Releasing New AI Model Running Only on Chinese Chips</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cheap tokens, costly chips and a missing AI payoff</strong></summary>
+      <div class="deal-body">
+        <p>The price of AI is collapsing while the cost of building it is not, Bloomberg reported, and equity investors have spent the summer trying to work out who gets caught in between. The squeeze is the bear counterpoint to Nvidia's blowout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/cheap-tokens-costly-chips-and-a-missing-ai-payoff-taking-stock" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Cheap Tokens, Costly Chips and a Missing AI Payoff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US probes a Singapore firm over alleged Nvidia chip smuggling</strong></summary>
+      <div class="deal-body">
+        <p>The US is investigating Singapore-based Apex Logistics for its suspected role in smuggling Nvidia (NVDA) AI chips to China, Bloomberg reported, in what may be the first action against a transportation company in the illegal semiconductor trade. The probe widens enforcement of export controls.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/us-probes-apex-logistics-over-alleged-nvidia-ai-chip-smuggling" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Probes Singapore Firm Over Alleged Nvidia Chip Smuggling</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Germany is running short of AI compute capacity, minister says</strong></summary>
+      <div class="deal-body">
+        <p>Germany's top digital-policy official said surging AI demand is squeezing data centers in Europe's largest economy, Bloomberg reported. The warning shows the compute crunch spreading beyond the US and reinforcing the buildout thesis.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/germany-running-short-of-ai-compute-capacity-minister-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Germany Running Short of AI Compute Capacity, Minister Says</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Thursday August 27, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is Nvidia's 70% guide, its rebuttal of circular financing, Kioxia and Sandisk's $31 billion memory bet, and a compute shortage now hitting Germany, all pointing to real demand. The counter-signal is the Economist's cheap-tokens-costly-chips squeeze, Alphabet's $692 billion loss, and a credit-default-swap market surging on AI spend. The frame this morning is a leader delivering while the plumbing shows strain and the broad payoff stays elusive.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Core PCE cooled to 3.3% in July, below the 3.6% estimate</strong></summary>
+      <div class="deal-body">
+        <p>The Fed's preferred inflation gauge showed core prices rose 3.3% annually in July, CNBC reported, cooler than the 3.6% economists expected. The softer read gives the doves ammunition just before Warsh's Jackson Hole debut.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/26/feds-preferred-inflation-gauge-shows-core-prices-rose-3point3percent-annually-in-july.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed's Preferred Inflation Gauge Shows Core Prices Rose 3.3% Annually in July</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>KC Fed's Schmid calls inflation sticky and says policy isn't restrictive</strong></summary>
+      <div class="deal-body">
+        <p>Kansas City Fed President Jeff Schmid said inflation is stubborn and sticky and the policy rate is not restraining the economy, CNBC reported, stopping just short of calling for a hike. The comments set a hawkish table into Warsh's speech.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/kansas-city-feds-schmid-says-inflation-stubborn-and-sticky-policy-rate-not-restrictive.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- KC Fed's Schmid Says Inflation Stubborn and Sticky, Policy Rate Not Restrictive</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apollo's Slok expects a hawkish flavor and framework guidance from Warsh</strong></summary>
+      <div class="deal-body">
+        <p>Apollo chief economist Torsten Slok said he expects Warsh to deliver framework guidance instead of forward guidance with a hawkish flavor to his economic outlook at Jackson Hole, Bloomberg reported. A named read that sets expectations for Friday's speech.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-27/warsh-to-provide-framework-guidance-on-policy-slok-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apollo's Slok Expects Hawkish Flavor From Warsh on Economic Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MarketWatch says beaten-down Treasurys may be due for an epic rebound</strong></summary>
+      <div class="deal-body">
+        <p>Two charts show why beaten-down Treasury bonds may be due for an epic rebound rally, MarketWatch reported, even as mounting US debt keeps interest payments snowballing. The contrarian call frames short-term relief against a long-term problem.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/2-charts-show-why-beaten-down-treasury-bonds-may-be-due-for-an-epic-rebound-rally-50eaf9dd?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- 2 Charts Show Why Beaten-Down Treasury Bonds May Be Due for an Epic Rebound Rally</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasurys are having a rough summer, but it's even uglier abroad</strong></summary>
+      <div class="deal-body">
+        <p>Countries with large debt burdens, including France, Italy, the UK and Japan, have come under the heaviest bond-market pressure in recent months, WSJ reported. The global selloff frames the US debt worry as part of a wider sovereign strain.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/economy/global/think-treasurys-are-having-a-rough-summer-its-even-uglier-abroad-7224cf70?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Think Treasurys Are Having a Rough Summer? It's Even Uglier Abroad</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB officials discussed the need for mildly restrictive policy</strong></summary>
+      <div class="deal-body">
+        <p>ECB officials discussed whether mildly restrictive policy could be needed to ensure inflation returns to the 2% target, Bloomberg reported, citing the meeting account. The hawkish tilt echoes the global rethink into Jackson Hole.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/ecb-officials-discussed-need-for-mildly-restrictive-policy" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB Officials Discussed Need for Mildly Restrictive Policy</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOK delivers a back-to-back hike and the Philippines tightens a third time</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of Korea raised rates for a second straight meeting, with its governor using a gardening-tool analogy to explain the back-to-back move, and the Philippine central bank hiked a third successive time as inflation runs hot, Bloomberg reported. Asia's tightening cycle keeps grinding on.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/philippine-central-bank-hikes-key-rate-a-third-time-as-inflation-runs-hot" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Philippine Central Bank Hikes Key Rate a Third Time as Inflation Runs Hot</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 27, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The soft side got a boost. Core PCE cooled to 3.3% versus a 3.6% estimate, and MarketWatch argues beaten-down Treasurys may be due for a rebound. Pulling the other way, Schmid calls inflation sticky and policy not restrictive, Apollo's Slok expects a hawkish Warsh, the ECB weighed mildly restrictive policy, and BOK and the Philippines both hiked. With Warsh's Jackson Hole debut tomorrow, the tell is whether he validates the cooler print or leans into the sticky-inflation camp.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Long Yields Can Rise Even After a Cooler Inflation Print</summary>
+      <p>Core PCE cooled to 3.3% against a 3.6% estimate, a genuinely dovish surprise, yet WSJ reported Treasury and European yields rose into Jackson Hole and MarketWatch had to frame a bond rebound as a contrarian call rather than the obvious base case. That disconnect confuses people who assume lower inflation means lower yields in a straight line. It usually does for the short end, but the long end answers to more than next month's inflation, and understanding the difference is the key to reading the curve. A long-dated Treasury yield can be broken into three pieces. The first is the average short-term rate the market expects the Fed to set over the life of the bond, which is where a cooler PCE print bites, because softer inflation should let the Fed hold or cut sooner. The second is inflation compensation, what investors demand to protect against prices eroding their fixed coupons over ten or thirty years. The third, and the one that has been driving the summer, is the term premium: the extra yield investors require simply for the risk of locking money up for a long time when the future is uncertain. A single inflation print moves the first component, but the term premium is driven by fiscal supply, debt sustainability and the credibility of the central bank, and those forces have been pushing it higher regardless of any one data point. Here is why the cooler PCE did not win the day. Schmid calling inflation sticky and policy not restrictive tells the market the Fed may not cut even with a soft print, which pins the expected-rate piece up. Apollo's Slok expecting a hawkish Warsh reinforces it. And WSJ's reminder that debt burdens are hammering bonds in France, Italy, the UK and Japan tells you the term premium is a global story about too much sovereign supply chasing too little appetite, not a US inflation story that one number can fix. When the term premium is doing the driving, a friendly inflation print is a gust of wind against a tide. The practical lesson is to separate what a data release actually controls from what is setting the trend. A cooler PCE is real and helps the front end and the Fed's optionality, but if the long end keeps selling off anyway, the market is telling you the pressure is coming from fiscal supply and term premium, which no single print can reverse. That is exactly why MarketWatch's rebound call is contrarian: it is a bet that the term premium has overshot and mean-reverts, not a bet that inflation data will save the day. Watch whether a good print pulls yields down across the whole curve or only at the short end. If the two-year falls but the thirty-year holds or rises, you are watching a term-premium market, and Warsh's job tomorrow is to convince investors the central bank's credibility deserves a lower one.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/jgb-futures-edge-higher-ahead-of-boj-himinos-speech-75380613?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- US, European Bond Yields Rise, Dollar Steady Ahead of Jackson Hole</a></p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/2-charts-show-why-beaten-down-treasury-bonds-may-be-due-for-an-epic-rebound-rally-50eaf9dd?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- 2 Charts Show Why Beaten-Down Treasury Bonds May Be Due for an Epic Rebound Rally</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Tech futures rose after Nvidia's blowout 70% guide lifted chips, software and bitcoin, core PCE cooled to 3.3% but Schmid called inflation sticky and Slok expects a hawkish Warsh tomorrow, oil steadied on Hormuz progress while Russia prepares to escalate in Ukraine and wheat hit a three-year high, and bitcoin held above $79,000; Warsh's Jackson Hole speech looms Friday; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/24</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/25</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/26</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/27</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin steadies above $79,000 as ETF inflows hit their longest streak since April</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held its ground Thursday above $79,000 as spot bitcoin ETFs logged an eighth straight day of net inflows, CoinDesk reported, with August topping $3 billion, while altcoins drifted lower. The steady bid rode the risk-on tone from Nvidia's beat.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/27/bitcoin-steadies-above-usd79-000-as-etf-inflows-hit-longest-streak-since-april" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Steadies Above $79,000 as ETF Inflows Hit Longest Streak Since April</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin dips below $79,000 as traders start betting on a Fed hike</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin slipped below $79,000 and XRP led losses as traders began pricing in a Fed hike, CoinDesk reported, with nearly every major token flat or lower over 24 hours. The hawkish rate bet is the main headwind into Jackson Hole.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/27/bitcoin-below-usd79-000-xrp-leads-losses-as-traders-start-betting-on-a-fed-hike" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Below $79,000, XRP Leads Losses as Traders Start Betting on a Fed Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock's Mitchnick says the macro case for bitcoin is strengthening</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock head of digital assets Robert Mitchnick said the macro case for bitcoin is strengthening after IBIT hit record volume for a positive week, CoinDesk reported. A named institutional bull framing the run as more than a trade.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/27/blackrock-s-mitchnick-says-macro-case-for-bitcoin-is-strengthening-after-record-trading-in-positive-week" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BlackRock's Mitchnick Says Macro Case for Bitcoin Is Strengthening</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin treasury companies shed $80 billion as the model unwinds</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin treasury companies have shed $80 billion in value as the business model unwinds, FT reported, with crypto hoarders selling tokens and reverting to their former activities. The retreat marks a cooling in the leveraged-treasury trade.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/79884de5-774a-4633-ba92-be4184eb22c1?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Bitcoin Treasury Companies Shed $80bn in Value as Business Model Unwinds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bernstein sees bitcoin hitting $300,000 by 2029</strong></summary>
+      <div class="deal-body">
+        <p>Bernstein analysts think bitcoin is headed for a new high of $300,000 by 2029 and could double by next year, MarketWatch reported, citing the crypto's recent revival. A named bull setting a long-horizon target.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/why-these-analysts-say-bitcoin-will-double-by-next-year-and-could-reach-500-000-at-the-end-of-the-decade-23ec78f3?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why These Analysts Say Bitcoin Will Double by Next Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mirae Asset eyes a $109 billion crypto empire after buying Digital X</strong></summary>
+      <div class="deal-body">
+        <p>Mirae Asset founder Park Hyeon-joo outlined an ambitious stablecoin, real-world-asset and security-token plan for Digital X, formerly Korbit, CoinDesk reported, targeting a $109 billion crypto empire. The move shows a major Korean asset manager going all-in on tokenization.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/27/mirae-asset-eyes-usd109-billion-crypto-empire-after-acquiring-digital-x" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Mirae Asset Eyes $109 Billion Crypto Empire After Acquiring Digital X</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Kioxia and Sandisk -- $31.4 Billion Japan Memory-Chip Expansion</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Kioxia and Sandisk plan to spend more than 5 trillion yen, about $31.4 billion, to ratchet up production capacity in Japan, Bloomberg reported, boosting output of AI data-center memory in short supply.</p>
+        <p><strong>Outlook:</strong> The spend targets a critical component whose scarcity has become a bottleneck for the whole AI buildout.</p>
+        <p><strong>What it means:</strong> Capacity commitments this large show suppliers betting the AI demand cycle is durable, not a bubble.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/kioxia-plans-new-chip-facility-in-japan-to-meet-ai-memory-demand" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kioxia, Sandisk Plan $31 Billion Japan Memory Chip Expansion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Vanguard -- $4 Billion Acquisition of Wealth Platform Altruist</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Vanguard agreed to buy wealth-management platform Altruist in a $4 billion deal, WSJ reported, as the world's second-biggest investment firm pushes deeper into financial advice.</p>
+        <p><strong>Outlook:</strong> The purchase gives Vanguard a modern adviser-tech stack to compete for the fast-growing RIA market.</p>
+        <p><strong>What it means:</strong> The scale players keep buying distribution and technology as fee pressure squeezes the core index business.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/vanguard-buys-wealth-management-platform-altruist-in-4-billion-deal-68e7260c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Vanguard Buys Wealth Management Platform Altruist in $4 Billion Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Enbridge -- $1.95 Billion Pipeline JV With KKR and Apollo</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Enbridge formed a joint venture with KKR and Apollo Global Management to fund a C$2.7 billion, about $1.95 billion, expansion of its British Columbia natural-gas pipeline, WSJ reported.</p>
+        <p><strong>Outlook:</strong> Private-equity capital lets Enbridge grow the network without straining its own balance sheet.</p>
+        <p><strong>What it means:</strong> Infrastructure funds keep pouring into energy logistics tied to power demand and the AI buildout.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/enbridge-forms-1-95-billion-joint-venture-to-expand-british-columbia-pipeline-a800282d?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Enbridge Forms $1.95 Billion Joint Venture to Expand British Columbia Pipeline</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Moderna -- $2 Billion Convertible Offering to Fund Cancer Work</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Moderna plans to raise $2 billion selling notes exchangeable for shares, Bloomberg reported, using the proceeds to invest in its cancer-vaccine business and repay debt.</p>
+        <p><strong>Outlook:</strong> The raise capitalizes on a stock rebound to fund a long-dated pipeline bet.</p>
+        <p><strong>What it means:</strong> Biotech is tapping equity-linked debt while windows are open, a sign risk appetite is returning to the sector.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/moderna-to-offer-2-billion-in-convertibles-to-boost-cancer-work" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moderna Capitalizes on Stock Jump With $2 Billion Offering</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Shein -- $1.7 Billion Hong Kong IPO at a Reset Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Shein is on track to raise about $1.7 billion in its Hong Kong IPO, Bloomberg reported, pricing just above the midpoint and valuing the fast-fashion retailer at just over $26 billion.</p>
+        <p><strong>Outlook:</strong> That is a steep markdown from the roughly $100 billion tag it commanded four years ago.</p>
+        <p><strong>What it means:</strong> The reset valuation shows how far sentiment on cross-border fast fashion has cooled amid tariff and regulatory risk.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-27/shein-set-to-raise-1-7-billion-in-hong-kong-ipo-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Shein Set to Raise $1.7 Billion in Hong Kong IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bain Capital -- Equity Stake in Clearing Broker RQD* Amid an Options Boom</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A Bain Capital fund is taking an equity stake in stock and options intermediary RQD* Clearing, Bloomberg reported, joining a wave of new capital entering clearing and custody markets.</p>
+        <p><strong>Outlook:</strong> Surging options volume is drawing investors to the plumbing that settles the trades.</p>
+        <p><strong>What it means:</strong> Private capital is chasing the infrastructure behind the retail-options boom, not just the trades themselves.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-27/bain-fund-buys-stake-in-clearing-broker-rqd-amid-options-boom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bain Fund Buys Stake in Clearing Broker RQD* Amid Options Boom</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Apollo's Torsten Slok -- expects a hawkish flavor and framework guidance from Warsh</strong></summary>
+      <div class="deal-body">
+        <p>Apollo chief economist Torsten Slok told Bloomberg he expects Warsh to deliver framework guidance instead of forward guidance with a hawkish flavor to his economic outlook at Jackson Hole. A named voice setting expectations for Friday's swing catalyst.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-27/warsh-to-provide-framework-guidance-on-policy-slok-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apollo's Slok Expects Hawkish Flavor From Warsh on Economic Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>KC Fed's Jeff Schmid -- inflation is sticky and policy isn't restrictive</strong></summary>
+      <div class="deal-body">
+        <p>Kansas City Fed President Jeff Schmid said inflation is stubborn and sticky and the policy rate is not restraining the economy, CNBC reported, stopping just short of calling for a hike even after core PCE cooled to 3.3%. A named hawk framing the table into Warsh's debut.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/kansas-city-feds-schmid-says-inflation-stubborn-and-sticky-policy-rate-not-restrictive.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- KC Fed's Schmid Says Inflation Stubborn and Sticky, Policy Rate Not Restrictive</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs and Citigroup -- raise Nvidia price targets after the beat</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia shares climbed after another set of blockbuster results, MarketWatch reported, with Goldman Sachs and Citigroup both raising their price targets on the 70% growth guide. Named sell-side bulls reinforcing the buildout thesis.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/nvidia-stock-is-climbing-after-another-set-of-blockbuster-results-heres-what-wall-street-is-saying-a2260a62?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Nvidia Stock Is Climbing After Another Set of Blockbuster Results</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock's Robert Mitchnick -- the macro case for bitcoin is strengthening</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock head of digital assets Robert Mitchnick said the macro case for bitcoin is strengthening after IBIT hit record volume for a positive week, CoinDesk reported. A named institutional bull framing the run as structural.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/27/blackrock-s-mitchnick-says-macro-case-for-bitcoin-is-strengthening-after-record-trading-in-positive-week" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BlackRock's Mitchnick Says Macro Case for Bitcoin Is Strengthening</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley -- sees ConocoPhillips and ExxonMobil breaking record highs</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley sees a new high for ConocoPhillips (COP) and expects ExxonMobil (XOM) to break its record, Yahoo Finance reported, a constructive energy call even as oil steadies. Named bull views on the majors into the geopolitical crosscurrents.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/energy/articles/morgan-stanley-sees-high-conocophillips-020544346.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Morgan Stanley Sees a New High for ConocoPhillips</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Nvidia's Blowout Lifts the AI Trade, Core PCE Cools to 3.3% but the Fed Sounds Sticky, and Warsh Prepares a Hawkish-Leaning Jackson Hole Debut Into Russian Escalation and a Wheat Spike</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the print delivers and inflation cools):</strong> Nvidia guided to 70% growth and rebutted the circular-financing critique, Goldman and Citigroup raised targets, and Salesforce and CrowdStrike surged. Core PCE cooled to 3.3% against a 3.6% estimate, MarketWatch says Treasurys are due for a rebound, and BlackRock's Robert Mitchnick calls the macro case for bitcoin strengthening. If Warsh sounds measured tomorrow, the risk-on read holds across stocks, bonds and crypto.</div>
+        <div class="bear"><strong>Bear (sticky inflation and a maturing trade):</strong> Schmid calls inflation sticky and policy not restrictive, Apollo's Torsten Slok expects a hawkish Warsh, and crypto traders are now betting on a Fed hike. Alphabet shed $692 billion, a CDS market is surging on AI spend, and the Economist warns token prices are collapsing while chip costs are not. With Russia escalating and wheat at a three-year high, the inflation and concentration risks are stacked against complacency.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Nvidia blowout, 70% guide, +8%; Salesforce and CrowdStrike surge; Alphabet sheds $692B; Best Buy pops</td><td>Bullish</td><td>~31,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Tech rallies on Nvidia; core PCE cools to 3.3%; Kioxia-Sandisk $31B; Vanguard buys Altruist for $4B</td><td>Bullish</td><td>~16,500 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Warsh Jackson Hole tomorrow; Schmid says inflation sticky; Slok expects hawkish flavor; Treasurys uglier abroad</td><td>Cautious</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Nvidia's $279B supply-chain gamble; CDS market surges on AI spend; cheap tokens costly chips; circular financing</td><td>Bearish</td><td>~9,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds above $79K on 8-day ETF inflows vs Fed-hike bets; Bernstein $300K by 2029; treasury firms shed $80B</td><td>Mixed</td><td>~20,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped to relief after Nvidia delivered. r/wallstreetbets ran bullish on the 70% guide and the software surge, though Alphabet's $692 billion loss drew plenty of chatter about winners and losers. r/stocks leaned constructive on the cooler PCE and the tech-led bounce, while r/investing turned cautious ahead of Warsh, weighing Schmid's sticky-inflation line and Slok's hawkish call. r/SecurityAnalysis stayed the loudest bear on the $279 billion supply gamble, the CDS market and the missing broad payoff. r/CryptoCurrency was split as bitcoin held above $79,000 on eight days of ETF inflows even as traders started betting on a Fed hike. The swing factor now is Warsh's Jackson Hole tone tomorrow.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: What Circular Financing Means in the AI Boom, and Why Nvidia Had to Rebut It Even After a Blowout Quarter</h2>
+    <p>FT reported that Nvidia used its blowout print to rebut criticism of its circular-financing deals, and WSJ detailed the $279 billion in supply-chain commitments behind them. The word circular sounds sinister, so it is worth understanding exactly what the critique is and why it can be both a legitimate concern and, in some cases, overblown. Circular financing, sometimes called vendor financing, happens when a supplier helps fund the very customers who then buy its products. In the AI world it looks like this: Nvidia invests in, lends to, or guarantees purchases from an AI lab or neocloud, and that company turns around and uses the money to buy Nvidia GPUs. The revenue Nvidia books from the sale is real, but part of the demand was seeded by Nvidia's own capital. The concern is that this can inflate the appearance of independent demand. If a chunk of your sales growth is financed by you, then you are partly buying your own revenue, and the market cannot easily tell how much of the boom is genuine end demand versus a loop of your own money cycling back to you. The risk compounds because it can mask credit quality. When a supplier funds a shaky customer to keep the order flowing, it takes on that customer's default risk while reporting the sale as a clean win. If the customer later cannot pay or cannot raise follow-on capital, the supplier eats a loss that was hidden inside what looked like healthy growth. That is exactly why Bloomberg flagged a credit-default-swap market surging as AI spend booms: investors are paying up to insure against defaults in a buildout increasingly funded by interlocking commitments rather than arms-length cash. Here is why Nvidia pushed back rather than ignore the critique. Its defense is that its investments are a small fraction of total demand, that the buyers are so numerous and so desperate for compute that the orders would come regardless, and that guaranteeing supply relationships is normal in a capacity-constrained industry. When a company guides to 70% growth, it is implicitly arguing the demand is broad and real, not a financed illusion, because a loop of self-dealing cannot sustain that kind of independent, multi-customer expansion. The practical lesson is to separate the accounting from the economics. Circular financing is not automatically fraud or even bad business; it can be a rational way to seed a market and lock in supply. What matters is proportion and disclosure. Ask what share of a supplier's revenue is tied to customers it also funds, whether those customers can raise capital on their own, and whether the supplier is transparent about the exposure. If the financed portion is small and the end demand is genuinely diverse, the concern fades. If the supplier is quietly propping up its biggest buyers to keep the growth story alive, the revenue is borrowed from the future and the credit risk is real. Watching the CDS market alongside the earnings tells you which story the smart money believes.</p>
+    <p class="deal-source"><a href="https://www.ft.com/content/72908915-5e4a-457c-8c3a-aee8917a664a?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Nvidia Forecasts 70% Sales Growth Fuelled by Relentless AI Boom</a></p>
+    <p class="deal-source"><a href="https://www.wsj.com/tech/ai/nvidias-279-billion-supply-chain-gamble-cbe316d2?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nvidia's $279 Billion Supply-Chain Gamble</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-27/credit-default-swap-market-surges-as-ai-spend-booms-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Credit Default Swap Market Surges as AI Spend Booms</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Warsh's Jackson Hole speech, Friday.</strong> New chair's debut is the swing catalyst; Apollo's Torsten Slok expects framework guidance with a hawkish flavor while MarketWatch says it is Warsh's chance to win over colleagues and investors wary of his White House ties. The dollar and the long end are the scoreboard.</li>
+      <li><strong>Fed reaction to a cooler PCE.</strong> With core PCE at 3.3% against a 3.6% estimate but Schmid calling inflation sticky and not restrictive, watch whether Warsh validates the softer trajectory or leans into the hawkish camp.</li>
+      <li><strong>US trade and consumer reads.</strong> After the merchandise-trade deficit widened to its largest since March 2025 on a capital-equipment import surge, watch whether next week's data confirms front-loading ahead of tariffs.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Software follow-through.</strong> After Salesforce, CrowdStrike and Okta rallied alongside Nvidia, watch whether the next batch of enterprise-software prints confirms AI monetization or exposes the payoff gap the Economist flagged.</li>
+      <li><strong>Retail and consumer.</strong> After Best Buy raised its outlook on computing strength, watch whether more results confirm a resilient but value-seeking US consumer.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-infrastructure financing.</strong> After Kioxia and Sandisk's $31 billion memory expansion and Nvidia's $279 billion supply gamble, watch whether the CDS market keeps flashing stress as the buildout leans on interlocking commitments.</li>
+      <li><strong>Asset-manager and IPO pipeline.</strong> After Vanguard's $4 billion Altruist deal and Shein's $1.7 billion Hong Kong listing, watch whether the reset valuations and adviser-tech consolidation keep drawing capital.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Russia-Ukraine escalation and grains.</strong> With Bloomberg reporting Russia is preparing to intensify strikes after peace talks collapsed and wheat at a three-year high, watch whether the new front reignites the inflation channel just as Hormuz cools.</li>
+      <li><strong>Asia central banks.</strong> After BOK's back-to-back hike, a third Philippine hike and the BOJ keeping a September move in play, watch for currency and carry-trade swings across the region.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>More granular coverage of credit-market plumbing, including the CDS signals tied to the AI buildout.</li>
+      <li>Deeper tracking of the debasement trade linking gold, bitcoin and long-end yields.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Aug 27, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-27 08:31 ET); Bloomberg Technology (20 fresh, newest 2026-08-27 08:30 ET); Bloomberg Economics (20 fresh, newest 2026-08-27 08:34 ET); CNBC Top News (5 fresh, newest 2026-08-27 08:25 ET); CNBC Finance (4 fresh, newest 2026-08-27 08:20 ET); CNBC Economy (1 fresh, newest 2026-08-26 09:35 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-27 08:15 ET); WSJ Markets (20 fresh, newest 2026-08-27 08:37 ET); Yahoo Finance (23 fresh, newest 2026-08-27 08:30 ET); FT Home (8 fresh, newest 2026-08-27 07:37 ET); Matt Levine Money Stuff (1 fresh, newest 2026-08-26 14:01 ET); CoinDesk (25 fresh, newest 2026-08-27 08:30 ET); Stratechery (1 fresh, newest 2026-08-26 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. Why did tech stocks and bitcoin rally on Thursday morning?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed unexpectedly cut interest rates overnight</span>
+      <span class="opt" data-opt="B">B. Oil prices spiked, lifting energy-linked equities</span>
+      <span class="opt" data-opt="C">C. Nvidia forecast about 70% revenue growth next year</span>
+      <span class="opt" data-opt="D">D. Core PCE inflation came in far above expectations</span>
+      <div class="feedback"><strong>C is correct.</strong> Nvidia reported a blowout quarter and guided to roughly 70% revenue growth next fiscal year, easing fears the AI spend was peaking and lifting chips, software and bitcoin. There was no Fed cut, oil actually steadied lower, and PCE came in cooler, not hotter.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>2. What did yesterday's core PCE print show?</strong></p>
+      <span class="opt" data-opt="A">A. Prices rose 3.6%, matching the consensus estimate</span>
+      <span class="opt" data-opt="B">B. Core prices rose 3.3%, below the 3.6% estimate</span>
+      <span class="opt" data-opt="C">C. Inflation accelerated sharply to a new yearly high</span>
+      <span class="opt" data-opt="D">D. Prices fell outright for the first time since 2020</span>
+      <div class="feedback"><strong>B is correct.</strong> CNBC reported core PCE rose 3.3% annually in July, cooler than the 3.6% economists expected, a dovish surprise. It did not match consensus, accelerate to a new high, or turn negative.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What does Apollo's Torsten Slok expect from Warsh at Jackson Hole?</strong></p>
+      <span class="opt" data-opt="A">A. A surprise commitment to immediate rate cuts</span>
+      <span class="opt" data-opt="B">B. Detailed forward guidance on the exact rate path</span>
+      <span class="opt" data-opt="C">C. A dovish pivot endorsing the Treasury's buyback</span>
+      <span class="opt" data-opt="D">D. Framework guidance with a hawkish flavor</span>
+      <div class="feedback"><strong>D is correct.</strong> Slok told Bloomberg he expects Warsh to deliver framework guidance instead of forward guidance, with a hawkish flavor to his economic outlook. He did not expect rate cuts, precise forward guidance, or a dovish endorsement of the buyback.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Warsh's first Jackson Hole speech lands Friday with Apollo's Torsten Slok expecting a hawkish flavor and framework guidance and KC Fed's Jeff Schmid calling inflation sticky and policy not restrictive even after core PCE cooled to 3.3% against a 3.6% estimate, while WSJ says Warsh has to pick a side in the bond-market battle and MarketWatch argues beaten-down Treasurys may be due for an epic rebound.",
+    "sources": [
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/08/26/feds-preferred-inflation-gauge-shows-core-prices-rose-3point3percent-annually-in-july.html", "take": "Core PCE cooled to 3.3% in July, below the 3.6% estimate." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/2-charts-show-why-beaten-down-treasury-bonds-may-be-due-for-an-epic-rebound-rally-50eaf9dd?mod=mw_rss_topstories", "take": "Two charts show beaten-down Treasurys may be due for an epic rebound rally." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/27/kansas-city-feds-schmid-says-inflation-stubborn-and-sticky-policy-rate-not-restrictive.html", "take": "Schmid says inflation is sticky and policy is not restrictive." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-27/warsh-to-provide-framework-guidance-on-policy-slok-video", "take": "Apollo's Slok expects a hawkish flavor from Warsh at Jackson Hole." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/kevin-warsh-has-to-pick-a-side-in-the-bond-market-battle-d1229f20?mod=rss_markets_main", "take": "Warsh has to pick a side in the bond-market battle." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil steadied as traders weighed progress on increasing energy flows through the Strait of Hormuz, lifting Nasdaq futures, but Russia is preparing to escalate the war in Ukraine after concluding peace talks are dead, wheat hit a three-year high, and gold and bitcoin rallied together on the return of the debasement trade.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-26/latest-oil-market-news-and-analysis-for-aug-27", "take": "Oil steadied as traders weighed progress on Hormuz energy flows." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/nasdaq-futures-buoyed-by-nvidia-earnings-software-as-oil-falls-ff5cea2d?mod=rss_markets_main", "take": "Nasdaq futures buoyed by Nvidia earnings and software as oil falls." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-27/the-opening-trade-8-27-2026-video", "take": "Russia is preparing to escalate the war in Ukraine after peace talks hit a dead end." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-27/wheat-hits-three-year-high-as-russia-prepares-to-escalate-war", "take": "Wheat hit a three-year high on fears of further supply disruption." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/markets/commodities/articles/gold-bitcoin-rally-together-debasement-032344128.html", "take": "Gold and bitcoin rallied together as the debasement trade returned." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Nvidia reported a blowout quarter and forecast about 70% revenue growth next fiscal year, defending its AI financing and rebutting circular-financing criticism, a print that lifted chips, software and bitcoin, but Alphabet shed $692 billion on AI questions, Bloomberg flagged a credit-default-swap market surging on AI spend, and the Economist warned token prices are collapsing while chip costs are not.",
+    "sources": [
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/tech/nvidia-earnings-q2-2027-nvda-stock-8983c8d1?mod=rss_markets_main", "take": "Nvidia reports a blowout quarter, says demand for AI chips is getting even hotter." },
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/72908915-5e4a-457c-8c3a-aee8917a664a?syn-25a6b1a6=1", "take": "Nvidia forecasts 70% sales growth and rebuts circular-financing criticism." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-27/alphabet-loses-692-billion-in-market-value-as-ai-questions-rise", "take": "Alphabet loses $692 billion in market value as AI questions rise." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-27/credit-default-swap-market-surges-as-ai-spend-booms-video", "take": "The credit-default-swap market surges as AI spend booms." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-27/cheap-tokens-costly-chips-and-a-missing-ai-payoff-taking-stock", "take": "The price of AI is collapsing while the cost of building it is not." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Nvidia","Z.ai","CrowdStrike","Salesforce","Best Buy","Alphabet"],
+    "values": [8.0, 8.0, 6.0, 5.0, 3.0, -4.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [31000, 16500, 14000, 9000, 20000],
+    "colors": ["bull","bull","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["Kioxia-Sandisk","Vanguard-Altruist","Moderna","Enbridge JV","Shein IPO"],
+    "values": [31.4, 4.0, 2.0, 1.95, 1.7]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
