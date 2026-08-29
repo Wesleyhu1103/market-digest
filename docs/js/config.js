@@ -6,8 +6,51 @@ function mdUsesRemoteApi() {
 function mdApiUrl(path) {
   return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
 }
+function mdSitePath(path) {
+  const raw = String(path || '');
+  if (/^(https?:)?\/\//i.test(raw)) return raw;
+  const rel = raw.replace(/^\//, '');
+  let base = location.pathname || '/';
+  const archiveAt = base.indexOf('/archive/');
+  if (archiveAt >= 0) {
+    base = base.slice(0, archiveAt + 1);
+  } else if (base.endsWith('/archive')) {
+    base = base.slice(0, -'archive'.length) || '/';
+  } else if (/\.[a-z0-9]+$/i.test(base)) {
+    base = base.replace(/[^/]+$/, '');
+  } else if (!base.endsWith('/')) {
+    base += '/';
+  }
+  return base + rel;
+}
+function mdEtTodayIso() {
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+}
+function mdEditionIso() {
+  const ed = window.DigestDate && DigestDate.headerEdition && DigestDate.headerEdition();
+  return ed && ed.iso ? ed.iso : '';
+}
+function mdScoreboardAnchorIso() {
+  const editionIso = mdEditionIso();
+  const todayIso = mdEtTodayIso();
+  return editionIso && editionIso < todayIso ? editionIso : todayIso;
+}
+function mdScoreboardRowIso(dayText, editionIso) {
+  const m = String(dayText || '').match(/(\d+)\/(\d+)/);
+  if (!m) return '';
+  const month = Number(m[1]);
+  const day = Number(m[2]);
+  const anchor = editionIso || mdEditionIso() || mdEtTodayIso();
+  let year = Number(anchor.slice(0, 4));
+  const anchorMonth = Number(anchor.slice(5, 7));
+  if (year && anchorMonth) {
+    if (month - anchorMonth > 6) year -= 1;
+    else if (anchorMonth - month > 6) year += 1;
+  }
+  return year + '-' + String(month).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+}
 function mdMacroFredUrl() {
-  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  if (/\.github\.io$/i.test(location.hostname)) return mdSitePath('fred-data.json');
   return '/api/fred-data';
 }
 function mdPost(path, body) {
