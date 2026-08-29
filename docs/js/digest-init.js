@@ -93,7 +93,12 @@ function saveVerdictFeedback() {
       blurb: { bull: 'SpaceX book swells; FOMO lifts the whole complex.', bear: 'Capex without proof of profit; software reversal.', neu: 'Split tape — euphoria meets the profitability test.' } }
   ];
   const todayLabel = (window.DigestDate && DigestDate.editionDayLabel()) || '';
-  const etTodayIso = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  const etTodayIso = typeof mdEtTodayIso === 'function'
+    ? mdEtTodayIso()
+    : new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  const scoreboardAnchorIso = typeof mdScoreboardAnchorIso === 'function'
+    ? mdScoreboardAnchorIso()
+    : etTodayIso;
 
   // Day states: bull | bear | lean-bull | lean-bear | neu (mixed) | pending.
   // The scoreboard painter (verdict-updater.js) stamps data-verdict on every
@@ -111,11 +116,10 @@ function saveVerdictFeedback() {
     return 'neu';
   }
   function rowIso(dayText) {
+    if (typeof mdScoreboardRowIso === 'function') return mdScoreboardRowIso(dayText);
     const m = dayText.match(/(\d+)\/(\d+)/);
     if (!m) return '';
-    const year = (window.DigestDate && DigestDate.headerEdition && (DigestDate.headerEdition() || {}).year)
-      || Number(etTodayIso.slice(0, 4));
-    return year + '-' + String(m[1]).padStart(2, '0') + '-' + String(m[2]).padStart(2, '0');
+    return etTodayIso.slice(0, 4) + '-' + String(m[1]).padStart(2, '0') + '-' + String(m[2]).padStart(2, '0');
   }
 
   // Parse the Week Scoreboard table into per-thread day arrays
@@ -127,10 +131,10 @@ function saveVerdictFeedback() {
       const day = cells[0].textContent.trim();
       days.push({ day, iso: rowIso(day), reads: cells.slice(1, 4).map(cellState) });
     });
-    const todayRow = days.find(d => d.iso === etTodayIso);
+    const todayRow = days.find(d => d.iso === scoreboardAnchorIso);
     if (todayRow) {
       todayRow.live = true;
-    } else {
+    } else if (scoreboardAnchorIso === etTodayIso) {
       // Table doesn't cover today (weekend/holiday view) — read the live cards.
       const liveMap = { bonds: 'bonds', iran: 'iran-oil', aicapex: 'ai-capex' };
       const liveRead = nk => {
