@@ -703,10 +703,12 @@
     // Primary source is the Vercel /api/fred-data refresh; fall back to the
     // published static snapshot so credit/stress still render when the API is
     // unreachable (local preview, GitHub Pages, or a Vercel outage).
-    return loadFred(macroFredUrl()).then(function(data) {
+    var primaryUrl = macroFredUrl();
+    var staticUrl = mdSitePath('fred-data.json');
+    return loadFred(primaryUrl).then(function(data) {
       if (data) { fredMacro = data; return data; }
-      if (macroFredUrl() === 'fred-data.json') return null;
-      return loadFred('fred-data.json').then(function(fb) {
+      if (primaryUrl === staticUrl) return null;
+      return loadFred(staticUrl).then(function(fb) {
         if (fb) fredMacro = fb;
         return fb;
       });
