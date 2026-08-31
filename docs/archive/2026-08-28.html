@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Fri Aug 28, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-28</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Friday, August 28, 2026</h1>
+    <div class="meta">
+      <p>Warsh's first Jackson Hole speech lands at 10am ET and it is the whole tape: stocks and Treasuries drifted overnight as traders wait for clues on how the new chair plans to bring inflation back to target. A hawkish chorus is building underneath him, with Claudia Sahm, Cleveland's Beth Hammack and ex-RBI chief Raghuram Rajan all urging rate hikes. Nvidia added $442 billion in a single day but drags this morning, month-end props European stocks toward a fifth straight monthly gain, and Brent is up 2% after Ukraine hit a major Russian refinery.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Fed Chair Kevin Warsh delivers his first Jackson Hole speech Friday at 10am ET into a divided committee, a Treasury bond-market intervention and rising long-term yields, with traders looking for clarity on his inflation strategy while a hawkish chorus of Fed voices urges him to act",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Traders Expect to Be Frustrated by Warsh's Jackson Hole Speech", "angle": "Frames the debut as likely to disappoint investors who want a tight-lipped chairman to be forceful on inflation.", "lean": -20, "pull": "Investors urge the tight-lipped Fed chairman to be forceful on inflation."},
+        {"outlet": "CNBC", "headline": "Fed Chairman Kevin Warsh Delivers His Key Jackson Hole Speech Friday. Here's What to Expect", "angle": "Reads it as a chance to lay out a broad policy framework rather than signal a near-term move.", "lean": 0, "pull": "Prior Fed chairs have used the speech as an opportunity to lay out broad policy frameworks and intentions."},
+        {"outlet": "WSJ", "headline": "The Blurring Lines Between Fiscal Strategy and Fed Independence Ahead of Jackson Hole", "angle": "Zeroes in on the risk that Warsh and Treasury are coordinating to push down long yields at the cost of Fed credibility.", "lean": -35, "pull": "The newly coined Lake America and the blurring lines between fiscal strategy and Fed independence ahead of Jackson Hole."},
+        {"outlet": "Financial Times", "headline": "Warsh's First Jackson Hole Test Comes as Inflation Reaccelerates", "angle": "Notes Spanish and French inflation surging back above target reframes the speech as a credibility test.", "lean": -25, "pull": "Spanish inflation surged beyond 4% while France's also quickened, strengthening the case for tighter policy."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Warsh Delivers His First Jackson Hole Speech at 10am ET Into a Divided Committee and a Treasury Bond Intervention, With a Hawkish Chorus of Claudia Sahm, Cleveland's Beth Hammack and Ex-RBI Chief Raghuram Rajan All Urging Rate Hikes, Schmid Calling Inflation Sticky and Spanish Inflation Surging Past 4%, but MarketWatch Says Warsh and Bessent Are Coordinating to Push Down Long Yields and Academy's Peter Tchir Says He Isn't at Risk of Losing Control of Bonds</h3>
+      </div>
+      <p>The rates debate has narrowed to a single 10am appearance. Bloomberg said US stocks and Treasuries drifted while yields rose into the speech, with a divided policy committee and the Treasury's bond-market intervention complicating the backdrop. The hawkish chorus is loud. Bloomberg reported New Century Advisors' Claudia Sahm said it is probably time for the Fed to do more and that raising rates would be most appropriate, CNBC said Cleveland Fed President Beth Hammack declared now is the time to act, and Bloomberg said former RBI governor Raghuram Rajan, now on a task force examining the Fed, urged it to hike. That builds on KC Fed's Jeff Schmid calling inflation stubborn and sticky and policy not restrictive. Yahoo framed the sticky inflation report as raising the Jackson Hole stakes, and Bloomberg Economics noted the speech gives Warsh a chance to explain why he did not hike. Europe reinforced the hawkish read: Bloomberg said Spanish inflation surged beyond 4% and France's quickened, strengthening the case for an ECB increase next month, with Martins Kazaks warning the bank cannot let inflation take root. But there is a bull counter. MarketWatch reported Citrini Research thinks Warsh and Treasury Secretary Scott Bessent are acting in a coordinated way to reduce long-term yields, a setup that could help Bank of America and other lenders. Academy Securities' Peter Tchir told Bloomberg he does not think Warsh runs much risk of losing control of bonds, calling the move supply and demand rather than a vigilante revolt. The tone at 10am is the swing.</p>
+      <p>The bull read is Citrini's view that Warsh and Bessent are coordinating to push down long yields, and Tchir saying he is not at risk of losing control of bonds. The bear read is Sahm, Hammack and Rajan all urging hikes, Schmid calling inflation sticky, Spanish inflation past 4% and yields rising into the speech.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (yields get pulled lower):</strong> MarketWatch said Citrini Research reads Warsh and Bessent as coordinating to reduce long-term yields, and Academy's Peter Tchir told Bloomberg the chair does not run much risk of losing control of bonds because the selloff is supply and demand, not vigilantes. If Warsh sounds measured and the Treasury keeps buying back debt, the long end can catch a bid and the summer selloff can reverse.</div>
+        <div class="bear"><strong>Bear (a hawkish chorus wants hikes):</strong> Bloomberg said Claudia Sahm thinks it is time for the Fed to do more, CNBC said Hammack wants to act now, and Rajan urged a hike, all on top of Schmid calling inflation sticky and policy not restrictive. Spanish inflation surged past 4%, France's quickened, and yields rose into the speech. If Warsh validates the hawks or dodges the question, the path of least resistance is higher.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/videos/2026-08-28/it-s-probably-time-for-the-fed-to-do-more-claudia-sahm-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- It's Probably Time for the Fed to Do More, Says Economist Sahm</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Nvidia Breaks Its Post-Earnings Curse With a $442 Billion Day, Its Second-Biggest Gain on Record, and Insists Its Sales Flywheel Can Keep Funding the AI Boom, With Bank of America Doubling Down and Malaysia Lifting Its Chip-Export Forecast, but Nvidia Drags Premarket, Bloomberg Warns the AI Frenzy Is Stripping Safeguards From Convertible Bonds, Tencent Claims a Model Beating Z.ai, and Yahoo Flags a Glaring Flaw in Nvidia's Results</h3>
+      </div>
+      <p>The blowout print became a blowout tape. WSJ said Nvidia broke its post-earnings curse with a $442 billion single-day gain, its steepest climb in a year, boosting US indexes, and reported the company insists its sales flywheel is robust enough to keep funding the financial support it gives frontier AI labs and data-center developers. Bloomberg's market snapshot said Jensen Huang's bullish outlook fueled AI optimism and pointed to the buildout ramping up worldwide, and Yahoo said Bank of America doubled down on the stock. Real demand keeps showing up in the supply chain: Bloomberg reported Chinese memory maker CXMT saw first-half revenue leap almost tenfold amid the memory crunch, Malaysia's chip chief raised the country's electrical-and-electronics export forecast to $223 billion, and India's Yotta eyes a $20 billion GPU buildout. But the morning is more cautious. Bloomberg said Nvidia dragged in premarket trade the day after its record gain, and warned that investor frenzy for AI is stripping safeguards from convertible bonds, pushing risk-taking to pandemic-era levels. Competition is stiffening too: Bloomberg said Tencent touted a new foundation model it claims outperforms Z.ai and Moonshot, and Yahoo flagged a glaring flaw in Nvidia's operating results that Wall Street keeps overlooking, noting $7.8 billion of the quarter's gains came from its equity portfolio in SpaceX, Intel and CoreWeave rather than chips. SoftBank, meanwhile, is seeking another $10 billion loan to fund its OpenAI stake. The leader delivered, but the plumbing is leaning.</p>
+      <p>The bull read is Nvidia's $442 billion day, Bank of America doubling down, Huang's bullish outlook, CXMT's tenfold jump and Malaysia's $223 billion export forecast. The bear read is Nvidia dragging premarket, the convertible-bond frenzy stripping safeguards, Tencent's rival model, and the equity-portfolio flaw in Nvidia's results.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the flywheel keeps spinning):</strong> WSJ said Nvidia posted a $442 billion day and insists its sales flywheel can fund the whole AI boom, Bloomberg said Huang's outlook fueled fresh optimism, and Bank of America doubled down. CXMT's revenue leapt almost tenfold, Malaysia lifted its chip-export forecast to $223 billion, and Yotta is planning a $20 billion GPU buildout. When the demand keeps showing up across the supply chain, the cycle has more room to run.</div>
+        <div class="bear"><strong>Bear (the risk is migrating into the plumbing):</strong> Bloomberg said Nvidia dragged premarket the day after its record gain and warned the AI frenzy is stripping protections from convertible bonds at pandemic-era risk levels. Tencent claims a model beating Z.ai and Moonshot, and Yahoo flags that $7.8 billion of Nvidia's quarter came from its equity stakes, not chips. The euphoria is real, but so is the leverage building underneath it.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/stocks/nvidia-breaks-its-post-earnings-curse-with-442-billion-day-ce412657?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nvidia Breaks Its Post-Earnings Curse With $442 Billion Day</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Brent Climbs 2% After Ukraine Says It Struck a Major Russian Refinery in Yaroslavl, Sparking Fresh Gasoline Shortages, With Venezuela Reportedly Weighing an OPEC Exit and MarketWatch Marking Six Months of the Iran War as Wall Street Splits on Oil, but Gulf Supply Is Rising, China Looks Less Reliant on Imports and Gold Steadies Near $4,600 With Bitcoin Correlating to It Just When It Matters</h3>
+      </div>
+      <p>The geopolitical tape reheated overnight. WSJ said Brent climbed 2% as Ukraine reported striking the oil refinery in Yaroslavl, one of Russia's largest fuel plants, in a flurry of attacks that have sparked a new wave of gasoline shortages across Russia. Bloomberg added that Venezuela is reportedly weighing an OPEC exit in talks with US officials, another wildcard for supply. MarketWatch marked the six-month anniversary of the Iran war with Wall Street divided on where oil goes next, noting Gulf supply has been rising even as RBC Capital Markets warns of a lot more hurdles ahead. On the calmer side, Bloomberg said China's oil majors reveal a nation less reliant on imports, a structural drag on global crude exporters, and WSJ's morning risk report said a walk around Dubai shows no sign of Trump's threatened D-Day for Iran. The debasement trade sits underneath all of it. Bloomberg said gold steadied near $4,600 an ounce as investors focused on Warsh, and CoinDesk said bitcoin is outperforming stocks and correlating with gold just when it matters most, having hit a three-month high of $81,455 overnight before pulling back. Thai and Peruvian authorities are both fighting to curb gold's grip on their economies, a sign of how hot the metal has run. For now oil is telling the louder story, and a Russian refinery on fire keeps the inflation channel live into Warsh's speech.</p>
+      <p>The bull read is Gulf supply rising, China looking less reliant on imports, and no sign of escalation around Dubai. The bear read is Brent up 2% on the Yaroslavl refinery strike, Venezuela weighing an OPEC exit, RBC warning of hurdles, and gold and bitcoin rallying together on the debasement trade.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (supply keeps building):</strong> MarketWatch said Gulf oil supply has been rising even six months into the Iran war, Bloomberg said China's majors reveal a nation less reliant on imports, and WSJ said a walk around Dubai shows no sign of the threatened escalation. If output keeps growing while the region stays calm, the energy premium keeps bleeding out of the inflation picture.</div>
+        <div class="bear"><strong>Bear (a refinery on fire):</strong> WSJ said Brent climbed 2% after Ukraine struck the Yaroslavl refinery and triggered Russian gasoline shortages, Bloomberg said Venezuela is weighing an OPEC exit, and RBC warns of more hurdles ahead. Gold steadied near $4,600 and bitcoin is correlating with it just when it matters. Fresh disruption to Russian fuel and a possible OPEC shakeup are upside inflation risks right into Warsh's speech.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-08-28/ukraine-says-it-attacked-major-russian-oil-refinery-in-yaroslavl" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ukraine Says It Attacked Major Russian Oil Refinery in Yaroslavl</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Nvidia breaks its post-earnings curse with a $442 billion day</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) shares posted their steepest climb in a year, adding $442 billion in market value in a single session, the second-biggest daily gain on record, WSJ reported, lifting US stock indexes. The stock dragged premarket Friday as the euphoria cooled ahead of Warsh.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/nvidia-breaks-its-post-earnings-curse-with-442-billion-day-ce412657?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nvidia Breaks Its Post-Earnings Curse With $442 Billion Day</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Gap jumps 12% after naming a new Old Navy CEO</strong></summary>
+      <div class="deal-body">
+        <p>Gap (GAP) shares jumped 12% after the company named a new CEO for Old Navy to revive the struggling brand, CNBC reported, even as Old Navy posted a decline in comparable sales for the quarter. Investors treated the leadership shakeup as the catalyst.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/gap-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Gap Shares Jump 12% After Company Names New Old Navy CEO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>PayPal sinks as Advent and Stripe walk away from a $50 billion buyout</strong></summary>
+      <div class="deal-body">
+        <p>PayPal (PYPL) stock sank after a consortium of buyout firm Advent and payment processor Stripe abandoned its pursuit of the fintech, MarketWatch reported, a deal that would have ranked among the biggest-ever leveraged buyouts. The company now has to execute a turnaround on its own.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/paypals-stock-sinks-as-suitors-reportedly-walk-away-from-their-takeover-bid-b943e5ec?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- PayPal's Stock Sinks as Suitors Reportedly Walk Away From Their Takeover Bid</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Family offices are making a bullish bet on the stock market</strong></summary>
+      <div class="deal-body">
+        <p>Family offices are leaning into equities, CNBC reported, citing its Family Office Portfolio Tracker covering hundreds of firms that represent $1.4 trillion in assets. The positioning shows the ultra-wealthy siding with the risk-on tape.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/family-offices-making-bullish-bet-on-stocks-according-to-cnbc-tracker.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Family Offices Are Making a Bullish Bet on the Stock Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Royal Bank of Canada notches record earnings as big banks beat</strong></summary>
+      <div class="deal-body">
+        <p>Royal Bank of Canada (RY) posted record income in the latest quarter, WSJ reported, capping a strong period for Canada's biggest lenders, with TD's earnings lifted by Canadian banking and capital-markets activity. The results show resilient credit and trading north of the border.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/royal-bank-of-canada-notches-record-income-fc748b0c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Royal Bank Notches Record Earnings as Canada's Biggest Banks Beat Expectations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Gilead wins FDA approval for a daily HIV pill</strong></summary>
+      <div class="deal-body">
+        <p>Gilead (GILD) won FDA approval for a daily HIV pill designed to simplify treatment for some patients, CNBC reported, aimed partly at people doing well on single-tablet regimens like Biktarvy who want to switch. The nod extends the franchise into a new option.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/fda-approves-gilead-hiv-pill-bixlenvo-designed-to-simplify-treatment.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- FDA Approves Daily HIV Pill From Gilead Designed to Simplify Treatment</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Imax says it is open to a sale, but no one is buying</strong></summary>
+      <div class="deal-body">
+        <p>Imax (IMAX) stock and box office are breaking records, CNBC reported, yet studio conflicts and a soaring valuation complicate the list of who could realistically bid. The mismatch shows how a strong operator can still struggle to find a buyer.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/28/imax-sale-potential-buyers.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Imax Says It's Open to a Sale. Why Is No One Buying?</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> Nvidia's $442 billion day carried the indexes Thursday, but the stock dragging premarket Friday tells you the market has already banked the beat and is bracing for Warsh at 10am. Gap's 12% pop and family offices leaning bullish show risk appetite is intact, while PayPal's collapse on a pulled $50 billion buyout is the reminder that deal financing is getting pickier. The next test is whether Warsh's tone leaves the risk-on read alive into month-end.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Stock Can Add $442 Billion and Still Drag the Next Morning</summary>
+      <p>Nvidia added $442 billion in a single session, its second-biggest daily gain on record, and then dragged in premarket the very next morning. To someone who thinks a great print should keep a stock rising, that looks like a contradiction. It is not. It is how markets digest expectations, and understanding the mechanism keeps you from misreading a healthy pause as a warning. Start with what a stock price actually is: the discounted present value of expected future cash flows. When Nvidia guided to roughly 70% growth and defended its AI financing, the market repriced those expectations upward in one violent move, which is what the $442 billion gain was. But once the new information is in the price, it is done working. The stock does not keep rising just because the news was good; it rises when the news is better than what was already priced, and after a record day the bar for the next surprise is far higher than it was before. That is why the biggest single-day gains are so often followed by drift or pullback rather than more of the same. There is also a mechanical layer. A move that large is driven partly by short covering, by options dealers hedging, and by momentum funds piling in, and those flows exhaust themselves. Traders who caught the move take profits, and dealers who sold calls into the rally buy and sell stock to stay hedged as the option delta changes, which can cap the follow-through. None of that reflects a change in the fundamental story; it reflects the plumbing resetting after a spike. The third layer is the calendar. Warsh speaks at 10am, and a market that just made a huge directional bet on one stock does not want to add risk into a binary macro event it cannot handle. So it trims. That trimming shows up as the leader dragging even though nothing about its business changed overnight. The practical lesson is to separate the level from the direction. A stock that reprices sharply and then goes quiet is usually a stock that got the good news right, not one rolling over. The signal to worry about is not a pause after a record day, which is normal and healthy, but a reversal that gives back most of the gain on heavy volume, which suggests the market is rejecting the new expectations rather than consolidating them. Watch whether Nvidia holds the bulk of its $442 billion gain over the next few sessions. If it does, the market believed the guide and is simply catching its breath before the next catalyst. If it bleeds the whole move back, that tells you the euphoria was a flow-driven spike the fundamentals could not support, which is a very different and more troubling read.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/nvidia-breaks-its-post-earnings-curse-with-442-billion-day-ce412657?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nvidia Breaks Its Post-Earnings Curse With $442 Billion Day</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-28/bloomberg-brief-08-28-2026-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks, Bonds Waver Ahead of Warsh Speech | Bloomberg Brief</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nvidia insists it can keep printing money to fund the AI boom</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) says its sales flywheel is more than robust enough to fund the financial support it gives frontier AI labs and data-center developers, WSJ reported. The framing is the company's direct answer to the circular-financing critique that has dogged it.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/ai/nvidia-insists-it-can-keep-printing-money-to-fund-the-ai-boom-195e7d5e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nvidia Insists It Can Keep Printing Money to Fund the AI Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Investor frenzy for AI strips safeguards from convertible bonds</strong></summary>
+      <div class="deal-body">
+        <p>Convertible-bond investors chasing AI exposure are giving up protection they would normally demand, Bloomberg reported, pushing the market toward levels of risk-taking last seen during the pandemic. The trend shows how far appetite for the buildout has spread into credit.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/investor-frenzy-for-ai-strips-safeguards-from-convertible-bonds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Investor Frenzy for AI Strips Safeguards From Convertible Bonds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chinese memory maker CXMT sees sales soar tenfold amid the crunch</strong></summary>
+      <div class="deal-body">
+        <p>CXMT Corp's first-half revenue leapt almost tenfold while profit surged, Bloomberg reported, reflecting a rush for AI hardware that has made the memory chipmaker China's most valuable business. The jump shows the memory shortage is a global demand story, not just a US one.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/chinese-chipmaker-cxmt-s-sales-jump-10-fold-as-ai-demand-soars" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chinese Chipmaker CXMT's Sales Soar Amid Memory Crunch</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tencent touts a new AI model it claims beats Z.ai and Moonshot</strong></summary>
+      <div class="deal-body">
+        <p>Tencent released a foundation model it says outperforms rivals Z.ai and Moonshot AI in internal tests, Bloomberg reported, claiming a place among China's top AI players. The launch shows domestic competition intensifying just as Chinese labs bet on free models now and fees later.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/tencent-touts-new-ai-model-it-claims-outperforms-z-ai-moonshot" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tencent Touts New AI Model It Claims Outperforms Z.AI, Moonshot</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SoftBank seeks another $10 billion loan to fund its OpenAI stake</strong></summary>
+      <div class="deal-body">
+        <p>SoftBank is seeking a $10 billion loan as it looks for more funding to refinance debt used for its OpenAI investment, Bloomberg reported. The raise shows how much leverage is being layered behind the biggest AI bets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/softbank-seeks-another-10-billion-loan-for-openai-stake-funding" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank Seeks Another $10 Billion Loan for OpenAI Stake Funding</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The glaring flaw in Nvidia's operating results Wall Street keeps overlooking</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) reported $7.8 billion in gains on an equity portfolio that includes SpaceX, Intel and CoreWeave, Yahoo Finance reported, a chunk of the quarter that comes from its stakes rather than its chips. The detail complicates the clean read on core demand.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/nvidia-reports-7-8-billion-010632699.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Nvidia Reports $7.8 Billion in Q2 Gains on Equity Portfolio</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Malaysia lifts its chip-export forecast to $223 billion on AI demand</strong></summary>
+      <div class="deal-body">
+        <p>Malaysia's chip-industry chief raised the country's electrical-and-electronics export forecast to more than 900 billion ringgit, about $223 billion, Bloomberg reported, as AI-fueled demand surpassed earlier expectations. The upgrade underlines how broad the buildout has become.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/chip-veteran-raises-malaysia-e-e-export-forecast-to-223-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chip Veteran Raises Malaysia E&amp;E Export Forecast to $223 Billion</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Friday August 28, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is Nvidia's flywheel defense, CXMT's tenfold jump, Malaysia's $223 billion export upgrade and a memory crunch spanning three continents, all pointing to real demand. The counter-signal is Bloomberg's warning that AI frenzy is stripping safeguards from convertible bonds, SoftBank stacking another $10 billion of debt, and $7.8 billion of Nvidia's quarter coming from equity stakes. The frame is a leader delivering while the financing underneath it gets more aggressive.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Warsh delivers his key Jackson Hole speech Friday at 10am ET</strong></summary>
+      <div class="deal-body">
+        <p>Fed Chairman Kevin Warsh delivers his first Jackson Hole speech Friday, CNBC reported, with prior chairs having used the address to lay out broad policy frameworks and intentions. Markets want clarity on how he plans to bring inflation back to target.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/fed-chairman-kevin-warsh-delivers-his-key-jackson-hole-speech-friday.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed Chairman Kevin Warsh Delivers His Key Jackson Hole Speech Friday</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Sahm says it is probably time for the Fed to do more</strong></summary>
+      <div class="deal-body">
+        <p>New Century Advisors chief economist Claudia Sahm said something is shifting in the US inflation picture and it would be most appropriate for the Fed to start raising rates, Bloomberg reported. A named voice putting a hike squarely on the table into Warsh's debut.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-28/it-s-probably-time-for-the-fed-to-do-more-claudia-sahm-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- It's Probably Time for the Fed to Do More, Says Economist Sahm</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cleveland Fed's Hammack says now is the time to act on rates</strong></summary>
+      <div class="deal-body">
+        <p>Cleveland Fed President Beth Hammack said now is the time to act on raising interest rates, CNBC reported, arguing the Fed needs to move against inflation that is straining household budgets. The comments harden the hawkish wing ahead of Warsh.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/feds-hammack-says-now-is-the-time-to-act-on-raising-interest-rates.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed's Hammack Says 'Now Is the Time to Act' on Raising Interest Rates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ex-RBI chief Rajan urges the Fed to hike rates</strong></summary>
+      <div class="deal-body">
+        <p>Former Reserve Bank of India governor Raghuram Rajan, now on a task force examining the US central bank, said the Fed should raise rates to contain accelerating inflation, Bloomberg reported. Another respected outside voice reinforcing the hawkish read.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/ex-rbi-chief-rajan-says-fed-should-raise-rates-to-curb-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ex-RBI Chief Rajan Urges Fed to Hike Rates, Relaxed on Rupee</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Spanish inflation surges past 4% as France's also quickens</strong></summary>
+      <div class="deal-body">
+        <p>Spanish inflation surged to more than double the ECB's 2% target while France's reading exceeded expectations, Bloomberg reported, strengthening the case for a rate increase next month. The reacceleration echoes the global hawkish rethink into Jackson Hole.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/french-inflation-quickens-to-highest-level-since-may-on-energy" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Spanish Inflation Surges Beyond 4% as France's Also Quickens</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Japan's yen intervention hits a record $96 billion in a month</strong></summary>
+      <div class="deal-body">
+        <p>Japan spent a record $96.4 billion over the past month to support the yen after it tumbled to a four-decade low, Bloomberg reported, underscoring increasingly aggressive tactics. Faster Tokyo inflation is also bolstering the case for a September BOJ hike.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/japan-s-yen-intervention-hits-record-96-billion-in-past-month" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Japan Yen Intervention Hits Record $96 Billion in Past Month</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>France's economy just dodges recession as growth is revised down</strong></summary>
+      <div class="deal-body">
+        <p>France's economy unexpectedly failed to grow in the first half, Bloomberg reported, only narrowly avoiding recession and undermining the government's effort to fix its public finances. The weak growth complicates an already fragile fiscal picture in the euro area.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/french-economy-just-dodges-recession-after-growth-revised-down" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- French Economy Just Dodges Recession as Growth Revised Down</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 28, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish side has the microphone. Sahm, Hammack and Rajan all want hikes, Schmid calls inflation sticky, and Spanish inflation surged past 4%. Pulling the other way, MarketWatch's Citrini read says Warsh and Bessent are coordinating to push long yields down, and Academy's Peter Tchir says the chair is not at risk of losing control of bonds. With the Jackson Hole speech at 10am, the tell is whether Warsh answers the hawks or leans on the Treasury's buyback to do the work.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a New Fed Chair's First Jackson Hole Speech Moves Markets More Than the Data</summary>
+      <p>Bloomberg said stocks and Treasuries drifted and yields rose into Warsh's 10am appearance, and traders openly expect to be frustrated by it. That is an odd amount of anxiety over a single speech that will not change the current policy rate. But a new chair's first Jackson Hole address is not about this month's decision; it is about setting the framework the market will use to forecast every decision for years, and understanding that distinction explains why one speech can matter more than a data release. Think about how the bond market prices the long end. A ten-year yield reflects the average short-term rate the market expects the Fed to set over a decade, plus compensation for inflation and a term premium for uncertainty. A single data point nudges the near-term piece. But a framework speech shapes the market's entire model of how the Fed will react to future data: how much weight it puts on inflation versus employment, how tolerant it is of overshoots, whether it will defend its independence from fiscal pressure. Change that model and you reprice the whole curve at once, which is why a framework speech can move more than any one number. Warsh carries extra weight because his credibility is unproven and contested. Bloomberg Economics noted the speech offers him a chance to explain why he did not hike even as a chorus of voices, Sahm, Hammack, Rajan and Schmid, argue inflation demands it. WSJ has flagged the blurring line between fiscal strategy and Fed independence, with the Treasury intervening in the bond market at the same time the chair is perceived as friendly to the White House. When investors doubt a central bank's commitment to its target, they demand a higher term premium as insurance, and that is part of why long yields have risen into the speech. So Warsh is not just describing a framework; he is auditioning for the market's trust. The practical lesson is to watch what the speech does to expectations rather than to the current rate, which will not move. If Warsh sounds forceful on inflation and independent of the Treasury, the term premium can fall and long yields drop even without a hike, because credibility is itself a form of tightening. If he is vague, or leans on the Treasury's buyback to suppress yields rather than his own resolve, the market reads it as fiscal dominance and demands more premium, pushing long rates up. The number to watch is not the funds rate but the thirty-year yield and the dollar in the minutes after 10am. A chair who wins the market's trust gets a steeper front end and a calmer long end. A chair who dodges gets the opposite, and the frustration Bloomberg flagged becomes a selloff.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-28/traders-expect-to-be-frustrated-by-warsh-s-jackson-hole-speech" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Traders Expect to Be Frustrated by Warsh's Jackson Hole Speech</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-28/fed-latest-speech-offers-warsh-chance-to-explain-why-he-didn-t-hike-rate" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Latest: Speech Offers Warsh Chance to Explain Why He Didn't Hike Rate</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Stocks and Treasuries drifted ahead of Warsh's first Jackson Hole speech at 10am ET, with Sahm, Hammack and Rajan all urging hikes and yields rising into the address; Nvidia added $442 billion Thursday but dragged premarket while Bloomberg warned the AI frenzy is stripping safeguards from convertible bonds; Brent climbed 2% after Ukraine struck a major Russian refinery and Venezuela weighed an OPEC exit; bitcoin hit a three-month high of $81,455 before pulling back near $80,000; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/24</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 8/25</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 8/26</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 8/27</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 8/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin hits a three-month high of $81,455 before pulling back</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin briefly touched $81,455 overnight, its highest since May 15, before pulling back as Nasdaq futures slipped and gold extended gains into the weekend, CoinDesk reported. Altcoins consolidated as traders turned cautious ahead of Warsh.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/28/bitcoin-hits-highest-level-in-3-months-before-pulling-back-as-altcoins-consolidate" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Hits Highest Level in 3 Months Before Pulling Back</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin is outperforming stocks and correlating with gold when it matters</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin is outperforming equities and tracking gold just as macro uncertainty peaks around Warsh's speech, CoinDesk reported, capping a week that added 9% to bitcoin and 20% to solana. The debasement-trade correlation is the story going into the weekend.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/08/28/bitcoin-is-outperforming-stocks-and-correlating-with-gold-just-when-it-matters-most" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Is Outperforming Stocks and Correlating With Gold Just When It Matters Most</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bullish backs USD.AI with $100 million to drive GPU-backed loans</strong></summary>
+      <div class="deal-body">
+        <p>Crypto platform Bullish is extending a $100 million debt facility to USD.AI to finance GPU-backed loans for AI infrastructure, CoinDesk reported. The deal fuses the crypto and AI-buildout trades directly, with tokens funding compute.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/28/bullish-backs-usd-ai-with-usd100-million-gpu-stablecoin-financing" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bullish Backs USD.AI With $100 Million in Financing to Drive GPU-Backed Loans</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Circle's USDC takes over Chelsea's jersey in a Premier League first</strong></summary>
+      <div class="deal-body">
+        <p>Circle's USDC will feature on Chelsea's jersey in the first Premier League stablecoin sponsorship, CoinDesk reported, with earlier reports pegging the berth near 65 million pounds a year. The deal marks a mainstream marketing push for the stablecoin.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/28/circle-s-usdc-takes-over-chelsea-s-jersey-in-premier-league-first" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Circle's USDC Takes Over Chelsea's Jersey in Premier League First</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>IREN shares fall 8% as a costly AI transition weighs on earnings</strong></summary>
+      <div class="deal-body">
+        <p>IREN (IREN) shares dropped 8% as weakening profitability overshadowed a milestone in its shift into an AI cloud provider, CoinDesk reported. The move shows how expensive the pivot from crypto mining to AI compute can be.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/28/iren-shares-fall-8-as-costly-ai-transition-weighs-on-earnings" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- IREN Shares Fall 8% as Costly AI Transition Weighs on Earnings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mirae Asset eyes a $109 billion crypto empire after buying Digital X</strong></summary>
+      <div class="deal-body">
+        <p>Mirae Asset founder Park Hyeon-joo outlined an ambitious stablecoin, real-world-asset and security-token plan for Digital X, formerly Korbit, CoinDesk reported, targeting a $109 billion crypto empire. The move shows a major Korean asset manager going all-in on tokenization.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/27/mirae-asset-eyes-usd109-billion-crypto-empire-after-acquiring-digital-x" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Mirae Asset Eyes $109 Billion Crypto Empire After Acquiring Digital X</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>PayPal -- $50 Billion Advent-Stripe Buyout Abandoned</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A consortium of buyout firm Advent and payment processor Stripe decided to abandon its pursuit of PayPal, Bloomberg reported, a deal that would have ranked as one of the biggest-ever leveraged buyouts.</p>
+        <p><strong>Outlook:</strong> With suitors gone, PayPal now has to execute a turnaround on its own, and the stock slid on the news.</p>
+        <p><strong>What it means:</strong> The collapse of a mega-LBO shows financing for the largest take-privates is getting harder even in a risk-on tape.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/advent-stripe-consortium-is-said-to-drop-pursuit-of-paypal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- PayPal Deal Talks End as Advent, Stripe Group Abandons Acquisition Effort</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Valterra Platinum -- Informal Approach to Rival Northam</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Valterra Platinum made an informal approach to rival South African miner Northam Platinum, Bloomberg reported, exploring a deal that could create by far the world's largest supplier of the precious metal.</p>
+        <p><strong>Outlook:</strong> A combination would consolidate a fragmented industry as platinum-group metals have their best run in decades.</p>
+        <p><strong>What it means:</strong> Miners are moving to lock in scale while precious-metals prices are hot and the debasement trade runs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/valterra-platinum-said-to-have-approached-rival-miner-northam" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Valterra Platinum Is Said to Have Approached Rival Northam</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jio Platforms -- IPO Plan Clears Regulatory Approval</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Jio Platforms, the digital and telecom arm of Mukesh Ambani's conglomerate, received regulatory approval for its IPO, Bloomberg reported, clearing a key hurdle in its long-awaited plan to go public.</p>
+        <p><strong>Outlook:</strong> The listing would be one of India's largest, tapping surging demand for digital-infrastructure exposure.</p>
+        <p><strong>What it means:</strong> India's IPO pipeline keeps swelling as global capital chases the country's growth story.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/ambani-s-jio-platforms-ipo-plan-gets-regulatory-approval" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ambani's Jio Platforms IPO Plan Gets Regulatory Approval</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>RQD* Clearing -- $74 Million Round Led by Bain Capital</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Clearing and custody firm RQD* raised $74 million led by Bain Capital, CoinDesk reported, as Wall Street prepares for tokenized markets and the firm expands its digital-asset infrastructure.</p>
+        <p><strong>Outlook:</strong> Surging options volume and tokenization plans are drawing capital into market plumbing.</p>
+        <p><strong>What it means:</strong> Private money is chasing the settlement layer behind the trading boom, not just the trades.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/27/clearing-firm-rqd-raises-usd74-million-as-wall-street-prepares-for-tokenized-markets" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Clearing Firm RQD* Raises $74 Million as Wall Street Prepares for Tokenized Markets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>KKR -- $250 Million Antitrust Settlement Over Merger Filings</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> KKR settled a US antitrust case accusing it of merger-filing violations for $250 million, Yahoo Finance reported, resolving allegations tied to its dealmaking disclosures.</p>
+        <p><strong>Outlook:</strong> The settlement clears an overhang for one of the biggest private-equity firms.</p>
+        <p><strong>What it means:</strong> Regulators are pressing filing discipline on the buyout giants even as deal activity picks up.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/kkr-settles-us-antitrust-case-015103051.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- KKR Settles US Antitrust Case Accusing It of Merger Filing Violations for $250 Million</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Blackbird -- $740 Million Fund VI Record Close</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Venture firm Blackbird hit a $740 million record close for Fund VI to back founders, Yahoo Finance reported, one of the larger venture raises of the year.</p>
+        <p><strong>Outlook:</strong> The fund gives Blackbird dry powder to chase early-stage bets as AI startups proliferate.</p>
+        <p><strong>What it means:</strong> Venture fundraising is still finding LP appetite even as the buyout market gets choosier.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/small-business/articles/blackbird-hits-740m-fund-vi-002827706.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Blackbird Hits $740M Fund VI Record Close to Back VC Founders</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Claudia Sahm -- says it is probably time for the Fed to raise rates</strong></summary>
+      <div class="deal-body">
+        <p>New Century Advisors chief economist Claudia Sahm told Bloomberg Surveillance something is shifting in the US inflation picture and it would be most appropriate for the Fed to start raising rates. A named voice putting a hike squarely on the table into Warsh's speech.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-28/it-s-probably-time-for-the-fed-to-do-more-claudia-sahm-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- It's Probably Time for the Fed to Do More, Says Economist Sahm</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cleveland Fed's Beth Hammack -- now is the time to act on rates</strong></summary>
+      <div class="deal-body">
+        <p>Cleveland Fed President Beth Hammack said now is the time to act on raising interest rates, CNBC reported, arguing the Fed must move against inflation straining household budgets. A named hawk hardening the case just before Warsh's debut.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/27/feds-hammack-says-now-is-the-time-to-act-on-raising-interest-rates.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed's Hammack Says 'Now Is the Time to Act' on Raising Interest Rates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Academy's Peter Tchir -- Warsh isn't at risk of losing control of bonds</strong></summary>
+      <div class="deal-body">
+        <p>Academy Securities head of macro strategy Peter Tchir told Bloomberg the Treasury selloff is supply and demand rather than bond vigilantes, and said Warsh does not run much risk of losing control of the market. A named bull framing the rates picture as manageable.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-28/warsh-not-at-much-risk-of-losing-control-of-bonds-tchir-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Warsh Doesn't Run Much Risk of Losing Control of Bonds, Says Academy's Tchir</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citrini Research -- Warsh and Bessent are coordinating to lower long yields</strong></summary>
+      <div class="deal-body">
+        <p>Citrini Research thinks Warsh and Treasury Secretary Scott Bessent are acting in a coordinated way to reduce long-term bond yields, MarketWatch reported, a setup that could let Bank of America and three other lenders win big. A named view betting on a lower long end.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/how-bank-of-america-and-three-other-lenders-could-win-big-from-scott-bessents-and-kevin-warshs-bond-market-mechanations-4e56b581?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- How Bank of America and Three Other Lenders Could Win Big From Bessent's and Warsh's Bond-Market Machinations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bank of America -- doubles down on Nvidia after the blowout</strong></summary>
+      <div class="deal-body">
+        <p>Bank of America doubled down on Nvidia (NVDA) following the blowout quarter and the $442 billion day, Yahoo Finance reported. A named sell-side bull reinforcing the buildout thesis into the AI leader.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/bank-america-doubles-down-nvidia-153054071.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Bank of America Doubles Down on Nvidia Stock</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Warsh Prepares His First Jackson Hole Speech Into a Hawkish Chorus Urging Hikes, Nvidia Adds $442 Billion but Drags, and Brent Climbs 2% on a Russian Refinery Strike With Gold Near $4,600</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the flywheel holds and yields get capped):</strong> Nvidia posted a $442 billion day, Bank of America doubled down, and Malaysia lifted its chip-export forecast to $223 billion. On rates, Citrini Research says Warsh and Bessent are coordinating to push long yields down and Academy's Peter Tchir says the chair is not at risk of losing control of bonds. If Warsh sounds measured, the risk-on read holds across stocks, bonds and crypto into month-end.</div>
+        <div class="bear"><strong>Bear (a hawkish chorus and stretched plumbing):</strong> Sahm, Hammack and Rajan all want hikes, Schmid calls inflation sticky, and Spanish inflation surged past 4%. Nvidia dragged premarket, Bloomberg warns the AI frenzy is stripping safeguards from convertible bonds, and PayPal's $50 billion buyout collapsed. With Brent up 2% on the Yaroslavl strike and gold near $4,600, the inflation and financing risks are stacked against complacency.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Nvidia's $442B day; Gap +12% on Old Navy CEO; PayPal sinks as $50B buyout dies; family offices bullish</td><td>Bullish</td><td>~28,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Tech leads on Nvidia; RBC records; Gilead HIV pill; awaiting Warsh at 10am; CXMT sales soar tenfold</td><td>Bullish</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Warsh Jackson Hole debut; Sahm, Hammack and Rajan urge hikes; Spanish inflation past 4%; yields rising</td><td>Cautious</td><td>~13,500 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Convertible-bond safeguards stripped; $7.8B of Nvidia's quarter from equity stakes; SoftBank $10B loan</td><td>Bearish</td><td>~9,500 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC hits 3-month high $81,455 then pulls back; correlating with gold; Bullish backs USD.AI; IREN -8%</td><td>Bullish</td><td>~21,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood stayed risk-on but wary of 10am. r/wallstreetbets ran bullish on Nvidia's $442 billion day and Gap's 12% pop, though PayPal's buyout collapse drew plenty of chatter. r/stocks leaned constructive on the tech-led tape and strong bank prints. r/investing turned cautious into Warsh, weighing a hawkish chorus of Sahm, Hammack and Rajan against rising yields and Spanish inflation past 4%. r/SecurityAnalysis stayed the loudest bear on the convertible-bond safeguards, the equity-portfolio flaw in Nvidia's results and SoftBank's fresh $10 billion loan. r/CryptoCurrency ran bullish as bitcoin hit a three-month high and tracked gold. The swing factor is Warsh's tone at 10am.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: What It Means When AI Frenzy Strips the Safeguards Out of Convertible Bonds, and Why That Signals Late-Cycle Risk</h2>
+    <p>Bloomberg reported that investors chasing AI exposure are giving up protections they would normally demand on convertible bonds, pushing the market toward risk-taking last seen during the pandemic. The word safeguards is doing a lot of work there, so it is worth unpacking what a convertible bond is, what protections normally come attached, and why surrendering them is a classic late-cycle tell. A convertible bond is a hybrid: it is a corporate bond that pays a coupon and returns principal at maturity, but it also carries an option to convert into the issuer's stock at a preset price. That option is the appeal. If the stock soars, the holder converts and captures the upside; if the stock falls, the holder still gets the bond's coupon and principal back. That downside floor is the whole reason a convertible yields less than a plain bond: the investor accepts a lower coupon in exchange for equity upside plus debt-like protection. The safeguards are the terms that protect the investor when things go wrong. They include covenants that limit how much additional debt the company can pile on, change-of-control clauses that compensate holders if the company is bought, anti-dilution provisions that adjust the conversion price if the company issues cheap stock, and call protection that stops the issuer from redeeming the bond early and snatching away the upside. When Bloomberg says the frenzy is stripping safeguards, it means AI issuers are selling convertibles with weaker covenants, lower coupons, higher conversion prices and fewer investor protections, and buyers are taking them anyway because they are desperate for exposure to the buildout. Here is why that is a warning rather than a technicality. In a healthy market, investors have bargaining power and demand protection as the price of their capital. When demand for a theme runs so hot that investors compete to hand over money on the issuer's terms, the protections erode, which means the market is pricing near-zero probability of things going wrong. That is precisely when risk is highest, because the cushion that would absorb a downturn has been negotiated away. If AI revenue disappoints, or a financed customer cannot raise follow-on capital, holders of these stripped-down convertibles have less recourse: weaker covenants let the company take on more senior debt that ranks ahead of them, and a high conversion price means the equity upside they were counting on never arrives. The practical lesson is that the terms of financing tell you more about where you are in a cycle than the prices do. Rising stock prices can reflect genuine optimism, but deteriorating deal terms reveal that capital has become undiscriminating, which is the hallmark of a late-stage boom. Watch the fine print, not just the headline yields. When issuers can sell convertibles with pandemic-era protections and still find eager buyers, the market is telling you appetite has outrun caution, and the safeguards that would have limited the damage in a downturn are exactly the thing being given up.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/investor-frenzy-for-ai-strips-safeguards-from-convertible-bonds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Investor Frenzy for AI Strips Safeguards From Convertible Bonds</a></p>
+    <p class="deal-source"><a href="https://www.wsj.com/tech/ai/nvidia-insists-it-can-keep-printing-money-to-fund-the-ai-boom-195e7d5e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nvidia Insists It Can Keep Printing Money to Fund the AI Boom</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-28/softbank-seeks-another-10-billion-loan-for-openai-stake-funding" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank Seeks Another $10 Billion Loan for OpenAI Stake Funding</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Warsh's Jackson Hole speech, today at 10am ET.</strong> The new chair's debut is the swing catalyst; a hawkish chorus of Sahm, Hammack, Rajan and Schmid wants hikes, while Citrini says he is coordinating with Bessent to lower long yields. The dollar and the thirty-year are the scoreboard.</li>
+      <li><strong>ISM manufacturing and JOLTS, early week.</strong> After a divided committee and yields rising into Jackson Hole, watch whether the September data validates the hawks or gives Warsh cover to hold.</li>
+      <li><strong>August jobs report, Friday Sep 4.</strong> The first payrolls print after the speech is the next big test of whether the sticky-inflation, no-cut narrative holds or a softening labor market forces a rethink.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Software and AI-infrastructure follow-through.</strong> After Nvidia's $442 billion day and the memory crunch lifting CXMT tenfold, watch whether the next enterprise-software and chip prints confirm monetization or expose the payoff gap.</li>
+      <li><strong>Retail and consumer.</strong> After Gap's Old Navy shakeup and Ross Stores' blowout comps, watch whether more results confirm a resilient but value-seeking US consumer.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI financing plumbing.</strong> After Bloomberg flagged the convertible-bond frenzy and SoftBank's fresh $10 billion loan, watch whether credit markets keep loosening terms as the buildout leans on more leverage.</li>
+      <li><strong>IPO and buyout pipeline.</strong> After Jio Platforms cleared its IPO approval and PayPal's $50 billion buyout collapsed, watch whether reset expectations keep the listing window open while mega-LBO financing stays tight.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Russia-Ukraine energy strikes and oil.</strong> With Ukraine hitting the Yaroslavl refinery and Brent up 2%, watch whether more attacks on Russian fuel plants and a possible Venezuelan OPEC exit keep the energy premium live.</li>
+      <li><strong>Asia central banks.</strong> After Japan's record $96 billion yen intervention and faster Tokyo inflation, watch for a possible September BOJ hike and further currency and carry-trade swings.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>More granular coverage of credit-market plumbing, including how loosening convertible and CDS terms flag late-cycle AI risk.</li>
+      <li>Deeper tracking of the debasement trade linking gold, bitcoin and long-end yields.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Fri Aug 28, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-28 08:03 ET); Bloomberg Technology (20 fresh, newest 2026-08-28 08:00 ET); Bloomberg Economics (20 fresh, newest 2026-08-28 07:51 ET); CNBC Top News (7 fresh, newest 2026-08-28 07:54 ET); CNBC Finance (5 fresh, newest 2026-08-28 07:39 ET); CNBC Economy (1 fresh, newest 2026-08-27 13:31 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-28 08:15 ET); WSJ Markets (20 fresh, newest 2026-08-28 07:09 ET); Yahoo Finance (19 fresh, newest 2026-08-27 11:30 ET); FT Home (10 fresh, newest 2026-08-28 07:41 ET); Matt Levine Money Stuff (1 fresh, newest 2026-08-27 14:03 ET); CoinDesk (25 fresh, newest 2026-08-28 07:43 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Stratechery (10 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. Why is Warsh's Jackson Hole speech such a big event for markets?</strong></p>
+      <span class="opt" data-opt="A">A. It sets the exact interest-rate decision the Fed makes today</span>
+      <span class="opt" data-opt="B">B. It frames the policy approach markets use to forecast future moves</span>
+      <span class="opt" data-opt="C">C. It always includes a surprise rate cut announced live</span>
+      <span class="opt" data-opt="D">D. It replaces the monthly inflation and jobs data releases</span>
+      <div class="feedback"><strong>B is correct.</strong> A new chair's first Jackson Hole address lays out a broad framework that shapes how the market forecasts every future decision, which is why it can move more than any single number. It does not set today's rate, guarantee a cut, or replace the data.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. What did Claudia Sahm, Beth Hammack and Raghuram Rajan all argue this week?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed should cut rates to support growth</span>
+      <span class="opt" data-opt="B">B. Inflation has already returned to the 2% target</span>
+      <span class="opt" data-opt="C">C. The Treasury should stop buying back bonds</span>
+      <span class="opt" data-opt="D">D. The Fed should raise rates to contain inflation</span>
+      <div class="feedback"><strong>D is correct.</strong> Sahm said it is time for the Fed to do more, Hammack said now is the time to act, and Rajan urged a hike, forming a hawkish chorus into Warsh's speech. None called for cuts, declared victory on inflation, or targeted the buyback.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why did PayPal's stock sink on Friday?</strong></p>
+      <span class="opt" data-opt="A">A. Advent and Stripe abandoned their buyout bid</span>
+      <span class="opt" data-opt="B">B. It reported a large quarterly earnings miss</span>
+      <span class="opt" data-opt="C">C. Regulators blocked its planned merger deal</span>
+      <span class="opt" data-opt="D">D. It cut guidance on weak payment volumes</span>
+      <div class="feedback"><strong>A is correct.</strong> A consortium of Advent and Stripe walked away from what would have been one of the biggest-ever leveraged buyouts, and the stock, which had been propped up by takeover reports, sank. It was not an earnings miss, a regulatory block, or a guidance cut.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Warsh delivers his first Jackson Hole speech Friday at 10am ET into a divided committee and a Treasury bond intervention, with Sahm, Hammack and Rajan all urging hikes and Spanish inflation surging past 4%, while MarketWatch says Warsh and Bessent are coordinating to push down long yields and Academy's Peter Tchir says he is not at risk of losing control of bonds.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/how-bank-of-america-and-three-other-lenders-could-win-big-from-scott-bessents-and-kevin-warshs-bond-market-mechanations-4e56b581?mod=mw_rss_topstories", "take": "Citrini says Warsh and Bessent are coordinating to reduce long-term yields." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-08-28/warsh-not-at-much-risk-of-losing-control-of-bonds-tchir-video", "take": "Academy's Tchir says Warsh is not at much risk of losing control of bonds." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-28/it-s-probably-time-for-the-fed-to-do-more-claudia-sahm-video", "take": "Sahm says it is probably time for the Fed to do more and raise rates." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/27/feds-hammack-says-now-is-the-time-to-act-on-raising-interest-rates.html", "take": "Cleveland Fed's Hammack says now is the time to act on rates." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-28/french-inflation-quickens-to-highest-level-since-may-on-energy", "take": "Spanish inflation surged past 4% as France's also quickened." }
+    ]
+  },
+  "iran": {
+    "diverge": "Brent climbed 2% after Ukraine struck a major Russian refinery in Yaroslavl and sparked fresh gasoline shortages, with Venezuela reportedly weighing an OPEC exit, but Gulf supply is rising, China looks less reliant on imports and gold steadied near $4,600 with bitcoin correlating to it just when it matters.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/on-the-six-month-anniversary-of-the-iran-war-divisions-appear-on-wall-street-over-the-trajectory-for-oil-prices-c27c07aa?mod=mw_rss_topstories", "take": "Gulf oil supply has been rising six months into the Iran war." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-08-28/china-s-oil-majors-reveal-a-nation-less-reliant-on-imports", "take": "China's oil majors reveal a nation less reliant on imports." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-28/ukraine-says-it-attacked-major-russian-oil-refinery-in-yaroslavl", "take": "Ukraine struck the Yaroslavl refinery, sparking new gasoline shortages." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/livecoverage/stock-market-today-jackson-hole-08-28-2026?mod=rss_markets_main", "take": "Brent climbed 2% ahead of Warsh's speech." },
+      { "name": "CoinDesk", "lean": "bear", "url": "https://www.coindesk.com/daybook-us/2026/08/28/bitcoin-is-outperforming-stocks-and-correlating-with-gold-just-when-it-matters-most", "take": "Bitcoin is correlating with gold on the debasement trade just when it matters." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Nvidia broke its post-earnings curse with a $442 billion day and insists its sales flywheel can keep funding the AI boom, with Bank of America doubling down and Malaysia lifting its chip-export forecast, but Nvidia dragged premarket, Bloomberg warned the AI frenzy is stripping safeguards from convertible bonds, and Yahoo flagged a glaring flaw in Nvidia's results.",
+    "sources": [
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/nvidia-breaks-its-post-earnings-curse-with-442-billion-day-ce412657?mod=rss_markets_main", "take": "Nvidia breaks its post-earnings curse with a $442 billion day." },
+      { "name": "Yahoo Finance", "lean": "bull", "url": "https://finance.yahoo.com/markets/stocks/articles/bank-america-doubles-down-nvidia-153054071.html", "take": "Bank of America doubles down on Nvidia after the blowout." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-28/investor-frenzy-for-ai-strips-safeguards-from-convertible-bonds", "take": "Investor frenzy for AI strips safeguards from convertible bonds." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-reports-7-8-billion-010632699.html", "take": "$7.8 billion of Nvidia's quarter came from equity stakes, not chips." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-08-28/tencent-touts-new-ai-model-it-claims-outperforms-z-ai-moonshot", "take": "Tencent touts a model it claims beats Z.ai and Moonshot." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Gap","Bank of Georgia","BYD","Nvidia","IREN","PayPal"],
+    "values": [12.0, 5.0, 4.0, -2.0, -8.0, -9.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [28000, 15000, 13500, 9500, 21000],
+    "colors": ["bull","bull","neutral","bear","bull"]
+  },
+  "dealSizes": {
+    "labels": ["PayPal LBO (pulled)","KKR settlement","Blackbird Fund VI","RQD* round","USD.AI facility"],
+    "values": [50.0, 0.25, 0.74, 0.074, 0.1]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
