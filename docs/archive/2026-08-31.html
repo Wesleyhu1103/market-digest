@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Aug 31, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-08-31</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, August 31, 2026</h1>
+    <div class="meta">
+      <p>Month-end lands on a jittery Monday in thin trading, and Warsh's hawkish Jackson Hole speech Friday is still setting the tape: rate-hike bets jumped, gold fell more than 3%, and the yen broke past 160 to the dollar. Overnight the US and Iran exchanged strikes for the first time in about a month, sending Brent back above $90 and stock futures lower. Trump also said he plans to seize direct control of Venezuela's oil reserves, and Tim Cook hands Apple to John Ternus tomorrow.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Fed Chair Kevin Warsh delivered a hawkish first Jackson Hole speech Friday, saying inflation is still too high and the summer's better readings had not convinced him, and markets opened the new week pricing in a higher chance of a September rate hike as the yen broke 160 and Japanese yields hit three-decade highs",
+      "framings": [
+        {"outlet": "CNBC", "headline": "Jackson Hole Analyst Roundup: Warsh's Speech Sends Hike Chances Higher, May Put Fed 'At Odds' With Treasury", "angle": "Reads the speech as reinforcing a tighter September FOMC while setting up a clash with a Treasury that wants lower yields.", "lean": -35, "pull": "Warsh's hawkish stance reinforced expectations of a relatively tighter stance at the September meeting."},
+        {"outlet": "WSJ", "headline": "U.S. Stock Futures Little Changed as Markets Weigh Warsh's Hawkish Remarks", "angle": "Frames it around Warsh saying better summer inflation readings had not convinced him underlying trends improved.", "lean": -30, "pull": "The chairman said inflation remained too high and better readings this summer hadn't convinced him."},
+        {"outlet": "Bloomberg", "headline": "Bond Investors Wary After Warsh Speech Fuels Rate-Hike Bets", "angle": "Highlights buyside skepticism that Warsh is actually poised to hike despite the hawkish tone.", "lean": 10, "pull": "Investors at ABN AMRO and Brandywine Global voice skepticism about speculation that Warsh is poised to raise rates."},
+        {"outlet": "Financial Times", "headline": "Japan's Bonds and Yen Under Pressure After Warsh's Jackson Hole Speech", "angle": "Traces the global spillover as the yen weakens past 160 and JGB yields hit three-decade highs.", "lean": -40, "pull": "The currency weakened past 160 a dollar and yields rose to the highest in three decades."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Warsh's Hawkish Jackson Hole Speech Resets the Week, With CNBC's Analyst Roundup Saying Hike Chances Are Up and the Fed May Be at Odds With Treasury, WSJ Reporting He Called Inflation Still Too High, and FT Flagging the Yen Past 160 and Japanese Yields at Three-Decade Highs, but ABN AMRO and Brandywine Global Are Skeptical He Will Actually Hike and CoinDesk Says the September Odds Are Only 58%, Not 90%</h3>
+      </div>
+      <p>The rates debate flipped hawkish over the weekend. WSJ said Fed Chairman Kevin Warsh told Jackson Hole that inflation remains too high and that better summer readings had not convinced him underlying trends had meaningfully improved, and stock futures ticked lower as markets digested it. CNBC's analyst roundup said the speech sent hike odds higher and reinforced expectations of a tighter September meeting, while warning it could put the Fed at odds with a Treasury that wants lower long yields. The spillover was global. FT said Japan's bonds and yen came under pressure, with the currency weakening past 160 a dollar and JGB yields rising to their highest in three decades, and WSJ noted the Nikkei fell 2.2% dragged by chip stocks. Bloomberg said gold extended its decline after tumbling more than 3% Friday as the pledge to fight inflation lifted rate-hike bets. But there is a real counter. Bloomberg reported bond investors at ABN AMRO Investment Solutions and Brandywine Global Investment Management are openly skeptical that Warsh is actually poised to hike, reading the speech as tone rather than a commitment. CoinDesk went further, arguing September hike fears look overblown with market-implied odds sitting near 58%, not the 90% some headlines imply. The question for the week is whether the data validates the hawkish read or the skeptics are right that Warsh is talking tough without a move.</p>
+      <p>The bull read is ABN AMRO and Brandywine doubting Warsh will actually hike and CoinDesk pegging September odds near 58%. The bear read is the hawkish speech, CNBC's roundup lifting hike odds, the yen past 160, Japanese yields at three-decade highs and gold down over 3%.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the hike may not come):</strong> Bloomberg said bond investors at ABN AMRO and Brandywine Global are skeptical Warsh is actually poised to raise rates, reading the speech as posture rather than a plan, and CoinDesk said market-implied September odds sit near 58%, not the 90% the loudest takes suggest. If the jobs report Friday softens or the data cooperates, the hawkish scare fades and the recent selloff in bonds reverses.</div>
+        <div class="bear"><strong>Bear (a hawkish chair means higher for longer):</strong> WSJ said Warsh called inflation still too high and unconvinced by the summer readings, CNBC's roundup said hike odds jumped and the Fed may clash with Treasury, and FT said the yen broke 160 with Japanese yields at three-decade highs. Gold fell more than 3% and the Nikkei dropped 2.2%. If the chair follows through, the path of least resistance for yields is up.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.cnbc.com/2026/08/31/jackson-hole-fed-chair-kevin-warsh-hawkish-rate-hikes-analysts.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Jackson Hole Analyst Roundup: Warsh's Speech Sends Hike Chances Higher</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>The US and Iran Exchange Strikes for the First Time in About a Month, With American Forces Hitting an Island in the Strait of Hormuz and Iran Launching Attacks on the UAE and Jordan, Sending Brent Back Above $90 and Stock Futures Lower, While Trump Says He Will Seize Direct Control of Venezuela's 65 Billion Barrels and LNG Stays Stalled Through Hormuz, but Oil Flows Are Rebounding and Asian Refiners Are Adapting via Argentina</h3>
+      </div>
+      <p>The geopolitical tape reheated overnight. Bloomberg reported the US and Iran exchanged attacks for the first time in about a month, with American forces striking an island in the Strait of Hormuz and Iran responding by launching attacks on the United Arab Emirates and Jordan. MarketWatch said Brent topped $90 on the flare-up, and Yahoo said Dow, S&P 500 and Nasdaq futures fell as the strikes and rising rate-hike bets sent jitters through markets. Supply politics got louder too: Bloomberg said Trump plans to seize direct control of Venezuela's oil reserves, announcing a deal with interim President Delcy Rodriguez that would give the US control of more than 65 billion barrels through a private-business partnership, and FT profiled Alejandro Betancourt as Trump's would-be viceroy there. On the tighter side, Bloomberg said LNG exports through Hormuz remain stalled even as crude carriers resume, keeping the super-chilled fuel near wartime highs, and Bloomberg Economics said Kenyan inflation accelerated as elevated fuel costs from the Iran war seeped into other prices. But the calmer read has support. Bloomberg noted oil flows are rebounding, Yahoo said Asian refiners are turning to Argentina to route around the disruption, and India's economy grew a faster-than-expected 7.8% despite the war. CoinDesk added that bitcoin barely blinked on the strikes. Oil is telling the louder story, and fresh US-Iran fire keeps the inflation channel live right as Warsh talks tough.</p>
+      <p>The bull read is oil flows rebounding, Asian refiners adapting via Argentina, and India growing 7.8% despite the war. The bear read is US-Iran strikes, Brent above $90, Trump seizing Venezuela's reserves, LNG stalled through Hormuz and Kenyan inflation from fuel.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (supply keeps adapting):</strong> Bloomberg said crude flows are rebounding through Hormuz, Yahoo said Asian refiners are turning to Argentina to route around the disruption, and Bloomberg Economics said India grew a faster-than-expected 7.8% despite the Iran war. CoinDesk said bitcoin barely reacted to the strikes. If the exchange stays contained and barrels keep finding new routes, the energy premium bleeds back out.</div>
+        <div class="bear"><strong>Bear (the conflict reignites):</strong> Bloomberg said the US and Iran traded strikes for the first time in a month, hitting an island in Hormuz and drawing attacks on the UAE and Jordan, and MarketWatch said Brent topped $90. Trump plans to seize Venezuela's 65 billion barrels, LNG stays stalled near wartime highs, and Kenyan inflation is climbing on fuel. Fresh fire in the Gulf is an upside inflation risk into a hawkish Fed.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/videos/2026-08-31/us-iran-exchange-strikes-following-weeks-of-calm-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US, Iran Exchange Strikes for First Time in About a Month</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Wall Street's Momentum Trade Suddenly Unravels as WSJ Calls It a Losing Game, David Tepper's Appaloosa Dumps Every Share of 2026's Hottest AI Stock Even While Staying Overweight, Z.AI Misses on China's Price War and Huawei's Profit Drop Widens to 36% on Memory Costs, and the Bank of England Warns Frontier AI Threatens Financial Stability, but SK Hynix Weighs a Japan Memory Plant, India Opens a $13.4 Billion Chip Fund and Japan's Industry Ministry Seeks $49 Billion for Semiconductors</h3>
+      </div>
+      <p>The AI trade wobbled under its own momentum. WSJ said the self-fulfilling prophecy of betting on rising winners has suddenly turned into a losing game, with the momentum factor unraveling on Wall Street. Yahoo said billionaire David Tepper's Appaloosa stayed overweight AI but recently dumped every share of the hottest AI stock of 2026, a signal a marquee bull is trimming into strength. The fundamental cracks are showing abroad. Bloomberg said Z.AI's revenue missed estimates as China's AI price war and rivals DeepSeek and Moonshot squeezed pricing, and Yahoo said Huawei's first-half profit drop quickened to 36% as rising memory costs and heavy R&D took a toll. CNBC said Bank of England Governor Andrew Bailey warned frontier AI models could materially increase cyber risks to global financial stability, and Bloomberg reported the mania in South Korea's leveraged single-stock ETFs tied to Samsung and SK Hynix is over, with assets cut in half. But the buildout is still drawing capital. Bloomberg said SK Hynix is studying Japanese sites for new memory manufacturing to feed the AI boom, India is offering chip design and equipment subsidies from a $13.4 billion fund, and Japan's Industry Ministry is seeking an unprecedented $49 billion for semiconductors and AI. Tencent-backed Enflame is tapping the market for $911 million. The demand for compute is intact, but the crowd that piled into the trade is thinning.</p>
+      <p>The bull read is SK Hynix expanding in Japan, India's $13.4 billion chip fund, Japan's $49 billion budget and Tepper staying overweight AI. The bear read is the momentum trade unraveling, Tepper dumping his hottest AI name, Z.AI missing, Huawei's 36% profit drop and Bailey warning frontier AI threatens stability.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the buildout keeps drawing capital):</strong> Bloomberg said SK Hynix is scouting Japanese sites for new memory capacity to meet AI demand, India is subsidizing chip design from a $13.4 billion fund, and Japan's Industry Ministry wants an unprecedented $49 billion for semiconductors and AI. Yahoo said even Tepper stays overweight the theme. When governments and memory leaders keep committing to the buildout, the demand story has legs.</div>
+        <div class="bear"><strong>Bear (the momentum crowd is thinning):</strong> WSJ said the momentum trade has suddenly turned into a losing game, Yahoo said Tepper dumped every share of 2026's hottest AI stock, Bloomberg said Z.AI missed on China's price war and Huawei's profit fell 36% on memory costs, and CNBC said the BoE's Bailey warns frontier AI threatens financial stability. When the marquee bulls trim and the fundamentals crack, the leadership gets fragile.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/stocks/the-sudden-unraveling-of-wall-streets-momentum-trade-fe79b4fa?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The Sudden Unraveling of Wall Street's Momentum Trade</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>GameStop expects higher profit despite lower sales</strong></summary>
+      <div class="deal-body">
+        <p>GameStop (GME) said it anticipates net income of $290 million to $310 million for its 13 weeks ended August 1, up from $168.6 million a year earlier, WSJ reported, even as revenue slipped. The profit jump shows the retailer squeezing more out of a shrinking top line.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/earnings/gamestop-expects-higher-profit-despite-lower-sales-9fceb2a2?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- GameStop Expects Higher Profit Despite Lower Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wall Street's momentum trade suddenly unravels</strong></summary>
+      <div class="deal-body">
+        <p>The self-fulfilling prophecy of betting on rising winners has turned into a losing game, WSJ reported, as the momentum factor unwinds on investors who banked on its success. The reversal is a warning that the year's crowded leadership is getting fragile.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/the-sudden-unraveling-of-wall-streets-momentum-trade-fe79b4fa?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The Sudden Unraveling of Wall Street's Momentum Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tepper's Appaloosa dumps 2026's hottest AI stock while staying overweight</strong></summary>
+      <div class="deal-body">
+        <p>Billionaire David Tepper's Appaloosa remains overweight AI but recently sold out of the hottest AI stock of 2026, Yahoo Finance reported. A marquee bull trimming a single crowded name even as he keeps the broad theme is a notable positioning signal.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/billionaire-david-tepper-appaloosa-overweight-112600522.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Billionaire David Tepper Is Overweight AI but Dumped the Hottest AI Stock of 2026</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ONEOK to buy Brazos Midstream's Permian assets for $4.43 billion</strong></summary>
+      <div class="deal-body">
+        <p>ONEOK (OKE) agreed to acquire Brazos Midstream's Permian Midland Basin gas gathering and processing assets for $4.43 billion, WSJ reported, expanding its footprint in the prolific American oil hub. The deal lands as energy names get a bid from the Middle East flare-up.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/oneok-to-buy-brazos-midstreams-permian-assets-for-4-43-billion-2d0d08f6?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- ONEOK to Buy Brazos Midstream's Permian Assets for $4.43 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The index-fund strategy quietly beating big tech this year</strong></summary>
+      <div class="deal-body">
+        <p>A less-glamorous index-fund approach is outrunning the megacap tech leaders in 2026, WSJ reported, alongside a whiskey glut and booming corporate profits. The outperformance underscores how leadership is broadening away from the mega-cap names.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/the-index-fund-strategy-quietly-beating-big-tech-this-year-c74bb58e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The Index-Fund Strategy Quietly Beating Big Tech This Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Manhattan's luxury rental market booms with $100,000-a-month units</strong></summary>
+      <div class="deal-body">
+        <p>New York brokers report a surge in wealthy renters driving Manhattan rents to new records, with some units reaching $100,000 a month, CNBC reported. The frenzy at the top end is another sign of resilient high-income spending.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/31/manhattan-luxury-rentals-100000-month.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Manhattan's Luxury Rental Market Is Booming, With Units Reaching $100,000 a Month</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Retailers diverge on how they handle tariff refunds</strong></summary>
+      <div class="deal-body">
+        <p>Retailers took wildly different approaches to reporting tariff refunds this quarter, CNBC reported, with some cutting prices for shoppers and others booking the money to boost margins. The split muddies the read on underlying retail profitability.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/30/trump-tariff-refunds-walmart-home-depot-target.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Why Retailers Are Handling Tariff Refunds So Differently</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> Futures slipped into the open with two macro shocks stacked, a hawkish Warsh and fresh US-Iran strikes, and the WSJ momentum unwind says the crowded winners are the most exposed. GameStop's profit-over-sales beat and Manhattan's $100,000 rents show pockets of strength are intact, while ONEOK's $4.43 billion Permian buy leans into the energy bid. The tell for the week is whether the momentum reversal stays orderly or turns into a broader de-risking as September's data arrives.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Momentum Trade Can Unravel Fast Once It Starts</summary>
+      <p>WSJ said the self-fulfilling prophecy of betting on rising winners has suddenly turned into a losing game. That phrase is the key to understanding why momentum, a strategy that quietly compounds for months, can reverse in days. Momentum investing is simple: buy what has been going up and sell what has been going down, on the empirical observation that recent winners tend to keep winning over the medium term. The strategy works partly because it is self-reinforcing. When enough capital chases the same rising names, the buying itself pushes those stocks higher, which validates the signal and draws in more buyers. That feedback loop is the engine, and it is also the vulnerability. The problem is that momentum is a crowded, correlated trade. Everyone running the factor owns roughly the same basket, so when the leaders stall, every momentum book takes losses at the same time. Because many of those books are levered or run to a volatility target, a small drop forces mechanical selling to cut risk, and that selling hits the exact same names everyone else holds. The feedback loop that drove prices up now runs in reverse: selling begets more selling. This is why momentum crashes are sharp and fast rather than gradual. There is a second layer tied to positioning. When a factor has worked for a long time, funds pile leverage onto it and the marginal buyer is exhausted, meaning there is no fresh capital left to push prices higher. At that point the trade is priced for perfection and vulnerable to any catalyst. A hawkish Fed speech that lifts yields, a marquee holder like Tepper trimming a top name, or simply month-end rebalancing can be enough to tip the first domino. Once the winners start underperforming, the strategy's own rules force holders to sell them, and the unwind feeds itself. The practical lesson is that in a momentum reversal, the stocks that fall hardest are not the weak ones but the strongest recent performers, because those are the ones the crowd is most heavily positioned in. That inverts normal intuition: the safest-looking leaders become the most dangerous holdings precisely because so much correlated money sits in them. Watch for the tell of a momentum unwind, which is the market's biggest winners falling while laggards hold up or even rise, a rotation that has nothing to do with fundamentals and everything to do with positioning. If you own the crowded winners, a reversal can erase months of gains in a handful of sessions, and the way to gauge whether it is over is to watch whether the leaders stop underperforming the laggards, not whether the index itself recovers.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/the-sudden-unraveling-of-wall-streets-momentum-trade-fe79b4fa?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The Sudden Unraveling of Wall Street's Momentum Trade</a></p>
+      <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/billionaire-david-tepper-appaloosa-overweight-112600522.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Billionaire David Tepper Is Overweight AI but Dumped the Hottest AI Stock of 2026</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Z.AI's sales miss estimates as China's AI price war bites</strong></summary>
+      <div class="deal-body">
+        <p>Z.AI's revenue came in below estimates, Bloomberg reported, underscoring the challenge of shipping near-frontier models while competing against DeepSeek and Moonshot in China's crowded and increasingly price-driven arena. The miss shows the domestic AI race is squeezing margins.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/z-ai-sales-miss-estimates-after-china-s-ai-price-war-weighs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Z.AI Sales Miss Estimates After China's AI Price War Weighs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Huawei's profit drop widens to 36% as memory costs take a toll</strong></summary>
+      <div class="deal-body">
+        <p>Huawei posted a deep profit decline as rising memory costs and heavier semiconductor R&D spending weighed, Yahoo Finance reported, with the first-half drop quickening to 36%. The memory crunch that lifts chipmakers is cutting the other way for hardware buyers.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/articles/huawei-h1-profit-drop-quickens-094221420.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Huawei H1 Profit Drop Quickens to 36% on Rising Costs, R&D Spending</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SK Hynix weighs a Japan memory plant to supply the AI boom</strong></summary>
+      <div class="deal-body">
+        <p>SK Hynix is studying the feasibility of sites for memory-chip manufacturing expansion in Japan, Bloomberg reported, adding capacity to meet surging AI demand while controlling production costs. The move shows the memory leaders racing to grow supply.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/sk-hynix-weighs-japan-memory-fab-partnership-to-supply-ai-boom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix Weighs Japan Memory Plant Deal to Supply AI Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bank of England warns frontier AI threatens financial stability</strong></summary>
+      <div class="deal-body">
+        <p>BoE Governor Andrew Bailey warned that frontier AI models could materially increase cyber risks to the global financial system, CNBC reported. A top central banker flagging AI as a systemic risk adds a regulatory overhang to the buildout narrative.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/31/bailey-frontier-ai-financial-stability-risk.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Bank of England Chief Warns New AI Models Threaten Global Financial Stability</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tencent-backed Enflame seeks $911 million in Shanghai IPO</strong></summary>
+      <div class="deal-body">
+        <p>Shanghai Enflame Technology, backed by Tencent, is seeking about 6.12 billion yuan, roughly $911 million, in an IPO, Bloomberg reported, as the last of the four little dragons of leading Chinese AI chipmakers taps the public market. The listing shows appetite for domestic chip capacity.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/tencent-backed-china-chipmaker-enflame-seeks-911-million-in-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tencent-Backed China Chipmaker Enflame Seeks $911 Million in IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The Ternus era at Apple begins Tuesday as Cook stays on</strong></summary>
+      <div class="deal-body">
+        <p>John Ternus officially takes over as Apple (AAPL) CEO on September 1, Bloomberg reported, though Tim Cook is not leaving the company. The new chief inherits a full plate spanning AI, the foldable iPhone and a next Watch generation.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-30/the-ternus-era-at-apple-begins-but-cook-isn-t-leaving" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- The Ternus Era at Apple Begins, But Cook Isn't Leaving</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>India offers chip design and gear subsidies from a $13.4 billion fund</strong></summary>
+      <div class="deal-body">
+        <p>India is offering chip design and equipment subsidies drawn from a $13.4 billion fund, Bloomberg reported, as it courts semiconductor investment. The program is another sign governments are pouring money into the AI supply chain.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/india-offers-chip-design-gear-subsidy-from-13-4-billion-fund" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- India Offers Chip Design, Gear Subsidy From $13.4 Billion Fund</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Monday August 31, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is SK Hynix scouting Japan, India's $13.4 billion chip fund, Japan's $49 billion semiconductor budget and Enflame's $911 million IPO, all pointing to sustained investment in capacity. The counter-signal is Z.AI missing on China's price war, Huawei's profit falling 36% on memory costs, the momentum unwind and Bailey warning frontier AI is a systemic cyber risk. The frame is a buildout still funded from the top while the profit math and positioning get harder underneath.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Warsh's speech sends hike chances higher, may put Fed at odds with Treasury</strong></summary>
+      <div class="deal-body">
+        <p>Analysts read Warsh's hawkish Jackson Hole stance as reinforcing expectations of a tighter September FOMC, CNBC reported, while warning it could set the Fed against a Treasury that wants lower yields. Markets moved to price a higher chance of a near-term hike.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/31/jackson-hole-fed-chair-kevin-warsh-hawkish-rate-hikes-analysts.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Jackson Hole Analyst Roundup: Warsh's Speech Sends Hike Chances Higher</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bond investors wary after Warsh speech fuels rate-hike bets</strong></summary>
+      <div class="deal-body">
+        <p>Investors at ABN AMRO Investment Solutions and Brandywine Global Investment Management voiced skepticism about mounting speculation that Warsh is actually poised to raise rates, Bloomberg reported. The skeptics read the speech as tone rather than a commitment to hike.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-30/bond-investors-wary-after-warsh-fans-wagers-fed-poised-to-hike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Investors Wary After Warsh Speech Fuels Rate-Hike Bets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Yen's breach of 160 puts the market on intervention watch</strong></summary>
+      <div class="deal-body">
+        <p>The yen's move past 160 versus the dollar underscored the currency's vulnerability and raised the risk that Japanese authorities re-enter the market to slow its decline, Bloomberg reported. Dollar strength from the Warsh-driven rate-hike bets is the pressure point.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/yen-s-breach-of-160-to-dollar-puts-traders-on-intervention-watch" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Yen's Breach of 160 Level Puts Market on Intervention Watch</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Japan's bonds and yen under pressure after Warsh's speech</strong></summary>
+      <div class="deal-body">
+        <p>Japanese government bond yields rose to their highest in three decades and the yen weakened past 160 a dollar, FT reported, as investors raised bets on global monetary tightening after Warsh. The spillover shows how one hawkish speech reprices markets worldwide.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/1c4f488f-32bc-4b49-a0c8-c55d95f5422b?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Japan's Bonds and Yen Under Pressure After Warsh's Jackson Hole Speech</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>India's economy grows a faster-than-expected 7.8% in the June quarter</strong></summary>
+      <div class="deal-body">
+        <p>India's economy expanded 7.8% in the fiscal first quarter, beating estimates, CNBC reported, driven by finance, real estate, IT and professional services. The print eases fears that the Iran war would dent Asia's third-largest economy.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/31/india-economy-gdp-energy-el-nino.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- India's Economy Expands 7.8% in Fiscal First Quarter, Beating Estimates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's factory activity shrinks for a second straight month</strong></summary>
+      <div class="deal-body">
+        <p>China's manufacturing activity contracted for a second month in August, though by less than expected, CNBC reported, keeping pressure on Beijing to support an economy losing momentum. A worsening construction slump and weak services add to the downside risks.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/31/china-pmi-august-economy-slowdown.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- China's Factory Activity Shrinks for Second Straight Month</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bessent takes his US growth agenda to the G20 in Asheville</strong></summary>
+      <div class="deal-body">
+        <p>Treasury Secretary Scott Bessent brought his growth-agenda message to the G20 in Asheville after an interventionist summer that drew pushback on his credibility, Bloomberg reported, and said he will ask members to rethink trade terms with China. The gathering comes as bond investors weigh soaring US debt.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/bessent-takes-us-growth-agenda-message-to-g20-summit-in-asheville" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bessent Takes US Growth Agenda Message to G20 Summit in Asheville</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (August 31, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish side has the momentum. CNBC's roundup says Warsh lifted September hike odds, WSJ says he called inflation still too high, and FT shows the yen past 160 with Japanese yields at three-decade highs. Pulling the other way, Bloomberg says bond investors at ABN AMRO and Brandywine doubt Warsh will actually hike, and CoinDesk pegs the September probability near 58%, not 90%. With ISM, JOLTS and Friday's jobs report ahead, the data decides whether the hawkish read holds or the skeptics win.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Hawkish Fed Speech Weakens the Yen and Slams Gold at the Same Time</summary>
+      <p>Warsh's hawkish speech Friday did three things at once: it lifted US rate-hike bets, pushed the yen past 160 to the dollar, and knocked gold down more than 3%. Those look like unrelated markets, but they are all reacting to the same variable, and seeing the connection makes currency and commodity moves far less mysterious. Start with the exchange rate. A currency's value against the dollar depends heavily on the interest-rate gap between the two countries. When Warsh signals the Fed may hike, the expected return on holding dollar assets rises relative to holding yen, where the Bank of Japan keeps rates far lower. Money flows toward the higher yield, selling yen to buy dollars, and the yen weakens. That is why FT could report the yen breaking 160 and Japanese yields climbing at the same time: investors are demanding more yield to hold JGBs as the rate gap and tightening bets widen globally. The 160 level matters because it is where Japanese authorities have intervened before, which is why Bloomberg says the market is now on intervention watch. Now gold. Gold pays no interest and no dividend; its entire appeal is as a store of value. That means its biggest competitor is a risk-free real yield. When the Fed is expected to hike, real yields rise, and the opportunity cost of holding a metal that yields nothing goes up. Investors sell gold to move into assets that now pay more, and the price falls. A stronger dollar compounds the move, because gold is priced in dollars, so a more expensive dollar makes gold costlier for everyone else and dampens demand. That is the mechanism behind Bloomberg's report that gold extended its decline as Warsh's pledge to fight inflation lifted rate-hike bets. The unifying idea is that expected real interest rates are the hidden hand behind currencies, gold, and even crypto. Raise the expected return on holding dollars and you simultaneously strengthen the dollar, weaken lower-yielding currencies, and pressure any asset whose value rests on being a non-yielding store of wealth. Lower that expected return and the whole chain reverses. The practical lesson is to stop watching these markets in isolation and start watching the rate path that drives all of them. When you see the dollar surging, the yen sliding and gold falling together, you do not have three separate stories; you have one story about rising real yields playing out across three instruments. The tell for whether the move has legs is the front end of the US curve and Fed-funds pricing. If those keep pricing a hike, the dollar stays bid and gold stays heavy. If the skeptics at ABN AMRO and Brandywine are right and hike odds fade, the same chain unwinds in the other direction.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-30/gold-steadies-after-tumbling-as-warsh-spurs-fed-rate-hike-bets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Extends Decline as Warsh Speech Raises Fed Rate-Hike Bets</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/yen-s-breach-of-160-to-dollar-puts-traders-on-intervention-watch" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Yen's Breach of 160 Level Puts Market on Intervention Watch</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Futures slipped on a two-front shock as Warsh's hawkish Jackson Hole speech lifted September rate-hike bets and the US and Iran exchanged strikes for the first time in about a month, sending Brent back above $90; the yen broke 160 and Japanese yields hit three-decade highs, while bond investors at ABN AMRO and Brandywine doubt Warsh will actually hike and CoinDesk pegs September odds near 58%; WSJ flagged the momentum trade unraveling as Tepper dumped 2026's hottest AI stock; bitcoin held near $78,000, its best month since November 2024; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/31</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/1</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/2</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 9/3</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 9/4</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin barely blinks as US hits Iran, on track for best month since November 2024</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held steady near $78,000 despite a broader risk-off move after the first US strikes on Iran in weeks sent oil higher and stocks lower, CoinDesk reported. The cryptocurrency has gained about 24% this month, its best run since late 2024.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/31/u-s-strikes-on-iran-fail-to-stir-bitcoin-on-track-for-best-month-since-november-2024" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US Strikes on Iran Fail to Stir Bitcoin, on Track for Best Month Since November 2024</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>September Fed rate-hike fears look overblown at 58%, not 90%</strong></summary>
+      <div class="deal-body">
+        <p>Odds of a September hike remain below 60% despite Warsh's hawkish speech, CoinDesk reported, with observers downplaying fears of imminent tightening. The gap between headline anxiety and market-implied probability is the setup for the week.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/31/september-fed-rate-hike-fears-appear-overblown-as-the-probability-is-just-58-not-90" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- September Fed Rate Hike Fears Look Overblown as the Probability Stands at Just 58%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Robinhood Chain beats Ethereum in daily revenue as memecoins take over</strong></summary>
+      <div class="deal-body">
+        <p>The two-month-old Robinhood Chain processed a record 5.52 million transactions on August 30 as users launched 22,600 tokens, CoinDesk reported, with memecoin tools driving most of the $2.66 million in daily revenue. The surge briefly topped Ethereum on the revenue metric.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/31/robinhood-chain-beats-ethereum-in-daily-revenue-as-memecoin-trading-takes-over" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Robinhood Chain Beats Ethereum in Daily Revenue as Memecoin Trading Takes Over</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Sberbank plans to add ether and USDT as loan collateral</strong></summary>
+      <div class="deal-body">
+        <p>Russia's Sberbank plans to accept ETH and USDT as collateral for crypto-backed loans, CoinDesk reported, after the Bank of Russia included both in a draft list of tokens approved for public trading. The move extends crypto deeper into mainstream Russian lending.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/31/sberbank-plans-to-add-ether-and-usdt-as-collateral-for-crypto-backed-loans" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Sberbank Plans to Add Ether and USDT as Collateral for Crypto-Backed Loans</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cronos halts blockchain after a $75 million Tectonic exploit</strong></summary>
+      <div class="deal-body">
+        <p>Cronos paused its blockchain after an attacker pushed Tectonic's thinly traded TONIC token up 100-fold, used it as collateral to borrow real assets and left most funds stranded, CoinDesk reported. The $75 million exploit is a fresh reminder of DeFi's collateral-manipulation risk.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/08/31/cronos-halts-blockchain-after-usd75-million-lending-exploit-hits-lending-app-tectonic" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Cronos Halts Blockchain After $75 Million Lending Exploit Hits Tectonic</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Saylor hints at Strategy's first bitcoin purchase in two months</strong></summary>
+      <div class="deal-body">
+        <p>Michael Saylor hinted at Strategy's first bitcoin purchase in two months, CoinDesk reported, as bitcoin rebounded from Friday's low and dominance climbed above 60%. A fresh buy from the largest corporate holder would reinforce the accumulation narrative.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/30/bitcoin-nears-usd79-000-as-michael-saylor-hints-at-first-bitcoin-purchase-in-two-months" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Michael Saylor Hints at First Bitcoin Purchase in Two Months</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Aon -- Roughly $17 Billion Deal for Insurance Brokerage USI</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Aon struck a deal worth roughly $17 billion for insurance brokerage USI, WSJ reported, buying a business private-equity giant KKR has owned since 2017.</p>
+        <p><strong>Outlook:</strong> The acquisition deepens Aon's middle-market brokerage reach and hands KKR a large exit.</p>
+        <p><strong>What it means:</strong> A $17 billion strategic deal shows large-cap M&A is still moving even as leveraged buyouts get pickier.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/aon-nears-roughly-17-billion-deal-for-insurance-brokerage-usi-fcc9fba9?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Aon Strikes Roughly $17 Billion Deal for Insurance Brokerage USI</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ONEOK -- $4.43 Billion Buy of Brazos Midstream's Permian Assets</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> ONEOK agreed to acquire Brazos Midstream's Permian Midland Basin gas gathering and processing assets for $4.43 billion, WSJ reported, expanding in the prolific American oil hub.</p>
+        <p><strong>Outlook:</strong> The deal adds scale to ONEOK's midstream footprint just as energy prices firm on the Middle East flare-up.</p>
+        <p><strong>What it means:</strong> Midstream consolidation continues as operators bet on durable Permian volumes.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/oneok-to-buy-brazos-midstreams-permian-assets-for-4-43-billion-2d0d08f6?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- ONEOK to Buy Brazos Midstream's Permian Assets for $4.43 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SLB -- $3.4 Billion Purchase of Data-Center Cooling Firm Kelvion</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SLB agreed to acquire German cooling-equipment maker Kelvion from investors including Apollo Global Management for $3.4 billion in cash, Bloomberg reported, pushing further into data-center services.</p>
+        <p><strong>Outlook:</strong> The deal repositions an oilfield-services giant toward the AI infrastructure buildout.</p>
+        <p><strong>What it means:</strong> The data-center cooling boom is drawing capital from well beyond traditional tech.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/slb-to-buy-data-center-cooling-firm-kelvion-for-3-4-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SLB to Buy Data Center Cooling Firm Kelvion for $3.4 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Enflame -- $911 Million Shanghai IPO for Tencent-Backed Chipmaker</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Shanghai Enflame Technology, backed by Tencent, is seeking about 6.12 billion yuan, roughly $911 million, in an IPO, Bloomberg reported, as the last of China's four little dragons of AI chipmakers goes public.</p>
+        <p><strong>Outlook:</strong> The listing taps strong domestic appetite for homegrown AI chip capacity.</p>
+        <p><strong>What it means:</strong> China's chip-IPO pipeline keeps filling as Beijing pushes for semiconductor self-sufficiency.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/tencent-backed-china-chipmaker-enflame-seeks-911-million-in-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tencent-Backed China Chipmaker Enflame Seeks $911 Million in IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Shein -- CEO's Wealth Slumps $15 Billion After Whittled-Down IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Shein's much-reduced IPO cut founder Sky Xu's net worth by $15 billion from a peak above $23 billion, Bloomberg reported, as fierce competition and tariffs eroded the fast-fashion growth story.</p>
+        <p><strong>Outlook:</strong> WSJ argues Shein still has moves to make despite the setback.</p>
+        <p><strong>What it means:</strong> A smaller listing shows how far the market has repriced the once-hottest e-commerce name.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-30/shein-ceo-s-wealth-slumps-15-billion-after-whittled-down-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Shein CEO's Wealth Slumps $15 Billion After Whittled-Down IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Singapore -- $173 Million in Fintech Funding Over Three Years</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Singapore earmarked S$220 million, about $173 million, over three years to fund financial technology and innovation, Bloomberg reported, as it competes with hubs like Hong Kong.</p>
+        <p><strong>Outlook:</strong> The commitment targets keeping the city-state's fintech ecosystem competitive.</p>
+        <p><strong>What it means:</strong> State money is chasing fintech leadership as Asian financial centers jockey for position.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-31/singapore-plans-173-million-in-fintech-funding-over-three-years" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Singapore Plans $173 Million in Fintech Funding Over Three Years</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>ABN AMRO Investment Solutions -- skeptical Warsh will actually hike</strong></summary>
+      <div class="deal-body">
+        <p>Bond investors at ABN AMRO Investment Solutions voiced skepticism about mounting speculation that Warsh is poised to raise rates, Bloomberg reported, reading the hawkish speech as tone rather than a commitment. A named voice fading the rate-hike scare.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-30/bond-investors-wary-after-warsh-fans-wagers-fed-poised-to-hike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Investors Wary After Warsh Speech Fuels Rate-Hike Bets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Brandywine Global -- doubts the hawkish speech means a September move</strong></summary>
+      <div class="deal-body">
+        <p>Brandywine Global Investment Management joined the skeptics questioning whether Warsh will follow his hawkish rhetoric with an actual hike, Bloomberg reported. A named bond bull betting the market has overpriced the tightening odds.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-08-30/bond-investors-wary-after-warsh-fans-wagers-fed-poised-to-hike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Investors Wary After Warsh Speech Fuels Rate-Hike Bets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>David Tepper (Appaloosa) -- overweight AI but dumped 2026's hottest AI stock</strong></summary>
+      <div class="deal-body">
+        <p>Appaloosa's David Tepper stayed overweight AI but recently sold every share of the hottest AI stock of 2026, Yahoo Finance reported. A named bull trimming a single crowded name while keeping the broad theme is a nuanced positioning tell.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/billionaire-david-tepper-appaloosa-overweight-112600522.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- David Tepper Is Overweight AI but Dumped the Hottest AI Stock of 2026</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CNBC Jackson Hole analysts -- read Warsh as tilting the FOMC tighter</strong></summary>
+      <div class="deal-body">
+        <p>An analyst roundup after the speech said Warsh's hawkish stance lifted hike chances and pointed to a tighter September meeting, CNBC reported, while flagging a possible clash with Treasury. The sell-side consensus moved hawkish overnight.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/08/31/jackson-hole-fed-chair-kevin-warsh-hawkish-rate-hikes-analysts.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Jackson Hole Analyst Roundup: Warsh's Speech Sends Hike Chances Higher</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Michael Saylor (Strategy) -- hints at a fresh bitcoin buy as dominance tops 60%</strong></summary>
+      <div class="deal-body">
+        <p>Strategy's Michael Saylor hinted at his first bitcoin purchase in two months as the token rebounded and dominance climbed above 60%, CoinDesk reported. A named crypto bull signaling renewed accumulation into month-end.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/08/30/bitcoin-nears-usd79-000-as-michael-saylor-hints-at-first-bitcoin-purchase-in-two-months" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Michael Saylor Hints at First Bitcoin Purchase in Two Months</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Warsh's Hawkish Speech Lifts September Hike Bets, the US and Iran Trade Strikes and Brent Tops $90, and the Momentum Trade Suddenly Unravels With Tepper Cutting His Hottest AI Name</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the hawkish scare fades and the buildout funds itself):</strong> Bloomberg said ABN AMRO and Brandywine doubt Warsh will actually hike, and CoinDesk pegs September odds near 58%, not 90%. On AI, SK Hynix is expanding in Japan, India opened a $13.4 billion chip fund, and Tepper stays overweight the theme. Bitcoin held near $78,000 for its best month since 2024. If the data cooperates, the rate-hike scare unwinds and risk stabilizes.</div>
+        <div class="bear"><strong>Bear (a hawkish Fed and a fragile momentum crowd):</strong> WSJ said Warsh called inflation still too high, CNBC's analysts lifted hike odds, and FT said the yen broke 160 with Japanese yields at three-decade highs. The momentum trade is unraveling, Tepper dumped 2026's hottest AI stock, Z.AI missed and Huawei's profit fell 36%. With Brent above $90 on fresh US-Iran strikes, the inflation and positioning risks are stacked.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Warsh hawkish shock; momentum trade unravels; Tepper dumps hottest AI stock; GameStop profit beat; oil spikes on Iran</td><td>Cautious</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Futures slip on rate-hike bets; Aon-USI $17B; ONEOK Permian buy; index funds beating big tech; Apple Ternus era</td><td>Cautious</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Warsh vs Treasury clash; ABN AMRO and Brandywine doubt a hike; yen past 160; Japanese yields at three-decade highs</td><td>Bearish</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Momentum crowding risk; Z.AI miss on China price war; Huawei profit -36%; BoE warns frontier AI threatens stability</td><td>Bearish</td><td>~9,500 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds $78K, best month since Nov 2024; Iran strikes fail to stir bitcoin; Saylor hints at buy; Cronos $75M exploit</td><td>Bullish</td><td>~22,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned cautious as two macro shocks hit at once. r/wallstreetbets flagged the hawkish Warsh reset and the momentum unwind, with Tepper's exit from the hottest AI name drawing chatter, though GameStop's profit beat got some cheers. r/stocks leaned wary on slipping futures and the energy bid. r/investing was the loudest bear, weighing the Warsh-Treasury clash against the yen breaking 160 and Japanese yields at three-decade highs. r/SecurityAnalysis stayed skeptical on momentum crowding, the Z.AI miss, Huawei's 36% profit drop and Bailey's stability warning. r/CryptoCurrency ran bullish as bitcoin shrugged off the Iran strikes and tracked toward its best month since 2024. The swing factor is Friday's jobs report.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Fresh US-Iran Exchange Sends Oil Up and Stocks Down at the Same Time, and What the Strait of Hormuz Actually Controls</h2>
+    <p>Bloomberg reported that the US and Iran exchanged strikes for the first time in about a month, with American forces hitting an island in the Strait of Hormuz and Iran launching attacks on the UAE and Jordan, and MarketWatch said Brent promptly topped $90 while Yahoo said stock futures fell. That combination, oil up and equities down on the same headline, is one of the most reliable patterns in markets, and understanding the mechanism tells you what to watch when geopolitics flares. Start with why oil reacts so violently to this particular chokepoint. The Strait of Hormuz is a narrow waterway connecting the Persian Gulf to the open ocean, and roughly a fifth of the world's crude and a large share of its liquefied natural gas pass through it. Because there is no cheap substitute route, any threat to shipping there raises the probability, however small, that a chunk of global supply gets cut off. Oil is priced on expectations, not just current barrels, so traders bid crude higher the instant the risk of disruption rises, before a single tanker is actually blocked. That is why Brent jumped even though flows kept moving, and why Bloomberg could separately note that LNG carriers are not following crude carriers through the strait, keeping gas near wartime highs. Now the equity side. Higher oil is a tax on the economy. Consumers and businesses spend more on fuel, which leaves less for everything else, and it lifts costs across every industry that ships, flies, or manufactures. That squeezes corporate profit margins and household spending power at the same time, which lowers expected future earnings, and stock prices are the discounted value of those earnings. There is a second, sharper channel today: oil is an inflation input, and the market is already pricing a hawkish Fed after Warsh. A spike in crude makes it harder for the Fed to ease and easier to justify hiking, so an oil shock now doubles as a rate shock, and both push equity valuations down. That is why the Iran headline hit stocks harder than it would in a calm rate environment. The reason the two assets move in opposite directions is that they are pricing the same event from opposite sides: oil rises because supply looks scarcer, and stocks fall because that same scarcity raises costs and complicates the rate path. The practical lesson is to treat a geopolitical oil spike as an inflation and margin story, not just an energy story. Watch whether the move sticks, because most flare-ups fade once it becomes clear physical flows are uninterrupted, exactly what Bloomberg meant when it noted crude carriers resumed transit. If Brent holds its gains for several sessions, the market believes supply is genuinely at risk and the equity and rate damage compounds. If oil gives the spike back within a day or two, as Yahoo's note on Asian refiners rerouting through Argentina suggests is possible, the stock selloff usually reverses just as fast, because the inflation threat that drove it never materialized.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-08-31/us-iran-exchange-strikes-following-weeks-of-calm-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US, Iran Exchange Strikes for First Time in About a Month</a></p>
+    <p class="deal-source"><a href="https://www.marketwatch.com/story/brent-oil-tops-90-after-first-u-s-and-iran-fighting-in-a-month-3b818e19?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Brent Oil Tops $90 After First US and Iran Fighting in a Month</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-08-31/lng-exports-though-hormuz-remain-stalled-even-as-oil-flows-rebound" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- LNG Exports Through Hormuz Remain Stalled Even as Oil Flows Rebound</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>ISM manufacturing and JOLTS, Tuesday and Wednesday.</strong> After Warsh's hawkish speech lifted September hike bets, watch whether the first data prints validate the hawks or hand the skeptics at ABN AMRO and Brandywine their case.</li>
+      <li><strong>August jobs report, Friday Sep 4.</strong> The single biggest catalyst of the week and the swing input for the September FOMC; a soft number would cut against the tightening scare, a hot one would cement it.</li>
+      <li><strong>G20 finance ministers in Asheville.</strong> Bessent takes his growth agenda and a push to rethink China trade terms to global peers as bond investors weigh soaring US debt and the Fed-Treasury tension.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Dell and Palo Alto Networks.</strong> Yahoo framed both as tests of whether AI-adjacent valuations hold up; watch the reads on enterprise AI hardware demand and security spending.</li>
+      <li><strong>Chip and AI follow-through.</strong> After Z.AI's miss and Huawei's 36% profit drop, watch whether the next hardware prints confirm the memory-cost squeeze or the demand story wins out.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>M&A and IPO pipeline.</strong> After Aon's $17 billion USI deal, ONEOK's $4.43 billion Permian buy and Enflame's $911 million IPO, watch whether strategic dealmaking stays active while the leveraged-buyout window stays tighter.</li>
+      <li><strong>Data-center infrastructure spend.</strong> After SLB's $3.4 billion Kelvion cooling buy, watch whether more non-tech capital keeps flowing into the AI buildout's physical layer.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran escalation and oil.</strong> With the first exchange of strikes in a month and Brent above $90, watch whether the flare-up sticks or fades and whether Hormuz shipping stays open.</li>
+      <li><strong>Venezuela oil and the yen.</strong> Watch Trump's move to seize Venezuela's 65 billion barrels and whether Japan intervenes now that the yen has broken past 160.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>More granular coverage of credit-market plumbing and how late-cycle positioning shows up in factor unwinds like the momentum trade.</li>
+      <li>Deeper tracking of the debasement trade linking gold, bitcoin and long-end yields, especially when a hawkish Fed reprices all three at once.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Aug 31, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-08-31 08:00 ET); Bloomberg Technology (18 fresh, newest 2026-08-31 07:45 ET); Bloomberg Economics (18 fresh, newest 2026-08-31 07:12 ET); CNBC Top News (2 fresh, newest 2026-08-31 07:27 ET); CNBC Finance (3 fresh, newest 2026-08-31 07:28 ET); CNBC Economy (4 fresh, newest 2026-08-31 07:23 ET); MarketWatch Top Stories (10 fresh, newest 2026-08-31 08:00 ET); WSJ Markets (15 fresh, newest 2026-08-31 07:42 ET); Yahoo Finance (22 fresh, newest 2026-08-31 07:45 ET); FT Home (8 fresh, newest 2026-08-31 06:01 ET); CoinDesk (14 fresh, newest 2026-08-31 07:53 ET); Stratechery (1 fresh, newest 2026-08-31 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. Why did the yen weaken past 160 and gold fall after Warsh's speech?</strong></p>
+      <span class="opt" data-opt="A">A. Japan cut its own rates to zero the same day</span>
+      <span class="opt" data-opt="B">B. Gold miners flooded the market with new supply</span>
+      <span class="opt" data-opt="C">C. Rising US rate-hike bets lifted expected dollar yields</span>
+      <span class="opt" data-opt="D">D. The Bank of Japan sold its entire gold reserve</span>
+      <div class="feedback"><strong>C is correct.</strong> A hawkish Fed raises expected returns on dollar assets, which strengthens the dollar, weakens the lower-yielding yen and pressures gold since its rival is a higher risk-free real yield. Japan did not cut to zero, miners did not flood supply, and the BOJ did not dump gold.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>2. What did bond investors at ABN AMRO and Brandywine Global argue?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed has already cut rates twice this year</span>
+      <span class="opt" data-opt="B">B. They doubt Warsh will actually follow through and hike</span>
+      <span class="opt" data-opt="C">C. Inflation has fallen back to the 2% target</span>
+      <span class="opt" data-opt="D">D. The Treasury should stop issuing long-term bonds</span>
+      <div class="feedback"><strong>B is correct.</strong> Both firms voiced skepticism that Warsh is actually poised to raise rates, reading the hawkish speech as tone rather than a commitment, and CoinDesk pegged September odds near 58%. They did not claim cuts happened, declare victory on inflation, or target issuance.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why can a momentum trade unravel so quickly once it starts?</strong></p>
+      <span class="opt" data-opt="A">A. Crowded, levered books force selling of the same winners</span>
+      <span class="opt" data-opt="B">B. Momentum stocks always have the weakest fundamentals</span>
+      <span class="opt" data-opt="C">C. Central banks directly ban momentum strategies in downturns</span>
+      <span class="opt" data-opt="D">D. Index funds are legally required to sell winners first</span>
+      <div class="feedback"><strong>A is correct.</strong> Momentum is a crowded, correlated trade, so when leaders stall, levered and volatility-targeted books all cut the same names at once, and the selling feeds itself. The winners are not necessarily weak fundamentally, no bank bans the strategy, and index funds face no such rule.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Warsh's hawkish Jackson Hole speech lifted September rate-hike bets, with CNBC's analyst roundup saying hike chances rose and the Fed may clash with Treasury, WSJ reporting he called inflation still too high, and FT flagging the yen past 160 and Japanese yields at three-decade highs, while ABN AMRO and Brandywine Global doubt he will actually hike and CoinDesk says September odds are only 58%.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-30/bond-investors-wary-after-warsh-fans-wagers-fed-poised-to-hike", "take": "ABN AMRO and Brandywine are skeptical Warsh is actually poised to hike." },
+      { "name": "CoinDesk", "lean": "bull", "url": "https://www.coindesk.com/markets/2026/08/31/september-fed-rate-hike-fears-appear-overblown-as-the-probability-is-just-58-not-90", "take": "September hike odds stand near 58%, not the 90% headlines imply." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/31/jackson-hole-fed-chair-kevin-warsh-hawkish-rate-hikes-analysts.html", "take": "Warsh's speech sent hike chances higher and may put the Fed at odds with Treasury." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/u-s-stock-futures-little-changed-as-markets-weigh-warshs-hawkish-remarks-5a036994?mod=rss_markets_main", "take": "Warsh said inflation remained too high and better summer readings had not convinced him." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/1c4f488f-32bc-4b49-a0c8-c55d95f5422b?syn-25a6b1a6=1", "take": "The yen weakened past 160 and Japanese yields hit three-decade highs after Warsh." }
+    ]
+  },
+  "iran": {
+    "diverge": "The US and Iran exchanged strikes for the first time in about a month, with American forces hitting an island in the Strait of Hormuz and Iran attacking the UAE and Jordan, sending Brent above $90 while Trump moves to seize Venezuela's reserves and LNG stays stalled through Hormuz, but oil flows are rebounding and Asian refiners are adapting via Argentina.",
+    "sources": [
+      { "name": "Yahoo Finance", "lean": "bull", "url": "https://finance.yahoo.com/energy/articles/asian-refiners-turn-argentina-iran-083535004.html", "take": "Asian refiners are turning to Argentina as the Iran war disrupts supply." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/08/31/india-economy-gdp-energy-el-nino.html", "take": "India grew a faster-than-expected 7.8% despite the Iran war." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-08-31/us-iran-exchange-strikes-following-weeks-of-calm-video", "take": "The US and Iran exchanged strikes for the first time in about a month." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/brent-oil-tops-90-after-first-u-s-and-iran-fighting-in-a-month-3b818e19?mod=mw_rss_topstories", "take": "Brent topped $90 after the first US-Iran fighting in a month." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-08-31/lng-exports-though-hormuz-remain-stalled-even-as-oil-flows-rebound", "take": "LNG exports through Hormuz remain stalled, keeping gas near wartime highs." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Wall Street's momentum trade suddenly unraveled as WSJ called it a losing game and Tepper's Appaloosa dumped 2026's hottest AI stock, while Z.AI missed on China's price war, Huawei's profit fell 36% on memory costs and the BoE warned frontier AI threatens financial stability, but SK Hynix weighs a Japan memory plant, India opened a $13.4 billion chip fund and Japan's Industry Ministry seeks $49 billion.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-31/sk-hynix-weighs-japan-memory-fab-partnership-to-supply-ai-boom", "take": "SK Hynix weighs a Japan memory plant to supply the AI boom." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-08-31/india-offers-chip-design-gear-subsidy-from-13-4-billion-fund", "take": "India offers chip design and equipment subsidies from a $13.4 billion fund." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/stocks/the-sudden-unraveling-of-wall-streets-momentum-trade-fe79b4fa?mod=rss_markets_main", "take": "The momentum trade has suddenly turned into a losing game." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/markets/stocks/articles/billionaire-david-tepper-appaloosa-overweight-112600522.html", "take": "Tepper dumped every share of 2026's hottest AI stock." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/08/31/bailey-frontier-ai-financial-stability-risk.html", "take": "The BoE's Bailey warns frontier AI threatens global financial stability." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["GameStop","ONEOK","Aon","SLB","IREN","Huawei"],
+    "values": [6.0, -1.5, -3.0, -2.0, -6.0, -8.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [26000, 15000, 14000, 9500, 22000],
+    "colors": ["neutral","neutral","bear","bear","bull"]
+  },
+  "dealSizes": {
+    "labels": ["Aon-USI","ONEOK-Brazos","SLB-Kelvion","Enflame IPO","Singapore fintech"],
+    "values": [17.0, 4.43, 3.4, 0.911, 0.173]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
