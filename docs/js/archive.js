@@ -3,7 +3,10 @@
 // ============================================================
 (function() {
   function sitePath(rel) {
+    if (typeof mdSitePath === 'function') return mdSitePath(rel);
     var path = window.location.pathname || '/';
+    var archiveAt = path.indexOf('/archive/');
+    if (archiveAt >= 0) return path.slice(0, archiveAt + 1) + String(rel || '').replace(/^\//, '');
     if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
     else if (!path.endsWith('/')) path += '/';
     return path + String(rel || '').replace(/^\//, '');
