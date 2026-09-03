@@ -62,6 +62,23 @@ class ValidateDigestTests(unittest.TestCase):
 
             self.assertEqual(missing, [])
 
+    def test_static_rules_reject_archive_relative_data_fetches(self):
+        module = load_validate_digest()
+        rule = next(rule for rule in module.STATIC_RULES if rule[0] == "no archive-relative data fetches")
+        _, pattern, expected, _ = rule
+
+        bad_js = """
+        fetch('archive/' + iso + '.html');
+        loadFred('fred-data.json');
+        """
+        good_js = """
+        fetch(mdSitePath('archive/' + iso + '.html'));
+        loadFred(mdSitePath('fred-data.json'));
+        """
+
+        self.assertGreater(len(module.re.findall(pattern, bad_js)), expected)
+        self.assertEqual(len(module.re.findall(pattern, good_js)), expected)
+
 
 if __name__ == "__main__":
     unittest.main()
