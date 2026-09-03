@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Sep 2, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-09-02</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, September 2, 2026</h1>
+    <div class="meta">
+      <p>The global bond rout deepened again as fresh US strikes on Iran pushed oil near $95 and drove the US 10-year to its highest since 2023. Europe joined hard, with the Bund at a 2011 high, gilts at a 2007 high and Japan's 10-year at levels last seen in 1996. Dell raised its sales outlook by $25 billion, Nvidia is said to be nearing a $14 billion Hugging Face deal, and Friday's jobs report looms over a September rate-hike debate.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "A global government-bond selloff intensified for a third session as the US and Iran exchanged fresh strikes, pushing oil near $95 a barrel, lifting the US 10-year yield to its highest since 2023 and dragging European bonds to multi-year lows, with Trump downplaying any desire for a deal as inflation fears spread through rates markets",
+      "framings": [
+        {"outlet": "Financial Times", "headline": "Energy Price Surge Hits Bond Markets as European Gas Reaches Three-Year High", "angle": "Frames the rout as an energy-driven inflation shock, with US 10-year costs at their highest since 2023 as fears of a full-blown Iran conflict return.", "lean": -50, "pull": "US 10-year borrowing costs touch highest since 2023 as fears of a return to full-blown Iran conflict rise."},
+        {"outlet": "WSJ", "headline": "Europe Joins Global Bond Selloff as Middle East Hostilities Lift Oil Prices", "angle": "Leads with the Bund at a 2011 high, gilts at a 2007 high and the JGB at a 1996 peak as oil pushes the global bond market closer to the edge.", "lean": -45, "pull": "Rising energy costs are the inflationary trigger pushing yields higher around the world."},
+        {"outlet": "Bloomberg", "headline": "Trump Downplays Desire for Iran Deal, Global Bonds Slump", "angle": "Ties the slump to escalating strikes but notes the rout is nothing compared with the rapid-fire hikes of four years ago.", "lean": -20, "pull": "The selloff sweeping global bond markets looks painful, but it is nothing compared with the rout four years ago."},
+        {"outlet": "CNBC", "headline": "Euro Zone Inflation Is Back Above 3%, Higher Rates Likely to Follow", "angle": "Casts the ECB as the next central bank forced to hike as the Iran war lifts regional energy costs.", "lean": -15, "pull": "The European Central Bank is seen hiking rates in September as the Iran war raises energy costs in the region."},
+        {"outlet": "CoinDesk", "headline": "A Fed Rate Increase Would Be a Mistake, Some Observers Say", "angle": "Reframes the hawkish tape as an overreaction, arguing a hike into an oil shock risks a policy error as risk assets fall.", "lean": 10, "pull": "Some observers say a Fed rate increase would be a mistake as bitcoin, gold and stocks fall."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Global Bond Rout Enters a Third Session as WSJ Says Europe Joins In With the Bund at a 2011 High and Gilts at a 2007 High, FT Says the US 10-Year Hit Its Highest Since 2023 on the Energy Surge, Apollo's Torsten Slok Says the Iran War and Tariffs Will Drive Yields Higher, JPMorgan's Grace Peters Warns Yields at 5% Put Stocks at Risk and State Street's Cayla Seder Says Markets React Poorly if the Fed Holds, but WSJ Advisers Say Fixed Income Still Belongs in a Portfolio, Berkshire's Greg Abel Shrugs Off Japanese Yields, and CoinDesk Observers Call a Hike a Mistake</h3>
+      </div>
+      <p>The selloff that started at Jackson Hole and widened on the Hormuz flare-up refused to slow. WSJ said Europe joined the global bond selloff as Middle East hostilities lifted oil, with the 10-year Bund reaching its highest since 2011, gilts climbing to a 2007 peak and Japan's 10-year hitting its highest since September 1996. FT said the US 10-year touched its highest since 2023 as European gas hit a three-year high and fresh strikes on Iran sent Treasury yields to the day's highs. Bloomberg reported the European and UK rout continued as natural gas climbed. Apollo's Torsten Slok told Bloomberg US yields are set to rise on the Iran war and tariffs, though he argued the pressure has little to do with the fiscal picture and that there are fewer worries about US policymaking than in Japan or Germany. JPMorgan's Grace Peters warned that yields near 5% pose a key risk to equities heading into a historically weak September, and State Street's Cayla Seder said markets would react poorly if the Fed holds. Fed Governor Barr said he will back a hike if inflation does not ease. The other side has real voices. WSJ ran a guide arguing fixed income still deserves a place in a diversified portfolio despite the rout, Berkshire's Greg Abel told CNBC that Japanese bond yields are not a challenge for the trading houses because levels are still relatively low, and CoinDesk said some observers think a Fed hike into an oil shock would be a mistake. Friday's jobs report is the swing input.</p>
+      <p>The bull read is WSJ advisers keeping fixed income in the mix, Berkshire's Greg Abel shrugging off Japanese yields, and CoinDesk observers calling a hike a policy error. The bear read is Europe joining the rout with the Bund and gilts at multi-year highs, the US 10-year at its highest since 2023, Slok seeing yields rise further, and Peters warning stocks are at risk near 5%.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the selloff is an entry, not a crisis):</strong> WSJ said advisers still see fixed income belonging in a diversified portfolio even during a global rout, and Berkshire's Greg Abel told CNBC Japanese bond yields are not a challenge for the trading houses because levels remain relatively low. CoinDesk said some observers think a hike into an oil shock would be a mistake the Fed avoids. If Friday's jobs number softens or oil retraces, the yield spike unwinds and the added carry gets locked in.</div>
+        <div class="bear"><strong>Bear (an energy-driven rout with no floor):</strong> WSJ said Europe joined the selloff with the Bund at a 2011 high, gilts at 2007 levels and the JGB at a 1996 peak, and FT put the US 10-year at its highest since 2023. Apollo's Torsten Slok sees yields rising further on the Iran war and tariffs, JPMorgan's Grace Peters warns yields near 5% threaten stocks, and State Street's Cayla Seder says a Fed hold would be punished. With gas at a three-year high, the path of least resistance for yields is up.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/investing/europe-joins-global-bond-selloff-as-middle-east-hostilities-lift-oil-prices-fca5d94a?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Europe Joins Global Bond Selloff as Middle East Hostilities Lift Oil Prices</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>The US-Iran War Escalates Sharply as FT and Bloomberg Report Fresh American Strikes and Iranian Retaliation, Trump Downplays Any Desire for a Deal, WSJ Says Oil Hovers Near $95, Bloomberg Flags US Diesel at an April High and Ryanair Warns of $140 Jet Fuel, but Bloomberg Says Chevron Will Pour $7 Billion Into Venezuelan Output, Nordea Lifts Nordic Forecasts on Energy Resilience and Copper Slid on Growth Fears</h3>
+      </div>
+      <p>The energy tape reheated as the conflict jumped a level. Bloomberg's Opening Trade said American forces carried out a fresh wave of strikes and Iran said it retaliated, while Trump wrote on Truth Social that he is not trying to force Iran to the bargaining table, downplaying the chances of a deal. FT said the US launched further strikes as the conflict flared, pushing oil higher and sending Treasury yields to the day's highs on renewed inflation fears. WSJ said oil hovered close to $95 a barrel as both sides exchanged strikes, putting further pressure on sovereign debt. Bloomberg said US diesel hit its highest since April, when the initial US-Iran war peaked, and MarketWatch reported Ryanair cut winter capacity to limit its exposure to unhedged jet fuel near $140. The inflation channel is live and feeding rates. But the offsets are visible. Bloomberg said Chevron will invest $7 billion to more than double Venezuelan output under a US-led push, adding supply over time, Nordea raised its Nordic growth forecasts citing better-than-expected resilience to higher energy prices, and copper fell to a one-week low as growth worries resurfaced, a sign markets are pricing demand destruction rather than pure scarcity. Bloomberg also reported Russia paused its grain export duty as Black Sea shipments stalled. The question is whether the strikes settle into a pattern, because sustained supply risk keeps the inflation premium live right as yields break out.</p>
+      <p>The bull read is Chevron adding $7 billion of Venezuelan supply, Nordea lifting forecasts on energy resilience, and copper sliding on demand rather than scarcity. The bear read is fresh US strikes and Iranian retaliation, Trump waving off a deal, oil near $95, diesel at an April high, and Ryanair bracing for $140 jet fuel.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the shock stays absorbable):</strong> Bloomberg said Chevron will pour $7 billion into Venezuela to more than double output, adding non-OPEC barrels, and Nordea raised its Nordic growth forecasts on resilience to higher energy prices. Copper's slide to a one-week low suggests markets are pricing demand softening, not runaway scarcity. If the strikes prove episodic and Venezuelan and other supply keeps building, the crude premium and the inflation scare it feeds both bleed back out.</div>
+        <div class="bear"><strong>Bear (the war becomes structural inflation):</strong> FT and Bloomberg said the US and Iran exchanged fresh strikes and Trump downplayed any deal, with WSJ putting oil near $95 and yields at the day's highs. Bloomberg said US diesel hit an April high and MarketWatch said Ryanair is bracing for $140 jet fuel while cutting capacity. Ghana inflation resumed its climb on oil-driven transport costs. Sustained strikes are an upside inflation risk straight into a global bond selloff.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/c557ccc2-9fe7-4725-8a1c-c40a0948e8d3?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US Launches Further Strikes on Iran as Conflict Flares Up</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Buildout Keeps Writing Giant Checks as Bloomberg Says Nvidia Is Nearing a $14 Billion Deal for Hugging Face, Dell Raised Its Sales Outlook by $25 Billion on AI Servers, Yahoo Says Nvidia Forecasts a 70% Revenue Jump on a SpaceX Deal and Brookfield Quintupled Its AI Power Framework to $25 Billion, but Yahoo Says the Bank of England Warns of Bubble Risk, MarketWatch Says PwC Sees Spend Topping the Railways and Internet Combined, WSJ Says Broadcom Shed $520 Billion and Stratechery Says Nvidia Is Fighting a Consolidated World</h3>
+      </div>
+      <p>The compute land grab kept expanding even as the bubble questions got louder. Bloomberg said Nvidia is in advanced talks to acquire AI startup Hugging Face in a deal that may total about $14 billion, and Dell shares jumped after it boosted its annual sales forecast by $25 billion on sustained AI server demand, with MarketWatch noting Morgan Stanley, Goldman Sachs and Citigroup all raised targets. Yahoo reported Nvidia forecasts a roughly 70% revenue jump fueled by an exclusive SpaceX deal after a record $96.2 billion quarter, and separately that Microsoft signed a 20-year AI power deal with Chevron and Brookfield quintupled its AI power framework to $25 billion. Bloomberg said TSMC's quarterly chipmaking-tool needs have nearly doubled this year. But the skeptics are getting specific. Yahoo said the Bank of England warned of AI bubble risk even as Nvidia forecasts surge, and ran a piece on the biggest thing keeping AI investors up at night. MarketWatch cited PwC estimating AI capital expenditure will exceed the cost of building the railways in both the US and UK with the internet added on top. WSJ said Broadcom's AI success story got complicated as the stock shed roughly $520 billion since June, and Stratechery framed Nvidia's whole strategy, including the Hugging Face talks, as avoiding a consolidated world. Uber cut 3,300 jobs and Bloomberg tied Seattle luxury-home weakness to AI layoffs. The demand is undeniable, but the debate has shifted to scale and who absorbs the risk.</p>
+      <p>The bull read is Nvidia's $14 billion Hugging Face talks, Dell lifting its outlook $25 billion, Nvidia's 70% forecast on SpaceX, and Brookfield's $25 billion power framework. The bear read is the Bank of England's bubble warning, PwC's railways-plus-internet spend estimate, Broadcom's $520 billion skid, and Stratechery on Nvidia dodging consolidation.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the capital and the demand keep compounding):</strong> Bloomberg said Nvidia is nearing a $14 billion Hugging Face deal and Dell lifted its sales outlook by $25 billion on AI servers, with Morgan Stanley, Goldman and Citi raising targets. Yahoo said Nvidia forecasts a 70% revenue jump on a SpaceX deal after a $96.2 billion quarter, and Brookfield quintupled its power framework to $25 billion. TSMC's tool needs nearly doubled. When demand is this broad and marquee names commit at scale, the buildout has room to run.</div>
+        <div class="bear"><strong>Bear (the scale is now the risk):</strong> Yahoo said the Bank of England warned of AI bubble risk, and MarketWatch cited PwC estimating AI capex will exceed the railways in the US and UK plus the internet combined. WSJ said Broadcom shed roughly $520 billion since June, Stratechery said Nvidia is maneuvering to avoid a consolidated world, and Uber cut 3,300 jobs while AI layoffs dent Seattle housing. When spend outruns any prior buildout and the plumbing looks circular, leadership gets fragile.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/videos/2026-09-02/nvidia-may-be-close-to-agreeing-deal-for-hugging-face-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia May Be Close to $14 Billion Deal for Hugging Face</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks fall as US-Iran turmoil keeps oil elevated and yields high</strong></summary>
+      <div class="deal-body">
+        <p>Stocks declined and futures slipped as intensifying US-Iran hostilities extended oil's advance and kept bond yields elevated, Bloomberg reported, leaving September rate hikes across major economies firmly in play. The two-front shock of oil-driven inflation and higher yields set a defensive tone.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-01/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Fall as US-Iran Turmoil Keeps Oil Elevated</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dell jumps after raising its sales outlook by $25 billion on AI servers</strong></summary>
+      <div class="deal-body">
+        <p>Dell (DELL) shares rose after the company boosted its annual sales forecast by $25 billion, a further sign of surging demand for AI servers, MarketWatch reported, with Morgan Stanley, Goldman Sachs and Citigroup all lifting price targets. It is a rare clean equity bright spot on a defensive tape.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/dell-shares-rise-as-demand-jumps-for-ai-servers-heres-what-wall-street-analysts-are-saying-happens-next-ca2184ca?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Dell Shares Rise as Demand Jumps for AI Servers</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Broadcom needs a Nvidia-like print to stop a $520 billion skid</strong></summary>
+      <div class="deal-body">
+        <p>Broadcom (AVGO) has shed roughly $520 billion in market value since a June high after a disappointing outlook, Bloomberg reported, and needs Nvidia-like earnings to arrest the slide. WSJ said the chipmaker's AI success story has grown more complicated heading into the print.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/broadcom-needs-nvidia-like-earnings-to-stop-520-billion-skid" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Broadcom Needs Nvidia-Like Earnings to Stop $520 Billion Skid</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MongoDB tumbles despite strong earnings on a disappointing detail</strong></summary>
+      <div class="deal-body">
+        <p>MongoDB (MDB) shares fell despite strong results, MarketWatch reported, as investors focused on its Atlas multi-cloud database posting the same revenue growth for a fifth straight quarter. The reaction shows how unforgiving the tape is on any deceleration in software.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/mongodb-shares-tumble-despite-strong-earnings-on-disappointing-news-for-investors-5ee13c7b?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- MongoDB Shares Tumble Despite Strong Earnings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Negative-beta stocks are quietly keeping up with the market</strong></summary>
+      <div class="deal-body">
+        <p>So-called negative-beta stocks, which tend to rise when the S&P 500 falls, are keeping pace with the rest of Wall Street, MarketWatch reported, an unusual pattern one strategist calls a way to ride out volatility events. The demand signals defensive positioning into a jittery September.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/stocks-that-rise-when-the-s-p-500-falls-are-weirdly-keeping-up-with-the-rest-of-wall-street-0cf76f31?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Stocks That Rise When the S&P 500 Falls Are Keeping Up</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stan Kroenke agrees to buy MLB's Angels at a $4 billion value</strong></summary>
+      <div class="deal-body">
+        <p>Stan Kroenke agreed to buy a controlling stake in the Los Angeles Angels, valuing the team and its regional network at $4 billion, CNBC reported. Kroenke Sports and Entertainment was valued at more than $26 billion in CNBC's latest ranking of sports empires.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/01/stan-kroenke-controlling-stake-los-angeles-angels.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Stan Kroenke Agrees to Buy MLB's Angels at a $4 Billion Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Elon Musk eyes power-turbine components, and it won't be easy</strong></summary>
+      <div class="deal-body">
+        <p>Elon Musk wants to make power-turbine components, WSJ reported, and shares of blade-and-vane manufacturers fell in response, though the competitive threat to them is still remote. The move ties into the scramble for power to feed AI data centers.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/elon-musk-wants-to-make-power-turbine-components-it-wont-be-easy-6821757b?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Elon Musk Wants to Make Power-Turbine Components. It Won't Be Easy.</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> Stocks opened defensive with the same two shocks stacking, an intensifying US-Iran war and a bond rout that dragged the US 10-year to its highest since 2023. Dell's $25 billion outlook lift and the analyst upgrades show AI hardware demand is real, but Broadcom's $520 billion skid and MongoDB's punishment on any deceleration show the tape has no patience. Negative-beta stocks keeping up is the tell that money is quietly hedging. The swing input is Friday's jobs number.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a 10-Year Yield Pushing Toward 5% Hits the Highest-Multiple Stocks First</summary>
+      <p>JPMorgan's Grace Peters warned that yields near 5% pose a key risk to global equities as they head into a historically weak September, and the US 10-year just hit its highest since 2023 while chip weakness dragged futures. That link between rising yields and falling growth stocks is one of the most reliable relationships in markets, and it comes straight from how stocks are valued. A share price is the present value of a company's future cash flows, and to convert future dollars into today's dollars you discount them by a rate tied to the risk-free yield. When the 10-year climbs, that discount rate rises, and every future dollar is worth less today. The catch is that the effect is not uniform. It falls hardest on companies whose cash flows sit furthest in the future, because discounting compounds over time. A mature, cash-generating business returns most of its value in the next few years, so a higher discount rate barely dents it. A high-multiple growth name is priced on profits expected many years out, and those distant cash flows shrink the most when rates climb. That is the mathematical reason a jump in yields lands on chipmakers and AI leaders before it touches utilities or staples. There is a second channel that compounds the first. When risk-free yields rise, the return investors earn just holding Treasuries goes up, which raises the bar every risky asset must clear to justify its price. If a two-year note yields well over 4%, a stock at a stretched multiple has to promise even more upside to compete, and money rotates out of the priciest names toward safer income. This is why a bond selloff and a growth-stock selloff so often arrive together, and it is exactly the risk Peters flagged near 5%. The practical lesson is to watch the front end and the 10-year alongside the equity tape. If yields keep grinding higher on oil-driven inflation and rate-hike bets, the pressure concentrates on the crowded, long-duration winners rather than the broad index, and the rotation can look like a growth-versus-value story when it is really a duration story. The way to gauge whether the pressure is easing is not whether the index bounces but whether yields stop rising, because the discount rate is the variable actually driving the move. When the 10-year stabilizes or retraces, the highest-multiple names tend to lead the recovery just as sharply as they led the decline, since the same compounding math now runs in their favor. That is also why the same names swung so hard on Dell's strong outlook and Broadcom's stumble on the same day: at high multiples, small changes in either rates or the growth story move price a lot.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/jpmorgan-s-peters-says-yields-at-5-could-put-stocks-at-risk" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- JPMorgan's Peters Says Yields at 5% Could Put Stocks at Risk</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-02-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. 10-Year Yield Hits Highest Level Since 2023 as Bond Rout Deepens</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nvidia nears a $14 billion deal to buy Hugging Face</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia is in advanced talks to acquire AI startup Hugging Face in a transaction that may total about $14 billion, Bloomberg reported. Stratechery framed the move as part of Nvidia's broader strategy to avoid a consolidated world where a few cloud giants control the AI stack.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-02/nvidia-may-be-close-to-agreeing-deal-for-hugging-face-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia May Be Close to $14 Billion Deal for Hugging Face</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia forecasts a 70% revenue jump as the BoE warns of bubble risk</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) forecasts a roughly 70% revenue jump fueled by an exclusive SpaceX deal after a record $96.2 billion quarter, Yahoo Finance reported, even as the Bank of England warned of AI bubble risk. Trump hailed the print and Micron's $250 billion US bet as proof of a domestic chip revival.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/ai/articles/nvidia-forecasts-70-revenue-jump-110000227.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Nvidia Forecasts 70% Revenue Jump as Bank of England Warns of AI Bubble Risk</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dell raises its annual sales outlook by $25 billion on AI servers</strong></summary>
+      <div class="deal-body">
+        <p>Dell (DELL) jumped in premarket trading after boosting its annual revenue forecast by $25 billion, a further sign of surging demand for servers to run AI tasks, Bloomberg reported. The print is one of the cleanest reads yet on enterprise AI hardware demand.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-01/dell-raises-annual-revenue-outlook-on-sustained-ai-server-sales" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dell Shares Rise After Boosting Sales Outlook by $25 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>PwC says AI capex will top the railways and internet combined</strong></summary>
+      <div class="deal-body">
+        <p>AI capital expenditure is forecast to exceed the cost of building the railways in both the US and UK, with the internet added on top, MarketWatch reported, citing PwC. The accounting giant argues the buildout differs from past waves because of its sheer scale and spending growth.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/ai-capital-expenditure-forecasted-to-exceed-the-cost-of-building-railways-in-both-the-u-s-and-the-u-k-with-the-internet-added-on-top-765b927f?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- AI Capex Forecast to Exceed the Cost of Railways and the Internet Combined</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Uber to cut 3,300 jobs in a management overhaul</strong></summary>
+      <div class="deal-body">
+        <p>Uber (UBER) is cutting about 3,300 roles, roughly 10% of its global staff, in a restructuring aimed at reducing management layers and reallocating spending into ride-sharing, delivery and robotaxis, Bloomberg reported. The cuts add to a widening list of AI-era corporate job reductions.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/uber-to-cut-3-300-jobs-in-company-overhaul-to-reduce-management-layers" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Uber to Cut 3,300 Jobs in Company Overhaul</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>TSMC's quarterly chipmaking-tool needs nearly doubled this year</strong></summary>
+      <div class="deal-body">
+        <p>TSMC's need for chipmaking tools has nearly doubled since the end of last year as it expands production to meet AI demand, a senior executive told Bloomberg on the sidelines of SEMICON Taiwan. The surge underscores how far the supply chain is scaling to keep up.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/tsmc-s-quarterly-chipmaking-tool-needs-almost-doubled-this-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- TSMC's Quarterly Chipmaking Tool Needs Almost Doubled This Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lyte, from Apple Face ID veterans, triples value to $1.6 billion</strong></summary>
+      <div class="deal-body">
+        <p>Lyte, a fast-growing robotics and AI startup founded by top members of Apple's Face ID team, secured about $165 million in a new round that more than tripled its valuation to $1.6 billion, Bloomberg reported. The raise shows applied-AI robotics still commands sharp markups.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/lyte-closes-165-million-round-bringing-ai-startup-s-valuation-to-1-6-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Lyte Closes $165 Million Round at a $1.6 Billion Valuation</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Wednesday September 2, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is Nvidia's $14 billion Hugging Face talks, Dell's $25 billion outlook lift with three banks raising targets, Nvidia's 70% forecast on SpaceX, and TSMC's tool needs nearly doubling, all pointing to sustained demand. The counter-signal is the Bank of England's bubble warning, PwC saying spend will top the railways and internet combined, Broadcom's $520 billion skid, and Uber cutting 3,300 jobs. The frame is a buildout still fully funded while the scale itself becomes the risk investors debate.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>US 10-year yield hits highest since 2023 as the bond rout deepens</strong></summary>
+      <div class="deal-body">
+        <p>Global bond yields kept climbing, with European countries among the hardest hit, WSJ reported, as the US 10-year reached its highest level since 2023. The runup heaps pressure on everyone from home buyers to governments trying to fund their borrowing.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-02-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. 10-Year Yield Hits Highest Level Since 2023 as Bond Rout Deepens</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Europe joins the selloff with the Bund at 2011 and gilts at 2007 highs</strong></summary>
+      <div class="deal-body">
+        <p>The 10-year Bund yield reached its highest since 2011, gilts climbed to their highest since 2007 and Japan's 10-year hit its highest since September 1996, WSJ reported, as Middle East hostilities lifted oil. FT said European gas at a three-year high added to the inflation worry.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/f73c2c95-5c73-4b2f-9f00-9fa8c12c10c9?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Energy Price Surge Hits Bond Markets as European Gas Reaches Three-Year High</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apollo's Slok says the Iran war and tariffs, not the deficit, drive yields</strong></summary>
+      <div class="deal-body">
+        <p>US yields are likely to head higher driven by the Iran war and tariffs, but the pressure has little to do with the fiscal situation, Apollo's Torsten Slok told Bloomberg. He argued there are fewer worries about US policymaking than in Japan or Germany.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/apollo-s-slok-says-us-yields-set-to-rise-on-iran-war-tariffs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apollo's Slok Says US Yields Set to Rise on Iran War, Tariffs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB's Nagel signals a hike next week but stays cautious beyond</strong></summary>
+      <div class="deal-body">
+        <p>Governing Council member Joachim Nagel indicated the European Central Bank will raise rates next week, though he stayed wary on what comes after, Bloomberg reported. Euro-zone inflation back above 3% on Iran-war energy costs cemented the market's hike expectation.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/nagel-signals-ecb-will-hike-next-week-cautious-beyond-that" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nagel Signals ECB Will Hike Next Week, Cautious Beyond That</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOJ's Ueda and Takata open the door to a September hike</strong></summary>
+      <div class="deal-body">
+        <p>BOJ Governor Kazuo Ueda hinted a rate hike is likely at this month's meeting, saying policy will weigh upside price risks, Bloomberg reported, and hawkish board member Hajime Takata left the door open to an outsized move and back-to-back hikes. The yen strengthened on the comments.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/boj-s-ueda-to-decide-on-policy-with-upside-price-risks-in-mind" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOJ's Ueda Hints at September Rate Hike as Bets on Move Mount</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed Governor Barr says he'll back a hike if inflation doesn't ease</strong></summary>
+      <div class="deal-body">
+        <p>Fed Governor Barr said he will support a rate hike if inflation does not ease, CNBC reported, citing concern about broader price pressures taking hold with inflation above the 2% target. His comment adds a Fed voice to the hawkish drumbeat into the September meeting.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/01/fed-governor-barr-says-hell-support-rate-hike-if-inflation-doesnt-ease.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed Governor Barr Says He'll Support Rate Hike if Inflation Doesn't Ease</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bessent says China blocked a G20 communique over its trade surplus</strong></summary>
+      <div class="deal-body">
+        <p>Treasury Secretary Scott Bessent said China prevented the G20 from issuing a joint communique after this week's finance chiefs' gathering, due to a dispute over its giant trade surplus, Bloomberg reported. FT said Beijing objected to language on curbing non-market policies.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-01/bessent-says-china-prevented-g20-communique-over-imbalance-spat" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bessent Says China Prevented G20 Communique Over Imbalance Spat</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (September 2, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish side still has the momentum. WSJ says the US 10-year hit its highest since 2023 with the Bund, gilts and JGB at multi-year highs, Apollo's Slok sees yields rising on the Iran war and tariffs, the ECB and BOJ both signaled hikes, and Fed Governor Barr will back a move if inflation persists. Pulling the other way, WSJ advisers still see a role for fixed income, Berkshire's Greg Abel calls Japanese yields no challenge, and CoinDesk observers warn a hike into an oil shock would be a mistake. Friday's jobs report decides.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why an Oil Shock Traps Central Banks Into Hiking Even as Growth Slows</summary>
+      <p>The ECB is set to hike next week even as the Iran war lifts energy costs, the BOJ is edging toward a move, and Fed Governor Barr says he will back a hike if inflation does not ease, all while copper fell on growth worries and business sentiment in places like South Africa slid to a two-year low. That combination looks contradictory, tightening into weakening demand, but it is exactly the trap an oil shock sets, and understanding why explains the whole rate story this week. Start with what an oil shock does. A jump in crude is what economists call a supply shock: it raises the cost of producing and moving nearly everything without adding any new demand. That pushes inflation up and growth down at the same time, the definition of stagflation. A central bank's two goals, stable prices and full employment, which usually point the same way, suddenly point in opposite directions. Cutting rates to support growth would let the inflation the oil shock created become entrenched, and hiking to crush inflation risks deepening the slowdown. There is no clean answer, only a choice about which mandate to defend first. The reason so many central banks are choosing to hike, or at least not cut, comes down to inflation expectations. A one-off rise in oil is tolerable if households and businesses believe it will fade, because then it does not feed into wages and the prices of unrelated goods. But if people start expecting persistent inflation, they demand higher wages and set higher prices, and the temporary shock becomes permanent. Central banks fear this second-round effect above almost anything, which is why Barr flagged worry about broader price pressures taking hold rather than the oil price itself. Hiking, or credibly threatening to, is how they anchor expectations and stop the shock from spreading. The cost is real: tighter policy into an oil-driven slowdown raises the odds of recession, which is what copper's slide and softening sentiment are starting to price. The practical lesson is that in a supply shock, do not expect central banks to ride to the rescue the way they do in a demand-driven downturn. When growth slows because consumers pull back, policymakers cut freely because doing so helps both mandates. When growth slows because oil spiked, they are boxed in, and the bond market knows it, which is why yields rose even as growth data wobbled. The tell for whether the trap is loosening is not the oil price alone but medium-term inflation expectations and wage data. If those stay anchored while crude retraces, central banks can pause and the yield pressure eases. If expectations start drifting higher, the hiking bias hardens no matter how much growth cools, and the stagflation squeeze on both bonds and stocks intensifies.</p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/09/01/euro-zone-inflation-rate-hike.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Euro Zone Inflation Is Back Above 3%, Higher Rates Likely to Follow</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/copper-s-rally-stalls-as-worries-about-global-economy-resurface" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Copper's Rally Stalls as Worries About Global Economy Resurface</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The global bond rout deepened for a third session as the US 10-year hit its highest since 2023, the Bund reached a 2011 high, gilts a 2007 high and the JGB a 1996 peak; fresh US strikes on Iran and Iranian retaliation pushed oil near $95 with Trump downplaying any deal, sending US diesel to an April high; Dell lifted its sales outlook by $25 billion and Nvidia is said to be nearing a $14 billion Hugging Face deal, while the Bank of England warned of AI bubble risk and Broadcom's $520 billion skid deepened; bitcoin slipped below $76,500; verdicts resolve at today's close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after today's close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 8/31</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/1</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/2</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 9/3</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 9/4</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin slips below $76,500 as US strikes on Iran send oil above $93</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin fell about 1% since midnight to below $76,500 as Brent jumped past $93 and Treasury yields climbed toward 4.8%, CoinDesk reported. Yahoo said crypto prices tumbled broadly as the Iran war reignited a risk-off move across markets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/02/bitcoin-slips-below-usd77-000-as-u-s-strikes-on-iran-send-oil-above-usd93" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Slips Below $76,500 as US Strikes on Iran Send Oil Above $93</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Solana, ether and XRP lead the majors slide in a broad risk selloff</strong></summary>
+      <div class="deal-body">
+        <p>Every large-cap token fell over the past 24 hours, with high-beta majors like Solana, ether and XRP giving up roughly triple what bitcoin did, CoinDesk reported, as the Iran strikes drove a broad risk selloff. CoinDesk also flagged September's poor seasonality, dubbing it Rektember.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/02/solana-ether-xrp-lead-majors-slide-as-iran-strikes-drive-a-broad-risk-selloff" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Solana, Ether, XRP Lead Majors Slide as Iran Strikes Drive a Broad Risk Selloff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>XRP ETFs pull in $170 million over 11 days as Goldman tops holders</strong></summary>
+      <div class="deal-body">
+        <p>Spot XRP funds logged an 11th straight session of inflows, taking in $170 million, CoinDesk reported, with Q2 filings showing Goldman Sachs, Jane Street and Millennium among the biggest professional holders. The steady demand cuts against the broad risk-off tape.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/02/xrp-etfs-pull-in-usd160-million-over-nine-days-as-goldman-tops-institutional-holders" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- XRP ETFs Pull in $170 Million Over 11 Days, Goldman Tops Institutional Holders</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citi, Goldman and 19 other firms team up on a stablecoin venture</strong></summary>
+      <div class="deal-body">
+        <p>Twenty-one firms including several megabanks, Citi and Goldman among them, plan to establish a company to launch a stablecoin, WSJ and CoinDesk reported, focusing first on a US dollar token for payments and settlement with a euro token to follow. The consortium is a defense against digital-asset competition.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/01/citi-goldman-other-global-banks-and-asset-managers-team-up-on-stablecoin-venture" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Citi, Goldman and Other Global Banks Team Up on Stablecoin Venture</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tether sued over a $42.4 million USDT freeze before a US warrant</strong></summary>
+      <div class="deal-body">
+        <p>A lawsuit challenges Tether for allegedly freezing $42.4 million of USDT in response to an informal US law-enforcement request more than three months before a seizure warrant was issued, CoinDesk reported. The case tests how far issuers can act ahead of formal legal process.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/02/tether-sued-over-usd42-4-million-usdt-freeze-allegedly-made-months-before-u-s-warrant" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Lawsuit Challenges Tether for Allegedly Freezing $42.4 Million USDT Before US Warrant</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Capital B adds 376 BTC after an Adam Back investment</strong></summary>
+      <div class="deal-body">
+        <p>Euronext Growth Paris-listed Capital B aims to add 376 bitcoin to its treasury following an $8.8 million investment from Adam Back, CoinDesk reported, issuing shares with warrants to fund the buy. It is a named-backer treasury add even as the majors sell off.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/08/29/capital-b-aims-to-add-376-btc-to-bitcoin-treasury-following-usd8-8-million-adam-back-investment" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Capital B Aims to Add 376 BTC Following $8.8 Million Adam Back Investment</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Nvidia -- Nearing a $14 Billion Deal for Hugging Face</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Nvidia is in advanced talks to acquire AI startup Hugging Face in a transaction that may total about $14 billion, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> Stratechery framed the move as part of Nvidia's push to seed the AI ecosystem and avoid a world consolidated around a few cloud giants.</p>
+        <p><strong>What it means:</strong> Nvidia keeps using its balance sheet to widen the moat around its chips, from MediaTek to open-source model hubs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-02/nvidia-may-be-close-to-agreeing-deal-for-hugging-face-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia May Be Close to $14 Billion Deal for Hugging Face</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Brookfield -- $25 Billion AI Power Framework With Bloom</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Brookfield quintupled its AI power framework to $25 billion, Yahoo Finance reported, with Bloom Energy positioned to supply the opportunity.</p>
+        <p><strong>Outlook:</strong> The scaling underscores that power, not just chips, is the binding constraint on the AI buildout, echoed by Microsoft's 20-year power deal with Chevron.</p>
+        <p><strong>What it means:</strong> The energy layer of the AI trade is now absorbing tens of billions, raising the question of who ultimately takes the risk.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/ai/articles/brookfield-quintupled-ai-power-framework-110505014.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Brookfield Quintupled Its AI Power Framework to $25 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chevron -- $7 Billion Plan to Double Venezuelan Output</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Chevron plans to more than double its oil production in Venezuela, investing $7 billion over five years, Bloomberg and FT reported, its largest commitment yet in a US-led push to revive the country's industry.</p>
+        <p><strong>Outlook:</strong> The barrels build slowly, but they add non-OPEC supply just as the Iran war strains global oil flows.</p>
+        <p><strong>What it means:</strong> Washington is leaning on Chevron to offset war-driven supply risk with Venezuelan output.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/a76721db-36e1-4198-aad8-8c90137aace9?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Chevron to Double Venezuela Output in $7bn Investment Pledge</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stan Kroenke -- $4 Billion Deal for MLB's Los Angeles Angels</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Stan Kroenke agreed to buy a controlling stake in the Los Angeles Angels, valuing the team and its regional network at $4 billion, CNBC reported.</p>
+        <p><strong>Outlook:</strong> The deal expands a Kroenke sports empire CNBC valued at more than $26 billion.</p>
+        <p><strong>What it means:</strong> Trophy-asset sports valuations keep climbing even as broader risk appetite turns cautious.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/01/stan-kroenke-controlling-stake-los-angeles-angels.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Stan Kroenke Agrees to Buy MLB's Angels at a $4 Billion Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citi and Goldman -- 21-Firm Bank Stablecoin Venture</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Twenty-one firms including Citi and Goldman plan to form a company to launch a stablecoin, WSJ reported, guarding against competition from digital assets.</p>
+        <p><strong>Outlook:</strong> The venture starts with a US dollar payments token and eyes a euro version, CoinDesk said.</p>
+        <p><strong>What it means:</strong> Incumbent banks are moving to own the settlement rails rather than cede them to crypto-native issuers.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/these-banks-are-banding-together-to-launch-a-stablecoin-6de07eff?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- These Banks Are Banding Together to Launch a Stablecoin</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wren House -- Near Deal for GIC's European Data-Center Stake</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Wren House Infrastructure Management is nearing a deal to buy GIC's stake in a European data-center joint venture, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The transaction adds to a wave of capital chasing data-center assets tied to AI demand.</p>
+        <p><strong>What it means:</strong> Infrastructure buyers keep paying up for the physical backbone of the AI buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/wren-house-is-said-to-near-deal-for-gic-s-data-center-stake" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wren House Is Said to Near Deal for GIC's Data Center Stake</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Apollo (Torsten Slok) -- sees the Iran war and tariffs driving US yields higher</strong></summary>
+      <div class="deal-body">
+        <p>Apollo Chief Economist Torsten Slok said US yields are likely to head higher on the Iran war and tariffs, Bloomberg reported, but argued the pressure has little to do with the fiscal situation and that there are fewer worries about US policymaking than Japan or Germany. A named voice tilting the read hawkish on inflation, not deficits.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/apollo-s-slok-says-us-yields-set-to-rise-on-iran-war-tariffs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apollo's Slok Says US Yields Set to Rise on Iran War, Tariffs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan (Grace Peters) -- warns yields near 5% put stocks at risk</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan's Grace Peters said rising bond yields pose a key risk to global equities as they head into a historically weak September, Bloomberg reported, flagging levels near 5% as the danger zone. A named strategist connecting the bond rout directly to equity downside.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-02/jpmorgan-s-peters-says-yields-at-5-could-put-stocks-at-risk" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- JPMorgan's Peters Says Yields at 5% Could Put Stocks at Risk</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>State Street (Cayla Seder) -- says markets react poorly if the Fed holds</strong></summary>
+      <div class="deal-body">
+        <p>State Street Macro Multi-Asset Strategist Cayla Seder voiced concern about higher Treasury yields and said markets would react poorly if the Fed holds rates at the September meeting, Bloomberg reported. A named voice arguing the market now needs the hike it has priced.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-02/markets-would-react-poorly-if-fed-holds-rates-seder-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Markets Would React Poorly if Fed Holds Rates, Seder Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Berkshire (Greg Abel) -- shrugs off Japanese bond yields</strong></summary>
+      <div class="deal-body">
+        <p>Berkshire CEO Greg Abel told CNBC that Japanese bond yields are not a challenge for the trading houses right now, noting yields in the country are still relatively low. A named voice on the calmer side of the global rate scare.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/02/berkshire-ceo-says-japanese-bond-yields-not-a-challenge-for-trading-houses.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Berkshire CEO Greg Abel Says Japanese Bond Yields Not a Challenge for Trading Houses</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Coatue (Philippe Laffont) -- increased Micron 19-fold and added to Amazon</strong></summary>
+      <div class="deal-body">
+        <p>Billionaire Philippe Laffont's Coatue increased its Micron position 19-fold and added 49% to Amazon, Yahoo Finance reported, in what looks like one large bet on AI demand. Separately, Yahoo said Tiger Global cut Alphabet 45% and opened an AMD position, a rotation from AI platforms toward AI chips.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/billionaire-philippe-laffont-increased-micron-105607340.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Philippe Laffont Increased Micron 19-Fold and Added 49% to Amazon</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the Bond Rout Drives the US 10-Year to Its Highest Since 2023, Fresh US-Iran Strikes Push Oil Near $95, and the AI Buildout Writes $14 Billion and $25 Billion Checks While the Bank of England Warns of a Bubble</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (higher yields are opportunity and demand keeps funding the buildout):</strong> WSJ said advisers still see fixed income belonging in a portfolio, and Berkshire's Greg Abel calls Japanese yields no challenge. On AI, Nvidia is nearing a $14 billion Hugging Face deal, Dell lifted its outlook $25 billion, and Coatue's Philippe Laffont piled into Micron and Amazon. If Friday's jobs number cooperates, the rate scare fades and dip-buyers step in.</div>
+        <div class="bear"><strong>Bear (an inflation-driven rout and a nervous Street):</strong> Apollo's Torsten Slok sees yields rising on the Iran war and tariffs, JPMorgan's Grace Peters warns levels near 5% threaten stocks, and State Street's Cayla Seder says a Fed hold gets punished. The Bank of England warned of AI bubble risk and Broadcom's $520 billion skid deepened. With oil near $95 and diesel at an April high, the inflation and positioning risks stack.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Oil near $95 on Iran strikes; bond rout deepens; Dell +$25B outlook; Broadcom $520B skid; Nvidia-Hugging Face $14B</td><td>Cautious</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>US 10Y highest since 2023; JPMorgan warns yields at 5% hit stocks; MongoDB tumbles; negative-beta stocks bid</td><td>Bearish</td><td>~16,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Global bond selloff; Bund at 2011, gilts at 2007, JGB at 1996 highs; ECB and BOJ hike bets; Slok sees yields rising</td><td>Bearish</td><td>~18,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI capex to top railways plus internet; BoE bubble warning; who takes the power risk; Nvidia dodging consolidation</td><td>Bearish</td><td>~9,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC below $76.5K as oil tops $93; Rektember seasonality; majors slide; XRP ETF inflows; banks launch stablecoin</td><td>Bearish</td><td>~21,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned defensive as the bond rout and fresh Iran strikes hit together. r/wallstreetbets flagged oil near $95 and Broadcom's skid even as Dell's outlook lift and the Nvidia-Hugging Face talks drew chatter. r/stocks leaned bearish on the 10-year at a 2023 high and JPMorgan's warning that yields near 5% threaten equities, with negative-beta names getting a look. r/investing was loud on the Bund, gilts and JGB all at multi-year highs and the ECB and BOJ tilting to hikes. r/SecurityAnalysis stayed skeptical on AI capex scale and the Bank of England's bubble warning. r/CryptoCurrency turned bearish as bitcoin slipped below $76,500. The swing factor is Friday's jobs report.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Gold and Bitcoin Can Fall Even as an Oil Shock Lifts Inflation</h2>
+    <p>CoinDesk reported that bitcoin slipped below $76,500 and gold and silver both fell while US strikes on Iran sent oil above $93 and Treasury yields toward 4.8%. That looks backward at first, because gold and, increasingly, bitcoin are marketed as inflation hedges, and here was a live inflation shock knocking them lower. Following the mechanism explains the puzzle and tells you what actually drives these assets. Start with what a hedge is protecting against. Gold and bitcoin pay no interest and generate no cash flow, so the case for owning them rests entirely on preserving purchasing power when currencies weaken. The key variable is not headline inflation but the real yield, which is the nominal Treasury yield minus expected inflation. When real yields are low or negative, holding a zero-yielding asset costs you nothing, so gold and bitcoin shine. When real yields rise, every dollar parked in a non-yielding asset gives up a growing amount of safe, inflation-adjusted return available in Treasuries, and the opportunity cost bites. That is exactly what happened this week. Nominal yields jumped harder than inflation expectations, because the market believes the Fed and other central banks will hike aggressively to contain the oil shock rather than let it run. Higher expected policy rates push real yields up, and that raises the cost of holding gold and bitcoin even as inflation itself climbs. The hedge logic assumes central banks stay passive while prices rise. When central banks instead promise to fight the inflation, they lift real yields and undercut the very assets meant to protect against currency debasement. The second force is the dollar, and CoinDesk called it the catch. In a global risk-off event, money floods into the world's reserve currency for safety, and the dollar strengthens. Gold is priced in dollars, so a stronger dollar mechanically makes it more expensive for foreign buyers and pushes the price down. Bitcoin, despite its independence story, still trades as a high-beta risk asset when fear spikes, so a firm dollar and a scramble for liquidity hit it too. That is why CoinDesk noted the majors fell in a broad selloff, with high-beta tokens like Solana and ether dropping roughly triple what bitcoin did. The practical lesson is to separate the inflation-hedge story from the real-yield-and-dollar reality. Gold and bitcoin tend to rise when inflation is high and central banks are unwilling or unable to respond, keeping real yields pinned down. They tend to fall when inflation is high but central banks respond forcefully, driving real yields and the dollar up. The tell is not the oil price or the CPI headline but the direction of real yields and the dollar. If the Fed hesitates or oil retraces and real yields ease, the debasement trade comes back quickly. If policymakers keep hiking into the shock, even a genuine inflation scare can send these hedges lower, which is exactly the counterintuitive move on the tape this week.</p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/02/bitcoin-withstands-usd90-oil-and-rising-yields-as-gold-slides-a-firm-dollar-is-the-catch" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Withstands $90 Oil and Rising Yields While Gold Slides. A Firm Dollar Is the Catch</a></p>
+    <p class="deal-source"><a href="https://finance.yahoo.com/personal-finance/investing/article/gold-price-today-wednesday-september-2-2026-gold-slips-further-as-military-actions-escalate-in-iran-104514058.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Gold Slips Further as Military Actions Escalate in Iran</a></p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/02/solana-ether-xrp-lead-majors-slide-as-iran-strikes-drive-a-broad-risk-selloff" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Solana, Ether, XRP Lead Majors Slide as Iran Strikes Drive a Broad Risk Selloff</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>ISM services and jobless claims, Thursday Sep 3.</strong> With the bond rout deepening on rate-hike bets, watch whether the prints validate the hawkish read from Apollo's Slok and State Street's Seder or hand Berkshire's Abel and the calmer camp their case.</li>
+      <li><strong>August jobs report, Friday Sep 4.</strong> The single biggest catalyst of the week and the swing input for the September FOMC; prediction traders see roughly even odds job creation topped 50,000, so a soft number cuts against the scare and a hot one cements it.</li>
+      <li><strong>ECB decision next week.</strong> Nagel signaled a hike as euro-zone inflation topped 3%, so watch whether the ECB joins the tightening column and adds to global yield pressure.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Broadcom this week.</strong> After a roughly $520 billion skid since June, watch whether it delivers the Nvidia-like print it needs, with Credo and Palo Alto among the other AI-adjacent movers.</li>
+      <li><strong>Chip and AI follow-through.</strong> After Dell's $25 billion outlook lift and the Nvidia-Hugging Face talks, watch whether the next reads confirm the buildout or hand the bubble skeptics more ammunition.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>IPO and M&A pipeline.</strong> After the Nvidia-Hugging Face talks, Chevron's $7 billion Venezuela pledge and Kroenke's $4 billion Angels deal, watch whether dealmaking stays active as borrowing costs climb, with Oura, Enflame and Opay in the IPO queue.</li>
+      <li><strong>Bank stablecoin venture.</strong> After Citi, Goldman and 19 other firms teamed up, watch whether incumbents accelerate the fight for settlement rails.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran strikes and oil.</strong> With fresh strikes exchanged, Trump downplaying a deal and oil near $95, watch whether the attacks settle into a pattern and whether crude holds its gains.</li>
+      <li><strong>BOJ hike bets and the yen.</strong> With Ueda and Takata opening the door to a September move and the yen firming, watch how Japan's tightening path interacts with the 30-year-high JGB yields.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Sep 2, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-09-02 08:07 ET); Bloomberg Technology (20 fresh, newest 2026-09-02 07:41 ET); Bloomberg Economics (20 fresh, newest 2026-09-02 07:28 ET); CNBC Top News (6 fresh, newest 2026-09-01 17:40 ET); CNBC Finance (6 fresh, newest 2026-09-02 07:09 ET); CNBC Economy (1 fresh, newest 2026-09-01 06:50 ET); MarketWatch Top Stories (10 fresh, newest 2026-09-02 07:31 ET); WSJ Markets (16 fresh, newest 2026-09-02 07:41 ET); Yahoo Finance (25 fresh, newest 2026-09-02 08:01 ET); FT Home (9 fresh, newest 2026-09-02 08:05 ET); Matt Levine Money Stuff (1 fresh, newest 2026-09-01 14:13 ET); CoinDesk (25 fresh, newest 2026-09-02 08:13 ET); Stratechery (2 fresh, newest 2026-09-02 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. Why did gold and bitcoin fall even as an oil spike raised inflation?</strong></p>
+      <span class="opt" data-opt="A">A. Investors sold their hedges to buy oil futures instead</span>
+      <span class="opt" data-opt="B">B. A firmer dollar and higher real yields raised their holding cost</span>
+      <span class="opt" data-opt="C">C. Central banks dumped gold reserves into the market overnight</span>
+      <span class="opt" data-opt="D">D. Gold and oil prices always move in exact opposite directions</span>
+      <div class="feedback"><strong>B is correct.</strong> When central banks vow to fight an oil shock, nominal yields rise faster than inflation expectations, lifting real yields, and a risk-off scramble strengthens the dollar. Both raise the opportunity cost of holding zero-yield assets. Investors did not swap into oil futures, central banks did not dump reserves, and gold and oil do not move in fixed opposition.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. What did Apollo's Torsten Slok say is driving US yields higher?</strong></p>
+      <span class="opt" data-opt="A">A. A deteriorating US fiscal position and rising deficits</span>
+      <span class="opt" data-opt="B">B. The Fed's decision to restart quantitative easing programs</span>
+      <span class="opt" data-opt="C">C. A sudden flight into Treasuries by foreign investors</span>
+      <span class="opt" data-opt="D">D. The Iran war and tariffs, not the fiscal situation</span>
+      <div class="feedback"><strong>D is correct.</strong> Slok said the upward pressure on US yields comes from the Iran war and tariffs, and argued it has little to do with the fiscal picture, adding there are fewer policy worries in the US than in Japan or Germany. He did not blame deficits, cite QE, or point to a Treasury buying flight.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why does an oil-driven inflation shock pressure both bonds and stocks at once?</strong></p>
+      <span class="opt" data-opt="A">A. It lifts inflation, raising bond yields and the equity discount rate</span>
+      <span class="opt" data-opt="B">B. It forces companies to issue new bonds at lower coupons</span>
+      <span class="opt" data-opt="C">C. It makes central banks cut rates, squeezing bank profits</span>
+      <span class="opt" data-opt="D">D. It reduces corporate earnings by raising dividend taxes</span>
+      <div class="feedback"><strong>A is correct.</strong> Higher oil raises expected inflation, so bond investors demand more yield and the discount rate applied to future equity cash flows rises, hitting both markets together. It does not lower new-issue coupons, prompt rate cuts in a supply shock, or work through dividend taxes.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The global bond rout entered a third session as WSJ said the US 10-year hit its highest since 2023 with the Bund at a 2011 high, gilts at 2007 levels and the JGB at a 1996 peak, Apollo's Torsten Slok sees yields rising on the Iran war and tariffs, JPMorgan's Grace Peters warns yields near 5% threaten stocks and State Street's Cayla Seder says a Fed hold would be punished, while WSJ advisers keep fixed income in the mix, Berkshire's Greg Abel shrugs off Japanese yields, and CoinDesk observers call a hike a mistake.",
+    "sources": [
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/a-guide-to-owning-bonds-when-they-are-selling-off-be8e0a2b?mod=rss_markets_main", "take": "Advisers say fixed income still has a place in a diversified portfolio despite the rout." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/09/02/berkshire-ceo-says-japanese-bond-yields-not-a-challenge-for-trading-houses.html", "take": "Berkshire's Greg Abel says Japanese bond yields are not a challenge as levels stay low." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/europe-joins-global-bond-selloff-as-middle-east-hostilities-lift-oil-prices-fca5d94a?mod=rss_markets_main", "take": "The Bund hit a 2011 high, gilts a 2007 high and the JGB a 1996 peak as oil rose." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/f73c2c95-5c73-4b2f-9f00-9fa8c12c10c9?syn-25a6b1a6=1", "take": "US 10-year borrowing costs touched their highest since 2023 on the energy surge." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-02/apollo-s-slok-says-us-yields-set-to-rise-on-iran-war-tariffs", "take": "Apollo's Torsten Slok says US yields will rise on the Iran war and tariffs." }
+    ]
+  },
+  "iran": {
+    "diverge": "The US-Iran war escalated as FT and Bloomberg reported fresh American strikes and Iranian retaliation, Trump downplayed any desire for a deal, WSJ put oil near $95 and Bloomberg flagged US diesel at an April high, but Chevron pledged $7 billion to double Venezuelan output, Nordea lifted Nordic forecasts on energy resilience, and copper slid on growth fears rather than scarcity.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-09-02/chevron-to-invest-7-billion-to-boost-venezuelan-output-video", "take": "Chevron will invest $7 billion to more than double Venezuelan oil output." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-02/copper-s-rally-stalls-as-worries-about-global-economy-resurface", "take": "Copper slid on growth worries, signaling demand softening rather than pure scarcity." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/c557ccc2-9fe7-4725-8a1c-c40a0948e8d3?syn-25a6b1a6=1", "take": "The US launched further strikes on Iran, pushing oil higher and yields to day's highs." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/oil-hovers-close-to-95-as-middle-east-conflict-further-pressures-bonds-877d8321?mod=rss_markets_main", "take": "Oil hovered near $95 as the US and Iran exchanged fresh strikes." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-02/us-diesel-hits-highest-since-april-as-wars-strain-global-supply", "take": "US diesel hit its highest since April as the wars strain global supply." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI buildout kept writing giant checks as Bloomberg said Nvidia is nearing a $14 billion Hugging Face deal and Dell raised its outlook by $25 billion, with Yahoo reporting a 70% Nvidia revenue forecast on a SpaceX deal and Brookfield's $25 billion power framework, but Yahoo said the Bank of England warned of bubble risk, MarketWatch cited PwC on spend topping the railways and internet combined, WSJ noted Broadcom's $520 billion skid, and Stratechery said Nvidia is fighting consolidation.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-01/dell-raises-annual-revenue-outlook-on-sustained-ai-server-sales", "take": "Dell raised its annual sales outlook by $25 billion on surging AI server demand." },
+      { "name": "Yahoo Finance", "lean": "bull", "url": "https://finance.yahoo.com/technology/ai/articles/nvidia-forecasts-70-revenue-jump-110000227.html", "take": "Nvidia forecasts a 70% revenue jump on an exclusive SpaceX deal after a record quarter." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/ai-capital-expenditure-forecasted-to-exceed-the-cost-of-building-railways-in-both-the-u-s-and-the-u-k-with-the-internet-added-on-top-765b927f?mod=mw_rss_topstories", "take": "PwC says AI capex will exceed the railways in the US and UK plus the internet combined." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-02/broadcom-needs-nvidia-like-earnings-to-stop-520-billion-skid", "take": "Broadcom has shed roughly $520 billion since June and needs a Nvidia-like print." },
+      { "name": "Stratechery", "lean": "bear", "url": "https://stratechery.com/2026/nvidia-earnings-dollars-per-gigawatt-open-and-hugging-face/", "take": "Everything Nvidia does is about avoiding a consolidated world." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Dell","Nvidia","TSMC","Uber","Broadcom","MongoDB"],
+    "values": [6.0, 2.0, 2.0, 3.0, -3.0, -8.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [26000, 16000, 18000, 9000, 21000],
+    "colors": ["neutral","bear","bear","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Brookfield AI Power","Nvidia-Hugging Face","Chevron-Venezuela","Kroenke-Angels","Senegal-IMF"],
+    "values": [25.0, 14.0, 7.0, 4.0, 2.2]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
