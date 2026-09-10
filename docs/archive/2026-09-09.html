@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Sep 9, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-09-09</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, September 9, 2026</h1>
+    <div class="meta">
+      <p>Brent crude topped $100 for the first time since July after the US military destroyed five Iranian tankers overnight, pushing Treasury yields up and hardening Fed hike bets into next week's decision. Apple's "Surprise and Shine" iPhone event lands today, and Friday's CPI now looms as the real test of how sticky the energy shock is. Amazon and Uber opened debut bond books as the AI financing wave rolls on.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Brent crude topped $100 a barrel for the first time since July after the US military destroyed five Iranian tankers overnight in response to an attempted strike on a US Navy warship, reviving fears about flows through the Strait of Hormuz, lifting Treasury yields and rate-hike bets, and dragging global equities lower ahead of Friday's CPI",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Stock Market Today: Oil Hits $100 for First Time Since July", "angle": "Reads the escalation straight into supply-disruption fear that stokes inflation and threatens the equity run.", "lean": -40, "pull": "Escalating conflict in the Middle East stokes fears of supply disruptions."},
+        {"outlet": "Bloomberg", "headline": "Stocks Fall as $100 Brent Sharpens Inflation Focus", "angle": "Frames crude above $100 as fusing directly with rate-hike expectations days before a Fed meeting.", "lean": -45, "pull": "Inflation risks are the primary focus, with Brent crude topping $100 a barrel."},
+        {"outlet": "MarketWatch", "headline": "Brent Crude Passes $100 Threshold as War in Iran Intensifies", "angle": "Puts the US destruction of five Iranian crude vessels at the center of the price move.", "lean": -40, "pull": "Oil prices advanced after the US said it destroyed five Iranian crude oil vessels."},
+        {"outlet": "Financial Times", "headline": "Oil Hits $100 for First Time Since July", "angle": "Stresses the renewed global supply-crunch risk as the US-Iran war reopens the Hormuz question.", "lean": -35, "pull": "Brent crude advances as escalation in the US-Iran war feeds fears of a renewed global supply crunch."},
+        {"outlet": "CNBC", "headline": "Bitcoin Climbs as Oil Tops $100, Equities Drop After Iran Strikes", "angle": "Offers the counter-read, noting crypto and gold-style hedges caught a bid even as stocks fell.", "lean": 15, "pull": "Bitcoin advanced as high as $79,700 while Brent topped $100 and European shares fell."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Oil Above $100 Revives Rate-Hike Bets Into Next Week's Fed as Treasuries Weaken and 30-Year Mortgages Hit a 14-Month High, RBC's Lori Calvasina Sees Growing Risk of a 10% Stock Decline Into the Midterms, While HSBC's Max Kettner Argues Higher US Yields Are About Fundamentals and Strategists at RBC, HSBC and Barclays Still See the S&P 500 Topping 8,000</h3>
+      </div>
+      <p>Rates own the tape again. Bloomberg reported Treasuries weakened as traders worried rising oil prices will fan inflation and add pressure on the Fed to raise rates as soon as next week, and WSJ said US yields ticked higher after Brent briefly topped $100. The strain is showing up in households, with Yahoo noting the 30-year fixed mortgage hit a 14-month high and the 5/1 ARM breaking past 7% as oil climbed. The bear case has firepower. RBC Capital Markets strategist Lori Calvasina told Bloomberg the risk of a US pullback of as much as 10% is rising as midterm elections approach and the market enters a seasonally rough stretch, and a Reuters analysis carried by Yahoo warned a fearless US market is vulnerable to shocks. The other side is not empty. HSBC's Max Kettner argued on Bloomberg that higher US yields are a fundamentals story rooted in US growth and exceptionalism, not just fiscal worry or what Treasury Secretary Scott Bessent wants, and MarketWatch reported strategists at RBC, HSBC and Barclays all carry S&P 500 targets near 8,000 even as they flag pullback risk. UBS told investors to forget Europe's tired caricature and buy its underowned, high-quality stocks. Bessent added a twist, warning yen traders not to bet against him with his claim that "I am the house now." The debate is whether US growth can carry firmer yields or whether an oil-driven inflation scare and a hawkish Fed cap the run.</p>
+      <p>The bull read is HSBC's Kettner tying higher yields to US strength, the 8,000 S&P targets at RBC, HSBC and Barclays, and UBS pounding the table on Europe. The bear read is Treasuries weakening on oil, mortgage rates at a 14-month high, and RBC's Calvasina flagging a rising risk of a 10% drop into the midterms.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (growth can carry the higher coupon):</strong> HSBC's Max Kettner told Bloomberg higher US yields reflect growth and exceptionalism rather than fiscal panic, and MarketWatch said RBC, HSBC and Barclays all see the S&P 500 near 8,000. UBS urged investors to look past Europe's "tired caricature" and buy its underowned stocks. If firm yields are a growth signal, the tape can absorb them into year end.</div>
+        <div class="bear"><strong>Bear (oil is pushing rates the wrong way):</strong> Bloomberg said Treasuries weakened as $100 oil revived hike bets ahead of next week's Fed, and Yahoo flagged 30-year mortgages at a 14-month high. RBC's Lori Calvasina warned the risk of a 10% pullback is rising into the midterms, and a Reuters analysis called the market dangerously fearless. With CPI on Friday, the setup rewards caution.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-09/treasuries-weaken-as-soaring-oil-prices-revive-rate-hike-worries" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Treasuries Weaken as Rising Oil Prices Boost Rate-Hike Bets</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Brent Tops $100 for the First Time Since July as the US Destroys Five Iranian Tankers and the War Disrupts the Strait of Hormuz, Silver Holds Over $66, Qatar Posts Its Widest Deficit in a Decade and the Crack Spread Blows Out, While Gold Drops After the Strikes, Sinopec Sees China Oil Demand Shrinking and India's Refineries Run Above 108%</h3>
+      </div>
+      <p>The shock stepped up overnight. Bloomberg said Brent topped $100 a barrel for the first time since July after US Central Command destroyed five Iranian tankers carrying crude in response to an attempted ballistic-missile strike on a US Navy warship, the latest escalation in a conflict that began in February and has disrupted flows through the Strait of Hormuz. FT framed it as reviving fears of a renewed global supply crunch, and MarketWatch tied the advance directly to the vessel strikes. The inflation channel is already loud: Bloomberg Economics reported the oil crack spread, an esoteric refining measure, is blowing out and captivating central bankers who fret inflation, Yahoo said silver held in the $66 range as US-Iranian attacks continued, and Bloomberg said Qatar posted its widest quarterly budget deficit in almost a decade as Hormuz tied up its gas trade. The relief signals are thin and mostly about demand and hedges cooling. Yahoo reported gold prices fell after the US strikes on the five tankers, the research arm of Sinopec said China's oil demand will shrink 600,000 barrels a day this year on the war and EV growth, and Yahoo noted India's refineries running at up to 108% as diesel demand surges, a sign barrels still move and get reprocessed. But with tankers destroyed, Hormuz contested and Brent through triple digits, the supply premium looks live.</p>
+      <p>The bull read is gold dropping after the strikes, Sinopec seeing Chinese demand shrink and India's refineries running flat out on flowing crude. The bear read is Brent over $100, five Iranian tankers destroyed, Hormuz disrupted, silver above $66, Qatar's decade-wide deficit and the crack spread blowing out into the CPI print.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand cools and barrels keep flowing):</strong> Yahoo reported gold dropped after the US destroyed five Iranian tankers, a sign the panic bid is contained, and Sinopec's research arm sees China's oil demand shrinking 600,000 barrels a day this year on the war and EVs. India's refineries are running above 108% as diesel demand surges, so crude is still being sourced and processed. If no chokepoint fully closes, the risk premium can drain.</div>
+        <div class="bear"><strong>Bear (the war is now hitting flows directly):</strong> Bloomberg said Brent topped $100 for the first time since July after the US destroyed five Iranian tankers and the war disrupted Hormuz. Silver held over $66, Qatar posted its widest deficit in a decade as gas trade froze, and Bloomberg Economics said the crack spread central bankers watch is blowing out. With tankers burning and the strait contested days before a Fed meeting, the inflation loop is wide open.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-08/latest-oil-market-news-and-analysis-for-sept-9" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Brent Oil Tops $100 as US-Iran War Shows Little Sign of Abating</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Buildout Leans Harder on Debt as Amazon Opens a £4bn Sterling Book, Uber Debuts Euro Bonds, SoftBank Refinances Its $40bn OpenAI Loan and Legal Startup Harvey Hits $15.6bn, With Google Spending €13bn in Finland and Taiwan Exports at a Record, but WSJ Flags the Boom's Weakest Link, Ares's Blair Jacobson Sees a Software Bifurcation and an Anthropic Researcher Quits Warning AI Could Kill Us</h3>
+      </div>
+      <p>The financing plumbing is scaling faster than ever. Bloomberg said Amazon opened books on an expected £4bn ($5.4bn) debut sterling bond in a four-part deal, Uber kicked off its debut euro bonds, and SoftBank said it will repay the balance on a $40bn bridge loan for its OpenAI stake as it refinances with longer-term debt, all signs hyperscalers keep turning to global credit markets to fuel the AI arms race. Yahoo reported AI infrastructure bets are driving venture debt toward record levels. The capability and capital story stayed strong: Bloomberg said legal-AI startup Harvey hit a $15.6bn valuation on a $550m round, Google is spending €13bn on AI infrastructure in Finland, its biggest European investment, and an Nvidia-backed Indonesian platform, Zankore, signed a $3.1bn GPU loan. Bloomberg Economics said Taiwan's exports surged to a record on AI demand, and Meta unveiled Muse, a personal-task AI agent. But the friction is mounting. WSJ told readers to watch the AI boom's weakest link, Ares Management co-president Blair Jacobson told Bloomberg the software market has bifurcated rather than simply being eaten by AI, forcing more careful selection, and FT reported an Anthropic researcher quit warning that AI labs are "gambling with our lives," with the same lab withholding its latest model from the UK's testing agency. The buildout keeps lifting the tape, but its debt footprint and safety questions are now front and center.</p>
+      <p>The bull read is Amazon's and Uber's debut bonds funding capex, SoftBank refinancing its OpenAI stake, Harvey's $15.6bn mark, Google's €13bn Finland spend and Taiwan's record AI exports. The bear read is WSJ flagging the boom's weakest link, record AI venture debt, Ares's Jacobson warning of a software split and an Anthropic researcher quitting over safety.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (capital and demand keep stepping up):</strong> Bloomberg said Amazon opened a £4bn sterling book and Uber debuted euro bonds while SoftBank refinances its $40bn OpenAI loan, Harvey hit $15.6bn on a $550m round, Google is spending €13bn in Finland and an Nvidia-backed firm signed a $3.1bn GPU loan. Taiwan's exports hit a record on AI. When funding and compute demand rise together, the trade has fuel.</div>
+        <div class="bear"><strong>Bear (debt and safety are catching up):</strong> WSJ told investors to watch the AI boom's weakest link, and Yahoo said AI infrastructure bets are pushing venture debt to record levels. Ares's Blair Jacobson warned the software market has bifurcated, demanding sharper selection, and FT reported an Anthropic researcher quit warning labs are gambling with lives while the firm withheld its model from UK testing. When the buildout leans this hard on debt, the tell is credit and trust.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-09/amazon-opens-books-on-debut-four-part-sterling-bond-sale" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Amazon Expects to Raise £4 Billion in Sterling Bonds Debut</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Oil near $100 threatens US stocks' stellar run as futures wobble</strong></summary>
+      <div class="deal-body">
+        <p>Brent crude spiked above $99 a barrel before paring gains, WSJ reported, putting the US market's stellar run at risk as inflation fears returned to the front of investors' minds. US futures held roughly steady while Treasury yields ticked higher into the reopen of the crude threat.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/oil-near-100-threatens-u-s-stocks-stellar-run-cabbaf0c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Oil Near $100 Threatens U.S. Stocks' Stellar Run</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>RBC's Calvasina sees growing risk of a 10% US stock decline into the midterms</strong></summary>
+      <div class="deal-body">
+        <p>The risk of a US pullback of as much as 10% is rising as midterm elections approach and the market heads into a seasonally challenging stretch, Bloomberg reported, citing RBC Capital Markets strategist Lori Calvasina. The warning tempers the bull case just as oil and yields climb.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/rbc-s-calvasina-sees-growing-risk-of-10-us-stock-decline" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- RBC's Calvasina Sees Growing Risk of 10% US Stock Decline</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chime signals a breakout on strong guidance and its Stride takeover</strong></summary>
+      <div class="deal-body">
+        <p>Chime Financial (CHYM) is flashing a breakout, Investor's Business Daily reported, powered by upbeat guidance and its takeover of Stride. The fintech's move stands out against a cautious tape as investors reward names with visible growth.</p>
+        <p class="deal-source"><a href="https://www.investors.com/news/chime-financial-stocks-jumps-fintech-guidance-stride-takeover/?src=A00220&yptr=yahoo" target="_blank" rel="noopener noreferrer">Source: Investor's Business Daily -- Chime Financial Signals Breakout on Strong Guidance, Stride Takeover</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>GameStop now makes more revenue from collectibles than videogames</strong></summary>
+      <div class="deal-body">
+        <p>The original meme stock now generates more revenue from collectibles than from videogames, MarketWatch reported, a striking shift for GameStop (GME) as it reshapes its business away from its legacy core. The mix change complicates how investors value the turnaround.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/gamestop-now-generates-more-revenue-from-collectibles-than-video-games-9f3451f4?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- GameStop Now Generates More Revenue From Collectibles Than Videogames</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>LIV Golf files for Chapter 11 bankruptcy protection</strong></summary>
+      <div class="deal-body">
+        <p>The Saudi-backed golf venture LIV Golf filed for Chapter 11 bankruptcy protection, CNBC reported, with the upstart league expected to be majority owned by its players under the proposed deal. The filing marks a sharp reset for a project that spent heavily to challenge the PGA Tour.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/08/liv-golf-chapter-11-bankruptcy.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- LIV Golf Files for Chapter 11 Bankruptcy Protection</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump administration voices 'profound concern' over Ford's China ties</strong></summary>
+      <div class="deal-body">
+        <p>US Transportation Secretary Sean Duffy questioned Ford's (F) strategic trajectory involving Chinese companies, CNBC reported, in a letter expressing "profound concern" over the automaker's ties to China. The pressure adds a political overhang to Ford's technology and battery strategy.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/08/ford-china-dot-sean-duffy.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Trump Administration Expresses 'Profound Concern' Over Ford's Ties to China</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>EU regulators send an early warning to Oracle ahead of earnings</strong></summary>
+      <div class="deal-body">
+        <p>EU regulators sent an early warning to Oracle (ORCL) just ahead of its earnings, Yahoo Finance reported, adding a regulatory overhang to the cloud and AI-infrastructure name into a key print. The timing puts compliance risk in focus as investors weigh the data-center buildout.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/eu-regulators-send-early-warning-000300590.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- EU Regulators Send Early Warning to Oracle Ahead of Earnings</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape tilts defensive as Brent above $100 lifts yields and hardens Fed hike odds into next week, with RBC's Calvasina flagging a 10% pullback risk into the midterms. The swing factor is whether the oil-driven yield move holds or fades if the US-Iran flare-up cools, and Friday's CPI is the referee. Watch Apple's iPhone event for a high-end demand read and Oracle's guide for any capex signal.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Fearless Market Can Be More Fragile Than a Fearful One</summary>
+      <p>A Reuters analysis carried by Yahoo warned that a fearless US stock market is vulnerable to shocks as the midterms loom, and RBC's Lori Calvasina told Bloomberg the odds of a 10% pullback are rising into a seasonally rough stretch. Both point at the same paradox worth understanding: low measured fear can make a market more fragile, not less. Start with what "fearless" means in practice. It shows up as compressed volatility, thin hedging demand and tight credit spreads, all signs that investors have stopped paying up for protection because recent history has been calm. Calm begets positioning. When realized volatility falls, a whole ecosystem of strategies, from volatility-targeting funds to risk-parity books to systematic trend followers, mechanically increases leverage, because their models size positions inversely to volatility. The quieter the tape, the bigger the positions they are allowed to hold. That builds a crowded, highly leveraged base that looks stable precisely because everyone is on the same side and nothing has moved. The fragility is hidden in that crowding. When a shock arrives, an oil spike, a hot CPI, a geopolitical escalation, volatility jumps, and those same models are forced to cut exposure fast to keep risk within limits. The selling is not a change of view, it is a rules-based deleveraging, and because so many funds run similar models, they sell into each other at once, amplifying the move. A market that had no protection bid now has to buy hedges in a panic, which spikes option prices and drags spot lower in a feedback loop. That is why a fearless market can fall harder and faster than one that was already nervous and lightly positioned. Seasonality and the midterm calendar matter because they raise the odds of exactly the kind of headline that triggers the unwind, while liquidity thins into the fall. The practical lesson is to read low volatility as a measure of positioning risk, not safety. The tell to watch is the gap between how calm prices are and how much could be forced to sell if that calm breaks: crowded leverage plus cheap hedges is a combustible mix. When strategists warn a fearless market is vulnerable, they are not forecasting a catalyst, they are describing the fuel load. The honest read is that the absence of fear is information, and it usually means the next shock has more to feed on.</p>
+      <p class="deal-source"><a href="https://finance.yahoo.com/news/analysis-fearless-us-stock-market-110129401.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Analysis: Fearless US Stock Market Vulnerable to Shocks as Midterms Loom</a></p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/strategists-say-s-p-500-could-top-8-000-but-risks-of-a-pullback-are-mounting-e1629564?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Strategists Say S&P 500 Could Top 8,000, But Risks of a Pullback Are Mounting</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Amazon opens books on an expected £4bn debut sterling bond</strong></summary>
+      <div class="deal-body">
+        <p>Amazon (AMZN) is raising an expected £4bn ($5.4bn) from its debut sterling bonds in a four-part deal, Bloomberg reported, as hyperscalers keep turning to global debt markets to fuel the AI arms race. Uber (UBER) also began offering its debut euro bonds in a five-part deal set to price the same day.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/amazon-opens-books-on-debut-four-part-sterling-bond-sale" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Amazon Expects to Raise £4 Billion in Sterling Bonds Debut</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SoftBank to repay a $40 billion bridge loan for its OpenAI stake</strong></summary>
+      <div class="deal-body">
+        <p>SoftBank will repay the balance on the $40 billion loan it signed earlier this year to finance its OpenAI investment, Bloomberg reported, as it moves to refinance the deal with longer-term debt. The shift shows the scale of leverage now underpinning the biggest AI bets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/softbank-to-repay-40-billion-bridge-loan-for-openai-stake" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank to Repay $40 Billion Bridge Loan for OpenAI Stake</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Legal AI startup Harvey hits a $15.6 billion value on a $550 million round</strong></summary>
+      <div class="deal-body">
+        <p>Legal-tech startup Harvey is now valued at $15.6 billion after raising $550 million, Bloomberg reported, funding aimed at building its own AI models. The mark shows private capital still chasing applied AI far beyond general-purpose chatbots.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/legal-ai-startup-harvey-hits-15-6-billion-value-with-550-million-round" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Legal AI Startup Harvey Hits $15.6 Billion Value With $550 Million Round</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Google picks chilly Finland for a €13 billion European AI buildout</strong></summary>
+      <div class="deal-body">
+        <p>Alphabet's Google (GOOGL) is spending €13 billion ($15.1bn) on AI infrastructure in Finland, Bloomberg reported, its biggest European investment, drawn by the Nordic country's cold climate and carbon-free power. The move shows how power availability is steering where compute gets built.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/google-plans-13-billion-ai-infrastructure-investment-in-finland" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Google Picks Chilly Finland for €13 Billion European AI Buildout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia-backed Zankore signs a $3.1 billion GPU loan in Indonesia</strong></summary>
+      <div class="deal-body">
+        <p>Zankore, an Nvidia-backed (NVDA) Indonesian AI infrastructure platform, signed a $3.1 billion loan to buy advanced chips, Bloomberg reported, underscoring surging demand for computing capacity across Asia. The deal shows the buildout financing spreading well beyond the US hyperscalers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/nvidia-backed-firm-in-indonesia-signs-3-1-billion-gpu-loan" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed Firm in Indonesia Signs $3.1 Billion GPU Loan</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta unveils Muse, an AI agent for personal tasks</strong></summary>
+      <div class="deal-body">
+        <p>Meta (META) unveiled a new AI agent called Muse designed to carry out tasks on a user's behalf, Bloomberg reported, from online shopping and buying movie tickets to scheduling appointments. The launch pushes Meta deeper into the agentic-AI race against OpenAI and Google.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-09/meta-unveils-ai-assistant-for-personal-tasks-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta Unveils AI Assistant for Personal Tasks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lyft begins offering Waymo robotaxi rides in Nashville</strong></summary>
+      <div class="deal-body">
+        <p>Lyft (LYFT) is starting to offer Waymo robotaxi rides in Nashville, Bloomberg reported, its second US city for driverless trips as it plays catch-up with Uber. The expansion shows autonomous ride-hailing scaling into more markets through platform partnerships.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/lyft-begins-offering-waymo-robotaxi-rides-on-its-app-in-nashville" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Lyft Begins Offering Waymo Robotaxi Rides on Its App in Nashville</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Wednesday September 9, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is Amazon's £4bn debut, SoftBank refinancing its $40bn OpenAI loan, Harvey's $15.6bn mark, Google's €13bn Finland spend and Taiwan's record AI exports. The counter-signal is WSJ flagging the boom's weakest link, record AI venture debt, Ares's Blair Jacobson warning of a software bifurcation and an Anthropic researcher quitting over safety. The frame is a buildout still pulling in capital but increasingly a debt-and-trust story as the leverage stacks up.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Treasuries weaken as rising oil revives rate-hike bets into next week's Fed</strong></summary>
+      <div class="deal-body">
+        <p>Treasuries fell, Bloomberg reported, as traders worried rising oil prices will fan inflation and add pressure on the Fed to raise rates as soon as next week. WSJ noted yields ticked higher after Brent briefly topped $100 for the first time since July.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/treasuries-weaken-as-soaring-oil-prices-revive-rate-hike-worries" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Treasuries Weaken as Rising Oil Prices Boost Rate-Hike Bets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US reveals an import ban on Canadian goods as the trade war escalates</strong></summary>
+      <div class="deal-body">
+        <p>Washington set out import bans on motorbikes, alcohol and dairy from Canada due to take effect September 29, CNBC reported, days after Canada's retaliatory tariffs worth CA$27.6 billion took hold and doubled steel and aluminum duties to 50%. The tit-for-tat deepens the rift and the inflation risk.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/09/us-canada-trade-war-import-ban.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- US Reveals Import Ban on Slew of Canadian Goods as Trade War Escalates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chinese inflation revives as the oil spike and AI boom feed into prices</strong></summary>
+      <div class="deal-body">
+        <p>China's consumer inflation accelerated for the first time since April and factory-gate prices grew faster than expected, Bloomberg reported, as costlier food and energy revived price pressures. The turn shows the oil shock rippling through the world's second-largest economy.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/china-consumer-producer-price-pressures-revived-by-energy-spike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chinese Inflation Revives as Oil Spike, AI Boom Feed Into Prices</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Taiwan's exports surge to a record on demand for AI products</strong></summary>
+      <div class="deal-body">
+        <p>Taiwan's exports surged to a record in August, Bloomberg reported, highlighting resilient global demand for technology products despite concerns about the pace of the AI buildout. The print is a real-economy confirmation that AI hardware demand remains strong.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/taiwan-s-exports-surge-to-record-on-demand-for-ai-products" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Taiwan's Exports Surge to Record on Demand for AI Products</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bessent warns yen traders not to bet against him: 'I am the house now'</strong></summary>
+      <div class="deal-body">
+        <p>Treasury Secretary Scott Bessent challenged traders to test his resolve on boosting the yen, MarketWatch reported, saying he now effectively trades with inside information into what Japanese policymakers will do. The comment follows July's rare joint intervention with Tokyo and lifted the yen past 153 per dollar.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/bessent-says-i-am-the-house-now-what-it-means-for-the-yen-and-u-s-stocks-9ef63bc3?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Bessent Says 'I Am the House Now.' What It Means for the Yen and U.S. Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed officials signal openness to Warsh proposal for fewer policy meetings</strong></summary>
+      <div class="deal-body">
+        <p>At least a third of Fed officials have said they would consider meeting less frequently to set rates, Bloomberg reported, giving new chair Kevin Warsh an early opening for one of his biggest proposed structural changes. The shift would reshape how markets read the policy calendar.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/fed-officials-signal-openness-to-warsh-proposal-for-fewer-policy-meetings" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Officials Signal Openness to Warsh Proposal for Fewer Policy Meetings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Qatar's deficit hits a decade high as Hormuz ties up gas trade</strong></summary>
+      <div class="deal-body">
+        <p>Qatar posted its widest quarterly budget deficit in almost a decade, Bloomberg reported, as natural-gas revenue all but evaporated when the US-Iran war effectively shut the Strait of Hormuz. The hit shows how the conflict is reshaping energy exporters' fiscal positions.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-08/qatar-has-widest-deficit-in-a-decade-as-hormuz-ties-up-gas-trade" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Qatar's Deficit Hits Decade-High as Hormuz Ties Up Gas Trade</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (September 9, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish side owns the tape, with Brent over $100 reviving hike bets into next week's Fed, mortgage rates at a 14-month high, Chinese inflation reviving and Qatar's decade-wide deficit. Pulling the other way, Taiwan's record AI exports and Bessent's yen backstop point to resilient growth and calmer FX. Canada's tariffs and the fresh US import ban add a trade-war inflation wrinkle. Friday's CPI is the real test.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Oil Crack Spread Is the Inflation Gauge Central Bankers Are Watching</summary>
+      <p>Bloomberg Economics reported that an esoteric oil spread called the crack spread is gaining attention as an inflation metric, and it is blowing out just as Brent tops $100 and central bankers weigh their next move. Understanding it explains why an obscure refining number can matter more than the crude price itself for the inflation that hits your wallet. Start with what the crack spread measures. Crude oil is not what consumers actually buy; they buy refined products like gasoline, diesel and jet fuel. Refineries take crude in and "crack" it into those products, and the crack spread is the gap between the price of the finished fuels and the price of the crude that goes into them. It is, in effect, the refining margin, and it tells you how much of the final pump price comes from crude versus from the cost and constraint of turning crude into usable fuel. Now consider why it blows out during a supply shock like the US-Iran war. When tankers are destroyed and the Strait of Hormuz is disrupted, it is not only crude that gets scarce. Specific grades, refined-product cargoes and shipping capacity all tighten at once, and refineries running flat out, India's are above 108%, cannot instantly make more diesel or jet fuel. So the price of refined products rises faster than crude, and the crack spread widens. That matters because refined-product prices, not the crude benchmark, are what feed directly into transport, freight, food distribution and heating costs. A widening crack spread means the inflation pass-through is intensifying even if crude itself stalls. This is why central bankers watch it. The crude price tells you about the raw input; the crack spread tells you how much of that shock is actually reaching consumers and businesses. A blowing-out spread signals that the energy shock is broadening into core costs, which is exactly the stagflationary squeeze that boxes in a central bank, raising prices while sapping growth. It strengthens the case to stay tight or hike, because the inflation is arriving through channels monetary policy cannot quickly offset. The practical lesson is to look past the headline crude number to the refining margin when you want to gauge inflation risk. The tell is divergence: if Brent stalls but crack spreads keep widening, the shock is still feeding through and the inflation threat is worsening. If crude climbs but cracks narrow, refiners are keeping up and the pass-through is contained. When the spread captivates central bankers, it is because it measures the part of an oil shock that actually shows up in prices, and that is what decides how tight the policy bind really is.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/oil-s-crack-spread-captivates-central-bankers-fretting-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oil's Crack Spread Captivates Central Bankers Fretting Inflation</a></p>
+      <p class="deal-source"><a href="https://finance.yahoo.com/energy/articles/india-refineries-run-108-diesel-103000554.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- India's Refineries Run at Up to 108% as Diesel Demand Surges</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Brent topped $100 for the first time since July after the US military destroyed five Iranian tankers overnight, reviving Strait of Hormuz fears, weakening Treasuries and reviving Fed hike bets into next week's decision; RBC's Lori Calvasina flagged a rising risk of a 10% pullback into the midterms while HSBC's Max Kettner tied higher yields to US strength; the AI buildout leaned harder on debt as Amazon opened a £4bn sterling book, Uber debuted euro bonds and SoftBank refinanced its $40bn OpenAI loan, though WSJ warned about the boom's weakest link; bitcoin climbed toward $79,700, tracking gold rather than equities; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.75%, bear confirmed; below 4.60%, bull confirmed. Iran/Oil: if Brent closes above $92, bear confirmed; below $82, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 9/7</td>
+            <td><span style="color:var(--muted);font-weight:700;">Holiday</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Holiday</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Holiday</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/8</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/9</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 9/10</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 9/11</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin climbs past $79,000 as oil tops $100 and equities drop</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin advanced as high as $79,700 while Brent topped $100 and European shares fell, CoinDesk reported, leaving crypto tracking gold rather than equities into the reopen. Yahoo said ongoing Middle East escalation is keeping a lid on further gains as risk sentiment stays fragile.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/09/bitcoin-climbs-as-oil-tops-usd100-equities-drop-after-iran-strikes" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Climbs as Oil Tops $100, Equities Drop After Iran Strikes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Iran eases currency controls to let traders bring earnings home in crypto</strong></summary>
+      <div class="deal-body">
+        <p>Iran has quietly relaxed foreign-currency controls to let exporters repatriate earnings in crypto and fund imports directly, CoinDesk reported, citing the FT. The move bypasses the official FX system and shows how the war is pushing Tehran toward digital assets to shore up its economy.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/09/iran-eases-currency-controls-to-let-traders-bring-earnings-home-in-crypto-ft" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Iran Eases Currency Controls to Let Traders Bring Earnings Home in Crypto</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Circle agrees to buy cross-border payments firm Tazapay for $400 million</strong></summary>
+      <div class="deal-body">
+        <p>Circle agreed to buy cross-border payments firm Tazapay for $400 million, CoinDesk reported, a deal that would grant it regulated "last-mile" infrastructure bridging stablecoins and local banking systems. The acquisition deepens Circle's push into real-world payment rails.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/08/circle-agrees-to-buy-cross-border-payments-firm-tazapay-for-usd400-million" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Circle Agrees to Buy Cross-Border Payments Firm Tazapay for $400 Million</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US Bank takes a step toward its own stablecoin with a cross-border test</strong></summary>
+      <div class="deal-body">
+        <p>US Bank, the fifth-largest US commercial bank, completed a live cross-border payment test and is exploring a USBDC stablecoin for treasury payments, liquidity and collateral, CoinDesk reported. The move shows big banks moving from talk to pilots on stablecoin infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/08/u-s-bank-takes-next-step-towards-launching-its-stablecoin-with-cross-border-payment-test" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US Bank Takes Next Step Toward Launching Its Stablecoin With Cross-Border Payment Test</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Singaporean 22-year-old pleads guilty as ringleader in $245 million crypto fraud</strong></summary>
+      <div class="deal-body">
+        <p>Malone Lam, a 22-year-old Miami resident, pleaded guilty to leading a ring that stole 4,100 bitcoin through online scams and home invasions, CoinDesk reported, in a $245 million fraud case. The plea underlines the physical-security risks now surrounding large crypto holdings.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/09/singaporean-22-year-old-pleads-guilty-to-being-the-ringleader-in-usd245-million-crypto-fraud-case" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Singaporean 22-Year-Old Pleads Guilty in $245 Million Crypto Fraud Case</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hunter Biden defends his LAPTOP memecoin ahead of its launch</strong></summary>
+      <div class="deal-body">
+        <p>Hunter Biden defended his LAPTOP token ahead of its Wednesday launch, CoinDesk reported, calling it about "resilience, redemption and recovery" and pledging coins to nearly a million wallets that lost money on the TRUMP token, which he branded a "grift." The debut lands amid heavy trader skepticism.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/09/hunter-biden-defends-laptop-ahead-of-wednesday-launch-calls-trump-a-grift" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Hunter Biden Defends LAPTOP Ahead of Wednesday Launch, Calls TRUMP a 'Grift'</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Amazon + Uber -- Debut Sterling and Euro Bond Sales to Fund the AI Arms Race</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Amazon opened books on an expected £4bn ($5.4bn) four-part debut sterling bond, Bloomberg reported, while Uber began offering its debut euro bonds in a five-part deal set to price the same day.</p>
+        <p><strong>Outlook:</strong> Both tap new currency markets to diversify funding as hyperscalers keep raising debt worldwide to bankroll AI capex.</p>
+        <p><strong>What it means:</strong> Big Tech is reaching into every major credit market at once, exactly the supply wave that eventually pressures spreads.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-09/debut-offerings-amazon-sterling-bonds-uber-euro-bonds-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Debut Offerings: Amazon Sterling Bonds; Uber Euro Bonds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SoftBank -- Refinancing a $40 Billion Bridge Loan for Its OpenAI Stake</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SoftBank will repay the balance on the $40 billion loan it signed to finance its OpenAI investment, Bloomberg reported, as it moves to longer-term debt.</p>
+        <p><strong>Outlook:</strong> Terming out the bridge locks in funding for one of the largest single AI bets ever made.</p>
+        <p><strong>What it means:</strong> The scale of leverage behind the AI buildout is now a capital-markets story in its own right.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/softbank-to-repay-40-billion-bridge-loan-for-openai-stake" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank to Repay $40 Billion Bridge Loan for OpenAI Stake</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Harvey -- $550 Million Round at a $15.6 Billion Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Legal-AI startup Harvey raised $550 million at a $15.6 billion valuation, Bloomberg reported, funding efforts to build its own AI models.</p>
+        <p><strong>Outlook:</strong> The raise cements Harvey as a leader in vertical AI as it moves from applying frontier models to training its own.</p>
+        <p><strong>What it means:</strong> Private capital keeps flowing to applied AI well beyond general chatbots.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/legal-ai-startup-harvey-hits-15-6-billion-value-with-550-million-round" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Legal AI Startup Harvey Hits $15.6 Billion Value With $550 Million Round</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Google -- €13 Billion AI Infrastructure Investment in Finland</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Alphabet's Google is spending €13 billion ($15.1bn) on AI infrastructure in Finland, Bloomberg reported, its biggest European investment, drawn by cold climate and carbon-free power.</p>
+        <p><strong>Outlook:</strong> The build targets the power and cooling bottlenecks squeezing data-center expansion.</p>
+        <p><strong>What it means:</strong> Power availability is now the deciding factor in where compute gets built.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/google-plans-13-billion-ai-infrastructure-investment-in-finland" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Google Picks Chilly Finland for €13 Billion European AI Buildout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zankore -- $3.1 Billion GPU Loan for Indonesian AI Infrastructure</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Nvidia-backed Zankore signed a $3.1 billion loan to buy advanced chips, Bloomberg reported, underscoring surging demand for computing capacity across Asia.</p>
+        <p><strong>Outlook:</strong> The financing lets a regional platform scale GPU capacity fast to meet local AI demand.</p>
+        <p><strong>What it means:</strong> AI buildout financing is spreading well beyond US hyperscalers into emerging markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/nvidia-backed-firm-in-indonesia-signs-3-1-billion-gpu-loan" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed Firm in Indonesia Signs $3.1 Billion GPU Loan</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Circle -- $400 Million Acquisition of Tazapay</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Circle agreed to buy cross-border payments firm Tazapay for $400 million, CoinDesk reported, to gain regulated last-mile payment infrastructure.</p>
+        <p><strong>Outlook:</strong> The deal bridges stablecoins and local banking systems, deepening Circle's real-world rails.</p>
+        <p><strong>What it means:</strong> Stablecoin issuers are buying their way into traditional payment plumbing as volumes surge.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/08/circle-agrees-to-buy-cross-border-payments-firm-tazapay-for-usd400-million" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Circle Agrees to Buy Cross-Border Payments Firm Tazapay for $400 Million</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>RBC Capital Markets (Lori Calvasina) -- sees a growing risk of a 10% US stock decline</strong></summary>
+      <div class="deal-body">
+        <p>RBC strategist Lori Calvasina told Bloomberg the risk of a US pullback of as much as 10% is rising as midterm elections approach and the market enters a seasonally challenging stretch. A named strategist tempering the bull case just as oil and yields climb.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/rbc-s-calvasina-sees-growing-risk-of-10-us-stock-decline" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- RBC's Calvasina Sees Growing Risk of 10% US Stock Decline</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>HSBC (Max Kettner) -- says bond yields are about fundamentals, not Bessent</strong></summary>
+      <div class="deal-body">
+        <p>HSBC chief multi-asset strategist Max Kettner told Bloomberg that higher US yields reflect US growth and exceptionalism rather than fiscal panic, adding "this is fundamentals, this is not about what Scott Bessent wants." A named strategist reading firm yields as a growth signal.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-09/bond-yields-about-fundamentals-not-bessent-kettner-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Yields About Fundamentals, Not Bessent, Says HSBC's Kettner</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ares Management (Blair Jacobson) -- sees a bifurcation in the software market</strong></summary>
+      <div class="deal-body">
+        <p>Ares co-president Blair Jacobson told Bloomberg that the fear all software would be eaten by AI has given way to a bifurcation, with winners and losers now clearly splitting apart, demanding sharper selection and due diligence. A named investor reframing the AI-versus-software debate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-09/ares-jacobson-sees-bifurcation-in-software-industry-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ares's Jacobson Sees Bifurcation in Software Industry</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apollo Global Management (Scott Kleinman) -- sees a golden age of capital deployment</strong></summary>
+      <div class="deal-body">
+        <p>Apollo's Scott Kleinman told Bloomberg the private-capital industry is in "a golden age of capital deployment" even as the era of cheap funds ends, arguing firms will create value the old-fashioned way. A named executive leaning constructive on the deal environment.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-09/apollo-s-kleinman-says-pe-to-create-value-the-old-fashioned-way" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apollo's Kleinman Sees Golden Age of Capital as Firms Spend</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BNP Paribas (Isabelle Scemama) -- says credit is 'very much in demand'</strong></summary>
+      <div class="deal-body">
+        <p>BNP Paribas global head of AM alternatives Isabelle Scemama told Bloomberg that credit is "very much in demand" as investors seek yield and stability against a more uncertain global backdrop. A named allocator pointing to durable appetite for the debt now funding the AI buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-09/bnp-s-scemama-credit-very-much-in-demand-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BNP's Scemama: Credit 'Very Much in Demand'</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Oil Tops $100 Into Next Week's Fed, RBC's Lori Calvasina Warns of a 10% Pullback Into the Midterms and Ares's Blair Jacobson Sees a Software Bifurcation, While HSBC's Max Kettner Ties Higher Yields to US Strength, Apollo's Scott Kleinman Calls It a Golden Age of Capital and BNP's Isabelle Scemama Says Credit Is Very Much in Demand</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (growth, capital and credit appetite hold up):</strong> HSBC's Max Kettner reads higher US yields as a fundamentals-driven growth signal, Apollo's Scott Kleinman calls this a golden age of capital deployment, and BNP's Isabelle Scemama says credit is very much in demand, exactly the appetite the AI bond wave needs. If growth and funding stay firm, the tape can absorb the oil-driven yield move.</div>
+        <div class="bear"><strong>Bear (the shock and the calendar are the risk):</strong> RBC's Lori Calvasina warns the risk of a 10% pullback is rising into a seasonally rough midterm stretch, and Ares's Blair Jacobson says the software market has bifurcated, forcing sharper selection rather than broad upside. With Brent over $100 reviving hike bets days before the Fed, the setup rewards caution into Friday's CPI.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Brent tops $100, US destroys 5 Iranian tankers; RBC 10% pullback warning; Apple iPhone event; CPI Friday</td><td>Cautious</td><td>~25,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Oil threatens the stock run; GameStop collectibles shift; Chime breakout; Oracle EU warning</td><td>Mixed to bearish</td><td>~17,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Treasuries weaken, hike bets rise; 30-year mortgage 14-month high; Bessent yen dare; Canada import ban</td><td>Bearish</td><td>~20,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI debt wave: Amazon, Uber, SoftBank; Harvey $15.6B; Ares software bifurcation; WSJ weakest link</td><td>Cautious</td><td>~10,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC near $79.7K tracking gold; Iran turns to crypto; Circle-Tazapay; $245M fraud plea; Hunter Biden LAPTOP</td><td>Neutral to bearish</td><td>~22,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood stayed defensive as Brent topped $100 after the US destroyed five Iranian tankers, reviving hike bets into next week's Fed. r/wallstreetbets stayed cautious, chewing on the escalation, RBC's 10% pullback warning and Apple's iPhone event. r/stocks leaned mixed to bearish as oil threatened the run. r/investing went bearish on weaker Treasuries, mortgage rates at a 14-month high and the fresh US-Canada import ban. r/SecurityAnalysis stayed cautious on the AI debt wave and WSJ's weakest-link flag. r/CryptoCurrency was neutral to bearish as bitcoin tracked gold rather than stocks. The swing factor is Friday's CPI.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Destroying Oil Tankers Moves the Price More Than the Barrels Lost Would Suggest</h2>
+    <p>Bloomberg and MarketWatch reported that Brent topped $100 for the first time since July after the US military destroyed five Iranian tankers carrying crude, in response to an attempted ballistic-missile strike on a US Navy warship. Five tankers is a tiny fraction of the roughly 100 million barrels a day the world consumes, so it can seem odd that their loss sent the global benchmark through $100. The gap between the physical barrels lost and the size of the price move is the whole lesson, and it comes down to how oil markets price risk rather than just supply. Start with the spot price. Crude does not trade only on today's balance of barrels; it trades on the expected balance over the coming months, discounted for the probability of disruption. When tankers are attacked in or near the Strait of Hormuz, through which a large share of the world's seaborne crude passes, the market is not just subtracting five cargoes. It is raising the estimated probability that far more supply could be interrupted, that shipping insurance and freight costs will spike, that owners will reroute or refuse to sail, and that the conflict escalates further. Each of those is a fat-tailed risk, and the price has to embed the expected value of all of them at once. That expected value can be worth many dollars a barrel even before a single additional cargo is actually lost. This is the risk premium, and it swells fastest when the disruption hits a chokepoint. A chokepoint like Hormuz has no easy substitute route, so a threat there is not a local problem, it is a systemic one that could bottleneck a huge volume of flows. Traders and physical buyers respond by scrambling to secure barrels now rather than risk paying more or getting none later, which pulls forward demand and bids up prompt prices. Refiners and importers hedge by buying futures, adding financial demand on top of physical. The result is that the price moves on the fear of what could happen, and it can stay elevated as long as that fear is credible, which is why Bloomberg noted the war shows little sign of abating. The practical lesson is to separate the barrels from the premium. When you see oil jump on an attack that destroyed only a handful of tankers, the move is mostly the market repricing the probability and scale of future disruption, not the arithmetic of what was lost today. The tell to watch is whether the premium sits in prompt prices and spreads, a fear-driven scramble that can unwind fast if tensions cool, or whether actual flows through the chokepoint fall, which makes the move stickier. When crude clears $100 on a tanker strike, the honest read is that the market has raised its estimate of tail risk, and the CPI and central-bank response will hinge on whether that fear turns into real, sustained supply loss.</p>
+    <p class="deal-source"><a href="https://www.marketwatch.com/story/brent-crude-reaches-100-as-war-in-iran-intensifies-b73832e2?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Brent Crude Passes $100 Threshold as War in Iran Intensifies</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-08/latest-oil-market-news-and-analysis-for-sept-9" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Brent Oil Tops $100 as US-Iran War Shows Little Sign of Abating</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>US August CPI, Friday 9/11.</strong> With Brent over $100 and the crack spread blowing out, watch whether core stays sticky enough to cement a Fed hike, the market's biggest near-term catalyst.</li>
+      <li><strong>Fed decision, next week.</strong> After oil revived hike bets, watch whether the committee delivers or holds and how it frames the energy shock, plus any nod to Warsh's fewer-meetings proposal.</li>
+      <li><strong>Global central banks.</strong> Poland is set to hold at a 14-month inflation high, with Bessent's yen backstop and BOJ intervention chatter in focus as the currency tests 153.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Oracle earnings.</strong> With an EU regulatory warning landing just ahead of the print, watch the cloud and AI-infrastructure guide and any read on data-center capex.</li>
+      <li><strong>Chip and AI cross-reads.</strong> After Taiwan's record AI exports and TSMC's High-NA plan giving ASML a catalyst, watch foundry and memory commentary for confirmation the demand is real.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI debt calendar.</strong> After Amazon's sterling and Uber's euro debuts and SoftBank's $40bn refinancing, watch whether new AI-linked deals price at wider concessions as supply builds.</li>
+      <li><strong>Apple's September 9 event.</strong> With a foldable iPhone and the iPhone 18 line expected, watch the read-through for high-end demand and the supply chain against Huawei and Xiaomi.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran war and oil.</strong> With five Iranian tankers destroyed and Brent over $100, watch whether Hormuz flows fall further or the escalation cools and drains the risk premium.</li>
+      <li><strong>US-Canada trade war.</strong> After Canada's tariffs took effect and Washington set a September 29 import ban on Canadian goods, watch whether the rift widens into a bigger inflation risk.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Sep 9, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-09-09 07:48 ET); Bloomberg Technology (20 fresh, newest 2026-09-09 07:33 ET); Bloomberg Economics (20 fresh, newest 2026-09-09 07:26 ET); CNBC Top News (5 fresh, newest 2026-09-08 17:59 ET); CNBC Finance (6 fresh, newest 2026-09-09 02:26 ET); CNBC Economy (4 fresh, newest 2026-09-09 07:26 ET); MarketWatch Top Stories (10 fresh, newest 2026-09-09 07:24 ET); WSJ Markets (17 fresh, newest 2026-09-09 07:58 ET); Yahoo Finance (24 fresh, newest 2026-09-09 07:42 ET); FT Home (11 fresh, newest 2026-09-09 07:35 ET); Matt Levine Money Stuff (1 fresh, newest 2026-09-08 14:36 ET); CoinDesk (25 fresh, newest 2026-09-09 08:00 ET); Stratechery (2 fresh, newest 2026-09-09 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. Why did Brent crude top $100 on Wednesday?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC+ announced a surprise output cut at an emergency meeting</span>
+      <span class="opt" data-opt="B">B. China lifted strategic reserve buying to a fresh record high</span>
+      <span class="opt" data-opt="C">C. The US military destroyed five Iranian tankers, escalating the war</span>
+      <span class="opt" data-opt="D">D. A hurricane forced US Gulf Coast refineries to shut down output</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg and MarketWatch reported Brent topped $100 for the first time since July after US Central Command destroyed five Iranian tankers in response to an attempted strike on a US Navy warship. There was no OPEC+ cut or Gulf hurricane, and Sinopec actually sees Chinese oil demand shrinking this year.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>2. Why does a widening oil crack spread worry central bankers?</strong></p>
+      <span class="opt" data-opt="A">A. It signals crude producers are cutting output to raise prices</span>
+      <span class="opt" data-opt="B">B. Refined fuel prices are rising faster and feeding into inflation</span>
+      <span class="opt" data-opt="C">C. It shows refiners are hoarding crude in strategic reserves</span>
+      <span class="opt" data-opt="D">D. It forces central banks to buy oil futures to hedge budgets</span>
+      <div class="feedback"><strong>B is correct.</strong> The crack spread is the refining margin between crude and finished fuels; when it blows out, refined-product prices like diesel and gasoline are rising faster than crude and passing straight into transport, food and heating costs. It is not about producer cuts, reserve hoarding, or central banks hedging with futures.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why did Treasuries weaken on Wednesday?</strong></p>
+      <span class="opt" data-opt="A">A. Rising oil revived bets the Fed will hike as soon as next week</span>
+      <span class="opt" data-opt="B">B. The Treasury doubled its scheduled auction size overnight</span>
+      <span class="opt" data-opt="C">C. Rating agencies downgraded US sovereign debt to junk status</span>
+      <span class="opt" data-opt="D">D. The Fed announced an emergency rate cut to support growth</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported Treasuries fell as traders worried rising oil prices would fan inflation and pressure the Fed to raise rates as soon as next week. There was no doubled auction, no junk downgrade, and no emergency cut, the driver was the oil-fueled hike expectation.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Oil above $100 revived rate-hike bets into next week's Fed as Treasuries weakened and mortgage rates hit a 14-month high, RBC's Lori Calvasina flagged a rising risk of a 10% pullback into the midterms, while HSBC's Max Kettner argued higher US yields are a fundamentals story and strategists at RBC, HSBC and Barclays still see the S&P 500 near 8,000.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-09/treasuries-weaken-as-soaring-oil-prices-revive-rate-hike-worries", "take": "Treasuries weakened as rising oil revived bets on a Fed hike next week." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-09/rbc-s-calvasina-sees-growing-risk-of-10-us-stock-decline", "take": "RBC's Lori Calvasina sees a growing risk of a 10% US stock decline into the midterms." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/news/analysis-fearless-us-stock-market-110129401.html", "take": "A fearless US stock market looks vulnerable to shocks as midterms loom." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-09-09/bond-yields-about-fundamentals-not-bessent-kettner-video", "take": "HSBC's Max Kettner says higher US yields reflect growth and exceptionalism." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/strategists-say-s-p-500-could-top-8-000-but-risks-of-a-pullback-are-mounting-e1629564?mod=mw_rss_topstories", "take": "RBC, HSBC and Barclays all carry S&P 500 targets near 8,000." }
+    ]
+  },
+  "iran": {
+    "diverge": "Brent topped $100 for the first time since July after the US destroyed five Iranian tankers and the war disrupted the Strait of Hormuz, with silver over $66, Qatar's widest deficit in a decade and the crack spread blowing out, though gold dropped after the strikes, Sinopec sees China oil demand shrinking and India's refineries run above 108%.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-08/latest-oil-market-news-and-analysis-for-sept-9", "take": "Brent topped $100 as the US destroyed five Iranian tankers and Hormuz fears returned." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/brent-crude-reaches-100-as-war-in-iran-intensifies-b73832e2?mod=mw_rss_topstories", "take": "Brent passed $100 after the US said it destroyed five Iranian crude vessels." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-09/oil-s-crack-spread-captivates-central-bankers-fretting-inflation", "take": "The oil crack spread is blowing out and captivating inflation-fretting central bankers." },
+      { "name": "Yahoo Finance", "lean": "bull", "url": "https://finance.yahoo.com/personal-finance/investing/article/gold-price-today-wednesday-september-9-2026-gold-prices-drop-following-us-strikes-on-five-iranian-oil-tankers-104123795.html", "take": "Gold prices dropped after US strikes on five Iranian oil tankers." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-09/china-oil-demand-to-shrink-this-year-sinopec-research-arm-says", "take": "Sinopec's research arm sees China oil demand shrinking 600,000 b/d this year." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI buildout leaned harder on debt as Amazon opened a £4bn sterling book, Uber debuted euro bonds and SoftBank refinanced its $40bn OpenAI loan, with Harvey at $15.6bn, Google's €13bn Finland spend and Taiwan's record AI exports, but WSJ flagged the boom's weakest link, Ares's Blair Jacobson saw a software bifurcation and an Anthropic researcher quit over safety.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-09/amazon-opens-books-on-debut-four-part-sterling-bond-sale", "take": "Amazon opened books on an expected £4bn debut sterling bond to fund the AI arms race." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-09/legal-ai-startup-harvey-hits-15-6-billion-value-with-550-million-round", "take": "Legal-AI startup Harvey hit a $15.6bn valuation on a $550m round." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-09/taiwan-s-exports-surge-to-record-on-demand-for-ai-products", "take": "Taiwan's exports surged to a record on demand for AI products." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-09-09/ares-jacobson-sees-bifurcation-in-software-industry-video", "take": "Ares's Blair Jacobson sees a bifurcation in the software market." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/20c07191-8da6-440f-b04b-8ea0ebdd9153?syn-25a6b1a6=1", "take": "An Anthropic researcher quit warning AI labs are gambling with our lives." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Chime","ASML","Taiwan Exports","Adani Ent.","GameStop","Coforge"],
+    "values": [6.0, 3.0, 2.0, 4.5, -2.0, -8.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [25000, 17000, 20000, 10000, 22000],
+    "colors": ["neutral","bear","bear","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["SoftBank OpenAI Loan","Google Finland","Amazon Sterling Bond","Zankore GPU Loan","Harvey Round","Circle-Tazapay"],
+    "values": [40.0, 15.1, 5.4, 3.1, 0.55, 0.40]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
