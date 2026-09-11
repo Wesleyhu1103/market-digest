@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Sep 10, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-09-10</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, September 10, 2026</h1>
+    <div class="meta">
+      <p>It's PPI day, with the August producer-price print landing before the open one day ahead of Friday's CPI, and the ECB is near-certain to hike again as the Iran war keeps energy prices climbing. Oracle reports tonight as the first big test of AI-spending tolerance, and a 30-year Treasury auction follows Bessent's $6bn buyback that underwhelmed. Brent topped $102 after Iran vowed to intensify its counterattacks.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Global government bond yields jumped to multiyear highs as Bessent's upsized but still modest $6bn buyback underwhelmed investors, Brent crude climbed above $102 with Iran vowing to escalate, and Trump pledged a $5,000 payout to voters if Republicans win the midterms, all pressuring Treasuries into a 30-year auction and the ECB decision",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Global Bond Yields Hit Multiyear Highs Ahead of ECB Decision, U.S. Treasury Buybacks", "angle": "Reads the accelerating selloff in global government bonds as the dominant risk into the ECB and the auction.", "lean": -45, "pull": "The selloff in global government bonds accelerated, pushing yields on Bunds and Treasurys to fresh multiyear highs."},
+        {"outlet": "Financial Times", "headline": "Treasury Yields Jump as Bessent's $6bn Buyback Plan Disappoints Investors", "angle": "Frames the underwhelming buyback as a failed attempt to calm a market demanding more term premium.", "lean": -50, "pull": "Ten-year borrowing costs hit their highest level in nearly three years despite an upsized repurchase programme."},
+        {"outlet": "Bloomberg", "headline": "Treasuries Fall Ahead of Auction as Trump Pledges Payout", "angle": "Ties the bond jitters to Trump's $5,000 midterm-payout promise reviving fiscal-discipline worries.", "lean": -40, "pull": "The promise of a national cash payout is injecting fresh uncertainties into the Treasury market ahead of a 30-year auction."},
+        {"outlet": "Bloomberg", "headline": "US Economy Can Withstand Two Rate Hikes, Says UBS's Reiman", "angle": "Offers the counter-read that firmer yields reflect a durable economy, not just fiscal panic.", "lean": 20, "pull": "Multiple factors, and definitely not just the deficit, are pushing bond yields higher."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Global Bond Yields Hit Multiyear Highs as Bessent's $6bn Buyback Disappoints, Trump Pledges a $5,000 Midterm Payout and US-China Borrowing Costs Diverge to a Record Ahead of a 30-Year Auction and Friday's CPI, While UBS's Kurt Reiman Says the Economy Can Withstand Two Hikes and BofA Argues Stocks Can Absorb Bigger Bond Shocks</h3>
+      </div>
+      <p>Rates own the tape and the mood is defensive. WSJ said the selloff in global government bonds accelerated in European trade, pushing 10-year Bunds and Treasurys to fresh multiyear highs into the ECB decision and a US 30-year auction. FT reported 10-year borrowing costs hit their highest in nearly three years even after Treasury Secretary Scott Bessent doubled down with an upsized $6bn buyback that still underwhelmed, and CoinDesk noted yields kept rising despite the repurchase. The fiscal overhang got louder: Bloomberg said Trump's promise of a $5,000 national payout if Republicans win the midterms is injecting fresh uncertainty ahead of the auction, and FT reported US and China borrowing costs have diverged to their widest level ever as rising Treasury yields threaten to accelerate capital shifts. The bull side is not empty. UBS Global Wealth's Kurt Reiman told Bloomberg the US economy can withstand two Fed hikes this year and that "definitely not just the deficit" is lifting yields, framing it as a growth story. BofA's strategists argued on MarketWatch that equity markets can withstand more severe bond shocks than seen so far in 2026 and that volatility, not the level of yields, is the better guide to risk. The debate is whether firm yields signal a resilient economy or whether fiscal drift plus an oil-fed inflation scare boxes the Fed in just as CPI lands.</p>
+      <p>The bull read is UBS's Reiman tying higher yields to a durable economy that can absorb two hikes, and BofA saying stocks can weather bigger bond shocks than the market has priced. The bear read is yields at multiyear highs, Bessent's buyback disappointing, Trump's payout pledge stoking fiscal fears and US-China spreads at a record wide into the auction and CPI.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (growth can carry the higher coupon):</strong> UBS's Kurt Reiman told Bloomberg the economy can withstand two hikes and that many factors beyond the deficit are lifting yields, a growth read rather than a panic. BofA argued on MarketWatch that equities can absorb bigger bond shocks than 2026 has delivered and that volatility is the better risk gauge. If firm yields are a growth signal, the tape can grind through them.</div>
+        <div class="bear"><strong>Bear (fiscal drift and oil are pushing rates the wrong way):</strong> WSJ said global yields hit multiyear highs and FT reported 10-year costs at a near three-year peak even after Bessent's $6bn buyback disappointed. Bloomberg flagged Trump's $5,000 payout pledge feeding auction jitters, and FT said US-China borrowing costs are the widest ever. With CPI on Friday and oil above $102, the setup rewards caution.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/investing/bond-yields-edge-up-as-investors-await-ecb-rate-hike-u-s-treasury-buybacks-4cd2e9f3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Global Bond Yields Hit Multiyear Highs Ahead of ECB Decision, U.S. Treasury Buybacks</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Brent Tops $102 as Iran Vows to Intensify Its Counterattacks, Diesel Hits a Record and Iraq Tenders Supertankers Through Hormuz, Forcing the ECB to Hike Again, While China Weighs Whether to Restrain Prices, Egypt's Inflation Eases and TotalEnergies Commits $10bn to Angolan Oil</h3>
+      </div>
+      <p>The shock keeps stepping up. Bloomberg said Brent climbed above $102 a barrel with little sign the Iran war is abating, and its markets brief reported Iran is ready to intensify its counterattacks if the US keeps striking, while Trump said the US will win. The pass-through is already hitting households: MarketWatch reported diesel prices hit another record high, warning the most important price in America is feeding straight into CPI and the ECB in the same week. Bloomberg said Iraq is tendering for two or more supertankers to transit the Strait of Hormuz while the waterway remains under military threat, and Bloomberg Economics reported the ECB is set to hike for the second time since the war sent energy prices soaring, with inflation locked above target. The relief signals are thinner and mostly about demand and fresh supply. Bloomberg asked whether China will again restrain prices by slashing crude imports, though it noted that may no longer be an option. Bloomberg Economics said Egypt's inflation unexpectedly eased in August despite war pressures, and TotalEnergies plans $10bn of Angolan oil investment over five years to sustain output. Gold hovered near $4,400 rather than spiking. But with Iran threatening escalation, diesel at a record and Hormuz contested, the supply premium looks live into the print.</p>
+      <p>The bull read is China potentially capping prices, Egypt's inflation easing, TotalEnergies adding barrels in Angola and gold holding rather than spiking. The bear read is Brent over $102, Iran vowing to escalate, diesel at a record, Iraq chartering tankers through a threatened Hormuz and the ECB forced to hike again.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand and supply can offset the premium):</strong> Bloomberg asked whether China will again restrain prices by cutting imports, Egypt's inflation eased in August despite the war, and TotalEnergies committed $10bn to sustain Angolan output. Gold hovered near $4,400 rather than spiking, a sign the panic bid is contained. If barrels keep flowing and demand cools, the risk premium can drain.</div>
+        <div class="bear"><strong>Bear (the war is escalating into the inflation channel):</strong> Bloomberg said Brent topped $102 as Iran vowed to intensify counterattacks, and MarketWatch reported diesel at a fresh record feeding straight into CPI and the ECB. Iraq is chartering supertankers through a militarily threatened Hormuz, and the ECB is hiking again on the energy shock. With escalation open days before CPI, the inflation loop is wide.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-09/latest-oil-market-news-and-analysis-for-sept-10" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Brent Oil Tops $102 as Iran War Shows Little Sign of Abating</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Buildout Keeps Outrunning Supply as TSMC Sales Jump 53% and MediaTek 44%, Huawei Lifts Its Best Chip Price 60% and Meta Gets a JPMorgan Upgrade, With Oracle's Print Tonight the Big Test, but the BIS Chief Warns the Arms Race Rests on Opaque Debt, BofA's Sebastian Raedler Says Investors Are Nervous About a Crash and DeepSeek's Cheap Model Squeezes Margins</h3>
+      </div>
+      <p>The demand story stayed loud. Bloomberg said TSMC's monthly sales rose 53% as AI chip demand outstripped supply, MediaTek's jumped 44% on AI chip momentum, and Huawei lifted prices on its best AI accelerator by 60% this summer as demand ran ahead of what it could make. Sentiment improved on the software side too: Bloomberg reported JPMorgan upgraded Meta to overweight on the strength of its Muse agent and improving AI position, and JPMorgan Asset Management's Jack Caffrey told Bloomberg the "AI economy" is broadening earnings strength. Oracle reports tonight as the first real test of investor tolerance for AI-spending risk. But the friction is mounting fast. Bloomberg Economics said BIS chief Pablo Hernandez warned the AI arms race remains a global financial-stability danger that could do more damage than past crashes, and CoinDesk noted he tied the risk to opaque debt funding the buildout. BofA's Sebastian Raedler told Bloomberg that AI capex is driving the strongest US earnings upgrades in 40 years but that "every single one of these investment booms in the past have ended in a crash, and people are nervous." Bloomberg said DeepSeek rolled out a model charging a fraction of a cent per million tokens, pressuring rivals, and the DOJ is probing Nvidia's $20bn Groq licensing deal on antitrust grounds. The tape still leans on AI, but its debt and margin questions are front and center.</p>
+      <p>The bull read is TSMC and MediaTek sales surging, Huawei's 60% price hike, Meta's JPMorgan upgrade and Caffrey's AI-earnings call. The bear read is the BIS warning on opaque debt, BofA's Raedler flagging crash nerves, DeepSeek's cheap model squeezing pricing and the DOJ probing Nvidia-Groq.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand keeps outrunning supply):</strong> Bloomberg said TSMC sales rose 53% and MediaTek 44% on AI chips, with Huawei raising its top accelerator price 60% as demand outstrips supply. JPMorgan upgraded Meta on its Muse agent, and JPM's Jack Caffrey says the AI economy is broadening earnings. When compute demand and pricing power rise together, the trade has fuel.</div>
+        <div class="bear"><strong>Bear (debt, margins and nerves are catching up):</strong> The BIS chief warned the AI arms race rests on opaque debt and could do worse damage than past crashes, and BofA's Sebastian Raedler said investors are nervous the boom ends in a crash. Bloomberg said DeepSeek's near-free model squeezes rivals' margins, and the DOJ is probing Nvidia's Groq deal. When the buildout leans this hard on leverage, the tell is credit and pricing.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-10/tsmc-revenue-rises-53-as-ai-chip-demand-outstrips-supply" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- TSMC Revenue Rises 53% as AI Chip Demand Outstrips Supply</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>US stocks fall as war escalation and the oil spike continue</strong></summary>
+      <div class="deal-body">
+        <p>US stocks extended their recent decline, WSJ reported, as the war in the Middle East kept escalating and drove up oil prices. Futures then steadied Thursday morning with Brent above $102 as investors positioned ahead of the PPI and Friday's CPI.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/u-s-stocks-fall-as-war-escalation-oil-spike-continues-8e83817c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. Stocks Fall as War Escalation, Oil Spike Continue</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Macy's raises full-year guidance as its turnaround takes hold</strong></summary>
+      <div class="deal-body">
+        <p>Macy's (M) posted strong second-quarter results and raised its full-year guidance, CNBC reported, a sign the retailer's turnaround is beginning to take hold. The beat stands out on a cautious tape dominated by rates and oil.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/10/macys-m-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Macy's Posts Strong Results, Raises Guidance as Turnaround Takes Hold</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan upgrades Meta to overweight as Muse highlights its AI position</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan upgraded Meta (META) to overweight, Bloomberg reported, the latest sign that sentiment toward the Facebook parent's AI position keeps improving after the launch of its Muse personal agent. The call adds a bid to a name that had lagged the AI leaders.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/meta-upgraded-at-jpmorgan-as-muse-highlights-better-ai-position" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta Upgraded at JPMorgan as Muse Highlights Better AI Position</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Futures muted ahead of PPI data and Oracle's AI-signaling results</strong></summary>
+      <div class="deal-body">
+        <p>US futures were little changed Thursday, Bloomberg reported, as investors awaited factory-price data and Oracle (ORCL) results set to test tolerance for AI-spending risk. Oil's relentless climb added to inflation concerns into the print.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/futures-muted-ahead-of-ppi-data-oracle-s-ai-signaling-results" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Futures Muted Ahead of PPI Data, Oracle's AI-Signaling Results</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Copper surfs all-time highs as one CEO makes the long-term case</strong></summary>
+      <div class="deal-body">
+        <p>With copper prices surfing record highs, MarketWatch reported, a listed producer's CEO argued the long-term rationale for higher prices is solid even as a bear case exists if the AI trade blows up or Gulf tensions ease. The metal has become a proxy for both the AI buildout and the war premium.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/with-the-copper-price-surfing-all-time-highs-heres-what-one-ceo-thinks-about-the-sector-long-term-0213d051?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- With Copper Surfing All-Time Highs, One CEO's Long-Term View</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Strategist says investors are missing strong Q2 earnings right in front of them</strong></summary>
+      <div class="deal-body">
+        <p>Investors may have underappreciated just how strong second-quarter earnings were, one Wall Street strategist told MarketWatch, arguing the good news is being drowned out by oil and rate fears. The counter-read frames the pullback as a chance rather than a warning.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/investors-are-missing-the-good-news-right-in-front-of-them-this-wall-street-strategist-argues-aaf27342?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Investors Are Missing the Good News Right in Front of Them</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape tilts defensive as yields hit multiyear highs and Brent tops $102, with the BIS and BofA flagging AI-crash nerves and Oracle's print tonight the referee for the AI trade. The swing factor is whether firm yields reflect a durable economy, as UBS's Reiman argues, or a fiscal-and-oil squeeze that boxes in the Fed. Friday's CPI and the 30-year auction are the near-term tests.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Rising Bond Yields Pressure Even Strong Earnings</summary>
+      <p>WSJ asked what bond yields are "saying" about stocks just as global yields hit multiyear highs, and BofA argued on MarketWatch that equities can withstand bigger bond shocks than 2026 has delivered. Both point at the same mechanism worth understanding: why a stock market with strong earnings can still struggle when yields climb. Start with how stocks are valued. A share is a claim on a stream of future cash flows, and to price it today you discount those flows back using a rate anchored to the yield on safe government bonds. That yield is the risk-free baseline every other asset is measured against. When the 10-year Treasury yield rises, the discount rate rises, and the present value of those distant future earnings falls, mechanically, before a single company misses a number. The effect is largest for long-duration growth stocks, whose value sits mostly in profits years out, which is why AI and tech names are the most sensitive to a yield spike. Now layer in the competition effect. When safe bonds yield very little, investors are pushed into stocks to earn a return, the so-called reach for yield. When bonds yield more, that pressure reverses: a Treasury paying a near three-year-high coupon becomes a real alternative to owning equities, so money can rotate out of stocks and into bonds without taking on business risk. Higher yields also raise borrowing costs for companies themselves, squeezing the debt-funded buybacks and capex that have supported earnings, which is exactly the AI-financing worry BofA and the BIS have flagged. This is why strong Q2 earnings, the good news MarketWatch says investors are missing, may not be enough on their own. The earnings are the numerator in the valuation, but the discount rate is the denominator, and when the denominator rises fast, even a healthy numerator produces a lower price. BofA's nuance is that the level of yields matters less than the speed and the volatility of the move: a slow grind higher on genuine growth is absorbable, while a disorderly spike driven by fiscal fear forces the fastest repricing. The practical lesson is to watch the driver of the yield move, not just the level. If yields rise because growth is strong, earnings estimates climb alongside them and stocks can hold. If yields rise on fiscal worry or an oil-fed inflation scare while growth stalls, the discount rate climbs without the earnings offset, and that is the combination that hurts. When a strategist asks what bonds are saying about stocks, the honest answer is that they are setting the price of everything else.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/what-are-bond-yields-saying-about-stocks-c6b04ddb?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- What Are Bond Yields 'Saying' About Stocks?</a></p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/history-shows-the-bar-to-disrupt-ai-is-surprisingly-high-says-bank-of-america-ddf543d4?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- History Shows the Bar to Disrupt AI Is Surprisingly High, Says Bank of America</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>TSMC revenue rises 53% as AI chip demand outstrips supply</strong></summary>
+      <div class="deal-body">
+        <p>Taiwan Semiconductor (TSM) reported a 53.3% jump in monthly sales, Bloomberg reported, as it struggles to meet overwhelming demand from the global AI infrastructure buildout. The print is a real-economy confirmation that AI hardware demand remains extreme.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/tsmc-revenue-rises-53-as-ai-chip-demand-outstrips-supply" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- TSMC Revenue Rises 53% as AI Chip Demand Outstrips Supply</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia-backed MediaTek's sales soar 44% on AI chip momentum</strong></summary>
+      <div class="deal-body">
+        <p>MediaTek reported a 44% surge in monthly sales, Bloomberg reported, boosted by its emerging AI chip business supplying the likes of Alphabet's Google (GOOGL). The gain shows AI demand spreading well beyond the top foundries.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/nvidia-backed-mediatek-s-sales-soar-44-with-ai-chip-momentum" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed MediaTek's Sales Soar 44% With AI Chip Momentum</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Huawei lifts prices for its best AI chip by 60% this summer</strong></summary>
+      <div class="deal-body">
+        <p>Huawei notified some clients it is sharply raising prices on its most advanced AI accelerators, Bloomberg reported, by as much as 60%, reflecting demand rapidly outstripping supply during the data-center boom. The move shows pricing power intact even for the domestic Chinese alternative.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/huawei-lifted-prices-for-its-best-ai-chip-by-60-this-summer" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Huawei Lifted Prices for Its Best AI Chip by 60% This Summer</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>DeepSeek's new low-cost model deals a fresh blow to OpenAI and rivals</strong></summary>
+      <div class="deal-body">
+        <p>DeepSeek rolled out an AI model charging as little as a fraction of a cent per million tokens, Bloomberg reported, ramping up pricing pressure on rivals from Anthropic to Z.AI. The launch reignites the margin question hanging over the whole model layer.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/deepseek-s-new-low-cost-model-deals-a-fresh-blow-to-openai-z-ai" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- DeepSeek's New Low-Cost Model Deals a Fresh Blow to OpenAI, Z.ai</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>DOJ probes Nvidia's tie-up with Groq on antitrust concerns</strong></summary>
+      <div class="deal-body">
+        <p>The Justice Department is investigating whether Nvidia (NVDA) structured its $20 billion licensing deal with AI chip startup Groq to avoid antitrust review, Bloomberg reported. The probe adds regulatory risk to Nvidia's web of AI partnerships.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/doj-probes-nvidia-s-license-deal-with-groq-on-antitrust-concerns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- DOJ Probes Nvidia's Tie-Up With Groq on Antitrust Concerns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Musk's Boring Co. raises funds at a $23 billion valuation</strong></summary>
+      <div class="deal-body">
+        <p>Boring Co. secured $3 billion in fresh investment backed by the UAE and affiliated entities, Bloomberg reported, valuing Elon Musk's tunneling startup at $23 billion. The raise shows Gulf capital still chasing Musk-linked bets aggressively.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/musk-s-boring-co-raises-capital-valuing-firm-at-23-billion-mtv5xwy7" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Musk's Boring Co. Raises Funds at Valuation of $23 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Anthropic gives the EU access to its Mythos model months after release</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic handed the EU's cybersecurity agency access to its powerful Mythos AI model, Bloomberg reported, more than three months after first signaling it would, easing a standoff over safety testing. The move follows scrutiny of labs withholding frontier models from regulators.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/anthropic-gives-eu-access-to-mythos-months-after-model-s-release" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Anthropic Gives EU Access to Mythos Months After Model's Release</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Thursday September 10, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is TSMC sales up 53%, MediaTek up 44%, Huawei's 60% price hike and Meta's JPMorgan upgrade, all pointing to demand outrunning supply. The counter-signal is the BIS chief warning the arms race rests on opaque debt, BofA's Raedler flagging crash nerves, DeepSeek's near-free model squeezing margins and the DOJ probing Nvidia-Groq. Oracle's print tonight is the swing factor for whether the capex story still commands a premium.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Global bond yields hit multiyear highs into the ECB and Treasury buybacks</strong></summary>
+      <div class="deal-body">
+        <p>The selloff in global government bonds accelerated in European trade, WSJ reported, pushing yields on 10-year Bunds and Treasurys to fresh multiyear highs ahead of the ECB decision and US Treasury buybacks. Risk appetite stayed firmly in check into the PPI print.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/bond-yields-edge-up-as-investors-await-ecb-rate-hike-u-s-treasury-buybacks-4cd2e9f3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Global Bond Yields Hit Multiyear Highs Ahead of ECB Decision, U.S. Treasury Buybacks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasuries fall ahead of auction as Trump pledges a $5,000 payout</strong></summary>
+      <div class="deal-body">
+        <p>Trump's promise of a $5,000 national cash payout if Republicans win the midterms is injecting fresh uncertainty into the Treasury market ahead of a 30-year auction, Bloomberg reported, renewing concerns about fiscal discipline. FT calculated the pledge would carry a heavy cost.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/trump-payout-pledge-adds-to-bond-market-jitters-as-auction-looms" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Treasuries Fall Ahead of Auction as Trump Pledges Payout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB set to hike again as the Iran war fans inflation</strong></summary>
+      <div class="deal-body">
+        <p>The ECB is expected to raise rates for the second time since the Iran war sent energy prices soaring, FT reported, with inflation locked well above target and the economy proving surprisingly robust. Markets are split on the terminal rate depending on the war's path.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/083a9c4b-3913-496d-be13-22c96053624b?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- ECB Expected to Raise Rates to Fight Inflation Shock</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US-China borrowing costs diverge to the widest level ever</strong></summary>
+      <div class="deal-body">
+        <p>US and Chinese borrowing costs have diverged to their widest gap on record, FT reported, as rising Treasury yields threaten to accelerate a shift in capital flows between the world's two largest economies. The split reshapes how global money is allocated.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/258d6f1d-07a5-4c78-9c21-9867d8817077?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US-China Borrowing Costs Diverge to Widest Level Ever</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOJ's Masu says the bank will keep raising rates</strong></summary>
+      <div class="deal-body">
+        <p>BOJ board member Kazuyuki Masu said the bank will continue to raise its benchmark rate to keep the price trend from exceeding 2%, Bloomberg reported, supporting expectations for a hike next week. The comments reinforce a global tightening tilt as energy costs climb.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/boj-s-masu-says-will-continue-to-raise-benchmark-interest-rate" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOJ's Masu Says Will Continue to Raise Benchmark Rate</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Diesel prices hit another record high, threatening the grocery bill</strong></summary>
+      <div class="deal-body">
+        <p>Diesel prices hit another record high, MarketWatch reported, warning the most important price in America is one most drivers never pay yet it reaches the CPI, the Fed and the ECB in the same week. The move is the clearest sign the oil shock is passing into core costs.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/diesel-prices-hit-another-record-high-if-youre-shocked-wait-until-you-see-your-grocery-bill-afee7076?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Diesel Prices Hit Another Record High</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (September 10, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish side owns the tape, with yields at multiyear highs, Bessent's buyback disappointing, Trump's payout pledge stoking fiscal fears, diesel at a record and the ECB and BOJ both tightening. Pulling the other way, UBS's Reiman reads firm yields as a durable-growth signal and BofA says stocks can absorb bigger bond shocks. The US-China divergence adds a capital-flows wrinkle. Friday's CPI and today's 30-year auction are the real tests.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why US and China Borrowing Costs Are Diverging to a Record</summary>
+      <p>FT reported that US and Chinese borrowing costs have diverged to their widest level ever, with rising Treasury yields threatening to accelerate a shift in capital flows between the world's two largest economies. Understanding the mechanism explains why a rate gap is really a story about where global money goes. Start with what a government bond yield represents: the price a country pays to borrow, set by supply of debt, expected inflation, the central bank's policy path and how much extra return investors demand to hold that country's paper. Right now those forces push the US and China in opposite directions. The US is running large deficits, its central bank is signaling it may hike into an oil-fed inflation scare, and Trump's payout pledge is reviving fiscal worry, so investors demand a higher yield to lend. China is fighting weak domestic demand and disinflation, with its central bank keeping policy loose to support growth, so its yields sit low. The result is a spread between the two that has blown out to a record. Now consider why that gap moves capital. Global investors and reserve managers constantly compare the risk-adjusted return of holding dollars versus yuan. When US yields rise well above Chinese yields, holding dollar assets pays far more, which pulls money toward Treasuries and the dollar and away from Chinese bonds. That flow tends to strengthen the dollar and weaken the yuan, which is exactly why Beijing watches the gap so closely: a widening spread pressures its currency and complicates its ability to ease without triggering capital outflows. The feedback loop is the important part. If the yuan weakens too far, China faces imported inflation and the risk of destabilizing outflows, so it may intervene or slow its own easing, tightening domestic conditions against its wishes. Meanwhile the capital flowing into US assets can keep US borrowing costs from rising even faster, but it also deepens the world's dependence on the dollar at a moment when both governments are trying to reduce it. The practical lesson is that an interest-rate gap between two large economies is never just a domestic story. It is a gravitational pull on global capital, currencies and reserve allocation. The tell to watch is whether the spread keeps widening while the yuan holds or breaks: a stable currency means the flows are being managed, while a sharp move signals the divergence has become a stress point. When the gap hits a record, it is telling you the two economies are on opposite policy tracks and that money is repricing where it wants to live.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/258d6f1d-07a5-4c78-9c21-9867d8817077?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US-China Borrowing Costs Diverge to Widest Level Ever</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-10/us-can-withstand-two-rate-hikes-says-ubs-s-reiman-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Economy Can Withstand Two Rate Hikes, Says UBS's Reiman</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Global bond yields hit multiyear highs as Bessent's upsized $6bn buyback disappointed, Trump's $5,000 midterm-payout pledge stoked fiscal fears into a 30-year auction, and US-China borrowing costs diverged to a record; Brent topped $102 with Iran vowing to escalate and diesel at a record, forcing the ECB to hike again; the AI buildout kept outrunning supply as TSMC sales jumped 53%, MediaTek 44% and Huawei lifted chip prices 60%, though the BIS warned the arms race rests on opaque debt and BofA's Sebastian Raedler flagged crash nerves; bitcoin slipped near $78,000 as memecoins led a retreat; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.85%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $95, bear confirmed; below $88, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 9/7</td>
+            <td><span style="color:var(--muted);font-weight:700;">Holiday</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Holiday</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Holiday</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/8</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/9</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 9/10</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 9/11</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin trades near $78,000 as memecoins and small caps lead a broad retreat</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin fell 2% over 24 hours to about $78,111, CoinDesk reported, with 95 of the 100 CoinDesk 100 constituents declining and most of the damage done overnight as oil pushed Treasury yields to their highest since late 2023. CoinDesk noted traders dialed down bullish plays ahead of Friday's US inflation data.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/10/bitcoin-trades-near-usd78-000-as-memecoins-small-caps-lead-a-broad-crypto-retreat" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Trades Near $78,000 as Memecoins, Small Caps Lead a Broad Crypto Retreat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nasdaq invests $100 million in Kraken parent Payward at a $21 billion value</strong></summary>
+      <div class="deal-body">
+        <p>Nasdaq invested $100 million in Kraken's parent Payward at a $21 billion valuation, CoinDesk reported, expanding a partnership to bring tokenized, voting-enabled equities to crypto exchange users. The tie-up deepens the merger of traditional exchanges and crypto rails.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/10/nasdaq-invests-usd100-million-in-kraken-parent-company-payward-at-usd21-billion-valuation" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Nasdaq Invests $100 Million in Kraken Parent Payward at $21 Billion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hunter Biden's LAPTOP blames bots after a 98% crash</strong></summary>
+      <div class="deal-body">
+        <p>Hunter Biden's LAPTOP token swung from $190 to under $4 within minutes of opening on Base, CoinDesk reported, losing 98% of its value in under an hour after a $1.6 billion debut. The team blamed thin liquidity and automated traders, while Nansen showed early buyers sitting on six-figure losses.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/10/hunter-biden-s-laptop-blames-bots-after-98-crash-as-traders-rack-up-six-figure-losses" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Hunter Biden's LAPTOP Blames Bots After 98% Crash</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tether pushes into private credit with a $400 million fund with Fasanara</strong></summary>
+      <div class="deal-body">
+        <p>Tether is launching a $400 million private-credit fund with Fasanara, CoinDesk reported, sourcing lending opportunities and providing stablecoin payment infrastructure for the manager's network. The move pushes the USDT issuer further into traditional lending.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/09/tether-pushes-into-private-credit-with-usd400-million-fund-with-fasanara" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Tether Pushes Into Private Credit With $400 Million Fund With Fasanara</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bybit to launch a European 'super-app' with stocks and derivatives</strong></summary>
+      <div class="deal-body">
+        <p>Bybit plans a European super-app offering stocks and derivatives alongside crypto, CoinDesk reported, after securing an Austrian e-money license and nearing a MiFID license. The expansion shows exchanges bundling traditional and digital assets in one venue.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/10/crypto-exchange-giant-bybit-to-offer-european-super-app-with-stocks-derivatives" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Exchange Giant Bybit to Offer European 'Super-App' With Stocks, Derivatives</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Intesa Sanpaolo -- Investors Back a Share Issue to Finance the €35.4bn Monte Paschi Bid</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Intesa Sanpaolo shareholders approved issuing new shares to finance its €35.4 billion ($41.2bn) takeover bid for Banca Monte dei Paschi di Siena, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The vote brings CEO Carlo Messina a step closer to a deal that would reshape Italy's financial landscape.</p>
+        <p><strong>What it means:</strong> European bank consolidation is accelerating even as rates and the war cloud the macro backdrop.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/intesa-investors-back-share-issue-to-finance-monte-paschi-bid" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Intesa Investors Back Share Issue to Finance Paschi Offer</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Boring Co. -- $3 Billion Raise at a $23 Billion Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Boring Co. secured $3 billion in fresh investment backed by the UAE and affiliated entities, Bloomberg reported, valuing Musk's tunneling startup at $23 billion.</p>
+        <p><strong>Outlook:</strong> The capital funds expansion of the company's tunnel projects with deep-pocketed Gulf backers.</p>
+        <p><strong>What it means:</strong> Sovereign capital keeps chasing Musk-linked ventures at premium marks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/musk-s-boring-co-raises-capital-valuing-firm-at-23-billion-mtv5xwy7" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Musk's Boring Co. Raises Funds at Valuation of $23 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SB Energy -- An IPO That Asks Investors to Buy AI Hype Today and Get Paid Later</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SB Energy's offering features $430 billion in data-center deals but no operating sites and a clause giving OpenAI free rent for delays, WSJ reported.</p>
+        <p><strong>Outlook:</strong> The structure asks public investors to fund the AI power buildout years before cash flows arrive.</p>
+        <p><strong>What it means:</strong> The AI capex wave is now reaching retail markets through speculative, contract-backed listings.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/energy-oil/the-ipo-that-asks-you-to-buy-ai-hype-today-and-get-paid-years-later-1bd97731?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The IPO That Asks You to Buy AI Hype Today and Get Paid Years Later</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Vertiv -- A Deal Worth Up to $2.6bn for UtilityInnovation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Vertiv (VRT) signed a deal worth up to $2.6 billion for UtilityInnovation, Yahoo Finance reported, targeting faster power deployment for data centers.</p>
+        <p><strong>Outlook:</strong> The acquisition, partly contingent consideration, aims at the power bottleneck squeezing AI infrastructure.</p>
+        <p><strong>What it means:</strong> Power delivery, not just chips, is where the AI buildout money is flowing.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/ai/articles/vertiv-vrt-signed-deal-worth-033055038.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Vertiv Signed a Deal Worth Up to $2.6B for UtilityInnovation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nasdaq -- $100 Million Stake in Kraken Parent Payward</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Nasdaq invested $100 million in Kraken's parent Payward at a $21 billion valuation, CoinDesk reported, expanding a strategic partnership.</p>
+        <p><strong>Outlook:</strong> The tie-up brings tokenized, voting-enabled equities to crypto exchange users.</p>
+        <p><strong>What it means:</strong> Traditional exchanges are buying into crypto rails as tokenized securities scale.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/10/nasdaq-invests-usd100-million-in-kraken-parent-company-payward-at-usd21-billion-valuation" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Nasdaq Invests $100 Million in Kraken Parent Payward at $21 Billion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Grab -- In Talks to Buy SoftBank-Backed Fintech Atome</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Grab Holdings (GRAB) is in talks to buy a majority stake in Singapore-based buy-now-pay-later platform Atome Financial, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The deal would deepen Grab's fintech push across Southeast Asia's ride-hailing and delivery user base.</p>
+        <p><strong>What it means:</strong> Super-app consolidation is picking up as platforms bolt on consumer lending.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-10/grab-is-said-in-talks-to-buy-softbank-backed-fintech-firm-atome" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Grab Is Said in Talks to Buy SoftBank-Backed Fintech Firm Atome</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>UBS Global Wealth Management (Kurt Reiman) -- says the economy can withstand two rate hikes</strong></summary>
+      <div class="deal-body">
+        <p>UBS head of fixed income Kurt Reiman told Bloomberg the US economy can withstand two Fed hikes this year, arguing many factors and "definitely not just the deficit" are pushing yields higher. A named strategist reading firmer yields as a growth signal rather than fiscal panic.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-10/us-can-withstand-two-rate-hikes-says-ubs-s-reiman-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Economy Can Withstand Two Rate Hikes, Says UBS's Reiman</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan Asset Management (Jack Caffrey) -- says the 'AI economy' is driving earnings strength</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan Asset Management portfolio manager Jack Caffrey told Bloomberg that spending tied to AI enthusiasm is broadening out earnings themes, while warning of "a hiccup or two over the next few months" as companies borrow more to support growth. A named investor constructive but flagging the debt risk.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-10/-ai-economy-driving-earnings-strength-jpm-s-caffrey-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- 'AI Economy' Driving Earnings Strength, Says JPM's Caffrey</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bank of America (Sebastian Raedler) -- says investors are nervous about the timing of a crash</strong></summary>
+      <div class="deal-body">
+        <p>BofA head of European equity strategy Sebastian Raedler told Bloomberg the key question is the sustainability of the AI capex boom driving the strongest US earnings upgrades in 40 years, adding "you have to be in that trade" but that every past investment boom ended in a crash and people are nervous. A named strategist caught between momentum and fear.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-10/investors-nervous-on-timing-of-potential-crash-bofa-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Investors Are Nervous About Timing of Potential 'Crash,' BofA Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bank of America (strategy) -- says stocks can withstand bigger bond shocks than seen so far</strong></summary>
+      <div class="deal-body">
+        <p>BofA argued on MarketWatch that equity markets can withstand more severe bond-market shocks than those seen in 2026 and that volatility, not the level of Treasury yields, is the better guide to risk right now. It added that history shows the bar to disrupt AI is surprisingly high. A named house leaning constructive on the tape's resilience.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/history-shows-the-bar-to-disrupt-ai-is-surprisingly-high-says-bank-of-america-ddf543d4?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- History Shows the Bar to Disrupt AI Is Surprisingly High, Says Bank of America</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Coinbase (Brian Armstrong) -- thinks the bottom of the bitcoin cycle has passed</strong></summary>
+      <div class="deal-body">
+        <p>Coinbase CEO Brian Armstrong told Bloomberg it is likely the bottom of the bitcoin price cycle has already passed, voicing conviction in stablecoin payments reshaping everyday transactions. A named executive leaning bullish even as crypto retreats near $78,000.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-10/coinbase-think-we-ve-seen-bottom-in-bitcoin-price-cycle-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Coinbase: Think We've Seen Bottom in Bitcoin Price Cycle</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Yields Hit Multiyear Highs and Oil Tops $102 Into Friday's CPI, With BofA's Sebastian Raedler Flagging Crash Nerves and JPM's Jack Caffrey Warning of Hiccups, While UBS's Kurt Reiman Says the Economy Can Withstand Two Hikes, BofA Says Stocks Can Absorb Bigger Bond Shocks and Coinbase's Brian Armstrong Calls a Bitcoin Bottom</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (growth and resilience hold up):</strong> UBS's Kurt Reiman reads firmer yields as a durable-economy signal that can absorb two hikes, BofA argues stocks can withstand bigger bond shocks and the bar to disrupt AI is high, and JPM's Jack Caffrey sees the AI economy broadening earnings. Coinbase's Brian Armstrong even calls a bitcoin bottom. If growth holds, the tape can grind through the oil-and-yield move.</div>
+        <div class="bear"><strong>Bear (the boom and the calendar are the risk):</strong> BofA's Sebastian Raedler says every past investment boom ended in a crash and investors are nervous about the timing, and JPM's Caffrey warns of hiccups as companies borrow more to fund AI. With yields at multiyear highs, Brent over $102 and CPI on Friday, the setup rewards caution.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Brent tops $102, Iran vows to escalate; Trump $5,000 payout; Oracle earnings tonight; CPI Friday</td><td>Cautious</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Oil and yields pressure the run; Macy's guidance; Meta JPMorgan upgrade; copper records</td><td>Mixed to bearish</td><td>~18,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Yields at multiyear highs; Bessent buyback flop; 30-year auction; US-China spread record</td><td>Bearish</td><td>~21,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI debt worries: BIS warning, TSMC +53%, Huawei +60%, DeepSeek cheap model, DOJ-Nvidia probe</td><td>Cautious</td><td>~11,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC near $78K as memecoins lead retreat; Nasdaq-Kraken; Hunter Biden LAPTOP 98% crash; Tether credit</td><td>Neutral to bearish</td><td>~23,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood stayed defensive as yields hit multiyear highs and Brent topped $102 with Iran vowing to escalate. r/wallstreetbets stayed cautious on the war, Trump's payout pledge and Oracle tonight. r/stocks leaned mixed to bearish as oil and rates pressured the run, though Macy's and the Meta upgrade offered pockets of strength. r/investing went bearish on the buyback flop, the 30-year auction and the record US-China spread. r/SecurityAnalysis stayed cautious on the AI debt wave and the BIS warning. r/CryptoCurrency was neutral to bearish as bitcoin slid near $78,000 and LAPTOP cratered. The swing factor is Friday's CPI.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Treasury Buyback Can Fail to Lower Yields</h2>
+    <p>FT reported that 10-year US borrowing costs hit their highest level in nearly three years even though Bessent doubled down with an upsized $6bn buyback, and CoinDesk noted yields kept rising through the repurchase. It can seem contradictory: if the Treasury is buying back its own bonds, shouldn't that support prices and push yields down? The gap between what a buyback is supposed to do and what happened is the whole lesson, and it comes down to what actually sets long-term yields. Start with the mechanics. A buyback is the Treasury purchasing outstanding bonds from investors, usually older, less-traded issues, and paying cash for them. In principle that reduces the supply of those bonds in the market, and lower supply should mean higher prices and lower yields. The Treasury's stated goal is usually liquidity, smoothing out the market by mopping up illiquid securities, not a stimulus program to crush yields. That distinction matters because $6bn is tiny against a Treasury market measured in the tens of trillions. A buyback of that size removes a rounding error of supply, so its direct price effect is small. Now consider what dominates long-term yields: the term premium, the extra return investors demand to lend for a long time rather than roll short-term debt. That premium rises when investors worry about future inflation, about how much new debt the government will issue, and about fiscal discipline. Every one of those forces is pushing the wrong way right now. Oil above $102 is stoking inflation fear, the ECB and BOJ are tightening, and Trump's $5,000 payout pledge has revived worries about deficits and erratic policy just as a 30-year auction looms. A small buyback cannot offset a rising term premium driven by those much larger concerns. There is also a signaling channel that can backfire. When a Treasury secretary loudly leans on buybacks to fight rising yields, some investors read it as an admission that the government is worried about its own borrowing costs, which can deepen the very fiscal doubts pushing yields up. That is why the buyback "disappointed": the market expected either a bigger program or a signal of restraint, and got neither. The practical lesson is to weigh a buyback against the force it is fighting. A buyback works at the margin on liquidity and can help specific off-the-run bonds trade better, but it cannot overpower a term premium being lifted by inflation, heavy supply and fiscal worry. The tell to watch is whether yields fall on the announcement or keep climbing: if they climb, the market is telling you the drivers are bigger than the tool. When a buyback lands and yields rise anyway, the honest read is that the bond market is pricing fiscal and inflation risk that a few billion in purchases cannot touch.</p>
+    <p class="deal-source"><a href="https://www.ft.com/content/2476992f-c9fe-4992-887d-f34c81c100ab?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Treasury Yields Jump as Bessent's $6bn Buyback Plan Disappoints Investors</a></p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/10/scott-bessent-doubles-down-on-bond-buybacks-as-treasury-yields-continue-to-surge" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Treasury Yields Continue to Rise Even as Bessent Doubles Down on Bond Buybacks</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>US August CPI, Friday 9/12.</strong> With Brent over $102 and diesel at a record, watch whether core stays sticky enough to cement a Fed hike, the market's biggest near-term catalyst.</li>
+      <li><strong>Fed decision, next week.</strong> After oil and yields revived hike bets, watch whether the committee delivers, and note UBS's Reiman is calling for two hikes this year.</li>
+      <li><strong>BOJ decision, next week.</strong> After board member Masu said the bank will keep raising, watch whether Tokyo hikes again and how the yen reacts to Bessent's backstop.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Oracle earnings tonight.</strong> The first big test of investor tolerance for AI-spending risk, with the cloud and data-center capex guide in focus.</li>
+      <li><strong>Chip cross-reads.</strong> After TSMC's 53% and MediaTek's 44% sales jumps and Huawei's 60% price hike, watch foundry and memory commentary confirming AI demand still outstrips supply.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>30-year Treasury auction, today.</strong> After Bessent's $6bn buyback disappointed and Trump's payout pledge stoked fiscal fears, watch demand for the long bond as a read on term-premium appetite.</li>
+      <li><strong>AI-linked listings.</strong> After SB Energy's contract-backed IPO and Boring Co's $23bn raise, watch whether new AI deals price at wider concessions as the BIS warns on opaque debt.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran war and oil.</strong> With Iran vowing to intensify counterattacks and Brent over $102, watch whether Hormuz flows fall further or the escalation cools and drains the risk premium.</li>
+      <li><strong>Clarity Act crypto vote, Sept 15.</strong> With the Senate set to vote, watch the read-through for regulatory clarity, though Coinbase's Armstrong argues crypto wins either way.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Sep 10, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-09-10 07:48 ET); Bloomberg Technology (20 fresh, newest 2026-09-10 07:43 ET); Bloomberg Economics (20 fresh, newest 2026-09-10 07:41 ET); CNBC Top News (5 fresh, newest 2026-09-10 07:45 ET); CNBC Finance (3 fresh, newest 2026-09-09 21:53 ET); CNBC Economy (1 fresh, newest 2026-09-09 12:17 ET); MarketWatch Top Stories (10 fresh, newest 2026-09-10 07:42 ET); WSJ Markets (16 fresh, newest 2026-09-10 07:46 ET); Yahoo Finance (20 fresh, newest 2026-09-08 23:47 ET); FT Home (11 fresh, newest 2026-09-10 06:00 ET); Matt Levine Money Stuff (1 fresh, newest 2026-09-09 13:56 ET); CoinDesk (25 fresh, newest 2026-09-10 08:00 ET); Stratechery (2 fresh, newest 2026-09-10 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. Why did Treasury yields hit multiyear highs on Thursday?</strong></p>
+      <span class="opt" data-opt="A">A. The Federal Reserve raised rates at an unscheduled emergency meeting</span>
+      <span class="opt" data-opt="B">B. Bessent's buyback underwhelmed while oil and fiscal worries pressured bonds</span>
+      <span class="opt" data-opt="C">C. China dumped its entire stock of US Treasury debt overnight</span>
+      <span class="opt" data-opt="D">D. A soft inflation print pushed traders to expect faster cuts</span>
+      <div class="feedback"><strong>B is correct.</strong> WSJ and FT reported yields hit multiyear highs as Bessent's upsized $6bn buyback disappointed and oil plus Trump's payout pledge lifted the term premium ahead of a 30-year auction. There was no emergency hike, no Chinese fire sale, and CPI had not yet printed.</div>
+    </div>
+    <div class="q" data-correct="C">
+      <p><strong>2. Why can a Treasury buyback fail to lower long-term yields?</strong></p>
+      <span class="opt" data-opt="A">A. Buybacks always raise yields by signaling the Treasury needs cash</span>
+      <span class="opt" data-opt="B">B. The Fed offsets each buyback with an equal Treasury sale</span>
+      <span class="opt" data-opt="C">C. A small buyback can't offset rising term premium and supply</span>
+      <span class="opt" data-opt="D">D. Buybacks only work if the central bank also cuts rates</span>
+      <div class="feedback"><strong>C is correct.</strong> A $6bn buyback removes a rounding error of supply and cannot overpower a term premium being lifted by inflation fear, heavy issuance and fiscal worry. It is not that buybacks always raise yields, that the Fed mirrors them, or that they require a rate cut.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What did TSMC's and MediaTek's monthly sales signal this week?</strong></p>
+      <span class="opt" data-opt="A">A. Their sales surged as AI chip demand keeps outstripping supply</span>
+      <span class="opt" data-opt="B">B. Both firms cut guidance on collapsing demand for AI chips</span>
+      <span class="opt" data-opt="C">C. They warned tariffs would erase all of their pricing power</span>
+      <span class="opt" data-opt="D">D. Their growth came entirely from consumer phones, not AI</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported TSMC sales rose 53% and MediaTek 44% on AI chip momentum, with demand outstripping supply, echoed by Huawei's 60% price hike. Neither cut guidance, blamed tariffs, nor leaned on consumer phones for the gains.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Global bond yields hit multiyear highs as Bessent's $6bn buyback disappointed, Trump pledged a $5,000 midterm payout and US-China borrowing costs diverged to a record ahead of a 30-year auction and Friday's CPI, while UBS's Kurt Reiman said the economy can withstand two hikes and BofA argued stocks can absorb bigger bond shocks.",
+    "sources": [
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/bond-yields-edge-up-as-investors-await-ecb-rate-hike-u-s-treasury-buybacks-4cd2e9f3?mod=rss_markets_main", "take": "Global government bond yields accelerated to fresh multiyear highs." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/2476992f-c9fe-4992-887d-f34c81c100ab?syn-25a6b1a6=1", "take": "Treasury yields jumped as Bessent's $6bn buyback plan disappointed investors." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-10/trump-payout-pledge-adds-to-bond-market-jitters-as-auction-looms", "take": "Trump's $5,000 payout pledge added Treasury jitters ahead of the auction." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-09-10/us-can-withstand-two-rate-hikes-says-ubs-s-reiman-video", "take": "UBS's Kurt Reiman says the economy can withstand two Fed hikes this year." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/history-shows-the-bar-to-disrupt-ai-is-surprisingly-high-says-bank-of-america-ddf543d4?mod=mw_rss_topstories", "take": "BofA says equities can withstand bigger bond shocks than seen so far in 2026." }
+    ]
+  },
+  "iran": {
+    "diverge": "Brent topped $102 as Iran vowed to intensify its counterattacks, diesel hit a record and Iraq tendered supertankers through Hormuz, forcing the ECB to hike again, though China weighed restraining prices, Egypt's inflation eased and TotalEnergies committed $10bn to Angolan oil.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-09/latest-oil-market-news-and-analysis-for-sept-10", "take": "Brent climbed above $102 with little sign the Iran war is abating." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/diesel-prices-hit-another-record-high-if-youre-shocked-wait-until-you-see-your-grocery-bill-afee7076?mod=mw_rss_topstories", "take": "Diesel hit a record high, feeding straight into CPI and the ECB." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/083a9c4b-3913-496d-be13-22c96053624b?syn-25a6b1a6=1", "take": "The ECB is set to hike again as the Iran war fans inflation." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-09-10/oil-buyers-question-whether-china-will-take-action-to-restrain-prices-again", "take": "Buyers question whether China will again act to restrain oil prices." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-10/totalenergies-plans-10-billion-in-angola-oil-investments", "take": "TotalEnergies plans $10bn of Angolan oil investment to sustain output." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI buildout kept outrunning supply as TSMC sales jumped 53%, MediaTek 44% and Huawei lifted its best chip price 60% while JPMorgan upgraded Meta, but the BIS chief warned the arms race rests on opaque debt, BofA's Sebastian Raedler flagged crash nerves and DeepSeek's cheap model squeezed margins.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-10/tsmc-revenue-rises-53-as-ai-chip-demand-outstrips-supply", "take": "TSMC sales rose 53% as AI chip demand outstripped supply." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-10/huawei-lifted-prices-for-its-best-ai-chip-by-60-this-summer", "take": "Huawei lifted its best AI chip price 60% as demand outstripped supply." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-10/meta-upgraded-at-jpmorgan-as-muse-highlights-better-ai-position", "take": "JPMorgan upgraded Meta as Muse highlighted its AI position." },
+      { "name": "CoinDesk", "lean": "bear", "url": "https://www.coindesk.com/business/2026/09/10/ai-s-rapid-rise-poses-global-financial-stability-risks-says-head-of-the-bis", "take": "The BIS chief warns the AI arms race relies on opaque debt, posing systemic risks." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-09-10/investors-nervous-on-timing-of-potential-crash-bofa-video", "take": "BofA's Sebastian Raedler says investors are nervous about a potential crash." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["TSMC Sales","MediaTek Sales","Huawei Chip Price","Meta","Macy's","Bitcoin"],
+    "values": [53.3, 44.0, 60.0, 3.5, 8.0, -2.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [26000, 18000, 21000, 11000, 23000],
+    "colors": ["neutral","bear","bear","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Intesa/Monte Paschi","TotalEnergies Angola","Boring Co Raise","Vertiv Deal","Amman Mineral IPO","Nasdaq-Kraken"],
+    "values": [41.2, 10.0, 3.0, 2.6, 1.0, 0.1]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
