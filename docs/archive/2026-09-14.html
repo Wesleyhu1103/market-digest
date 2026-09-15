@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Sep 14, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-09-14</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, September 14, 2026</h1>
+    <div class="meta">
+      <p>It's Fed week, with the two-day meeting opening Tuesday and markets now near-unanimous on a 25bp hike after Goldman became the last major bank to drop its no-hike call. AI leaders calling for a slowdown are the shock of the morning, with Anthropic's Dario Amodei and OpenAI's Sam Altman backing a pause that tanked chip stocks worldwide. Oil jumped to $108 after a drone attack forced Saudi Arabia to shut a vital export pipeline and pull out of Hormuz talks.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "AI leaders calling for a slowdown spooked tech stocks worldwide as Anthropic's Dario Amodei and OpenAI's Sam Altman backed pacing the frontier, with Wall Street warning an industry pause could pull the rug from earnings revisions, even as oil jumped to $108 on a Saudi pipeline attack and the Fed headed into a week markets now expect to end in a hike",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Oil Jumps, Nasdaq Futures Slide as AI-Related Stocks Tumble Worldwide", "angle": "Reads the tape as a double hit, an AI slowdown scare and a fresh oil shock landing at once.", "lean": -45, "pull": "Equity markets reacted with concern to a weekend essay by Anthropic's CEO which warned against a race to the bottom in AI."},
+        {"outlet": "MarketWatch", "headline": "AI Has Been Carrying the Stock Market. An Industry Pause Could Pull the Rug Out", "angle": "Leans on Citi's warning that slower model development means weaker earnings revisions.", "lean": -50, "pull": "If artificial-intelligence model developments slow, earnings revisions could follow, and those have been crucial to gains this year."},
+        {"outlet": "Financial Times", "headline": "Tech Stocks Fall After Big AI Groups Call for Slowdown", "angle": "Frames it as a global selloff led by chip-heavy Asian indexes into a lower Wall Street open.", "lean": -40, "pull": "South Korea's tech-heavy Kospi slides as Wall Street is set to open lower."},
+        {"outlet": "Bloomberg", "headline": "Risk of AI Slowdown Prompts Angst Among Tech Investors", "angle": "Ties the pause calls to pre-existing worry that AI hype had inflated a bubble in stocks.", "lean": -35, "pull": "Investors were already fretting that AI hype had inflated a bubble in stocks."},
+        {"outlet": "CNBC", "headline": "China Says AI CEOs' Call for a Slowdown Is 'Fear Mongering'", "angle": "Shifts the frame to geopolitics, casting the pause debate as a US-China governance fight.", "lean": -10, "pull": "Chinese state media said all groups should work together for AI openness and inclusivity."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The 10-Year Sits on the Doorstep of 5% as the Fed Opens a Two-Day Meeting Markets Now Expect to End in a Hike, With Goldman the Last Bank to Drop Its No-Hike Call and Warsh on a Collision Course With Trump, While the White House's Hassett Vows to Back Whatever the Fed Decides</h3>
+      </div>
+      <p>Rates own the tape into the decision. Bloomberg said a 5% Treasury yield is raising new risks for markets and the economy, with the bond selloff driving a key yield to the verge of the level and worsening angst from Wall Street to Washington. The Fed's two-day meeting opens Tuesday, and CoinDesk reported nearly all now expect a 25bp hike Wednesday after Goldman Sachs late Friday became the last major bank to retract its no-hike forecast. MarketWatch pointed out the awkward part: Fed hikes won't bring down gas prices, yet the bond market is pushing for them anyway, and the 10-year on the doorstep of 5% is a warning sign for stocks. The politics are combustible. Bloomberg and FT reported Fed chair Kevin Warsh is on a collision course with Trump, who keeps pushing for the lowest rates in the world even as his handpicked chair faces pressure to hike, while economic adviser Kevin Hassett told CNN the White House will "100%" support whatever the Fed decides. The bull read leans on the idea a hike is already priced and yields could ease once the uncertainty clears. RBC's Amy Wu Silverman framed the setup on Bloomberg ahead of the meeting, and one economist told CoinDesk the hike is "about Wall Street, not inflation." The debate is whether the Fed hikes into an oil-fed inflation scare and cements the term premium, or whether the decision drains the fear.</p>
+      <p>The bull read is that a hike is fully priced, RBC's Amy Wu Silverman positioning for the decision and an economist arguing the move is about markets, not runaway inflation. The bear read is the 10-year on the doorstep of 5%, Goldman capitulating to a hike call, Warsh clashing with Trump and hikes that can't touch the oil that's driving prices.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the hike is priced, the fear can clear):</strong> RBC's Amy Wu Silverman told Bloomberg she's positioning around a well-telegraphed decision, and an economist told CoinDesk the hike is more about Wall Street than inflation. With nearly all banks now expecting a 25bp move, the surprise risk is largely gone, and Trump keeps pressing for lower rates. If the Fed hikes and signals it's near done, yields have room to ease off 5%.</div>
+        <div class="bear"><strong>Bear (5% is a warning, and hikes can't fix oil):</strong> Bloomberg said a 5% yield raises new risks for the economy, and MarketWatch warned the doorstep of 5% is a warning sign for stocks. Goldman was the last bank to cave to a hike call, and Warsh faces a public clash with Trump. A hike into a supply-driven oil shock tightens conditions without lowering fuel, the worst mix for risk.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-13/a-5-treasury-yield-is-raising-new-risks-for-markets-economy" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- A 5% Treasury Yield Raises New Risks for Markets, Economy</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Jumps to $108 After a Drone Attack Forces Saudi Arabia to Close a Vital Export Pipeline and Pull Out of Hormuz De-escalation Talks, With Bloomberg Calling for a Quick Restart and FT Framing It as Still an Oil Shock Rather Than a Broader Trade Threat, Even as ECB's Schnabel Calls Energy Trends 'Quite Concerning'</h3>
+      </div>
+      <p>The geopolitical premium just re-lit. FT reported oil hit $108 after Saudi Arabia closed a vital export pipeline and Riyadh pulled out of regional talks to de-escalate hostilities over the Strait of Hormuz in the wake of last week's drone attack. Bloomberg's oil brief said the market needs a quick Saudi pipeline restart, warning that with global supplies already stretched it can ill afford to lose a key export route, and Bloomberg Intelligence's Wayne Sanders called Iran's exploiting of the Houthi attack a "wildcard." Yahoo reported Asian refiners are scrambling for answers after the shutdown, and gold sank as the oil-fed rate-hike bets firmed. The relief case is about a quick fix and demand. FT's analysis framed the Houthis' Red Sea blockage as still largely an oil shock rather than a general threat to trade, meaning the damage is contained to energy rather than the whole supply chain, and a fast restart of the pipeline could drain the premium. The bear case is that the relief valve is being closed. Riyadh walking away from de-escalation talks removes the diplomatic off-ramp, ECB board member Isabel Schnabel called recent energy-price trends "quite concerning" as officials weigh more hikes, and Bloomberg said the Bank of England's dovish majority is being tested by Iran-war pressures. With crude near $108 into a Fed decision, the supply premium stays live.</p>
+      <p>The bull read is FT framing this as a contained oil shock rather than a trade collapse, Bloomberg calling for a quick pipeline restart and the potential for demand to cool. The bear read is Saudi Arabia shutting a key route and quitting talks, oil at $108, refiners scrambling and central banks from the ECB to the BOE turning more hawkish on energy.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (a contained shock can be fixed fast):</strong> FT's analysis argued the Houthi blockage is still largely an oil shock, not a broad threat to trade, so the damage is concentrated rather than systemic. Bloomberg said the market needs and can get a quick Saudi pipeline restart. If Riyadh brings the route back online and demand softens on a slowing global economy, the premium drains quickly.</div>
+        <div class="bear"><strong>Bear (the relief valve is being closed):</strong> FT said Saudi Arabia shut a vital pipeline and pulled out of de-escalation talks, killing the diplomatic off-ramp with oil at $108. Yahoo reported Asian refiners scrambling, ECB's Schnabel called energy trends quite concerning and the BOE's dovish majority is under pressure. With supply stretched and diplomacy stalled into a Fed decision, the loop stays wide.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/4845a503-3ddd-4bb7-a469-c51f275bc873?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Oil Hits $108 After Saudi Arabia Closes Vital Export Pipeline</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>AI Leaders Call for a Slowdown as Anthropic's Dario Amodei and OpenAI's Sam Altman Back 'Pacing the Frontier,' Tanking Chip Stocks Worldwide, While Citi and RBC Warn of Earnings Risk and Bessent and China Both Push Back, Even as Anthropic Claims a Second Profitable Quarter Before Its IPO</h3>
+      </div>
+      <p>The story that dominated the weekend is now the story that dominates the tape. Bloomberg said stocks slid around the world after the leaders of the biggest AI firms proposed slowing the technology's development, and WSJ reported Nasdaq futures fell as AI-related stocks tumbled worldwide after Anthropic CEO Dario Amodei's weekend essay warned against a race to the bottom. Bloomberg said Altman on Sunday voiced support for "pacing" AI development so cutting-edge models don't outrun humans' ability to keep control. The buyside got nervous fast. MarketWatch reported Citigroup warned that if AI model development slows, the earnings revisions that have driven stock gains this year could follow, and RBC's Lori Calvasina folded "AI froth" into her earnings-risk view while M&G's Maria Municchi said investors are getting "more wary" about whether the capex boom translates into delivered profits. The pushback is loud too. Bloomberg reported Treasury Secretary Scott Bessent touted American AI superiority and wants no pause, and China rejected the "fearmongering," warning a US slowdown could be a bid for advantage. The buildout hasn't stopped: ByteDance signed a $29.6bn loan for AI ambitions, Kioxia is weighing a $10bn US listing and FT said Anthropic told investors it will be profitable for a second straight quarter, though MarketWatch flagged a big caveat behind that claim. Stratechery called Amodei's pacing proposal unrealistic and mostly geared toward political control. The demand is real, but the pace debate just repriced the trade.</p>
+      <p>The bull read is that capex keeps flowing with ByteDance's $29.6bn loan and Kioxia's $10bn listing, Anthropic claiming profitability, and Bessent and China both resisting any real pause. The bear read is Amodei and Altman openly backing a slowdown, Citi warning earnings revisions could roll over, RBC flagging AI froth and M&G saying investors are more wary.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (nobody's actually stopping the buildout):</strong> Bloomberg reported ByteDance signed a $29.6bn loan for AI, Kioxia is weighing a $10bn US listing and Firmus is seeking $5bn in an Australia IPO. Bessent wants no pause and China rejected the slowdown talk, while FT said Anthropic will be profitable for a second quarter. Stratechery called the pacing plan unrealistic. Talk of slowing is cheap when capital keeps pouring in.</div>
+        <div class="bear"><strong>Bear (the earnings engine is what's at risk):</strong> Citigroup told MarketWatch a slowdown could pull the rug from the earnings revisions carrying the market, RBC's Calvasina wrapped AI froth into earnings risk and M&G's Municchi said investors are more wary. Amodei and Altman, the two leaders driving the race, are now the ones asking to slow it. When the builders call for a pause, the tell is caution.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/ai-has-carried-the-stock-market-an-industry-pause-could-pull-the-rug-out-warns-this-wall-street-giant-3272c960?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- AI Has Been Carrying the Stock Market. An Industry Pause Could Pull the Rug Out</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Nasdaq futures drop and stocks slide worldwide as AI slowdown fears hit sentiment</strong></summary>
+      <div class="deal-body">
+        <p>Equities fell around the world after the leaders of the biggest AI firms proposed slowing the technology's development, Bloomberg reported, with an advance in oil prices sapping risk sentiment further. The double hit of an AI pause scare and a fresh oil shock landed at once.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-13/us-stock-futures-fall-on-ai-warning-oil-gains-markets-wrap" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Slide as AI Slowdown Fears Hit Sentiment: Markets Wrap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia and chip stocks fall as AI CEOs call for a slowdown</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) and chip stocks slid Monday, Yahoo Finance reported, as the calls by Anthropic and OpenAI to slow frontier development rippled through the semiconductor complex from Asia to Europe. The Kospi and chip-heavy indexes led the global drop.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/technology/ai/articles/nvidia-chip-stocks-fall-ai-114634380.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Nvidia, Chip Stocks Fall as AI CEOs Call for Slowdown</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia returned a record $26 billion to shareholders</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) returned a record $26 billion to shareholders through buybacks and dividends, Yahoo Finance reported, a sign the chip giant's cash machine keeps running even as the AI-pace debate rattles its stock. The capital return underscores how much free cash the buildout still throws off.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/nvidia-returned-record-26-billion-115000113.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Nvidia Returned a Record $26 Billion to Shareholders</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hewlett Packard Enterprise surges 19% in a week</strong></summary>
+      <div class="deal-body">
+        <p>Hewlett Packard Enterprise (HPE) jumped 19% over the past week, Yahoo Finance reported, a standout run against a jittery tape as investors bid up AI-server and networking exposure. The move puts HPE in focus as a rare winner heading into the AI-pause selloff.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/hewlett-packard-enterprise-hpe-surges-102301377.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Hewlett Packard Enterprise Surges 19% in a Week</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stocks have the midterm blues as the AI slowdown spooks tech</strong></summary>
+      <div class="deal-body">
+        <p>Stocks are dealing with the midterm blues, WSJ reported, the seasonal soft patch that tends to hit in election years, now compounded by a proposed AI slowdown spooking the tech sector. The combination adds a seasonal headwind to the day's AI and oil shocks.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/stocks-have-the-midterm-blues-000a3446?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stocks Have the Midterm Blues</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>GM plans US battery development as Trump's DOT attacks Ford over China ties</strong></summary>
+      <div class="deal-body">
+        <p>General Motors (GM) plans US battery development to build domestic supply chains for EVs and energy storage, CNBC reported, as the Trump administration's DOT attacks Ford (F) over its China dealings. Most battery cells still rely on Chinese raw materials, making the push strategic.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/12/gm-us-battery-development-ford-china-ties.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- GM Plans U.S. Battery Development as Trump's DOT Attacks Ford for China Ties</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Texas Stock Exchange lands its fifth company in a week</strong></summary>
+      <div class="deal-body">
+        <p>Texas Capital Bancshares will switch its primary listing to the Texas Stock Exchange from Nasdaq, Bloomberg reported, making it the fifth company in a week to jump to the upstart venue. The momentum signals a real challenge to the Nasdaq-NYSE duopoly.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/texas-challenger-to-nasdaq-nyse-lands-fifth-company-in-a-week" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Texas Challenger to Nasdaq, NYSE Lands Fifth Company in a Week</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape opens defensive, with Nasdaq futures down on the AI-slowdown scare and oil jumping to $108, though Nvidia's record capital return and HPE's 19% weekly run show the buildout still throws off cash. The swing factor is whether Amodei and Altman's pause talk actually dents capex plans or just reprices sentiment, and whether Wednesday's expected Fed hike drains uncertainty or cements the 5% yield. The decision is the referee.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why an AI 'Pause' Threatens Earnings Revisions More Than Any Single Stock</summary>
+      <p>MarketWatch reported Citigroup's warning that AI has been carrying the stock market and an industry pause could pull the rug out, because if model development slows, the earnings revisions that drove gains this year could follow. The mechanism is worth understanding because it explains why a philosophical debate about AI safety can move the whole index, not just a few chip names. Start with what an earnings revision is. Analysts publish forecasts for company profits, and as new information arrives they revise those numbers up or down. Stock prices tend to follow the direction of revisions more than the absolute level, because markets are forward-looking and reward improvement. For roughly two years, AI has been a revision machine: every quarter of surging data-center demand pushed analysts to lift estimates for chipmakers, cloud providers and the suppliers feeding them, and rising estimates lifted prices even at high valuations. That is the engine Citi is pointing at. Now connect it to the "pause." When the leaders of the biggest labs, Anthropic's Amodei and OpenAI's Altman, say the frontier should slow down, they are signaling that the pace of capability gains, and therefore the pace of new demand, might flatten. If the models improve more slowly, the case for buying ever more compute this year weakens at the margin, and hyperscalers could stretch out or trim capex plans. That matters because one company's capex is another company's revenue: Nvidia's sales are Microsoft's and Amazon's spending. A slowdown in the spenders shows up as softer forward estimates for the sellers, and the revision engine that was running in reverse would drag prices down even if current results are fine. That is why the selloff was broad, from Nvidia to Korean and European chip names, rather than concentrated. There is also a valuation channel. AI winners trade at rich multiples that are only justified if growth keeps compounding. When investors doubt the growth path, they demand a lower multiple, so the same earnings are worth less. A pause narrative attacks both the numerator, future earnings, and the denominator, the multiple, at the same time. The practical lesson is to watch capex guidance from the hyperscalers, not the safety essays, as the real tell. Rhetoric about pacing is cheap, but if Microsoft, Amazon, Google or Meta actually guide down data-center spending, that is when the revision engine reverses in earnest. Until then, moves like Monday's are sentiment repricing the risk, and the signal to confirm the bear case is a spender cutting its build, not a founder writing an essay.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/ai-has-carried-the-stock-market-an-industry-pause-could-pull-the-rug-out-warns-this-wall-street-giant-3272c960?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- AI Has Been Carrying the Stock Market. An Industry Pause Could Pull the Rug Out</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-09-14/risk-of-ai-slowdown-prompts-angst-among-tech-investors" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Risk of AI Slowdown Prompts Angst Among Tech Investors</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Anthropic's Dario Amodei urges rivals to slow frontier AI development</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic CEO Dario Amodei called for companies to moderate the pace at which they improve AI capabilities, FT and Bloomberg reported, warning safeguards are failing to keep up in a race-like dynamic between labs. The weekend essay tanked tech stocks worldwide Monday.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/aa8a1be7-abe0-44b7-bcd3-31fd0a44de08?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Tech Stocks Fall After Big AI Groups Call for Slowdown</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI's Sam Altman voices support for 'pacing' AI development</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI CEO Sam Altman on Sunday added his support to the idea of "pacing" AI development so cutting-edge models don't outrun humans' ability to maintain control, Bloomberg reported. The endorsement from the field's other leader amplified the market's slowdown scare.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/openai-s-altman-voices-support-for-pacing-ai-development" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI's Altman Voices Support for 'Pacing' AI Development</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China rejects AI 'fearmongering' after Amodei urges a slowdown</strong></summary>
+      <div class="deal-body">
+        <p>China criticized warnings from US tech executives to put the brakes on AI development, CNBC and Bloomberg reported, with a spokesman saying "fearmongering, confrontation and vicious competition" serve no one's interests. Beijing cast the pause push as a bid for advantage.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/14/china-ai-slowdown-us-tech-ceos.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- China Says AI CEOs' Call for a Slowdown Is 'Fear Mongering'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Anthropic tells investors it will be profitable for a second straight quarter</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic told investors it will be profitable for a second consecutive quarter, FT reported, seeking to ease cash-burn concerns before a blockbuster IPO, though MarketWatch flagged a big caveat behind the profitability claim. The timing lands amid fears over the pace of AI development.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/4564e6a5-69e9-40a6-bf0f-a888f2f4f002?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Anthropic Tells Investors It Will Be Profitable for Second Straight Quarter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ByteDance signs a $29.6 billion loan to build its AI ambitions</strong></summary>
+      <div class="deal-body">
+        <p>ByteDance signed a $29.6 billion loan with more than two dozen lenders including ICBC and HSBC, Bloomberg reported, one of Asia's biggest dollar deals this year, as it reportedly weighs spending $70 billion on AI data centers. The scale contrasts sharply with the slowdown talk.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/icbc-hsbc-among-major-lenders-on-bytedance-s-30-billion-loan" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ICBC, HSBC Among Major Lenders on $30 Billion ByteDance Loan</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Intel-backed construction AI firm Buildots raises $130 million</strong></summary>
+      <div class="deal-body">
+        <p>Buildots, a startup using AI to speed construction of data centers, chip factories and hospitals, raised $130 million in new financing, Bloomberg reported. The raise shows capital still flowing to AI applications tied directly to the infrastructure buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/intel-backed-construction-ai-firm-buildots-raises-130-million" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Intel-Backed Construction AI Firm Buildots Raises $130 Million</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Gulf fintech Tabby hits a $6.5 billion valuation, topping Klarna</strong></summary>
+      <div class="deal-body">
+        <p>Gulf fintech Tabby was valued at $6.5 billion in a round led by Blue Pool Capital, Bloomberg reported, topping Klarna and marking a milestone for the Middle East's buy-now-pay-later leader. The valuation shows appetite for non-AI growth names remains intact.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/fintech-tabby-s-valuation-hits-6-5-billion-to-top-klarna" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fintech Tabby Hits Valuation of $6.5 Billion, Topping Klarna</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Monday September 14, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is ByteDance's $29.6bn loan, Buildots' $130m raise, Kioxia's mooted $10bn listing and Anthropic claiming a second profitable quarter, all pointing to capital still flowing. The counter-signal is Amodei and Altman backing a pause, Citi and RBC warning of earnings risk and M&G saying investors are more wary. Whether the capex story keeps its premium hinges on whether hyperscalers actually trim guidance and how Wednesday's Fed decision shapes rates.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>A 5% Treasury yield is raising new risks for markets and the economy</strong></summary>
+      <div class="deal-body">
+        <p>The bond selloff has driven a key Treasury yield to the verge of 5%, Bloomberg reported, worsening angst from Wall Street to Washington about the higher borrowing costs hitting the US economy. The level sits like a warning sign as the Fed convenes.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-13/a-5-treasury-yield-is-raising-new-risks-for-markets-economy" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- A 5% Treasury Yield Raises New Risks for Markets, Economy</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman becomes the last major bank to expect a Fed hike this week</strong></summary>
+      <div class="deal-body">
+        <p>The Fed's two-day meeting begins Tuesday with nearly all now expecting a 25bp hike, CoinDesk reported, after Goldman Sachs late Friday became the last of the major banks to retract its no-hike forecast. One economist argued the move is about Wall Street, not inflation.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/13/fed-rate-hike-is-about-wall-street-not-inflation-says-economist" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Fed Rate Hike Is About Wall Street, Not Inflation, Says Economist</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Warsh on a collision course with Trump as a rate hike looms</strong></summary>
+      <div class="deal-body">
+        <p>Fed chair Kevin Warsh is on a collision course with Trump, Bloomberg and FT reported, under pressure to back his inflation warnings with a hike even as the president keeps demanding the lowest rates in the world. Adviser Kevin Hassett said the White House will "100%" support the Fed's call.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-13/fed-s-warsh-on-collision-course-with-trump-as-rate-hike-looms" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Warsh on Collision Course With Trump as Rate Hike Looms</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed hikes won't bring down gas prices, so why is the bond market pushing for them</strong></summary>
+      <div class="deal-body">
+        <p>Fed rate hikes won't bring down gas prices, MarketWatch noted, yet the bond market is pushing for them anyway to keep an oil-driven inflation shock from getting embedded. The 10-year on the doorstep of 5% is a warning sign for stocks.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/fed-rate-hikes-wont-bring-down-gas-prices-why-the-bond-market-is-pushing-for-them-anyway-98f2c7e3?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Fed Rate Hikes Won't Bring Down Gas Prices. Why the Bond Market Is Pushing for Them Anyway</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB's Schnabel calls energy-price trends 'quite concerning' as more hikes loom</strong></summary>
+      <div class="deal-body">
+        <p>ECB board member Isabel Schnabel said recent energy-price developments have been "quite concerning" as officials weigh further hikes, Bloomberg reported, and a research roundup showed economists now see at least one more ECB increase. The oil shock is keeping Europe's hawks in charge.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/ecb-s-schnabel-says-energy-price-trends-quite-concerning" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Schnabel Says Energy-Price Trends 'Quite Concerning'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>India's August inflation accelerates, narrowing the RBI's pause room</strong></summary>
+      <div class="deal-body">
+        <p>India's inflation accelerated in August toward the top of the central bank's 2%-6% target range, Bloomberg reported, potentially narrowing the scope for policymakers to stay on hold as Middle East energy pressures build. Asia's inflation channel is reopening as oil climbs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/india-august-inflation-accelerates-narrowing-rbi-pause-room" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- India August Inflation Accelerates, Narrowing RBI Pause Room</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's credit expansion misses forecasts as loan demand sags</strong></summary>
+      <div class="deal-body">
+        <p>China's credit expansion fell well short of expectations in August, Bloomberg reported, as subdued household and business borrowing outweighed support from government bond sales. The miss keeps pressure on Beijing to decide on year-end stimulus.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/china-s-credit-expansion-misses-forecast-as-loan-demand-sags" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Credit Expansion Misses Forecast as Loan Demand Sags</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (September 14, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish side owns the tape, with the 10-year on the doorstep of 5%, Goldman capitulating to a hike call, oil at $108 and the ECB and RBI turning more hawkish on energy. Pulling the other way, a hike is fully priced, RBC's Amy Wu Silverman is positioning around a telegraphed decision and one economist calls the move more about Wall Street than inflation. Wednesday's Fed decision, plus the BOE and BOJ later in the week, are the real tests.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Bond Market Pushes the Fed to Hike Into an Oil Shock It Can't Fix</summary>
+      <p>MarketWatch made the point that Fed hikes won't bring down gas prices, yet the bond market is pushing for them anyway, and Bloomberg reported the 10-year on the verge of 5% as traders raise hike bets even as oil jumps to $108. That looks contradictory: if the Fed can't produce a barrel of oil, why would higher rates help an oil-driven inflation problem? The answer is about expectations, and it is the core of how modern central banking works. Start with the two kinds of inflation. A demand-driven surge comes from an economy running hot, too much money chasing too few goods, and rate hikes address it directly by cooling spending. A supply-driven shock, like a pipeline closure that lifts crude, comes from the cost side, and hikes cannot add supply or lower the pump price. So on the surface, tightening into an oil shock just slows an already-strained economy without fixing the cause. Here is the mechanism the bond market cares about anyway: inflation expectations. Central banks believe a one-time price shock only becomes lasting inflation if people start to expect higher prices and act on it, workers demanding bigger raises, firms setting prices higher in advance, all of which bakes the shock into the broader price level. Economists call this "second-round effects." The Fed's job in a supply shock is not to reverse the oil price but to prevent that psychology from taking hold, to keep long-term expectations "anchored." A visible hike is the signal that the central bank will not tolerate the shock spreading, which is why ECB's Schnabel called energy trends concerning while officials weigh more hikes: they are guarding expectations, not oil. Now connect it to the bond market. Long-term yields embed an inflation-expectations component. If investors fear the Fed will let an oil shock seep into persistent inflation, they demand higher yields to compensate, which is part of what drove the 10-year toward 5%. Paradoxically, a credible hike can lower long-term yields by reassuring the market that inflation will be contained, even though the same hike raises short-term rates. That is the bond market "pushing for" a hike: it wants the reassurance more than it fears the tightening. The practical lesson is to separate the cause of inflation from the central bank's target. The Fed responds to supply shocks not by fixing supply but by defending expectations, and it will accept slower growth as the price of keeping inflation psychology anchored. The tell to watch is the gap between short-term and long-term yields and market-based inflation expectations. If a hike lands and long-end yields ease while expectations stay contained, the Fed's gamble worked. If long yields keep climbing after the hike, the market is saying it doubts the anchor is holding, which is the more dangerous outcome.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/fed-rate-hikes-wont-bring-down-gas-prices-why-the-bond-market-is-pushing-for-them-anyway-98f2c7e3?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Fed Rate Hikes Won't Bring Down Gas Prices. Why the Bond Market Is Pushing for Them Anyway</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/ecb-s-schnabel-says-energy-price-trends-quite-concerning" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Schnabel Says Energy-Price Trends 'Quite Concerning'</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The 10-year Treasury yield sat on the doorstep of 5% as the Fed opened a two-day meeting markets now expect to end in a hike, with Goldman the last bank to drop its no-hike call and Warsh on a collision course with Trump, though a hike is fully priced and RBC's Amy Wu Silverman positioned around a telegraphed decision; oil jumped to $108 after a drone attack forced Saudi Arabia to close a vital export pipeline and pull out of Hormuz talks, even as FT framed it as a contained oil shock and Bloomberg called for a quick restart; AI leaders Dario Amodei and Sam Altman backed pacing the frontier, tanking chip stocks worldwide as Citi and RBC warned of earnings risk while ByteDance signed a $29.6bn loan and Bessent and China pushed back; bitcoin climbed toward $78,000 as crypto sat out the AI selloff; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.85%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $95, bear confirmed; below $88, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 9/14</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/15</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/16</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 9/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 9/18</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin climbs to $78,000 as crypto sits out the AI selloff</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin rose 1.9% from midnight UTC to around $78,000, CoinDesk reported, while Nasdaq 100 futures fell 1.65% on the AI-slowdown calls and crude gained almost 4% on the Saudi pipeline closure. The divergence had crypto outperforming a wobbling tech tape.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/14/bitcoin-climbs-to-usd78-000-as-crypto-sits-out-the-ai-selloff" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Climbs to $78,000 as Crypto Sits Out the AI Selloff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin bucks the tech selloff as AI safety concerns weigh on stocks</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin rose above $77,000 as calls to slow AI development hit technology shares and rising oil added to pressure, CoinDesk reported, with the token acting as a relative haven from equity risk. The move set up a test against the Fed later in the week.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/14/bitcoin-bucks-tech-selloff-as-ai-safety-concerns-weigh-on-stocks" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Bucks Tech Selloff as AI Safety Concerns Weigh on Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed, BOE and BOJ decisions frame crypto's week ahead</strong></summary>
+      <div class="deal-body">
+        <p>The Fed's decision Wednesday, followed by the BOE and BOJ later in the week, dominate the crypto calendar, CoinDesk reported, with the central-bank cluster set to steer risk appetite into the weekend. Yahoo noted bitcoin's late-summer rally now faces off against the Fed and Congress.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/14/fed-boe-boj-interest-rate-decisions-crypto-week-ahead" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Fed, BOE, BOJ Interest-Rate Decisions: Crypto Week Ahead</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>FCA weighs exempting tokenized gold from fund rules to defend London</strong></summary>
+      <div class="deal-body">
+        <p>The UK's FCA is exploring a bespoke framework with the Treasury to carve digital gold out of traditional fund laws, CoinDesk reported, aiming to defend London's market as tokenization spreads. The move signals regulators racing to keep on-chain assets onshore.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/14/fca-considers-exempting-tokenized-gold-from-fund-rules-to-defend-london-market" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- FCA Considers Exempting Tokenized Gold From Fund Rules to Defend London Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Clarity Act sits in life-death limbo as the Senate returns for a September 15 vote</strong></summary>
+      <div class="deal-body">
+        <p>The crypto industry awaits a September 15 Clarity Act vote that might not happen, CoinDesk reported, with the bill in Schrödinger's-cat limbo as the Senate returns from recess and the path forward stays murky. The vote is crypto's near-term regulatory catalyst.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/news-analysis/2026/09/11/crypto-s-clarity-act-is-a-schroedinger-s-cat-in-life-death-limbo-as-u-s-senate-returns" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto's Clarity Act Is a Schrödinger's Cat in Life-Death Limbo as U.S. Senate Returns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>S&amp;P Global and DRW back crypto data firm Kaiko as 24/7 markets loom</strong></summary>
+      <div class="deal-body">
+        <p>DRW, Susquehanna, RBC and S&P Global invested in digital-asset data provider Kaiko, Bloomberg reported, as progress toward round-the-clock trading on blockchain rails sparks demand for new infrastructure. The backing shows traditional finance building for always-on markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/s-p-global-drw-back-crypto-data-firm-kaiko-as-24-7-markets-loom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- S&P Global, DRW Back Crypto Data Firm Kaiko as 24/7 Markets Loom</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>ByteDance -- Signs a $29.6bn Loan to Build Its AI Ambitions</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> ByteDance signed a $29.6 billion loan with more than two dozen lenders including ICBC and HSBC, Bloomberg reported, one of Asia's biggest dollar deals this year as it weighs spending $70 billion on AI infrastructure.</p>
+        <p><strong>Outlook:</strong> The financing funds a massive data-center push even as US rivals debate a slowdown.</p>
+        <p><strong>What it means:</strong> Capital keeps pouring into the AI buildout, undercutting the pause narrative.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/icbc-hsbc-among-major-lenders-on-bytedance-s-30-billion-loan" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ICBC, HSBC Among Major Lenders on $30 Billion ByteDance Loan</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kioxia -- Weighs Raising at Least $10bn in a US Listing</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Kioxia is considering raising at least $10 billion by listing American depositary receipts, Bloomberg reported, potentially joining other AI-related firms tapping strong investor demand.</p>
+        <p><strong>Outlook:</strong> A US float would give the memory maker capital as AI drives storage demand.</p>
+        <p><strong>What it means:</strong> The AI IPO pipeline stays full even amid the day's slowdown scare.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/kioxia-is-said-to-consider-raising-10-billion-in-us-listing" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kioxia Is Said to Consider Raising $10 Billion in US Listing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>PSG Equity -- Raises More Than €4.4bn for Software and Tech Bets</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> PSG Equity raised more than €4.4 billion ($5.1bn) for a new fund targeting European software and tech companies, Bloomberg reported, a vote of confidence after a heavy sector selloff earlier this year.</p>
+        <p><strong>Outlook:</strong> The dry powder positions PSG to buy into a beaten-up European tech market.</p>
+        <p><strong>What it means:</strong> Private equity still sees value in software despite the public-market wobble.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/psg-raises-more-than-4-4-billion-for-software-tech-bets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- PSG Raises More Than €4.4 Billion for Software, Tech Bets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Firmus -- Seeks Up to $5bn in an Australia IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Data-center firm Firmus Technologies is looking to raise as much as $5 billion in an IPO in Australia, Bloomberg reported, tapping the global AI-infrastructure listing wave.</p>
+        <p><strong>Outlook:</strong> The float would fund capacity expansion for AI compute in the region.</p>
+        <p><strong>What it means:</strong> Data-center IPOs keep coming even as investors question the AI pace.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/data-center-firm-firmus-said-to-seek-5-billion-in-australia-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Data Center Firm Firmus Said to Seek $5 Billion in Australia IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ligent -- Seeks $727m in a Hong Kong IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> AI computing networks maker Ligent Technologies is seeking to raise up to HK$5.7 billion ($727m) in a Hong Kong IPO, Bloomberg reported, adding to a surge of AI-tied listings this year.</p>
+        <p><strong>Outlook:</strong> The listing gives Ligent capital to scale networking gear for AI clusters.</p>
+        <p><strong>What it means:</strong> Asia's AI-hardware listing boom shows no sign of slowing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-14/ligent-technologies-seeks-727-million-in-hong-kong-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ligent Technologies Seeks $727 Million in Hong Kong IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Circle -- Buys Tazapay for $400m to Extend USDC's Emerging-Market Reach</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Circle's $400 million Tazapay deal buys emerging-market payment links that take years to build, CoinDesk reported, as stablecoins' next battleground shifts to markets where Tether has long been strong.</p>
+        <p><strong>Outlook:</strong> The acquisition widens USDC's rails across underserved regions.</p>
+        <p><strong>What it means:</strong> Stablecoin competition is moving from the US into emerging markets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/13/circle-s-usd400m-tazapay-deal-buys-emerging-market-links-that-take-years-to-build" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Circle's $400M Tazapay Deal Buys Emerging Market Links That Take 'Years to Build'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euronext / Deutsche Boerse -- Shares Rise on CEO's Merger Comments</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Euronext and Deutsche Boerse shares rose after Euronext CEO Stephane Boujnah told the FT that a tie-up of the two groups' stock-exchange businesses would make sense, WSJ reported.</p>
+        <p><strong>Outlook:</strong> Any deal would reshape Europe's fragmented exchange landscape.</p>
+        <p><strong>What it means:</strong> Exchange consolidation talk is heating up as scale becomes the game.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/euronext-deutsche-boerse-shares-rise-after-ceos-merger-comments-4e96bbe9?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Euronext, Deutsche Boerse Shares Rise After CEO's Merger Comments</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Citigroup (strategy) -- warns an AI industry pause could pull the rug from earnings</strong></summary>
+      <div class="deal-body">
+        <p>Citigroup warned on MarketWatch that if AI model development slows, the earnings revisions that have been a crucial factor in stock gains this year could follow. A named house tying the pace debate directly to the profit engine carrying the index.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/ai-has-carried-the-stock-market-an-industry-pause-could-pull-the-rug-out-warns-this-wall-street-giant-3272c960?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- AI Has Been Carrying the Stock Market. An Industry Pause Could Pull the Rug Out</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>RBC Capital Markets (Lori Calvasina) -- wraps 'AI froth' into earnings risk</strong></summary>
+      <div class="deal-body">
+        <p>RBC's head of US equity strategy Lori Calvasina folded "AI froth" into her earnings-risk view on Bloomberg, flagging tech capex outside the S&P 500's top 10 names as a soft spot. A named strategist quantifying where the AI buildout could disappoint.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-14/rbc-s-calvasina-wraps-ai-froth-into-earnings-risks-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- RBC's Calvasina Wraps 'AI Froth' Into Earnings Risks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>RBC Capital Markets (Amy Wu Silverman) -- positions around a telegraphed Fed hike</strong></summary>
+      <div class="deal-body">
+        <p>RBC's head of derivatives strategy Amy Wu Silverman joined Bloomberg to discuss her expectations ahead of the Fed and her reaction to the AI slowdown calls. A named strategist reading the options market into a decision markets now expect to end in a hike.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-14/rbc-s-amy-wu-silverman-on-ai-slowdown-fed-expectations-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- RBC's Amy Wu Silverman on AI Slowdown, Fed Expectations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>M&amp;G Investments (Maria Municchi) -- says investors are 'more wary' about the AI trade</strong></summary>
+      <div class="deal-body">
+        <p>M&G multi-asset manager Maria Municchi told Bloomberg that while price action may hold up, markets are getting "a little bit more wary" about whether the AI capex boom translates into delivered earnings. A named fund voicing the doubt behind the slowdown scare.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-14/m-g-s-municchi-says-investors-more-wary-about-ai-trade-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- M&G's Municchi Says Investors 'More Wary' About AI Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Universa (Mark Spitznagel camp) -- 'Black Swan' investor backs Michael Burry's AI warning</strong></summary>
+      <div class="deal-body">
+        <p>A "Black Swan" investor backed Michael Burry's AI warning on Yahoo Finance, arguing a "euphoric rally" tends to come right before a historic crash and urging caution. A named tail-risk voice adding to the chorus of AI-bubble skeptics.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/black-swan-investor-backs-michael-101500434.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- 'Black Swan' Investor Backs Michael Burry's AI Warning</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as AI Leaders Call for a Slowdown and Oil Jumps to $108 Into a Fed Hike, With Citi Warning the Pause Could Pull the Rug From Earnings, RBC's Lori Calvasina Flagging 'AI Froth' and M&amp;G's Maria Municchi Turning Wary, While a 'Black Swan' Investor Backs Michael Burry and RBC's Amy Wu Silverman Positions Around a Telegraphed Decision</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the buildout and the priced-in hike are the base case):</strong> RBC's Amy Wu Silverman is positioning around a well-telegraphed Fed decision, and M&G's Maria Municchi still expects price action to "behave pretty well." ByteDance's $29.6bn loan and Kioxia's $10bn listing show capital keeps flowing. If the Fed hikes and signals it's near done, both the rate and AI scares can fade.</div>
+        <div class="bear"><strong>Bear (the earnings engine and the shocks are compounding):</strong> Citigroup warns an AI pause could pull the rug from the earnings revisions carrying the market, RBC's Lori Calvasina flags AI froth outside the top 10 names, and a Black Swan investor backs Michael Burry's crash warning. With oil at $108 and the 10-year near 5%, the risks stack the same way. Caution rules into the Fed.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>AI slowdown calls tank chip stocks; Nvidia falls but returns record $26B; HPE +19%; oil to $108; Fed hike this week</td><td>Cautious</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Nasdaq futures drop on Amodei essay; midterm blues; GM battery push vs Ford China clash; Euronext merger talk</td><td>Mixed to bearish</td><td>~20,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>10-year near 5%; Goldman caves to hike call; Warsh vs Trump; Citi says AI pause pulls rug from earnings</td><td>Bearish</td><td>~23,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI pace and profits: Amodei/Altman pacing, Anthropic's profit caveat, ByteDance $29.6B loan, RBC's AI froth</td><td>Cautious</td><td>~13,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC climbs to $78K, bucks tech selloff; Fed/BOE/BOJ week; FCA tokenized gold; Clarity Act Sept 15 vote</td><td>Neutral to bullish</td><td>~25,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned defensive as AI leaders backed a slowdown and oil jumped to $108 into a Fed week. r/wallstreetbets stayed cautious as chip stocks fell, though Nvidia's record $26B return and HPE's 19% run gave bulls something. r/stocks leaned mixed to bearish on the Nasdaq drop and midterm-blues framing. r/investing went bearish on the 10-year near 5%, Goldman capitulating to a hike call and Citi's earnings warning. r/SecurityAnalysis stayed cautious on the AI pace-and-profit debate. r/CryptoCurrency was neutral to bullish as bitcoin climbed to $78,000 and sat out the tech selloff. The swing factor is Wednesday's Fed decision.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why One Founder's Essay Can Move the Whole Market Through the Earnings-Expectations Channel</h2>
+    <p>Bloomberg reported stocks slid around the world after AI leaders proposed slowing the technology's development, and MarketWatch relayed Citigroup's warning that an industry pause could pull the rug from the earnings revisions carrying the market. That points at a mechanism worth understanding: how a 3,800-word essay by Anthropic's Dario Amodei, containing no financial data, can knock trillions off global equities in a single session. The answer is that markets do not trade on what is true today but on what they expect tomorrow, and an essay can change expectations faster than any earnings report. Start with how AI has driven prices. For two years the dominant market story has been a self-reinforcing loop: AI models get better, so companies buy more compute, so chipmakers and cloud providers post rising sales, so analysts lift their profit forecasts, so stocks climb. Each link feeds the next, and the whole complex, from Nvidia to Korean memory makers to power utilities, has been priced for the loop to keep spinning. When valuations are built on continued acceleration, the market becomes highly sensitive to anything that questions the pace. Now add the essay. When the two people most responsible for pushing the frontier, Amodei and OpenAI's Altman, say the industry should slow down, they are not cutting a forecast, but they are undermining the assumption underneath every forecast: that capability, and therefore demand, keeps compounding. If the models improve more slowly, the case for buying ever more compute this year weakens, and the buyers, the hyperscalers, might stretch out their spending. Since one firm's capex is another firm's revenue, slower spending flows straight into softer forward estimates for the sellers. The market does not wait for the actual guidance cut. It prices the higher probability of one immediately, which is why the selloff hit the entire chain at once rather than a single name. There is a second channel: the discount rate on the story. Rich multiples are only justified if growth is durable. A pause narrative makes future growth less certain, so investors demand a bigger risk premium and pay a lower multiple for the same expected earnings. The essay attacked both the expected earnings and the multiple simultaneously, which is why the reaction was sharp. The practical lesson is to distinguish narrative shocks from fundamental shocks and to know which confirms the other. An essay is a narrative shock: it moves sentiment and repricing but changes nothing concrete yet. The fundamental confirmation would be an actual hyperscaler cutting its data-center budget, or a chipmaker guiding revenue down. Watch for that. If capex guidance holds in the coming weeks, Monday's drop was sentiment overshooting and tends to retrace. If a major spender actually trims its build, the narrative shock becomes a fundamental one, and the repricing sticks. When founders write essays, watch the buyers' checkbooks, not the prose, for the real signal.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-13/us-stock-futures-fall-on-ai-warning-oil-gains-markets-wrap" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Slide as AI Slowdown Fears Hit Sentiment: Markets Wrap</a></p>
+    <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/article/ai-stocks-get-drilled-because-of-anthropic-ceo-dario-amodeis-3800-word-warning-093637548.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- AI Stocks Get Drilled Because of Anthropic CEO Dario Amodei's 3,800-Word Warning</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Fed decision, Wednesday.</strong> The two-day meeting opens Tuesday, with nearly all now expecting a 25bp hike after Goldman dropped its no-hike call; watch the statement and dots for whether the Fed signals it's near done.</li>
+      <li><strong>BOE decision, Thursday.</strong> With the dovish majority tested by Iran-war energy pressures, watch whether Governor Bailey's committee holds or bends toward a hike.</li>
+      <li><strong>BOJ decision, Friday.</strong> After watchers flagged a possibly record-fast tightening pace, watch the yen and any read-through to a global carry-trade unwind.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Hyperscaler capex signals.</strong> After Amodei and Altman backed a slowdown, watch any commentary from Microsoft, Amazon, Google or Meta on data-center spending, the real tell for whether the pause narrative bites.</li>
+      <li><strong>AI hardware cross-reads.</strong> After Nvidia's record $26B return and HPE's 19% run, watch chip and server names for confirmation that demand still outruns the slowdown talk.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI IPO pipeline.</strong> After Kioxia's mooted $10bn US listing, Firmus's $5bn Australia float and Ligent's $727m Hong Kong deal, watch whether the slowdown scare cools appetite for AI-tied listings.</li>
+      <li><strong>Treasury supply near 5%.</strong> With the 10-year on the doorstep of 5%, watch upcoming auctions as a read on appetite for the long bond as the Fed hikes.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Saudi pipeline restart.</strong> With Riyadh having shut a vital export route and quit Hormuz talks, watch for any restart timeline, the single biggest swing factor for oil near $108.</li>
+      <li><strong>Clarity Act crypto vote, Tuesday.</strong> With a September 15 Senate vote in doubt and the path murky, watch the read-through for regulatory clarity across digital assets.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Sep 14, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-09-14 07:52 ET); Bloomberg Technology (20 fresh, newest 2026-09-14 07:30 ET); Bloomberg Economics (17 fresh, newest 2026-09-14 07:03 ET); CNBC Top News (1 fresh, newest 2026-09-13 21:05 ET); CNBC Finance (3 fresh, newest 2026-09-14 05:36 ET); MarketWatch Top Stories (10 fresh, newest 2026-09-14 07:15 ET); WSJ Markets (11 fresh, newest 2026-09-14 07:45 ET); Yahoo Finance (25 fresh, newest 2026-09-14 07:51 ET); FT Home (12 fresh, newest 2026-09-14 07:31 ET); CoinDesk (12 fresh, newest 2026-09-14 07:58 ET); Stratechery (1 fresh, newest 2026-09-14 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): CNBC Economy (25 fetched, 0 in last 36h); Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. Why did AI-related stocks tumble worldwide on Monday?</strong></p>
+      <span class="opt" data-opt="A">A. Nvidia missed earnings and cut its data-center guidance sharply</span>
+      <span class="opt" data-opt="B">B. Anthropic's Amodei urged rivals to slow frontier AI development</span>
+      <span class="opt" data-opt="C">C. The Fed surprised markets with an emergency intermeeting rate hike</span>
+      <span class="opt" data-opt="D">D. China banned exports of rare earths used in AI chip production</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg and WSJ reported stocks slid worldwide after Anthropic's Dario Amodei and OpenAI's Sam Altman backed slowing frontier development. Nvidia actually returned a record $26B to holders, the Fed had not yet met, and there was no rare-earth ban.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. Why did oil jump to around $108 on Monday?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC+ announced deep, immediate production cuts at a summit</span>
+      <span class="opt" data-opt="B">B. The US lifted sanctions, flooding the market with Iranian crude</span>
+      <span class="opt" data-opt="C">C. A cold snap across Europe spiked heating and diesel demand</span>
+      <span class="opt" data-opt="D">D. Saudi Arabia closed a vital export pipeline after a drone attack</span>
+      <div class="feedback"><strong>D is correct.</strong> FT reported oil hit $108 after Saudi Arabia shut a vital export pipeline and pulled out of Hormuz de-escalation talks following a drone strike. It was not an OPEC+ cut, a sanctions move, or a weather-driven demand spike.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why is the bond market pushing the Fed to hike despite an oil shock?</strong></p>
+      <span class="opt" data-opt="A">A. Hikes anchor inflation expectations even if they can't lower fuel</span>
+      <span class="opt" data-opt="B">B. Higher rates directly boost global crude oil production capacity</span>
+      <span class="opt" data-opt="C">C. Rate hikes force retailers to cut prices on imported consumer goods</span>
+      <span class="opt" data-opt="D">D. The Fed must match the ECB's rate to defend the dollar's value</span>
+      <div class="feedback"><strong>A is correct.</strong> MarketWatch noted hikes won't lower gas prices, but the Fed uses them to keep a supply shock from seeping into long-term inflation expectations. Hikes don't add oil supply, don't force retailer price cuts, and aren't about matching the ECB.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The 10-year Treasury yield sat on the doorstep of 5% as the Fed opened a two-day meeting markets now expect to end in a hike, with Goldman the last bank to drop its no-hike call and Warsh on a collision course with Trump, though a hike is fully priced and RBC's Amy Wu Silverman positioned around a telegraphed decision.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-13/a-5-treasury-yield-is-raising-new-risks-for-markets-economy", "take": "A 5% Treasury yield is raising new risks for markets and the economy." },
+      { "name": "CoinDesk", "lean": "bear", "url": "https://www.coindesk.com/markets/2026/09/13/fed-rate-hike-is-about-wall-street-not-inflation-says-economist", "take": "Goldman became the last major bank to expect a Fed hike this week." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/fed-rate-hikes-wont-bring-down-gas-prices-why-the-bond-market-is-pushing-for-them-anyway-98f2c7e3?mod=mw_rss_topstories", "take": "The 10-year on the doorstep of 5% is a warning sign for stocks." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-13/fed-s-warsh-on-collision-course-with-trump-as-rate-hike-looms", "take": "Warsh is on a collision course with Trump as a rate hike looms." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-09-14/rbc-s-amy-wu-silverman-on-ai-slowdown-fed-expectations-video", "take": "RBC's Amy Wu Silverman is positioning around a telegraphed decision." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil jumped to $108 after a drone attack forced Saudi Arabia to close a vital export pipeline and pull out of Hormuz de-escalation talks, though FT framed it as a contained oil shock rather than a broader trade threat and Bloomberg called for a quick restart, even as ECB's Schnabel called energy trends quite concerning.",
+    "sources": [
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/4845a503-3ddd-4bb7-a469-c51f275bc873?syn-25a6b1a6=1", "take": "Oil hit $108 after Saudi Arabia closed a vital export pipeline." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-09-14/the-oil-market-needs-a-quick-saudi-pipeline-restart", "take": "The oil market needs a quick Saudi pipeline restart with supplies stretched." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-14/ecb-s-schnabel-says-energy-price-trends-quite-concerning", "take": "ECB's Schnabel called energy-price trends quite concerning as hikes loom." },
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/bdc77254-e491-4d9f-8537-6f04317d037f?syn-25a6b1a6=1", "take": "The Houthi blockage is still largely an oil shock, not a broad trade threat." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/energy/articles/asian-refiners-seek-answers-saudi-103000239.html", "take": "Asian refiners are scrambling for answers after the Saudi pipeline shutdown." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "AI leaders Dario Amodei and Sam Altman backed pacing the frontier, tanking chip stocks worldwide as Citi and RBC warned of earnings risk, while ByteDance signed a $29.6bn loan, Anthropic claimed a second profitable quarter and Bessent and China both pushed back on the slowdown.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/ai-has-carried-the-stock-market-an-industry-pause-could-pull-the-rug-out-warns-this-wall-street-giant-3272c960?mod=mw_rss_topstories", "take": "Citi warns an AI industry pause could pull the rug from earnings revisions." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/aa8a1be7-abe0-44b7-bcd3-31fd0a44de08?syn-25a6b1a6=1", "take": "Tech stocks fell worldwide after big AI groups called for a slowdown." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-14/openai-s-altman-voices-support-for-pacing-ai-development", "take": "OpenAI's Altman voiced support for pacing AI development." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-14/icbc-hsbc-among-major-lenders-on-bytedance-s-30-billion-loan", "take": "ByteDance signed a $29.6bn loan to fund its AI ambitions." },
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/4564e6a5-69e9-40a6-bf0f-a888f2f4f002?syn-25a6b1a6=1", "take": "Anthropic told investors it will be profitable for a second straight quarter." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["HPE (1wk)","Bitcoin","Oracle","Kospi","Nasdaq Fut","Nvidia"],
+    "values": [19.0, 1.9, -2.5, -2.0, -1.65, -4.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [29000, 20000, 23000, 13000, 25000],
+    "colors": ["neutral","bear","bear","bear","bull"]
+  },
+  "dealSizes": {
+    "labels": ["ByteDance Loan","Kioxia IPO","PSG Fund","Firmus IPO","Ligent IPO","Circle/Tazapay"],
+    "values": [29.6, 10.0, 5.1, 5.0, 0.727, 0.4]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
