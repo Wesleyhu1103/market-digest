@@ -69,13 +69,18 @@ class SiteRuntimePathTests(unittest.TestCase):
 
     def test_shared_scripts_use_site_root_for_archive_data_reads(self):
         checks = {
-            ROOT / "docs" / "js" / "archive.js": "mdSitePath('archive/manifest.json')",
-            ROOT / "docs" / "js" / "charts-macro.js": "mdSitePath('fred-data.json')",
-            ROOT / "docs" / "js" / "verdict-updater.js": "mdSitePath('archive/' + iso + '.html')",
+            ROOT / "docs" / "js" / "archive.js": [
+                "return mdSitePath(rel);",
+                "fetch(sitePath('archive/manifest.json')",
+            ],
+            ROOT / "docs" / "js" / "charts-macro.js": ["mdSitePath('fred-data.json')"],
+            ROOT / "docs" / "js" / "verdict-updater.js": ["mdSitePath('archive/' + iso + '.html')"],
         }
-        for path, needle in checks.items():
-            with self.subTest(path=path.name):
-                self.assertIn(needle, path.read_text())
+        for path, needles in checks.items():
+            text = path.read_text()
+            for needle in needles:
+                with self.subTest(path=path.name, needle=needle):
+                    self.assertIn(needle, text)
 
     def test_sync_site_config_updates_archive_asset_versions(self):
         module = load_sync_site_config()
