@@ -62,6 +62,17 @@ class ArchiveRuntimePathTests(unittest.TestCase):
         self.assertNotIn("loadFred('fred-data.json'", macro)
         self.assertNotIn('loadFred("fred-data.json"', macro)
 
+    def test_archived_html_has_no_archive_relative_static_fetches(self):
+        for path in sorted((ROOT / "docs" / "archive").glob("*.html")):
+            text = path.read_text()
+            with self.subTest(path=path.name):
+                self.assertNotIn("fetch('archive/", text)
+                self.assertNotIn('fetch("archive/', text)
+                self.assertNotIn("fetch('fred-data.json'", text)
+                self.assertNotIn('fetch("fred-data.json"', text)
+                self.assertNotIn("return 'fred-data.json'", text)
+                self.assertNotIn('return "fred-data.json"', text)
+
     def test_sync_html_versions_updates_archive_relative_assets(self):
         module = load_sync_site_config()
         with tempfile.TemporaryDirectory() as tmp:
