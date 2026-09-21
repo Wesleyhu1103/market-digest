@@ -6,8 +6,24 @@ function mdUsesRemoteApi() {
 function mdApiUrl(path) {
   return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
 }
+function mdSitePath(path) {
+  var rel = String(path || '').replace(/^\//, '');
+  var base = location.pathname || '/';
+  var archiveIdx = base.indexOf('/archive/');
+  if (archiveIdx >= 0) {
+    base = base.slice(0, archiveIdx + 1);
+  } else if (/\/archive\/?$/i.test(base)) {
+    base = base.replace(/archive\/?$/i, '');
+  } else if (/\.[a-z0-9]+$/i.test(base)) {
+    base = base.replace(/[^/]*$/, '');
+  } else if (!base.endsWith('/')) {
+    base += '/';
+  }
+  if (!base.endsWith('/')) base += '/';
+  return base + rel;
+}
 function mdMacroFredUrl() {
-  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  if (/\.github\.io$/i.test(location.hostname)) return mdSitePath('fred-data.json');
   return '/api/fred-data';
 }
 function mdPost(path, body) {
