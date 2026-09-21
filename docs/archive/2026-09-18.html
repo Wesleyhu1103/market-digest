@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Fri Sep 18, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-09-18</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Friday, September 18, 2026</h1>
+    <div class="meta">
+      <p>It's a triple-witching Friday, with quarterly options and futures expiring into a tape that just posted its best day in six weeks as AI stocks came roaring back and oil fell a third straight day. Overnight the Bank of Japan lifted rates to a 31-year high, yet the yen sank anyway after Ueda softened the message. And Warren Buffett is stepping down as Berkshire chairman, handing the role to son Howard.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The Bank of Japan raised its benchmark rate to 1.25%, the highest since 1995 and its fastest tightening pace since 1990, but the yen weakened past 157 per dollar rather than rallying after Governor Ueda gave mixed signals on future hikes and two board members dissented dovishly, leaving markets to argue over whether Japan finally normalizing policy is a milestone or a letdown that keeps the carry trade and a weak yen intact",
+      "framings": [
+        {"outlet": "CNBC", "headline": "Why Japan's Markets Flipped the Usual Script After the Rate Hike", "angle": "Highlights the counterintuitive reaction: the Nikkei rose, JGB yields slipped and the yen fell all at once.", "lean": 25, "pull": "The yen weakened past 157 against the dollar, the 10-year JGB yield slipped, while the Nikkei 225 gained 1.5%."},
+        {"outlet": "Financial Times", "headline": "Yen Sinks After BoJ Raises Rates to Highest Level Since 1995", "angle": "Frames the move as hawkish on paper but undercut by Ueda's tone, so the currency slide simply resumed.", "lean": -15, "pull": "Hawkish comments by the BoJ governor failed to arrest a renewed slide in the currency after borrowing costs were lifted to 1.25%."},
+        {"outlet": "WSJ", "headline": "Bank of Japan Raises Rates, Making US Less Alluring for Tokyo Investors", "angle": "Reads through to the cross-border flow story and a narrower rate gap with Treasuries.", "lean": -10, "pull": "The yen weakened as two members of the bank's board suggested future rate rises might come more slowly than anticipated."},
+        {"outlet": "Bloomberg", "headline": "BOJ Rate Hike Fails to Buoy Yen Even as Ueda Signals More Moves", "angle": "Casts the meeting as a disappointment for yen bulls who wanted clearer forward guidance.", "lean": -20, "pull": "The BOJ raised rates and signaled it's open to further tightening but ultimately disappointed yen traders who wanted clearer guidance."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Bank of Japan Hiked to a 31-Year High of 1.25% and the Yen Fell Anyway on Ueda's Mixed Signals, While the 10-Year Treasury Slips Back Below 5% Even as MarketWatch Calls It the Worst Bond Run in Over a Century and France's Risk Premium Hits a 14-Year High</h3>
+      </div>
+      <p>The plumbing of global rates all moved at once. WSJ reported the BOJ raised its benchmark to 1.25%, the highest since 1995, but the yen weakened past 157 per dollar after two board members flagged that future hikes might come more slowly than markets hoped. CNBC noted the unusual mix: the Nikkei rose 1.5%, JGB yields slipped and the yen fell, the opposite of the textbook reaction. Back in the US, the post-Fed relief held. CoinDesk said the 10-year yield slipped back below 5% as post-hike nerves faded, and Bloomberg noted bond income at yields not seen since 2007 is now easing some of the pain of the selloff. The bull read is that higher coupons finally pay you to own bonds. Bloomberg said the 5% handle makes new money enticing, HSBC's Max Kettner told clients equities have "100%" discounted higher rates and global earnings can carry stocks, and gold extended its gain as lower oil and the hike tempered inflation fears. The bear read is that the damage runs deep. MarketWatch reported the 10-year is having its worst run in over 100 years, Bloomberg said France's yield premium over Germany hit a full percentage point for the first time in 14 years on budget risks, and a Bloomberg survey now sees the ECB waiting until a final December hike. WSJ warned the BOJ's move makes US assets less alluring for Tokyo investors, trimming a reliable source of Treasury demand, and Wells Fargo and Citi strategists expect the yen to keep sliding.</p>
+      <p>The bull read is the 10-year back below 5%, bond income easing the pain, HSBC seeing stocks ride out hikes and gold firming. The bear read is the worst 10-year run in a century, France's risk premium at a 14-year high, the BOJ pulling Tokyo money home and the ECB still eyeing December.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (yields at last pay you to own duration):</strong> CoinDesk said the 10-year slipped back below 5% as Fed nerves faded, and Bloomberg noted income at a 5% handle, unseen since 2007, is easing the selloff's sting. HSBC's Max Kettner said equities have fully discounted higher rates and global earnings can carry the tape, while gold extended its gain as oil and the hike tempered inflation fears. A world normalizing off zero rates, Japan included, is healthy.</div>
+        <div class="bear"><strong>Bear (the long end is still bleeding):</strong> MarketWatch called the 10-year's slump the worst in over 100 years, and Bloomberg said France's spread over bunds hit a full point for the first time since 2012 on budget fears. WSJ warned the BOJ hike makes US bonds less alluring for Japanese investors, Wells Fargo and Citi see the yen weakening further, and Bloomberg's survey pushed the ECB's last hike to December. Foreign demand thinning as supply grows is the slow squeeze.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/economy/central-banking/bank-of-japan-raises-benchmark-interest-rate-to-1-25-highest-level-since-1995-2b28cbe9?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Bank of Japan Raises Rates, Making US Less Alluring for Tokyo Investors</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Drops for a Third Day as Traders Look Past the Middle East to the Next Round of US-Iran Diplomacy, Even as Saudi Aramco Tells European Refiners They Get No Crude Next Month, MarketWatch Warns the "TACO" Trade Could Fail and Europe Weighs an Emergency Energy Meeting</h3>
+      </div>
+      <p>The supply premium keeps deflating while the underlying risk refuses to leave. Bloomberg said oil fell for a third straight day, with supply concerns easing as traders eye the next round of diplomacy that will shape the US-Iran war. The relief case is that the worst is being priced out. Copper headed for a weekly gain as Chinese buyers returned and shrugged off the Fed's hawkish tone, gold extended its recovery as lower crude tempered inflation fears, and ECB President Christine Lagarde told euro-area ministers that rate policy doesn't move in lockstep with energy costs, undercutting the second-round inflation fear. The bear case is that the physical market is tightening in real time. Bloomberg reported Saudi Aramco told at least two European refining customers they will get no crude at all next month after the kingdom's key Red Sea pipeline was attacked, and WSJ described a Hormuz shuttle service as the fallback. MarketWatch flagged the danger in the consensus trade: for six months investors bought every Iran dip on the bet that Trump always backs down, but in September that "TACO" playbook stopped working, and it warns the next escalation may not reverse. Europe is feeling the heat directly, with the Eurogroup chief mulling an emergency meeting on surging energy costs and a Polish rate-setter warning of a possible hike if prices accelerate. The US also sanctioned a Tehran bitcoin exchange it says ran Iran's Hormuz "toll booth," a reminder the conflict is still live.</p>
+      <p>The bull read is oil falling a third day, copper and gold firming and Lagarde downplaying the energy pass-through. The bear read is Aramco cutting off European refiners, the TACO trade breaking down, an emergency EU energy meeting and Poland warning on rates.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the premium keeps bleeding out):</strong> Bloomberg said crude fell a third day as traders looked toward fresh diplomacy, copper headed for a weekly gain on returning Chinese demand, and gold extended its climb as cheaper oil tempered inflation fears. ECB's Lagarde told ministers rates don't move in lockstep with energy prices, undercutting the pass-through worry. Three straight down days in oil are exactly what let stocks rip their best session in six weeks.</div>
+        <div class="bear"><strong>Bear (the physical crunch is real):</strong> Bloomberg said Saudi Aramco told European refiners they get no crude next month after its pipeline was hit, and WSJ said a Hormuz shuttle is the fallback. MarketWatch warned the "TACO" bet that Trump backs down has stopped working, Europe's Eurogroup is mulling an emergency energy meeting, and Poland flagged a possible hike. The screen price is falling, but supply is being rationed and the war is still escalating.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-18/saudis-tell-european-refiners-they-ll-get-no-crude-next-month" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Saudis Tell European Refiners They'll Get No Crude Next Month</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Investors Pile Back Into AI Stocks and Snap the Market Out of Its Inflation Gloom, Chip and Software Names Extend Their Comeback and SoftBank Adds $21bn in Fresh AI Firepower, Even as OpenAI Gets Breached Using Anthropic Models and Morgan Stanley Warns of a "Corporate Extinction Event"</h3>
+      </div>
+      <p>The dip buyers came back fast. WSJ reported the S&P 500 and Nasdaq posted their biggest one-day gains in six weeks as investors turned away from inflation and rates toward AI stocks, snapping the market out of its post-Fed gloom. MarketWatch said Micron, Intel and other chip names extended a strong comeback as fears of an AI-spending slowdown subsided, and Bloomberg reported software stocks, left for dead earlier this year on fears AI would kill them, are getting new life from strong earnings. The bull read is that the money and the demand are undeniable. Bloomberg said SoftBank added nearly $21 billion in potential new borrowings this week to build AI financing capacity, CNBC cited Rhodium that US labs out-earn all Chinese AI models roughly tenfold, and Truist told clients a sideways market and rising earnings make tech the most attractive it's been since ChatGPT launched. WSJ's premarket check had Intel up 2.3% and Micron up 1.1% as AI names kept rallying. The bear read is the risk debate is getting louder just as the trade re-inflates. FT reported a security firm breached OpenAI using Anthropic's own models, a fresh dent in the safety story, and Bloomberg said traders are wary of rising AI risks as executives clash over whether frontier labs should slow down. Morgan Stanley's Sherry Paul warned of a "corporate extinction event" for firms that fail to adopt AI, cutting both ways, and FT flagged that medical AI still has a "proof problem" while OpenAI's listing delay raises the stakes for SoftBank's own $50bn data-center IPO.</p>
+      <p>The bull read is AI stocks snapping the market higher, chips and software extending comebacks, SoftBank's $21bn raise and US labs out-earning China tenfold. The bear read is OpenAI breached with Anthropic's models, traders wary of AI risk, Morgan Stanley's extinction warning and OpenAI's listing delay.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the trade re-inflates on real demand):</strong> WSJ said the S&P 500 and Nasdaq posted their best day in six weeks as investors rotated back into AI, and MarketWatch had Micron and Intel extending their comeback. Bloomberg reported SoftBank adding $21bn in AI firepower and software stocks reviving on strong earnings, while Truist called tech the most attractive since ChatGPT. CNBC's Rhodium data shows US labs out-earning all of China tenfold. Demand and financing are both intact.</div>
+        <div class="bear"><strong>Bear (the risk debate is sharpening):</strong> FT said researchers breached OpenAI using Anthropic's own models, and Bloomberg reported traders growing wary as executives clash over slowing frontier development. Morgan Stanley's Sherry Paul warned of a "corporate extinction event," FT flagged medical AI's "proof problem," and OpenAI's listing delay raises the stakes for SoftBank's $50bn data-center IPO. A trade this crowded is fragile when the safety and valuation stories multiply.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/stocks/investors-come-back-to-ai-stocks-snapping-market-out-of-inflation-gloom-a7690ce5?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Investors Come Back to AI Stocks, Snapping Market Out of Inflation Gloom</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>S&amp;P 500 and Nasdaq post their biggest one-day gains in six weeks</strong></summary>
+      <div class="deal-body">
+        <p>The S&amp;P 500 and Nasdaq notched their largest one-day advances in six weeks Thursday, WSJ reported, as traders turned away from inflation and rates and back toward tech. Stock futures pushed higher again Friday as oil extended its losses.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/the-s-p-500-and-nasdaq-post-biggest-gains-in-six-weeks-d3ccd84e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The S&amp;P 500 and Nasdaq Post Biggest Gains in Six Weeks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Warren Buffett steps down as Berkshire Hathaway chairman</strong></summary>
+      <div class="deal-body">
+        <p>Warren Buffett is stepping down as chairman of Berkshire Hathaway (BRK.A), CNBC reported, saying "Father Time always wins." Son Howard Buffett succeeds him as chairman under the long-standing succession plan, with Warren staying on the board as chairman emeritus.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/18/buffett-stepping-down-as-berkshire-chairman.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Warren Buffett Stepping Down as Chairman of Berkshire Hathaway</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Micron, Intel and other chip stocks extend their comebacks</strong></summary>
+      <div class="deal-body">
+        <p>Chip names including Micron (MU) and Intel (INTC) furthered their strong comebacks, MarketWatch reported, as investor fears about an AI-spending slowdown and rate hikes subsided. WSJ's premarket check had Intel up 2.3% and Micron up 1.1% Friday.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/micron-intel-and-other-chip-stocks-are-furthering-their-strong-comebacks-14b1ecac?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Micron, Intel and Other Chip Stocks Are Furthering Their Strong Comebacks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Software stocks get new life from strong earnings despite AI warnings</strong></summary>
+      <div class="deal-body">
+        <p>Software stocks, written off earlier this year on fears AI would doom them, are getting new life from strong earnings, Bloomberg reported. The reported demise turned out to be greatly exaggerated as profitability held up across the group.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/software-stocks-get-new-life-from-strong-earnings-ai-warnings" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Software Stocks Get New Life From Strong Earnings, AI Warnings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tesla's upcoming product frenzy could leave investors disappointed</strong></summary>
+      <div class="deal-body">
+        <p>Tesla's (TSLA) coming wave of product news could underwhelm, MarketWatch reported, with slower-than-expected robotaxi progress still the chief concern among experts. The caution comes as the stock leans heavily on autonomy hopes.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/teslas-upcoming-product-frenzy-could-leave-investors-disappointed-18619fb3?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Tesla's Upcoming Product Frenzy Could Leave Investors Disappointed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>GM touts new V-8 engines in a revived "truck wars" with Ford and Ram</strong></summary>
+      <div class="deal-body">
+        <p>General Motors (GM) is leaning into new V-8 engines to reignite the pickup "truck wars" with Ford (F) and Ram amid lackluster EV sales, CNBC reported. The gas-guzzling models keep selling well thanks to towing and hauling capacity.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/17/chevy-silverado-gmc-sierra-v-8-engines.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- GM Touts New V-8 Engines in Revived 'Truck Wars' Amid Lackluster EV Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Securitize jumps after regulators greenlight some tokenized US stock trading</strong></summary>
+      <div class="deal-body">
+        <p>Securitize surged Thursday, CNBC reported, after federal regulators cleared the issuing of tokenized stocks on some US trading platforms. The SEC's five-year "innovation exemption" hands DeFi-style venues and tokenization firms a new regulated pathway.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/17/securitize-jumps-after-regulators-greenlight-tokenized-us-stocks.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Securitize Jumps After Regulators Greenlight Some Tokenized US Stock Trading</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape enters triple-witching Friday off its best day in six weeks, with AI and chip names leading and oil down a third day. The swing factor is whether the AI rotation holds through options expiration or whether the yen slide and rising Treasury supply reassert the higher-for-longer fear. Watch the 10-year around 5% and whether the software and semis comeback broadens beyond mega-cap.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Rate Hike Made the Yen Fall Instead of Rise</summary>
+      <p>Textbook economics says raising interest rates should strengthen a currency: higher rates make a country's bonds pay more, foreign money flows in to capture the yield, and demand for that currency pushes it up. So when the Bank of Japan lifted its benchmark to 1.25%, the highest since 1995, the yen should have rallied. Instead WSJ reported it weakened past 157 per dollar, and FT said the governor's hawkish comments "failed to arrest" the slide. Why? The answer is one of the most important ideas in currency markets: prices move on the gap between what happens and what was already expected, not on the level itself. Going in, traders had already priced the hike as a near-certainty and, crucially, many expected the BOJ to sound aggressively hawkish about the next moves. That expectation was baked into the exchange rate before Ueda opened his mouth. Then two things undercut it. Bloomberg reported two board members dissented in a dovish direction, and Ueda gave "mixed signals," suggesting future hikes might come more slowly than markets hoped. So relative to the hawkish outcome traders had positioned for, the actual message was a letdown, and the yen sold off on the disappointment even as the policy rate went up. The second mechanism is the interest-rate differential, the engine of the "carry trade." Investors borrow in a low-yielding currency like the yen and park the proceeds in a higher-yielding one like the dollar, pocketing the spread. What matters for the yen is not that Japanese rates rose, but how large the gap to US rates remains. With the Fed having just hiked to 3.75-4.0% and signaling more, and the BOJ at only 1.25% and sounding cautious, that gap is still enormous. A quarter-point in Tokyo barely dents the incentive to hold dollars over yen, so the carry trade stays intact and keeps pressure on the currency. CNBC captured the whole "flipped script": the Nikkei rose, JGB yields slipped, and the yen fell, all at once, the opposite of the neat textbook. The stock rally makes sense because a weaker yen flatters Japan's big exporters, whose overseas earnings translate into more yen. The JGB yield slip reflects the market reading the dovish dissents as a signal the tightening path is gentle. The practical lesson is to always ask what was priced before the event. A hike that undershoots hawkish expectations can weaken a currency, and a hold that comes with a tough message can strengthen one. Watch the forward guidance and the rate differential, not just the headline decision. And note the second-order effect WSJ flagged: a wider Japanese rate makes US Treasuries relatively less alluring to Tokyo investors, one of the largest foreign holders, which is a slow drag on US bond demand even as the yen itself keeps sliding.</p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/09/18/japan-rate-hike-stocks-rise-bond-yields-yen-fall.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Why Japan's Markets Flipped the Usual Script After the Central Bank Rate Hike</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/yen-drops-against-dollar-after-boj-raises-rates-as-expected" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Yen Extends Declines After Ueda Gives Mixed Signals on Hikes</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>SoftBank adds $21bn to its AI firepower in new debt deals</strong></summary>
+      <div class="deal-body">
+        <p>SoftBank (SFTBY) is closing the week with nearly $21 billion in potential fresh borrowings, Bloomberg reported, including a $25 billion Arm margin loan, as it builds AI financing capacity. It's eyeing another $10bn-$20bn jumbo bond next week, and separately boosted a credit line to $6.5 billion.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/softbank-raises-arm-margin-loan-to-25-billion-as-ai-bets-grow" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank Adds $21 Billion to AI Firepower in New Debt Deals</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI breached by researchers using Anthropic's own models</strong></summary>
+      <div class="deal-body">
+        <p>A security firm hacked into OpenAI using tools built on rival Anthropic's models, FT reported, a striking demonstration of how AI systems can be turned against the labs that build them. The breach adds fuel to the week's intensifying safety debate.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/c4aa118e-a258-48bc-b50e-28e453a95db8?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- OpenAI Breached by Researchers Using Anthropic Models</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Traders grow wary as executives clash over slowing AI development</strong></summary>
+      <div class="deal-body">
+        <p>The global AI risk debate entered a new phase, Bloomberg reported, with Anthropic, OpenAI, SpaceX and DeepMind pushing self-regulation while Microsoft, Amazon and Meta build their own control tools and Trump called the alerts a "hoax." The clash triggered a rotation out of tech early in the week.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-18/traders-wary-of-rising-ai-risks-market-snapshot-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Traders Wary of Rising AI Risks: Market Snapshot</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US labs out-earn all Chinese AI models tenfold, Rhodium says</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI and Anthropic together make roughly ten times the revenue of all Chinese AI models combined, CNBC reported, citing Rhodium Group. The analysis also found low revenue didn't necessarily map to lower valuations across China's field.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- OpenAI and Anthropic Make 10 Times More Revenue Than All Chinese AI Models Combined</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Huawei speeds up the launch of its next-gen AI chip</strong></summary>
+      <div class="deal-body">
+        <p>Huawei is accelerating its next-generation Ascend 960DT chip to the first quarter of 2027, Bloomberg reported, aiming to replace Nvidia (NVDA) in China and compete globally. A 960PR variant follows in the third quarter as Beijing pushes chip self-sufficiency.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-18/huawei-speeds-up-launch-of-new-ai-chip-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Huawei Speeds Up Launch of New AI Chip</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta's Muse AI agent has a trust problem</strong></summary>
+      <div class="deal-body">
+        <p>Meta's (META) Muse AI agent needs user data to be useful, WSJ reported, but users may be wary of handing it over. The tension captures the core adoption hurdle for consumer AI agents that promise convenience in exchange for access.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/tech/ai/metas-ai-agent-has-a-trust-problem-5ee5882c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Meta's AI Agent Has a Trust Problem</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Waymo plans paid robotaxi rides in Singapore by 2028</strong></summary>
+      <div class="deal-body">
+        <p>Alphabet's (GOOGL) Waymo plans to launch its robotaxi service in Singapore in 2028, Bloomberg reported, the latest in a string of domestic and international expansions. The move extends the autonomy race into a dense, tightly regulated Asian market.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/waymo-plans-to-offer-paid-robotaxi-rides-in-singapore-in-2028" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Waymo Plans to Offer Paid Robotaxi Rides in Singapore in 2028</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Friday September 18, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is investors rushing back into AI to power the best day in six weeks, chips and software extending comebacks, SoftBank's $21bn raise and US labs out-earning China tenfold. The counter-signal is OpenAI breached with a rival's models, traders wary of rising AI risk and Morgan Stanley's extinction warning. With financing wide open and earnings holding, the real tell stays enterprise revenue and debt terms, not the day's safety headlines.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Bank of Japan raises rates to 1.25%, the highest since 1995</strong></summary>
+      <div class="deal-body">
+        <p>The BOJ raised its benchmark to 1.25%, its fastest tightening pace since 1990, Bloomberg reported, and signaled openness to more. But two board members dissented dovishly and Ueda gave mixed guidance, disappointing yen traders who wanted a clearer hawkish path.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/boj-hikes-rates-at-fastest-pace-since-1990-as-inflation-persists" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOJ Rate Hike Fails to Buoy Yen Even as Ueda Signals More Moves</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The 10-year Treasury is having its worst run in over 100 years</strong></summary>
+      <div class="deal-body">
+        <p>The 10-year Treasury is enduring its worst stretch in more than a century, MarketWatch reported, yet investors are buying anyway. "The higher that yields go, for at least new money, it becomes more enticing to put money into bonds," one strategist noted, with the yield back below 5%.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-bond-market-is-seeing-trouble-why-investors-are-buying-now-anyway-065a2f9f?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The 10-Year Treasury Is Having Its Worst Run in Over 100 Years</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lagarde says ECB rates aren't directly tied to energy costs</strong></summary>
+      <div class="deal-body">
+        <p>ECB President Christine Lagarde told euro-area finance ministers that energy-price jumps don't automatically translate into monetary tightening, Bloomberg reported. A separate Bloomberg survey sees the ECB holding until a final hike in December to quell war-driven inflation.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/ecb-rates-don-t-move-in-lockstep-with-energy-price-lagarde-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB Rates Aren't Directly Tied to Energy Costs, Lagarde Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>France's bond risk gauge hits a 14-year milestone on budget fears</strong></summary>
+      <div class="deal-body">
+        <p>France's yield premium over Germany rose to a full percentage point for the first time in 14 years, Bloomberg reported, a sign of mounting caution over the country's large deficit and political uncertainty. The premier is pitching a 54 billion euro effort to control spending.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/french-yield-premium-rises-to-one-percentage-point-on-debt-risks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- France Bond Risk Gauge Reaches New Milestone on Budget Risks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bank of England defies the Fed's lead, holding rates at 3.75%</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of England kept rates steady at 3.75% Thursday, CNBC reported, refusing to follow the Fed's hike even after UK inflation jumped to 3.1% as energy costs soared. The hold underscores diverging central-bank paths across the majors.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/17/bank-of-england-interest-rate-decision-fed-rate-hike-uk-inflation.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Bank of England Defies Fed's Rate-Hike Lead, Leaving Rates Unchanged</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bond income is easing some of the pain in the Treasury selloff</strong></summary>
+      <div class="deal-body">
+        <p>Higher coupons are cushioning the blow of the Treasury rout, Bloomberg reported, with yields at levels not seen above 5% since 2007. The income buffer is a key reason some investors are stepping in even as prices fall.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-09-18/bond-income-is-easing-some-of-the-pain-in-treasury-selloff" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Income Is Easing Some of the Pain in Treasury Selloff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>KKR says the Fed has never been so confident on growth</strong></summary>
+      <div class="deal-body">
+        <p>FOMC members showed their lowest level of worry about GDP growth since the Fed began publishing its outlook, MarketWatch reported, citing KKR. The confidence signal shapes how the firm thinks investors should position after the hawkish hike.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-feds-never-been-so-confident-on-economic-growth-what-investors-should-do-now-according-to-kkr-b2eef2ee?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Fed's Never Been So Confident on Economic Growth, KKR Says</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (September 18, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The dovish side owns the morning, with the 10-year back below 5%, oil down a third day, bond income at last enticing new money and gold firming. Pulling the other way, MarketWatch calls the 10-year's slump the worst in a century, France's risk premium hit a 14-year high, the BOJ hike pulls Tokyo money home and the ECB still eyes a December hike. The yen's slide past 157 is the next pressure point after Ueda underwhelmed.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why France's Spread Over Germany Just Hit a Level Unseen Since 2012</summary>
+      <p>Bloomberg reported that France's yield premium over Germany rose to a full percentage point for the first time in 14 years, a milestone that sounds technical but is one of the clearest gauges of how nervous bond investors are about a government's finances. Here's what the number means and why it matters. Both France and Germany borrow in euros, so their bonds are stripped of currency risk against each other. That makes the gap between their 10-year yields, the "spread," a near-pure measure of credit and political risk. When investors judge France riskier, they demand extra yield to hold French debt over German debt, and that extra yield is the spread widening. A full percentage point means France now pays one whole point more than Germany to borrow for a decade, the widest since the euro-zone crisis era. The driver is fiscal. France has run a large budget deficit for years, and Bloomberg noted the premier is pitching a 54 billion euro effort to rein in spending after missing the 2026 target, a plan that risks toppling the government ahead of presidential elections. That combination, a heavy deficit plus political fragility, is exactly what makes bond investors demand a premium. The mechanism works through supply and confidence. A bigger deficit means the treasury must issue more bonds to fund itself, and more supply, all else equal, pushes prices down and yields up. Layer on the risk that a government collapse derails the budget fix, and investors want compensation for the chance that the fiscal path deteriorates further. They express that by selling French bonds relative to safer German bunds, which widens the spread. Why should a US-focused reader care? Because sovereign spreads are contagious signals. When one large euro-zone borrower's premium blows out, it tests whether investors start re-pricing risk across the bloc, in Italy, Spain and beyond, and a broad European bond wobble can spill into global risk appetite, credit spreads and the euro-dollar rate. It also rhymes with the theme running through this week's rates story: developed-market governments are running big deficits into a world of higher rates and thinner reliable demand, from China trimming Treasuries to the BOJ pulling Japanese money home. The term premium, the extra yield investors demand to hold long bonds when supply is heavy and buyers are cautious, is rising in more than one country at once. The practical lesson is to watch spreads, not just outright yields. A yield can rise because growth is strong, which is benign, or because credit risk is rising, which is not. The France-Germany spread isolates the second force. When it widens to a 14-year high while the government fights over its budget, the bond market is telling you it's pricing real political and fiscal risk, and that signal tends to travel.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-17/french-premier-eyes-54-billion-effort-to-stop-deficit-blowout" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- France Seeks to Pare Deficit After Missing Its 2026 Target</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/french-yield-premium-rises-to-one-percentage-point-on-debt-risks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- France Bond Risk Gauge Reaches New Milestone on Budget Risks</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The BOJ raised rates to 1.25%, the highest since 1995, but the yen weakened past 157 per dollar after Ueda's mixed signals and two dovish dissents disappointed traders; in the US the 10-year slipped back below 5% as post-Fed nerves faded, though MarketWatch called the 10-year's run the worst in over a century and France's spread over Germany hit a 14-year high; oil fell a third day as traders looked to fresh diplomacy, even as Saudi Aramco told European refiners they get no crude next month and MarketWatch warned the "TACO" trade could fail; AI stocks roared back to power the best day in six weeks with chips and software extending comebacks and SoftBank adding $21bn in firepower, even as OpenAI was breached using Anthropic's models and Morgan Stanley warned of a corporate extinction event; crypto advanced with bitcoin recovering toward $78,000 and the SEC opening a regulated path for tokenized stocks; Warren Buffett stepped down as Berkshire chairman; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.85%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $95, bear confirmed; below $88, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 9/14</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/15</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/16</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 9/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 9/18</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Layer-2 and DeFi tokens lead a broad advance as post-Fed nerves fade</strong></summary>
+      <div class="deal-body">
+        <p>Starknet and Arbitrum gained more than 17% each, CoinDesk reported, leading a broad crypto rally as the 10-year Treasury yield slipped back below 5% and 98 of the CoinDesk 100 constituents advanced. The move tracked the wider risk-on rebound.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/18/layer-2-and-defi-tokens-lead-broad-crypto-advance-as-post-fed-hike-nerves-fade" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Layer-2 and DeFi Tokens Lead Broad Crypto Advance as Post-Fed Hike Nerves Fade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin recovers toward $78,000 in a third straight day of gains</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin climbed from an overnight low of $75,972 to just below $78,000, CoinDesk reported, with HYPE leading the altcoin rally. It's down just 1.5% in its historically weakest month and on track for its first quarterly gain in a year.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/09/18/live-updates-hype-leads-altcoin-rally-as-bitcoin-recovers-toward-usd78-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Updates: HYPE Leads Altcoin Rally as Bitcoin Recovers Toward $78,000</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SEC rolls out a five-year innovation exemption for tokenized securities</strong></summary>
+      <div class="deal-body">
+        <p>The SEC issued a blanket five-year exemption letting venues list and trade tokenized securities without registering as an exchange, CoinDesk reported. The framework gives DeFi-style trading venues, tokenization firms and liquidity providers a regulated US pathway while keeping volumes and access tightly controlled.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/17/real-stocks-are-finally-coming-on-blockchain-here-s-how-the-sec-wants-it-to-work" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Real Stocks Are Finally Coming on Blockchain. Here's How the SEC Wants It to Work</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US sanctions a Tehran bitcoin exchange it says ran Iran's Hormuz "toll booth"</strong></summary>
+      <div class="deal-body">
+        <p>The US Treasury sanctioned BitBank, a Tehran exchange it says moved hundreds of millions in bitcoin to the Revolutionary Guards, CoinDesk reported. It allegedly handled payments collected from ships buying passage through the Strait of Hormuz, tying crypto directly to the oil-war chokepoint.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/09/18/iran-s-strait-of-hormuz-toll-booth-ran-through-a-bitcoin-exchange-u-s-says" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Iran's Strait of Hormuz Toll Booth Ran Through a Bitcoin Exchange, US Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Corporate treasuries bought just 5,900 bitcoin over three months</strong></summary>
+      <div class="deal-body">
+        <p>Corporate treasuries added only 5,900 bitcoin in three months, CoinDesk reported, with broader demand signals also looking weak. The slowdown tempers the bullish case even as prices recover, hinting the corporate-buyer wave has cooled.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/18/corporate-treasuries-bought-just-5-900-bitcoin-in-3-months-other-demand-signals-look-weak-too" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Corporate Treasuries Bought Just 5,900 Bitcoin in 3 Months</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>S&amp;P Global acquires OpenZeppelin in a tokenized-finance risk push</strong></summary>
+      <div class="deal-body">
+        <p>Ratings giant S&amp;P Global (SPGI) acquired blockchain-security firm OpenZeppelin, CoinDesk reported, building on its recent stake in market-data firm Kaiko. The deal targets the technological risks facing banks and asset managers moving onchain.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/17/ratings-giant-s-and-p-global-acquires-openzeppelin-in-tokenized-finance-risk-push" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Ratings Giant S&amp;P Global Acquires OpenZeppelin in Tokenized Finance Risk Push</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>SoftBank -- Adds Nearly $21bn in New AI Borrowing Capacity</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SoftBank (SFTBY) closed the week with almost $21 billion in potential fresh borrowings, Bloomberg reported, including a $25 billion Arm margin loan, and is eyeing another $10bn-$20bn jumbo bond next week.</p>
+        <p><strong>Outlook:</strong> The debt fuels Masayoshi Son's aggressive AI investment push.</p>
+        <p><strong>What it means:</strong> AI infrastructure financing keeps scaling even as the safety and slowdown debate intensifies.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/softbank-raises-arm-margin-loan-to-25-billion-as-ai-bets-grow" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank Adds $21 Billion to AI Firepower in New Debt Deals</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mynt -- GCash Owner Cleared for the Philippines' Largest-Ever IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Mynt, the Ant International-backed fintech behind GCash, cleared the final regulatory hurdle for an IPO of as much as 92.3 billion pesos ($1.47 billion), WSJ and Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The listing tests appetite for a record Philippine debut amid global uncertainty.</p>
+        <p><strong>What it means:</strong> Emerging-market fintech IPOs are pressing ahead despite choppy conditions.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/ant-international-backed-fintech-unicorn-gets-nod-for-philippiness-largest-ever-ipo-da18b0b6?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Ant International-Backed Fintech Unicorn Gets Nod for Philippines's Largest-Ever IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Airtel Money -- Owners Trim IPO Size Ahead of Deal Kickoff</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Airtel Money's owners are considering raising less than previously sought in the mobile-money unit's IPO, Bloomberg reported, with the process potentially starting as soon as next week.</p>
+        <p><strong>Outlook:</strong> A trimmed deal signals caution about valuation in a jittery market.</p>
+        <p><strong>What it means:</strong> Even hot African fintech names are pricing to demand rather than ambition.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-17/airtel-money-is-said-to-trim-ipo-size-ahead-of-deal-kick-off" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Airtel Money Is Said to Trim IPO Size Ahead of Deal Kickoff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Korea-US Investment Arm -- Mulls a Debut Bond for the $350bn Pledge</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A new entity at the heart of South Korea's $350 billion US investment pledge is weighing its first bond sale, Bloomberg reported, offering a first look at how Seoul plans to finance the commitment.</p>
+        <p><strong>Outlook:</strong> A debut deal would set the template for funding one of the largest trade-deal commitments on record.</p>
+        <p><strong>What it means:</strong> Geopolitics is increasingly financed directly through capital markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-18/korea-us-investment-arm-mulls-debut-bond-for-350-billion-pledge" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Korea-US Investment Arm Mulls Debut Bond for $350 Billion Pledge</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>GE Vernova and Vineyard Wind -- Settle a $300m-Plus Offshore Wind Dispute</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> GE Vernova (GEV) and Vineyard Wind settled a dispute worth more than $300 million, Yahoo Finance reported, resolving a costly overhang on the offshore wind project.</p>
+        <p><strong>Outlook:</strong> The settlement clears uncertainty for both sides as offshore wind navigates a tough policy climate.</p>
+        <p><strong>What it means:</strong> Legacy renewables disputes are being cleaned up even as capital pivots toward AI power demand.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/energy/articles/ge-vernova-vineyard-wind-settle-024435837.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- GE Vernova and Vineyard Wind Settle $300M-Plus Offshore Wind Dispute</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>dtcpay -- SBI Group Backs the Stablecoin Payments Firm in a $25m Round</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Stablecoin payments company dtcpay closed a $25 million Series A with a strategic investment from Japan's SBI Group, CoinDesk reported.</p>
+        <p><strong>Outlook:</strong> The backing extends SBI's push into regulated digital-asset payments.</p>
+        <p><strong>What it means:</strong> Established Japanese finance keeps building out stablecoin rails as the sector matures.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/18/sbi-group-backs-payments-firm-dtcpay-in-usd25-million-funding-round" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- SBI Group Backs Payments Firm dtcpay in $25 Million Funding Round</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>HSBC (Max Kettner) -- says stocks can ride out rate hikes, buoyed by earnings</strong></summary>
+      <div class="deal-body">
+        <p>HSBC chief multi-asset strategist Max Kettner told Bloomberg equity markets have "100%" discounted higher rates from here and pointed to global earnings strength supporting stocks. A named strategist arguing the rate shock is fully priced and the tape can keep climbing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-18/hsbc-stocks-to-ride-out-rate-hikes-buoyed-by-earnings-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- HSBC's Kettner Sees Stocks Riding Out Rate Hikes, Buoyed by Earnings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Truist -- says a sideways market and rising earnings make tech a buy</strong></summary>
+      <div class="deal-body">
+        <p>Truist told clients a sideways market and rising earnings have made technology more attractive relative to the market than at any point since ChatGPT launched, MarketWatch reported. A named desk treating the reset as an entry, not an exit.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/a-sideways-market-and-rising-earnings-are-presenting-opportunities-not-seen-since-chatgpt-first-launched-0c37f89d?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- A Sideways Market and Rising Earnings Are Presenting a Buying Opportunity</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>KKR -- says the Fed has never been so confident on growth</strong></summary>
+      <div class="deal-body">
+        <p>KKR flagged that FOMC members showed their lowest level of GDP worry since the Fed began publishing its outlook, MarketWatch reported, and laid out what investors should do now. A named firm reading the hawkish hike as a growth-confidence signal, not a mistake.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-feds-never-been-so-confident-on-economic-growth-what-investors-should-do-now-according-to-kkr-b2eef2ee?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Fed's Never Been So Confident on Growth, According to KKR</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley (Sherry Paul) -- warns AI laggards face a "corporate extinction event"</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley private wealth advisor Sherry Paul said firms that fail to embrace AI risk being overtaken, comparing the disruption to Netflix overtaking Blockbuster. A named voice framing AI as an existential adopt-or-die force, bullish for winners and brutal for laggards.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-18/ai-boom-risks-a-corporate-extinction-event-paul-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Boom Risks a 'Corporate Extinction Event': Paul</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wells Fargo and Citi -- see the yen weakening further on the BOJ letdown</strong></summary>
+      <div class="deal-body">
+        <p>Strategists at Wells Fargo and Citigroup expect the yen to keep weakening, Bloomberg reported, anticipating the BOJ would disappoint markets by sounding less hawkish than hoped. Named desks positioning for a wider dollar-yen gap and a persistent carry trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-17/strategists-see-yen-weakening-as-boj-risks-disappointing-markets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wells Fargo, Citi Strategists See Weak Yen on BOJ Letdown</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned After the AI Rebound and the BOJ's Underwhelming Hike, With HSBC's Max Kettner Saying Stocks Have Fully Discounted Higher Rates, Truist Calling Tech the Best Buy Since ChatGPT and KKR Reading the Fed as Growth-Confident, Against Morgan Stanley's Extinction Warning and Wells Fargo and Citi Betting on a Weaker Yen</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the shock is priced and earnings carry the tape):</strong> HSBC's Max Kettner says equities have "100%" discounted higher rates, Truist calls tech the most attractive since ChatGPT, and KKR reads the Fed's dots as record confidence in growth. WSJ said AI stocks powered the best day in six weeks, SoftBank added $21bn in firepower, and oil fell a third day. A credible Fed plus strong earnings keeps the rotation into risk alive.</div>
+        <div class="bear"><strong>Bear (the tail risks are multiplying):</strong> Morgan Stanley's Sherry Paul warns of a "corporate extinction event," Wells Fargo and Citi see the yen sliding further as the carry trade persists, and MarketWatch calls the 10-year's run the worst in a century. OpenAI was breached with a rival's models, France's spread hit a 14-year high, and Aramco is rationing crude. Stretched valuations get fragile when the risk stories stack up.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Best day in six weeks as AI rips; Micron and Intel comebacks; Buffett steps down; triple witching</td><td>Bullish</td><td>~38,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Software and chip stocks get new life; Tesla product frenzy doubts; investors pile back into AI</td><td>Cautiously bullish</td><td>~23,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>10-year's worst run in 100 years but bond income enticing; France spread at 14-year high; KKR read</td><td>Cautious</td><td>~25,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>OpenAI breached with Anthropic models; SoftBank $21bn debt; Morgan Stanley extinction warning</td><td>Cautious</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC recovers toward $78K; Layer-2 tokens up 17%; SEC opens tokenized-stock path; weak corporate demand</td><td>Bullish</td><td>~32,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood swung risk-on after the best day in six weeks. r/wallstreetbets turned bullish on the AI melt-up, the chip comebacks and the Buffett headline, with an eye on triple witching. r/stocks leaned cautiously bullish as software and semis revived. r/investing stayed cautious on the 10-year's historic slump and France's widening spread, even with bond income more tempting. r/SecurityAnalysis kept its guard up on the OpenAI breach and SoftBank's debt pile. r/CryptoCurrency perked up as bitcoin recovered toward $78K and the SEC opened a tokenized-stock path. The swing factor is whether the yen slide and rising Treasury supply reassert themselves next week.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why the Yen Fell After the Bank of Japan Raised Interest Rates</h2>
+    <p>On paper, a central bank raising rates should lift its currency. Higher rates mean the country's bonds pay more, foreign capital chases that yield, and demand for the currency pushes it up. So when the Bank of Japan lifted its benchmark to 1.25%, the highest since 1995, textbook logic said the yen should climb. Instead WSJ reported it weakened past 157 per dollar, and FT wrote that the governor's hawkish comments "failed to arrest" the slide. Understanding why unlocks one of the most reliable rules in markets: prices move on the gap between what happens and what was already expected, not on the raw event. Going into the meeting, traders had already fully priced the quarter-point hike. It was a near-certainty, so it was baked into the exchange rate before the decision hit the tape. What was not settled was the tone of the guidance. Many had positioned for the BOJ to sound aggressively hawkish about the next moves. Bloomberg reported that instead, two board members dissented in a dovish direction, and Governor Ueda gave "mixed signals" hinting future hikes might come more slowly than hoped. Measured against the hawkish outcome traders had bet on, that was a disappointment, so the yen sold off even as the policy rate rose. The move was about expectations being undershot, not the hike itself. The second force is the interest-rate differential, the fuel of the "carry trade." Investors borrow in a cheap-to-fund currency like the yen and park the money in a higher-yielding one like the dollar, earning the spread. What matters for the yen is not that Japanese rates ticked up, but how wide the gap to US rates stays. With the Fed at 3.75-4.0% and signaling more, and the BOJ at just 1.25% and sounding cautious, that gap remains enormous. A single quarter-point in Tokyo barely dents the incentive to hold dollars over yen, so the carry trade survives and keeps pressure on the currency. CNBC captured the whole "flipped script": the Nikkei rose 1.5%, JGB yields slipped, and the yen fell, all at once. The Nikkei climbed because a weaker yen flatters Japan's giant exporters, whose foreign earnings convert into more yen. Yields slipped because the dovish dissents signaled a gentle tightening path. Everything moved opposite to the simple textbook, and each piece made sense once you separated expectations from levels. The practical lesson applies far beyond Japan. Always ask what was priced before an event. A hike that undershoots hawkish expectations can weaken a currency, and a hold delivered with a tough message can strengthen one. Watch the forward guidance and the rate gap, not just the headline decision. And note the second-order channel WSJ flagged: a wider Japanese rate makes US Treasuries relatively less attractive to Tokyo investors, one of the largest foreign holders of US debt, which is a slow drag on Treasury demand even as the yen itself keeps sliding. The same expectations-versus-reality logic that moved the yen is exactly what moved US stocks after the Fed this week.</p>
+    <p class="deal-source"><a href="https://www.ft.com/content/97a0bed5-0580-4ccc-bd3c-fe9a714259e2?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Yen Sinks After BoJ Raises Rates to Highest Level Since 1995</a></p>
+    <p class="deal-source"><a href="https://www.cnbc.com/2026/09/18/japan-rate-hike-stocks-rise-bond-yields-yen-fall.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Why Japan's Markets Flipped the Usual Script After the Rate Hike</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>PCE inflation, Friday.</strong> With the Fed hiking on stubborn inflation and Goldman calling for an October move, the core PCE print is the key test of whether the higher-for-longer path is validated or faded.</li>
+      <li><strong>Fed speak after the hike.</strong> Watch the first round of FOMC commentary since Warsh's hard line for how firmly the "one more this year" message holds against the market's relief rally.</li>
+      <li><strong>ECB path into December.</strong> After Lagarde downplayed the energy pass-through and a survey pointed to a final December hike, watch Kazaks and other hawks for whether the war shock is spilling into core euro-area inflation.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Micron results.</strong> With chip stocks extending their comeback, Micron's guidance is the cleanest read on whether AI-memory demand justifies the rebound or the rally has run ahead of fundamentals.</li>
+      <li><strong>Software and AI crossovers.</strong> After software stocks got "new life" on strong earnings, watch enterprise-software guidance for confirmation that AI is a tailwind rather than the disruptor bears feared.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>SoftBank's jumbo bond and SB Energy IPO.</strong> After adding $21bn in AI borrowing, SoftBank eyes a $10bn-$20bn bond next week, and FT says OpenAI's listing delay raises the stakes for its $50bn data-center IPO.</li>
+      <li><strong>IPO pipeline test.</strong> With Mynt cleared for a $1.5bn Philippine debut and Airtel Money trimming its deal, watch pricing and demand as a read on emerging-market appetite.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran diplomacy and Saudi supply.</strong> With oil down a third day on hopes for talks but Aramco rationing crude to European refiners, watch the next diplomatic round and whether the MarketWatch "TACO" warning proves right.</li>
+      <li><strong>Trump-Xi summit.</strong> Bloomberg says AI rivalry, the trade war and the yuan will dominate the coming US-China meeting; watch for any guardrails or concessions on chips and export controls.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Fri Sep 18, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-09-18 07:44 ET); Bloomberg Technology (20 fresh, newest 2026-09-18 07:02 ET); Bloomberg Economics (20 fresh, newest 2026-09-18 07:03 ET); CNBC Top News (6 fresh, newest 2026-09-18 07:00 ET); CNBC Finance (4 fresh, newest 2026-09-18 07:11 ET); CNBC Economy (3 fresh, newest 2026-09-18 03:40 ET); MarketWatch Top Stories (10 fresh, newest 2026-09-18 07:51 ET); WSJ Markets (17 fresh, newest 2026-09-18 07:58 ET); Yahoo Finance (13 fresh, newest 2026-09-17 00:26 ET); FT Home (9 fresh, newest 2026-09-18 07:21 ET); Matt Levine Money Stuff (1 fresh, newest 2026-09-17 14:46 ET); CoinDesk (25 fresh, newest 2026-09-18 07:15 ET); Stratechery (1 fresh, newest 2026-09-17 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. Why did the yen fall even though the Bank of Japan raised rates?</strong></p>
+      <span class="opt" data-opt="A">A. The BOJ secretly cut rates while announcing a hike to confuse traders</span>
+      <span class="opt" data-opt="B">B. Ueda's mixed signals undershot the hawkish tone markets had priced in</span>
+      <span class="opt" data-opt="C">C. Japan's inflation surged well past forecasts right after the decision</span>
+      <span class="opt" data-opt="D">D. The Fed cut rates the same day and widened the dollar-yen gap</span>
+      <div class="feedback"><strong>B is correct.</strong> The hike was fully priced, so the surprise was in the tone: Bloomberg said two board members dissented dovishly and Ueda hinted at slower future hikes, undershooting expectations. Japan's inflation actually slowed, the BOJ didn't cut, and the Fed hiked (not cut) earlier in the week.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. What did the SEC do regarding tokenized stocks this week?</strong></p>
+      <span class="opt" data-opt="A">A. Banned all tokenized securities trading on US platforms outright</span>
+      <span class="opt" data-opt="B">B. Required every tokenization firm to register as a national exchange</span>
+      <span class="opt" data-opt="C">C. Approved synthetic stock tokens with no oversight or trading limits</span>
+      <span class="opt" data-opt="D">D. Issued a five-year exemption letting venues trade tokenized securities</span>
+      <div class="feedback"><strong>D is correct.</strong> CoinDesk reported the SEC's blanket five-year "innovation exemption" lets venues list and trade tokenized securities without registering as an exchange, while keeping access controlled. It didn't ban them, didn't force exchange registration, and left synthetic tokens outside the framework.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why did France's bond spread over Germany reaching a full point matter?</strong></p>
+      <span class="opt" data-opt="A">A. It signals rising credit and political risk on France's deficit and turmoil</span>
+      <span class="opt" data-opt="B">B. It shows the euro is about to be replaced by separate national currencies</span>
+      <span class="opt" data-opt="C">C. It means Germany defaulted and France became the euro-zone safe haven</span>
+      <span class="opt" data-opt="D">D. It proves French growth is booming far faster than German output</span>
+      <div class="feedback"><strong>A is correct.</strong> Both borrow in euros, so the spread is a near-pure gauge of credit and political risk; Bloomberg tied the 14-year-high premium to France's deficit and a government fight over its budget. It's not about currency breakup, a German default, or stronger French growth.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The BOJ raised rates to a 31-year high of 1.25% but the yen fell anyway on Ueda's mixed signals, while the 10-year Treasury slipped back below 5% even as MarketWatch called it the worst bond run in over a century and France's risk premium hit a 14-year high.",
+    "sources": [
+      { "name": "CoinDesk", "lean": "bull", "url": "https://www.coindesk.com/markets/2026/09/18/layer-2-and-defi-tokens-lead-broad-crypto-advance-as-post-fed-hike-nerves-fade", "take": "The 10-year yield slipped back below 5% as post-Fed hike nerves faded." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-09-18/bond-income-is-easing-some-of-the-pain-in-treasury-selloff", "take": "Bond income at a 5% handle is easing some of the pain of the selloff." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/economy/central-banking/bank-of-japan-raises-benchmark-interest-rate-to-1-25-highest-level-since-1995-2b28cbe9?mod=rss_markets_main", "take": "The BOJ hike makes US bonds less alluring for Tokyo investors." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/the-bond-market-is-seeing-trouble-why-investors-are-buying-now-anyway-065a2f9f?mod=mw_rss_topstories", "take": "The 10-year is having its worst run in over 100 years." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-18/french-yield-premium-rises-to-one-percentage-point-on-debt-risks", "take": "France's yield premium over Germany hit a 14-year high on budget risks." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil dropped for a third day as traders looked past the Middle East to the next round of US-Iran diplomacy, even as Saudi Aramco told European refiners they get no crude next month and MarketWatch warned the TACO trade could fail.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-17/latest-oil-market-news-and-analysis-for-sept-18", "take": "Oil dropped a third day as supply concerns ease ahead of fresh diplomacy." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-18/gold-holds-gain-as-lower-oil-and-fed-hike-temper-inflation-fears", "take": "Gold extended its gain as lower oil and the hike tempered inflation fears." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-18/ecb-rates-don-t-move-in-lockstep-with-energy-price-lagarde-says", "take": "Lagarde said ECB rates aren't directly tied to energy costs." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-18/saudis-tell-european-refiners-they-ll-get-no-crude-next-month", "take": "Saudi Aramco told European refiners they get no crude next month." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/wall-street-is-betting-trump-backs-down-on-iran-but-what-if-the-taco-trade-fails-this-time-53845c77?mod=mw_rss_topstories", "take": "The bet that Trump backs down on Iran has stopped working." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Investors piled back into AI stocks and snapped the market out of its inflation gloom, with chips and software extending comebacks and SoftBank adding $21bn in fresh AI firepower, even as OpenAI was breached using Anthropic's models and Morgan Stanley warned of a corporate extinction event.",
+    "sources": [
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/investors-come-back-to-ai-stocks-snapping-market-out-of-inflation-gloom-a7690ce5?mod=rss_markets_main", "take": "Investors came back to AI stocks, snapping the market out of its gloom." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-18/softbank-raises-arm-margin-loan-to-25-billion-as-ai-bets-grow", "take": "SoftBank added nearly $21bn in new AI borrowing capacity." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html", "take": "US labs out-earn all Chinese AI models roughly tenfold, Rhodium says." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/c4aa118e-a258-48bc-b50e-28e453a95db8?syn-25a6b1a6=1", "take": "OpenAI was breached by researchers using Anthropic's own models." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-09-18/ai-boom-risks-a-corporate-extinction-event-paul-video", "take": "Morgan Stanley's Sherry Paul warns of a corporate extinction event." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Intel","Sandisk","Micron","Nvidia","Securitize","Tesla"],
+    "values": [2.3, 1.6, 1.1, 2.0, 8.0, -1.5]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [38000, 23000, 25000, 14000, 32000],
+    "colors": ["bull","bull","neutral","neutral","bull"]
+  },
+  "dealSizes": {
+    "labels": ["SoftBank AI Debt","Mynt IPO","GE Vernova Settle","Korea-US Bond","dtcpay Series A"],
+    "values": [21.0, 1.47, 0.3, 0.35, 0.025]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
