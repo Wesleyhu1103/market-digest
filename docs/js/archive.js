@@ -3,9 +3,11 @@
 // ============================================================
 (function() {
   function sitePath(rel) {
+    if (typeof window.mdSitePath === 'function') return window.mdSitePath(rel);
     var path = window.location.pathname || '/';
     if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
     else if (!path.endsWith('/')) path += '/';
+    if (/\/archive\/$/i.test(path)) path = path.replace(/archive\/$/i, '');
     return path + String(rel || '').replace(/^\//, '');
   }
 
