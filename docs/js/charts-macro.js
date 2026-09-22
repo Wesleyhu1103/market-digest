@@ -692,6 +692,9 @@
   function macroFredUrl() {
     return typeof mdMacroFredUrl === 'function' ? mdMacroFredUrl() : '/api/fred-data';
   }
+  function macroStaticFredUrl() {
+    return typeof mdSitePath === 'function' ? mdSitePath('fred-data.json') : 'fred-data.json';
+  }
 
   function loadFred(url) {
     return fetch(url, { cache: 'no-store' })
@@ -703,10 +706,12 @@
     // Primary source is the Vercel /api/fred-data refresh; fall back to the
     // published static snapshot so credit/stress still render when the API is
     // unreachable (local preview, GitHub Pages, or a Vercel outage).
-    return loadFred(macroFredUrl()).then(function(data) {
+    var primaryUrl = macroFredUrl();
+    var fallbackUrl = macroStaticFredUrl();
+    return loadFred(primaryUrl).then(function(data) {
       if (data) { fredMacro = data; return data; }
-      if (macroFredUrl() === 'fred-data.json') return null;
-      return loadFred('fred-data.json').then(function(fb) {
+      if (primaryUrl === fallbackUrl) return null;
+      return loadFred(fallbackUrl).then(function(fb) {
         if (fb) fredMacro = fb;
         return fb;
       });
