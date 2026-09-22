@@ -1886,7 +1886,7 @@
 
   let macro = null;
   try {
-    const mr = await fetch('fred-data.json', { cache: 'no-store' });
+    const mr = await fetch('../fred-data.json', { cache: 'no-store' });
     if (mr.ok) macro = await mr.json();
   } catch (e) { console.warn('fred-data.json unavailable', e); }
   const fred = (macro && macro.fred) ? macro.fred : { DGS2: [], DGS10: [], DGS30: [] };
@@ -2765,7 +2765,7 @@
     var stressApi = buildCard('Market Stress', 'FRED / CBOE', 'stressChart', 240);
 
     function boot() {
-      fetch('fred-data.json', { cache: 'no-store' })
+      fetch('../fred-data.json', { cache: 'no-store' })
         .then(function(r) { return r.ok ? r.json() : null; })
         .then(function(data) {
           if (!data) return;

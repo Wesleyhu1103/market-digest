@@ -6,8 +6,19 @@ function mdUsesRemoteApi() {
 function mdApiUrl(path) {
   return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
 }
+function mdSiteBasePath() {
+  const path = (location && location.pathname) || '/';
+  const marker = '/market-digest/';
+  const markerAt = path.indexOf(marker);
+  if (markerAt >= 0) return path.slice(0, markerAt + marker.length);
+  return '/';
+}
+function mdSitePath(path) {
+  const rel = String(path || '').replace(/^\/+/, '');
+  return mdSiteBasePath() + rel;
+}
 function mdMacroFredUrl() {
-  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  if (/\.github\.io$/i.test(location.hostname)) return mdSitePath('fred-data.json');
   return '/api/fred-data';
 }
 function mdPost(path, body) {
