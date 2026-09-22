@@ -25,7 +25,18 @@ class DigestContractsTest(unittest.TestCase):
 
     def test_validate_rule_counts(self):
         self.assertEqual(len(validate_main_rules()), 14)
-        self.assertEqual(len(validate_static_rules()), 7)
+        self.assertEqual(len(validate_static_rules()), 8)
+
+    def test_contract_rejects_credential_markers(self):
+        static_rules = {
+            rule["id"]: rule
+            for rule in load_contract()["validate"]["static"]
+        }
+        rule = static_rules["no-credential-markers"]
+        self.assertEqual(rule["expected"], 0)
+        self.assertEqual(rule["scope"], "html")
+        self.assertRegex("Publishing with new token (ghp_aBCY...)", rule["pattern"])
+        self.assertRegex("GitHub commit status", rule["pattern"])
 
     def test_system_prompt_includes_key_rules(self):
         prompt = build_system_prompt()
