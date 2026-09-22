@@ -64,6 +64,29 @@ jobs:
             return 1
           }
 
+          # Loud alarm: by 13:30 UTC (09:30 EDT / 08:30 EST) both primary
+          # paths should have produced a current digest. Re-verify against
+          # live main first: the checkout is only a snapshot.
+          late_stale_alarm() {
+            local detail="$1" error="$2" nowhm
+            nowhm="$(date -u +%H%M)"
+            if [ "$((10#$nowhm))" -lt 1330 ]; then
+              return 0
+            fi
+            if python3 scripts/digest_stale.py --remote "https://raw.githubusercontent.com/${REPO}/main/docs/index.html"; then
+              echo "Digest published since this run started; standing down."
+              exit 0
+            fi
+            python3 scripts/post_maintenance_flag.py \
+              --source digest-watchdog --severity critical \
+              --dedupe-key "stale-digest-$(date -u +%F)" \
+              --title "Digest still stale past 09:30 ET on $(date -u +%F)" \
+              --detail "${detail} Checked at ${nowhm} UTC." \
+              --url "https://github.com/${REPO}/actions/runs/${{ github.run_id }}"
+            echo "::error::${error} Checked at ${nowhm} UTC."
+            exit 1
+          }
+
           # Duplicate-dispatch guard. If the check itself keeps failing,
           # dispatch anyway: publish-digest.yml's concurrency group dedupes.
           RUNNING="$(ghretry gh run list --repo "$REPO" \
@@ -74,6 +97,9 @@ jobs:
             RUNNING=0
           fi
           if [ "$RUNNING" != "0" ]; then
+            late_stale_alarm \
+              "Digest is stale and publish-digest.yml is already in progress; the publish may be stuck, so no duplicate dispatch was attempted. Check the in-progress publish run and /api/cron-watchdog." \
+              "Digest still stale past 09:30 ET while publish-digest.yml is already in progress; check for a stuck publish run."
             echo "Publish digest already in progress; skipping duplicate trigger."
             exit 0
           fi
@@ -85,24 +111,12 @@ jobs:
             echo "::warning::Dispatch failed after 3 attempts; the next 15-minute poll will retry."
           fi
 
-          # Loud alarm: by 13:30 UTC (09:30 EDT / 08:30 EST) both primary
-          # paths (GitHub cron + Vercel cron) should have published. Still
-          # stale this late means a scheduler silently failed — fail the run
-          # so it shows red and pings us, and file a maintenance flag on the
-          # admin page. The checkout is a snapshot, so re-verify against
-          # live main first: a publish that landed mid-run must not alarm.
-          NOWHM="$(date -u +%H%M)"
-          if [ "$((10#$NOWHM))" -ge 1330 ]; then
-            if python3 scripts/digest_stale.py --remote "https://raw.githubusercontent.com/${REPO}/main/docs/index.html"; then
-              echo "Digest published since this run started; standing down."
-              exit 0
-            fi
-            python3 scripts/post_maintenance_flag.py \
-              --source digest-watchdog --severity critical \
-              --dedupe-key "stale-digest-$(date -u +%F)" \
-              --title "Digest still stale past 09:30 ET on $(date -u +%F)" \
-              --detail "Primary schedulers (GitHub cron + Vercel cron) both lagged; the watchdog dispatched publish at ${NOWHM} UTC. Check /api/cron-watchdog and GITHUB_TOKEN in Vercel." \
-              --url "https://github.com/${REPO}/actions/runs/${{ github.run_id }}"
-            echo "::error::Digest still stale at ${NOWHM} UTC (past 09:30 ET). Primary schedulers lagged; the watchdog just dispatched publish. Check the Vercel cron /api/cron-watchdog (it needs GITHUB_TOKEN set in Vercel to dispatch)."
-            exit 1
+          if [ "$DISPATCHED" = "1" ]; then
+            late_stale_alarm \
+              "Primary schedulers (GitHub cron + Vercel cron) both lagged; the watchdog dispatched publish. Check /api/cron-watchdog and GITHUB_TOKEN in Vercel." \
+              "Digest still stale past 09:30 ET after the watchdog dispatched publish."
+          else
+            late_stale_alarm \
+              "Digest is stale and the watchdog could not dispatch publish-digest.yml after 3 attempts. Check GitHub Actions availability and workflow permissions." \
+              "Digest still stale past 09:30 ET and watchdog dispatch failed."
           fi

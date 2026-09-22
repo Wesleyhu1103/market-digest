@@ -72,6 +72,27 @@ function fakeRes() {
   return { res, out };
 }
 
+const RealDate = globalThis.Date;
+async function withFakeNow(iso, fn) {
+  class FakeDate extends RealDate {
+    constructor(...args) {
+      if (args.length) super(...args);
+      else super(iso);
+    }
+    static now() {
+      return new RealDate(iso).getTime();
+    }
+  }
+  FakeDate.UTC = RealDate.UTC;
+  FakeDate.parse = RealDate.parse;
+  globalThis.Date = FakeDate;
+  try {
+    return await fn();
+  } finally {
+    globalThis.Date = RealDate;
+  }
+}
+
 let handler = null;
 try {
   ({ default: handler } = await import("../api/cron-watchdog.js"));
@@ -104,6 +125,20 @@ if (handler) {
       failures++;
       console.error(`FAIL  ${name}\n      ${e.message}`);
     }
+  };
+  const staleIndexBody = "<h1>Monday, August 10, 2026</h1><script>date: '2026-08-10'</script>";
+  const setInProgressFetch = (calls) => {
+    globalThis.fetch = async (url) => {
+      const u = String(url);
+      calls.push(u);
+      if (u.includes("/docs/index.html")) {
+        return { ok: true, text: async () => staleIndexBody };
+      }
+      if (u.includes("/actions/workflows/publish-digest.yml/runs")) {
+        return { ok: true, json: async () => ({ total_count: 1 }) };
+      }
+      throw new Error(`unexpected fetch ${u}`);
+    };
   };
 
   await acheck("handler: bad method -> 405", async () => {
@@ -146,6 +181,33 @@ if (handler) {
     assert.equal(fetchCalls.length, 1);
     assert.match(fetchCalls[0], /docs\/index\.html/);
   });
+
+  process.env.GITHUB_TOKEN = "gh-token";
+  await acheck("handler: stale + in-progress before alarm -> 200 skip", async () => {
+    const calls = [];
+    setInProgressFetch(calls);
+    const out = await withFakeNow("2026-08-11T12:00:00Z", () =>
+      call(req({ authorization: "Bearer cron-token" }, { method: "GET" }))
+    );
+    assert.equal(out.statusCode, 200);
+    assert.equal(out.body.action, "skip_in_progress");
+    assert.equal(calls.length, 2);
+    assert.ok(!calls.some((u) => u.includes("/dispatches")));
+  });
+
+  await acheck("handler: stale + in-progress past alarm -> 503", async () => {
+    const calls = [];
+    setInProgressFetch(calls);
+    const out = await withFakeNow("2026-08-11T14:00:00Z", () =>
+      call(req({ authorization: "Bearer cron-token" }, { method: "GET" }))
+    );
+    assert.equal(out.statusCode, 503);
+    assert.equal(out.body.action, "stale_in_progress");
+    assert.match(out.body.error, /in progress/);
+    assert.equal(calls.length, 2);
+    assert.ok(!calls.some((u) => u.includes("/dispatches")));
+  });
+  delete process.env.GITHUB_TOKEN;
 }
 
 if (failures) {

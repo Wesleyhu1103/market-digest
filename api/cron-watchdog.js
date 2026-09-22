@@ -37,6 +37,19 @@ function todayEasternIso() {
   return `${y}-${m}-${d}`;
 }
 
+function easternHourMinute() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    hourCycle: "h23",
+  }).formatToParts(new Date());
+  const h = parts.find((p) => p.type === "hour")?.value || "00";
+  const m = parts.find((p) => p.type === "minute")?.value || "00";
+  return Number(`${h}${m}`);
+}
+
 function digestDateFromHtml(html) {
   const meta = html.match(/date:\s*'(\d{4}-\d{2}-\d{2})'/);
   if (meta) return meta[1];
@@ -168,6 +181,33 @@ export default async function handler(req, res) {
 
   try {
     if (await publishInProgress(token)) {
+      const hhmm = easternHourMinute();
+      if (hhmm >= 930) {
+        console.error(
+          `[cron-watchdog] STALE and publish already in progress past alarm time; ` +
+            `today=${today} digestDate=${digestDate} hhmm=${hhmm}`
+        );
+        await safeFlag({
+          dedupe_key: `cron-watchdog-stale-in-progress-${today}`,
+          source: "cron-watchdog",
+          severity: "critical",
+          title: "Digest stale while publish run is stuck in progress",
+          detail:
+            `Digest is stale (today=${today}, digest=${digestDate || "unknown"}) and ` +
+            `publish-digest.yml is already in progress past the 09:30 ET alarm window. ` +
+            `Check the in-progress workflow run; /api/cron-watchdog did not dispatch a duplicate.`,
+          url: `https://github.com/${REPO}/actions/workflows/publish-digest.yml`,
+        });
+        res.status(503).json({
+          ok: false,
+          action: "stale_in_progress",
+          today,
+          digestDate,
+          stale: true,
+          error: "publish-digest.yml already in progress past alarm window",
+        });
+        return;
+      }
       console.log(`[cron-watchdog] stale but publish already in progress; today=${today}`);
       res.status(200).json({
         ok: true,
