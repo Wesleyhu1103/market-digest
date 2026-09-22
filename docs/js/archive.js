@@ -2,11 +2,9 @@
 // ARCHIVE — built from docs/archive/manifest.json
 // ============================================================
 (function() {
-  function sitePath(rel) {
-    var path = window.location.pathname || '/';
-    if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
-    else if (!path.endsWith('/')) path += '/';
-    return path + String(rel || '').replace(/^\//, '');
+  function archivePath(rel) {
+    if (typeof mdSitePath === 'function') return mdSitePath(rel);
+    return String(rel || '').replace(/^\//, '');
   }
 
   function ensureArchiveSection() {
@@ -31,7 +29,7 @@
   var todayIso = null;
   var edition = window.DigestDate && DigestDate.headerEdition();
   if (edition) todayIso = edition.iso;
-  fetch(sitePath('archive/manifest.json'), { cache: 'no-store' })
+  fetch(archivePath('archive/manifest.json'), { cache: 'no-store' })
     .then(function(r) { return r.ok ? r.json() : []; })
     .catch(function() { return []; })
     .then(function(entries) {
@@ -54,7 +52,7 @@
       var list = '';
       entries.forEach(function(e) {
         var title = e.summary ? e.summary.slice(0, 120) : (e.h1 || e.date);
-        var href = sitePath(e.url || '');
+        var href = archivePath(e.url || '');
         list += '<a class="arch-item" href="' + href + '">'
           + '<span class="arch-item-date">' + (e.h1 || e.date) + '</span>'
           + '<span class="arch-item-summary">' + title + '</span>'

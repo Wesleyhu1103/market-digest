@@ -6,8 +6,28 @@ function mdUsesRemoteApi() {
 function mdApiUrl(path) {
   return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
 }
+function mdSiteRoot() {
+  var path = location.pathname || '/';
+  var archiveIdx = path.indexOf('/archive/');
+  if (archiveIdx >= 0) return path.slice(0, archiveIdx + 1);
+  if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
+  else if (!path.endsWith('/')) path += '/';
+  return path || '/';
+}
+function mdSitePath(rel) {
+  return mdSiteRoot() + String(rel || '').replace(/^\//, '');
+}
+function mdScoreboardAnchorIso() {
+  var edition = window.DigestDate && DigestDate.headerEdition && DigestDate.headerEdition();
+  if (edition && edition.iso && (location.pathname || '').indexOf('/archive/') >= 0) {
+    return edition.iso;
+  }
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+}
 function mdMacroFredUrl() {
-  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  if (/\.github\.io$/i.test(location.hostname) || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    return mdSitePath('fred-data.json');
+  }
   return '/api/fred-data';
 }
 function mdPost(path, body) {
