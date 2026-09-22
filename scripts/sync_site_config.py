@@ -21,9 +21,10 @@ SRC = ROOT / "docs" / "site-config.json"
 OUT = ROOT / "docs" / "js" / "site-config.js"
 HTML_FILES = ("index.html", "admin.html")
 
-# Matches a local asset reference (src="js/…" / href="css/…") carrying a
-# ?v=<digits> cache-bust. Leaves CDN URLs and font query strings untouched.
-ASSET_TAG_RE = re.compile(r'((?:src|href)="(?:js|css)/[^"?]+)\?v=[0-9]+"')
+# Matches a local asset reference (src="js/..." / href="css/..." in root pages,
+# or "../js/..." / "../css/..." in archive pages) carrying a ?v=<digits>
+# cache-bust. Leaves CDN URLs and font query strings untouched.
+ASSET_TAG_RE = re.compile(r'((?:src|href)="(?:\.\./)?(?:js|css)/[^"?]+)\?v=[0-9]+"')
 
 
 def write_site_config_js(cfg: dict) -> None:
@@ -38,17 +39,19 @@ def write_site_config_js(cfg: dict) -> None:
 
 
 def sync_html_versions(version: str) -> None:
-    for rel in HTML_FILES:
-        path = ROOT / "docs" / rel
+    html_paths = [ROOT / "docs" / rel for rel in HTML_FILES]
+    html_paths.extend(sorted((ROOT / "docs" / "archive").glob("*.html")))
+    for path in html_paths:
+        rel = path.relative_to(ROOT)
         if not path.exists():
             continue
         text = path.read_text()
         new_text, n = ASSET_TAG_RE.subn(rf'\1?v={version}"', text)
         if new_text != text:
             path.write_text(new_text)
-            print(f"Updated {n} asset tags in docs/{rel} -> ?v={version}")
+            print(f"Updated {n} asset tags in {rel} -> ?v={version}")
         else:
-            print(f"docs/{rel}: {n} asset tags already at ?v={version}")
+            print(f"{rel}: {n} asset tags already at ?v={version}")
 
 
 def main() -> None:

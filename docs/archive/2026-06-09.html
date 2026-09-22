@@ -1279,7 +1279,14 @@
         todayIso = m[4] + '-' + (months[m[2]] || '01') + '-' + String(m[3]).padStart(2, '0');
       }
     }
-    fetch('archive/manifest.json', { cache: 'no-store' })
+    var archiveBase = (function() {
+      var path = window.location.pathname || '/';
+      var archiveAt = path.indexOf('/archive/');
+      if (archiveAt >= 0) return path.slice(0, archiveAt + 1);
+      if (/\.[a-z0-9]+$/i.test(path)) return path.replace(/[^/]+$/, '');
+      return path.endsWith('/') ? path : path + '/';
+    })();
+    fetch(archiveBase + 'archive/manifest.json', { cache: 'no-store' })
       .then(function(r) { return r.ok ? r.json() : []; })
       .catch(function() { return []; })
       .then(function(entries) {
@@ -1293,7 +1300,7 @@
           var d = new Date(e.date + 'T12:00:00');
           var label = e.weekday + ' ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
           var title = e.summary ? e.summary.slice(0, 120) : (e.h1 || e.date);
-          html += '<a class="arch-item" href="' + e.url + '" style="display:block;border-top:1px solid var(--rule-soft);padding:14px 0;text-decoration:none;color:inherit;">'
+          html += '<a class="arch-item" href="' + archiveBase + String(e.url || '').replace(/^\//, '') + '" style="display:block;border-top:1px solid var(--rule-soft);padding:14px 0;text-decoration:none;color:inherit;">'
             + '<span class="arch-date" style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">' + label + '</span>'
             + '<span class="arch-title" style="display:block;font-family:Fraunces,serif;font-size:17px;font-weight:600;color:var(--accent);margin-top:4px;">' + (e.h1 || e.date) + '</span>'
             + '<span class="arch-item-summary" style="display:block;margin-top:4px;">' + title + '</span>'
