@@ -3,10 +3,13 @@
 // ============================================================
 (function() {
   function sitePath(rel) {
+    if (typeof mdSitePath === 'function') return mdSitePath(rel);
+    var clean = String(rel || '').replace(/^\/+/, '');
     var path = window.location.pathname || '/';
-    if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
-    else if (!path.endsWith('/')) path += '/';
-    return path + String(rel || '').replace(/^\//, '');
+    var archiveIdx = path.indexOf('/archive/');
+    if (archiveIdx >= 0) return path.slice(0, archiveIdx + 1) + clean;
+    if (/\.[a-z0-9]+$/i.test(path)) return path.replace(/[^/]+$/, '') + clean;
+    return (path.endsWith('/') ? path : path + '/') + clean;
   }
 
   function ensureArchiveSection() {
