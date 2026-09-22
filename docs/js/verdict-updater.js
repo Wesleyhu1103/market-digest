@@ -240,7 +240,9 @@
     var PRESS_KEYS = { bonds: ['bonds'], oil: ['iran', 'iran-oil'], ai: ['aicapex', 'ai-capex'] };
 
     function etToday() {
-      return new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+      return typeof mdEtTodayIso === 'function'
+        ? mdEtTodayIso()
+        : new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
     }
     function etHour() {
       return Number(new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
@@ -248,8 +250,6 @@
     function parseRows() {
       var tbody = document.getElementById('weekTbody');
       if (!tbody) return null;
-      var year = (window.DigestDate && DigestDate.headerEdition() || {}).year
-        || Number(etToday().slice(0, 4));
       var out = [];
       var trs = tbody.querySelectorAll('tr');
       for (var i = 0; i < trs.length; i++) {
@@ -257,8 +257,11 @@
         if (tds.length < 4) continue;
         var m = tds[0].textContent.match(/(\d+)\/(\d+)/);
         if (!m) continue;
+        var iso = typeof mdScoreboardRowIso === 'function'
+          ? mdScoreboardRowIso(tds[0].textContent)
+          : etToday().slice(0, 4) + '-' + String(m[1]).padStart(2, '0') + '-' + String(m[2]).padStart(2, '0');
         out.push({
-          iso: year + '-' + String(m[1]).padStart(2, '0') + '-' + String(m[2]).padStart(2, '0'),
+          iso: iso,
           tds: [tds[1], tds[2], tds[3]]
         });
       }
@@ -299,7 +302,8 @@
         var el = document.getElementById('consensusData');
         p = Promise.resolve(el ? parseConsensus('<script type="application/json" id="consensusData">' + el.textContent + '</script>') : null);
       } else {
-        p = fetch('archive/' + iso + '.html', { cache: 'force-cache' })
+        var archiveUrl = typeof mdSitePath === 'function' ? mdSitePath('archive/' + iso + '.html') : 'archive/' + iso + '.html';
+        p = fetch(archiveUrl, { cache: 'force-cache' })
           .then(function(r) { return r.ok ? r.text() : null; })
           .then(function(html) { return html ? parseConsensus(html) : null; })
           .catch(function() { return null; });
@@ -377,6 +381,10 @@
 
     function dayState(iso) {
       var today = etToday();
+      var anchor = typeof mdScoreboardAnchorIso === 'function' ? mdScoreboardAnchorIso() : today;
+      if (anchor < today) {
+        return iso <= anchor ? 'final' : 'future';
+      }
       if (iso < today) return 'final';
       if (iso > today) return 'future';
       var phase = MF.sessionPhase();

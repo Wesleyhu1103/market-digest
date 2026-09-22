@@ -6,8 +6,45 @@ function mdUsesRemoteApi() {
 function mdApiUrl(path) {
   return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
 }
+function mdSitePath(rel) {
+  var raw = String(rel || '');
+  if (/^(https?:)?\/\//i.test(raw)) return raw;
+  var clean = raw.replace(/^\//, '');
+  var path = (window.location && window.location.pathname) || '/';
+  var archiveAt = path.indexOf('/archive/');
+  if (archiveAt >= 0) return path.slice(0, archiveAt + 1) + clean;
+  if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
+  else if (!path.endsWith('/')) path += '/';
+  return path + clean;
+}
+function mdEtTodayIso() {
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+}
+function mdEditionIso() {
+  var ed = window.DigestDate && DigestDate.headerEdition && DigestDate.headerEdition();
+  return ed && ed.iso ? ed.iso : '';
+}
+function mdScoreboardAnchorIso() {
+  var editionIso = mdEditionIso();
+  var todayIso = mdEtTodayIso();
+  return editionIso && editionIso < todayIso ? editionIso : todayIso;
+}
+function mdScoreboardRowIso(dayText, editionIso) {
+  var m = String(dayText || '').match(/(\d+)\/(\d+)/);
+  if (!m) return '';
+  var month = Number(m[1]);
+  var day = Number(m[2]);
+  var anchor = editionIso || mdEditionIso() || mdEtTodayIso();
+  var year = Number(anchor.slice(0, 4));
+  var anchorMonth = Number(anchor.slice(5, 7));
+  if (year && anchorMonth) {
+    if (month - anchorMonth > 6) year -= 1;
+    else if (anchorMonth - month > 6) year += 1;
+  }
+  return year + '-' + String(month).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+}
 function mdMacroFredUrl() {
-  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  if (/\.github\.io$/i.test(location.hostname)) return mdSitePath('fred-data.json');
   return '/api/fred-data';
 }
 function mdPost(path, body) {
