@@ -1,5 +1,6 @@
 """Tests for contracts/digest-main.json loader."""
 import sys
+import re
 import unittest
 from pathlib import Path
 
@@ -25,7 +26,15 @@ class DigestContractsTest(unittest.TestCase):
 
     def test_validate_rule_counts(self):
         self.assertEqual(len(validate_main_rules()), 14)
-        self.assertEqual(len(validate_static_rules()), 7)
+        self.assertEqual(len(validate_static_rules()), 9)
+
+    def test_static_rules_reject_archive_relative_fetches(self):
+        rules = {desc: pat for desc, pat, _exp, scope in validate_static_rules() if scope == "js"}
+        pat = rules["no direct archive-relative fetches"]
+        self.assertRegex("fetch('archive/2026-09-10.html')", re.compile(pat))
+        self.assertRegex('loadFred("fred-data.json")', re.compile(pat))
+        self.assertIsNone(re.search(pat, "fetch(mdSitePath('archive/2026-09-10.html'))"))
+        self.assertIsNone(re.search(pat, "loadFred(mdSitePath('fred-data.json'))"))
 
     def test_system_prompt_includes_key_rules(self):
         prompt = build_system_prompt()
