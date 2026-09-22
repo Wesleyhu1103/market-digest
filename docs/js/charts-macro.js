@@ -705,8 +705,8 @@
     // unreachable (local preview, GitHub Pages, or a Vercel outage).
     return loadFred(macroFredUrl()).then(function(data) {
       if (data) { fredMacro = data; return data; }
-      if (macroFredUrl() === 'fred-data.json') return null;
-      return loadFred('fred-data.json').then(function(fb) {
+      if (macroFredUrl() === mdSitePath('fred-data.json')) return null;
+      return loadFred(mdSitePath('fred-data.json')).then(function(fb) {
         if (fb) fredMacro = fb;
         return fb;
       });
