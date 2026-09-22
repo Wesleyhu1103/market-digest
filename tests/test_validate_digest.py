@@ -1,4 +1,5 @@
 import importlib.util
+import re
 import sys
 import tempfile
 import unittest
@@ -61,6 +62,20 @@ class ValidateDigestTests(unittest.TestCase):
             missing = module.validate_local_assets(html_path.read_text(), html_path)
 
             self.assertEqual(missing, [])
+
+    def test_static_rules_reject_credential_markers(self):
+        module = load_validate_digest()
+        rule = next(r for r in module.STATIC_RULES if r[0] == "no credential markers")
+        _, pattern, expected, scope = rule
+
+        self.assertEqual(scope, "html")
+        leaked = (
+            '<p><strong>GitHub commit status:</strong> Publishing with new token '
+            "(ghp_aBCY...) -- new token verified.</p>"
+        )
+
+        self.assertNotEqual(len(re.findall(pattern, leaked, re.DOTALL | re.I)), expected)
+        self.assertEqual(len(re.findall(pattern, "<p>Clean source note.</p>", re.DOTALL | re.I)), expected)
 
 
 if __name__ == "__main__":
