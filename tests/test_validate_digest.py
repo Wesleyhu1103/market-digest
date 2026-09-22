@@ -1,4 +1,6 @@
 import importlib.util
+import json
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -61,6 +63,31 @@ class ValidateDigestTests(unittest.TestCase):
             missing = module.validate_local_assets(html_path.read_text(), html_path)
 
             self.assertEqual(missing, [])
+
+    def test_md_site_path_resolves_archive_pages_to_site_root(self):
+        script = (
+            "global.window = { location: { pathname: '/market-digest/archive/2026-08-27.html' } };\n"
+            "global.location = { hostname: 'wesleyhu1103.github.io' };\n"
+            f"eval(require('fs').readFileSync({str(Path(__file__).resolve().parents[1] / 'docs' / 'js' / 'config.js')!r}, 'utf8'));\n"
+            "const out = [\n"
+            "  mdSitePath('archive/manifest.json'),\n"
+            "  mdSitePath('fred-data.json'),\n"
+            "  mdMacroFredUrl()\n"
+            "];\n"
+            "window.location.pathname = '/market-digest/index.html';\n"
+            "out.push(mdSitePath('archive/manifest.json'));\n"
+            "console.log(JSON.stringify(out));\n"
+        )
+        result = subprocess.run(["node", "-e", script], capture_output=True, text=True, check=True)
+        self.assertEqual(
+            json.loads(result.stdout),
+            [
+                "/market-digest/archive/manifest.json",
+                "/market-digest/fred-data.json",
+                "/market-digest/fred-data.json",
+                "/market-digest/archive/manifest.json",
+            ],
+        )
 
 
 if __name__ == "__main__":
