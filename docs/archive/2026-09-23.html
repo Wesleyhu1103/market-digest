@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Sep 23, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-09-23</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, September 23, 2026</h1>
+    <div class="meta">
+      <p>Oil ended its longest losing streak of the year but held below $100 as the US and Iran held their first talks since June, even as Trump threatened Iran's "annihilation" in his UN speech. The OECD warned of faster global inflation and more rate hikes at the Fed, ECB and BOJ, and US mortgage rates surged above 7% to a two-year high. Thursday's Trump-Xi summit and Meta's Muse agent upending the "consumer inertia" trade are the week's other threads.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Oil ended its longest losing streak of the year but held below $100 a barrel as the US and Iran held their first talks since June and Saudi Arabia moved to restart a key pipeline, with Trump hailing the diplomacy even as he threatened Iran's annihilation in his UN speech and Tehran set firm positions, while diesel cracks hit a record peak on fears of a possible US export ban",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Stock Futures Nudge Higher as Markets Weigh Middle East Diplomacy", "angle": "Reads the tentative US-Iran talks as a cautious positive keeping futures firm even as oil ticks up.", "lean": 20, "pull": "U.S. stock futures were largely unmoved while oil edged higher as investors weighed diplomatic progress in the Middle East."},
+        {"outlet": "Financial Times", "headline": "US and Iran Hold First Talks Since June as Trump Threatens 'Annihilation'", "angle": "Frames the diplomacy as fragile, pairing a 'good meeting' with an open threat and flat oil prices.", "lean": -10, "pull": "Oil prices flat as Trump says Witkoff and Kushner had a good meeting with Iranian delegation on the sidelines of the UN."},
+        {"outlet": "Bloomberg", "headline": "Stocks and Bonds Slip as Oil Ends Run of Losses", "angle": "Warns the relief trade is stalling as crude's losing streak ends and the dollar hits a July high.", "lean": -15, "pull": "US stock futures slipped as crude prices ended their longest losing streak this year, with traders waiting for progress to end the war."},
+        {"outlet": "MarketWatch", "headline": "Why Analysts Say a Diesel Export Ban Could Backfire", "angle": "Cuts against the calm, arguing a US export ban would cut supply and push prices higher, not lower.", "lean": -40, "pull": "A ban on U.S. diesel exports could reduce supplies and simultaneously lead to prices rising further, analysts say."},
+        {"outlet": "CNBC", "headline": "Trump-Xi Meeting: Why China's Self-Sufficiency Changes the Calculus", "angle": "Zooms out to the summit, noting China's export strength gives Xi more leverage into the talks.", "lean": 5, "pull": "Persistent growth of Chinese exports to the U.S. is helping the world's second-largest economy ride out domestic challenges."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The OECD Warns of Faster Global Inflation and Rate Hikes at the Fed, ECB and BOJ as Bond Yields Surge and US Mortgage Rates Top 7%, with Chief Economist Stefano Scarpetta Saying Banks Must Stay Vigilant, Even as Euro-Zone Business Activity Hits a Three-Year High, the OECD Says the BOE Needn't Hike and South Africa's CPI Rose Less Than Expected</h3>
+      </div>
+      <p>The rates story turned decisively hawkish as the OECD moved to the center of it. Bloomberg reported the OECD now sees inflation running faster than forecast in 2027, an outlook that "necessitates more tightening" from the US to Australia, and its chief economist Stefano Scarpetta told Bloomberg TV that central banks "have to remain very vigilant" and may need to intervene more than they did in 2022. FT reported the same body sounding the alarm on surging government bond yields, warning that swelling debt-interest bills are squeezing public finances. Bloomberg said US mortgage rates jumped above 7% to a more-than-two-year high, further weighing on a frozen housing market, and traders are loading up on hedges even as they price a shallower Fed hike cycle. The euro fell to a two-month low after the Fed's rate increase, and Bloomberg's own analysts snapped the longest run of US earnings upgrades in five years, turning net-negative on profits as inflation and higher rates bite. MarketWatch flagged financial stocks falling as rates rise, a problem for the broader market. The dovish counter is that growth is holding up: euro-zone business activity hit a three-year high on services, German and French private-sector output surprised to the upside, South Africa's CPI rose less than expected, and the OECD said the Bank of England does not need to raise rates because the UK is starting from a different position. Bank Indonesia held steady, and Denmark doubled its growth forecast on Novo Nordisk's US boom.</p>
+      <p>The bull read is resilient euro-area, German and French activity, a softer South Africa print and the OECD saying the BOE can hold. The bear read is the OECD's faster-inflation warning, Scarpetta's vigilance call, surging bond yields, 7% mortgages and snapped earnings upgrades.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (growth is holding and not everyone must hike):</strong> Euro-zone business activity hit a three-year high on a services revival, German and French output surprised to the upside, and South Africa's CPI came in softer than feared. The OECD says the Bank of England needn't raise rates because it starts from a different position, Bank Indonesia held steady, and Denmark doubled its growth forecast on Novo. Resilient demand without runaway prices is the soft-landing case.</div>
+        <div class="bear"><strong>Bear (the inflation fight is reopening):</strong> The OECD warns inflation will run faster in 2027 and sees hikes at the Fed, ECB and BOJ, with Scarpetta saying banks must be more vigilant than in 2022. FT reports the OECD's alarm on surging bond yields, US mortgage rates topped 7%, the euro hit a two-month low after the Fed hiked, and Bloomberg's analysts just snapped the longest run of earnings upgrades in five years. Higher-for-longer is back.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-23/oecd-warns-of-faster-global-inflation-sees-rate-hikes-at-fed-ecb-boj" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OECD Warns of Faster Global Inflation, Sees Rate Hikes at Fed, ECB, BOJ</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Ends Its Longest Losing Streak of the Year but Holds Below $100 as the US and Iran Hold Their First Talks Since June and Saudi Arabia Restarts a Pipeline, Even as Trump Threatens Iran's "Annihilation," Tehran Sets Firm Positions, Diesel Cracks Hit a Record and a Possible US Export Ban Looms</h3>
+      </div>
+      <p>The war premium kept bleeding on diplomacy, but the physical crunch reasserted itself in the product markets. FT reported the US and Iran held their first talks since June on the sidelines of the UN, with Trump saying Steve Witkoff and Jared Kushner had a "good meeting" with the Iranian delegation, even as he threatened Iran's "annihilation" in his General Assembly speech and Bloomberg noted Tehran setting "firm positions." Bloomberg reported oil swung as Saudi Arabia moved to restart a key pipeline and the US flagged progress toward ending a war that has disrupted energy markets for nearly seven months, and Brent held below $100. The bull read is that the worst is being negotiated away and India is even ramping cooking-gas output into festival season. The bear read is that the relief is fragile and the crunch is migrating to diesel. Bloomberg wrote that stocks and bonds slipped as crude ended its longest losing streak this year, with the dollar hitting a July high. Yahoo Finance reported oil holding near two-week lows while diesel cracks hit a record peak, and WSJ said European diesel futures jumped on fears of a possible US export ban. MarketWatch warned that a US diesel export ban could backfire, cutting supply and pushing prices even higher. Gold fell as traders weighed the talks and Fed speak, and FT reported a US and Gulf-billionaire consortium backing a Todd Boehly bid for Lukoil's international assets.</p>
+      <p>The bull read is the first US-Iran talks since June, Saudi's pipeline restart, Brent below $100 and India adding LPG supply. The bear read is Trump's annihilation threat, Tehran's firm positions, oil's losing streak ending, record diesel cracks and a possible export ban.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (diplomacy keeps draining the premium):</strong> FT reported the first US-Iran talks since June, with Trump calling the Witkoff-Kushner meeting good, and Bloomberg said Saudi Arabia is restarting a key pipeline as the US flags progress. Brent held below $100, gold eased, and India is ramping cooking-gas output into festival season. If the talks hold, the screen price and the war premium keep falling together.</div>
+        <div class="bear"><strong>Bear (the crunch is moving into products):</strong> Bloomberg noted crude ended its longest losing streak this year as stocks and bonds slipped, and Trump paired the diplomacy with a threat of Iran's annihilation while Tehran set firm positions. Yahoo Finance flagged record diesel cracks, WSJ reported European diesel futures jumping on a possible US export ban, and MarketWatch warned that ban could backfire and push prices higher. Tightness is the story now, not the headline.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/1434496d-0eaf-4270-8ad3-87724cd3721e?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US and Iran Hold First Talks Since June as Trump Threatens 'Annihilation'</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Broadens as SoftBank Prices a Record ~10% Junk Bond and Meta's Muse Upends the "Consumer Inertia" Trade, with BNY Mellon's Brock Campbell Saying the Infrastructure Play Isn't Over, Even as Bloomberg Warns AI Data-Center Debt Carries New Risks, Analysts Snap Earnings Upgrades and Nuveen's Laura Cooper Sees Limited Tactical Upside</h3>
+      </div>
+      <p>The AI trade kept powering the tape, but the financing side is where the real story moved. Bloomberg reported SoftBank kicked off one of the largest corporate junk-bond sales ever, offering record yields of nearly 10% to fund its unprecedented AI investments, and Bloomberg Technology warned that AI data-center debt now offers investors huge yields "and new risks." Bloomberg wrote that Meta's Muse assistant got off to a fast start with users and markets, and that AI agents are upending a big slice of the stock market, threatening the "consumer inertia" that props up banks, brokers and travel-booking firms. WSJ ran the same thread as "Meta's Muse Comes for Financial Stocks." The bull read is that the buildout keeps drawing capital and broadening out. MarketWatch's Brock Campbell of BNY Mellon said the AI-infrastructure trade is "still not over" and investors wrongly think it has peaked, an Nvidia-backed Australian startup, Firmus, is seeking $10 billion for chips, and CoreWeave's beaten-down stock could stage a comeback per one analyst. The bear read is that the valuations and financing are stretched. Bloomberg noted analysts snapped the longest run of US earnings upgrades in five years, Investor's Business Daily said analysts think six S&P 500 stocks are grossly overvalued, and Yahoo Finance flagged one number in Nvidia's near-perfect quarter that wasn't. Nuveen's Laura Cooper told Bloomberg there's "limited tactical upside from here" as markets wait for clearing events.</p>
+      <p>The bull read is SoftBank's record AI bond, Meta's fast Muse start, Firmus seeking $10bn and BNY Mellon's Campbell calling the trade far from over. The bear read is Bloomberg's warning on data-center debt risk, snapped earnings upgrades, six grossly overvalued names and Nuveen's limited-upside call.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (capital and adoption keep broadening):</strong> Bloomberg says SoftBank is pricing a record ~10% junk bond to fund AI and Meta's Muse is off to a fast start with users and markets. BNY Mellon's Brock Campbell says the infrastructure trade is far from peaked, Firmus is seeking $10bn for Nvidia chips, and one analyst sees CoreWeave due for a comeback. Both the demand and the financing keep widening beyond the megacaps.</div>
+        <div class="bear"><strong>Bear (the trade is stretched and leveraged):</strong> Bloomberg warns AI data-center debt offers huge yields precisely because it carries new risks, and analysts just snapped the longest run of US earnings upgrades in five years. Investor's Business Daily says six S&P 500 names are grossly overvalued, Yahoo flags a flaw in Nvidia's near-perfect quarter, and Nuveen's Laura Cooper sees limited tactical upside. A trade funded at 10% yields cracks fast when rates back up.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-23/softbank-starts-jumbo-high-yield-bond-sale-to-finance-ai-push" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank Offers Record Yields on Jumbo Junk Bonds in AI Push</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Analysts snap the longest run of US earnings upgrades in five years</strong></summary>
+      <div class="deal-body">
+        <p>Equity analysts turned net-negative on US corporate earnings for the first time in months, Bloomberg reported, snapping the longest run of upgrades in five years on concern that inflation and higher rates will bite profits. The shift cuts against a record-chasing tape.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/analysts-snap-longest-run-of-us-earnings-upgrades-in-five-years" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Analysts Snap Longest Run of US Earnings Upgrades in Five Years</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Financial stocks fall as rising rates threaten loan growth</strong></summary>
+      <div class="deal-body">
+        <p>Financial shares are falling as rates rise, MarketWatch reported, with higher rates set to slow loan growth and lift banks' funding costs. Because financials are a heavyweight sector, the weakness is a problem for the broader market.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/financial-stocks-are-falling-as-rates-rise-why-thats-a-problem-for-the-broader-market-70bd9b04?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Financial Stocks Are Falling as Rates Rise. Why That's a Problem for the Broader Market.</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia's near-perfect quarter had one number in the fine print that wasn't</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia's (NVDA) last quarter was nearly perfect, Barron's via Yahoo Finance reported, but one figure buried in the fine print gave bulls pause. The caveat feeds the debate over whether the AI leader's growth can keep outrunning its valuation.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/nvidia-last-quarter-nearly-perfect-115301404.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Nvidia's Last Quarter Was Nearly Perfect. One Number in the Fine Print Wasn't.</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Royal Caribbean nears a $3bn deal for a 50% stake in Sandals</strong></summary>
+      <div class="deal-body">
+        <p>Royal Caribbean (RCL) is nearing a roughly $3 billion deal to take a 50% equity stake in resort operator Sandals, CNBC reported, part of its push to diversify beyond cruises and become a leader in vacations overall.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/22/royal-caribbean-sandals.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Royal Caribbean Nears $3 Billion Deal to Take 50% Equity Stake in Sandals</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>McDonald's hosts an investor day as its US business struggles</strong></summary>
+      <div class="deal-body">
+        <p>McDonald's (MCD) is hosting an investor day, CNBC reported, after its US business disappointed in the most recent quarter. Investors want a plan to reignite domestic traffic amid a pinched consumer.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/22/mcdonalds-mcd-hosts-investor-day.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- McDonald's Is Hosting an Investor Day as Its U.S. Business Struggles</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Peloton overhauls its hardware in the next phase of its turnaround</strong></summary>
+      <div class="deal-body">
+        <p>Peloton (PTON) is revamping its treadmills with new features, Yahoo Finance reported, aiming to appeal to everyone from casual users to serious athletes. The overhaul is central to the long-promised turnaround investors keep waiting on.</p>
+        <p class="deal-source"><a href="https://finance.yahoo.com/markets/stocks/articles/peloton-pton-stock-buy-massive-105528498.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Is Peloton Stock a Buy After Its Massive Hardware Overhaul?</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Analysts flag six S&P 500 stocks as grossly overvalued</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street analysts think six S&P 500 names have run well past fair value, Investor's Business Daily reported, a caution as the index sits near records. The warning underscores how narrow leadership can stretch a handful of stocks.</p>
+        <p class="deal-source"><a href="https://www.investors.com/etfs-and-funds/sectors/sp500-analysts-think-stocks-are-grossly-overvalued/?src=A00220&yptr=yahoo" target="_blank" rel="noopener noreferrer">Source: Investor's Business Daily -- Analysts Think 6 S&P 500 Stocks Are Grossly Overvalued</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape opened cautious as oil ended its losing streak and the dollar hit a July high, with AI leadership from Meta's Muse offset by snapped earnings upgrades and rising rates. The swing factors are Thursday's Trump-Xi summit, Friday's core PCE and the SoftBank bond pricing. Watch whether financials keep sliding as yields rise and whether AI breadth holds beyond the megacaps.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Analysts Turning Net-Negative on Earnings Matters More Than a Record Close</summary>
+      <p>Bloomberg reported that equity analysts have turned net-negative on the outlook for US corporate earnings for the first time in months, snapping the longest run of upgrades in five years. That sounds like inside baseball, but it is one of the more reliable tells in the market, and it is worth understanding why it can matter more than an index sitting at a record. Start with what an earnings estimate actually is. For every major company, sell-side analysts publish forecasts of next quarter's and next year's earnings per share. Aggregate those across the S&P 500 and you get the market's expected forward earnings, the "E" in the forward price-to-earnings ratio that anchors most valuation work. When analysts are, on net, raising those forecasts, it usually means the data flow, from company guidance to spending trends to input costs, is coming in better than they penciled in. When they are cutting on net, the opposite is happening. The direction of revisions, not just their level, is what carries information, because analysts are slow to move and tend to revise in the same direction for months once a trend sets in. That persistence is the key. Earnings revisions have momentum: an analyst who cuts a number today is more likely to cut again next month than to reverse, partly because companies guide gradually and partly because nobody wants to be the outlier. So a shift from a long upgrade streak to net downgrades is not noise, it is often the start of a run. Here is why it can matter more than the index level. A record close tells you what investors paid yesterday. Earnings revisions tell you what the denominator of value is doing tomorrow. If prices are at records while forward earnings estimates start falling, the forward P/E is quietly expanding even without prices rising, meaning the market is getting more expensive on a fundamental basis at exactly the moment the fundamentals are softening. That is the setup that makes strategists nervous, and it is precisely the tension Bloomberg described: inflation and higher rates squeezing margins just as the tape prints highs. There is also a feedback loop with rates, which is why this thread connects to the OECD's inflation warning. Higher-for-longer rates raise the discount rate applied to future profits and raise financing costs that eat into those profits. So the same force pressuring valuations from the top, a higher discount rate, is pressuring earnings from the bottom. When both move against you, a record index built on stretched multiples and softening estimates is fragile. The practical lesson is to watch the revisions breadth, the share of companies being upgraded versus downgraded, as a leading indicator. When that ratio rolls over after a long run, it often precedes a period where the index has to work harder, or fall, to bring valuations back in line with a shrinking earnings base. A record close is a snapshot; the revisions trend is the direction of travel.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/analysts-snap-longest-run-of-us-earnings-upgrades-in-five-years" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Analysts Snap Longest Run of US Earnings Upgrades in Five Years</a></p>
+      <p class="deal-source"><a href="https://www.investors.com/etfs-and-funds/sectors/sp500-analysts-think-stocks-are-grossly-overvalued/?src=A00220&yptr=yahoo" target="_blank" rel="noopener noreferrer">Source: Investor's Business Daily -- Analysts Think 6 S&P 500 Stocks Are Grossly Overvalued</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>SoftBank offers record ~10% yields on one of the largest junk bonds ever</strong></summary>
+      <div class="deal-body">
+        <p>SoftBank (SFTBY) kicked off what is set to be one of the largest corporate junk-bond sales ever, Bloomberg reported, offering record yields of nearly 10% to entice investors into funding its unprecedented AI investments. The scale shows how AI is being financed through high-yield markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/softbank-starts-jumbo-high-yield-bond-sale-to-finance-ai-push" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank Offers Record Yields on Jumbo Junk Bonds in AI Push</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta's Muse assistant gets off to a fast start and upends the "consumer inertia" trade</strong></summary>
+      <div class="deal-body">
+        <p>Meta's (META) Muse personal AI assistant got a warm welcome from users and markets, Bloomberg reported, while a separate note warned AI agents are upending a big slice of the stock market, threatening the consumer inertia that props up banks, brokers and travel-booking firms.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-09-23/meta-muse-ai-personal-assistant-gets-off-to-fast-start" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta Muse AI Personal Assistant Gets Off to Fast Start</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI data-center debt offers investors huge yields and new risks</strong></summary>
+      <div class="deal-body">
+        <p>The wave of AI data-center debt, headlined by SoftBank's near-10% bond, offers investors outsized yields but carries new risks, Bloomberg reported. The piece flags how much leverage is being layered onto the buildout at the same time.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-09-23/ai-data-center-debt-offers-investors-huge-yields-and-new-risks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Data Center Debt Offers Investors Huge Yields and New Risks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia-backed Firmus seeks $10bn ahead of an Australian IPO</strong></summary>
+      <div class="deal-body">
+        <p>Australian AI startup Firmus Technologies is in talks with lenders for a roughly $10 billion financing to buy Nvidia (NVDA) chips for its Indonesian data center, Bloomberg reported, potentially one of Asia's largest AI infrastructure deals, ahead of a planned IPO.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/nvidia-backed-ai-startup-seeks-10-billion-before-australian-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed AI Startup Seeks $10 Billion Before Australian IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI's Altman to pitch global AI standards in a UN speech</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI's Sam Altman will pitch the creation of global AI standards when he speaks at the United Nations, Bloomberg reported, positioning himself as a centrist on whether to slow the technology's progress. The speech lands as AI safety tops the UN agenda.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/openai-s-sam-altman-to-promote-ai-standards-during-un-speech" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI's Sam Altman to Promote AI Standards During UN Speech</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Xi and Trump seek "safe AI" without slowing the race for supremacy</strong></summary>
+      <div class="deal-body">
+        <p>Xi Jinping and Trump will hash out trade, Taiwan and more this week, Bloomberg reported, but on one point both sides agree: neither can afford to tap the brakes on AI. The framing sets the tone for Thursday's summit.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/xi-and-trump-seek-safe-ai-without-slowing-the-race-for-supremacy" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Xi and Trump Seek Safe AI Without Slowing the Race for Supremacy</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stratechery: Meta needs Walmart to wait out Amazon in the Muse fight</strong></summary>
+      <div class="deal-body">
+        <p>Ben Thompson argued Meta needs Walmart to wait out Amazon while Expedia scrambles to keep its middleware position, and asked where Google is in the agent wars. The piece extends Tuesday's aggregator-versus-aggregator framing.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/more-on-muse-amazon-and-walmart-muse-and-expedia-whither-google/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- More on Muse, Amazon, and Walmart; Muse and Expedia; Whither Google?</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Global Earnings &amp; Tech Movers -- Wednesday September 23, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is SoftBank's record AI bond, Meta's fast Muse start, Firmus's $10bn financing and BNY Mellon's Brock Campbell calling the infrastructure trade far from over. The counter-signal is Bloomberg's warning that data-center debt carries new risks, snapped earnings upgrades, six grossly overvalued S&P names and Nuveen's limited-upside call. With the buildout now funded at ~10% yields, the real tell stays bond spreads and enterprise revenue, not the summit headlines.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>OECD warns of faster global inflation and sees hikes at the Fed, ECB and BOJ</strong></summary>
+      <div class="deal-body">
+        <p>Inflation around the world will run faster than forecast in 2027, the OECD said, an outlook that necessitates more tightening from the US to Australia, Bloomberg reported. Chief economist Stefano Scarpetta told Bloomberg TV banks must stay "very vigilant" on prices.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/oecd-warns-of-faster-global-inflation-sees-rate-hikes-at-fed-ecb-boj" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OECD Warns of Faster Global Inflation, Sees Rate Hikes at Fed, ECB, BOJ</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OECD sounds the alarm on surging government bond yields</strong></summary>
+      <div class="deal-body">
+        <p>The OECD warned that surging government bond yields are lifting debt-interest bills and piling pressure on public finances, FT reported. The caution frames the term-premium strain running through sovereign markets worldwide.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/6c13ada9-f325-428b-b91e-bffcf92eddad?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- OECD Sounds Alarm on Surging Government Bond Yields</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US mortgage rates surge above 7% to a more-than-two-year high</strong></summary>
+      <div class="deal-body">
+        <p>US mortgage rates rose above 7% to the highest in more than two years, Bloomberg reported, further weighing on a housing market already suppressed by elevated prices and sluggish sales. The move underscores how rising yields pass through to households.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/us-mortgage-rates-surge-above-7-to-a-more-than-two-year-high" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Mortgage Rates Surge Above 7% to a More Than Two-Year High</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euro-zone business activity hits a three-year high on services</strong></summary>
+      <div class="deal-body">
+        <p>Private-sector activity in the euro area grew at the fastest pace in more than three years, Bloomberg reported, as the service sector unexpectedly improved, with German and French output both surprising to the upside. The prints support a resilient-growth read.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/euro-zone-business-activity-hits-three-year-high-on-services" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Euro-Zone Business Activity Hits Three-Year High on Services</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Traders load up on hedges for a shallower Fed rate-hike cycle</strong></summary>
+      <div class="deal-body">
+        <p>Traders are shielding themselves against the risk the Fed raises rates less than markets currently price, Bloomberg reported, after the central bank's latest increase. The euro fell to a two-month low as options desks added downside bets on the currency.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-22/traders-load-up-on-hedges-for-shallower-fed-rate-hike-cycle" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Traders Load Up on Hedges for Shallower Fed Rate-Hike Cycle</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>South Africa CPI rises less than expected ahead of a rate call</strong></summary>
+      <div class="deal-body">
+        <p>South Africa's annual inflation rose less than expected before the central bank's decision, Bloomberg reported, though the SARB is still widely seen hiking to defend its 3% target amid persistently high energy prices. It is a live read on the energy-inflation regime.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/south-african-inflation-picks-up-slightly-ahead-of-rate-decision" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- South Africa CPI Rises Less Than Expected Before Rate Call</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US and Korea hail "significant progress" on a $350bn trade deal</strong></summary>
+      <div class="deal-body">
+        <p>Trump and South Korea's Lee Jae Myung hailed progress on implementing their long-stalled investment deal, Bloomberg reported, with Seoul lawmakers saying the first project would be a $22.3 billion gas-fired power development in Texas. The thaw eases one trade front.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/us-korea-hail-significant-progress-on-350-billion-trade-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US, Korea Hail 'Significant Progress' on $350 Billion Trade Deal</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (September 23, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish side dominates now, with the OECD warning of faster 2027 inflation and hikes at the Fed, ECB and BOJ, Scarpetta urging vigilance, mortgage rates above 7% and bond yields surging. Pulling the other way, euro-zone, German and French activity hit multi-year highs, South Africa's CPI came in soft, and the OECD says the BOE needn't hike. Friday's core PCE is the next pressure point.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Surging Bond Yields Squeeze Government Budgets and Feed on Themselves</summary>
+      <p>FT reported the OECD sounding the alarm on surging government bond yields, warning that swelling debt-interest bills are piling pressure on public finances just as US mortgage rates broke above 7%. This is one of the most important and least understood mechanisms in markets right now, because it turns a rise in yields from a market event into a fiscal problem that can feed back on itself. Start with how governments borrow. A country funds its deficit by issuing bonds, and it constantly rolls over maturing debt by issuing new bonds. The interest it pays is set at the yield prevailing when each bond is sold. When yields were near zero, governments locked in cheap borrowing for years. As that old, cheap debt matures and gets refinanced at today's much higher yields, the average interest rate on the entire stock of debt drifts upward, even if no new borrowing happens. That is why rising yields hit budgets with a lag but relentlessly: the pain builds as more of the debt pile reprices. Now the arithmetic. Debt-interest costs are roughly the average yield times the stock of debt. When both the debt stock is high, after years of deficits, and yields are climbing, the interest bill can balloon into one of the largest lines in a budget, crowding out other spending. Governments then face a choice: cut spending, raise taxes, or borrow even more to cover the interest. Here is where the feedback loop bites. If a government responds by issuing still more bonds to pay its rising interest, it increases supply in the bond market. More supply, all else equal, pushes prices down and yields up, which raises the interest bill further, which requires more borrowing. That is the debt spiral bond markets fear, and it is why the OECD is urging countries like the UK to cut spending now. There is a second channel through the "term premium," the extra yield investors demand to hold long-dated debt when they worry about fiscal sustainability. As deficits look less sustainable, investors demand more compensation, pushing long yields higher independent of what the central bank does with short rates. This is why you can see long-end yields rise even as markets debate whether the central bank will hike. The pass-through to households closes the loop. Government bond yields are the benchmark off which mortgages, corporate loans and credit cards are priced. So when sovereign yields surge, mortgage rates follow, which is exactly why US mortgages just topped 7% and the housing market stays frozen. The practical lesson is to treat the government bond market as the master price of the whole economy. When fiscal worries and inflation push sovereign yields up together, the effect radiates outward into every borrowing cost, and the harder it becomes for governments to break the cycle, the more that risk premium builds. Watching the long end of the curve tells you as much about fiscal credibility as it does about the central bank.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/6c13ada9-f325-428b-b91e-bffcf92eddad?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- OECD Sounds Alarm on Surging Government Bond Yields</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/us-mortgage-rates-surge-above-7-to-a-more-than-two-year-high" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Mortgage Rates Surge Above 7% to a More Than Two-Year High</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Oil ended its longest losing streak of the year but held below $100 as the US and Iran held their first talks since June and Saudi Arabia moved to restart a pipeline, even as Trump threatened Iran's annihilation, Tehran set firm positions, diesel cracks hit a record and a possible US export ban loomed. Rates turned hawkish as the OECD warned of faster 2027 inflation and hikes at the Fed, ECB and BOJ, Scarpetta urged vigilance, mortgage rates topped 7% and bond yields surged, against a euro-zone activity high and a soft South Africa CPI. The AI trade broadened as SoftBank priced a record ~10% junk bond and Meta's Muse upended the consumer-inertia trade, with BNY Mellon's Brock Campbell saying the infrastructure play isn't over, even as analysts snapped earnings upgrades and Nuveen's Laura Cooper saw limited upside; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.85%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $108, bear confirmed; below $98, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 9/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/22</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/23</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 9/24</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 9/25</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin slips under $86,000 as money rotates into Bitcoin Cash and Zcash</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin matched Monday's high near $87,300 before running into selling and slipping under $86,000, CoinDesk reported, as money rotated into alts: Bitcoin Cash surged on a CME futures listing and Zcash added to its run. Rally breadth is narrowing.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/23/live-updates-bitcoin-slips-under-usd86-000-as-money-rotates-into-bch-and-zec" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Slips Under $86,000 as Money Rotates Into BCH and ZEC</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin is on a three-month winning streak not seen since 2012</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin's 10% September gain puts it on track for a rare three-month winning streak last seen in 2012, CoinDesk reported, with prices near eight-month highs as falling oil eased inflation worries through the Asian session. The historical parallel fuels bulls.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/23/bitcoin-s-on-a-streak-it-hasn-t-hit-since-2012" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin's on a Streak It Hasn't Hit Since 2012</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BitMEX shuts down trading after 11 years</strong></summary>
+      <div class="deal-body">
+        <p>BitMEX, the perpetual-swaps pioneer co-founded by Arthur Hayes, stopped trading and deposits after 11 years, CoinDesk reported, though users can still log in and withdraw funds as its wind-down continues. It closes an era for crypto derivatives.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/23/bitmex-shuts-down-trading-after-11-years-leaves-withdrawals-open" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BitMEX Shuts Down: Perpetuals Pioneer Officially Closes Its Doors</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock says AI agents will soon buy compute and data with stablecoins</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock sees AI agents soon purchasing their own computing power and data using stablecoins, CoinDesk reported, viewing payments as the nearer-term opportunity while markets for compute capacity remain early. The call ties the AI and crypto threads together.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/23/ai-agents-will-soon-buy-their-own-computing-power-and-data-using-stablecoins-according-to-blackrock" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- AI Agents Will Soon Buy Their Own Computing Power and Data Using Stablecoins, Says BlackRock</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Coinbase lets users borrow USDC against bitcoin at a fixed rate</strong></summary>
+      <div class="deal-body">
+        <p>Coinbase (COIN) now allows users to borrow USDC against their bitcoin at a fixed interest rate and repayment date, CoinDesk reported, expanding on-chain lending tools. The product deepens the crossover between crypto collateral and stablecoin credit.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/23/coinbase-users-can-now-borrow-usdc-against-bitcoin-at-a-fixed-rate" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Coinbase Users Can Now Borrow USDC Against Bitcoin at a Fixed Rate</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>SoftBank -- Prices a Record ~10% Junk Bond to Finance Its AI Push</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SoftBank (SFTBY) kicked off one of the largest corporate junk-bond sales ever, Bloomberg reported, offering record yields of nearly 10% to fund its unprecedented AI investments.</p>
+        <p><strong>Outlook:</strong> The rich coupon tests just how much appetite exists for AI-linked leverage at the top of the yield range.</p>
+        <p><strong>What it means:</strong> The AI buildout is now being financed through high-yield markets at near-double-digit costs, and Bloomberg warns the debt carries new risks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/softbank-starts-jumbo-high-yield-bond-sale-to-finance-ai-push" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank Offers Record Yields on Jumbo Junk Bonds in AI Push</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Firmus Technologies -- Nvidia-Backed Startup Seeks $10bn Before an Australian IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Australian AI startup Firmus is in talks with lenders for a roughly $10 billion financing to buy Nvidia (NVDA) chips for its Indonesian data center, Bloomberg reported, potentially one of Asia's largest AI infrastructure deals.</p>
+        <p><strong>Outlook:</strong> A raise of this size ahead of an IPO signals how aggressively capital is chasing AI compute in Asia.</p>
+        <p><strong>What it means:</strong> The financing pipeline for AI data centers keeps globalizing beyond the US hyperscalers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/nvidia-backed-ai-startup-seeks-10-billion-before-australian-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed AI Startup Seeks $10 Billion Before Australian IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Airtel Money -- Targets a $9bn Valuation With a London Listing</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> African fintech Airtel Money plans to list existing shares in London at a targeted $9 billion valuation, WSJ reported, with the CEO citing deep available capital and the LSE's understanding of emerging markets.</p>
+        <p><strong>Outlook:</strong> It could be London's largest listing in five years, a lift for a market starved of big IPOs.</p>
+        <p><strong>What it means:</strong> London is fighting to keep its relevance as a listing venue against New York's pull.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/airtel-money-plans-london-listing-e50f163d?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- African Fintech Airtel Money Targets $9 Billion Valuation With London Listing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Royal Caribbean -- Nears a $3bn Deal for a 50% Stake in Sandals</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Royal Caribbean (RCL) is nearing a roughly $3 billion deal to take a 50% equity stake in resort operator Sandals, CNBC reported, part of a push beyond cruises.</p>
+        <p><strong>Outlook:</strong> The tie-up would broaden Royal Caribbean into land-based luxury vacations.</p>
+        <p><strong>What it means:</strong> Cruise operators are diversifying revenue as travel demand stays strong but competitive.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/22/royal-caribbean-sandals.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Royal Caribbean Nears $3 Billion Deal to Take 50% Equity Stake in Sandals</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ayala -- To Cut Debt After a $761m Mitsubishi Investment</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Philippine conglomerate Ayala plans to use proceeds from Mitsubishi's roughly $700 million investment to cut debt, buy back undervalued shares and fund growth, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The capital injection strengthens Ayala's balance sheet and lifts investor returns.</p>
+        <p><strong>What it means:</strong> Japanese trading houses keep deploying capital into Southeast Asian growth stories.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/philippines-ayala-to-cut-debt-after-700-million-mitsubishi-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Philippines' Ayala to Cut Debt After $761 Million Mitsubishi Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Arcadis -- Shares Fall After Canada's WSP Global Pulls Its Takeover Offer</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Arcadis shares fell after WSP Global said it could not advance a transaction without engagement from the Dutch engineering consultancy's board, WSJ reported, and pulled its offer.</p>
+        <p><strong>Outlook:</strong> With the bid withdrawn, Arcadis is back to standalone as investors reprice the deal premium away.</p>
+        <p><strong>What it means:</strong> Board resistance can still kill a cross-border deal even when a bidder is willing.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/arcadis-shares-fall-after-canadas-wsp-global-pulls-takeover-offer-d5079668?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Arcadis Shares Fall After Canada's WSP Global Pulls Takeover Offer</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>BNY Mellon (Brock Campbell) -- says the AI-infrastructure trade is "still not over"</strong></summary>
+      <div class="deal-body">
+        <p>Brock Campbell, who runs BNY Mellon's Global Infrastructure Income ETF, told MarketWatch that some investors mistakenly believe the AI play has peaked, and flagged what he sees as overlooked infrastructure opportunities. A named bull arguing the buildout still has legs.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-ai-infrastructure-trade-is-still-not-over-says-this-top-performing-fund-manager-where-hes-investing-8c61f6da?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The AI-Infrastructure Trade Is Still Not Over, Says This Top-Performing Fund Manager</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nuveen (Laura Cooper) -- sees limited tactical upside as markets await clearing events</strong></summary>
+      <div class="deal-body">
+        <p>Nuveen global investment strategist Laura Cooper told Bloomberg that factors weighing on markets mean "limited tactical upside from here," with investors waiting for clearing events around geopolitical risk and the midterms before re-risking. A named cautious voice.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-23/nuveen-says-markets-looking-for-catalysts-to-re-risk-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nuveen Says Markets Are 'Looking for Catalysts to Re-Risk'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OECD (Stefano Scarpetta) -- says central banks must stay very vigilant on inflation</strong></summary>
+      <div class="deal-body">
+        <p>OECD chief economist Stefano Scarpetta told Bloomberg TV central banks "have to remain very vigilant" about higher prices and may need to intervene more than they did in 2022, as the body warned of faster global inflation and rising bond yields. A named hawkish read on the macro regime.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-23/oecd-central-banks-must-be-vigilant-to-inflation-risks-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OECD Says Central Banks Must Be Vigilant to Inflation Risks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MarketWatch -- says CoreWeave's beaten-down stock could stage a major comeback</strong></summary>
+      <div class="deal-body">
+        <p>CoreWeave (CRWV) shares have tumbled almost 40% from May highs as debt fears spooked investors, MarketWatch reported, but one analyst believes the selloff has been overblown. A contrarian bull case on an AI-infrastructure name that got hit hardest.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/why-coreweaves-beaten-down-stock-could-be-due-for-a-major-comeback-46068534?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why CoreWeave's Beaten-Down Stock Could Be Due for a Major Comeback</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Investor's Business Daily -- analysts flag six S&P 500 stocks as grossly overvalued</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street analysts think six S&P 500 names have run well past fair value, Investor's Business Daily reported, a caution as the index sits near records and earnings upgrades roll over. A named bear signal on stretched leadership.</p>
+        <p class="deal-source"><a href="https://www.investors.com/etfs-and-funds/sectors/sp500-analysts-think-stocks-are-grossly-overvalued/?src=A00220&yptr=yahoo" target="_blank" rel="noopener noreferrer">Source: Investor's Business Daily -- Analysts Think 6 S&P 500 Stocks Are Grossly Overvalued</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Oil Holds Below $100, Bond Yields Surge and the AI Trade Broadens on SoftBank's Record Bond, With BNY Mellon's Brock Campbell Saying the Infrastructure Play Isn't Over Against OECD's Stefano Scarpetta Urging Vigilance, Nuveen's Laura Cooper Flagging Limited Upside and Analysts Snapping Earnings Upgrades</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the AI buildout and diplomacy carry it):</strong> BNY Mellon's Brock Campbell says the AI-infrastructure trade is far from peaked, MarketWatch flags a CoreWeave comeback, and SoftBank drew record demand for its AI bond. Oil held below $100 on the first US-Iran talks since June, euro-zone activity hit a three-year high, and Meta's Muse is off to a fast start. Adoption plus financing keeps the theme alive.</div>
+        <div class="bear"><strong>Bear (rates and valuations are the trap):</strong> OECD's Scarpetta warns banks must stay vigilant as inflation runs faster and bond yields surge, Nuveen's Laura Cooper sees limited tactical upside, and Investor's Business Daily flags six grossly overvalued S&P names. Bloomberg snapped the longest earnings-upgrade run in five years, and AI debt is being sold at ~10% yields. Stretched positioning cracks if PCE runs hot or the summit stumbles.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Nasdaq new high; SanDisk and Micron buy signals; AI memory stock up 650% YTD; Meta Muse</td><td>Bullish</td><td>~40,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Financials fall as rates rise; six S&P names called overvalued; Royal Caribbean-Sandals; McDonald's investor day</td><td>Cautious</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>OECD warns faster inflation and hikes; bond yields surge; mortgage rates top 7%; earnings upgrades snapped</td><td>Cautious</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>SoftBank ~10% AI junk bond; AI data-center debt risks; Nvidia fine-print flaw; France investing worries</td><td>Cautious</td><td>~16,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC near $87K on a 2012-style streak; BCH and ZEC rotation; BitMEX shuts; Coinbase USDC borrowing</td><td>Bullish</td><td>~37,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood stayed risk-on in tech and crypto but more defensive elsewhere. r/wallstreetbets chased the Nasdaq high, SanDisk and Micron buy signals and the AI memory boom. r/stocks turned cautious as financials fell on rising rates and analysts flagged six overvalued S&P names. r/investing stayed guarded on the OECD's faster-inflation warning, surging bond yields and 7% mortgages. r/SecurityAnalysis kept its guard up on SoftBank's ~10% AI bond and Bloomberg's data-center-debt warning. r/CryptoCurrency lit up as bitcoin neared $87K on a rare three-month streak. The swing factor is Thursday's Trump-Xi summit and Friday's core PCE.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: What "Crack Spreads" Are, and Why a Diesel Export Ban Could Backfire</h2>
+    <p>Two of the day's oil headlines rhymed in a way worth unpacking: Yahoo Finance reported crude holding near two-week lows even as diesel cracks hit a record peak, and MarketWatch reported analysts warning that a US diesel export ban could backfire, cutting supply and pushing prices higher rather than lower. Both point to a concept that explains why the oil story has shifted from crude to fuel: the crack spread. Start with what a refinery actually does. It buys crude oil and, through distillation and processing, "cracks" it into finished products, gasoline, diesel, jet fuel and heating oil. The crack spread is the difference between the price of those finished products and the price of the crude used to make them. It is, in effect, a refiner's gross profit margin, and it is quoted as a per-barrel dollar figure. When product prices rise faster than crude, the crack spread widens, and refiners earn more per barrel processed. When a specific product like diesel gets scarce, its own crack, the diesel crack, can blow out even while crude is falling, which is exactly what is happening now. Why does that matter? Because the crude price and the fuel price are not the same thing, and they can move in opposite directions. Crude has been sliding on US-Iran diplomacy and Saudi supply. But diesel is set by refining capacity and inventories, not just crude, and the Iran and Ukraine wars have damaged refineries and disrupted product flows. So even as a barrel of crude gets cheaper, a gallon of diesel can get more expensive, because there is not enough refining capacity to turn that cheaper crude into diesel fast enough. The record diesel crack is the market screaming that the bottleneck is now at the refinery, not the wellhead. Now the export-ban logic. On the surface, banning US diesel exports sounds like it should lower domestic prices by keeping more supply at home. But refiners run their plants based on total demand, domestic plus export. If you suddenly wall off the export market, refiners on the Gulf Coast, who ship a lot abroad, have less incentive to run at full tilt, because they cannot sell all their output at the best price. Some cut runs. Lower refinery utilization means less diesel produced overall, and it also snarls the logistics that move fuel from the Gulf to other regions. The result, analysts warn, can be tighter supply and higher prices, the opposite of the intent, plus a spike in global diesel prices as the world loses a major exporter. This is the classic unintended consequence of interfering with a tightly optimized supply chain. The practical lesson for a market reader is to watch the crack spread, not just the crude price, when a supply shock hits. Crude tells you about the raw input; the crack tells you where the real scarcity, and the real profit, sits. Right now the message is that the crunch has migrated downstream into refined products, which is why airlines, truckers and anyone exposed to fuel costs should care more about the diesel crack than the Brent screen.</p>
+    <p class="deal-source"><a href="https://www.marketwatch.com/story/why-analysts-say-a-diesel-export-ban-could-backfire-8b13cd51?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why Analysts Say a Diesel Export Ban Could Backfire</a></p>
+    <p class="deal-source"><a href="https://finance.yahoo.com/news/oil-falls-increased-gulf-supply-014402051.html" target="_blank" rel="noopener noreferrer">Source: Yahoo Finance -- Oil Holds Near Two-Week Lows While Diesel Cracks Hit Record Peak</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Core PCE inflation, Friday.</strong> With the OECD warning of faster global inflation and the Fed just having hiked, the Fed's preferred gauge is the key test of whether the oil-led relief in yields holds or the higher-for-longer read wins out.</li>
+      <li><strong>SNB, Norges Bank and South Africa decisions, this week.</strong> Norway is a near-coin-flip on a second hike, the SNB is gauging a weaker franc, and the SARB is seen hiking to defend its 3% target; a cluster read on the energy-inflation regime.</li>
+      <li><strong>Global PMIs and bond-yield watch.</strong> After euro-zone activity hit a three-year high and the OECD sounded the alarm on surging yields, watch long-end sovereign yields and debt-interest headlines for signs of fiscal strain.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>McDonald's investor day.</strong> The plan comes as its US business struggles; watch the turnaround pitch for a read on the pinched consumer.</li>
+      <li><strong>Chip and AI-memory reads.</strong> After SanDisk and Micron flashed buy signals and the AI memory trade ran hard, watch semiconductor guidance for confirmation the buildout demand is holding.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>SoftBank's junk bond prices.</strong> With record ~10% yields on one of the largest high-yield deals ever, watch final size and spreads as a live gauge of appetite for AI-linked leverage.</li>
+      <li><strong>IPO pipeline test.</strong> With Airtel Money targeting a $9bn London listing and Firmus seeking $10bn, watch pricing and demand as a read on the reopening window for AI infrastructure and fintech.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Trump-Xi summit, Thursday.</strong> AI, trade and Taiwan dominate, with both sides agreeing not to slow the AI race; watch for any concessions on chips and export controls.</li>
+      <li><strong>US-Iran talks and the diesel crunch.</strong> With the first talks since June underway but Trump threatening annihilation, watch whether the diplomacy holds and whether a US diesel export ban materializes as cracks hit records.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Sep 23, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-09-23 07:44 ET); Bloomberg Technology (20 fresh, newest 2026-09-23 07:27 ET); Bloomberg Economics (20 fresh, newest 2026-09-23 07:03 ET); CNBC Top News (6 fresh, newest 2026-09-22 19:00 ET); CNBC Finance (5 fresh, newest 2026-09-23 05:13 ET); MarketWatch Top Stories (10 fresh, newest 2026-09-23 07:40 ET); WSJ Markets (17 fresh, newest 2026-09-23 07:58 ET); Yahoo Finance (25 fresh, newest 2026-09-23 07:54 ET); FT Home (9 fresh, newest 2026-09-23 06:33 ET); Matt Levine Money Stuff (1 fresh, newest 2026-09-22 14:29 ET); CoinDesk (25 fresh, newest 2026-09-23 07:29 ET); Stratechery (2 fresh, newest 2026-09-23 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): CNBC Economy (25 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove oil's move as it held below $100?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC members agreed a surprise output cut to defend prices</span>
+      <span class="opt" data-opt="B">B. China released strategic reserves to ease the supply crunch</span>
+      <span class="opt" data-opt="C">C. US-Iran talks resumed and Saudi Arabia restarted a pipeline</span>
+      <span class="opt" data-opt="D">D. A Gulf hurricane shut in offshore crude production</span>
+      <div class="feedback"><strong>C is correct.</strong> FT reported the first US-Iran talks since June and Bloomberg said Saudi Arabia moved to restart a key pipeline, keeping Brent below $100 even as crude ended its losing streak. It wasn't an OPEC cut, a reserve release or a hurricane.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did the OECD warn on Wednesday?</strong></p>
+      <span class="opt" data-opt="A">A. Inflation will run faster in 2027, needing more rate hikes</span>
+      <span class="opt" data-opt="B">B. A global recession is imminent, requiring rate cuts</span>
+      <span class="opt" data-opt="C">C. Deflation is now the main risk to developed economies</span>
+      <span class="opt" data-opt="D">D. Central banks have already tightened far too much</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported the OECD sees inflation running faster than forecast in 2027 and expects hikes at the Fed, ECB and BOJ, with Scarpetta urging vigilance. It was not a recession, deflation or over-tightening warning.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What was notable about SoftBank's junk-bond deal?</strong></p>
+      <span class="opt" data-opt="A">A. Underwriters pulled it after weak demand forced a cut</span>
+      <span class="opt" data-opt="B">B. Regulators blocked the sale over AI leverage concerns</span>
+      <span class="opt" data-opt="C">C. SoftBank canceled it and used cash reserves instead</span>
+      <span class="opt" data-opt="D">D. It offers record yields near 10% to help fund AI</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg reported SoftBank kicked off one of the largest corporate junk-bond sales ever, offering record yields of nearly 10% to fund its AI investments. The deal wasn't pulled, blocked or canceled.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The OECD warned of faster global inflation and rate hikes at the Fed, ECB and BOJ as bond yields surge and US mortgage rates top 7%, with Scarpetta urging vigilance, even as euro-zone business activity hit a three-year high, South Africa's CPI rose less than expected and the OECD said the BOE needn't hike.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-23/oecd-warns-of-faster-global-inflation-sees-rate-hikes-at-fed-ecb-boj", "take": "The OECD sees faster 2027 inflation and hikes at the Fed, ECB and BOJ." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/6c13ada9-f325-428b-b91e-bffcf92eddad?syn-25a6b1a6=1", "take": "The OECD sounds the alarm on surging government bond yields." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-23/us-mortgage-rates-surge-above-7-to-a-more-than-two-year-high", "take": "US mortgage rates surged above 7% to a two-year high." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-23/euro-zone-business-activity-hits-three-year-high-on-services", "take": "Euro-zone business activity hit a three-year high on services." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-23/south-african-inflation-picks-up-slightly-ahead-of-rate-decision", "take": "South Africa's CPI rose less than expected before the rate call." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil ended its longest losing streak of the year but held below $100 as the US and Iran held their first talks since June and Saudi Arabia restarted a pipeline, even as Trump threatened Iran's annihilation, diesel cracks hit a record and a possible US export ban loomed.",
+    "sources": [
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/1434496d-0eaf-4270-8ad3-87724cd3721e?syn-25a6b1a6=1", "take": "The US and Iran held their first talks since June on the UN sidelines." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-22/latest-oil-market-news-and-analysis-for-sept-23", "take": "Saudi Arabia moved to restart a key pipeline as the US flagged progress." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-22/stock-market-today-dow-s-p-live-updates", "take": "Stocks and bonds slipped as crude ended its longest losing streak this year." },
+      { "name": "Yahoo Finance", "lean": "bear", "url": "https://finance.yahoo.com/news/oil-falls-increased-gulf-supply-014402051.html", "take": "Oil held near two-week lows while diesel cracks hit a record peak." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/why-analysts-say-a-diesel-export-ban-could-backfire-8b13cd51?mod=mw_rss_topstories", "take": "Analysts warn a US diesel export ban could backfire and lift prices." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade broadened as SoftBank priced a record ~10% junk bond and Meta's Muse upended the consumer-inertia trade, with BNY Mellon's Brock Campbell saying the infrastructure play isn't over, even as Bloomberg warned data-center debt carries new risks, analysts snapped earnings upgrades and Nuveen's Laura Cooper saw limited upside.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-23/softbank-starts-jumbo-high-yield-bond-sale-to-finance-ai-push", "take": "SoftBank offers record ~10% yields on one of the largest junk bonds ever." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/the-ai-infrastructure-trade-is-still-not-over-says-this-top-performing-fund-manager-where-hes-investing-8c61f6da?mod=mw_rss_topstories", "take": "BNY Mellon's Brock Campbell says the AI-infrastructure trade is far from over." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-09-23/meta-muse-ai-personal-assistant-gets-off-to-fast-start", "take": "Meta's Muse assistant got off to a fast start with users and markets." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-09-23/ai-data-center-debt-offers-investors-huge-yields-and-new-risks", "take": "AI data-center debt offers huge yields precisely because of new risks." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-23/analysts-snap-longest-run-of-us-earnings-upgrades-in-five-years", "take": "Analysts snapped the longest run of US earnings upgrades in five years." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["SanDisk","Micron","CoreWeave","Meta","Nvidia","Bank Index"],
+    "values": [6.0, 5.0, 4.0, 2.0, -1.0, -2.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [40000, 26000, 29000, 16000, 37000],
+    "colors": ["bull","neutral","neutral","neutral","bull"]
+  },
+  "dealSizes": {
+    "labels": ["SoftBank Junk Bond","Firmus AI Financing","Airtel Money IPO","Royal Caribbean-Sandals","Ayala-Mitsubishi"],
+    "values": [15.0, 10.0, 9.0, 3.0, 0.76]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
