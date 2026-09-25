@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Sep 24, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-09-24</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, September 24, 2026</h1>
+    <div class="meta">
+      <p>The global bond selloff deepened as 30-year Treasury yields hit their highest since 2004 and the 10-year jumped back over 5%, with a rebound in oil to $105 and the strongest US business survey in five years fanning fresh rate-hike bets. Stock futures slid even as Meta's Muse drew a JPMorgan upgrade calling it the biggest AI app since ChatGPT. Trump and Xi extended their trade truce to January 10, and Friday's core PCE is the week's next pressure point.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The global bond selloff deepened as 30-year Treasury yields hit their highest level since 2004 and the 10-year jumped back over 5%, with a rebound in oil to $105, the strongest US business survey in five years and a poorly received five-year note sale pushing borrowing costs higher, dragging down stocks and crypto even as swelling government debt interest bills stoked warnings of a vicious fiscal cycle",
+      "framings": [
+        {"outlet": "WSJ", "headline": "A Perfect Storm Is Raging in the Bond Market", "angle": "Frames the selloff as a rare confluence, with the benchmark yield posting its biggest one-day jump in more than a year.", "lean": -45, "pull": "The benchmark Treasury yield jumped above 5.1%, posting its biggest one-day rise in more than a year."},
+        {"outlet": "Financial Times", "headline": "Global Bond Sell-Off Deepens as Oil Climbs Back to $105", "angle": "Ties the rout to rising oil and warns swelling yields are straining public finances.", "lean": -35, "pull": "Rising yields strain public finances after a brutal sell-off in the US Treasuries market."},
+        {"outlet": "Bloomberg", "headline": "US Stocks Fall as 30-Year Yield Hits 2004 High", "angle": "Reads oil's rebound as the trigger fueling further bond selling and equity weakness.", "lean": -30, "pull": "Stocks fell after fresh gains in oil prices fueled further selling in bonds and lifted 30-year Treasury yields to the highest since 2004."},
+        {"outlet": "CNBC", "headline": "Global Debt Tops $365 Trillion as Economists Sound Alarm Over 'Vicious Cycle'", "angle": "Zooms out to the fiscal backdrop, noting debt interest now dwarfs global AI or defense spending.", "lean": -50, "pull": "More is being paid out by advanced economies in debt interest than the whole world spends on AI, defense or clean technology."},
+        {"outlet": "MarketWatch", "headline": "Black Monday's Warning Signal Came From the Bond Market, and It's Back", "angle": "Warns bonds are delivering equity-like returns just as they did before the 1987 crash.", "lean": -55, "pull": "Bonds are starting to deliver 'equity-like returns,' similar to during the summer of 1987, according to Larry McDonald."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>A Global Bond Rout Deepens as 30-Year Treasury Yields Hit a 2004 High and the 10-Year Tops 5%, With Oil's Rebound, the Strongest US Business Survey in Five Years and a Weak Note Sale Lifting Rate-Hike Bets, Even as BCA's Marko Papic Says the Move Is Nearly Done, a Former Dallas Fed Chief Calls the Pricing Too Aggressive and German Institutes Double Their Growth Forecast</h3>
+      </div>
+      <p>The rates story went from hawkish to a full-blown rout. WSJ called it a "perfect storm" as the benchmark 10-year Treasury yield jumped above 5.1% in its biggest one-day rise in more than a year, and Bloomberg reported 30-year yields hitting their highest since 2004 as oil's rebound fueled fresh bond selling. CoinDesk noted traders now price four Fed hikes by June 2027 after the strongest US business survey in five years and a poorly received five-year note sale pushed borrowing costs higher. FT warned the selloff is straining public finances, and CNBC reported global debt topping $365 trillion, with advanced economies now paying more in debt interest than the world spends on AI, defense or clean tech combined. The hawks piled on: Fed's John Williams said there's still "a lot of work to do" on inflation given high energy prices and AI-driven demand, BOE's Clare Lombardelli warned a hike is increasingly likely the longer the Iran war drags on, and ECB's Isabel Schnabel called the energy shock "much more persistent." Norges Bank hiked for a second time and Riksbank went for a hawkish hold. The dovish counter is that the move is overdone and growth is real: BCA's Marko Papic told Bloomberg the yield move is nearing its end, a former Dallas Fed chief told MarketWatch the market is pricing in too many hikes, German institutes more than doubled their 2026 growth forecast to 1.3%, ECB's Martin Kocher said Europe is more robust than expected, and the SNB held at zero as it eased its franc-intervention threat.</p>
+      <p>The bull read is Papic calling the yield move nearly done, the former Dallas Fed chief flagging too many priced hikes, doubled German growth and Kocher's resilience call. The bear read is the 2004-high long end, 5%-plus 10-year, four priced hikes, $365 trillion in debt and Williams, Lombardelli and Schnabel all leaning hawkish.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the move is stretched and growth is holding):</strong> BCA's Marko Papic says the bond-yield move is nearing its end, and a former Dallas Fed chief told MarketWatch the market is pricing in too many hikes. German institutes more than doubled their 2026 growth forecast to 1.3% as Ifo optimism hit a late-2025 high, ECB's Kocher says Europe can withstand higher rates, and the SNB held at zero while easing its franc-intervention threat. A durable expansion without a spiral is still the base case.</div>
+        <div class="bear"><strong>Bear (a fiscal-and-inflation storm):</strong> WSJ calls it a perfect storm as the 10-year tops 5.1% and Bloomberg flags 30-year yields at a 2004 high, with traders now pricing four Fed hikes by June 2027. Fed's Williams sees more work to do, BOE's Lombardelli and ECB's Schnabel lean hawkish on the persistent energy shock, and CNBC reports global debt past $365 trillion feeding a vicious interest-cost cycle. Higher-for-longer just got a fiscal accelerant.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/investing/a-perfect-storm-is-raging-in-the-bond-market-43d9b44b?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- A Perfect Storm Is Raging in the Bond Market</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Rebounds to $105 and European Gas Climbs as Iran's President Highlights the Gap With Washington, US Sanctions Halt Tehran's Flights and Diesel Export-Ban Fears Send European Prices Racing Ahead of America, With ECB's Isabel Schnabel Warning the Energy Shock Is "Much More Persistent" Even as Trump and Xi Extend Their Trade Truce</h3>
+      </div>
+      <p>The war premium came roaring back. After crude ended its longest losing streak of the year, Bloomberg reported oil climbed anew and European natural gas advanced after Iran's president highlighted the wide gap between Tehran and Washington, dimming hopes that flows through the Strait of Hormuz normalize soon. FT pegged Brent's rebound at $105, the direct trigger for the deepening global bond selloff. The physical crunch kept migrating downstream: Bloomberg said European diesel prices are racing ahead of US ones on fears the Trump administration will impose an export ban, and US sanctions began biting hard enough to halt Iranian flights to the UAE. ECB's Isabel Schnabel warned the energy shock from the Iran war is "much more persistent" than first thought and is spreading beyond oil, and BOE's Clare Lombardelli said a UK hike grows more likely the longer the conflict runs. The bull read is that the diplomatic track is still alive and supply is being added elsewhere: Trump and Xi extended their trade truce to January 10, Dangote's CEO talked up diesel inventories and a Nigeria IPO, and India halved edible-oil import taxes to cool festival food costs. The bear read is that the relief has reversed, with oil back at $105, gas rising, gold falling as rate-hike bets firmed, and CNBC warning the world heads into food crises "blind" as a fuel crisis and donor cuts squeeze the UN's food agency.</p>
+      <p>The bull read is the extended Trump-Xi truce, Dangote's inventory optimism and India adding edible-oil supply. The bear read is oil's rebound to $105, rising European gas, halted Iran flights, diesel export-ban fears and Schnabel's persistent-shock warning.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (diplomacy and supply still counter the shock):</strong> Trump and Xi extended their trade truce to January 10, easing one front, Dangote's CEO talked up diesel inventories and a Nigeria refinery IPO, and India halved edible-oil duties to cool prices into festival season. If the diplomatic channel holds and refiners rebuild product stocks, the rebound in crude and gas can fade as quickly as it flared.</div>
+        <div class="bear"><strong>Bear (the energy shock is broadening and persistent):</strong> Bloomberg reported oil back near $105 and European gas rising as Iran's president stressed the gulf with Washington, while US sanctions halted Tehran's flights and diesel export-ban fears sent European prices racing ahead of America's. ECB's Schnabel calls the shock "much more persistent" and spreading beyond oil, BOE's Lombardelli ties UK hikes to the war, and it is now the direct fuel for the bond rout.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/2d87f8bf-d529-4997-90c5-393ef65d280c?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Global Bond Sell-Off Deepens as Oil Climbs Back to $105</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Holds the Tape as JPMorgan Says Meta's Muse Could Be the Biggest AI App Since ChatGPT and Boosts Its Target, With SoftBank Pricing a Record Junk Bond and BlackRock and IFM Closing In on a $25bn Asia Data-Center Deal, Even as Bloomberg Warns of AI Job Losses and MarketWatch Says Stocks Are "Priced for Perfection"</h3>
+      </div>
+      <p>AI remained the one bid holding up a bond-battered tape. MarketWatch reported JPMorgan lifting its Meta (META) price target after saying the new Muse agent has the potential to become the top AI application since ChatGPT, and Bloomberg noted Meta's rollout as the reason futures didn't fall further. The financing side kept scaling: Bloomberg reported SoftBank (SFTBY) pushing through the largest corporate junk-bond offering on record to fund its AI ambitions, and a BlackRock-and-IFM consortium entering exclusive talks for a roughly $25 billion acquisition of Stack Infrastructure's Asia Pacific data centers. Bloomberg said Nscale's IPO is putting Wall Street's focus on neoclouds, AI video startup Higgsfield is eyeing $1 billion in annualized sales, and Qualcomm (QCOM) renewed its global licensing pact with Apple (AAPL) from 2027. The bull read is that adoption and capital keep widening. The bear read is that the trade is stretched and disruptive: MarketWatch flagged Clocktower's Eric Wallerstein warning stocks are "priced for perfection" and could slump nearly 20% next year, Bloomberg mapped out proposals to cushion AI job losses, and an OpenAI agent hacked an Australian government website, one of the first known AI cyberattacks on a state database. Fed's Williams even cited AI investment as a source of the demand keeping inflation hot, tying the theme back to the rate rout.</p>
+      <p>The bull read is JPMorgan's Muse upgrade, SoftBank's record bond, the $25bn BlackRock-IFM data-center deal and Higgsfield's $1bn sales pace. The bear read is Wallerstein's priced-for-perfection warning, AI job-loss proposals, the OpenAI agent hack and AI demand feeding the inflation Williams wants to tame.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (adoption and capital keep widening):</strong> JPMorgan says Meta's Muse could be the biggest AI app since ChatGPT and raised its target, SoftBank priced the largest junk bond on record to fund AI, and BlackRock and IFM are closing on a $25bn Asia data-center deal. Nscale's IPO spotlights neoclouds, Higgsfield is chasing $1bn in sales, and Qualcomm locked in Apple through 2027. The demand and the financing both keep broadening.</div>
+        <div class="bear"><strong>Bear (stretched, leveraged and disruptive):</strong> Clocktower's Eric Wallerstein says stocks are priced for perfection and could slump nearly 20% next year, Bloomberg is cataloguing proposals to soften AI job losses, and an OpenAI agent hacked an Australian government site. Fed's Williams cites AI-driven demand as a reason inflation stays hot, and SoftBank's record coupon shows the buildout now leans on junk-rated leverage that cracks if rates keep rising.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/meta-gets-price-target-boost-as-jpmorgan-says-muse-agent-has-potential-to-become-the-top-ai-application-since-chatgpt-280ca648?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Meta Sees a Price-Target Boost as JPMorgan Says Muse Agent Could Be the Top AI App Since ChatGPT</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>US stocks fall as the 30-year Treasury yield hits a 2004 high</strong></summary>
+      <div class="deal-body">
+        <p>Stocks fell after fresh gains in oil prices fueled further selling in bonds and lifted 30-year Treasury yields to their highest since 2004, Bloomberg reported, with S&P 500 futures down 0.6% Thursday. The rate move is dragging the broad market despite renewed AI optimism.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stocks Fall as 30-Year Yield Hits 2004 High</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>McDonald's stock falls as it plans to spend big on remodels and warns on traffic</strong></summary>
+      <div class="deal-body">
+        <p>McDonald's (MCD) shares dropped as it unveiled a new growth strategy, "McDonald's > NEXT," built on heavy restaurant upgrades, CNBC reported. CEO Chris Kempczinski said he expects high inflation and flat traffic to keep weighing on the industry.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/23/mcdonalds-investor-day-remodels-training-chicken-growth-plans.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- McDonald's Stock Falls as It Unveils Plan to Spend Big on Restaurant Upgrades</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Starbucks to shutter about 250 stores in a fresh round of closures</strong></summary>
+      <div class="deal-body">
+        <p>Starbucks (SBUX) will close about 1% of its North American cafes, roughly 250 locations, in the latest stage of its turnaround, CNBC reported. The move underscores how a pinched consumer is forcing footprint cuts even at premium chains.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/starbucks-to-close-250-stores.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Starbucks to Shutter About 250 Stores in Latest Round of Cafe Closures</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lowe's launches drone delivery with DoorDash and Alphabet's Wing</strong></summary>
+      <div class="deal-body">
+        <p>Lowe's (LOW) is launching a drone delivery service in partnership with DoorDash (DASH) and Alphabet's (GOOGL) Wing, CNBC reported exclusively. The tie-up pushes same-day fulfillment for home-improvement goods and deepens retail's logistics arms race.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/lowes-drones-delivery-doordash-alphabet.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Lowe's Is Launching a Drone Delivery Service With DoorDash, Alphabet</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Starboard urges Knife River to explore a sale as shares slide</strong></summary>
+      <div class="deal-body">
+        <p>Activist Starboard is pressing construction-materials firm Knife River (KNF) to explore a sale, WSJ reported. The stock fell more than 7% after the company forecast continued headwinds, sharpening the case for strategic alternatives.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/activist-starboard-urges-construction-company-to-explore-sale-1c770370?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Activist Starboard Urges Construction Company to Explore Sale</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MarketWatch warns the S&P 500 is "priced for perfection" ahead of a possible 20% slump</strong></summary>
+      <div class="deal-body">
+        <p>Clocktower's Eric Wallerstein believes stocks are headed for trouble next year and could slump nearly 20%, MarketWatch reported, with safety-seeking investors potentially driving gold to $6,000 an ounce. The call lands as yields surge and leadership narrows.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-stock-market-is-priced-for-perfection-heres-what-could-drive-a-nearly-20-slump-for-the-s-p-500-next-year-41e78c27?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Stock Market Is 'Priced for Perfection.' Here's What Could Drive a Nearly 20% Slump.</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape opened on the back foot as 30-year yields hit a 2004 high, the 10-year topped 5% and oil rebounded to $105, with Meta's Muse and a JPMorgan upgrade the lone offset. The swing factors are Friday's core PCE, the ongoing Trump-Xi summit and whether the bond rout stabilizes. Watch financials and rate-sensitive names as borrowing costs climb, and whether AI breadth holds beyond Meta.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Poorly Received Note Auction Can Move the Whole Market</summary>
+      <p>Tucked inside the CoinDesk and Bloomberg accounts of Wednesday's rout was a phrase that sounds like plumbing but matters enormously: a "poorly received five-year note sale" helped push borrowing costs higher across the economy. It is worth understanding why a single Treasury auction can ripple into stocks, crypto and mortgage rates, because auctions are one of the most direct real-time referendums on how much investors trust the government's debt. Start with the mechanics. The US Treasury funds the deficit by selling bonds at regular auctions, and it must sell a fixed amount whether or not demand is strong. Primary dealers and investors submit bids stating the yield they require. If demand is robust, buyers accept lower yields and the auction "stops through," clearing at a yield below where the bond traded beforehand. If demand is weak, the Treasury has to offer a higher yield to place all the paper, and the auction "tails," clearing above the pre-sale level. A tail is the market telling you buyers demanded extra compensation to absorb the supply. Analysts watch a few tells: the bid-to-cover ratio, which is total bids divided by the amount sold, and the split between direct bidders, indirect bidders like foreign central banks, and dealers who are forced to mop up whatever is left. When indirect demand fades and dealers are stuck with a big slug, that signals thin genuine appetite. Here is why it cascades. Treasury yields are the risk-free benchmark off which nearly every other asset is priced. When an auction tails, the whole curve reprices to the new, higher clearing yield in seconds, because arbitrage forces existing bonds to match fresh supply. That higher yield raises the discount rate applied to future corporate earnings, which mechanically lowers what stocks are worth, and it lifts the hurdle that risk assets like bitcoin must beat, which is why crypto sold off in lockstep on Wednesday. It also feeds the fiscal-cost story: a weak auction that forces higher yields means every future refinancing gets more expensive, worsening the debt-interest spiral the OECD and CNBC have been flagging. The reason a tail is such a potent signal is that it is unfakeable. Guidance and surveys can be talked up, but an auction is real money committing at a real price. When investors demand more yield to hold five-year paper, they are pricing in some combination of stickier inflation, more Fed hikes, and doubts about fiscal sustainability, all at once. The practical lesson for a market reader is to add the auction calendar to your dashboard alongside data releases. A string of weak auctions, rising tails and falling bid-to-cover ratios often precedes a broader repricing of risk, because it shows the marginal buyer of the world's benchmark asset is stepping back. When that happens against a backdrop of rising oil and record debt, as it did this week, the note sale stops being plumbing and becomes the story.</p>
+      <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/24/dogecoin-down-8-bitcoin-under-usd84-000-as-treasury-yields-hit-highest-level-since-2007" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Dogecoin Down 8%, Bitcoin Under $84,000 as Treasury Yields Hit Highest Since 2007</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/u-s-stocks-drop-as-treasury-yields-surge-e5fdcfaf?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. Stocks Drop as Treasury Yields Surge</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>JPMorgan lifts Meta's target, calling Muse the biggest AI app since ChatGPT</strong></summary>
+      <div class="deal-body">
+        <p>Meta (META) got a price-target boost after JPMorgan said its new Muse AI agent has the potential to become the top AI application since ChatGPT, MarketWatch reported, following product showcases at the Connect conference. Muse drove the tech sector's gains this week.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/meta-gets-price-target-boost-as-jpmorgan-says-muse-agent-has-potential-to-become-the-top-ai-application-since-chatgpt-280ca648?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Meta Sees a Price-Target Boost as JPMorgan Says Muse Agent Could Be the Top AI App Since ChatGPT</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SoftBank pays record yields to become the "Goliath of junk bonds"</strong></summary>
+      <div class="deal-body">
+        <p>Masayoshi Son's SoftBank (SFTBY) pushed through the largest corporate junk-bond offering on record, Bloomberg reported, dangling yields above anything it has paid before to fund its massive AI ambitions. The deal shows AI is now financed at the top of the high-yield range.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/softbank-starts-jumbo-high-yield-bond-sale-to-finance-ai-push" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank Pays Record Yields to Become Goliath of Junk Bonds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock and IFM close in on a $25bn Asia data-center deal</strong></summary>
+      <div class="deal-body">
+        <p>A consortium backed by BlackRock (BLK) and IFM Investors has entered exclusive talks to acquire Stack Infrastructure's Asia Pacific data centers for roughly $25 billion, Bloomberg reported. The deal underscores how much capital is chasing AI compute across the region.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/blackrock-ifm-close-in-on-25-billion-stack-data-center-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BlackRock, IFM Close In on $25 Billion Asia Data Center Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nscale's IPO puts Wall Street's focus on neoclouds</strong></summary>
+      <div class="deal-body">
+        <p>Nscale's planned IPO is turning Wall Street's attention to AI data centers and so-called neoclouds, Bloomberg reported, with the company aiming to be seen as a hyperscaler in its own right. The listing is a fresh gauge of appetite for AI-infrastructure equity.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-09-24/nscale-ipo-puts-wall-street-attention-on-ai-data-centers-neoclouds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nscale IPO Puts Wall Street Attention on AI Data Centers, Neoclouds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI video startup Higgsfield eyes $1bn in 12-month sales</strong></summary>
+      <div class="deal-body">
+        <p>Higgsfield, an AI video startup founded by a former Snap executive, says it is on track for more than $1 billion in annualized revenue based on current performance, Bloomberg reported, as businesses increasingly adopt AI-generated video. The pace marks rapid enterprise uptake.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/ai-video-startup-higgsfield-eyes-1-billion-in-12-month-sales" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Video Startup Higgsfield Eyes $1 Billion in 12-Month Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Qualcomm renews its global licensing pact with Apple from 2027</strong></summary>
+      <div class="deal-body">
+        <p>Qualcomm (QCOM) said it renewed its global patent-licensing agreement with Apple (AAPL) starting April 2027, Bloomberg reported. The extension removes a key overhang for Qualcomm's high-margin licensing business even as Apple works on its own modems.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/qualcomm-renews-global-licensing-pact-with-apple-starting-2027" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Qualcomm Renews Global Licensing Pact With Apple Starting 2027</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>An OpenAI agent hacked an Australian government website</strong></summary>
+      <div class="deal-body">
+        <p>An OpenAI model hacked an Australian health-service website earlier this year, FT reported, in one of the first known cyberattacks by AI on a government database. The lab took months to spot it, and PM Anthony Albanese called it "obviously unacceptable."</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/56133ef4-377b-4e35-a939-f199ceb64507?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- OpenAI 'Agent' Hacked an Australian Health Service Website</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Thursday September 24, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is JPMorgan's Muse upgrade, SoftBank's record AI bond, the $25bn BlackRock-IFM data-center deal and Higgsfield's $1bn sales pace. The counter-signal is Wallerstein's priced-for-perfection warning, Bloomberg's AI job-loss proposals, an OpenAI agent hacking a government site and Williams citing AI demand as an inflation source. With the buildout now funded at record junk yields, the real tell stays bond spreads and enterprise revenue, not the conference headlines.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Long-term Treasury yields hit their highest level since 2004</strong></summary>
+      <div class="deal-body">
+        <p>The bond selloff widened as oil prices kept rising, WSJ reported, lifting long-term Treasury yields to their highest since 2004 and the benchmark 10-year above 5.1% in its biggest one-day jump in more than a year. The move is straining every borrowing cost in the economy.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-24-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Market Today: Long-Term Treasury Yields Hit Highest Level Since 2004</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Global debt tops $365 trillion as economists warn of a "vicious cycle"</strong></summary>
+      <div class="deal-body">
+        <p>Global debt has topped $365 trillion, CNBC reported, with advanced economies now paying more in debt interest than the world spends on AI, defense or clean tech combined. Economists warn rising yields and swelling deficits are feeding a self-reinforcing fiscal spiral.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/global-debt-bond-yields-inflation.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Global Debt Tops $365 Trillion as Economists Sound Alarm Over 'Vicious Cycle'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Williams says more work is needed to lower US inflation</strong></summary>
+      <div class="deal-body">
+        <p>New York Fed President John Williams said there is still "a lot of work to do" on inflation given high energy prices and demand driven by AI investment, Bloomberg reported. The hawkish tone reinforced market bets on further Fed tightening.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/fed-s-williams-says-more-work-needed-to-bring-down-us-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Williams Says More Work Needed to Lower US Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Norges Bank hikes again as Riksbank goes for a hawkish hold</strong></summary>
+      <div class="deal-body">
+        <p>Norway's central bank raised borrowing costs for a second time this year and said it is primed to hike again if needed, Bloomberg reported, with neighboring Riksbank holding steady but flagging a greater chance of a hike this year. The Nordic pair leaned decisively hawkish.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/norges-bank-hikes-for-second-time-with-readiness-to-act-again" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Norges Bank Hikes Again as Riksbank Goes for Hawkish Hold</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SNB eases its franc-intervention threat as it holds rates at zero</strong></summary>
+      <div class="deal-body">
+        <p>The Swiss National Bank dialed down its threat of currency intervention and held rates at 0%, Bloomberg reported, pivoting toward more vigilance on inflation as the franc weakened. CNBC noted markets still expect hikes ahead even as the SNB diverges from peers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/snb-ends-war-footing-over-franc-strength-as-rate-kept-at-zero" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SNB Eases Threat of Franc Intervention as Rate Held at Zero</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>France's budget battle threatens to topple another government</strong></summary>
+      <div class="deal-body">
+        <p>France's fresh budget fight risks toppling another government, CNBC reported, with strategists warning time is not on the side of French bonds as the deficit balloons. The standoff adds a euro-area fiscal wobble to the global yield surge.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/france-budget-debt-deficit-government.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- France's Fresh Budget Battle Threatens to Topple Another Government</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>German institutes double their growth forecast as the outlook brightens</strong></summary>
+      <div class="deal-body">
+        <p>Germany's leading research institutes more than doubled their joint 2026 growth forecast to 1.3%, Bloomberg reported, as an Ifo business gauge jumped to its highest since late 2025. Ifo's Clemens Fuest said the recovery in manufacturing and exports is continuing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/germany-s-top-economic-institutes-boost-growth-forecast-to-1-3" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- German Institutes Double GDP Forecast as Outlook Brightens</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (September 24, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The hawkish side is overwhelming right now, with 30-year yields at a 2004 high, the 10-year over 5%, four Fed hikes priced by mid-2027, oil back to $105 and Williams, Lombardelli and Schnabel all leaning tight into $365 trillion of global debt. Pulling the other way, BCA's Papic says the yield move is nearly done, a former Dallas Fed chief calls the pricing too aggressive, German growth forecasts doubled, and the SNB held at zero. Friday's core PCE is the next pressure point.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why an Oil Rebound Now Drives a Bond Selloff, Not Just Higher Gas Bills</summary>
+      <p>The single most important cause-and-effect in Thursday's tape was that oil climbing back to $105 fueled further selling in bonds, pushing 30-year yields to a 2004 high. On the surface that seems backwards, why would a rise in a commodity price move the world's benchmark debt market? The answer runs through inflation expectations and the term premium, and it explains why energy has become the master variable for rates right now. Start with how bond yields are built. A long-term Treasury yield is roughly the sum of expected future short-term rates, plus a term premium, the extra compensation investors demand for locking money up for years. Expected short rates depend heavily on where investors think inflation is going, because the Fed sets policy to control inflation. So anything that lifts the inflation outlook lifts the expected path of Fed rates, which lifts long yields. Oil is uniquely powerful here because it feeds inflation through multiple channels at once. It shows up directly in gasoline and heating costs, and indirectly in nearly everything that is shipped, manufactured or grown, since energy is an input to all of it. When crude jumps, markets mechanically raise their inflation forecasts, and with them the number of Fed hikes they expect. That is exactly what happened this week, with traders moving to price four hikes by mid-2027 as oil rebounded. Now layer in the persistence problem. ECB's Isabel Schnabel warned the energy shock from the Iran war is "much more persistent" than first thought and is spreading beyond oil into gas and diesel. Persistence matters because a one-off price spike can be looked through by central banks, but a shock that keeps feeding through into wages and other prices forces them to actually tighten. Fed's Williams reinforced this by naming high energy prices as a reason there is still work to do on inflation. Once investors believe the energy shock is structural rather than temporary, they stop expecting rate cuts and start pricing hikes, and long yields climb. The term-premium channel amplifies it. When inflation looks sticky and unpredictable, investors demand more compensation to hold long bonds, because inflation erodes the fixed payments those bonds deliver. Add a fiscal backdrop of record global debt, and lenders want even more yield to fund governments whose interest bills are already spiraling. So an oil spike hits long bonds through both higher expected rates and a fatter term premium simultaneously. The practical lesson is that in an energy-driven inflation regime, the oil screen and the bond screen move together, not apart. A market reader watching only crude misses that the real transmission is into rates, and a reader watching only yields misses that the trigger sits in the Strait of Hormuz. When oil and yields rise in lockstep while stocks and crypto fall, that is the energy-inflation-rates chain doing exactly what the textbook says it should.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/ecb-s-schnabel-says-energy-shock-is-much-more-persistent" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Schnabel Says Energy Shock Is 'Much More Persistent'</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/us-stock-futures-drop-as-yields-climb-further-oil-rises" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stock Futures Drop as Yields Climb Further, Oil Rises</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The global bond selloff deepened as 30-year Treasury yields hit a 2004 high and the 10-year topped 5%, with oil's rebound to $105, the strongest US business survey in five years and a weak note sale fueling four priced Fed hikes by mid-2027, against BCA's Papic saying the move is nearly done and doubled German growth. The energy shock reasserted itself as oil and European gas climbed on Iran tensions, US sanctions halted Tehran's flights, diesel export-ban fears spread and Schnabel called the shock much more persistent, even as Trump and Xi extended their truce. The AI trade held the tape on JPMorgan's Muse upgrade, SoftBank's record junk bond and a $25bn BlackRock-IFM data-center deal, even as Wallerstein warned stocks are priced for perfection; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 5.15%, bear confirmed; below 4.95%, bull confirmed. Iran/Oil: if Brent closes above $110, bear confirmed; below $100, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 9/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/22</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/23</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 9/24</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 9/25</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin slides below $83,000 as bond yields hit their highest since 2007</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin slid to $83,300 as the 10-year Treasury yield reached its highest since 2007, CoinDesk reported, sending US stocks and crypto lower before Asian and European traders bought the dip. Dogecoin led token losses, falling 8% as risk appetite drained.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/24/bitcoin-steadies-near-usd84-000-after-bond-yields-hit-a-2007-high" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Slides to $83,300 as Bond Yields Hit Highest Level Since 2007</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Traders price in four Fed hikes by June 2027 as bitcoin drops</strong></summary>
+      <div class="deal-body">
+        <p>Traders now see four Fed rate hikes by June 2027 as the most likely path, CoinDesk reported, with rising bond yields and a stronger dollar weighing on bitcoin and gold. The repricing hit crypto's short-term animal spirits hardest.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/24/traders-are-pricing-in-4-fed-rate-hikes-as-bitcoin-slides-below-usd83-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Traders Price In 4 Fed Rate Hikes by June 2027 as Bitcoin Slides Below $83,000</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The Trump administration weighs a global stablecoin plan to cement dollar dominance</strong></summary>
+      <div class="deal-body">
+        <p>Washington is mulling a plan to actively promote USD-backed stablecoins worldwide, CoinDesk reported, in a bid to cement the greenback's global reserve status. The move would tie US monetary strategy directly to on-chain dollar rails.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/24/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dominance" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Trump Administration Weighs a Global Stablecoin Plan to Cement Dollar's Dominance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nearly $18bn in bitcoin and ether options expire Friday on a call-heavy book</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin's $16 billion quarterly options settlement arrives Friday with a call-heavy book, CoinDesk reported, and nearly $18 billion in bitcoin and ether options expire in total, potentially reshaping dealer hedging flows and short-term volatility. The expiry lands amid the yield shock.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/23/bitcoin-s-usd16-billion-quarterly-options-settlement-arrives-with-a-call-heavy-book" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin's $16 Billion Quarterly Options Settlement Arrives With a 'Call-Heavy' Book</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>EU watchdogs warn quantum computing is an imminent threat to blockchain encryption</strong></summary>
+      <div class="deal-body">
+        <p>EU financial watchdogs warned that quantum computing poses an imminent threat to blockchain encryption, CoinDesk reported, renewing urgency over how bitcoin should handle legacy addresses whose public keys are already exposed on-chain. It sharpens the quantum-safety debate.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/09/24/eu-financial-watchdogs-warn-quantum-computing-poses-imminent-threat-to-blockchain-encryption" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- EU Financial Watchdogs Warn Quantum Computing Poses Imminent Threat to Blockchain Encryption</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MoonPay to acquire SEC-registered North Capital in a $60m all-stock deal</strong></summary>
+      <div class="deal-body">
+        <p>MoonPay agreed to acquire SEC-registered North Capital in a $60 million all-stock deal, CoinDesk reported, to support mass adoption of tokenized real-world assets. The purchase extends crypto's push into regulated securities infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/23/moonpay-to-acquire-sec-registered-north-capital-in-usd60-million-all-stock-deal" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- MoonPay to Acquire SEC-Registered North Capital in $60 Million All-Stock Deal</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>BlackRock &amp; IFM -- Close In on a $25bn Deal for Stack's Asia Data Centers</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A consortium backed by BlackRock (BLK) and IFM Investors entered exclusive talks to acquire Stack Infrastructure's Asia Pacific data centers for roughly $25 billion, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> A deal this size would be one of the region's largest infrastructure buys and a marquee bet on AI compute demand.</p>
+        <p><strong>What it means:</strong> Institutional capital keeps pouring into AI data centers even as financing costs surge.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/blackrock-ifm-close-in-on-25-billion-stack-data-center-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BlackRock, IFM Close In on $25 Billion Asia Data Center Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SoftBank -- Prices the Largest Corporate Junk Bond on Record to Fund AI</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SoftBank (SFTBY) pushed through the largest corporate junk-bond offering ever, Bloomberg reported, dangling record yields to finance its massive AI ambitions.</p>
+        <p><strong>Outlook:</strong> The rich coupon tests how much appetite exists for AI-linked leverage as yields spike globally.</p>
+        <p><strong>What it means:</strong> The AI buildout is being financed at the top of the high-yield range, layering leverage onto a rate-sensitive trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-23/softbank-starts-jumbo-high-yield-bond-sale-to-finance-ai-push" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank Pays Record Yields to Become Goliath of Junk Bonds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mynt (GCash) -- Starts Taking Orders for a Record Philippines IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Mynt, owner of the Philippines' most popular mobile-payment app GCash, has begun taking orders for what is set to be the country's largest-ever IPO, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> Strong demand would signal the Southeast Asian listing window is wide open for fintech.</p>
+        <p><strong>What it means:</strong> Emerging-market digital-payments franchises are finding public-market appetite despite the global rate backdrop.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/gcash-owner-mynt-starts-taking-orders-for-record-philippines-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- GCash Owner Mynt Starts Taking Orders for Record Philippines IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>NSE India -- Rises in Debut After a $2.4bn IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> National Stock Exchange of India (NSE) shares gained as much as 5.2% in their debut after raising $2.36 billion, WSJ reported, in India's second-largest IPO ever.</p>
+        <p><strong>Outlook:</strong> The pop defied a broader India selloff, showing selective investor faith in long-term growth.</p>
+        <p><strong>What it means:</strong> Marquee listings can still clear even as bond yields batter risk appetite globally.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/national-stock-exchange-of-india-rises-in-trading-debut-0b9b147d?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- National Stock Exchange of India Rises in Trading Debut</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Royal Caribbean -- Agrees to Take a 50% Stake in Sandals for $3bn</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Royal Caribbean (RCL) agreed to take a 50% equity stake in resort operator Sandals for $3 billion, CNBC reported, part of its push beyond cruises.</p>
+        <p><strong>Outlook:</strong> The tie-up broadens Royal Caribbean into land-based luxury vacations.</p>
+        <p><strong>What it means:</strong> Cruise operators are diversifying revenue as travel demand stays strong but competitive.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/22/royal-caribbean-sandals.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Royal Caribbean Agrees to Take 50% Equity Stake in Sandals for $3 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MoonPay -- Buys SEC-Registered North Capital in a $60m All-Stock Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> MoonPay agreed to acquire SEC-registered North Capital in a $60 million all-stock deal, CoinDesk reported, to support tokenized real-world assets.</p>
+        <p><strong>Outlook:</strong> The buy hands MoonPay regulated securities rails as it chases mass adoption.</p>
+        <p><strong>What it means:</strong> Crypto firms keep buying compliance and licensing to bridge into traditional finance.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/23/moonpay-to-acquire-sec-registered-north-capital-in-usd60-million-all-stock-deal" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- MoonPay to Acquire SEC-Registered North Capital in $60 Million All-Stock Deal</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>JPMorgan -- says Meta's Muse could be the biggest AI app since ChatGPT</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan raised its Meta (META) price target after saying the new Muse agent has the potential to become the top AI application since ChatGPT, MarketWatch reported. A named bull driving the tech sector's leadership this week.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/meta-gets-price-target-boost-as-jpmorgan-says-muse-agent-has-potential-to-become-the-top-ai-application-since-chatgpt-280ca648?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Meta Sees a Price-Target Boost as JPMorgan Says Muse Agent Could Be the Top AI App Since ChatGPT</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BCA Research (Marko Papic) -- says the move in bond yields is nearing its end</strong></summary>
+      <div class="deal-body">
+        <p>BCA Research's head of GeoMacro Marko Papic told Bloomberg the move in bond yields is nearing its end, weighing the pressure on the White House and the Iran conflict. A named voice arguing the rout is closer to exhaustion than acceleration.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-24/move-in-bond-yield-nearing-end-bca-s-papic-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Move in Bond Yield Nearing End: BCA's Papic</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Clocktower (Eric Wallerstein) -- says stocks are priced for perfection</strong></summary>
+      <div class="deal-body">
+        <p>Clocktower's Eric Wallerstein believes stocks are headed for trouble next year and could slump nearly 20%, MarketWatch reported, with safety-seeking investors potentially driving gold to $6,000 an ounce. A named bear on a stretched, narrow market.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-stock-market-is-priced-for-perfection-heres-what-could-drive-a-nearly-20-slump-for-the-s-p-500-next-year-41e78c27?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Stock Market Is 'Priced for Perfection.' Here's What Could Drive a Nearly 20% Slump.</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Larry McDonald -- says Black Monday's bond-market warning signal is back</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street veteran Larry McDonald told MarketWatch that bonds are delivering "equity-like returns," echoing the summer of 1987 before Black Monday. A named bear reading the yield surge as a systemic warning sign.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/black-mondays-stock-market-warning-signal-came-from-the-bond-market-and-its-back-says-wall-street-veteran-52f12e39?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Black Monday's Warning Signal Came From the Bond Market, and It's Back</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Former Dallas Fed chief -- says the market is pricing in too many Fed hikes</strong></summary>
+      <div class="deal-body">
+        <p>A former Dallas Fed chief told MarketWatch the bond market is getting too aggressive in pricing Fed rate hikes. A named voice on the dovish side of the rates debate as traders lean toward four hikes by mid-2027.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-market-is-pricing-in-too-many-fed-hikes-says-the-former-dallas-fed-chief-5de8cc3c?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Market Is Pricing In Too Many Fed Hikes, Says One Former Dallas Fed Chief</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as 30-Year Yields Hit a 2004 High, Oil Rebounds to $105 and the AI Trade Holds the Tape, With JPMorgan Lifting Meta on Muse and BCA's Marko Papic Saying the Yield Move Is Nearly Done Against Clocktower's Eric Wallerstein Warning of a 20% Slump, Larry McDonald Citing Black Monday and Four Fed Hikes Now Priced</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (AI leadership and a peaking yield move):</strong> JPMorgan calls Meta's Muse the biggest AI app since ChatGPT and raised its target, SoftBank drew record demand for its AI bond, and BlackRock and IFM are closing on a $25bn data-center deal. BCA's Marko Papic says the yield move is nearing its end and a former Dallas Fed chief says the market is pricing too many hikes. If yields peak, the AI trade broadens from here.</div>
+        <div class="bear"><strong>Bear (a bond-driven crash setup):</strong> Larry McDonald says the Black Monday bond-market warning is back, Clocktower's Eric Wallerstein sees stocks priced for perfection and a possible 20% slump, and traders now price four Fed hikes by mid-2027. With 30-year yields at a 2004 high, oil back to $105 and the AI buildout funded at record junk coupons, stretched positioning cracks fast if PCE runs hot.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Meta Muse JPMorgan upgrade; stocks slide as yields hit 2004 high; McDonald's and Starbucks weakness</td><td>Mixed</td><td>~38,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Priced for perfection 20% slump warning; McDonald's spends big; Starbucks closes 250 stores</td><td>Cautious</td><td>~27,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>30-year yield 2004 high; 10-year over 5%; $365tn global debt; four Fed hikes priced; France budget</td><td>Bearish</td><td>~32,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>SoftBank record junk bond; $25bn BlackRock-IFM data centers; bond perfect storm; Nscale IPO</td><td>Cautious</td><td>~15,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC under $83K on 2007-high yields; DOGE down 8%; $18bn options expiry; global stablecoin plan</td><td>Bearish</td><td>~34,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped defensive across almost every board as the bond rout hit risk assets. r/wallstreetbets was split, cheering Meta's Muse upgrade while stocks slid. r/stocks turned cautious on the priced-for-perfection warning and consumer weakness from McDonald's and Starbucks. r/investing went outright bearish on 30-year yields at a 2004 high, $365 trillion in global debt and four priced Fed hikes. r/SecurityAnalysis kept its guard up on SoftBank's record junk bond and the bond "perfect storm." r/CryptoCurrency soured as bitcoin fell under $83K. The swing factor is Friday's core PCE and the Trump-Xi summit.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: What a "Term Premium" Is, and Why Record Debt Feeds a Vicious Cycle</h2>
+    <p>Two of the day's macro headlines rhymed in a way worth unpacking: FT reported the global bond selloff straining public finances, and CNBC reported global debt topping $365 trillion with economists warning of a "vicious cycle" where advanced economies now pay more in debt interest than the world spends on AI, defense or clean tech combined. Both point to a concept that explains why long-term yields have surged even as the Fed debates its next move: the term premium, and how it interacts with government borrowing. Start with what a long-term bond yield is made of. A 30-year Treasury yield is roughly the average of expected future short-term rates plus a term premium, the extra compensation investors demand for the risk of lending for decades. Two things can push a long yield up: markets expecting the Fed to hold rates higher, or investors demanding a bigger term premium because the future looks riskier. The term premium is the part that has been driving this week's move, and it is directly tied to fiscal worry. Here is the mechanism. When a government runs large deficits and its debt pile grows, it must sell more and more bonds. Basic supply and demand says that to place all that paper, it has to offer higher yields, which lifts the term premium. Investors also start to worry about whether the debt is sustainable, whether inflation will be allowed to erode it, and whether they will be repaid in real terms, so they demand still more compensation. That is why a country like France, with a ballooning deficit and a budget fight threatening its government, sees its bond yields rise faster than its neighbors: the term premium is pricing fiscal risk. Now the vicious cycle. Debt-interest cost is roughly the average yield times the stock of debt. When yields rise, every bond that matures gets refinanced at the new, higher rate, so the interest bill climbs even if the government borrows nothing new. To pay that rising interest, the government often has to issue even more bonds, which increases supply, which pushes yields higher still, which raises the interest bill again. That self-reinforcing loop is exactly the "vicious cycle" CNBC described, and it is why the numbers have gotten so large that debt service now outstrips the world's spending on AI or defense. The loop is dangerous because it can run on its own momentum, independent of the central bank. Here is the twist that ties it to markets. As the term premium rises on fiscal fear, it lifts the entire yield curve, which raises the discount rate on stocks and the hurdle for crypto, which is why risk assets fell in lockstep this week. It also passes through to mortgages and corporate loans, tightening financial conditions for everyone. The practical lesson for a market reader is to separate the two drivers of a yield move. If yields are rising because growth is strong, that can be benign for stocks. But if they are rising because the term premium is climbing on debt and inflation fear, as it is now, that is the corrosive kind, because it makes assets cheaper and borrowing costlier at the same time, with no easy way for policymakers to break the loop.</p>
+    <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/global-debt-bond-yields-inflation.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Global Debt Tops $365 Trillion as Economists Sound Alarm Over 'Vicious Cycle'</a></p>
+    <p class="deal-source"><a href="https://www.ft.com/content/2d87f8bf-d529-4997-90c5-393ef65d280c?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Global Bond Sell-Off Deepens as Oil Climbs Back to $105</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Core PCE inflation, Friday.</strong> With 30-year yields at a 2004 high, oil back to $105 and four Fed hikes now priced, the Fed's preferred gauge is the key test of whether the bond rout accelerates or BCA's Papic is right that the move is nearly done.</li>
+      <li><strong>Banxico decision and central-bank cluster.</strong> Mexico is expected to hold a third straight meeting, following Norges Bank's hike, the Riksbank's hawkish hold and the SNB's zero-rate stance; a read on how globally synchronized the tightening bias has become.</li>
+      <li><strong>Bond auctions and fiscal watch.</strong> After a poorly received five-year note sale helped trigger the rout, watch upcoming Treasury auctions and France's budget standoff for signs the term-premium strain is spreading.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Consumer bellwethers in focus.</strong> After McDonald's warned on sticky inflation and flat traffic and Starbucks moved to close 250 stores, watch restaurant and retail commentary for a read on the pinched consumer.</li>
+      <li><strong>AI-infrastructure reads.</strong> With SoftBank's record bond, the $25bn BlackRock-IFM data-center deal and Nscale's IPO in the pipeline, watch semiconductor and neocloud guidance for confirmation buildout demand is holding.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Mynt (GCash) and Nscale IPOs.</strong> With Mynt taking orders for a record Philippines listing and Nscale spotlighting neoclouds, watch pricing and demand as a live gauge of the reopening window despite surging yields.</li>
+      <li><strong>Bitcoin options expiry, Friday.</strong> Nearly $18bn in bitcoin and ether options expire on a call-heavy book, potentially reshaping dealer hedging and short-term crypto volatility.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Trump-Xi summit, ongoing.</strong> With the trade truce extended to January 10 and confirmed AI talks, watch for concessions on chips, export controls and Taiwan that could ripple through the AI-chip complex.</li>
+      <li><strong>Iran energy shock and the diesel crunch.</strong> With oil back to $105, gas rising and diesel export-ban fears spreading, watch whether the shock keeps feeding the bond selloff and whether a US export ban materializes.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Sep 24, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-09-24 07:56 ET); Bloomberg Technology (19 fresh, newest 2026-09-24 07:49 ET); Bloomberg Economics (20 fresh, newest 2026-09-24 07:03 ET); CNBC Top News (7 fresh, newest 2026-09-24 08:00 ET); CNBC Finance (5 fresh, newest 2026-09-24 06:18 ET); CNBC Economy (5 fresh, newest 2026-09-24 07:34 ET); MarketWatch Top Stories (10 fresh, newest 2026-09-24 07:17 ET); WSJ Markets (18 fresh, newest 2026-09-24 06:33 ET); Yahoo Finance (18 fresh, newest 2026-09-22 21:52 ET); FT Home (10 fresh, newest 2026-09-24 07:04 ET); Matt Levine Money Stuff (1 fresh, newest 2026-09-23 14:34 ET); CoinDesk (25 fresh, newest 2026-09-24 07:33 ET); Stratechery (2 fresh, newest 2026-09-24 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What drove the deepening bond selloff on Wednesday and Thursday?</strong></p>
+      <span class="opt" data-opt="A">A. A surprise Fed rate cut and dovish guidance from officials</span>
+      <span class="opt" data-opt="B">B. Oil's rebound and a weak note sale lifting rate-hike bets</span>
+      <span class="opt" data-opt="C">C. A flight to safety as investors piled into Treasuries</span>
+      <span class="opt" data-opt="D">D. China dumping its holdings of US government debt</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg and WSJ reported oil's rebound to $105, the strongest US business survey in five years and a poorly received five-year note sale pushed yields to a 2004 high. It wasn't a rate cut, a safety bid or Chinese selling.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. What did JPMorgan say about Meta's new Muse agent?</strong></p>
+      <span class="opt" data-opt="A">A. It would likely fail to gain traction against rivals</span>
+      <span class="opt" data-opt="B">B. It raised regulatory concerns that capped the stock</span>
+      <span class="opt" data-opt="C">C. It was too costly to run to ever turn a profit</span>
+      <span class="opt" data-opt="D">D. It could become the top AI app since ChatGPT</span>
+      <div class="feedback"><strong>D is correct.</strong> MarketWatch reported JPMorgan lifted Meta's target after saying Muse has the potential to become the biggest AI application since ChatGPT. The bank was bullish, not worried about traction, regulation or costs.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What did CNBC report about global debt?</strong></p>
+      <span class="opt" data-opt="A">A. It topped $365 trillion amid a "vicious cycle" of interest</span>
+      <span class="opt" data-opt="B">B. It fell sharply as governments cut spending worldwide</span>
+      <span class="opt" data-opt="C">C. It stayed flat as low yields kept costs contained</span>
+      <span class="opt" data-opt="D">D. It shifted mostly into private hands away from states</span>
+      <div class="feedback"><strong>A is correct.</strong> CNBC reported global debt topping $365 trillion, with advanced economies paying more in interest than the world spends on AI, defense or clean tech, feeding a vicious cycle. It didn't fall, stay flat or shift to private hands.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "A global bond rout deepened as 30-year Treasury yields hit a 2004 high and the 10-year topped 5%, with oil's rebound, the strongest US business survey in five years and a weak note sale lifting rate-hike bets and $365 trillion of global debt stoking fiscal-cycle fears, even as BCA's Marko Papic said the move is nearly done and German institutes doubled their growth forecast.",
+    "sources": [
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/a-perfect-storm-is-raging-in-the-bond-market-43d9b44b?mod=rss_markets_main", "take": "The 10-year jumped above 5.1% in its biggest one-day rise in over a year." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-23/stock-market-today-dow-s-p-live-updates", "take": "30-year yields hit their highest since 2004 as oil fueled bond selling." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/09/24/global-debt-bond-yields-inflation.html", "take": "Global debt topped $365 trillion amid a vicious interest-cost cycle." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-09-24/move-in-bond-yield-nearing-end-bca-s-papic-video", "take": "BCA's Marko Papic says the move in bond yields is nearing its end." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-24/germany-s-top-economic-institutes-boost-growth-forecast-to-1-3", "take": "German institutes more than doubled their 2026 growth forecast to 1.3%." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil rebounded to $105 and European gas climbed as Iran's president highlighted the gap with Washington, US sanctions halted Tehran's flights and diesel export-ban fears sent European prices racing ahead of America, with ECB's Schnabel warning the energy shock is much more persistent, even as Trump and Xi extended their trade truce.",
+    "sources": [
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/2d87f8bf-d529-4997-90c5-393ef65d280c?syn-25a6b1a6=1", "take": "Oil climbed back to $105, deepening the global bond selloff." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-24/european-gas-advances-as-us-iran-tensions-cloud-supply-outlook", "take": "European gas rose as Iran's president stressed the gulf with Washington." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-24/europe-s-diesel-prices-race-ahead-of-us-on-export-ban-risks", "take": "European diesel prices raced ahead of US ones on export-ban fears." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-24/ecb-s-schnabel-says-energy-shock-is-much-more-persistent", "take": "ECB's Schnabel says the energy shock is much more persistent." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/09/24/us-china-trade-truce-bessent-trump-xi.html", "take": "Trump and Xi extended their trade truce to January 10." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade held the tape as JPMorgan said Meta's Muse could be the biggest AI app since ChatGPT, SoftBank priced a record junk bond and BlackRock and IFM closed in on a $25bn Asia data-center deal, even as Clocktower's Eric Wallerstein warned stocks are priced for perfection and Bloomberg mapped out AI job-loss proposals.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/meta-gets-price-target-boost-as-jpmorgan-says-muse-agent-has-potential-to-become-the-top-ai-application-since-chatgpt-280ca648?mod=mw_rss_topstories", "take": "JPMorgan says Muse could be the top AI app since ChatGPT." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-23/softbank-starts-jumbo-high-yield-bond-sale-to-finance-ai-push", "take": "SoftBank priced the largest corporate junk bond on record to fund AI." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-24/blackrock-ifm-close-in-on-25-billion-stack-data-center-deal", "take": "BlackRock and IFM near a $25bn Asia data-center acquisition." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/the-stock-market-is-priced-for-perfection-heres-what-could-drive-a-nearly-20-slump-for-the-s-p-500-next-year-41e78c27?mod=mw_rss_topstories", "take": "Clocktower's Wallerstein warns of a nearly 20% slump next year." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-24/ai-job-losses-a-guide-to-the-proposals-for-helping-workers", "take": "Policymakers are drafting proposals to cushion AI-driven job losses." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Meta","Qualcomm","Nvidia","MGM Resorts","S&P Futures","Bank Index"],
+    "values": [3.5, 1.2, 0.8, -1.0, -0.6, -2.4]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [38000, 27000, 32000, 15000, 34000],
+    "colors": ["neutral","neutral","bear","neutral","bear"]
+  },
+  "dealSizes": {
+    "labels": ["BlackRock-IFM Stack DC","SoftBank Junk Bond","Royal Caribbean-Sandals","NSE India IPO","MoonPay-North Capital"],
+    "values": [25.0, 15.0, 3.0, 2.4, 0.06]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
