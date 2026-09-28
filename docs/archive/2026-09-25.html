@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Fri Sep 25, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-09-25</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Friday, September 25, 2026</h1>
+    <div class="meta">
+      <p>The week's bond rout paused into month- and quarter-end, with Treasury yields steadying from multi-decade highs and oil retreating on reports that US and Iranian negotiators are exploring a phased deal to reopen the Strait of Hormuz. Stocks look set for their first weekly gain in four, and today's core PCE and inflation-expectations data is the last hurdle. The Trump-Xi summit wrapped with plenty of pageantry but few substantive announcements.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The bond selloff paused and oil retreated as US and Iranian negotiators explored a phased deal to reopen the Strait of Hormuz, steadying Treasury yields from multi-decade highs and lifting stocks toward their first weekly gain in four, even as SocGen and Fed officials warned the market may be pushing the limits on how many hikes it can price",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Bond Selloff Fades as Oil Cools, Lifting Stocks", "angle": "Reads oil's stall and the US-Iran Hormuz talks as the trigger steadying bonds and extending the weekly gain in stocks.", "lean": 35, "pull": "Bonds steadied after a selloff that drove global yields to the highest in decades as oil's rally lost steam."},
+        {"outlet": "WSJ", "headline": "The Robust U.S. Economy Powers Through Rate Hikes and Rising Bond Yields", "angle": "Argues AI-driven growth looks resistant to higher borrowing costs, which is exactly what is spooking Treasury investors.", "lean": 25, "pull": "AI-driven growth looks resistant to higher borrowing costs, spooking Treasury investors."},
+        {"outlet": "CNBC", "headline": "Surging Treasury Yields Pose a Brand New Problem for Kevin Warsh and the Fed", "angle": "Warns the market now expects a firmer hand on inflation and that delivering it is not easy.", "lean": -35, "pull": "Markets expect the central bank will take a firmer hand on inflation. It's not that easy."},
+        {"outlet": "MarketWatch", "headline": "Why the Alternative to the 'Clear and Present' Danger From Bond Yields Is an AI-Fueled Market That Has Quietly Outperformed", "angle": "Frames US stocks as facing hurdles and points investors toward Japan, per Goldman Sachs.", "lean": -15, "pull": "U.S. stocks are facing hurdles and investors may need to consider looking elsewhere."},
+        {"outlet": "Financial Times", "headline": "Pomp Prevails Over Substance as Trump Hosts Xi", "angle": "Sees the state dinner as fanfare masking Trump's own troubles, including the Iran war and weak polling.", "lean": -10, "pull": "Fanfare masks some of the US president's own troubles, including his war in Iran and plummeting domestic popularity."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Global Bond Rout Pauses as Oil Retreats and US and Iranian Negotiators Explore a Phased Hormuz Deal, With Lombard Odier Turning Overweight Treasuries for the First Time in Five Years and WSJ Arguing the Robust US Economy Powers Through Higher Yields, Even as SocGen's Subadra Rajappa Says Markets Are Pushing the Limits on Fed Hikes and BOE's Bailey Warns They Are Getting Harder to Avoid</h3>
+      </div>
+      <p>The rates panic that drove yields to multi-decade highs this week finally caught its breath. Bloomberg reported bonds steadied and US stock futures rose as oil's rally lost steam and Treasury yields pulled back, with WSJ noting the selloff abated as Brent slipped on hopes for a phased US-Iran deal to reopen Hormuz. The bull read got a real name behind it: Bloomberg reported Lombard Odier Investment Management turned overweight US Treasuries for the first time in at least five years, seeing yields near multi-decade highs as increasingly attractive versus stocks, and WSJ argued the robust US economy is powering through higher borrowing costs rather than buckling. HSBC's Max Kettner said he would be long almost anything if oil falls to $80, since yields have been incredibly correlated with crude. The bear read is that the market may be over-promising itself hikes it cannot get. SocGen's Subadra Rajappa told Bloomberg markets are pushing the limits on pricing Fed hikes and questioned whether the Fed can deliver, warning of a lot more volatility in the long end. BOE Governor Andrew Bailey said it is getting harder to resist pressure to raise rates the longer high oil and gas costs persist, Manulife sees the Bank of Canada hiking at its next two meetings, and Philadelphia Fed's Anna Paulson said modest rate moves are likely ahead to tame inflation. CNBC framed the whole thing as a brand-new problem for Kevin Warsh and the Fed, and the dollar is heading for its best two-week run since March as Morgan Stanley admitted "we were wrong" on the buck.</p>
+      <p>The bull read is Lombard Odier buying Treasuries, WSJ's resilient-economy call and Kettner's oil-linked view that yields peak if crude eases. The bear read is Rajappa doubting the Fed can deliver priced hikes, Bailey and Paulson leaning tight, Manulife's Canada calls and the dollar's surge.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the rout has peaked and buyers are stepping in):</strong> Lombard Odier turned overweight US Treasuries for the first time in five years, calling the yields attractive versus stocks, WSJ says the robust US economy is powering through higher borrowing costs, and HSBC's Max Kettner would be long almost anything if oil falls to $80. With crude easing on the Hormuz talks and yields off their highs, the pressure that drove the selloff is fading rather than building.</div>
+        <div class="bear"><strong>Bear (the hikes may not stick and the long end stays volatile):</strong> SocGen's Subadra Rajappa says markets are pushing the limits on pricing Fed hikes and doubts the Fed can deliver, warning of more long-end volatility. BOE's Bailey says hikes are getting harder to avoid, Manulife sees two Canadian hikes, and Philadelphia Fed's Paulson flags modest tightening ahead. CNBC calls surging yields a fresh problem for Warsh's Fed, and the dollar's best run since March shows tightening bets aren't done.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-25/lombard-odier-turns-bullish-on-treasuries-after-five-year-hiatus" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Lombard Odier Turns Bullish on Treasuries After Five-Year Hiatus</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Retreats and European Stocks Post Their First Weekly Gain in Four as US and Iranian Negotiators Explore a Phased Deal to Reopen the Strait of Hormuz and Lift Washington's Port Blockade, With Saudi Exports at a War-Time High, Even as BOE's Bailey and Manulife Tie Further Rate Hikes to the Lingering Energy Shock and the Trump-Xi Summit Delivers Pageantry Over Substance</h3>
+      </div>
+      <p>The war premium that fired up bonds all week started to deflate. Bloomberg reported US and Iranian negotiators are exploring a phased deal that would see Tehran reopen the Strait of Hormuz and Washington lift its blockade of Iranian ports, sending oil lower and helping European shares to their first weekly gain in four. Saudi oil exports have climbed to a war-time high, adding barrels even as the standoff drags on, and WSJ noted Brent futures fell as Hormuz-reopening hopes spread. The bull read is de-escalation and supply: a phased deal, Saudi flows and Amundi's Anna Rosenberg reading the Trump-Xi meeting as an effort to buy time and stabilize a competitive relationship rather than escalate it. The bear read is that nothing is signed and the shock still bites. BOE's Andrew Bailey warned it is getting harder to avoid rate hikes the longer high oil and gas costs persist, Manulife sees the Middle East conflict driving Canadian price pressure and two rate hikes, and CNBC warned the world is heading into food crises "blind" as a fuel crunch and donor cuts squeeze the UN's food agency. FT called the Trump-Xi summit pomp over substance, with fanfare masking Trump's own troubles including the Iran war. WSJ even cautioned that bond traders may be paying too much attention to the oil price, a sign the crude-rates link could snap in either direction.</p>
+      <p>The bull read is the phased Hormuz deal, Saudi exports at a war-time high, oil's retreat and Rosenberg's stabilization take. The bear read is that the deal is unsigned, Bailey and Manulife still tie hikes to energy, and the food-security squeeze keeps widening.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (diplomacy and supply cool the shock):</strong> US and Iranian negotiators are exploring a phased deal to reopen Hormuz and lift Washington's port blockade, oil is retreating, and Saudi exports have hit a war-time high. European stocks are on track for their first weekly gain in four, and Amundi's Anna Rosenberg reads the Trump-Xi summit as an attempt to buy time and stabilize ties. If the channel holds, the crude spike that drove the bond rout unwinds.</div>
+        <div class="bear"><strong>Bear (the shock is unresolved and still feeding rates):</strong> No Hormuz deal is signed, and BOE's Bailey says high oil and gas costs make hikes harder to avoid while Manulife ties two Canadian hikes to the Middle East. CNBC warns the world is heading into food crises "blind" as a fuel crunch squeezes the UN, and FT calls the Trump-Xi summit pomp over substance. Oil is still elevated, and the crude-yield link that hammered bonds can reassert fast.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-25/us-stock-futures-rise-as-investors-see-relief-in-yields-oil" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stock Futures Rise as Investors See Relief in Yields, Oil</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Broadens as Meta Posts Its Best Month Since 2013 on the Cusp of $2 Trillion With Its Muse Agent Topping the App Store, Akamai Wins a $12bn Anthropic Cloud Deal and Musk Aims to Double Colossus 2's Nvidia Chips, Even as WSJ Flags Cracks in Oracle's Data-Center Build-Out, Japan's Regulator Scrutinizes AI Financing and a Cheap New Model Called Jev Undercuts Incumbents</h3>
+      </div>
+      <p>AI stayed the one bid the tape leaned on, and it broadened this week. Bloomberg reported Meta (META) is enjoying its best month since 2013 and closing in on the $2 trillion level as its new Muse agent climbed to the top of Apple's App Store, sparking fears that personal AI tools could disrupt banks, insurers and online travel agencies that live off consumer inertia. The infrastructure side kept scaling: MarketWatch reported Akamai (AKAM) surging after agreeing to supply cloud computing to Anthropic in a roughly $12 billion deal, and Bloomberg said Elon Musk aims to more than double the Nvidia (NVDA) chip count in xAI's Colossus 2 cluster by year-end. European AI-linked stocks rallied as confidence returned, and Thai exports surged the most in four years on AI-driven electronics demand. The bull read is that adoption and capital keep widening. The bear read is that cracks and cheaper rivals are appearing: WSJ reported Oracle (ORCL) sent a force majeure notice on its massive New Mexico Project Jupiter data center and removed a key partner, Japan's Financial Services Agency is boosting scrutiny of AI data-center financing at the country's biggest banks and insurers, and FT and Bloomberg both flagged Jev, a cheap new model from startup TypeSafe AI that promises faster, more efficient AI and takes direct aim at OpenAI and Anthropic. WSJ separately warned AI is supercharging stock scams, and Bloomberg noted nearly three quarters of directors feel they lack the skills to understand AI risks.</p>
+      <p>The bull read is Meta nearing $2tn on Muse, Akamai's $12bn Anthropic deal, Musk's chip doubling and rallying European AI names. The bear read is Oracle's data-center force majeure, Japan's financing scrutiny, Jev undercutting incumbents and AI-fueled scams.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (adoption and capital keep widening):</strong> Meta is on its best month since 2013 and near $2 trillion as Muse tops the App Store, Akamai landed a roughly $12bn Anthropic cloud deal, and Musk plans to more than double Colossus 2's Nvidia chips by year-end. European AI stocks rallied as confidence returned and Thai exports surged on AI electronics. The demand and the financing are both broadening beyond the megacaps.</div>
+        <div class="bear"><strong>Bear (cracks, scrutiny and cheaper rivals):</strong> WSJ reports Oracle issued a force majeure notice on its New Mexico data center and dropped a partner, Japan's FSA is scrutinizing AI data-center financing at big banks and insurers, and a cheap new model called Jev is undercutting OpenAI and Anthropic. WSJ warns AI is supercharging stock scams and Bloomberg notes most directors feel unready on AI risk. The buildout's economics and financing are getting questioned.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-24/meta-s-best-month-since-2013-has-it-on-cusp-of-2-trillion-level" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta's Best Month Since 2013 Has It on Cusp of $2 Trillion Level</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>US stock futures rise as investors see relief in yields and oil</strong></summary>
+      <div class="deal-body">
+        <p>Equity futures climbed in New York as oil and Treasury yields pulled back from their recent surges ahead of key inflation-expectations data, Bloomberg reported. The move puts the S&P 500 on track for its first weekly gain in four after a turbulent stretch.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/us-stock-futures-rise-as-investors-see-relief-in-yields-oil" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stock Futures Rise as Investors See Relief in Yields, Oil</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta closes in on $2 trillion after its best month since 2013</strong></summary>
+      <div class="deal-body">
+        <p>Meta Platforms (META) is on the cusp of the $2 trillion level after its best month since 2013, Bloomberg reported, as its Muse agent topped Apple's App Store. The rally has stoked fears personal AI tools could disrupt banks, insurers and travel agencies that rely on consumer inertia.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/meta-s-best-month-since-2013-has-it-on-cusp-of-2-trillion-level" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta's Best Month Since 2013 Has It on Cusp of $2 Trillion Level</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MGM Resorts sinks 11% after Barry Diller's People Inc. rescinds takeover offer</strong></summary>
+      <div class="deal-body">
+        <p>MGM Resorts (MGM) shares dropped 11% after Barry Diller's People Inc. rescinded its offer to buy the remaining public shares, CNBC reported. The collapse removes a takeover premium the market had been pricing into the stock.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/barry-diller-people-mgm-resorts.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- MGM Resorts Shares Sink 11% After Barry Diller's People Inc. Rescinds Takeover Offer</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Darden Restaurants falls as Olive Garden growth slows</strong></summary>
+      <div class="deal-body">
+        <p>Darden Restaurants (DRI) shares fell after Olive Garden reported slower same-store sales growth in recent quarters, CNBC reported. The read adds to a run of soft consumer signals from McDonald's and Starbucks earlier this week.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/darden-restaurants-dri-q1-2027-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Darden Restaurants Stock Falls as Olive Garden Reports Slower Growth</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Costco beats on tariff refunds but investors stay cautious</strong></summary>
+      <div class="deal-body">
+        <p>Costco (COST) topped fourth-quarter profit expectations thanks partly to tariff refunds, MarketWatch reported, yet investors remained wary about the durability of the beat. The caution reflects a market unwilling to reward one-off boosts.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/costco-earnings-beat-expectations-thanks-to-tariff-refunds-e7270cfa?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Costco's Results Beat Expectations. Here's Why Investors Are Still Cautious.</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Everpure becomes the S&P 500's best performer</strong></summary>
+      <div class="deal-body">
+        <p>Shares of data-storage company Everpure, the S&P 500's newest tech member, led index gainers and are now its best performer, MarketWatch reported. The run shows how narrowly leadership is concentrating in AI-linked infrastructure names.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-s-p-500s-newest-tech-stock-is-now-its-best-performer-5bfeb6e2?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The S&P 500's Newest Tech Stock Is Now Its Best Performer</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape opened firmer as yields eased off multi-decade highs and oil retreated on the Hormuz talks, with Meta's push toward $2 trillion leading. The swing factors are today's core PCE and inflation-expectations data, whether the bond selloff stays paused, and the Trump-Xi aftermath. Watch financials and rate-sensitive names if yields resume rising, consumer bellwethers after Darden and Costco, and whether AI breadth holds beyond Meta and Everpure.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Takeover That Falls Through Sends a Stock Down More Than the Premium</summary>
+      <p>MGM Resorts fell 11% on Thursday after Barry Diller's People Inc. rescinded its offer for the shares it did not already own, and the size of that drop is worth unpacking, because a busted deal often knocks a stock down by more than the takeover premium it had been carrying. Start with how an acquisition price gets embedded in a share price. When a credible bidder makes an offer, the target's stock jumps toward the bid, but usually not all the way, because there is always some chance the deal collapses. The gap between the current price and the offer price is the "merger spread," and it compensates arbitrageurs for that risk. Over the life of a deal, as regulatory approvals clear and financing firms up, the spread narrows and the stock drifts up toward the bid. That drift is the market slowly pricing in a higher probability that the deal closes. Now run the movie backward. When a bidder walks away, three things happen at once. First, the takeover premium evaporates, so the stock falls back toward where it traded before the offer. Second, and this is the part people miss, the stock frequently overshoots to the downside, landing below the pre-deal level. That happens because the failed process reveals information. A buyer who did diligence and then walked away is telling the market that something in the numbers or the outlook looked worse up close than it did from outside. Other potential acquirers now assume the asset has been shopped and passed on, which shrinks the pool of future bidders and removes the "someone might buy this" floor that had been quietly supporting the price. Third, the shareholder base changes hands in a hurry. Merger-arbitrage funds that bought only to capture the spread have no reason to hold a company with no deal, so they dump their positions into a market that suddenly has fewer natural buyers, and the selling pressure pushes the price down faster than fundamentals alone would justify. For MGM, the 11% slide reflects all three forces layered together: the lost premium, the negative signal from a well-known operator like Diller stepping back, and forced selling by event-driven holders. The practical lesson for a market reader is to treat a stock trading below a live bid as carrying real deal risk, not free money, and to treat a collapsed deal as a fresh information event rather than a simple round-trip to the old price. When you see a stock fall further than the premium it once held, that extra distance is the market repricing the standalone business now that a sophisticated buyer has looked and declined. The move down is not an overreaction so much as a re-rating built on what the failed process just revealed.</p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/barry-diller-people-mgm-resorts.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- MGM Resorts Shares Sink 11% After Barry Diller's People Inc. Rescinds Takeover Offer</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Meta's Muse agent makes waves as its hardware vision gets bolder</strong></summary>
+      <div class="deal-body">
+        <p>Meta's (META) Muse agent rose to the top of Apple's App Store and its AI hardware portfolio just got more ambitious and riskier, Bloomberg reported from Connect 2026. Increasing usage sparked fears personal AI tools could disrupt banks, insurers and travel agencies.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-09-25/meta-connect-2026-muse-ai-gadget-shows-ambitious-hardware-vision" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta Connect 2026: Muse AI Gadget Shows Ambitious Hardware Vision</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Akamai surges on a $12bn Anthropic cloud deal</strong></summary>
+      <div class="deal-body">
+        <p>Akamai (AKAM) shares are surging after it agreed to supply cloud-computing services to Anthropic in a roughly $12 billion deal, MarketWatch reported. The pact reveals Akamai's edge over larger cloud providers as AI labs seek capacity outside the hyperscalers.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/akamai-stock-is-surging-a-12-billion-anthropic-deal-reveals-its-powerful-edge-over-cloud-providers-0b60ca6d?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Akamai's Stock Is Surging. A $12 Billion Anthropic Deal Reveals Its Powerful Edge Over Cloud Providers.</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Elon Musk aims to double Colossus 2's Nvidia chips by year-end</strong></summary>
+      <div class="deal-body">
+        <p>Elon Musk said Colossus 2, the AI computing cluster built by his xAI business, may more than double its current Nvidia (NVDA) chip count by the end of the year, Bloomberg reported. The plan underscores how aggressively compute is still being added.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/elon-musk-aims-to-double-colossus-2-s-nvidia-chips-by-year-end" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Elon Musk Aims to Double Colossus 2's Nvidia Chips by Year-End</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cracks appear in Oracle's AI data-center build-out</strong></summary>
+      <div class="deal-body">
+        <p>Oracle (ORCL) sent a force majeure notice to the developer of its massive New Mexico Project Jupiter data center, removed a key development partner and faced local resistance, WSJ reported. The stumble is a rare visible crack in the AI-infrastructure buildout.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/cracks-in-oracles-ai-data-center-build-out-appear-in-massive-new-mexico-project-effb51c2?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Cracks in Oracle's AI Data-Center Build-Out Appear in Massive New Mexico Project</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A cheap new model called Jev takes aim at OpenAI and Anthropic</strong></summary>
+      <div class="deal-body">
+        <p>Startup TypeSafe AI's "Jev," a model built by a former OpenAI researcher that cannot chat, went viral with the promise of a faster, cheaper alternative to large language models, FT and Bloomberg reported. It targets developers and challenges incumbents on cost.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/456884ea-2558-4648-8036-a77b73733430?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- The Cheap New AI Model Taking Aim at OpenAI and Anthropic</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Japan's regulator boosts scrutiny of AI data-center financing</strong></summary>
+      <div class="deal-body">
+        <p>Japan's Financial Services Agency is stepping up scrutiny of financing for AI data centers by the country's biggest banks and life insurers, Bloomberg reported, as institutions increase exposure to the fast-growing sector. It signals rising supervisory concern over AI leverage.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/japan-regulator-is-boosting-scrutiny-of-ai-data-center-financing" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Japan Regulator Is Boosting Scrutiny of AI Data Center Financing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Micron investors weigh customer deals and buybacks into earnings</strong></summary>
+      <div class="deal-body">
+        <p>When Micron (MU) reports next week, a Rosenblatt analyst expects additional customer agreements, rising prices and stock buybacks, MarketWatch reported. The print is a key read on whether AI-memory demand keeps supporting pricing power.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/3-things-micron-investors-need-to-watch-as-the-stakes-get-higher-e53fde7e?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- 3 Things Micron Investors Need to Watch as the Stakes Get Higher</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Friday September 25, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is Meta nearing $2 trillion on Muse, Akamai's $12bn Anthropic deal, Musk's plan to double Colossus 2's Nvidia chips and rallying European AI names. The counter-signal is Oracle's force majeure on a flagship data center, Japan's FSA scrutinizing AI financing, and a cheap model like Jev undercutting incumbents. With WSJ warning AI is even supercharging stock scams, the real tell stays enterprise revenue and financing terms, not App Store rankings.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Bond selloff pauses as oil price slips</strong></summary>
+      <div class="deal-body">
+        <p>The bond selloff abated and stocks edged higher as Brent crude fell on hopes for a deal to reopen Hormuz, WSJ reported, steadying sentiment at the end of a turbulent week. US Treasury yields still edged higher even as eurozone yields fell with oil.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-25-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Market Today: Bond Selloff Abates as Oil Price Slips</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Surging Treasury yields pose a brand-new problem for Warsh's Fed</strong></summary>
+      <div class="deal-body">
+        <p>Markets now expect the central bank to take a firmer hand on inflation, but delivering that is not easy, CNBC reported, framing the yield surge as a fresh challenge for Kevin Warsh and the Fed. The dilemma pits growth resilience against sticky prices.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/surging-treasury-yields-are-posing-a-brand-new-problem-for-kevin-warsh-and-the-fed.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Surging Treasury Yields Pose a Brand New Problem for Kevin Warsh and the Fed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SocGen's Rajappa says markets are pushing limits on pricing Fed hikes</strong></summary>
+      <div class="deal-body">
+        <p>SocGen Americas research head Subadra Rajappa expects a lot more volatility in the very long end of the curve and questions whether the Fed can deliver on the rate hikes markets are pricing, Bloomberg reported. A named skeptic of the aggressive hike path.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-25/markets-pushing-limits-on-pricing-in-fed-hikes-socgen-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Markets Pushing Limits on Pricing in Fed Hikes, Says SocGen's Rajappa</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOE's Bailey warns it's getting harder to avoid rate hikes</strong></summary>
+      <div class="deal-body">
+        <p>Bank of England Governor Andrew Bailey warned it will get harder to resist pressure to raise rates the longer high oil and gas costs persist, Bloomberg reported. The comment ties UK policy directly to the lingering energy shock.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/boe-s-bailey-warns-it-s-getting-harder-to-avoid-rate-hikes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOE's Bailey Warns It's Getting Harder to Avoid Rate Hikes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Banxico holds at 6.5% as price pressures persist</strong></summary>
+      <div class="deal-body">
+        <p>Mexico's central bank kept its key rate unchanged for a third straight meeting as it assesses whether a recent slowdown in inflation will continue, Bloomberg reported. The hold fits a global bias toward caution amid energy-driven price risks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-24/banxico-holds-key-rate-steady-at-6-5-as-price-pressures-persist" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Banxico Holds Rate Steady at 6.5% as Price Pressures Persist</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The dollar's best rally since March looks set to last</strong></summary>
+      <div class="deal-body">
+        <p>The dollar is headed for its best two-week stretch in six months, Bloomberg reported, with asset managers seeing rising yields and Fed hike bets supporting the currency into year-end. MarketWatch noted Morgan Stanley admitting "we were wrong" on its bearish call.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/dollar-s-best-rally-since-march-is-set-to-last-as-fortunes-shift" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dollar's Best Rally Since March Has Legs as Fortunes Shift</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Yen rises as Takaichi calls an undervalued currency a problem</strong></summary>
+      <div class="deal-body">
+        <p>The yen headed for its best day in two weeks after Japan PM Sanae Takaichi said an undervalued currency is "problematic," Bloomberg reported, and Trump separately shared yen concerns with her. A BOJ price-trend gauge quickened, supporting another hike.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/yen-heads-for-best-day-in-two-weeks-after-katayama-jawboning" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Yen Rises as Takaichi Says Undervalued Currency Is a Problem</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (September 25, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The relief side is winning this morning, with yields easing off multi-decade highs, oil retreating on the Hormuz talks, Lombard Odier buying Treasuries and WSJ arguing the economy is powering through. Pulling the other way, SocGen's Rajappa doubts the Fed can deliver priced hikes and warns of long-end volatility, BOE's Bailey and Philadelphia Fed's Paulson lean tight, and the dollar's surge shows tightening bets are intact. Today's core PCE is the decisive test.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Dollar Rallies When the Market Prices In Fed Hikes</summary>
+      <p>One of the quieter but more telling stories this week was the dollar heading for its best two-week run since March, with Morgan Stanley admitting "we were wrong" on its bearish call. It is worth understanding why expected Fed hikes lift the dollar, because the mechanism sits at the center of how global capital chases yield. Start with the core idea of interest-rate differentials. Money is mobile, and large investors constantly compare the return they can earn holding one currency's short-term debt against another's. If US two-year yields are climbing because the market expects the Fed to hike while, say, the eurozone is expected to hold, then dollar-denominated deposits and bonds pay more than euro ones. To capture that higher return, foreign investors must first buy dollars, and that buying pressure pushes the dollar up. The exchange rate is essentially the price that clears this cross-border demand for yield. Now add expectations, because currencies trade on where rates are going, not just where they are. When traders reprice the Fed's path higher, as they did this week after the strong economy and energy-driven inflation fears, the dollar can jump immediately, before a single hike happens, because markets discount the future. That is why the buck rallied alongside the yield surge rather than waiting for the Fed to act. It is also why Morgan Stanley's forecast broke: the bank had expected easing to weaken the dollar, and the sudden shift to pricing hikes flipped the differential in the dollar's favor. There is a second, reinforcing channel: risk and safety. When yields spike and stocks wobble, as they did earlier in the week, global investors often move into dollar assets as a haven, adding another layer of demand. So the dollar can rise both because it pays more and because it is seen as safer, a powerful combination. The flip side matters for the rest of the world. A stronger dollar tightens financial conditions globally, because dollar-denominated debt gets more expensive to service for emerging markets, and commodities priced in dollars cost more in local terms. It also pressures other central banks: Japan's PM Takaichi called the weak yen "problematic" this week precisely because a soft currency imports inflation, and BOJ price gauges are already running hot. The practical lesson for a market reader is to treat the dollar as a real-time barometer of relative rate expectations. When you see the dollar rallying hard, ask whether it reflects the market pricing more Fed tightening, a flight to safety, or both, because each has different implications. This week it was mostly the former, and a dollar that keeps climbing on hike bets is a sign the bond market's hawkish repricing has not fully unwound, even as yields pause.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/we-were-wrong-why-morgan-stanley-changed-its-tune-on-the-u-s-dollar-and-what-it-expects-now-7826fb96?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- 'We Were Wrong.' Why Morgan Stanley Changed Its Tune on the U.S. Dollar.</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/dollar-s-best-rally-since-march-is-set-to-last-as-fortunes-shift" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dollar's Best Rally Since March Has Legs as Fortunes Shift</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The bond rout paused and stocks turned up as Treasury yields eased from multi-decade highs and oil retreated on reports US and Iranian negotiators are exploring a phased deal to reopen Hormuz, with Lombard Odier turning overweight Treasuries and WSJ arguing the economy is powering through, against SocGen's Rajappa doubting the Fed can deliver priced hikes and Bailey and Paulson leaning tight. The energy premium cooled on the Hormuz talks and Saudi exports at a war-time high, even as the Trump-Xi summit delivered pageantry over substance. The AI trade broadened as Meta neared $2 trillion on Muse, Akamai won a $12bn Anthropic deal and Musk moved to double Colossus 2's chips, even as WSJ flagged cracks in Oracle's buildout; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 5.15%, bear confirmed; below 4.95%, bull confirmed. Iran/Oil: if Brent closes above $110, bear confirmed; below $100, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 9/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/22</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/23</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 9/24</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 9/25</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bond volatility surges while bitcoin and Wall Street stay calm</strong></summary>
+      <div class="deal-body">
+        <p>Bond volatility is at its highest since March even as the bitcoin VIX (BVIV) and Wall Street's VIX sit near yearly lows, CoinDesk reported. The split shows the week's turmoil was concentrated in rates, not risk assets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/25/bond-volatility-surges-while-bitcoin-and-wall-street-stay-calm" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bond Volatility Surges While Bitcoin and Wall Street Stay Calm</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Altcoins rally across the board as bitcoin consolidates near $84,000</strong></summary>
+      <div class="deal-body">
+        <p>Quant jumped 39% over 24 hours and 93 of 100 CoinDesk 100 constituents rose as bitcoin steadied near $84,000, CoinDesk reported, with the altcoin season index at its highest in more than three months. The bounce came as the bond selloff paused.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/25/altcoins-rally-across-the-board-as-bitcoin-consolidates-near-usd84-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Altcoins Rally Across the Board as Bitcoin Consolidates Near $84,000</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin ETFs have erased a $5.8 billion outflow hole</strong></summary>
+      <div class="deal-body">
+        <p>At one point in July, bitcoin ETFs were down $5.8 billion in net outflows for the year, but that has now flipped to $800 million in net inflows, CoinDesk reported. The reversal signals institutional demand has quietly returned.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/25/bitcoin-etfs-have-erased-a-usd5-8-billion-hole" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin ETFs Have Erased a $5.8 Billion Hole</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitget says $352 million hack came via spoofed transfers, North Korea suspected</strong></summary>
+      <div class="deal-body">
+        <p>Bitget lost roughly $352 million after attackers compromised a wallet backend and spoofed transaction data rather than stealing private keys, CEO Gracy Chen said, per CoinDesk, and CNBC reported the exchange suspects North Korea. Bitget says user funds are safe.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/25/crypto-platform-bitget-suspects-north-korea-in-352-million-hack.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Crypto Platform Bitget Suspects North Korea Is Responsible for $352 Million Hack</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The Fed moves on proposals to implement the GENIUS Act for stablecoins</strong></summary>
+      <div class="deal-body">
+        <p>The Federal Reserve proposed rules to put last year's GENIUS Act into place, including regulations governing stablecoin yield programs, CoinDesk reported. The move is a concrete step toward a US federal framework for dollar-backed tokens.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/09/24/u-s-federal-reserve-moves-on-proposals-to-implement-genius-act-for-stablecoins" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- U.S. Federal Reserve Moves on Proposals to Implement GENIUS Act for Stablecoins</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>New York sues Polymarket, alleging an illegal gambling operation</strong></summary>
+      <div class="deal-body">
+        <p>New York sued prediction-market platform Polymarket, alleging it runs an illegal gambling operation, CoinDesk reported, seeking to block it from operating without a gambling license and to recover allegedly illegal gains. The suit is a fresh regulatory headwind.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/09/24/new-york-sues-polymarket-alleging-it-is-running-an-illegal-gambling-operation" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- New York Sues Polymarket, Alleging It Is Running an Illegal Gambling Operation</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Akamai &amp; Anthropic -- $12bn Cloud-Computing Supply Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Akamai (AKAM) agreed to supply cloud-computing services to AI lab Anthropic in a roughly $12 billion deal, MarketWatch reported, sending its shares surging.</p>
+        <p><strong>Outlook:</strong> The pact positions Akamai as a real alternative to hyperscalers for AI capacity.</p>
+        <p><strong>What it means:</strong> AI labs are diversifying their compute suppliers, opening the buildout beyond the biggest cloud names.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/akamai-stock-is-surging-a-12-billion-anthropic-deal-reveals-its-powerful-edge-over-cloud-providers-0b60ca6d?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Akamai's Stock Is Surging. A $12 Billion Anthropic Deal Reveals Its Powerful Edge Over Cloud Providers.</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MGM Resorts &amp; People Inc. -- Barry Diller Rescinds His Takeover Offer</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Barry Diller's People Inc. rescinded its offer to buy the remaining public shares of MGM Resorts (MGM), CNBC reported, sending the stock down 11%.</p>
+        <p><strong>Outlook:</strong> With the bid gone, MGM must stand on its standalone story.</p>
+        <p><strong>What it means:</strong> A collapsed deal removes the takeover floor and signals a buyer looked closely and walked.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/24/barry-diller-people-mgm-resorts.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- MGM Resorts Shares Sink 11% After Barry Diller's People Inc. Rescinds Takeover Offer</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Novo Nordisk -- Strikes a $1bn-Plus Licensing Deal After a Rough Capital-Markets Day</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Just days after a capital-markets day that left investors uncertain, Novo Nordisk struck a licensing deal worth over $1 billion that sent a Swedish company's stock soaring, MarketWatch reported.</p>
+        <p><strong>Outlook:</strong> The tie-up signals Novo is buying its way into fresh pipeline as Eli Lilly gains ground in GLP-1s.</p>
+        <p><strong>What it means:</strong> Obesity-drug competition is pushing incumbents toward external deals to defend their franchise.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/after-capital-markets-day-flop-novo-strikes-licensing-deal-that-sends-a-swedish-companys-stock-soaring-f3c99cbe?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- After Capital-Markets Day Flop, Novo Strikes Licensing Deal That Sends a Swedish Company's Stock Soaring</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Telefónica -- Weighs Sale of Its Venezuelan Unit After 35 Years</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Telefónica is considering starting a sales process for its Venezuelan telecom unit, Bloomberg reported, further shrinking the Spanish carrier's Latin American footprint.</p>
+        <p><strong>Outlook:</strong> An exit would continue Telefónica's retreat from harder-to-run emerging markets.</p>
+        <p><strong>What it means:</strong> European telecoms keep pruning portfolios to focus capital on core geographies.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/telefonica-weighs-sale-of-venezuelan-telecom-unit-after-35-years" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Telefónica Weighs Sale of Venezuelan Unit After 35 Years</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ARK &amp; Securitize -- Tokenize a Venture Fund Holding OpenAI and Anthropic Stakes</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Cathie Wood's ARK teamed with Securitize to bring its ARK Venture Fund, which holds stakes in OpenAI and Anthropic, onchain, CoinDesk reported, first on Ethereum.</p>
+        <p><strong>Outlook:</strong> The structure gives retail exposure to sought-after private tech names via tokens.</p>
+        <p><strong>What it means:</strong> Tokenization keeps pushing into private-market access, blurring public and private lines.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/24/cathie-wood-s-ark-teams-with-securitize-to-tokenize-venture-fund-with-openai-anthropic-stakes" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Cathie Wood's ARK Teams With Securitize to Tokenize Venture Fund With OpenAI, Anthropic Stakes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Actis -- Merges India Road Assets Into a $1bn Infrastructure Trust</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Actis rolled 11 road assets from two funds into an infrastructure investment trust valued at about $1 billion after raising 11.8 billion rupees from investors, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The InvIT structure lets Actis recycle capital while retaining operating exposure.</p>
+        <p><strong>What it means:</strong> Institutional appetite for Indian infrastructure yield remains firm despite the global rate backdrop.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/actis-merges-india-road-assets-into-1-billion-trust" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Actis Merges India Road Assets Into $1 Billion Trust</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Lombard Odier -- turns overweight US Treasuries for the first time in five years</strong></summary>
+      <div class="deal-body">
+        <p>Switzerland's Lombard Odier Investment Management turned overweight US Treasuries for the first time in at least five years, Bloomberg reported, seeing higher yields as increasingly attractive versus stocks. A named bull calling the rout an opportunity.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-25/lombard-odier-turns-bullish-on-treasuries-after-five-year-hiatus" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Lombard Odier Turns Bullish on Treasuries After Five-Year Hiatus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SocGen (Subadra Rajappa) -- says markets are pushing limits on pricing Fed hikes</strong></summary>
+      <div class="deal-body">
+        <p>SocGen Americas research head Subadra Rajappa expects a lot more long-end volatility and questions whether the Fed can actually deliver the hikes markets are pricing, Bloomberg reported. A named skeptic of the aggressive rate path.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-25/markets-pushing-limits-on-pricing-in-fed-hikes-socgen-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Markets Pushing Limits on Pricing in Fed Hikes, Says SocGen's Rajappa</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>HSBC (Max Kettner) -- would be long almost anything if oil falls to $80</strong></summary>
+      <div class="deal-body">
+        <p>HSBC chief multi-asset strategist Max Kettner says yields have been incredibly correlated with oil and it is tough to call an end to the rise, but he would be long almost anything if crude falls to $80, favoring tech and equities on strong earnings, Bloomberg reported.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-25/max-kettner-would-be-long-anything-if-oil-falls-to-80-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Max Kettner Would Be Long Anything If Oil Falls to $80</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UBS (Mark Haefele) -- likes health care, EM bonds and commodities to diversify</strong></summary>
+      <div class="deal-body">
+        <p>UBS Global Wealth Management CIO Mark Haefele says investors need to be humble about diversifying, listing health-care stocks, emerging-market bonds and commodities including gold as parts of a broader strategy, Bloomberg reported. A named voice on spreading risk.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-25/ubs-likes-health-em-bonds-commodities-in-broader-play-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UBS Likes Health, EM Bonds, Commodities in Broader Play</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs -- points investors to Japan as an AI-fueled alternative to US stocks</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs' global head of hedge fund coverage says US stocks face hurdles from the "clear and present" danger of bond yields and that Japan, an AI-fueled market that has quietly outperformed, may be the answer, MarketWatch reported. A named rotation call.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/why-the-alternative-to-the-clear-and-present-danger-from-bond-yields-is-this-ai-fueled-market-thats-quietly-outperformed-cea440af?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why the Alternative to the 'Clear and Present' Danger From Bond Yields Is This AI-Fueled Market That Has Quietly Outperformed</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the Bond Rout Pauses, Oil Retreats on the Hormuz Talks and the AI Trade Broadens, With Lombard Odier Buying Treasuries, HSBC's Max Kettner Ready to Go Long If Oil Falls to $80 and Goldman Steering Toward Japan, Against SocGen's Subadra Rajappa Doubting the Fed Can Deliver Priced Hikes and UBS Urging Diversification</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (buy the dip as yields peak and AI broadens):</strong> Lombard Odier turned overweight US Treasuries for the first time in five years, HSBC's Max Kettner would be long almost anything if oil falls to $80, and Goldman is steering clients toward an AI-fueled Japan that has quietly outperformed. With oil retreating on the Hormuz talks and Meta nearing $2 trillion, the setup favors adding risk as the panic fades.</div>
+        <div class="bear"><strong>Bear (the hikes and the volatility aren't done):</strong> SocGen's Subadra Rajappa doubts the Fed can deliver the hikes markets price and warns of more long-end volatility, and UBS's Mark Haefele is urging humility and diversification into health care, EM bonds and gold rather than chasing US equities. With the dollar on its best run since March, the tightening bias and the rate risk that drove the rout are still very much intact.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Meta nears $2tn on Muse; Akamai surges on Anthropic deal; MGM sinks 11% on busted Diller bid</td><td>Bullish</td><td>~40,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Bond selloff pauses; Costco beats but caution; Darden weakness; Everpure best S&P performer</td><td>Cautiously bullish</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Yields ease off multi-decade highs; dollar's best run since March; Banxico holds; France budget</td><td>Mixed</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Cracks in Oracle's data-center buildout; Japan scrutinizes AI financing; Jev undercuts incumbents</td><td>Cautious</td><td>~14,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>Altcoins rally, BTC near $84K; ETF inflows flip positive; Bitget $352m hack; NY sues Polymarket</td><td>Bullish</td><td>~33,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood snapped back toward risk-on as the bond selloff paused and oil eased. r/wallstreetbets turned bullish on Meta nearing $2 trillion and Akamai's Anthropic deal, while trading the MGM blowup. r/stocks was cautiously constructive after Costco's beat, tempered by Darden's slowdown. r/investing stayed mixed on yields easing but the dollar surging and Banxico holding. r/SecurityAnalysis kept its guard up on Oracle's data-center cracks and AI financing scrutiny. r/CryptoCurrency perked up as altcoins rallied and ETF flows flipped positive. The swing factor is today's core PCE.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Bond Volatility Can Spike While Stock and Crypto Volatility Stay Dead Calm</h2>
+    <p>One of the most instructive charts of the week was buried in a CoinDesk note: bond volatility is at its highest since March, while the bitcoin VIX and Wall Street's VIX both sit near their yearly lows. That divergence looks strange at first, since a violent selloff in the world's benchmark asset would seem like it should terrify everyone. Understanding why it does not requires separating two different kinds of volatility and the two different crowds that trade them. Start with what these gauges measure. The VIX tracks the expected 30-day volatility of the S&P 500, derived from options prices on the index. The MOVE index, the bond-market equivalent, tracks expected volatility in Treasury yields, derived from options on interest rates. When the MOVE spikes but the VIX stays low, the market is saying it expects big swings in rates but calm in stocks. Here is why that can happen. The week's turmoil was a repricing of the path of interest rates, driven by oil, inflation fears and doubts about how many hikes the Fed can deliver. That is fundamentally an interest-rate story, and the instruments that absorb it first are Treasuries and rate options, so their volatility jumps. Equities, by contrast, were not facing an existential threat to earnings. If the economy is strong enough to justify higher rates, as WSJ argued this week, then corporate profits are holding up, and stocks can shrug off the rate move even as bonds convulse. The two markets are pricing different things: bonds are pricing policy uncertainty, stocks are pricing growth, and growth looked fine. There is also a structural reason the gap persists. Bond volatility is dominated by large, rate-sensitive institutions, banks, insurers, pension funds and sovereign buyers, who must constantly hedge duration risk, and their hedging flows amplify moves in rate options. Equity and crypto volatility, by contrast, is heavily influenced by dealer positioning and retail flow. When dealers are long options and the market grinds sideways or up, they sell volatility to stay hedged, which mechanically pins the VIX low. That is exactly the setup that keeps stock and crypto vol suppressed even while rates whip around. The practical lesson for a market reader is to watch the MOVE-VIX relationship as a tell about what kind of stress you are in. When bond volatility leads and equity volatility lags, as now, the stress is contained in the rates channel, and risk assets are treating it as noise rather than danger. That can be a healthy sign, meaning the market believes the economy can handle higher rates. But it is also a warning to respect: history shows that when rate volatility stays elevated long enough, it eventually leaks into equities, because higher and more uncertain discount rates make every future cash flow harder to value. A calm VIX sitting next to a screaming MOVE is not proof that stocks are safe. It is proof that they have not yet decided the rate move matters, and that decision can flip fast if PCE or the next auction reignites the bond move.</p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/25/bond-volatility-surges-while-bitcoin-and-wall-street-stay-calm" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bond Volatility Surges While Bitcoin and Wall Street Stay Calm</a></p>
+    <p class="deal-source"><a href="https://www.wsj.com/finance/investing/us-economy-bond-market-0bfda8b3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The Robust U.S. Economy Powers Through Rate Hikes and Rising Bond Yields</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Nonfarm payrolls, Friday Oct 2.</strong> The first jobs report of the quarter is the key test of whether the labor market is loose enough to justify the market's priced Fed hikes or firm enough to keep the higher-for-longer story alive after this week's rate scare.</li>
+      <li><strong>ISM Manufacturing and JOLTS, early week.</strong> With SocGen's Rajappa doubting the Fed can deliver priced hikes, factory activity and job-openings data offer a read on whether demand and pricing pressure are cooling or reaccelerating.</li>
+      <li><strong>Month- and quarter-end plus bond auctions.</strong> After a week that drove yields to multi-decade highs, watch rebalancing flows and upcoming Treasury auctions for whether the pause holds or the term-premium strain returns.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Micron, next week.</strong> A Rosenblatt analyst expects new customer agreements, rising prices and buybacks; the print is a live read on whether AI-memory demand keeps supporting pricing power.</li>
+      <li><strong>Consumer bellwethers in focus.</strong> After Darden's Olive Garden slowdown and Costco's tariff-aided beat, watch restaurant and retail commentary for confirmation the consumer is pinching or holding up.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>AI-infrastructure financing watch.</strong> With Akamai's $12bn Anthropic deal, Musk doubling Colossus 2's chips and Japan's regulator scrutinizing AI data-center loans, watch whether cracks like Oracle's New Mexico project spread.</li>
+      <li><strong>Tokenization pipeline.</strong> After ARK and Securitize tokenized a venture fund and the Fed advanced GENIUS Act stablecoin rules, watch for the next wave of real-world-asset launches and regulatory detail.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>US-Iran Hormuz talks.</strong> With negotiators exploring a phased deal to reopen the strait and lift the US port blockade, watch whether it firms into something signed or unravels, since oil and yields are moving on it.</li>
+      <li><strong>Trump-Xi aftermath.</strong> The summit delivered pageantry over substance and a truce extended to January 10; watch for follow-through on AI cooperation, chips and export controls that could ripple through the semiconductor complex.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Fri Sep 25, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-09-25 07:46 ET); Bloomberg Technology (20 fresh, newest 2026-09-25 07:52 ET); Bloomberg Economics (20 fresh, newest 2026-09-25 07:05 ET); CNBC Top News (8 fresh, newest 2026-09-25 08:00 ET); CNBC Finance (8 fresh, newest 2026-09-25 02:30 ET); CNBC Economy (7 fresh, newest 2026-09-25 07:08 ET); MarketWatch Top Stories (10 fresh, newest 2026-09-25 07:15 ET); WSJ Markets (18 fresh, newest 2026-09-25 07:20 ET); FT Home (10 fresh, newest 2026-09-25 07:17 ET); Matt Levine Money Stuff (1 fresh, newest 2026-09-24 14:16 ET); CoinDesk (25 fresh, newest 2026-09-25 07:54 ET); Stratechery (1 fresh, newest 2026-09-24 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Yahoo Finance (25 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove the shift in markets on Friday?</strong></p>
+      <span class="opt" data-opt="A">A. The Federal Reserve announced a surprise emergency rate cut overnight</span>
+      <span class="opt" data-opt="B">B. China agreed to buy a record amount of US Treasury debt</span>
+      <span class="opt" data-opt="C">C. Oil eased on hopes of a phased US-Iran deal to reopen Hormuz</span>
+      <span class="opt" data-opt="D">D. A blowout US jobs report signaled the economy was overheating</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg and WSJ reported bonds steadied and stocks rose as oil retreated on reports US and Iranian negotiators are exploring a phased deal to reopen Hormuz. It wasn't a rate cut, Chinese buying or a jobs report.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did Lombard Odier do this week?</strong></p>
+      <span class="opt" data-opt="A">A. It turned overweight US Treasuries for the first time in five years</span>
+      <span class="opt" data-opt="B">B. It dumped its entire Treasury position to buy European stocks</span>
+      <span class="opt" data-opt="C">C. It warned Treasuries would keep falling for years ahead</span>
+      <span class="opt" data-opt="D">D. It said cash was safer than bonds at current yield levels</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported Lombard Odier turned overweight US Treasuries for the first time in at least five years, seeing higher yields as attractive versus stocks. It was buying, not dumping or warning.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What did Bloomberg report about Meta this week?</strong></p>
+      <span class="opt" data-opt="A">A. It slid on a weak preannouncement of quarterly earnings</span>
+      <span class="opt" data-opt="B">B. It got removed from the S&P 500 index for underperformance</span>
+      <span class="opt" data-opt="C">C. It paused all of its AI spending to protect margins</span>
+      <span class="opt" data-opt="D">D. It had its best month since 2013, nearing $2 trillion</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg reported Meta is on its best month since 2013 and on the cusp of $2 trillion as its Muse agent topped Apple's App Store. It didn't preannounce weakness, leave the index or halt AI spending.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The global bond rout paused as oil retreated and yields eased from multi-decade highs on reports US and Iranian negotiators are exploring a phased Hormuz deal, with Lombard Odier turning overweight Treasuries for the first time in five years and WSJ arguing the economy is powering through, even as SocGen's Subadra Rajappa doubts the Fed can deliver priced hikes and BOE's Bailey warns hikes are harder to avoid.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-25/lombard-odier-turns-bullish-on-treasuries-after-five-year-hiatus", "take": "Lombard Odier turned overweight US Treasuries for the first time in five years." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/us-economy-bond-market-0bfda8b3?mod=rss_markets_main", "take": "The robust US economy is powering through higher borrowing costs." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-25-2026?mod=rss_markets_main", "take": "The bond selloff abated as oil prices slipped." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-09-25/markets-pushing-limits-on-pricing-in-fed-hikes-socgen-video", "take": "SocGen's Rajappa doubts the Fed can deliver the hikes markets price." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/09/24/surging-treasury-yields-are-posing-a-brand-new-problem-for-kevin-warsh-and-the-fed.html", "take": "Surging yields are a brand-new problem for Warsh's Fed." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil retreated and European stocks headed for their first weekly gain in four as US and Iranian negotiators explored a phased deal to reopen Hormuz and lift Washington's port blockade, with Saudi exports at a war-time high, even as BOE's Bailey and Manulife tie further hikes to the lingering energy shock and the Trump-Xi summit delivered pageantry over substance.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-25/us-stock-futures-rise-as-investors-see-relief-in-yields-oil", "take": "Oil and yields pulled back as US-Iran Hormuz talks lifted futures." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-25/european-stocks-set-for-first-weekly-gain-in-four-as-oil-eases", "take": "European shares advanced as oil pulled back on Hormuz-reopening hopes." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-25-2026?mod=rss_markets_main", "take": "Hopes for a Hormuz deal drove Brent crude futures down." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-25/boe-s-bailey-warns-it-s-getting-harder-to-avoid-rate-hikes", "take": "BOE's Bailey ties harder-to-avoid hikes to persistent oil and gas costs." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/cdff194b-8106-4f71-b5b8-d0dbaf2c4d79?syn-25a6b1a6=1", "take": "The Trump-Xi summit was pomp over substance, masking the Iran war." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade broadened as Meta posted its best month since 2013 near $2 trillion with its Muse agent topping the App Store, Akamai won a $12bn Anthropic cloud deal and Musk moved to double Colossus 2's Nvidia chips, even as WSJ flagged cracks in Oracle's data-center buildout, Japan's regulator scrutinized AI financing and a cheap new model called Jev undercut incumbents.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-24/meta-s-best-month-since-2013-has-it-on-cusp-of-2-trillion-level", "take": "Meta is near $2 trillion on its best month since 2013." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/akamai-stock-is-surging-a-12-billion-anthropic-deal-reveals-its-powerful-edge-over-cloud-providers-0b60ca6d?mod=mw_rss_topstories", "take": "Akamai surged on a roughly $12bn Anthropic cloud deal." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-25/elon-musk-aims-to-double-colossus-2-s-nvidia-chips-by-year-end", "take": "Musk aims to more than double Colossus 2's Nvidia chips by year-end." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/cracks-in-oracles-ai-data-center-build-out-appear-in-massive-new-mexico-project-effb51c2?mod=rss_markets_main", "take": "Oracle issued a force majeure notice on its New Mexico data center." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-25/japan-regulator-is-boosting-scrutiny-of-ai-data-center-financing", "take": "Japan's FSA is scrutinizing AI data-center financing at big banks." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Akamai","Everpure","Meta","Nvidia","S&P Futures","MGM Resorts"],
+    "values": [8.0, 5.0, 4.0, 2.0, 0.5, -11.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [40000, 26000, 29000, 14000, 33000],
+    "colors": ["bull","neutral","neutral","neutral","bull"]
+  },
+  "dealSizes": {
+    "labels": ["Akamai-Anthropic Cloud","Ecobank Women/Ag","Senegal IMF Loan","Novo Licensing","Actis India Trust"],
+    "values": [12.0, 2.6, 2.2, 1.0, 1.0]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
