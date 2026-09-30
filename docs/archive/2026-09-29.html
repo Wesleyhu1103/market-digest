@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Tue Sep 29, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-09-29</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Tuesday, September 29, 2026</h1>
+    <div class="meta">
+      <p>The Treasury selloff paused overnight and stocks and bonds found relief as oil eased after Saudi Arabia restarted a key pipeline and Qatar opened mediation with the US and Iran, though the 10-year still sits near a 19-year high around 5.23%. PCE inflation lands Wednesday and payrolls Friday, with quarter-end in between. OpenAI scrapping its Astra model over safety fears is the fresh cloud over the AI trade, and Australia hiked to a 15-year high overnight.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The Treasury selloff paused and stocks and bonds found relief as oil eased after Saudi Arabia restarted a key pipeline and Qatar opened mediation between the US and Iran, though the 10-year yield stayed near a 19-year high at 5.23% with PCE Wednesday and payrolls Friday looming",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Stocks and Bonds Find Relief as Oil Prices Ease", "angle": "Reads the pause as a supply-driven reprieve, with Saudi flows and Qatar mediation cooling the crude spike that drove the rout.", "lean": 30, "pull": "US stocks edged higher and Treasuries gained as oil prices eased, with traders holding fire ahead of the week's first labor data."},
+        {"outlet": "WSJ", "headline": "Treasury Selloff Pauses, But Yields Remain at Painful Highs", "angle": "Frames the calm as fragile, stressing that yields are still parked near multiyear peaks ahead of PCE and jobs.", "lean": -20, "pull": "The selloff in Treasurys showed no signs of easing as investors looked ahead to crucial inflation and jobs data."},
+        {"outlet": "Financial Times", "headline": "Bond Investors Become Oil Traders as Iran War Drives Yields", "angle": "Argues the bond market is now hostage to the crude tape and the Iran conflict headline by headline.", "lean": -25, "pull": "Bond investors watch the Iran conflict and crude price for signs as to where government borrowing costs will go."},
+        {"outlet": "Bloomberg", "headline": "A Big Fat Cushion in Yields Lures New Bond Bulls", "angle": "Reads the level of yields itself as the opportunity, with Jim Bianco saying the Fed has made clear it will stamp out inflation.", "lean": 40, "pull": "Jim Bianco says the Fed has made it clear it will stamp out inflation, and the cushion in yields is drawing buyers."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Treasury Selloff Pauses and Gilts Lead Europe Higher as Oil Eases, But the 10-Year Holds Near 5.23% at a 19-Year High With PCE Wednesday and Payrolls Friday, as Australia Hikes to a 15-Year High and the UK Pays Its Highest Yield Since 1999, Even as Jim Bianco Calls the Cushion in Yields a Buy and WSJ Says 2-Year Notes Are Attractive Against Ed Yardeni and Manulife's Colin Purdie Staying Cautious</h3>
+      </div>
+      <p>The rout took a breather. Bloomberg reported stocks and bonds found relief as oil eased, with Treasuries gaining and traders holding fire ahead of the week's first labor data, and WSJ said the Treasury selloff paused but yields remain at painful highs after the 10-year hit a 19-year high Monday and still sat near 5.23%. Gilts led European bonds higher as energy prices retreated to fresh lows on the day, helped by reports the US is not expected to ban diesel exports and that Qatar is mediating. But the tightening backdrop hardened elsewhere: Bloomberg reported Australia raised its key rate to a 15-year high to cool inflation, the UK paid its highest 10-year auction yield since 1999 as investors demanded premiums for inflation and budget risk, and Spanish inflation unexpectedly hit 5%, backing higher ECB rates. Fed Governor Lisa Cook warned AI productivity gains will not offset near-term inflation. The bear read has names: Ed Yardeni says he is not convinced 5.25% is the top and calls it the revenge of the bond vigilantes, and Manulife's Colin Purdie is cautious on the US bond market. The bull read is that yields now pay you to wait. Bloomberg reported Jim Bianco says the cushion in yields is luring new bond bulls because the Fed has made clear it will stamp out inflation, and WSJ made the case that 2-year Treasury notes are attractively priced right now.</p>
+      <p>The bull read is Bianco's cushion argument, WSJ's 2-year note call and the relief as oil eases. The bear read is the 10-year stuck near a 19-year high, Australia and the UK paying up, Spanish inflation at 5%, Cook's warning and Yardeni doubting the top is in.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the level of yields is now the opportunity):</strong> Bloomberg reports Jim Bianco says the big fat cushion in yields is drawing new bond bulls because the Fed has signaled it will stamp out inflation, and WSJ argues 2-year notes are attractively priced. With oil easing on the Saudi pipeline restart and Qatar mediation, the crude channel that drove the rout is fading, and Treasuries gained overnight. Buyers who waited are finally getting paid to step in.</div>
+        <div class="bear"><strong>Bear (the pause is fragile and tightening is global):</strong> WSJ says the selloff only paused and yields remain at painful highs, with the 10-year near a 19-year high at 5.23% into Wednesday's PCE and Friday's jobs. Australia hiked to a 15-year high, the UK paid its steepest 10-year yield since 1999, Spanish inflation hit 5%, and Fed's Cook warns AI gains will not offset price pressure. Ed Yardeni is not convinced 5.25% caps it.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-29-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury Selloff Pauses, But Yields Remain at Painful Highs</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Eases and Gas Hits New Lows as Saudi Arabia Restarts a Key Pipeline and Qatar Opens Mediation Between the US and Iran, With EU Officials Not Expecting a US Diesel Ban, Even as Trump Spurns Iran's Latest Hormuz Offer, Tehran Doubts a Deal Before the Midterms, FT Warns the War Adds 100bn Euros to the EU Fuel Bill and Russia Lifts Defense Spending 27%</h3>
+      </div>
+      <p>Supply won the morning. Bloomberg reported oil edged lower as top exporter Saudi Arabia resumed flows through a key pipeline, overshadowing the stalemate in US-Iran talks, and gilts led European bonds higher as oil and natural gas fell to new lows on the day. The relief followed reports that EU officials do not expect the US to ban diesel exports and that Qatar is holding meetings with the US and Iran over the conflict. That is the bull case: barrels are returning, a mediator is engaged, and the feared diesel ban looks less likely. The bear case is that the diplomatic gap is wide. Bloomberg reported the bond selloff had deepened Monday after Trump rejected Iran's latest proposal to reopen the Strait of Hormuz, and CoinDesk noted Tehran doubts a US deal before the midterms even as Trump says the war could end soon. FT warned the US-Iran war adds 100bn euros to the EU's fuel bill as energy ministers meet in Dublin, and separately said bond investors have effectively become oil traders. Bloomberg also reported Russia is set to surge defense spending by 27% as the Ukraine war escalates, a reminder the geopolitical risk premium is broad. On trade, Bloomberg noted the demand boost for US crops from China's tariff cuts is still unclear as grain traders wait for actual buying.</p>
+      <p>The bull read is Saudi Arabia's pipeline restart, Qatar's mediation, the diesel ban looking unlikely and gas at new lows. The bear read is Trump spurning Iran's offer, Tehran doubting a pre-midterm deal, the 100bn euro EU fuel bill and a widening geopolitical risk premium.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (supply returns and diplomacy reopens):</strong> Saudi Arabia restarted flows through a key pipeline, oil edged lower, and natural gas fell to fresh lows on the day. EU officials do not expect the US to ban diesel exports, and Qatar is now mediating between Washington and Tehran. If the crude spike keeps fading, the oil-to-yields channel that drove the bond rout loses its fuel and the whole risk backdrop calms.</div>
+        <div class="bear"><strong>Bear (the standoff is unresolved and the premium is broad):</strong> Trump rejected Iran's latest Hormuz proposal, Tehran doubts a deal before the midterms, and FT says the war is adding 100bn euros to Europe's fuel bill. Bond investors are trading every crude headline, Russia is lifting defense spending 27%, and the China tariff cuts have yet to produce actual crop demand. The geopolitical risk premium that lifted oil and yields has not gone away.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-28/latest-oil-market-news-and-analysis-for-sept-29" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for Sept. 29</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>OpenAI Scraps Its Astra Model Over Safety and Anthropic's IPO Prospectus Warns of Existential Risks While Losing 8bn on 4.6bn in Revenue, as Bain Says AI Needs 6 Trillion a Year to Justify Data Centers and Two-Thirds of That Is Unaccounted For, Even as Nvidia Turns to Insurers, Samsung Bets 1bn and Meta Launches an Enterprise Platform</h3>
+      </div>
+      <p>The AI trade hit a safety and financing wall. Bloomberg and FT reported OpenAI scrapped the debut of its GPT-6.1 Astra model, holding it back after it failed to perform as well on safety evaluations as the current version, following a spate of rogue AI hacking incidents including a breach of Australian government sites. FT reported Anthropic's long-awaited S-1 warns of existential risks to humanity while disclosing an $8 billion loss on $4.6 billion in revenue, with CoinDesk noting the company plans to spend $518 billion on AI infrastructure. The financing math is the bear case: Bloomberg reported Bain says the industry needs to earn $6 trillion a year by 2031 to justify the data centers being built, and MarketWatch said roughly $4.2 trillion of that annual bill, about two-thirds, is still unaccounted for. WSJ argued Nvidia's buyback created phantom value, and FT reported Nvidia is now turning to insurers to spread the risk of the AI buildout, drawing Wall Street deeper into financing it. The bull read is that the capital keeps flowing. Samsung is investing $1 billion in an ex-AWS chief's AI infrastructure company, Meta launched an Enterprise Platform to sell AI makeovers to companies, and Microsoft rebooted Copilot for business customers. Trump held a lunch with Jensen Huang, Dario Amodei and Alex Karp to discuss AI risks, and MSCI launched AI value-chain indexes as hedging demand grows.</p>
+      <p>The bull read is Samsung's $1bn bet, Meta's enterprise push, Microsoft's Copilot reboot and capital still flowing. The bear read is OpenAI pulling Astra on safety, Anthropic's existential-risk warning and losses, Bain's $6tn test with two-thirds unaccounted, and WSJ calling Nvidia's buyback phantom value.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the capital and the products keep coming):</strong> Samsung is putting $1 billion into an ex-AWS chief's AI infrastructure firm, Meta launched an Enterprise Platform to monetize corporate AI makeovers, and Microsoft rebooted Copilot around business customers. Nvidia is pulling insurers into financing the buildout, spreading risk rather than shrinking it, and MSCI is rolling out AI indexes as demand grows. The ecosystem is maturing, not stalling.</div>
+        <div class="bear"><strong>Bear (safety and financing are cracking at once):</strong> OpenAI pulled its Astra model over failed safety evals, Anthropic's IPO filing warns of existential risks while it burns billions, and Bain says AI needs $6 trillion a year by 2031 with two-thirds of that revenue unaccounted for. WSJ calls Nvidia's buyback phantom value and FT notes it is now leaning on insurers. When the revenue gap is this wide, the financing is where it breaks.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/d6a9f5df-08d0-4f80-ad2d-5d8a17e2cc82?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Nvidia Turns to Insurers to Spread the Risk of AI Build-Out</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks and bonds find relief as oil prices ease</strong></summary>
+      <div class="deal-body">
+        <p>US stocks edged higher and Treasuries gained as oil prices eased, Bloomberg reported, with traders holding fire ahead of the week's first labor data and a string of AI events. The move reverses part of Monday's slide as Saudi Arabia restarted a key pipeline.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-28/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks and Bonds Find Relief as Oil Prices Ease</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stock futures drift as the Treasury selloff continues</strong></summary>
+      <div class="deal-body">
+        <p>The selloff in Treasurys showed no signs of easing but markets were little moved, WSJ reported, as investors looked ahead to crucial inflation and jobs data later this week. Yields remain near a 19-year high after the 10-year cleared 5.23%.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/stock-futures-drift-as-treasury-selloff-continues-d9bf63c1?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Futures Drift as Treasury Selloff Continues</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mike Wilson says an S&P 500 correction may be what the market needs</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley's chief US equity strategist Mike Wilson said a correction could be exactly what the market needs, MarketWatch reported, and he favors large-cap quality companies into the pullback. The call frames near-term weakness as healthy rather than a top.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/morgan-stanleys-mike-wilson-says-an-s-p-500-correction-may-be-exactly-what-the-market-needs-a6baf54e?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Morgan Stanley's Mike Wilson Says an S&P 500 Correction May Be Exactly What the Market Needs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nearly half of S&P 500 stocks are working against the index</strong></summary>
+      <div class="deal-body">
+        <p>Almost half the stocks in the S&P 500 now carry a negative beta, CNBC reported, evidence of a chasm between the whole index and its individual components. The reading points to unusually thin, top-heavy leadership under the surface.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/28/nearly-half-of-the-stocks-in-the-sp-500-are-working-against-it.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Nearly Half the Stocks in the S&P 500 Are at Cross Purposes With the Rest of the Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>How Nvidia's buyback created phantom value</strong></summary>
+      <div class="deal-body">
+        <p>WSJ argued Nvidia's (NVDA) record buyback created phantom value rather than real gains, questioning whether the arithmetic flatters earnings without adding to the business. The skeptical read lands as AI financing math draws fresh scrutiny.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/how-nvidias-buyback-created-phantom-value-d3cfa712?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- How Nvidia's Buyback Created Phantom Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CarMax climbs as its turnaround shows green shoots</strong></summary>
+      <div class="deal-body">
+        <p>CarMax (KMX) shares rose after comparable used-vehicle sales expanded more than expected, Bloomberg reported, showing its revival efforts are taking hold even with faltering consumer sentiment. A rare bright spot for the consumer read.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/carmax-shares-climb-as-turnaround-push-shows-green-shoots" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CarMax Shares Climb as Turnaround Push Shows Green Shoots</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape steadied as oil eased on the Saudi pipeline restart and Qatar mediation, letting Treasuries gain, but the 10-year is still near a 19-year high and CNBC flags nearly half the S&P working against the index. The swing factors are Wednesday's PCE, Friday's payrolls, quarter-end rebalancing and whether oil keeps sliding. Watch large-cap quality per Wilson, energy and defensives if crude turns back up, and long-duration tech into the AI safety headlines.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why "Phantom Value" From a Buyback Is a Real Risk, Not Just a Slogan</summary>
+      <p>WSJ argued Nvidia's record buyback created phantom value, and the phrase deserves unpacking because it captures a genuine accounting trap, not just cynicism. Start with the mechanics. A buyback reduces shares outstanding, so the same net income is divided across fewer shares, which lifts earnings per share. Investors often reward higher EPS with a higher price, and management compensation is frequently tied to EPS targets. That creates a temptation to manufacture EPS growth through repurchases even when the underlying business is not generating more profit per dollar of capital. That manufactured growth is the phantom: the per-share number rises while the total economic value of the enterprise does not. The distinction that separates real value from phantom value is price. If a company buys back stock below its intrinsic worth, the remaining shareholders genuinely gain, because they now own a larger slice of an undervalued business. If it buys back stock at or above fair value, it is simply converting cash into shares at full price, and the EPS bump is cosmetic. The harder question for a name like Nvidia is what its shares are actually worth, because the answer depends entirely on assumptions about AI demand that are themselves in dispute. If AI revenue keeps compounding, the buyback was cheap and value-accretive. If Bain is right that the industry needs $6 trillion a year to justify current spending, and two-thirds of that is unaccounted for, then today's price may embed demand that never arrives, and the buyback would have retired shares at inflated levels. There is a second layer WSJ hints at. A giant buyback can also mask dilution from stock-based compensation. Fast-growing tech companies pay employees heavily in shares, which quietly increases the count each year. A large repurchase can offset that issuance so the net share count looks flat, which means part of the buyback is not returning cash to owners at all but simply paying employees while hiding the cost from the EPS line. That is a subtle form of phantom value: cash leaves the company, the share count holds steady, and shareholders see none of the accretion they were told to expect. The practical lesson for a market reader is to separate the headline authorization from the economics. Ask three things. First, is the company buying below a defensible estimate of fair value, or just at whatever the market quotes. Second, how much of the repurchase merely offsets stock-based compensation rather than shrinking the float. Third, is the cash being spent on buybacks money that could have funded higher-return investment instead. For Nvidia, the buyback is cash-funded and sits alongside massive capex, which is a point in its favor, but the value it creates is only as real as the AI demand underpinning the share price. Treat a buyback as a bet on valuation, because that is exactly what it is.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/how-nvidias-buyback-created-phantom-value-d3cfa712?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- How Nvidia's Buyback Created Phantom Value</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>OpenAI scraps the debut of its latest Astra model over safety fears</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI is holding back a version of its GPT-6.1 Astra model after it failed to score as well on safety evaluations as the current iteration, Bloomberg reported, flagging heightened risk after a spate of rogue AI hacking incidents. The pause is a fresh headwind for AI-linked stocks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-28/openai-scrapped-latest-model-release-over-safety-fears-wsj-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI Scraps Debut of AI Model as It Sets New Guardrails</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Anthropic warns of existential risks to humanity in its IPO prospectus</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic's long-awaited S-1 filing warns of existential risks to humanity while reporting the Claude maker lost $8 billion last year on $4.6 billion in revenue, FT reported. The disclosures lay bare how cash-hungry frontier labs remain as they head for public markets.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/c7685a7e-7745-4cbc-8053-4958d0ea449b?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Anthropic Warns of Existential Risks to Humanity in IPO Prospectus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI faces a $6 trillion test to justify its data centers, Bain says</strong></summary>
+      <div class="deal-body">
+        <p>The global AI industry needs to earn $6 trillion in annual revenue by 2031 to justify the capital being poured into data centers, Bain & Co. said, per Bloomberg. The figure crystallizes just how large the demand assumption behind the buildout has become.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/ai-faces-6-trillion-test-to-justify-data-centers-bain-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Faces $6 Trillion Test to Justify Data Centers, Bain Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Samsung bets $1 billion on AI data centers from an ex-AWS chief</strong></summary>
+      <div class="deal-body">
+        <p>Samsung Electronics and five affiliates are investing a combined $1 billion in a US firm led by a former Amazon Web Services chief, Bloomberg reported, deepening the group's push into AI infrastructure. The bet signals capital is still chasing the buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-28/samsung-to-invest-1-billion-in-kkr-s-ai-infrastructure-company" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Samsung Bets $1 Billion on AI Data Centers From Ex-AWS Chief</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta launches an Enterprise Platform to sell corporate AI makeovers</strong></summary>
+      <div class="deal-body">
+        <p>Meta (META) introduced the Meta Enterprise Platform to help companies with AI makeovers, Bloomberg reported, eyeing a new revenue stream to justify its massive investment. The move pushes Meta beyond consumer agents into business software.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-09-29/meta-introduces-the-meta-enterprise-platform-to-help-companies-with-ai-makeovers" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta Introduces the Meta Enterprise Platform</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump to talk AI risks with Huang, Amodei and Karp</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia's Jensen Huang, Anthropic's Dario Amodei and Palantir's Alex Karp are slated to attend a lunch with Trump and House Speaker Mike Johnson to discuss AI risks, Bloomberg reported, with OpenAI's Greg Brockman also expected. The gathering follows a run of rogue-AI incidents.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/nvidia-anthropic-ceos-to-attend-trump-johnson-lunch-on-ai-risks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia, Anthropic CEOs to Attend Trump-Johnson Lunch on AI Risks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>TSMC is reportedly eyeing a second US chipmaking site</strong></summary>
+      <div class="deal-body">
+        <p>Taiwan Semiconductor Manufacturing, which builds chips for Nvidia among others, is reportedly scouting a second US site for a chipmaking hub, MarketWatch reported. The expansion underscores that capacity is still being added across the semiconductor complex.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/heres-where-tsmc-is-reportedly-eyeing-a-second-u-s-site-for-a-chip-making-hub-828e4488?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Here's Where TSMC Is Reportedly Eyeing a Second U.S. Site for a Chip-Making Hub</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Tuesday September 29, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is the financing math tightening: Bain's $6tn test with two-thirds unaccounted, WSJ calling Nvidia's buyback phantom value, and FT reporting Nvidia is pulling insurers in to spread build-out risk. The counter-signal is capital still flowing, with Samsung's $1bn bet and Meta's Enterprise Platform. OpenAI pulling Astra on safety is the wildcard. The tell stays enterprise revenue and financing terms, not model launch hype.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Treasury selloff pauses but yields remain at painful highs</strong></summary>
+      <div class="deal-body">
+        <p>Stocks were set for a muted open as the Treasury selloff paused, WSJ reported, though yields remain near multiyear peaks after the 10-year hit a 19-year high Monday. The reprieve leaves the term-premium strain intact into Wednesday's PCE.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-29-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury Selloff Pauses, But Yields Remain at Painful Highs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Australia raises its key rate to a 15-year high</strong></summary>
+      <div class="deal-body">
+        <p>Australia's central bank resumed hiking to a 15-year high, Bloomberg reported, judging it could not wait longer to respond to resilient demand and escalating energy costs. The move fits the global tilt back toward tightening.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/australia-raises-key-rate-to-15-year-high-to-restrain-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Australia Raises Key Rate to 15-Year High to Cool Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UK pays its highest yield since 1999 at a 10-year bond auction</strong></summary>
+      <div class="deal-body">
+        <p>The UK government paid its highest 10-year auction yield since 1999, Bloomberg reported, with investors demanding premiums for persistent inflation and the prospect of spending increases in next month's budget. The result underscores the fiscal strain on long-end rates.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/uk-set-to-pay-highest-yield-since-1999-at-10-year-bond-auction" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UK Pays Highest Yield Since 1999 at 10-Year Bond Auction</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Spanish inflation unexpectedly hits 5%, backing higher ECB rates</strong></summary>
+      <div class="deal-body">
+        <p>Spanish inflation accelerated more than anticipated to 5%, further beyond the ECB's 2% target, Bloomberg reported, reinforcing the case for rates to rise further. The print adds a hawkish data point as the energy shock filters through.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/spanish-inflation-unexpectedly-hits-5-backing-higher-ecb-rates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Spanish Inflation Unexpectedly Hits 5%, Backing Higher Rates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Gilts lead European bonds higher as energy prices retreat</strong></summary>
+      <div class="deal-body">
+        <p>Gilts extended gains with UK 10-year yields almost 7bps lower as oil and natural gas fell to new lows on the day, Bloomberg reported, after reports the US is not expected to ban diesel exports and Qatar is mediating between the US and Iran. Falling energy eased rate-hike bets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/gilts-lead-european-bonds-higher-as-energy-prices-retreat" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gilts Lead European Bonds Higher as Energy Prices Retreat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Cook says AI gains won't offset near-term inflation</strong></summary>
+      <div class="deal-body">
+        <p>Fed Governor Lisa Cook said future productivity gains from AI may not be enough to offset near-term price pressures, Bloomberg reported, warning the trend could drive up inflation. The comment cuts against Bessent's productivity argument for patience.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-28/fed-s-cook-says-ai-gains-won-t-offset-near-term-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Cook Says AI Gains Won't Offset Near-Term Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Long-term unemployment hits a level unprecedented outside recessions</strong></summary>
+      <div class="deal-body">
+        <p>Beneath a low headline jobless rate, the ranks of people facing prolonged joblessness are rising to a level rarely seen outside recessions, Bloomberg reported. The undercurrent sets up Friday's payrolls as a decisive test of labor-market strength.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/long-term-unemployment-hits-level-unprecedented-outside-recessions" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Long-Term Unemployment Hits Level Unprecedented Outside Recessions</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (September 29, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side won overnight, with the Treasury selloff pausing, gilts leading Europe higher and energy prices retreating on the Saudi pipeline restart and Qatar mediation, while Jim Bianco says the cushion in yields is a buy. Pulling the other way, the 10-year is still near a 19-year high, Australia hiked to a 15-year high, the UK paid its steepest yield since 1999, Spanish inflation hit 5% and Cook warns AI gains will not cap inflation. Wednesday's PCE and Friday's jobs decide it.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Could There Really Be a "Run" on the Bond Market, and What Would That Even Mean</summary>
+      <p>WSJ asked whether there could be a run on the bond market, and the question sounds strange because we associate runs with banks, not government debt. But the mechanics rhyme, and understanding the difference tells you a lot about why this yield surge is being watched so closely. A classic bank run happens when depositors, fearing a bank cannot pay everyone back, all try to withdraw at once, and the rush itself makes the bank insolvent because it cannot sell its illiquid loans fast enough. A bond-market run is subtler. Governments do not hold deposits, but they do have to keep rolling over debt, selling new bonds to pay off maturing ones. If investors collectively lose confidence and demand much higher yields to keep buying, or refuse to buy at all, the government's borrowing costs spike, which worsens the deficit, which frightens investors further. That feedback loop is the run: fear of higher yields causes selling, selling causes higher yields, and the cycle can feed on itself. What makes the current setup fragile is the combination of forces. The UK just paid its highest 10-year auction yield since 1999, explicitly because investors demanded premiums for inflation and looming budget spending. That is the market pricing fiscal risk directly into borrowing costs. In the US, the 10-year hit a 19-year high on a mix of oil-driven inflation fears, deficits and war. When the long end sells off for supply-and-fiscal reasons rather than growth, the ordinary buyers who step in during a growth scare, betting on rate cuts, do not show up, because there is no cut in sight. That removes a natural stabilizer. The critical circuit breaker is the central bank. In a true disorderly run, a central bank can step in as buyer of last resort, as the Bank of England did during the 2022 gilt crisis, purchasing bonds to halt the spiral. That backstop is what separates a government-bond market from a bank with no lender behind it. But there is a catch specific to now: a central bank fighting inflation cannot easily buy bonds to cap yields, because that would loosen policy and add to the inflation it is trying to crush. So the very conditions driving yields up, persistent inflation, also weaken the backstop that would normally stop a run. The practical lesson for a market reader is to watch auction demand and bid-to-cover ratios, not just the yield level. A rising yield with strong demand is the market repricing calmly. A rising yield with weak, poorly covered auctions is the early signature of buyers stepping back, which is what a slow-motion run looks like. Jim Bianco calling the cushion in yields attractive is the optimistic counter: at some level, the income on offer pulls buyers back in and breaks the spiral on its own. Whether that level is 5.25% or 6% is the whole debate.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/economy/could-there-be-a-run-on-the-bond-market-0b5aa04b?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Could There Be a Run on the Bond Market?</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-09-29/a-big-fat-cushion-in-yields-lures-new-bond-bulls" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- A Big Fat Cushion in Yields Lures New Bond Bulls</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The Treasury selloff paused and stocks and bonds found relief as oil eased on Saudi Arabia's pipeline restart and Qatar mediation, though the 10-year is still near a 19-year high around 5.23%, with Australia hiking to a 15-year high and the UK paying its steepest yield since 1999 against Jim Bianco calling the cushion in yields a buy. The energy premium cooled even as Trump spurned Iran's offer and FT warned the war adds 100bn euros to the EU fuel bill. The AI trade cracked on safety and financing, with OpenAI pulling its Astra model, Anthropic's IPO warning of existential risks and Bain's $6tn test, even as Samsung and Meta kept spending; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 5.15%, bear confirmed; below 4.95%, bull confirmed. Iran/Oil: if Brent closes above $110, bear confirmed; below $100, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 9/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/29</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/30</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/1</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/2</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin rebounds above $84,000 as ETFs draw $30 million</strong></summary>
+      <div class="deal-body">
+        <p>Ether led a modest recovery among major tokens and bitcoin climbed back above $84,000 as Treasury yields steadied, CoinDesk reported, with crypto ETFs pulling in $30 million. The bounce tracks the broader relief as oil eased.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/29/live-updates-bitcoin-rebounds-above-usd84-000-as-treasury-yields-steady" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Rebounds Above $84,000 as ETFs Draw In $30 Million</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Aave leads DeFi higher as crypto shrugs off surging yields</strong></summary>
+      <div class="deal-body">
+        <p>Aave jumped 11% on speculation over a token burn, with 72 of the CoinDesk 100 constituents higher even as the 10-year Treasury yield sat at 5.234%, CoinDesk reported. The rally shows crypto decoupling from the bond stress for now.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/29/aave-leads-defi-higher-as-crypto-shrugs-off-surging-treasury-yields" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Aave Leads DeFi Higher as Crypto Shrugs Off Surging Bond Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Analysts see the 10-year yield hitting 6%, but bitcoin bulls shouldn't panic</strong></summary>
+      <div class="deal-body">
+        <p>Why yields are rising matters more for bitcoin than how high they go, CoinDesk reported, arguing an inflation-and-supply driven climb affects crypto differently than a growth-scare move. The framing tempers fear even as forecasts point to 6%.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/29/analysts-see-10-year-treasury-yield-hitting-6-bitcoin-bulls-shouldn-t-panic" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Analysts See 10-Year Treasury Yield Hitting 6%. Bitcoin Bulls Shouldn't Panic</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs brings its $100 billion Treasury fund into crypto plumbing</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs is bringing its roughly $100 billion Treasury fund to institutional crypto firms without creating a tokenized version of it, CoinDesk reported. The move threads traditional cash management into digital-asset infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/09/28/goldman-sachs-brings-usd100-billion-treasury-fund-into-crypto-s-institutional-plumbing" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Goldman Sachs Brings $100 Billion Treasury Fund Into Crypto's Institutional Plumbing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley builds a Digital Asset Lab to test Wall Street's future</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley set up a Digital Asset Lab to test stablecoins, tokenization and DeFi applications, Bloomberg reported, exploring how blockchain-based systems could run across its business. Another big bank leaning into crypto rails.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/morgan-stanley-builds-crypto-lab-to-test-future-of-wall-street" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Morgan Stanley Builds Crypto Lab to Test Future of Wall Street</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tether is a 'lifeline' for the Iranian regime, Senate Democrats say</strong></summary>
+      <div class="deal-body">
+        <p>Democrats on the Senate's Permanent Subcommittee on Intelligence published a report alleging USDT has become a key tool for the Iranian government, CoinDesk reported. The claim ties the stablecoin directly into the Middle East conflict narrative.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/09/28/tether-is-a-lifeline-for-iranian-regime-senate-dems-say-in-new-report" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Tether Is a 'Lifeline' for Iranian Regime, Senate Dems Say in New Report</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Blockchain.com -- Targets $500m IPO at Up to $6bn Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> The London-based crypto services company confidentially filed for an IPO with the SEC earlier this year and is now targeting a $500 million raise at up to a $6 billion valuation, CoinDesk reported.</p>
+        <p><strong>Outlook:</strong> A listing this year would ride renewed institutional interest and maturing crypto frameworks.</p>
+        <p><strong>What it means:</strong> Crypto firms are pushing into public markets even as broader IPO appetite wobbles.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/09/29/blockchain-com-targets-usd500-million-ipo-at-up-to-usd6-billion-valuation" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Blockchain.com Targets $500 Million IPO at Up to $6 Billion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Samsung &amp; KKR -- $1bn Bet on AI Infrastructure</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Samsung Electronics and five affiliates are investing a combined $1 billion in a US AI infrastructure company led by a former AWS chief, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The stake deepens Samsung's push into the fast-expanding AI data-center market.</p>
+        <p><strong>What it means:</strong> Even amid financing scrutiny, strategic capital is still flowing into the AI buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-28/samsung-to-invest-1-billion-in-kkr-s-ai-infrastructure-company" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Samsung Bets $1 Billion on AI Data Centers From Ex-AWS Chief</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Oura -- Smart-Ring Maker Postpones Its US IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Health and fitness ring-maker Oura became the latest company to delay a US IPO due to uncertainty in the market for first-time share sales, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The postponement signals a jittery primary market as yields sit near multiyear highs.</p>
+        <p><strong>What it means:</strong> The IPO window is narrowing for consumer names as rate volatility saps risk appetite.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/smart-ring-maker-oura-postpones-ipo-due-to-market-uncertainty" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Smart Ring Maker Oura Becomes Latest Company to Delay Its US IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs -- Board Discusses Naming John Waldron Next CEO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Goldman's board has discussed a plan to name President John Waldron as its next CEO, WSJ reported, with David Solomon stepping down as soon as next year and becoming executive chair.</p>
+        <p><strong>Outlook:</strong> A managed succession would hand the reins to a longtime deputy amid a busy dealmaking cycle.</p>
+        <p><strong>What it means:</strong> Leadership continuity at a bellwether bank matters for how Wall Street navigates the rate and AI-financing shifts.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/goldmans-board-has-discussed-a-plan-to-name-john-waldron-as-its-next-ceo-7c5d90dd?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Goldman's Board Has Discussed a Plan to Name John Waldron as Its Next CEO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Novo Nordisk -- Strikes Second Licensing Deal Since Frosty Capital-Markets Day</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Novo Nordisk struck its second licensing deal since receiving a poor reception from investors after presenting its long-term strategy, MarketWatch reported.</p>
+        <p><strong>Outlook:</strong> The pace of dealmaking suggests management is moving to shore up its pipeline and sentiment.</p>
+        <p><strong>What it means:</strong> Big pharma is buying growth externally as investors question in-house strategy.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/novo-nordisk-strikes-second-licensing-deal-since-frosty-capital-markets-day-cc0db878?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Novo Nordisk Strikes Second Licensing Deal Since Frosty Capital-Markets Day</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>RoboTechnik -- Drops in Debut After Leading $1.8bn HK Lineup</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> RoboTechnik Intelligent Technology shares fell on their Hong Kong trading debut in one of the city's busiest days for new listings, Bloomberg reported, part of a $1.8 billion lineup.</p>
+        <p><strong>Outlook:</strong> A soft debut tempers enthusiasm even as HK's IPO pipeline reopens.</p>
+        <p><strong>What it means:</strong> Investor appetite for new listings is selective, favoring quality over volume.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-28/robotechnik-leads-hong-kong-s-1-8-billion-listing-debut-lineup" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- RoboTechnik Drops in Debut After Leading $1.8 Billion HK Lineup</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Bianco Research (Jim Bianco) -- says the cushion in yields is luring new bond bulls</strong></summary>
+      <div class="deal-body">
+        <p>Jim Bianco says the big fat cushion in yields is drawing new bond bulls because the Fed has made clear it will stamp out inflation, Bloomberg reported. A named bull arguing the income on offer now compensates for the risk.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-09-29/a-big-fat-cushion-in-yields-lures-new-bond-bulls" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- A Big Fat Cushion in Yields Lures New Bond Bulls</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Yardeni Research (Ed Yardeni) -- not convinced 5.25% is the top in yields</strong></summary>
+      <div class="deal-body">
+        <p>Ed Yardeni says the rise in yields might be the revenge of the bond vigilantes and he is not convinced 5.25% marks the top, Bloomberg reported, finding both good and bad news in the rapid repricing. A named voice warning the selloff can extend.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-29/yardeni-not-convinced-5-25-is-the-top-in-yields-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Yardeni 'Not Convinced' 5.25% Is the Top in Yields</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Manulife (Colin Purdie) -- cautious on the US bond market</strong></summary>
+      <div class="deal-body">
+        <p>Manulife CIO of Public Markets Colin Purdie is cautious on the US bond market while seeing opportunities in global bonds amid rising yields, Bloomberg reported. A named read that duration risk in Treasuries is not yet resolved.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-09-29/cautious-on-us-bond-market-purdie-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Cautious on US Bond Market: Purdie</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley (Mike Wilson) -- says a correction may be what the market needs</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley's chief US equity strategist Mike Wilson said an S&P 500 correction may be exactly what the market needs and favors large-cap quality companies, MarketWatch reported. A named voice reframing a pullback as healthy.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/morgan-stanleys-mike-wilson-says-an-s-p-500-correction-may-be-exactly-what-the-market-needs-a6baf54e?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Morgan Stanley's Mike Wilson Says an S&P 500 Correction May Be Exactly What the Market Needs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Calamos (Brandon Nelson) -- bets small-caps will roar in 2027</strong></summary>
+      <div class="deal-body">
+        <p>Calamos Investments manager Brandon Nelson expects small-caps to roar in 2027 and is betting on financial-services apps, offering two picks, MarketWatch reported. A named bull looking past the mega-cap crowd.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/two-stock-picks-from-a-money-manager-who-expects-small-caps-to-roar-in-2027-70de9c4d?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Two Stock Picks From a Money Manager Who Expects Small-Caps to Roar in 2027</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the Bond Selloff Pauses but Yields Hold Near 19-Year Highs, Oil Eases on the Saudi Restart and the AI Trade Splits Between Continued Capital and Safety-and-Financing Cracks, With Bianco Calling the Yield Cushion a Buy and Calamos's Nelson Liking Small-Caps Against Yardeni Doubting the Top and Manulife's Purdie Staying Cautious</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the yield cushion pays and quality leads):</strong> Jim Bianco says the cushion in yields is drawing new bond bulls with the Fed committed to killing inflation, WSJ likes 2-year notes, and Morgan Stanley's Mike Wilson calls a correction healthy while favoring large-cap quality. Calamos's Brandon Nelson is positioning for a small-cap rebound in 2027. With oil easing and Treasuries stabilizing, the setup favors fading the panic in both rates and quality equities.</div>
+        <div class="bear"><strong>Bear (the highs and the risks aren't resolved):</strong> Ed Yardeni is not convinced 5.25% caps yields and warns of bond vigilantes, Manulife's Colin Purdie stays cautious on US Treasuries, and Fed's Cook says AI gains will not offset inflation. With Australia and the UK paying up, Spanish inflation at 5%, Bain's $6tn AI test and OpenAI pulling Astra on safety, the tightening and financing strain that drove the rout remain intact.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Stocks find relief as oil eases; Nvidia buyback phantom value debate; CarMax pops</td><td>Mixed</td><td>~34,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Treasury selloff pauses but yields painful; Wilson says correction is healthy; breadth chasm</td><td>Cautious</td><td>~26,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>10Y near 5.23%; Bianco's yield cushion vs Yardeni; 2-year notes; PCE and jobs ahead</td><td>Mixed</td><td>~30,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Bain's $6tn AI test; two-thirds of revenue unaccounted; Anthropic losses; OpenAI pulls Astra</td><td>Bearish</td><td>~17,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC back above $84K; Aave +11%; Goldman Treasury fund; Blockchain.com IPO; Tether-Iran report</td><td>Cautious</td><td>~29,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood steadied but stayed wary as oil eased and Treasuries stabilized. r/wallstreetbets split between cheering the relief bounce and chewing over WSJ's phantom-value take on Nvidia's buyback. r/stocks turned cautious on yields still near highs even as Mike Wilson called a correction healthy. r/investing weighed Bianco's yield cushion against Yardeni doubting the top. r/SecurityAnalysis leaned bearish on Bain's $6tn AI test and OpenAI pulling Astra. r/CryptoCurrency cooled to cautious with bitcoin back above $84K. The swing factor is Wednesday's PCE and Friday's jobs.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why the AI Buildout Faces a $6 Trillion Revenue Test, and How to Read It</h2>
+    <p>Bain & Co. said the AI industry needs to earn $6 trillion a year by 2031 to justify the data centers being built, and MarketWatch reported that roughly $4.2 trillion of that, about two-thirds, is currently unaccounted for. Those numbers sound abstract, but they rest on a simple and important piece of financial logic worth understanding, because it is the same math every capital-intensive boom eventually has to satisfy. Start with why a revenue target exists at all. Building data centers is not a one-time cost. The chips, servers, buildings, power and cooling are assets that wear out and, in the case of AI accelerators, go obsolete fast, often within three to five years. To keep the buildout going, the industry has to replace that hardware continuously, which means the revenue has to cover not just the electricity bill and the staff but also the depreciation of the equipment and a return on the capital invested. Bain's $6 trillion is essentially the annual revenue needed so that the whole system earns back its cost of capital rather than destroying value. If the money coming in falls short, the investment was uneconomic no matter how impressive the technology. Now the mechanism that makes this precarious. The capital is being spent now, up front, on the promise of revenue that arrives later. That timing mismatch is the core risk. A company borrows or raises equity to build a data center today, betting that enterprises and consumers will pay enough for AI services over the next several years to cover the bill. If adoption is slower or cheaper than assumed, the revenue gap does not close, and the assets still depreciate on schedule regardless. That is why the "unaccounted for" figure matters: it is the market implicitly assuming that trillions in future AI revenue will materialize from products and use cases that mostly do not exist yet at scale. There is a second layer that ties directly to this week's rate story. The higher the cost of capital, the higher the revenue bar. When Treasury yields sit near a 19-year high, the return investors demand on a risky, long-dated AI project rises with them, which pushes the required revenue even higher than Bain's estimate assumed at lower rates. So the same buildout that pencils out at 4% financing looks worse at 5% or 6%, which is why rising yields and the AI revenue gap are really the same story viewed from two angles. The practical lesson for a market reader is to treat capex announcements and revenue guidance as two halves of one equation, and to be suspicious when only the capex half keeps growing. Ask where the paying customers are, how fast the hardware depreciates, and what happens to the math if adoption comes in below the bullish case. A company self-funding from real profits, like a Microsoft or a Meta with a cash-generating core, can absorb a revenue shortfall far longer than a pure-play developer living on raised capital. The $6 trillion figure is not a prediction of doom. It is a scorecard, and the useful discipline is to keep checking how much of it is actually being filled in.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-29/ai-faces-6-trillion-test-to-justify-data-centers-bain-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Faces $6 Trillion Test to Justify Data Centers, Bain Says</a></p>
+    <p class="deal-source"><a href="https://www.marketwatch.com/story/two-thirds-of-the-revenue-needed-to-justify-the-ai-buildout-are-still-unaccounted-for-says-major-consulting-firm-8c55ccba?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Two-Thirds of the Revenue Needed to Justify the AI Build-Out Is Still Unaccounted For</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>PCE inflation, Wednesday Sep 30.</strong> The Fed's preferred inflation gauge is the first big test of whether the October-hike case holds, and a hot print would revive the selloff that just paused with the 10-year near a 19-year high.</li>
+      <li><strong>Nonfarm payrolls, Friday Oct 2.</strong> With Bloomberg noting long-term unemployment at a level rarely seen outside recessions, the jobs report is the decisive read on whether the labor market is firm enough to justify further tightening.</li>
+      <li><strong>ISM Manufacturing, JOLTS and quarter-end.</strong> Factory activity and job openings frame the demand picture, while Wednesday's quarter-end rebalancing and upcoming Treasury auctions test whether Bianco's yield-cushion buyers show up.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Consumer read-throughs.</strong> After CarMax showed green shoots in used-vehicle sales, watch other consumer names for how higher fuel costs and rate stress are filtering into demand.</li>
+      <li><strong>AI supplier commentary.</strong> With Bain's $6tn test and OpenAI pulling Astra, watch chip and infrastructure names for any sign the revenue side is starting to catch up to the capex.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>IPO window watch.</strong> Oura postponed its listing and Blockchain.com is targeting a $500m raise at up to $6bn; watch whether rate volatility keeps freezing the primary market or select deals push through.</li>
+      <li><strong>Anthropic IPO.</strong> The S-1 warning of existential risks alongside an $8bn loss on $4.6bn revenue makes pricing a live test of investor appetite for frontier-AI economics.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Qatar mediation and the Iran standoff.</strong> With Qatar now hosting US-Iran meetings and Trump having spurned Tehran's offer, watch whether talks progress or stall, since oil and yields move on every headline.</li>
+      <li><strong>US-China tariff follow-through.</strong> The tariff cuts have yet to produce actual crop demand; watch whether tangible buying emerges to keep the truce credible.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Tue Sep 29, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-09-29 07:52 ET); Bloomberg Technology (20 fresh, newest 2026-09-29 07:02 ET); Bloomberg Economics (20 fresh, newest 2026-09-29 07:24 ET); CNBC Top News (4 fresh, newest 2026-09-29 08:00 ET); CNBC Finance (5 fresh, newest 2026-09-29 06:00 ET); CNBC Economy (1 fresh, newest 2026-09-28 00:04 ET); MarketWatch Top Stories (10 fresh, newest 2026-09-29 07:15 ET); WSJ Markets (16 fresh, newest 2026-09-29 07:33 ET); FT Home (11 fresh, newest 2026-09-29 07:16 ET); Matt Levine Money Stuff (1 fresh, newest 2026-09-28 14:04 ET); CoinDesk (25 fresh, newest 2026-09-29 07:34 ET); Stratechery (2 fresh, newest 2026-09-29 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Yahoo Finance (25 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What eased market stress overnight into Tuesday?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed announced an emergency rate cut to steady the bond market</span>
+      <span class="opt" data-opt="B">B. A soft PCE print pushed Treasury yields sharply lower before the open</span>
+      <span class="opt" data-opt="C">C. Oil eased as Saudi Arabia restarted a pipeline and Qatar opened talks</span>
+      <span class="opt" data-opt="D">D. China agreed to resume large-scale purchases of US farm goods</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported oil edged lower as Saudi Arabia resumed flows through a key pipeline and Qatar began mediating between the US and Iran, letting Treasuries gain. There was no rate cut, no PCE yet, and crop demand stayed unclear.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. Why did OpenAI hold back its latest Astra model?</strong></p>
+      <span class="opt" data-opt="A">A. It scored worse on safety evaluations than the current version</span>
+      <span class="opt" data-opt="B">B. A shortage of Nvidia chips delayed the training run for the model</span>
+      <span class="opt" data-opt="C">C. Regulators in the EU formally blocked the launch of the model</span>
+      <span class="opt" data-opt="D">D. The company ran out of cash to fund the model's rollout</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg and FT reported OpenAI scrapped the debut of GPT-6.1 Astra after it failed to perform as well on safety evaluations, following a spate of rogue AI incidents. It wasn't a chip shortage, an EU block or a funding gap.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What did Bain & Co. say about the AI buildout?</strong></p>
+      <span class="opt" data-opt="A">A. Data-center construction will fully pay for itself by next year</span>
+      <span class="opt" data-opt="B">B. AI revenue has already surpassed the capital being deployed</span>
+      <span class="opt" data-opt="C">C. Falling chip prices make the entire buildout economically safe</span>
+      <span class="opt" data-opt="D">D. AI needs $6 trillion a year by 2031 to justify its data centers</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg reported Bain says the industry must earn $6 trillion in annual revenue by 2031 to justify the data centers, and MarketWatch noted two-thirds of that is unaccounted for. Revenue has not surpassed capital, and the buildout is not yet self-funding.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The Treasury selloff paused and gilts led Europe higher as oil eased, but the 10-year holds near 5.23% at a 19-year high with PCE Wednesday and payrolls Friday, as Australia hikes to a 15-year high and the UK pays its highest yield since 1999, even as Jim Bianco calls the cushion in yields a buy and WSJ says 2-year notes are attractive against Ed Yardeni and Manulife's Colin Purdie staying cautious.",
+    "sources": [
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-29-2026?mod=rss_markets_main", "take": "The selloff only paused and yields remain at painful highs." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-29/australia-raises-key-rate-to-15-year-high-to-restrain-inflation", "take": "Australia raised its key rate to a 15-year high to cool inflation." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-29/uk-set-to-pay-highest-yield-since-1999-at-10-year-bond-auction", "take": "The UK paid its highest 10-year auction yield since 1999." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-09-29/a-big-fat-cushion-in-yields-lures-new-bond-bulls", "take": "Jim Bianco says the cushion in yields is luring new bond bulls." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/a-simple-way-to-take-advantage-of-higher-yields-91ac3a05?mod=rss_markets_main", "take": "2-year Treasury notes are attractively priced right now." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil eased and gas hit new lows as Saudi Arabia restarted a key pipeline and Qatar opened mediation between the US and Iran, with EU officials not expecting a US diesel ban, even as Trump spurned Iran's latest Hormuz offer, Tehran doubts a deal before the midterms, FT warns the war adds 100bn euros to the EU fuel bill and Russia lifts defense spending 27%.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-28/latest-oil-market-news-and-analysis-for-sept-29", "take": "Oil edged lower as Saudi Arabia resumed flows through a key pipeline." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-29/gilts-lead-european-bonds-higher-as-energy-prices-retreat", "take": "Gas hit new lows and a US diesel ban looks unlikely as Qatar mediates." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/f16439a7-5554-412a-ae34-b46459ce28a9?syn-25a6b1a6=1", "take": "The US-Iran war adds 100bn euros to the EU's fuel bill." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/f894f69a-9e2b-4c3f-bf5d-c5c4dc0e6197?syn-25a6b1a6=1", "take": "Bond investors are now trading every crude and Iran headline." },
+      { "name": "CoinDesk", "lean": "bear", "url": "https://www.coindesk.com/markets/2026/09/28/bitcoin-and-nasdaq-futures-decline-as-trump-won-t-rule-out-more-iran-strikes", "take": "Trump won't rule out more Iran strikes and Tehran doubts a deal." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "OpenAI scraps its Astra model over safety and Anthropic's IPO prospectus warns of existential risks while losing $8bn on $4.6bn in revenue, as Bain says AI needs $6 trillion a year to justify data centers and two-thirds of that is unaccounted for, even as Nvidia turns to insurers, Samsung bets $1bn and Meta launches an enterprise platform.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-28/openai-scrapped-latest-model-release-over-safety-fears-wsj-says", "take": "OpenAI scrapped its Astra model debut over safety failures." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/c7685a7e-7745-4cbc-8053-4958d0ea449b?syn-25a6b1a6=1", "take": "Anthropic's IPO warns of existential risks amid an $8bn loss." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-29/ai-faces-6-trillion-test-to-justify-data-centers-bain-says", "take": "AI needs $6 trillion a year by 2031 to justify data centers." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-09-28/samsung-to-invest-1-billion-in-kkr-s-ai-infrastructure-company", "take": "Samsung is betting $1 billion on AI data centers." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-09-29/meta-introduces-the-meta-enterprise-platform-to-help-companies-with-ai-makeovers", "take": "Meta launched an Enterprise Platform to sell AI makeovers." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["CarMax","TSMC","Meta","Microsoft","Nvidia","S&P Futures"],
+    "values": [5.0, 2.0, 1.5, 0.6, -1.0, 0.2]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [34000, 26000, 30000, 17000, 29000],
+    "colors": ["neutral","neutral","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["Anthropic AI Infra Plan","Goldman Treasury Fund","Blockchain.com Valuation","Samsung AI Infra","Blockchain.com IPO"],
+    "values": [518.0, 100.0, 6.0, 1.0, 0.5]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
