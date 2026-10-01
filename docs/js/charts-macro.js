@@ -706,7 +706,7 @@
     return loadFred(macroFredUrl()).then(function(data) {
       if (data) { fredMacro = data; return data; }
       if (macroFredUrl() === 'fred-data.json') return null;
-      return loadFred('fred-data.json').then(function(fb) {
+      return loadFred(typeof mdSitePath === 'function' ? mdSitePath('fred-data.json') : 'fred-data.json').then(function(fb) {
         if (fb) fredMacro = fb;
         return fb;
       });
