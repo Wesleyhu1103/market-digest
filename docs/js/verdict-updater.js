@@ -299,7 +299,8 @@
         var el = document.getElementById('consensusData');
         p = Promise.resolve(el ? parseConsensus('<script type="application/json" id="consensusData">' + el.textContent + '</script>') : null);
       } else {
-        p = fetch('archive/' + iso + '.html', { cache: 'force-cache' })
+        var archiveUrl = typeof mdSitePath === 'function' ? mdSitePath('archive/' + iso + '.html') : 'archive/' + iso + '.html';
+        p = fetch(archiveUrl, { cache: 'force-cache' })
           .then(function(r) { return r.ok ? r.text() : null; })
           .then(function(html) { return html ? parseConsensus(html) : null; })
           .catch(function() { return null; });
