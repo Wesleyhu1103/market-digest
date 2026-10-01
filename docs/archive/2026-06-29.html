@@ -1419,7 +1419,7 @@
 
   let macro = null;
   try {
-    const mr = await fetch('fred-data.json', { cache: 'no-store' });
+    const mr = await fetch('../fred-data.json', { cache: 'no-store' });
     if (mr.ok) macro = await mr.json();
   } catch (e) { console.warn('fred-data.json unavailable', e); }
   const fred = (macro && macro.fred) ? macro.fred : { DGS2: [], DGS10: [], DGS30: [] };
@@ -1654,10 +1654,13 @@
   // ============================================================
   (function() {
     function sitePath(rel) {
+      var clean = String(rel || '').replace(/^\//, '');
       var path = window.location.pathname || '/';
+      var archiveIdx = path.indexOf('/archive/');
+      if (archiveIdx >= 0) return path.slice(0, archiveIdx + 1) + clean;
       if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
       else if (!path.endsWith('/')) path += '/';
-      return path + String(rel || '').replace(/^\//, '');
+      return path + clean;
     }
 
     function ensureArchiveSection() {
