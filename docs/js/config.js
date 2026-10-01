@@ -1,4 +1,18 @@
 // API helpers — MD_VERCEL_ORIGIN comes from site-config.js (head).
+function mdSitePath(rel) {
+  const clean = String(rel || '').replace(/^\//, '');
+  const path = location.pathname || '/';
+  const archiveIdx = path.indexOf('/archive/');
+  if (archiveIdx !== -1) {
+    return path.slice(0, archiveIdx + 1) + clean;
+  }
+  if (/\.github\.io$/i.test(location.hostname)) {
+    const parts = path.split('/').filter(Boolean);
+    return '/' + (parts[0] ? parts[0] + '/' : '') + clean;
+  }
+  return '/' + clean;
+}
+
 function mdUsesRemoteApi() {
   const h = location.hostname;
   return /\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1';
@@ -7,7 +21,7 @@ function mdApiUrl(path) {
   return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
 }
 function mdMacroFredUrl() {
-  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  if (/\.github\.io$/i.test(location.hostname)) return mdSitePath('fred-data.json');
   return '/api/fred-data';
 }
 function mdPost(path, body) {
