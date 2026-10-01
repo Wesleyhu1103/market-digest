@@ -62,6 +62,57 @@ class ValidateDigestTests(unittest.TestCase):
 
             self.assertEqual(missing, [])
 
+    def test_validate_archive_runtime_paths_flags_page_relative_fetches(self):
+        module = load_validate_digest()
+        with tempfile.TemporaryDirectory() as tmp:
+            archive = Path(tmp) / "docs" / "archive"
+            archive.mkdir(parents=True)
+            html_path = archive / "2026-07-21.html"
+            html = """
+            <script>
+              function sitePath(rel) {
+                var path = window.location.pathname || '/';
+                return path + rel;
+              }
+              fetch('fred-data.json', { cache: 'no-store' });
+              fetch('archive/manifest.json', { cache: 'no-store' });
+              loadFred('fred-data.json');
+              function macroFredUrl() { return 'fred-data.json'; }
+            </script>
+            """
+
+            failures = module.validate_archive_runtime_paths(html, html_path)
+
+            self.assertEqual(len(failures), 5)
+            self.assertTrue(any("fred-data.json fetch" in item for item in failures))
+            self.assertTrue(any("archive/... fetch" in item for item in failures))
+            self.assertTrue(any("sitePath helper" in item for item in failures))
+
+    def test_validate_archive_runtime_paths_accepts_site_root_fetches(self):
+        module = load_validate_digest()
+        with tempfile.TemporaryDirectory() as tmp:
+            archive = Path(tmp) / "docs" / "archive"
+            archive.mkdir(parents=True)
+            html_path = archive / "2026-07-21.html"
+            html = """
+            <script>
+              function sitePath(rel) {
+                var clean = String(rel || '').replace(/^\\//, '');
+                var path = window.location.pathname || '/';
+                var archiveIdx = path.indexOf('/archive/');
+                if (archiveIdx >= 0) return path.slice(0, archiveIdx + 1) + clean;
+                return path + clean;
+              }
+              fetch('../fred-data.json', { cache: 'no-store' });
+              fetch('../archive/manifest.json', { cache: 'no-store' });
+              loadFred('../fred-data.json');
+            </script>
+            """
+
+            failures = module.validate_archive_runtime_paths(html, html_path)
+
+            self.assertEqual(failures, [])
+
 
 if __name__ == "__main__":
     unittest.main()

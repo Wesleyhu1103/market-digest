@@ -63,6 +63,26 @@ def validate_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
     return missing
 
 
+def validate_archive_runtime_paths(html: str, html_path: Optional[Path]) -> list[str]:
+    """Return archive-page data fetches that would resolve under /archive/."""
+    if not html_path or html_path.parent.name != "archive":
+        return []
+
+    failures: list[str] = []
+    patterns = [
+        (r"""fetch\(\s*['"]fred-data\.json['"]""", "fred-data.json"),
+        (r"""fetch\(\s*['"]archive/""", "archive/..."),
+        (r"""loadFred\(\s*['"]fred-data\.json['"]""", "fred-data.json"),
+        (r"""return\s+['"]fred-data\.json['"]""", "fred-data.json"),
+    ]
+    for pattern, label in patterns:
+        if re.search(pattern, html):
+            failures.append(f"{label} fetch is archive-relative")
+    if "function sitePath(rel)" in html and "path.indexOf('/archive/')" not in html:
+        failures.append("sitePath helper is archive-relative")
+    return failures
+
+
 def collect_js(html: str, html_path: Optional[Path]) -> str:
     """Inline scripts plus local/remote app scripts referenced from index.html."""
     parts: list[str] = []
@@ -114,6 +134,9 @@ def main():
     failures = 0
     for missing in validate_local_assets(html, html_path):
         print(f"FAIL local asset: {missing}")
+        failures += 1
+    for bad_path in validate_archive_runtime_paths(html, html_path):
+        print(f"FAIL archive runtime path: {bad_path}")
         failures += 1
 
     js_bundle = collect_js(html, html_path)
