@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Oct 1, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-10-01</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, October 1, 2026</h1>
+    <div class="meta">
+      <p>A fourth-quarter open lands with a global bond selloff that drove the 10-year Treasury to its highest since 2002 and 30-year UK gilts to 6% for the first time since 1998, even after yesterday's softer PCE. Oil touched triple digits again as Brent briefly hit $100 and a FlyDubai flight averted disaster after a pilot was attacked mid-air. Payrolls land tomorrow, Microsoft just closed a trillion-dollar quarter, and the AI trade is holding up against the rate shock for now.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "A global bond selloff pushed the 10-year Treasury yield to its highest since 2002 and 30-year UK gilts to 6% as a resilient economy, sticky inflation and fiscal risks overrode yesterday's softer PCE, checking but not breaking an AI stock rally while oil touched $100 again",
+      "framings": [
+        {"outlet": "Financial Times", "headline": "Global Bond Sell-Off Pushes 10-Year Treasury Yield to Highest Since 2002", "angle": "Frames it as a worldwide repricing of sovereign debt back to multiyear highs, led by fiscal and inflation worries.", "lean": -35, "pull": "Sovereign debt costs around the world return to multiyear highs."},
+        {"outlet": "WSJ", "headline": "AI Stock Rally Checked by Relentless Treasury Selloff", "angle": "Casts the day as a tug-of-war, with AI enthusiasm balancing an increasingly gloomy macro picture.", "lean": 0, "pull": "Nasdaq futures pared earlier gains but still rose as investors balance AI enthusiasm with a gloomier macro picture."},
+        {"outlet": "Bloomberg", "headline": "Resilient Economy Keeps Pushing Bond Yields Higher", "angle": "Reads the selloff as a growth story, where strength hurts bonds but helps stocks.", "lean": 15, "pull": "Growth is hurting bond prices but helping stocks."},
+        {"outlet": "MarketWatch", "headline": "The Stock Market Is a Hollow Tree That Could Snap, Warns Gundlach", "angle": "Amplifies the bear case, with DoubleLine's Gundlach warning the surface calm hides real fragility.", "lean": -50, "pull": "Stocks are facing a lot of issues right now, even if investors think everything looks great on the surface."},
+        {"outlet": "The Economist", "headline": "An Optimist's Guide to the Bond Market", "angle": "Argues higher yields carry real benefits and the damage is less dire than the alarm suggests.", "lean": 30, "pull": "It could be a lot worse. Really."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>A Global Bond Selloff Drives the 10-Year Treasury to Its Highest Since 2002 and 30-Year UK Gilts to 6% as a Resilient Economy, Sticky Inflation and Fiscal Risks Override Yesterday's Softer PCE, With France's Budget Testing Investor Nerves, as Jim Bianco Stays Bullish and Money Managers Beg Clients to Return Against DoubleLine's Jeffrey Gundlach and JPMorgan's Kelsey Berro Warning of a New Technical Chapter</h3>
+      </div>
+      <p>The bond rout went global and refused to quit. FT reported a worldwide selloff pushed the 10-year Treasury yield to its highest since 2002 and sent 30-year UK gilt yields to 6% for the first time since 1998, with sovereign debt costs returning to multiyear highs. WSJ said yields hit fresh 24-year highs on energy-driven inflation and lingering US fiscal worries, and that the selloff eased only slightly overnight while staying elevated. The twist is that yesterday's PCE actually came in soft: CNBC reported Minneapolis Fed's Neel Kashkari called inflation still too high even after the softer print, and CoinDesk noted the cooler number briefly lifted risk before yields refused to fall. Bloomberg framed the whole thing as a resilient economy that hurts bonds but helps stocks, and laid out ten reasons investors are driving yields higher. The bull read has names. Bloomberg reported bond veteran Jim Bianco is still bullish as yields soar, WSJ said money managers are asking clients to give the bond market another chance as the 60-40 finally works again, and MarketWatch noted retail is aggressively piling into fixed-income ETFs at multi-decade yields. FT ran both an optimist's guide and four potential positives from higher yields. The bear read is structural. MarketWatch reported DoubleLine's Jeffrey Gundlach warned the stock market is a hollow tree that could snap, and Bloomberg's JPMorgan guest Kelsey Berro called the selloff a new chapter that is very technically and momentum-driven. France's deficit plan is testing investor nerves and hedge funds are loading up on euro-weakness bets.</p>
+      <p>The bull read is Bianco staying bullish, money managers and retail stepping into multi-decade yields, and FT counting the positives. The bear read is the 10-year at a 2002 high, gilts at 6%, a soft PCE that failed to move yields, Gundlach's hollow-tree warning and France's fiscal stress.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the yield is finally the reward):</strong> Bloomberg reports Jim Bianco is still bullish as yields soar, WSJ says money managers are asking clients to give bonds another chance now that the classic 60-40 is doing its job for the first time in years, and MarketWatch notes retail is aggressively buying fixed-income ETFs at multi-decade yields. FT lays out an optimist's guide and four positives from higher borrowing costs. With PCE already soft, the income on offer is real and the fundamentals should reassert over the technical panic.</div>
+        <div class="bear"><strong>Bear (the selloff is global and self-reinforcing):</strong> The 10-year hit its highest since 2002 and 30-year gilts touched 6%, and a soft PCE could not even dent them, which JPMorgan's Kelsey Berro calls a new technically and momentum-driven chapter. DoubleLine's Jeffrey Gundlach warns the stock market is a hollow tree that could snap. France's budget is testing investor nerves, hedge funds are betting on euro weakness, and Kashkari says inflation is still too high. The fiscal and inflation pressure has further to run.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/e485a228-1efe-426b-addc-26069ba48bf3?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Global Bond Sell-Off Pushes 10-Year Treasury Yield to Highest Since 2002</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Touches Triple Digits Again and Brent Briefly Hits $100 as the Middle East War Keeps Energy Inflation Alive, With a FlyDubai Flight Averting Disaster After a Pilot Attack, the White House Pressing Europe to Release Diesel Stockpiles Ahead of Its Own Export Ban, Russia Extending Its Ban and Saudi Arabia Bracing for a Contraction, Even as Hormuz Crude Flows Recover</h3>
+      </div>
+      <p>The war premium is back in the price. Bloomberg reported oil again touched triple digits as traders weighed higher Middle East crude flows against uncertainty across fuel markets, and the opening-trade desk noted Brent briefly hit $100 a barrel. That is the bear overhang: WSJ tied the fresh 24-year yield highs directly to energy-driven inflation risks that Middle East tensions are sustaining. The product market is where it bites hardest. MarketWatch reported the White House is asking Germany, France and others to release diesel stockpiles, with the EU Commission, Ireland, Britain and Italy holding a call on the idea as Washington weighs its own export ban, and Bloomberg said pressure is piling up for Europe to release diesel as the continent risks a crunch if the US curbs exports. WSJ asked again whether China, running refineries at just 75% of capacity, will bail out the market. The human and geopolitical risk is live: Bloomberg and FT reported a FlyDubai flight from Dubai to Tel Aviv averted catastrophe after one pilot stabbed another and crew and passengers fought him off, prompting the carrier to suspend Israel flights and the UAE to investigate possible terrorist activity. The spillover keeps widening. Bloomberg reported Indian stocks extended their slide as high crude sparked a risk-off trade, Saudi Arabia sees a slump and deeper deficit as the war roils its economy, Swiss inflation quickened to a two-year high on oil, and Mongolia's fuel shortage sparked protests. The bull offset is that Hormuz flows are recovering toward normal even with the risk headlines.</p>
+      <p>The bull read is recovering Hormuz crude flows capping the spike. The bear read is oil back at $100, the FlyDubai attack, the US-Europe diesel scramble, Russia's extended ban, Saudi's deficit and oil-driven inflation from Switzerland to India.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (crude supply is still recovering):</strong> Bloomberg reports oil is holding its gains partly because Middle East crude flows through Hormuz keep recovering toward pre-war levels, which is capping the spike rather than letting it run away. Crude is swinging around $100 instead of blowing through it, and if the flows hold, the energy-to-inflation channel that is driving sovereign yields loses some of its fuel. The physical barrel picture is less dire than the headline risk suggests.</div>
+        <div class="bear"><strong>Bear (the premium and the product crunch persist):</strong> Oil touched triple digits again and Brent briefly hit $100, with WSJ tying fresh 24-year yield highs to energy-driven inflation. The White House is begging Europe to release diesel stockpiles before its own export ban, Russia extended its ban, and China's refineries sit at 75%. The FlyDubai pilot attack shows the war risk is far from over, Saudi Arabia sees a contraction, and oil inflation is hitting Switzerland, India and Mongolia. The strain is spreading.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-09-30/latest-oil-market-news-and-analysis-for-oct-1" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for Oct. 1</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Microsoft Closes a Trillion-Dollar Quarter and Micron's Upbeat Forecast Lifts Futures as the AI Trade Weathers the Bond Rout, With TSMC Mulling a Multibillion-Dollar Texas Campus and Tencent Leasing 100,000 Chips From Oracle, Even as BOE Governor Andrew Bailey Warns an AI Correction Could Trigger Market Shocks and Carlyle Flags Private Credit's AI Concentration Risk</h3>
+      </div>
+      <p>The AI trade is absorbing the rate shock better than almost anyone expected. Bloomberg reported Microsoft's best quarter in decades added up to a trillion-dollar quarter, with Wall Street betting the stock keeps rallying as its AI standing improves, and the opening-trade desk said an upbeat Micron forecast drove S&P 500 futures up as much as 0.7% before the bond selloff pared the gains. WSJ called it an AI stock rally checked by a relentless Treasury selloff, with Nasdaq futures still rising as investors balance enthusiasm against a gloomier macro picture. The buildout keeps expanding: Bloomberg reported TSMC is weighing a multibillion-dollar Texas campus adding tens of billions in new US investment, FT and MarketWatch said Tencent leased 100,000 chips from Oracle in a roughly $7 billion five-year deal to accelerate its AI push, and Axis Bank plans to double its data-center loans on India's AI demand. Evercore's Julian Emanuel told Bloomberg to prepare to buy Q4 tech dips and framed higher yields as a new normal, and Deutsche Bank named Meta and ServiceNow among picks to lead the next leg. The bear case is louder on the plumbing. Bloomberg reported BOE Governor Andrew Bailey warned the AI boom could trigger market shocks and the UK needs to prepare for a correction, and Carlyle warned private credit's rush to finance the AI buildout raises the same concentration risk that burned software lenders. OpenAI accused Moonshot AI of mass data extraction from its GPT systems, a reminder the moat is contested.</p>
+      <p>The bull read is Microsoft's trillion-dollar quarter, Micron's upbeat forecast, TSMC's Texas plan, the Tencent-Oracle deal and Emanuel saying buy the dips. The bear read is Bailey warning of AI-driven market shocks and Carlyle flagging private-credit concentration risk in the buildout.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (earnings and orders keep delivering):</strong> Microsoft just posted a trillion-dollar quarter, Micron's upbeat forecast lifted futures, TSMC is weighing a multibillion-dollar Texas campus, and Tencent leased 100,000 chips from Oracle in a $7 billion deal. Evercore's Julian Emanuel says prepare to buy Q4 tech dips and calls higher yields a new normal, while Deutsche Bank sees Meta and ServiceNow leading the next leg. The revenue is showing up and the trade is weathering the bond rout.</div>
+        <div class="bear"><strong>Bear (the warnings are stacking on the financing):</strong> BOE Governor Andrew Bailey warns the AI boom could trigger market shocks and the UK must prepare for a correction. Carlyle warns private credit's rush to finance the buildout raises the same concentration risk that hit software lenders, spreading exposure across the system. OpenAI is accusing Moonshot of mass data extraction, showing the moat is contested. When the central bank and the lenders both flag fragility, the rate shock could be the trigger.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-01/boe-governor-warns-ai-boom-could-trigger-market-shocks-bbc" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOE's Bailey Warns AI Boom Could Trigger Market Shocks</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>US stocks rise as AI strength weathers bond swings</strong></summary>
+      <div class="deal-body">
+        <p>US stocks pushed higher Wednesday as strength in the artificial-intelligence trade held up against volatility in bond markets and a renewed climb in oil, Bloomberg reported. The resilience set the tone before yields spiked again overnight.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-09-30/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Stocks Rise as AI Strength Weathers Bond Swings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI stock rally checked by a relentless Treasury selloff</strong></summary>
+      <div class="deal-body">
+        <p>Nasdaq futures pared earlier gains but still rose, WSJ reported, as investors balance AI enthusiasm against an increasingly gloomy macroeconomic picture. Micron's upbeat forecast had driven futures up as much as 0.7% before the bond selloff ate the advance.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/ai-stock-rally-checked-by-relentless-treasury-selloff-c434b12e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- AI Stock Rally Checked by Relentless Treasury Selloff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A tech-fueled market powers through but limps into Q4</strong></summary>
+      <div class="deal-body">
+        <p>The Nasdaq and S&amp;P 500 are on pace for double-digit gains for the fourth straight year, a first since the late 1990s, WSJ reported, but rising rates might intervene. The quarter-close leaves the AI trade carrying the index into a rate-stressed fourth quarter.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/a-tech-fueled-stock-market-powers-through-but-limps-into-the-fourth-quarter-47eac700?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- A Tech-Fueled Stock Market Powers Through, but Limps Into the Fourth Quarter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>European stocks drop as bond yields spook investors</strong></summary>
+      <div class="deal-body">
+        <p>European stocks declined as regional bond yields climbed, Bloomberg reported, denting the appeal of equities and fueling concerns about the economic impact of higher borrowing costs. Banks lagged as the sovereign selloff deepened.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/european-stocks-fall-as-inflation-worries-overshadow-tech-gains" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- European Stocks Drop as Bond Yields Spook Investors; Banks Lag</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Eli Lilly's combo obesity regimen boosts weight loss in a mid-stage trial</strong></summary>
+      <div class="deal-body">
+        <p>Eli Lilly (LLY) said a closely watched combination of its amylin drug eloralintide with tirzepatide boosted weight loss in a mid-stage trial, CNBC reported, and it plans to start Phase 3 trials at the end of the year. A step forward in the obesity-drug arms race.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/30/eli-lilly-obesity-drug-amylin-tirzepatide-weight-loss-trial.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Eli Lilly Says Combo Obesity Regimen Boosts Weight Loss in Mid-Stage Trial</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stellantis reconfirms 2026 guidance as shares hit a new low</strong></summary>
+      <div class="deal-body">
+        <p>Stellantis (STLA) CEO Antonio Filosa reconfirmed 2026 guidance and said the turnaround plan continues with a goal of positive cash flow by 2027, CNBC reported, even as the shares hit a fresh low. The reassurance failed to steady a struggling automaker.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/30/stellantis-guidance-turnaround-plan.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Stellantis CEO Reconfirms 2026 Guidance as Shares Hit New Low</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tesla sell ratings slide as analysts eye Musk's AI ambitions</strong></summary>
+      <div class="deal-body">
+        <p>Tesla (TSLA) shares have tumbled in 2026, Bloomberg reported, but Wall Street analysts are increasingly reluctant to tell investors to sell as they weigh Elon Musk's AI ambitions. The ratings shift shows the AI narrative is propping up a weak core business.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/tesla-sell-ratings-slide-as-analysts-eye-musk-s-ai-ambitions" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tesla Sell Ratings Slide as Analysts Eye Musk's AI Ambitions</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape is a tug-of-war, with Microsoft's trillion-dollar quarter and Micron's upbeat forecast lifting the AI trade while a global bond selloff drives the 10-year to a 2002 high and oil touches $100 again. The swing factors are tomorrow's payrolls, the diesel-ban decision and whether yields keep climbing. Watch AI leaders and defensives, energy on the diesel scramble, and rate-sensitive banks and autos as borrowing costs bite.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Soft Inflation Print Failed to Pull Bond Yields Down</summary>
+      <p>The most instructive thing about Thursday's bond market is what did not happen. Yesterday's PCE, the Fed's preferred inflation gauge, came in softer than expected, CoinDesk and others reported, and yet the 10-year Treasury yield climbed to its highest since 2002 while 30-year UK gilts touched 6%. In a normal cycle a cool inflation reading pulls yields down, because it lets the central bank think about cutting rates and investors buy bonds ahead of that. When the opposite happens, it tells you the thing driving yields is no longer the thing the data measures. Start with what a bond yield actually prices. It has two broad parts: expectations for where the central bank sets short-term rates over the life of the bond, and the term premium, which is the extra compensation investors demand for locking money up for years and bearing the risk that something goes wrong. A soft inflation print works on the first part, nudging rate-cut expectations. But if yields rise anyway, the move is coming from the second part, the term premium, and that is exactly what JPMorgan's Kelsey Berro meant when she called this a new chapter that is very technically and momentum-driven rather than fundamentals-driven. Three forces are inflating that term premium at once. The first is fiscal. Governments across the developed world are running large deficits and issuing enormous amounts of debt, and France just unveiled a budget that is openly testing investor nerves and could topple its prime minister. More supply of bonds, at a moment of political fragility, means buyers demand a higher yield to absorb it. The second is energy. WSJ tied the fresh highs directly to energy-driven inflation risk, because oil back near $100 and a diesel crunch threaten to reignite the very inflation the PCE print said was cooling, so investors will not trust one soft number. The third is momentum and positioning, the piece Berro flagged: once a selloff builds its own gravity, traders chase it, and each new high draws in more sellers regardless of the data. The practical lesson for a market reader is to always ask which part of the yield is moving. When yields fall on soft data, the market is trusting the central bank. When yields rise on soft data, the market is pricing something the central bank cannot easily fix, which is supply, fiscal risk and a term premium rebuilding after years of being suppressed. That distinction changes how you read everything downstream. A rate cut would not rescue this kind of selloff, because the problem is not the policy rate, it is the willingness to hold long-dated government debt at all. Watch tomorrow's payrolls through that same lens: a strong number confirms the resilient-economy story that is lifting yields, while a weak one is the real test of whether cheaper-rate hopes can finally pull the long end back down, or whether the fiscal and term-premium story simply overrides it again.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/this-datapoint-could-explain-soaring-bond-yields-d8ec5be0?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- This Datapoint Could Explain Soaring Bond Yields</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/ten-reasons-investors-are-driving-government-bond-yields-higher" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Why Are Bond Yields Higher Globally? Investors React to Inflation, Fiscal Risks</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Microsoft's trillion-dollar quarter shows the AI trade won't quit</strong></summary>
+      <div class="deal-body">
+        <p>With Microsoft's (MSFT) best quarter for decades in the books, Bloomberg reported, Wall Street is betting the stock can keep rallying as the tech giant's standing in the AI landscape continues to improve. The print anchored the bull case against the bond rout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/microsoft-s-trillion-dollar-quarter-shows-ai-trade-won-t-quit" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Microsoft's Trillion-Dollar Quarter Shows AI Trade Won't Quit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tencent leases 100,000 chips from Oracle to accelerate its AI push</strong></summary>
+      <div class="deal-body">
+        <p>Tencent struck a five-year deal to lease 100,000 chips from Oracle (ORCL), accessing the US group's southeast Asia data centers, FT reported, amid its race with ByteDance and Alibaba. MarketWatch pegged the arrangement at around $7 billion, calling it relief for Oracle's troubled stock.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/8799b33d-f07c-4a03-82f0-bf5d3d1d29e9?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Tencent Leases 100,000 Chips From Oracle to Accelerate AI Push</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>TSMC mulls a multibillion-dollar Texas campus for more AI chips</strong></summary>
+      <div class="deal-body">
+        <p>Taiwan Semiconductor (TSM) is weighing a new Texas campus that would add tens of billions of dollars to its US chipmaking expansion, Bloomberg reported. The move deepens the onshore buildout as AI-chip demand keeps running.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/tsmc-mulls-multibillion-dollar-texas-campus-for-more-ai-chips" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- TSMC Mulls Multibillion-Dollar Texas Campus for More AI Chips</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Carlyle warns private credit's AI push raises concentration risk</strong></summary>
+      <div class="deal-body">
+        <p>Private credit firms rushing to finance the AI buildout risk the same concentration problems that plagued lenders exposed to software companies, Carlyle Group (CG) warned Bloomberg. The flag points at the plumbing beneath the AI trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/carlyle-warns-private-credit-s-ai-push-raises-concentration-risk" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Carlyle Warns Private Credit's AI Push Raises Concentration Risk</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Accenture's tech clients help quarterly revenue beat estimates</strong></summary>
+      <div class="deal-body">
+        <p>Accenture (ACN), under pressure to show it can help clients adopt AI and transform itself, booked more business in the fourth quarter than analysts expected, Bloomberg reported. The beat signals enterprise AI spending is still translating into real bookings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/accenture-tops-quarterly-bookings-and-revenue-estimates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Accenture's Tech Clients Helped Quarterly Revenue Beat Estimates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI accuses Moonshot of mass AI data extraction</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI accused China's Moonshot AI of a wide-scale effort to extract data from its GPT systems, Bloomberg reported, disclosing thousands of attempts to decipher hidden information about how its models reason. The claim underscores how contested the frontier moat has become.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-01/openai-accuses-moonshot-of-mass-ai-data-extraction-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI Accuses Moonshot of Mass AI Data Extraction</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta, ServiceNow and seven others could lead the next leg of the AI trade</strong></summary>
+      <div class="deal-body">
+        <p>Deutsche Bank analysts named Meta (META), ServiceNow (NOW) and seven other tech stocks as top picks for the rest of the year, MarketWatch reported. The call tries to pin down which names carry the AI trade through a rate-stressed quarter.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/meta-servicenow-and-these-7-other-tech-stocks-could-lead-the-next-leg-of-the-ai-trade-b8b68c93?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Meta, ServiceNow and These 7 Other Tech Stocks Could Lead the Next Leg</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Thursday October 1, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is that earnings and orders keep landing, with Microsoft's trillion-dollar quarter, Micron's upbeat forecast, TSMC's Texas plan and Tencent's $7bn Oracle lease on one side, and BOE's Bailey plus Carlyle warning on the financing on the other. The counter-signal is OpenAI accusing Moonshot of data theft and the question of whether private credit is over-concentrated in the buildout. The near-term tell is whether AI leaders keep holding as yields grind to fresh highs.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Bond selloff eases but yields remain at multidecade highs</strong></summary>
+      <div class="deal-body">
+        <p>Yields spiked overnight in rocky trading before easing slightly, WSJ reported, leaving them at multidecade highs as the global selloff carried into the new quarter. The reprieve looked more like a pause than a turn.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-01-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Market Today: Bond Selloff Eases, But Yields Remain at Multidecade Highs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A resilient economy keeps pushing bond yields higher</strong></summary>
+      <div class="deal-body">
+        <p>Growth is hurting bond prices but helping stocks, Bloomberg reported, with the resilient economy repricing how much and how fast the Fed can ease. The framing recasts the selloff as a strength story rather than a crisis.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-01/resilient-economy-keeps-pushing-bond-yields-higher" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Resilient Economy Keeps Pushing Bond Yields Higher</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Energy-driven inflation and fiscal risks push Treasury yields higher</strong></summary>
+      <div class="deal-body">
+        <p>Ten-year and 30-year Treasury yields rose to new 24-year highs, WSJ reported, as Middle East tensions sustain energy-driven inflation risks and concerns over the US fiscal outlook linger. The twin drivers kept the long end under pressure.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/jgbs-fall-on-prospects-for-quicker-pace-of-boj-rate-hikes-6c891e6e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Energy-Driven Inflation, Fiscal Risks Push U.S. Treasury Yields Higher</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kashkari says inflation is still too high even after softer PCE</strong></summary>
+      <div class="deal-body">
+        <p>Minneapolis Fed President Neel Kashkari told CNBC inflation is still too high even after the softer-than-expected PCE data, while calling the labor market pretty good. His read helps explain why a cool print failed to rally bonds.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/30/watch-minneapolis-fed-president-neel-kashkari.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed's Kashkari Says Inflation Is 'Still Too High' Even After Softer PCE</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>France lays out a budget in the latest test of investor nerves</strong></summary>
+      <div class="deal-body">
+        <p>France's government unveiled plans to sharply narrow its deficit by restraining spending and raising taxes, Bloomberg reported, kicking off a debate that risks toppling the prime minister and stoking investor concern over the country's debt. The budget is a live source of eurozone bond stress.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/france-to-lay-out-budget-in-latest-test-of-investor-nerves" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- France Lays Out Budget in Latest Test of Investor Nerves</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Swiss inflation quickens to a two-year high on oil and the franc</strong></summary>
+      <div class="deal-body">
+        <p>Switzerland's inflation rate rose to its highest in two years, Bloomberg reported, as stronger oil prices and a weaker franc fanned price pressures. Even famously low-inflation Switzerland is feeling the energy shock feed through.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/swiss-inflation-quickens-to-2-year-high-driven-by-oil-and-franc" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Swiss Inflation Quickens to 2-Year High Driven by Oil, Franc</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The biggest jump in global crop prices since 2022 threatens to boost inflation</strong></summary>
+      <div class="deal-body">
+        <p>Global agriculture prices notched their biggest quarterly jump since Russia's 2022 invasion of Ukraine, Bloomberg reported, as Black Sea tensions and extreme weather threaten fresh inflationary worries for central banks. Another supply-side shock layered on top of oil.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/the-biggest-jump-in-global-crop-prices-since-2022-threatens-to-boost-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- The Biggest Jump in Global Crop Prices Since 2022 Threatens to Boost Inflation</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (October 1, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bear side is winning so far, with the 10-year at a 2002 high and gilts at 6% even after a soft PCE, energy-driven inflation from oil at $100, France's budget stress and Gundlach's hollow-tree warning. Pulling back, Bloomberg frames it as a resilient economy that helps stocks, Jim Bianco stays bullish, and money managers and retail are stepping into multi-decade yields. Tomorrow's payrolls is the swing factor for whether the long end can finally turn.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why France's Budget Fight Can Push Up US Treasury Yields</summary>
+      <p>MarketWatch asked a question worth taking seriously: France's bond market is stumbling, should Americans care? The answer is yes, and the reason reveals how connected the world's government debt markets have become. France unveiled a budget this week meant to narrow its deficit, Bloomberg reported, but the plan risks toppling the prime minister and has investors demanding higher yields to hold French debt. On the surface that looks like a local political story. In practice it transmits into US Treasury yields through three channels worth understanding. The first is the risk-premium channel. Government bonds in developed markets are priced relative to each other, because global investors can choose where to lend. When French yields rise on fiscal and political fear, they reset the reference point for what counts as a safe, acceptable return across the whole developed world. If France, a core eurozone economy, has to pay more, investors start asking why the US, also running large deficits, should not pay more too. The fiscal worry is contagious because the underlying condition, too much debt issuance and shaky political will to control it, is shared. The second is the substitution channel. A global bond investor allocates across Treasuries, gilts, bunds and French OATs. When one market sells off and offers a juicier yield, money can rotate toward it, which means the others must offer more to compete for the same pool of capital. This is why FT and Bloomberg described the move as a genuinely global selloff, with 30-year gilts hitting 6% and Treasuries hitting a 2002 high on the same days. They are not separate events, they are one repricing of the term premium that investors demand everywhere for lending to indebted governments. The third is the confidence channel, the most subtle. When a major sovereign's budget becomes a live political crisis, it reminds every bond investor that fiscal discipline is eroding across the democracies, and that central banks may not ride to the rescue because inflation is still sticky. That erodes the special status long-dated government debt has enjoyed as the ultimate safe asset, and once that status is questioned anywhere, the premium rises everywhere. The practical lesson for a market reader is to stop treating foreign bond markets as foreign. When you see a headline about French OATs or UK gilts hitting milestones, read it as a leading indicator for Treasuries, not a curiosity. Watch the spread between countries and the direction they move together: when they rise in lockstep, as now, the driver is a shared fiscal and inflation story that no single central bank can fix, which is exactly why a soft US inflation print could not pull Treasury yields down. The world's governments are competing for the same lenders at the same time, and France just reminded everyone how demanding those lenders have become.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/frances-bond-market-is-stumbling-should-americans-care-202ea2af?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- France's Bond Market Is Stumbling. Should Americans Care?</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/france-seeks-to-win-over-markets-and-lawmakers-with-deficit-plan" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- France Seeks to Win Over Markets and Lawmakers With Deficit Plan</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">A global bond selloff drove the 10-year Treasury to its highest since 2002 and 30-year UK gilts to 6%, with a soft PCE failing to pull yields down as a resilient economy, sticky inflation and France's budget stress overrode it, and Bianco staying bullish against Gundlach's hollow-tree warning and JPMorgan's Berro calling it a new technical chapter. Oil touched $100 again with a FlyDubai pilot attack, the US-Europe diesel scramble and Saudi's deficit on one side and recovering Hormuz flows on the other. The AI trade weathered the rout on Microsoft's trillion-dollar quarter and Micron's upbeat forecast, even as BOE's Bailey warned of market shocks and Carlyle flagged private-credit concentration; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 5.15%, bear confirmed; below 4.95%, bull confirmed. Iran/Oil: if Brent closes above $110, bear confirmed; below $100, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 9/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 9/29</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 9/30</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/1</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/2</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin flat near $84,000 after closing its best quarter since 2024</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held flat near $84,000 to start the new quarter, CoinDesk reported, after wrapping its best quarter since 2024 and ether its best since 2021, with interest rates dipping slightly ahead of tomorrow's jobs report. The asset is consolidating after a strong run.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/10/01/live-updates-bitcoin-flat-near-usd84-000-after-best-quarter-since-2024" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Flat Near $84,000 After Closing Out Best Quarter Since 2024</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citigroup raises its 12-month bitcoin target to $113,000 as ETF inflows resume</strong></summary>
+      <div class="deal-body">
+        <p>Citigroup raised its 12-month bitcoin target to $113,000 as ETF inflows resume, CoinDesk reported, and lifted its ether target from $2,240 to $3,028. A named bank call turning more constructive on crypto.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/01/citigroup-raises-12-month-bitcoin-target-to-usd113-000-as-etf-inflows-resume" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Citigroup Raises 12-Month Bitcoin Target to $113,000 as ETF Inflows Resume</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin's soft-inflation pop to $85,500 fades as bond yields refuse to fall</strong></summary>
+      <div class="deal-body">
+        <p>A cooler-than-expected PCE sent bitcoin briefly above $85,000 Wednesday, CoinDesk reported, but Treasury yields held near their highest since 2002 and the gains drained away. Crypto is now caught in the same yield undertow as risk assets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/01/bitcoin-s-soft-inflation-pop-to-usd85-500-fades-as-bond-yields-refuse-to-fall" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin's Soft-Inflation Pop to $85,500 Fades as Bond Yields Refuse to Fall</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto lost $1.26 billion to hacks while bitcoin bulls enjoyed a monster quarter</strong></summary>
+      <div class="deal-body">
+        <p>The sector lost $1.26 billion to hacks even as bitcoin posted a monster quarter, CoinDesk reported in its day-ahead note. The tally is a reminder that security risk is scaling alongside price.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/10/01/crypto-lost-usd1-26-billion-in-hacks-while-bitcoin-bulls-enjoyed-a-monster-quarter" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Lost $1.26 Billion in Hacks While Bitcoin Bulls Enjoyed a Monster Quarter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MetaMask security incident forces Ethereum staking exits, no funds at risk</strong></summary>
+      <div class="deal-body">
+        <p>A MetaMask security incident forced precautionary Ethereum staking exits covering validators holding roughly 523,000 ETH, CoinDesk reported, with Lido warning of lost rewards but no funds at risk. A researcher estimated about 0.36 ETH in rewards was diverted.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/10/01/metamask-security-incident-forces-ethereum-staking-exits-with-lido-warning-of-lost-rewards" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- MetaMask Security Incident Forces Ethereum Staking Exits, No Funds at Risk</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cardano tapped by Brazil's state oil giant to track cleaner jet fuel and diesel</strong></summary>
+      <div class="deal-body">
+        <p>Petrobras is testing Cardano in two research projects aimed at preventing emissions benefits from being double-counted and tracing fuel data across production and use, CoinDesk reported. Another step in real-world blockchain pilots by a major operator.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/09/30/embargo-1-pm-utc-cardano-tapped-by-brazil-s-state-oil-giant-to-track-cleaner-jet-fuel-and-diesel" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Cardano Tapped by Brazil's State Oil Giant to Track Cleaner Jet Fuel and Diesel</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Tencent &amp; Oracle -- Roughly $7bn Deal to Lease 100,000 AI Chips</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Tencent struck a five-year deal to lease 100,000 chips from Oracle, accessing the US group's southeast Asia data centers, FT reported, as it races ByteDance and Alibaba on AI.</p>
+        <p><strong>Outlook:</strong> MarketWatch pegged the arrangement at around $7 billion and called it relief for Oracle's troubled stock.</p>
+        <p><strong>What it means:</strong> Chinese demand is routing through US cloud capacity abroad, keeping Oracle's AI backlog growing despite the rate backdrop.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/oracle-has-reportedly-signed-a-7-billion-deal-with-tencent-it-could-provide-relief-for-the-troubled-stock-abd428f5?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Oracle Has Reportedly Signed a $7 Billion Deal With Tencent</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Paramount &amp; Warner Bros. Discovery -- Ynon Kreiz Named Co-CEO of Planned Combination</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Paramount CEO David Ellison announced outgoing Mattel chief Ynon Kreiz will serve as co-CEO of the anticipated Paramount-WBD combination, CNBC reported.</p>
+        <p><strong>Outlook:</strong> The leadership slot signals the mega-merger is advancing toward a combined entity, with Mattel naming Roger Lynch as its own new CEO.</p>
+        <p><strong>What it means:</strong> Media consolidation is reshaping the top ranks across the sector as the combination moves ahead.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/30/david-ellison-ynon-kreiz-co-ceo-paramount-wbd.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- David Ellison Names Ynon Kreiz Co-CEO of Paramount and Warner Bros. Discovery</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MGM &amp; People Inc. -- CEO Leaves Door Open to a Bid as Casino Dealmaking Heats Up</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> MGM's CEO left the door open to a bid for People Inc. after People withdrew its $48.30-per-share proposal to buy the rest of MGM, CNBC reported.</p>
+        <p><strong>Outlook:</strong> The back-and-forth keeps casino-sector M&amp;A simmering as potential suitors reposition.</p>
+        <p><strong>What it means:</strong> Consolidation pressure persists in gaming even as broader dealmaking cools.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/09/30/mgm-barry-diller-people-inc-casino-dealmaking.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- MGM CEO Leaves Door Open to People Inc. Bid as Casino Dealmaking Heats Up</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Global M&amp;A -- Slips 10% in a Setback for Dealmakers Chasing a Record Year</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Dealmakers have ground to make up chasing a record year, Bloomberg reported, after a slower third quarter brought fresh challenges that cost Wall Street some momentum.</p>
+        <p><strong>Outlook:</strong> The pipeline toward a $5 trillion-plus year faces fresh risks from rate volatility and choppy markets.</p>
+        <p><strong>What it means:</strong> The rate shock is starting to show up in deal flow, not just prices.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/dealmakers-face-fresh-risks-chasing-5-trillion-plus-m-a-record" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- M&amp;A Slips 10% in Setback for Dealmakers Chasing Record Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Infinigence AI -- Tencent-Backed Cloud Unicorn Files for a Hong Kong IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Infinigence AI, a Chinese AI cloud infrastructure provider, is preparing for a Hong Kong listing as early as the first half of next year, Bloomberg reported, to capitalize on compute demand.</p>
+        <p><strong>Outlook:</strong> The filing adds to a wave of Asian AI-infrastructure listings as US windows stay choppy.</p>
+        <p><strong>What it means:</strong> Capital for the AI buildout is increasingly flowing through Hong Kong and emerging markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-01/tencent-backed-ai-cloud-unicorn-said-to-file-for-hong-kong-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tencent-Backed AI Cloud Unicorn Said to File for Hong Kong IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wall Street Trading Desks -- Come Down From a Record High</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Bankers expect third-quarter trading revenue to be better than normal but not match the big gains earlier this year, WSJ reported.</p>
+        <p><strong>Outlook:</strong> The pullback from record desk revenue frames bank earnings season as a normalization story.</p>
+        <p><strong>What it means:</strong> The trading boom that padded bank results is cooling as volatility shifts into rates and energy.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/wall-streets-trading-desks-come-down-from-a-record-high-9ab30234?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Wall Street's Trading Desks Come Down From a Record High</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Bianco Research (Jim Bianco) -- still bullish on bonds as yields soar</strong></summary>
+      <div class="deal-body">
+        <p>Bond veteran Jim Bianco is still bullish even as yields hit new milestones in the US and UK, Bloomberg reported, with oil adding more pressure on bonds. A named contrarian holding his call through the selloff.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-01/bond-veteran-jim-bianco-still-bullish-as-yields-soar-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Veteran Jim Bianco Still Bullish As Yields Soar</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan Asset Management (Kelsey Berro) -- calls the selloff a new technical chapter</strong></summary>
+      <div class="deal-body">
+        <p>Fixed income portfolio manager Kelsey Berro said the bond selloff now feels very technically and momentum-driven, Bloomberg reported, and expects investors to refocus on fundamentals and valuations soon. A named read on why the move has decoupled from the data.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-01/bond-market-selloff-in-new-chapter-jpm-s-berro-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Market Selloff in 'New Chapter,' JPM's Berro Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>DoubleLine Capital (Jeffrey Gundlach) -- warns the stock market is a hollow tree</strong></summary>
+      <div class="deal-body">
+        <p>DoubleLine's Jeffrey Gundlach warned the stock market is a hollow tree that could be about to snap, MarketWatch reported, saying stocks face a lot of issues even if everything looks great on the surface. A named bear flagging hidden fragility.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-stock-market-is-a-hollow-tree-that-could-be-about-to-snap-warns-bond-king-gundlach-215134f0?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Stock Market Is a Hollow Tree That Could Snap, Warns Gundlach</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Evercore ISI (Julian Emanuel) -- prepare to buy tech dips in Q4</strong></summary>
+      <div class="deal-body">
+        <p>Evercore's chief equity strategist Julian Emanuel said he expects stock volatility in the fourth quarter and told clients to prepare to buy tech dips, Bloomberg reported, framing rising bond yields as a new normal. A named conditional bull on tech.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-01/prepare-to-buy-4q-tech-dips-evercore-s-emanuel-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Prepare to Buy Tech Dips in Fourth Quarter, Evercore's Emanuel Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Partners Group (Anastasia Amoroso) -- economy on really solid footing</strong></summary>
+      <div class="deal-body">
+        <p>Partners Group's chief investment strategist Anastasia Amoroso said the economy is on really solid footing, Bloomberg reported, discussing the Challenger job-cuts data and the rise in yields. A named read supporting the resilient-growth framing of the selloff.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-01/economy-on-really-solid-footing-anastasia-amoroso-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Economy on Really Solid Footing: Anastasia Amoroso</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as a Global Bond Selloff Drives Yields to a 2002 High and Gilts to 6% Even After Soft PCE, Oil Touches $100 Again and the AI Trade Weathers the Rout, With Bianco, Emanuel and Partners Group's Amoroso Constructive Against DoubleLine's Gundlach and JPMorgan's Berro</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (growth is solid and the dips are buyable):</strong> Jim Bianco is still bullish on bonds as yields soar, Evercore's Julian Emanuel says prepare to buy Q4 tech dips and calls higher yields a new normal, and Partners Group's Anastasia Amoroso says the economy is on really solid footing. Money managers are asking clients back into a 60-40 that finally works, and retail is piling into fixed-income ETFs at multi-decade yields. The strength driving the selloff is also the thing supporting stocks.</div>
+        <div class="bear"><strong>Bear (the surface calm hides fragility):</strong> DoubleLine's Jeffrey Gundlach warns the stock market is a hollow tree that could snap, and JPMorgan's Kelsey Berro calls the bond selloff a new technically and momentum-driven chapter. A soft PCE could not pull yields down, France's budget is testing nerves, oil is back at $100, and BOE's Bailey warns an AI correction could trigger market shocks while Carlyle flags private-credit concentration. The pressure has not resolved.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Microsoft trillion-dollar quarter; Micron forecast; Tesla sell ratings slide; oil back at $100</td><td>Mixed</td><td>~35,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>AI rally checked by Treasury selloff; 10Y at 2002 high; Stellantis new low; Q4 open</td><td>Cautious</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Soft PCE but yields won't fall; Gundlach hollow tree; retail piling into bond ETFs; France budget</td><td>Bearish</td><td>~32,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>BOE Bailey AI shock warning; Carlyle private-credit concentration; Tencent-Oracle $7bn; OpenAI vs Moonshot</td><td>Bearish</td><td>~19,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC flat near $84K after best quarter since 2024; Citi target $113K; $1.26bn hacks; MetaMask incident</td><td>Mixed</td><td>~27,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned wary as the bond selloff went global and oil touched $100 again. r/wallstreetbets leaned on Microsoft's trillion-dollar quarter and Micron's forecast while flagging Tesla's slide. r/stocks turned cautious on the AI rally being checked by the 10-year at a 2002 high. r/investing went bearish as a soft PCE failed to move yields and Gundlach warned of a hollow tree. r/SecurityAnalysis leaned bearish on Bailey's AI-shock warning and Carlyle's concentration flag. r/CryptoCurrency stayed mixed after bitcoin's best quarter since 2024. The swing factor is tomorrow's payrolls.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Resilient Economy Can Be Bad for Bonds but Good for Stocks at the Same Time</h2>
+    <p>Bloomberg ran a line this week that captures the whole moment in six words: growth is hurting bond prices but helping stocks. It sounds like a contradiction, because we usually think of good economic news as good for everything, but it is one of the most important relationships a market reader can internalize, and it explains why the Dow and S&amp;P can push higher on the very same day the 10-year Treasury yield hits its highest since 2002. Start with the bond side. A bond is a fixed stream of payments, so its price falls when yields rise. Yields rise for two main reasons tied to a strong economy. First, if growth is resilient, inflation tends to stay sticky, and investors demand a higher yield to protect the purchasing power of those fixed payments. Second, a strong economy means the central bank has no reason to cut rates, and might even hike, so the expected path of short rates stays high. Both forces push yields up and bond prices down. That is why Partners Group's Anastasia Amoroso calling the economy on really solid footing is, counterintuitively, a bearish statement for bonds: the better the economy, the less the Fed has to help, and the more compensation lenders want. Now the stock side, where the same strength cuts the other way. A company's share price is ultimately a claim on its future earnings, and earnings come from economic activity. A resilient economy means consumers keep spending, as Bloomberg reported US households are doing despite half a decade of inflation, which supports revenue and profit. So the same growth that scares bondholders reassures equity holders, because it means the earnings underpinning stock valuations are intact. This is why Evercore's Julian Emanuel can call higher yields a new normal and still tell clients to buy tech dips: he is betting earnings strength outweighs the drag from rates. The tension between the two sides is the real story of this market. Higher yields are a genuine headwind for stocks through a second channel, the discount rate. When you value future earnings, you discount them back to today using a rate tied to Treasury yields, and a higher rate makes those future earnings worth less now, which pressures the richest, longest-duration stocks most, the high-growth tech names. So stocks face a tug-of-war: resilient growth lifts the numerator, expected earnings, while rising yields lift the denominator, the discount rate. Which force wins determines whether the market rises or falls on a strong-economy day. Right now the AI trade, with Microsoft's trillion-dollar quarter and Micron's upbeat forecast, is winning the numerator battle and holding the market up even as yields grind higher. The practical lesson is to stop asking whether news is simply good or bad, and start asking good or bad for what. A strong jobs report tomorrow would likely push yields up and pressure bonds, but could support stocks if investors read it as earnings fuel, or hurt them if they read it as more Fed tightening and a higher discount rate. The tell is in the correlation: when stocks and bonds fall together, the market fears rates; when stocks rise as bonds fall, it trusts growth. Watch which one tomorrow brings.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-01/resilient-economy-keeps-pushing-bond-yields-higher" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Resilient Economy Keeps Pushing Bond Yields Higher</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-01/us-consumers-shrug-off-inflation-and-weak-income-gains-to-keep-on-spending" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Consumers Shrug Off Inflation and Weak Income Gains to Keep on Spending</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Nonfarm payrolls, Friday Oct 2.</strong> After a soft PCE failed to pull yields down, the jobs report is the decisive test of the resilient-economy story: a strong print confirms the growth that is lifting yields, while a weak one is the only thing that could pull the long end back from a 2002 high.</li>
+      <li><strong>ISM Manufacturing and JOLTS.</strong> Factory activity and job openings frame whether demand is cooling enough to ease the inflation and term-premium pressure driving the global bond rout.</li>
+      <li><strong>France budget vote and eurozone bonds.</strong> France's deficit plan could topple its prime minister and is testing investor nerves; watch whether OAT and gilt yields keep setting the reference point that drags Treasuries higher.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Bank trading desks into Q3 season.</strong> With WSJ reporting desks coming down from a record high, watch whether normalizing trading revenue dents the bank bellwethers as rate and energy volatility shifts the mix.</li>
+      <li><strong>AI supplier follow-through.</strong> After Microsoft's trillion-dollar quarter and Micron's upbeat forecast, watch chip and infrastructure names for whether revenue keeps outrunning the capex and the rate drag.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Tencent-Oracle $7bn deal fallout.</strong> Watch Oracle and the broader AI-cloud group for whether the chip-lease arrangement reprices the compute-leasing model.</li>
+      <li><strong>IPO window watch.</strong> With M&amp;A slipping 10% and Oura's listing delayed, watch whether Infinigence AI and MNT Halan push through as US windows stay choppy.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Diesel export ban decision.</strong> With the White House pressing Germany, France and others to release stockpiles and Russia extending its ban, watch whether Washington acts, since a US curb would tighten the product market even as crude flows recover.</li>
+      <li><strong>Mideast shipping and the FlyDubai probe.</strong> Oil is holding near $100; watch whether the UAE-Israel investigation into the pilot attack or any fresh incident reverses the Hormuz supply relief.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how overseas bond markets like France and the UK transmit into US Treasury yields.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Oct 1, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-10-01 07:45 ET); Bloomberg Technology (20 fresh, newest 2026-10-01 07:30 ET); Bloomberg Economics (20 fresh, newest 2026-10-01 07:44 ET); CNBC Top News (8 fresh, newest 2026-09-30 19:01 ET); CNBC Finance (5 fresh, newest 2026-09-30 19:44 ET); MarketWatch Top Stories (10 fresh, newest 2026-10-01 07:58 ET); WSJ Markets (18 fresh, newest 2026-10-01 07:16 ET); FT Home (13 fresh, newest 2026-10-01 07:12 ET); Matt Levine Money Stuff (1 fresh, newest 2026-09-30 13:45 ET); CoinDesk (25 fresh, newest 2026-10-01 07:59 ET); Stratechery (2 fresh, newest 2026-10-01 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): CNBC Economy (25 fetched, 0 in last 36h); Yahoo Finance (25 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What pushed the 10-year Treasury yield to its highest since 2002 Thursday?</strong></p>
+      <span class="opt" data-opt="A">A. A surprise Fed decision to hike rates overnight</span>
+      <span class="opt" data-opt="B">B. Soft PCE data that reassured bond investors</span>
+      <span class="opt" data-opt="C">C. A global bond selloff on inflation and fiscal risks</span>
+      <span class="opt" data-opt="D">D. OPEC announcing a major oil production increase</span>
+      <div class="feedback"><strong>C is correct.</strong> FT reported a global bond selloff driven by sticky inflation and fiscal worries pushed the 10-year to a 2002 high and 30-year UK gilts to 6%. There was no surprise hike, and the soft PCE actually failed to pull yields down.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What happened to oil prices Thursday?</strong></p>
+      <span class="opt" data-opt="A">A. Brent crude briefly touched $100 a barrel again</span>
+      <span class="opt" data-opt="B">B. Crude fell sharply below $80 on oversupply</span>
+      <span class="opt" data-opt="C">C. The US released its entire strategic reserve</span>
+      <span class="opt" data-opt="D">D. OPEC agreed to cut output by two million barrels</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported oil again touched triple digits, with Brent briefly hitting $100 as the market weighed recovering Hormuz flows against fuel-market uncertainty. Prices did not crash, and there was no reserve release or OPEC cut.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>3. What did BOE Governor Andrew Bailey warn about?</strong></p>
+      <span class="opt" data-opt="A">A. Interest rates will be cut sharply by year-end</span>
+      <span class="opt" data-opt="B">B. An AI correction could trigger market shocks</span>
+      <span class="opt" data-opt="C">C. UK inflation has been fully defeated now</span>
+      <span class="opt" data-opt="D">D. Bond yields have peaked and will fall soon</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg reported Bailey warned the UK needs to prepare for financial market shocks triggered by a potential correction after the AI boom. He did not promise cuts, declare inflation beaten or call a top in yields.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "A global bond selloff drove the 10-year Treasury to its highest since 2002 and 30-year UK gilts to 6% as a resilient economy, sticky inflation and fiscal risks overrode yesterday's softer PCE, with France's budget testing investor nerves, as Jim Bianco stays bullish and money managers beg clients to return against DoubleLine's Jeffrey Gundlach and JPMorgan's Kelsey Berro warning of a new technical chapter.",
+    "sources": [
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/e485a228-1efe-426b-addc-26069ba48bf3?syn-25a6b1a6=1", "take": "A global selloff pushed the 10-year Treasury yield to its highest since 2002." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/jgbs-fall-on-prospects-for-quicker-pace-of-boj-rate-hikes-6c891e6e?mod=rss_markets_main", "take": "Yields hit new 24-year highs on energy inflation and fiscal risk." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/the-stock-market-is-a-hollow-tree-that-could-be-about-to-snap-warns-bond-king-gundlach-215134f0?mod=mw_rss_topstories", "take": "Gundlach warns the stock market is a hollow tree that could snap." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-10-01/bond-veteran-jim-bianco-still-bullish-as-yields-soar-video", "take": "Jim Bianco is still bullish on bonds as yields soar." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/money-managers-are-asking-clients-to-give-the-bond-market-another-chance-6f874f1c?mod=rss_markets_main", "take": "Money managers are asking clients to give the bond market another chance." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil touched triple digits again and Brent briefly hit $100 as the Middle East war kept energy inflation alive, with a FlyDubai flight averting disaster after a pilot attack, the White House pressing Europe to release diesel stockpiles ahead of its own export ban, Russia extending its ban and Saudi Arabia bracing for a contraction, even as Hormuz crude flows recover.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-30/latest-oil-market-news-and-analysis-for-oct-1", "take": "Oil again touched triple digits as traders weighed higher flows against fuel uncertainty." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/how-european-supplies-could-impact-a-u-s-diesel-ban-as-white-house-reportedly-asks-germany-france-to-release-stockpiles-5edd8284?mod=mw_rss_topstories", "take": "The White House is asking Germany and France to release diesel stockpiles." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/ecc95946-92ed-426c-bcf9-e6575e1cf6c6?syn-25a6b1a6=1", "take": "A FlyDubai flight averted catastrophe after a pilot was attacked mid-air." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-09-30/saudis-see-deeper-deficit-as-wartime-spend-offsets-oil-spike", "take": "Saudi Arabia sees a slump and deeper deficit as the war roils its economy." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-10-01/horizons-middle-east-africa-10-1-2026-video", "take": "Oil holds its gains partly on a Hormuz crude-flow recovery." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Microsoft closed a trillion-dollar quarter and Micron's upbeat forecast lifted futures as the AI trade weathered the bond rout, with TSMC mulling a multibillion-dollar Texas campus and Tencent leasing 100,000 chips from Oracle, even as BOE Governor Andrew Bailey warned an AI correction could trigger market shocks and Carlyle flagged private credit's AI concentration risk.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-01/microsoft-s-trillion-dollar-quarter-shows-ai-trade-won-t-quit", "take": "Microsoft's trillion-dollar quarter shows the AI trade won't quit." },
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/8799b33d-f07c-4a03-82f0-bf5d3d1d29e9?syn-25a6b1a6=1", "take": "Tencent leases 100,000 chips from Oracle to accelerate its AI push." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-01/tsmc-mulls-multibillion-dollar-texas-campus-for-more-ai-chips", "take": "TSMC mulls a multibillion-dollar Texas campus for more AI chips." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-01/boe-governor-warns-ai-boom-could-trigger-market-shocks-bbc", "take": "BOE's Bailey warns the AI boom could trigger market shocks." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-01/carlyle-warns-private-credit-s-ai-push-raises-concentration-risk", "take": "Carlyle warns private credit's AI push raises concentration risk." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Microsoft","Micron","Oracle","TSMC","Accenture","Tesla"],
+    "values": [2.6, 3.1, 2.2, 1.4, 1.0, -2.4]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [35000, 29000, 32000, 19000, 27000],
+    "colors": ["neutral","neutral","bear","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["TSMC Texas Campus","Tencent-Oracle Deal","Crypto Hacks 2026","Infinigence IPO","Crop Prices Jump"],
+    "values": [20.0, 7.0, 1.26, 0.8, 0.5]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
