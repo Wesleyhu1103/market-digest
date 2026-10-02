@@ -3,7 +3,9 @@
 // ============================================================
 (function() {
   function sitePath(rel) {
+    if (typeof mdSitePath === 'function') return mdSitePath(rel);
     var path = window.location.pathname || '/';
+    if (/\/archive\/?[^/]*$/i.test(path)) return path.replace(/\/archive\/?[^/]*$/i, '/') + String(rel || '').replace(/^\//, '');
     if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
     else if (!path.endsWith('/')) path += '/';
     return path + String(rel || '').replace(/^\//, '');
