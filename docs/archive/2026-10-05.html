@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Oct 5, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-10-05</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, October 5, 2026</h1>
+    <div class="meta">
+      <p>Friday's weak September jobs print took an October Fed hike off the table, but the relief got swamped over the weekend by Europe. French and Spanish bond yields are rising on fiscal and political fear, the euro slid to a 17-month low and the dollar jumped to an 18-month high as traders dust off the contagion playbook. Brazil's election heads to a bitter runoff with Flavio Bolsonaro leading, and Schneider's $23.7bn deal for PTC headlines a busy M&A open.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "A weak US jobs report took an October Fed hike off the table but the relief was quickly swamped by European fiscal contagion, with French and Spanish yields rising, the euro at a 17-month low and the dollar at an 18-month high as traders pull out the sovereign-crisis playbook",
+      "framings": [
+        {"outlet": "WSJ", "headline": "U.S. Stock Futures Steady as French Fiscal Pressure Raises Contagion Risk", "angle": "Reads the open through a European risk lens, with the dollar strengthening as investors reach for safety.", "lean": -30, "pull": "U.S. stock indexes were little moved after rising sharply Friday, when weak jobs data dimmed expectations for Fed hikes."},
+        {"outlet": "Bloomberg", "headline": "Traders Are Dusting Off the Contagion Playbook for European Bonds", "angle": "Frames France and Spain as the acute pain point, with the euro at a 17-month low signaling spreading stress.", "lean": -45, "pull": "The euro is weakening to a 17-month low against the dollar, too."},
+        {"outlet": "Financial Times", "headline": "Euro Slides to 17-Month Low Against Dollar", "angle": "Puts energy prices and France's public finances at the center of the single currency's slide.", "lean": -35, "pull": "High energy prices and concerns over France's public finances add to pressure on the single currency."},
+        {"outlet": "MarketWatch", "headline": "The Bond Selloff Is Opening Up Rare Opportunities for Investors", "angle": "Amplifies the contrarian bull case, with Standard Chartered calling bond and money markets overly hawkish on the Fed.", "lean": 25, "pull": "The chief investment office at Standard Chartered said bond and money markets have been overly hawkish on the Federal Reserve."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>A Weak September Jobs Print Takes an October Fed Hike Off the Table and US Yields Steady, but the Relief Gets Swamped by European Fiscal Contagion as French and Spanish Yields Rise, the Euro Slides to a 17-Month Low and the Dollar Jumps to an 18-Month High, With Standard Chartered Calling Markets Overly Hawkish and JPMorgan Saying Equities Won't Be Dragged Against Lorenzo Bini Smaghi Urging the ECB to Halt QT and Bloomberg Warning a French Crisis Would Be a Nightmare for the ECB</h3>
+      </div>
+      <p>The US and Europe split in opposite directions. Friday's soft payrolls print let traders price out an October Fed hike, and Bloomberg reported copper and emerging-market assets gained as tightening fears eased, with US stock futures steady after rising sharply Friday. The pain migrated across the Atlantic. WSJ reported French and Spanish bond yields rose on fiscal and political uncertainty while Treasury yields steadied, and FT said the euro slid to a 17-month low against the dollar on high energy prices and France's public finances. Bloomberg's markets team wrote that traders are dusting off the contagion playbook for European bonds, that a French crisis would be a nightmare for the ECB, and that gold rose as Europe's debt risks boosted haven demand. Spain added fuel as Prime Minister Pedro Sanchez called a snap election for November 29. The bull read has names. Standard Chartered's CIO told MarketWatch bond and money markets have been overly hawkish on the Fed and the selloff is opening rare opportunities, JPMorgan told WSJ equities won't be dragged by the spike in yields given earnings strength, and Morgan Stanley's Mike Wilson sees an earnings-led upturn in industrials after valuations dropped. The bear read is structural: former ECB board member Lorenzo Bini Smaghi argued in the FT the central bank should halt quantitative tightening to remove a source of market uncertainty, Bundesbank's Joachim Nagel says the ECB must stay flexible as the Middle East dominates the inflation outlook, and Vanguard's Qian Wang says energy and AI capex keep inflation near 3%.</p>
+      <p>The bull read is a soft jobs print pricing out the October hike, US yields steadying, Standard Chartered calling markets overly hawkish and JPMorgan saying stocks ride it out. The bear read is French and Spanish yields climbing, the euro at a 17-month low, contagion fears spreading and Bini Smaghi begging the ECB to stop QT.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the Fed path softened and the selloff is overdone):</strong> Friday's weak jobs print took an October Fed hike off the table, Bloomberg reported, letting copper and emerging markets rally as tightening fears eased. Standard Chartered's CIO told MarketWatch bond and money markets have been overly hawkish and the selloff is opening rare opportunities, JPMorgan told WSJ equities won't be dragged by the yield spike given earnings strength, and Morgan Stanley's Mike Wilson sees an earnings-led upturn in cheapened industrials. US Treasury yields steadied even as Europe wobbled.</div>
+        <div class="bear"><strong>Bear (the contagion is spreading):</strong> French and Spanish bond yields rose on fiscal and political uncertainty, WSJ reported, the euro slid to a 17-month low per FT, and Bloomberg says traders are pulling out the contagion playbook for European bonds. A French crisis would be a nightmare for the ECB, which Lorenzo Bini Smaghi says should halt QT to calm markets, and Spain's Sanchez just called a snap election. Gold is rallying as a haven. The relief from soft US data is being drowned out.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/newsletters/2026-10-05/traders-are-dusting-off-the-contagion-playbook-for-european-bonds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Traders Are Dusting Off the Contagion Playbook for European Bonds</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Fluctuates in Jittery Trading as Saudi Arabia Cuts Its Benchmark Price to Asia and Weak US Jobs Data Cools Demand Fears, Even as Aramco's Amin Nasser Warns Global Stockpiles Are Scarily Thin and Could Take Two Years to Rebuild, Fighting in Yemen Intensifies, Tanker Rates Hit Record Highs and ICE Launches Derivatives for Routes Outside the Strait of Hormuz</h3>
+      </div>
+      <p>The oil tape is caught between soft demand signals and a dangerously tight supply base. Bloomberg reported oil fluctuated in jittery trading as Saudi Arabia cut prices of its benchmark grade to Asia, and the softer US jobs data dialed back Fed tightening fears that had weighed on the growth outlook. But the supply warnings got louder. FT reported Saudi Aramco chief Amin Nasser warned the world's oil stockpiles are scarily thin after being depleted by the Middle East conflict, and that inventories could take up to two years to rebuild. Bloomberg added that the kingdom's state producer flagged the risk of low stockpiles even as it cut Asian prices, and that fighting in Yemen is intensifying. The structural dislocation is now in the plumbing: Bloomberg reported ICE will offer tanker derivatives based on a route outside the Strait of Hormuz as the shipping benchmark stays upended by the Iran war, and WSJ noted Volare Shipping shares jumped on their first trading day as tanker rates surged to record highs. The inflation feed-through is still live. Bundesbank's Joachim Nagel told Bloomberg the Middle East continues to dominate the inflation outlook, Vanguard's Qian Wang said elevated energy prices are a primary driver keeping inflation high, and the world risks becoming too reliant on US LNG as a third of global exports came from the country last month.</p>
+      <p>The bull read is oil fluctuating, Saudi cutting its Asian price and weak US jobs cooling demand fears. The bear read is Nasser's scarily-thin stockpile warning, a two-year rebuild, Yemen fighting, record tanker rates and energy still dominating the inflation outlook.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand signals and Saudi pricing ease the pressure):</strong> Oil fluctuated in jittery trading as Saudi Arabia cut prices of its benchmark grade to Asia, Bloomberg reported, and softer US jobs data dialed back the Fed-tightening fears that weighed on demand. A benchmark price cut points to sellers chasing buyers rather than a market pricing in acute shortage. If flows hold and demand cools, the energy-to-inflation channel that has been driving yields loses some of its fuel.</div>
+        <div class="bear"><strong>Bear (the supply base is scarily thin):</strong> Aramco's Amin Nasser warned the world's oil stockpiles are scarily thin and could take up to two years to rebuild, FT reported, and the kingdom's producer flagged the low-stockpile risk even as it cut Asian prices. Fighting in Yemen is intensifying, ICE is launching tanker derivatives for routes outside Hormuz, and tanker rates hit record highs. Nagel and Vanguard's Wang both say energy keeps inflation elevated. A thin cushion leaves no room for the next shock.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/53e88a8d-65b5-445e-82ee-aee253a32094?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Saudi Aramco Chief Warns World's Oil Stockpiles Are Scarily Thin</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Finds Fresh Fuel as Nvidia Partner Hon Hai Beats on the AI Frenzy, DBS Says Nvidia's Valuations Show It Isn't a Bubble and Schneider Strikes a $23.7bn Deal for PTC, Even as Panmure Liberum's Joachim Klement Warns an AI Reality Check Could Take the S&P to 5,000, Researchers Flag Asia's Economies as Most at Risk From a Correction and SoftBank's Masayoshi Son Sounds the Alarm on AI Safety</h3>
+      </div>
+      <p>The AI story is back to demand versus valuation discipline. Bloomberg reported Nvidia partner Hon Hai beat sales estimates on the AI frenzy, signaling sustained and elevated spending on global AI infrastructure, and DBS Group CIO Hou Wey Fook argued Nvidia's price-to-earnings multiple and projected 70% earnings growth next year show the AI rally is far from bubble territory. The capital keeps flowing: Bloomberg said AI billionaires drove an $845bn wealth surge this year, and MarketWatch reported Micron's historic cash bonanza, with the memory maker pulling in more cash than Apple and Nvidia and set to start buybacks. The dealmaking confirmed it, with Schneider Electric agreeing to buy engineering-software firm PTC for an implied $23.7bn, a deal MarketWatch framed as an AI winner taking out a laggard at a decade-low valuation. Elon Musk hinted TSMC may join his Terafab chip venture, sending Intel lower. The bear case runs through valuation and concentration. MarketWatch reported Panmure Liberum's Joachim Klement warns an AI reality check could take the S&P 500 to 5,000, and says to watch AI spending this earnings season. Bloomberg reported researchers found Asia's powerhouse economies are the most at risk from any AI correction, that the US lead over China narrowed to a record low after DeepSeek's gains, and that SoftBank's Masayoshi Son, one of AI's fervent believers, is now worried about safety risks as machines gain abilities.</p>
+      <p>The bull read is Hon Hai's beat, DBS calling Nvidia no bubble, Micron's cash bonanza and the Schneider-PTC deal. The bear read is Klement's reality-check call to 5,000, Asia's correction exposure, the narrowing US-China gap and Son's safety warning.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand and earnings keep delivering):</strong> Nvidia partner Hon Hai beat sales estimates on the AI frenzy, Bloomberg reported, a clean read on sustained AI-infrastructure spending, and DBS's Hou Wey Fook says Nvidia's multiple and 70% projected earnings growth show it is far from a bubble. Micron is taking in more cash than Apple and Nvidia and heading into buybacks, AI billionaires added $845bn in wealth this year, and Schneider paid $23.7bn for PTC. The revenue is real and the dealmaking is live.</div>
+        <div class="bear"><strong>Bear (the reality check is coming):</strong> Panmure Liberum's Joachim Klement warns an AI reality check could take the S&P 500 to 5,000 and says to scrutinize AI spending this earnings season. Bloomberg researchers flag Asia's economies as most at risk from an AI correction, the US performance lead over China narrowed to a record low after DeepSeek, and SoftBank's Masayoshi Son is now sounding the alarm on AI safety. When even the believers get nervous, the froth is worth watching.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/an-ai-reality-check-may-take-the-s-p-500-to-5-000-heres-the-trades-to-make-this-strategist-says-263cf0e9?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- An AI 'Reality Check' May Take the S&P 500 to 5,000</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>US stock futures steady as French fiscal pressure raises contagion risk</strong></summary>
+      <div class="deal-body">
+        <p>US stock indexes were little moved, WSJ reported, after rising sharply Friday when weak jobs data dimmed expectations for Fed hikes and supported risk assets. French fiscal pressure and euro-zone contagion risk capped the follow-through into Monday.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/u-s-stock-futures-steady-as-french-fiscal-pressure-raises-contagion-risk-468c102a?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. Stock Futures Steady as French Fiscal Pressure Raises Contagion Risk</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dollar strengthens as investors look for safety</strong></summary>
+      <div class="deal-body">
+        <p>The dollar strengthened as investors reached for safety, WSJ reported, with the euro dragged by France's fiscal woes. Stocks drifted as Europe's public-finance worries dampened risk appetite at the start of the week.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-05-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Market Today: Dollar Strengthens as Investors Look for Safety</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Micron's historic cash bonanza is set to rain down on investors</strong></summary>
+      <div class="deal-body">
+        <p>Micron is taking in more cash than Apple and Nvidia, MarketWatch reported, and will soon start doling that money out to shareholders in the form of buybacks. The memory maker is a direct beneficiary of AI-driven pricing power running through the supply chain.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/microns-historic-cash-bonanza-is-set-to-rain-down-on-investors-b61e6955?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Micron's Historic Cash Bonanza Is Set to Rain Down on Investors</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Intel shares slide as Musk hints TSMC may join his chip venture</strong></summary>
+      <div class="deal-body">
+        <p>Intel (INTC) shares took a hit Monday, MarketWatch reported, after a report that TSMC may help with Elon Musk's Terafab factory. The signal that a leading foundry could back Musk's mega chip venture pressured the struggling US chipmaker.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/musk-hints-tsmc-may-join-his-mega-chip-venture-and-intels-stock-is-taking-a-hit-61c67ef9?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Musk Hints TSMC May Join His Mega Chip Venture, and Intel's Stock Is Taking a Hit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley's Wilson sees an earnings-led upturn in industrials</strong></summary>
+      <div class="deal-body">
+        <p>A steep drop in US stock valuations since early summer has left some areas looking attractive as earnings growth shows few signs of waning, Morgan Stanley's Mike Wilson told Bloomberg. The call points investors toward cyclical industrials over the rate-sensitive tape.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/morgan-stanley-s-wilson-sees-earnings-led-upturn-in-industrials" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Morgan Stanley's Wilson Sees Earnings-Led Upturn in Industrials</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hermes gets rare sell calls as Goldman and UBS see weaker growth</strong></summary>
+      <div class="deal-body">
+        <p>Hermes was hit with its first sell ratings in more than a year, Bloomberg reported, as Goldman Sachs and UBS warned the Birkin-maker's era of impressive growth is coming to an end. The downgrades add a cautionary note to the luxury complex.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/hermes-gets-rare-sell-calls-as-goldman-ubs-see-weaker-growth" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hermes Gets Rare Sell Calls as Goldman, UBS See Weaker Growth</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bank stocks are haunted by the ghosts of 2023</strong></summary>
+      <div class="deal-body">
+        <p>Lenders have stronger balance sheets now, WSJ reported, as they face a new rate-hiking cycle, but investors remember how fast duration risk bit in 2023. The comparison hangs over bank stocks heading into earnings season.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/bank-stocks-are-haunted-by-the-ghosts-of-2023-a2a64725?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Bank Stocks Are Haunted by the Ghosts of 2023</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape is torn between Friday's soft-jobs relief and fresh European contagion, with a stronger dollar, Micron's cash bonanza and Morgan Stanley's industrials call on one side and French and Spanish spreads plus the AI valuation debate on the other. Watch chip and AI names after Hon Hai's beat and the Schneider-PTC deal, rate-sensitive banks facing the ghosts of 2023, and FX-sensitive multinationals as the euro sits at a 17-month low.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Weak US Jobs Report Did Not Rally the Whole World</summary>
+      <p>The instinct after Friday's soft payrolls print is simple: a weak number means the Fed can stop hiking, so risk assets everywhere should rally. That worked in the US, where Bloomberg reported traders priced out an October hike and copper and emerging-market assets gained. It did not work in Europe, where the euro slid to a 17-month low and French and Spanish bond yields kept rising. Understanding why the same data point helped one market and hurt another reveals how the current stress is less about central-bank policy and more about who owes what. Start with what a soft US jobs report does. Payrolls is the headline read on the Fed's employment mandate, and when hiring slows the market infers the central bank has room to ease, so yields fall and investors buy risk. That chain runs cleanly when the thing driving a market is the policy rate. In the US right now, the Fed's path is still the dominant variable, so a cooler labor market directly loosens financial conditions. Now look at Europe. The pressure on French and Spanish bonds is not primarily about the ECB's policy rate; it is about fiscal credibility. France has a large deficit and a fractured parliament, Spain's Pedro Sanchez just called a snap election for November 29, and investors are demanding more yield to hold that political and budget risk. A soft US jobs print does nothing to fix a French deficit or a Spanish election, so the European selloff keeps running on its own fuel. The second channel is the currency. When investors sell euro-denominated bonds and buy dollars for safety, the euro falls, which is exactly what FT reported Monday. A weaker euro and a stronger dollar tighten financial conditions in Europe even as they loosen in the US, so the two blocs move apart. The dollar hitting an 18-month high is the market voting with its feet, rotating out of European risk and into the deepest, most liquid haven it knows. The third channel is the haven bid itself. Bloomberg noted gold rose as Europe's debt risks boosted demand for safe assets, and the same flow strengthens the dollar and US Treasuries relative to European debt. The practical lesson for a market reader is to ask what is actually driving a given market before assuming a single data point moves everything the same way. When a market is policy-driven, watch the central bank. When it is fiscal-driven, watch the budget, the politics and the currency, because no amount of soft employment data will calm a market that is worried about solvency rather than growth. Friday's print was genuinely dovish for the US and nearly irrelevant to Paris and Madrid, and the split tells you where the real risk now sits.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/8b19b9f7-9237-47bf-bc50-d8b78aa7fe24?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Euro Slides to 17-Month Low Against Dollar</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/emerging-market-assets-climb-as-fed-hike-bets-cool-oil-drops" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Emerging Assets Gain as Fed Rise Bets Cool; Brazil in Focus</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nvidia partner Hon Hai beats sales estimates due to AI frenzy</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) partner Hon Hai Precision reported better-than-expected quarterly revenue, Bloomberg reported, signaling sustained and elevated spending on global AI infrastructure. The beat is a clean read on continued hyperscaler capex demand.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/nvidia-partner-hon-hai-beats-sales-estimates-due-to-ai-frenzy" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Partner Hon Hai Beats Sales Estimates Due to AI Frenzy</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia's valuations show the AI rally isn't a bubble, DBS says</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia's price-to-earnings multiple and projected 70% earnings growth for next year show AI-driven tech stocks remain far from bubble territory, DBS Group CIO Hou Wey Fook told Bloomberg. The call pushes back on growing froth concerns ahead of earnings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/nvidia-s-valuations-show-ai-rally-isn-t-a-bubble-dbs-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia's Valuations Show AI Rally Isn't a Bubble, DBS Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI billionaires drive an $845 billion surge in wealth this year</strong></summary>
+      <div class="deal-body">
+        <p>AI billionaires drove an $845bn surge in wealth this year, Bloomberg reported, a staggering new peak with signs the market may have just passed it. The figure quantifies how concentrated the gains from the buildout have become.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-05/ai-billionaires-drive-845-billion-surge-in-wealth-this-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Billionaires Drive $845 Billion Surge in Wealth This Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Asia economies among most at risk from any AI correction, researchers warn</strong></summary>
+      <div class="deal-body">
+        <p>Asia's powerhouse economies are more at risk than most from a potential AI bust, Bloomberg reported, citing a new study, which could undercut surging exports and send shockwaves across markets. The warning ties the AI trade to real-economy exposure.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/asia-economies-among-most-at-risk-from-any-ai-correction-researchers-warn" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Asia Economies Among Most at Risk From Any AI Correction, Researchers Warn</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US lead in AI over China narrows after DeepSeek gains, BI says</strong></summary>
+      <div class="deal-body">
+        <p>American AI companies' performance lead over China narrowed sharply to a record low, Bloomberg Intelligence reported, after labs such as DeepSeek gained ground, threatening US tech supremacy. The convergence raises the stakes on export controls and the capex race.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-04/us-lead-in-ai-over-china-narrows-after-deepseek-gains-bi-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Lead in AI Over China Narrows After DeepSeek Gains, BI Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Qualcomm licenses patents on Huawei's LogicFolding chip tech</strong></summary>
+      <div class="deal-body">
+        <p>Qualcomm (QCOM) agreed to license patents underpinning Huawei's novel LogicFolding chipmaking technique, Bloomberg reported, a win for the Chinese company's push into overseas AI markets. The deal is a rare cross-licensing bridge amid the tech standoff.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/qualcomm-licenses-patents-on-huawei-s-logicfolding-chip-tech" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Qualcomm Licenses Patents on Huawei's LogicFolding Chip Tech</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SoftBank's Masayoshi Son warns on AI safety</strong></summary>
+      <div class="deal-body">
+        <p>SoftBank chief Masayoshi Son, one of AI's fervent believers, said even he is worried about safety risks as machines quickly gain abilities, Bloomberg reported. He reiterated his projection that AI could account for at least 20% of global GDP by 2040.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-05/softbank-s-masayoshi-son-warns-on-ai-safety-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SoftBank's Masayoshi Son Warns on AI Safety</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Monday October 5, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is demand and earnings, with Hon Hai beating on the AI frenzy, DBS calling Nvidia no bubble and Micron's record cash bonanza. The counter-signal is valuation and concentration, with Panmure Liberum's Klement warning of a reality check to 5,000, researchers flagging Asia's correction exposure and even SoftBank's Son turning cautious on safety. The near-term tell is how AI spending reads through earnings season.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Emerging assets gain as Fed hike bets cool after weak jobs data</strong></summary>
+      <div class="deal-body">
+        <p>Emerging-market stocks and currencies advanced, Bloomberg reported, after softer-than-expected US jobs data eased concern over aggressive Fed tightening. Copper rose on the same read as attention turned to Europe's debt risks and Brazil's vote.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/emerging-market-assets-climb-as-fed-hike-bets-cool-oil-drops" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Emerging Assets Gain as Fed Rise Bets Cool; Brazil in Focus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>French, Spanish bond yields rise on fiscal and political uncertainty</strong></summary>
+      <div class="deal-body">
+        <p>French government bond yields rose and stayed elevated amid building concerns over the country's indebtedness, WSJ reported, with Spanish yields climbing too as Treasury yields steadied. The split shows the stress now concentrated in European sovereigns.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/french-bond-yields-stay-elevated-treasury-yields-ease-13103f54?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- French, Spanish Bond Yields Rise on Fiscal, Political Uncertainty; Treasury Yields Steady</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euro slides to a 17-month low against the dollar</strong></summary>
+      <div class="deal-body">
+        <p>The euro slid to a 17-month low against the dollar, FT reported, as high energy prices and concerns over France's public finances added to pressure on the single currency. The dollar index hit its highest since April 2025.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/8b19b9f7-9237-47bf-bc50-d8b78aa7fe24?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Euro Slides to 17-Month Low Against Dollar</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB should stop bond roll-off amid turmoil, Bini Smaghi writes</strong></summary>
+      <div class="deal-body">
+        <p>The ECB should halt quantitative tightening to remove a source of market uncertainty, former Executive Board member Lorenzo Bini Smaghi argued in the FT. The call lands as traders dust off the contagion playbook for European bonds.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/ecb-should-stop-bond-roll-off-amid-turmoil-bini-writes-in-ft" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB Should Stop Bond Roll-Off Amid Turmoil, Bini Writes in FT</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bessent walks back his 'I am the house' remark as yields keep rising</strong></summary>
+      <div class="deal-body">
+        <p>Treasury Secretary Bessent defended his department's record in the bond market and walked back his "I am the house" declaration from a month ago, MarketWatch reported, in a televised Axios interview. Yields did not stop rising after the original remark.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/what-bessent-is-now-saying-after-bond-yields-didnt-stop-rising-on-i-am-the-house-remark-0ab359f8?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- What Bessent Is Now Saying After Bond Yields Didn't Stop Rising</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lane urges a measured ECB response to a second wave of energy shock</strong></summary>
+      <div class="deal-body">
+        <p>A measured ECB response is appropriate to control inflation as policymakers assess how a second wave of the energy shock hits the economy, Chief Economist Philip Lane told Bloomberg. Bundesbank's Nagel added the Middle East continues to dominate the inflation outlook.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/lane-urges-measured-ecb-response-to-second-wave-of-energy-shock" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Lane Urges Measured ECB Response to Second Wave of Energy Shock</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UK job slump now longer than during the financial crisis, PMI says</strong></summary>
+      <div class="deal-body">
+        <p>Britain's jobs market is stuck in its longest downturn since the early 2000s, Bloomberg reported, citing a closely watched survey, surpassing the decline during the financial crisis. The slump deepens the pressure on UK assets alongside the super-rich exodus.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/uk-s-job-slump-now-longer-than-during-financial-crisis-pmi-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UK Job Slump Longer Than During Financial Crisis, PMI Says</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (October 5, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side got a reprieve as Friday's weak jobs print priced out the October hike, US yields steadied and Standard Chartered called markets overly hawkish. The bear side owns the structure, with French and Spanish yields rising, the euro at a 17-month low, contagion fears spreading and Bini Smaghi urging the ECB to halt QT. The swing factor is whether European stress leaks back into Treasuries, so watch the US long end against the OAT-bund spread.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a French Crisis Would Be a Nightmare for the ECB</summary>
+      <p>Bloomberg warned Monday that a French crisis would be a nightmare for the European Central Bank, and former board member Lorenzo Bini Smaghi used the FT to urge the ECB to halt its bond roll-off entirely. To see why Paris in trouble is harder for the ECB than Athens was in 2012, you have to understand both the tool the central bank built after the last crisis and why France is the case it was least designed for. Start with the backstop. After the euro debt crisis, the ECB created the Transmission Protection Instrument, a program that lets it buy an individual member's bonds to stop an unjustified spread blowout from fragmenting the currency bloc. The implicit promise is the modern version of Mario Draghi's whatever it takes. The catch is the word unjustified. The TPI is meant for a country whose spreads widen for irrational, contagion-driven reasons, not one whose debt is genuinely deteriorating on its own fundamentals. France has a large structural deficit, a fractured parliament that keeps toppling governments over the budget, and no credible path to consolidation, which makes it hard for the ECB to argue the selloff is unjustified rather than the market correctly pricing real risk. The second problem is scale. France is the euro zone's second-largest economy, and its bond market is enormous and widely held across European banks, insurers and pension funds. A Greek rescue was large relative to Greece but small relative to the bloc. A French intervention would have to be vastly bigger, and it would mean the ECB taking on huge concentrated exposure to a single large member, which pushes uncomfortably close to monetary financing of a government. The third problem is the inflation backdrop. In 2012 inflation was low, so the ECB could buy bonds without worrying about overheating. Today Philip Lane is warning about a second wave of the energy shock and Bundesbank's Nagel says the Middle East dominates the inflation outlook, so the central bank is leaning toward restraint, not stimulus. Buying French bonds to cap spreads while simultaneously fighting inflation is a direct contradiction, which is exactly why Bini Smaghi is asking it to at least stop actively shrinking its balance sheet through QT, a smaller step than new purchases. The practical lesson for a market reader is that a backstop is only as credible as the conditions attached to it. The TPI calmed markets precisely because it was never tested; the moment a member needs it for genuine fiscal reasons rather than pure contagion, the ambiguity that made it powerful becomes a liability. Watch whether the ECB signals a QT pause, because that would be the first concrete sign it is edging toward intervention, and watch the OAT-bund spread as the real-time gauge of how close the market thinks that moment is.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-05/a-french-crisis-would-be-a-nightmare-for-ecb" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- A French Crisis Would Be a Nightmare for the ECB</a></p>
+      <p class="deal-source"><a href="https://www.ft.com/content/e0dfef01-4933-4ab9-8927-d08115f4822c" target="_blank" rel="noopener noreferrer">Source: FT -- Bond Turbulence Means It's Time for the ECB to Put QT on Hold</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Friday's weak jobs print took an October Fed hike off the table and US yields steadied, but the relief got swamped by European contagion as French and Spanish yields rose, the euro slid to a 17-month low and the dollar hit an 18-month high, with Standard Chartered calling markets overly hawkish and JPMorgan saying stocks ride it out against Bini Smaghi urging the ECB to halt QT. Oil fluctuated as Saudi Arabia cut its Asian price even as Aramco's Nasser warned stockpiles are scarily thin and could take two years to rebuild. The AI trade found fresh fuel from Hon Hai's beat, DBS calling Nvidia no bubble and the Schneider-PTC deal, against Panmure Liberum's reality-check call to 5,000; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 5.15%, bear confirmed; below 4.95%, bull confirmed. Iran/Oil: if Brent closes above $110, bear confirmed; below $100, bull confirmed. AI Capex: if NVDA closes above $220, bull confirmed; below $205, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 10/5</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 10/6</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 10/7</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/8</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/9</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin above $86,000 as traders price out an October Fed hike</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held above $86,000, CoinDesk reported, after a weak September jobs report took an October rate hike off the table, though it stayed stuck below $87,000 with FOMC minutes due Wednesday. The token zoomed toward $87,000 earlier before sellers pushed it back.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/05/live-updates-bitcoin-above-usd86-000-as-traders-price-out-an-october-fed-hike" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Updates: Bitcoin Above $86,000 as Traders Price Out an October Fed Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin resilience tested as the dollar climbs to an 18-month high</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held firm around $86,000 even as the US Dollar Index jumped to 102.53, its highest since April 2025, CoinDesk reported. A stronger dollar and rising bond yields are potential headwinds as fiscal concerns in France and Spain weigh on the euro.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/05/u-s-dollar-climbs-to-18-month-high-as-bitcoin-holds-firm-around-usd86-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Resilience Tested as U.S. Dollar Climbs to 18-Month High</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin nears a major bullish 'golden cross' signal</strong></summary>
+      <div class="deal-body">
+        <p>Key price averages are on the verge of confirming a bullish golden cross for the first time in over a year, CoinDesk reported, and MarketWatch said the last such pattern worked out well. The technical setup has shifted bitcoin's bounce into a longer-term uptrend.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/05/bitcoin-is-about-to-get-a-major-bullish-signal-it-hasn-t-had-in-over-a-year" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Is About to Get a Major Bullish Signal It Hasn't Had in Over a Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SEC approves 3x leveraged bitcoin and ether products</strong></summary>
+      <div class="deal-body">
+        <p>The SEC approved a 3x fix for bitcoin and ether traders who miss the wild swings, CoinDesk reported, advancing a new wave of leveraged crypto products. The approval widens the toolkit for retail and active traders chasing the volatility.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/10/05/sec-approves-a-3x-fix-for-bitcoin-and-ether-traders-who-miss-the-wild-swings" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- SEC Approves a 3x Fix for Bitcoin and Ether Traders Who Miss the Wild Swings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Metaplanet adds 1,000 bitcoin net in the third quarter</strong></summary>
+      <div class="deal-body">
+        <p>Japanese firm Metaplanet added 1,000 bitcoin net in the third quarter to reach 44,000 BTC, CoinDesk reported, selling 10,000 and buying 11,000 to demonstrate liquidity as it launches an income strategy. The move shows a corporate holder actively managing its treasury.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/05/metaplanet-adds-1-000-bitcoin-after-sale-and-repurchase-launches-income-strategy" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Metaplanet Added 1,000 Bitcoin Net in the Third Quarter</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasury crackdown exposes crypto's role in a $2m Hamas fundraising network</strong></summary>
+      <div class="deal-body">
+        <p>The Treasury Department said a network raised more than $2m through purported humanitarian charities, CoinDesk reported, including hundreds of thousands of dollars sent in crypto. The action keeps enforcement pressure on illicit-finance use of digital assets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/10/05/treasury-crackdown-exposes-crypto-s-role-in-usd2-million-hamas-fundraising-network" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Treasury Crackdown Exposes Crypto's Role in $2 Million Hamas Fundraising Network</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Schneider Electric &amp; PTC -- $23.7bn All-Cash Software Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Schneider Electric agreed to buy US engineering-software developer PTC for an implied enterprise value of $23.7bn, Bloomberg reported, paying $205 per share in an all-cash deal.</p>
+        <p><strong>Outlook:</strong> MarketWatch framed it as an AI winner taking out a laggard at a decade-low valuation, with Schneider having thrived from the AI buildout.</p>
+        <p><strong>What it means:</strong> The industrial-AI complex is consolidating software, a sign cash-rich winners are buying capability rather than building it as valuations compress.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/this-23-billion-software-deal-was-struck-at-a-decade-low-valuation-as-ai-winner-takes-out-loser-aa18f477?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- This $23 Billion Software Deal Was Struck at a Decade-Low Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BT &amp; TalkTalk -- Rescue Deal Tests the UK Regulator</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> BT Group bought TalkTalk, the UK's fourth-biggest broadband provider and a key customer, Bloomberg reported, to save the firm from collapse.</p>
+        <p><strong>Outlook:</strong> The purchase puts the competition regulator in a tough spot after its tough rhetoric on consolidation in the broadband market.</p>
+        <p><strong>What it means:</strong> A rescue of a failing rival forces watchdogs to weigh competition theory against the reality of a struggling sector.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/bt-buys-talktalk-to-save-uk-broadband-provider-from-collapse" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BT TalkTalk Deal to Test UK Regulator's Competition Rhetoric</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Volare Shipping -- Shares Jump on First Trading Day</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Volare Shipping shares jumped on their market debut, WSJ reported, as tanker rates have surged to record highs since the Middle East conflict upended oil markets.</p>
+        <p><strong>Outlook:</strong> The strong open reflects investor appetite for shipping capacity amid dislocated oil routes and ICE's new Hormuz-bypass derivatives.</p>
+        <p><strong>What it means:</strong> The Iran war is minting winners in the physical plumbing of energy trade, and public markets are now pricing that premium.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/volare-shipping-shares-jump-on-first-trading-day-9c1bbdaa?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Volare Shipping Shares Jump on First Trading Day</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OKX &amp; ICE -- JV Files for 24/7 Tokenized US Stock Trading</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> OKXICE, the joint venture of OKX and NYSE parent ICE, filed to launch tokenized US stocks under the SEC's new innovation exemption, CoinDesk reported.</p>
+        <p><strong>Outlook:</strong> Round-the-clock tokenized equity trading would blur the line between crypto rails and traditional market structure.</p>
+        <p><strong>What it means:</strong> A major exchange operator is betting tokenization becomes mainstream market plumbing, not a crypto sideshow.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/05/okx-and-nyse-s-owner-file-for-round-the-clock-tokenized-trading-in-u-s-stocks" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Joint Venture of OKX and NYSE Parent ICE Files for 24/7 Tokenized U.S. Stock Trading</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Partners Group -- London Trust Heads for Wind Down After Investor Vote</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Investors in a London-listed fund run by Partners Group are set to vote to wind down the portfolio, Bloomberg reported, the latest sign of flagging confidence in the Swiss manager's PE funds marketed to individuals.</p>
+        <p><strong>Outlook:</strong> The wind-down adds to WSJ's warning that private equity has a problem as retail-facing vehicles struggle with liquidity.</p>
+        <p><strong>What it means:</strong> The retail-PE push is hitting a wall as higher rates expose the mismatch between illiquid assets and individual investors.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/partners-group-uk-trust-heads-for-wind-down-after-investor-vote" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Partners Group Trust Heads for Wind Down After Investor Vote</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Payward (Kraken) &amp; Singapore Gulf Bank -- 24/7 Institutional Settlement</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Kraken operator Payward and Singapore Gulf Bank partnered for round-the-clock institutional crypto settlement, CoinDesk reported, with around-the-clock US dollar settlement.</p>
+        <p><strong>Outlook:</strong> The service rolls out first to select institutional clients in Asia and the Gulf region.</p>
+        <p><strong>What it means:</strong> Institutional crypto rails keep maturing, pairing an exchange with a bank to close the settlement gap.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/05/kraken-operator-payward-and-singapore-gulf-bank-platform-for-24-7-institutional-crypto-settlement" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Kraken Operator Payward and Singapore Gulf Bank Partner for 24/7 Institutional Crypto Settlement</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Standard Chartered (CIO) -- bond and money markets are overly hawkish</strong></summary>
+      <div class="deal-body">
+        <p>Standard Chartered's chief investment office told MarketWatch bond and money markets have been overly hawkish on the Fed, and that the selloff is opening rare opportunities for investors. A named conditional bull calling the rates repricing overdone.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/bond-selloff-is-opening-up-rare-opportunities-for-investors-here-is-where-to-look-says-major-bank-463447c7?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Bond Selloff Is Opening Up Rare Opportunities for Investors</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan -- equities won't be dragged by the spike in bond yields</strong></summary>
+      <div class="deal-body">
+        <p>Stocks will be buoyed by earnings strength and resilient growth even as higher borrowing costs weigh on sentiment, JPMorgan strategists told WSJ. A named read that the yield spike is survivable for equities.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/nikkei-rises-2-0-led-by-electronics-machinery-stocks-9fd1e369?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Equities Won't Be Dragged by Spike in Bond Yields</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>DBS (Hou Wey Fook) -- AI is no bubble, IG bonds above 5% attractive</strong></summary>
+      <div class="deal-body">
+        <p>DBS Group CIO Hou Wey Fook told Bloomberg AI-led earnings growth still underpins major tech stocks and Nvidia is far from bubble territory, while investment-grade bonds yielding above 5% offer attractive income and stability. A named bull on both AI and high-grade carry.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-05/dbs-cio-on-ai-bonds-and-market-risks-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- DBS CIO on AI, Bonds and Market Risks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Panmure Liberum (Joachim Klement) -- an AI reality check could hit the S&P</strong></summary>
+      <div class="deal-body">
+        <p>Panmure Liberum's Joachim Klement told MarketWatch an AI reality check may take the S&P 500 to 5,000, and urged investors to watch AI spending in the upcoming earnings season. A named bear flagging valuation and capex risk.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/an-ai-reality-check-may-take-the-s-p-500-to-5-000-heres-the-trades-to-make-this-strategist-says-263cf0e9?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- An AI 'Reality Check' May Take the S&P 500 to 5,000</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Former ECB board (Lorenzo Bini Smaghi) -- the ECB should halt QT</strong></summary>
+      <div class="deal-body">
+        <p>Former ECB Executive Board member Lorenzo Bini Smaghi argued in the FT the central bank should halt quantitative tightening to remove a source of market uncertainty, Bloomberg reported. A named read calling for a policy backstop as European bonds wobble.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/ecb-should-stop-bond-roll-off-amid-turmoil-bini-writes-in-ft" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB Should Stop Bond Roll-Off Amid Turmoil, Bini Writes in FT</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as a Weak US Jobs Print Prices Out the October Hike but European Contagion Drives the Euro to a 17-Month Low and the AI Trade Splits Bulls From Valuation Hawks, With Standard Chartered, JPMorgan and DBS Constructive Against Panmure Liberum's Klement and Bini Smaghi Flagging Risk</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the selloff is overdone and AI earnings hold):</strong> Standard Chartered's CIO says bond and money markets are overly hawkish on the Fed and the selloff is opening rare opportunities, JPMorgan says equities won't be dragged by the yield spike given earnings strength, and DBS's Hou Wey Fook calls AI no bubble while liking IG bonds above 5%. Friday's jobs print priced out the October hike, US yields steadied, and Hon Hai beat on the AI frenzy.</div>
+        <div class="bear"><strong>Bear (the contagion and valuation cracks are widening):</strong> French and Spanish yields are rising, the euro slid to a 17-month low, and former ECB board member Lorenzo Bini Smaghi is urging a QT halt to calm markets. Panmure Liberum's Joachim Klement warns an AI reality check could take the S&P to 5,000, researchers flag Asia's correction exposure, and even SoftBank's Son is wary on AI safety. The relief from soft US data is thin against the fiscal and valuation overhang.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Micron cash bonanza and buybacks; Intel hit on Musk-TSMC; Nvidia no-bubble call; PTC takeout</td><td>Cautiously bullish</td><td>~34,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Dollar strengthens on safety; bank stocks and 2023 ghosts; French contagion; Hermes sell calls</td><td>Cautious</td><td>~27,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>European bond contagion; euro at 17-month low; weak US jobs; ECB QT halt debate</td><td>Bearish</td><td>~32,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Schneider-PTC decade-low valuation; AI reality check to 5,000; private equity's problem</td><td>Mixed</td><td>~19,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds $86K, golden cross; SEC 3x products; strong-dollar headwind; FOMC minutes Wednesday</td><td>Risk-on</td><td>~28,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood is split between Friday's soft-jobs relief and fresh European fear. r/wallstreetbets leaned cautiously bullish on Micron's cash bonanza and the Schneider-PTC deal against Intel's slide. r/stocks turned cautious as the dollar strengthened on safety and bank stocks faced the ghosts of 2023. r/investing stayed bearish on European contagion and the euro at a 17-month low. r/SecurityAnalysis was mixed on the PTC takeout and the AI reality-check call. r/CryptoCurrency went risk-on as bitcoin held $86,000 near a golden cross. The swing factor is Wednesday's FOMC minutes.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why the Dollar Rockets When Europe's Bonds Fall</h2>
+    <p>FT reported Monday that the euro slid to a 17-month low against the dollar, and CoinDesk noted the US Dollar Index jumped to its highest since April 2025, all while French and Spanish bond yields were rising and US Treasury yields were steady. At first glance that looks contradictory: if European bonds are selling off and yields there are climbing, higher yields should attract capital and support the euro, not sink it. Understanding why the opposite happens reveals a mechanism every market reader should carry around, because it governs how stress moves across borders. Start with the two reasons yields rise. A yield can climb because investors expect stronger growth and tighter policy, which is a healthy, currency-positive move, or it can climb because investors are dumping a country's bonds over fear about its solvency, which is a sick, currency-negative move. The direction of the currency tells you which one you are looking at. In France and Spain right now, yields are rising for the second reason. France has a large deficit and a fractured parliament, Spain's Pedro Sanchez just called a snap election, and investors are selling those bonds and demanding more yield to hold the political and fiscal risk. When you sell a French bond, you receive euros, and if you no longer want European exposure at all, you sell those euros for dollars. That selling pressure drives the euro down even as French yields go up. The second piece is the flight to quality. When investors get scared about one region, they do not just rotate within it; they move to the deepest, most liquid safe haven they can find, and that is still the US dollar and US Treasuries. Bloomberg reported gold rose on the same European debt fears, which is the same instinct expressed in a different asset. Capital leaving euro-denominated bonds flows into dollar assets, bidding up the greenback and, notably, keeping US Treasury yields steady or lower even though European yields are climbing. That divergence, European yields up and US yields flat to down, is the signature of contagion rather than a global growth story. The third piece is the feedback loop. A falling euro makes imported energy more expensive for Europe, which is already dealing with a second wave of energy-price pressure that Philip Lane flagged, and that worsens the inflation and fiscal picture that started the selloff in the first place. A weaker currency can deepen the very stress that caused it. The practical lesson for a market reader is to read the currency and the bond market together, never alone. If a country's yields rise and its currency rises too, the market is rewarding strength. If yields rise and the currency falls, the market is pricing fear, and the money leaving is almost certainly heading into the dollar and Treasuries. That is exactly what Monday's tape showed, and it is why the US came out of Friday's weak jobs print as the haven even as its own labor market cooled.</p>
+    <p class="deal-source"><a href="https://www.ft.com/content/8b19b9f7-9237-47bf-bc50-d8b78aa7fe24?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Euro Slides to 17-Month Low Against Dollar</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/gold-edges-higher-as-markets-weigh-jobs-data-impact-on-fed-path" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Rises as Europe Debt Risks Boost Appeal of Haven Assets</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>FOMC minutes, Wednesday Oct 7.</strong> After Friday's weak jobs print priced out an October hike, watch the minutes for how divided the committee is and whether the energy-and-AI inflation worry from Vanguard's Wang and Bundesbank's Nagel still dominates.</li>
+      <li><strong>European sovereign spreads and the euro.</strong> With French and Spanish yields rising, the euro at a 17-month low and traders dusting off the contagion playbook, watch the OAT-bund spread and whether the ECB signals a QT pause as Bini Smaghi urged.</li>
+      <li><strong>UK and global labor data.</strong> After the UK job slump ran longer than the financial crisis, watch whether developed-market hiring is cooling enough to ease the inflation and term-premium pressure driving the rate backdrop.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Bank earnings season approaches.</strong> With bank stocks haunted by the ghosts of 2023 and a new rate-hiking cycle in view, watch how rate and duration risk reshapes the bellwether results.</li>
+      <li><strong>AI-supplier follow-through.</strong> After Hon Hai beat on the AI frenzy and DBS called Nvidia no bubble, watch whether AI capex guidance validates the bulls or feeds Klement's reality-check call.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Schneider-PTC and industrial-AI M&A.</strong> Watch whether the $23.7bn deal at a decade-low valuation triggers more cash-rich winners buying software laggards.</li>
+      <li><strong>Private-equity liquidity stress.</strong> With the Partners Group trust winding down and WSJ flagging private equity's problem, watch whether more retail-facing vehicles face redemptions.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Brazil presidential runoff.</strong> With Flavio Bolsonaro taking a commanding first-round lead over Lula, watch Brazilian assets and the real as the runoff could swing Latin America's biggest economy rightward.</li>
+      <li><strong>Oil supply and the Iran war.</strong> With Aramco's Nasser warning stockpiles are scarily thin, Saudi cutting Asian prices and Yemen fighting intensifying, watch whether any fresh shock hits a market with no cushion.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how overseas bond markets like France and Spain transmit into US Treasury yields and the dollar.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Oct 5, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-10-05 07:41 ET); Bloomberg Technology (20 fresh, newest 2026-10-05 07:02 ET); Bloomberg Economics (16 fresh, newest 2026-10-05 07:04 ET); CNBC Top News (3 fresh, newest 2026-10-05 07:00 ET); CNBC Finance (1 fresh, newest 2026-10-04 08:57 ET); CNBC Economy (1 fresh, newest 2026-10-05 01:00 ET); MarketWatch Top Stories (10 fresh, newest 2026-10-05 07:40 ET); WSJ Markets (14 fresh, newest 2026-10-05 07:07 ET); FT Home (10 fresh, newest 2026-10-05 06:22 ET); CoinDesk (17 fresh, newest 2026-10-05 07:14 ET); Stratechery (1 fresh, newest 2026-10-05 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Stale feeds (no items in window): Yahoo Finance (25 fetched, 0 in last 36h); Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove the euro to a 17-month low on Monday?</strong></p>
+      <span class="opt" data-opt="A">A. The ECB announced a surprise rate cut</span>
+      <span class="opt" data-opt="B">B. Germany posted a record trade surplus</span>
+      <span class="opt" data-opt="C">C. French and Spanish fiscal and political fears</span>
+      <span class="opt" data-opt="D">D. Strong US jobs data lifted the dollar sharply</span>
+      <div class="feedback"><strong>C is correct.</strong> FT reported the euro slid to a 17-month low on high energy prices and France's public finances, with Spanish political risk adding pressure. There was no ECB cut or German surplus, and US jobs data was weak, not strong.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did Saudi Aramco's chief warn about oil markets?</strong></p>
+      <span class="opt" data-opt="A">A. Global stockpiles are scarily thin</span>
+      <span class="opt" data-opt="B">B. OPEC plans a surprise output hike</span>
+      <span class="opt" data-opt="C">C. Demand is collapsing across Asia</span>
+      <span class="opt" data-opt="D">D. The Strait of Hormuz has fully reopened</span>
+      <div class="feedback"><strong>A is correct.</strong> FT reported Aramco chief Amin Nasser warned world oil stockpiles are scarily thin after the Middle East conflict and could take up to two years to rebuild. There was no OPEC hike, demand collapse or Hormuz all-clear.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What company did Schneider Electric agree to buy?</strong></p>
+      <span class="opt" data-opt="A">A. Chipmaker Intel in a stock swap</span>
+      <span class="opt" data-opt="B">B. Robotics startup RobCo for $1bn</span>
+      <span class="opt" data-opt="C">C. Broadband provider TalkTalk Group</span>
+      <span class="opt" data-opt="D">D. Engineering-software maker PTC</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg reported Schneider agreed to buy PTC for an implied $23.7bn at $205 per share, all cash. It was BT that bought TalkTalk, and the RobCo and Intel references are unrelated stories.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "A weak September jobs print took an October Fed hike off the table and US yields steadied, but the relief got swamped by European fiscal contagion as French and Spanish yields rose, the euro slid to a 17-month low and the dollar jumped to an 18-month high, with Standard Chartered calling markets overly hawkish and JPMorgan saying equities won't be dragged against Lorenzo Bini Smaghi urging the ECB to halt QT and Bloomberg warning a French crisis would be a nightmare for the ECB.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/bond-selloff-is-opening-up-rare-opportunities-for-investors-here-is-where-to-look-says-major-bank-463447c7?mod=mw_rss_topstories", "take": "Standard Chartered says bond and money markets are overly hawkish on the Fed." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/nikkei-rises-2-0-led-by-electronics-machinery-stocks-9fd1e369?mod=rss_markets_main", "take": "JPMorgan says equities won't be dragged by the spike in bond yields." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-10-05/traders-are-dusting-off-the-contagion-playbook-for-european-bonds", "take": "Traders are dusting off the contagion playbook for European bonds." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/french-bond-yields-stay-elevated-treasury-yields-ease-13103f54?mod=rss_markets_main", "take": "French and Spanish bond yields rise on fiscal and political uncertainty." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-05/ecb-should-stop-bond-roll-off-amid-turmoil-bini-writes-in-ft", "take": "Bini Smaghi says the ECB should halt QT to calm markets." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil fluctuated in jittery trading as Saudi Arabia cut its benchmark price to Asia and weak US jobs data cooled demand fears, even as Aramco's Amin Nasser warned global stockpiles are scarily thin and could take two years to rebuild, fighting in Yemen intensified, tanker rates hit record highs and ICE launched derivatives for routes outside the Strait of Hormuz.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-04/latest-oil-market-news-and-analysis-for-oct-5", "take": "Oil fluctuated as Saudi Arabia cut prices of its benchmark grade to Asia." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-05/emerging-market-assets-climb-as-fed-hike-bets-cool-oil-drops", "take": "Weak US jobs data cooled demand fears and Fed-tightening concern." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/53e88a8d-65b5-445e-82ee-aee253a32094?syn-25a6b1a6=1", "take": "Aramco's Nasser warns stockpiles are scarily thin, two years to rebuild." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-05/ice-offers-tanker-derivatives-for-route-outside-strait-of-hormuz", "take": "ICE launches tanker derivatives for routes outside the Strait of Hormuz." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/business/volare-shipping-shares-jump-on-first-trading-day-9c1bbdaa?mod=rss_markets_main", "take": "Tanker rates surged to record highs since the Middle East conflict." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade found fresh fuel as Hon Hai beat on the AI frenzy, DBS said Nvidia's valuations show it isn't a bubble and Schneider struck a $23.7bn deal for PTC, even as Panmure Liberum's Joachim Klement warned an AI reality check could take the S&P to 5,000, researchers flagged Asia's economies as most at risk from a correction and SoftBank's Masayoshi Son sounded the alarm on AI safety.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-05/nvidia-partner-hon-hai-beats-sales-estimates-due-to-ai-frenzy", "take": "Nvidia partner Hon Hai beat sales estimates on the AI frenzy." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-05/nvidia-s-valuations-show-ai-rally-isn-t-a-bubble-dbs-says", "take": "DBS says Nvidia's valuations show the AI rally isn't a bubble." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/this-23-billion-software-deal-was-struck-at-a-decade-low-valuation-as-ai-winner-takes-out-loser-aa18f477?mod=mw_rss_topstories", "take": "Schneider strikes a $23.7bn deal for PTC as an AI winner takes out a laggard." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/an-ai-reality-check-may-take-the-s-p-500-to-5-000-heres-the-trades-to-make-this-strategist-says-263cf0e9?mod=mw_rss_topstories", "take": "Panmure Liberum's Klement warns an AI reality check could hit the S&P." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-05/asia-economies-among-most-at-risk-from-any-ai-correction-researchers-warn", "take": "Researchers warn Asia's economies are most at risk from an AI correction." }
+    ]
+  }
+}</script>
+
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["PTC","Micron","Hon Hai","Nvidia","Schneider","Intel"],
+    "values": [14.5, 4.0, 3.2, 1.8, -2.0, -4.5]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [34000, 27000, 32000, 19000, 28000],
+    "colors": ["bull","neutral","bear","neutral","bull"]
+  },
+  "dealSizes": {
+    "labels": ["Schneider-PTC","BT-TalkTalk","RobCo Round","OKX-ICE JV","Volare IPO"],
+    "values": [23.7, 2.2, 1.0, 0.5, 0.4]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
