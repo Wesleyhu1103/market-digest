@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Tue Oct 6, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-10-06</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Tuesday, October 6, 2026</h1>
+    <div class="meta">
+      <p>The tape flipped risk-on overnight as oil slid below $100 a barrel and US bond yields eased back from a 24-year high, letting the S&P 500 and Nasdaq close in on fresh records. The bond market is still turning on France and corporate borrowing costs are surging even as inflation fears cool. FOMC minutes land Wednesday, Paramount closes its Warner Bros. Discovery takeover today, and Nvidia is on the verge of a $6tn market value.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "US equities pushed toward record highs as oil slipped below $100 a barrel and Treasury yields retreated from multi-decade peaks, easing inflation fears, even as the bond market kept turning on France and the surge in borrowing costs began feeding through to corporate America",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "S&P 500 Targets Record as Bonds Climb and Oil Dips", "angle": "Reads the open as a clean relief trade, with falling oil easing inflation worries and bonds recovering.", "lean": 45, "pull": "A slide in oil prices helped ease worries over inflation."},
+        {"outlet": "WSJ", "headline": "Nasdaq Hits New Record as Bond Yields March Higher", "angle": "Frames the rally as uneasy, with a global bond rout and the AI boom rippling through markets together.", "lean": 20, "pull": "The yield on the 10-year Treasury touched a fresh 24-year high as a global bond rout and AI boom ripple through markets in tandem."},
+        {"outlet": "Financial Times", "headline": "The Bond Market Turns on France", "angle": "Puts a pre-election French debt selloff at the center, warning it could shake the eurozone.", "lean": -50, "pull": "The country is being hit by a pre-election debt sell-off. Many fear it could shake the Eurozone."},
+        {"outlet": "Financial Times", "headline": "Surge in Borrowing Costs Hits Corporate America", "angle": "Warns the Treasury selloff is now feeding through to junk-rated companies.", "lean": -35, "pull": "Sharp sell-off in US Treasury market starts to feed through to junk-rated companies."},
+        {"outlet": "MarketWatch", "headline": "Why One Goldman Sachs Insider Is Still Bullish on Stocks", "angle": "Amplifies the bull case, with Goldman forecasting a record S&P before year-end despite rate chaos.", "lean": 55, "pull": "Goldman Sachs hedge fund research forecasts a record high for the S&P 500 before year-end."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>US Treasury Yields Retreat From a 24-Year High as Oil Slips Below $100 and Scott Bessent Vows the Debt Can Be Tamed, Letting the S&P Target a Record With Goldman Sachs Still Forecasting a Record Close Before Year-End, Even as the Bond Market Turns on France, FT Warns the Surge in Borrowing Costs Is Hitting Corporate America and BOE's Catherine Mann Says Inflation Is Becoming Embedded</h3>
+      </div>
+      <p>The rates story turned two-sided overnight. Bloomberg reported US bond yields fell from their highest levels since 2002 as oil prices retreated below $100 a barrel and Treasury Secretary Scott Bessent insisted the government's debt load can be tamed, and Bloomberg's markets team said the S&P 500 was set to move closer to its first record high since August as bonds climbed and oil dipped. The bull read has names. MarketWatch reported a Goldman Sachs insider is still bullish, with the firm's hedge fund research forecasting a record S&P before year-end on the grounds that stocks are not historically expensive and seasonals are supportive, and gold reversed losses as inflation fears eased. But the structural pressure has not gone away. WSJ noted the 10-year touched a fresh 24-year high on Monday as a global bond rout and the AI-investing boom rippled through markets in tandem, and FT ran a package arguing the bond market has turned on France in a pre-election debt selloff that many fear could shake the eurozone, that the surge in borrowing costs is now feeding through to junk-rated corporate America, and asked plainly why yields are so high. The inflation bears kept talking. BOE rate-setter Catherine Mann told Bloomberg the labor market is static rather than loose and inflationary pressures are becoming embedded, Czech inflation breached target to bolster hike odds, and the Philippines and other economies saw price risks build. Australia's Jim Chalmers warned higher global yields will pressure his budget, a reminder the selloff is a worldwide refinancing problem.</p>
+      <p>The bull read is yields pulling back from a 24-year high, oil below $100 easing inflation, Bessent vowing on the debt and Goldman calling a record close. The bear read is France's pre-election selloff, borrowing costs hitting corporate America and Mann warning inflation is getting embedded.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the yield spike is cresting):</strong> US bond yields fell from their highest since 2002, Bloomberg reported, as oil slipped below $100 and Bessent vowed the debt can be tamed. Gold reversed losses as inflation fears eased, the S&P targeted its first record since August, and a Goldman Sachs insider told MarketWatch the firm's hedge fund research still sees a record high before year-end, arguing stocks are not historically expensive and seasonals favor the bulls. Lower energy takes the fuel out of the inflation trade.</div>
+        <div class="bear"><strong>Bear (the rout is still spreading):</strong> The 10-year touched a fresh 24-year high on Monday, WSJ reported, and FT says the bond market has turned on France in a pre-election selloff that could shake the eurozone while the surge in borrowing costs feeds through to junk-rated corporate America. BOE's Catherine Mann warns inflation is becoming embedded, Czech inflation breached target, and Australia's Chalmers says higher global yields will pressure his budget. One soft day of oil does not fix a structural refinancing squeeze.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-06/us-yields-fall-from-2002-high-as-oil-dips-bessent-vows-on-debt" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Yields Fall From 2002 High as Oil Dips, Bessent Vows On Debt</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Slides Below $100 as Saudi Arabia Cuts Its Asian Price, Shell's Wael Sawan Says Mideast Flows Are Near 80% of Prewar Levels and Hormuz Transits Rise, Even as Vitol's Russell Hardy Warns Western Inventories Have Been Exhausted and Markets Will Stay Tight Into Winter, Yemen Retakes Mocha Port and Goldman Sees Diesel Elevated Through 2027</h3>
+      </div>
+      <p>Oil broke lower even as the supply warnings stayed loud. Bloomberg reported crude declined as rising exports from the Middle East and a price cut by Saudi Arabia pointed to a looser market, and Shell CEO Wael Sawan offered one of the most authoritative reads yet, saying Mideast oil flows are back to about 80% of pre-conflict volumes. Bloomberg's Horizons desk added that Yemen's internationally recognized government, backed by Saudi Arabia, claimed to have retaken the Red Sea port of Mocha from the Houthis as Hormuz transits rise and the Saudi pipeline runs normally. That eased the inflation feed-through, with gold reversing losses as oil slipped. But the structural shortage is still the counterweight. Bloomberg reported Vitol CEO Russell Hardy, who runs the world's largest independent oil trader, warned that oil inventories in western countries have been exhausted by the Iran war and that fuel markets are likely to stay tight going into winter. Goldman Sachs told CNBC tight refinery capacity could keep diesel prices elevated through 2027, with high margins needed to curb demand and rebuild inventories, and Bloomberg Economics flagged diesel's pulling power as a 2027 US inflation risk. The World Bank warned Asia's buffers are too thin to keep absorbing the oil shock even as it lifted regional growth. Fighting near the Bab el-Mandeb strait is intensifying, a reminder the cushion is being rebuilt under fire.</p>
+      <p>The bull read is oil below $100, Saudi cutting its Asian price, Shell saying flows are near 80% of prewar and Hormuz transits rising. The bear read is Vitol warning Western inventories are exhausted, a tight winter, diesel elevated through 2027 and Yemen fighting intensifying.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (flows are rebuilding and the price is falling):</strong> Oil slid below $100 as rising Middle East exports and a Saudi price cut pointed to a looser market, Bloomberg reported, and Shell's Wael Sawan said regional flows are back to roughly 80% of pre-conflict levels with Hormuz transits rising and the Saudi pipeline running normally. Yemen's Saudi-backed government claimed to retake Mocha port. Gold reversed its losses as the energy-to-inflation channel cooled. A falling benchmark with recovering supply loosens the whole complex.</div>
+        <div class="bear"><strong>Bear (the cushion is gone):</strong> Vitol's Russell Hardy warns Western oil inventories have been exhausted by the Iran war and markets will stay tight into winter, Bloomberg reported. Goldman says diesel stays elevated through 2027 on tight refining, Bloomberg Economics flags it as a 2027 inflation risk, and the World Bank says Asia's buffers are too thin to keep absorbing the shock. Fighting near Bab el-Mandeb is intensifying. A market with no stockpile buffer has no room for the next disruption.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-06/vitol-ceo-says-oil-inventories-in-the-west-have-been-exhausted" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oil Inventories in Western Nations Exhausted, Vitol CEO Warns of Tight Market</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Nvidia Nears a $6 Trillion Market Value and the AI Capital Spigot Opens Wider as DeepSeek Raises $12bn, OpenAI Courts BlackRock and UAE Funds for a $30bn Round, Moonshot Eyes a $50bn IPO and AMD's Lisa Su Sees Very High Demand, Even as the World Bank Warns of AI Concentration Risks, Big Users Squeeze OpenAI and Anthropic on Price and Michael Burry Dumps His Top Holding</h3>
+      </div>
+      <p>The AI trade is running hot on capital and records. Bloomberg reported Nvidia is on the verge of becoming the first company with a $6tn market capitalization as investors rotate back into the AI chipmaker, whose stock has soared almost 30% this year. The funding frenzy widened: Bloomberg said DeepSeek is close to securing at least $12bn in a Tencent-backed round ahead of a 2027 IPO, OpenAI is in talks with BlackRock and multiple UAE funds to anchor a $30bn round, Moonshot AI closed a round at a $50bn valuation targeting an early-2027 Hong Kong listing, and Kuaishou's Kling AI picked banks for a $1bn-plus IPO. AMD's Lisa Su told Bloomberg she sees very high chip demand continuing for years and urged AI firms to cooperate on safety, and JPMorgan topped the global AI banking index for a fifth straight year. The bear case is concentration and economics. The World Bank warned of AI concentration risks even as it lifted East Asia growth, noting trade outside AI-related goods has been weak or negative. Bloomberg reported OpenAI and Anthropic face rising price pressure from big AI users turning to cheaper open models, and that AI subscription models are being tested as few consumers pay. MarketWatch reported Michael Burry sold out of his top holding at an eight-and-a-half-year low, and a Heartland Advisors manager told MarketWatch to shut out Wall Street's AI hype and buy fires, HVAC and Berkshire instead.</p>
+      <p>The bull read is Nvidia at $6tn, DeepSeek's $12bn, OpenAI's $30bn round, Moonshot's $50bn IPO and AMD's Su seeing very high demand. The bear read is the World Bank's concentration warning, pricing pressure on OpenAI and Anthropic, weak consumer monetization and Burry dumping his top position.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the capital and demand keep compounding):</strong> Nvidia is nearing a $6tn market value, Bloomberg reported, up almost 30% this year, and the funding pipeline is enormous: DeepSeek is raising $12bn, OpenAI is courting BlackRock and UAE funds for $30bn, Moonshot closed at a $50bn valuation, and Kling picked banks for a $1bn IPO. AMD's Lisa Su sees very high demand continuing for years, and JPMorgan topped the AI banking index again. The money and the demand are both still accelerating.</div>
+        <div class="bear"><strong>Bear (the economics are thinning):</strong> The World Bank warned of AI concentration risks and said trade outside AI goods is weak or negative, Bloomberg reported big users are squeezing OpenAI and Anthropic toward cheaper open models, and AI subscription models are struggling because few consumers pay. Michael Burry sold out of his top holding at an eight-and-a-half-year low, and a Heartland Advisors manager says to shut out the AI hype and buy HVAC and Berkshire instead. When monetization lags the spending, the gap matters.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-06/nvidia-heads-for-6-trillion-value-with-chipmaker-back-at-record" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Heads for $6 Trillion Value With Chipmaker Back at Record</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>S&P 500 targets a record as bonds climb and oil dips</strong></summary>
+      <div class="deal-body">
+        <p>The S&P 500 is set to move closer to its first record high since August, Bloomberg reported, in a broad advance as bonds climbed and a slide in oil prices helped ease worries over inflation. The relief trade follows the Nasdaq's fresh record on Monday.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/s-p-500-closes-in-on-record-high-as-tech-rallies-markets-wrap-muvv94wz" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- S&P 500 Targets Record as Bonds Climb and Oil Dips</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia heads for a $6 trillion value with the chipmaker back at a record</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) is on the verge of becoming the first company with a $6tn market capitalization, Bloomberg reported, as investors rotate back into the AI chipmaker. The stock has soared almost 30% this year and is back at a record high.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/nvidia-heads-for-6-trillion-value-with-chipmaker-back-at-record" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Heads for $6 Trillion Value With Chipmaker Back at Record</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Michael Burry says he's sold out of his top holding, for now</strong></summary>
+      <div class="deal-body">
+        <p>Michael Burry, the contrarian ex-hedge-fund manager chronicled in The Big Short, said he sold his top holding at an eight-and-a-half-year low, MarketWatch reported. The move lands as the AI-led rally pushes benchmarks toward records.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/michael-burry-says-hes-sold-out-of-his-top-holding-for-now-615c9158?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Michael Burry Says He's Sold Out of His Top Holding, For Now</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs insider stays bullish despite rate chaos and narrow breadth</strong></summary>
+      <div class="deal-body">
+        <p>Stocks are not expensive in a historical context and seasonal factors are supportive, a Goldman Sachs insider told MarketWatch, with the firm's hedge fund research forecasting a record S&P 500 before year-end. The call pushes back on fears over rate chaos and narrow leadership.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-s-p-500-is-facing-rate-chaos-and-narrow-breadth-why-one-goldman-sachs-insider-is-still-bullish-on-stocks-84a20206?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why One Goldman Sachs Insider Is Still Bullish on Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lucid Q3 deliveries fall 6.7% as the EV maker cuts production to match demand</strong></summary>
+      <div class="deal-body">
+        <p>Lucid (LCID) delivered 3,806 EVs and produced 2,954 vehicles in the third quarter, CNBC reported, down from 4,078 deliveries a year earlier as the company aligns output with softer demand. The cut underscores the slowdown hitting pure-play EV makers.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/05/lucid-group-lcid-q3-2026-deliveries-production.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Lucid's Q3 Deliveries Fall 6.7% as EV Maker Cuts Production</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bank stocks are haunted by the ghosts of 2023</strong></summary>
+      <div class="deal-body">
+        <p>Lenders have stronger balance sheets now, WSJ reported, as they face a new rate-hiking cycle, but investors remember how fast duration risk bit in 2023. The comparison hangs over bank stocks heading into earnings season with the 10-year at a 24-year high.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/bank-stocks-are-haunted-by-the-ghosts-of-2023-a2a64725?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Bank Stocks Are Haunted by the Ghosts of 2023</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>GM says hybrids are coming as the EV mix shifts</strong></summary>
+      <div class="deal-body">
+        <p>General Motors (GM) said hybrid vehicles are coming to its lineup, CNBC reported, with an executive adding the company is not tone deaf to customers as hybrid sales keep climbing. The pivot acknowledges a cooler pure-EV demand picture.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/05/gm-hybrid-vehicles.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- GM Says Hybrid Vehicles Are Coming</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape is risk-on, with the S&P targeting its first record since August as oil fell below $100 and yields eased, led by Nvidia nearing $6tn and Goldman calling a record close. The counterweight is the 24-year-high 10-year, France's pre-election bond selloff and borrowing costs reaching corporate America. Watch chip and AI leaders, rate-sensitive banks facing the ghosts of 2023, and whether Michael Burry's exit and Heartland's anti-hype call find an audience.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Treasury Selloff Is Now Hitting Corporate America</summary>
+      <p>FT reported Tuesday that the sharp selloff in the US Treasury market is starting to feed through to junk-rated companies, with the surge in borrowing costs hitting corporate America. The instinct is that a government bond selloff is a problem for the government, not for companies, but the two are tied together by a mechanism every market reader should understand: the Treasury yield is the base rate off which almost every other dollar borrowing is priced. Start with how a corporate bond gets its yield. A company does not borrow in a vacuum; its bond yield is built as the matching Treasury yield plus a credit spread that compensates lenders for default risk. When the 10-year Treasury climbs to a 24-year high, the floor under every corporate borrower rises with it, even if the company's own creditworthiness has not changed at all. A junk-rated issuer that could refinance at, say, 7% when Treasuries were lower now faces a materially higher all-in coupon simply because the risk-free leg moved. The second piece is the refinancing wall. Companies do not usually repay bonds; they roll them, issuing new debt to retire the old. That works smoothly when rates are stable or falling, because the new coupon is similar to or lower than the old one. When base rates have marched higher for an extended stretch, every maturity that comes due has to be refinanced at the new, higher level, which raises interest expense, eats into margins and, for the weakest borrowers, can turn a manageable balance sheet into a stressed one. The lower the credit rating, the more leveraged the business and the more sensitive it is to that repricing. The third piece is the spread itself. In a calm market, spreads can tighten even as base rates rise, cushioning borrowers. But if investors start to worry that higher rates will tip weak companies toward default, they demand a wider spread on top of the higher base rate, and the two effects compound. That is the moment a Treasury selloff stops being an abstract macro story and becomes a corporate solvency story, which is exactly the transmission FT is flagging. The practical lesson is to watch high-yield spreads alongside the Treasury move, because the base rate tells you the floor and the spread tells you how much extra fear the market is attaching to the riskiest borrowers. When equities are making records while junk borrowing costs are quietly surging, the two are sending different signals about the same companies, and the credit market is usually the one that notices trouble first.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/7c7ccb82-2973-47af-ad9b-b469c6ea0048?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Surge in Borrowing Costs Hits Corporate America</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/stocks-keep-climbingand-so-do-bond-yields-c91d7d75?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nasdaq Hits New Record as Bond Yields March Higher</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>DeepSeek to raise over $12 billion in Tencent-backed funding</strong></summary>
+      <div class="deal-body">
+        <p>DeepSeek is close to securing at least 80 billion yuan, or about $12bn, in its latest round, Bloomberg reported, blowing past its own target ahead of a landmark IPO in early 2027. The raise signals huge appetite for China's leading AI labs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/deepseek-to-raise-at-least-12-billion-in-tencent-backed-funding" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- DeepSeek to Raise Over $12 Billion in Tencent-Backed Funding</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI in $30 billion round talks with BlackRock and UAE funds</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI is in talks with multiple UAE investment funds to help anchor a $30bn round of financing, Bloomberg reported, with BlackRock also in discussions to participate. The scale underscores how concentrated the AI capital pool has become.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-06/openai-in-30b-round-talks-with-blackrock-uae-funds-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI in $30 Billion Round Talks With BlackRock, UAE Funds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Moonshot eyes an early-2027 IPO after its value hits $50 billion</strong></summary>
+      <div class="deal-body">
+        <p>Moonshot AI closed its final private round at a valuation of about $50bn, Bloomberg reported, and is heading toward a Hong Kong IPO in the first quarter of next year. China's model builders are racing to list as the US-China AI contest intensifies.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/moonshot-said-to-eye-early-2027-ipo-after-value-hits-50-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Moonshot Said to Eye Early 2027 IPO After Value Hits $50 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AMD's Lisa Su sees very high demand and urges AI firms to cooperate</strong></summary>
+      <div class="deal-body">
+        <p>AMD (AMD) CEO Lisa Su predicted very high chip demand continuing for the next few years, Bloomberg reported, even as the industry faces challenges including concerns over AI safety. The call reinforces the sustained-capex read underpinning the chip rally.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/amd-ceo-sees-very-high-chip-demand-urges-ai-firms-to-cooperate" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AMD Chief Sees Very High Demand, Urges AI Firms to Cooperate</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI and Anthropic face rising price pressure from big AI users</strong></summary>
+      <div class="deal-body">
+        <p>AI-powered software startups are increasingly turning to cheaper open models, Bloomberg reported, putting price pressure on OpenAI and Anthropic. The shift raises questions about how durable frontier-lab pricing power really is.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-06/openai-and-anthropic-face-rising-price-pressure-from-big-ai-users" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI and Anthropic Face Rising Price Pressure From Big AI Users</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Seagate and Toshiba vie for TDK's hard-drive head unit</strong></summary>
+      <div class="deal-body">
+        <p>Seagate (STX) and Toshiba are locked in a contest for TDK's magnetic-heads business for hard-disk drives, Bloomberg reported, as the rivals try to keep pace with demand for AI data-center storage. The fight shows AI capex reaching deep into the storage supply chain.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/seagate-is-said-to-battle-toshiba-for-tdk-s-hard-drive-head-unit" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Seagate, Toshiba Said to Vie for TDK's Hard-Drive Head Unit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan tops the global AI banking index for a fifth straight year</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan (JPM) held its spot as the world's most advanced bank in AI for a fifth straight year, Bloomberg reported, widening its lead in a ranking that shows deployment accelerating at a record pace across the industry. The signal is that AI is reshaping incumbents, not just startups.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/jpmorgan-tops-global-ai-banking-index-for-fifth-straight-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- JPMorgan Tops Global AI Banking Index for Fifth Straight Year</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Tuesday October 6, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is capital and demand, with Nvidia nearing $6tn, DeepSeek's $12bn, OpenAI's $30bn round, Moonshot's $50bn IPO and AMD's Su seeing very high demand. The counter-signal is economics, with big users squeezing OpenAI and Anthropic on price, consumer subscriptions struggling and the World Bank flagging concentration risk. The near-term tell is whether the frontier labs can defend pricing as cheaper open models spread.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>US yields fall from a 2002 high as oil dips and Bessent vows on debt</strong></summary>
+      <div class="deal-body">
+        <p>US bond yields fell from their highest levels since 2002, Bloomberg reported, as oil prices retreated below $100 a barrel and Treasury Secretary Scott Bessent insisted the government's debt load can be tamed. The pullback eased the global rout that drove the 10-year to a 24-year high.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/us-yields-fall-from-2002-high-as-oil-dips-bessent-vows-on-debt" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Yields Fall From 2002 High as Oil Dips, Bessent Vows On Debt</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The bond market turns on France in a pre-election debt selloff</strong></summary>
+      <div class="deal-body">
+        <p>France is being hit by a pre-election debt selloff that many fear could shake the eurozone, FT reported, as soaring yields test the country's finances. Finance Minister Roland Lescure insisted France is far from needing the ECB to step in.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/9b252b46-a87c-45e7-a09a-45a39ce077b8?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- The Bond Market Turns on France</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOE's Mann says the labor market isn't weak enough to tame inflation</strong></summary>
+      <div class="deal-body">
+        <p>Bank of England rate-setter Catherine Mann said the labor market is static rather than loose, Bloomberg reported, warning inflationary pressures are becoming embedded. The hawkish read adds to the case that the global rate backdrop stays higher for longer.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/boe-s-mann-says-labor-market-isn-t-weak-enough-to-tame-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOE's Mann Says Labor Market Isn't Weak Enough to Tame Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB's Rehn says the energy shock hasn't yet spread to wages</strong></summary>
+      <div class="deal-body">
+        <p>ECB Governing Council member Olli Rehn said the Middle East energy shock has not so far spread to other prices or wages, Bloomberg reported, though he cautioned those impacts cannot be ruled out. The comments temper fears of a second-round inflation spiral in Europe.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/ecb-s-rehn-says-energy-price-shock-hasn-t-yet-spread-to-wages" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Rehn Says Energy Shock Hasn't Yet Spread to Wages</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>World Bank lifts India's GDP view but warns Asia's buffers are too thin</strong></summary>
+      <div class="deal-body">
+        <p>The World Bank raised its growth forecast for India, Bloomberg reported, saying strength in industry and services will help the economy weather a weaker monsoon and elevated energy prices, while warning Asia's buffers are too thin to keep absorbing the oil shock. The call captures the region's dual exposure.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/asia-s-buffers-too-thin-to-keep-absorbing-oil-shock-world-bank" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- World Bank Lifts India GDP View, Says Asia's Buffers Too Thin</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>German factory orders slump in a setback for the recovery</strong></summary>
+      <div class="deal-body">
+        <p>German factory orders fell the most since January, Bloomberg reported, a stumble for the manufacturing sector as it tries to mount a sustained turnaround. French industrial production also unexpectedly dropped, deepening the euro-area soft patch.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/german-factory-orders-slump-in-setback-for-country-s-recovery" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- German Factory Orders Slumped in August in Recovery Setback</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Le Pen calls on the ECB to lower euro-area borrowing costs</strong></summary>
+      <div class="deal-body">
+        <p>French far-right presidential candidate Marine Le Pen called on the ECB to lower borrowing costs, Bloomberg reported, to give euro-area countries headroom to invest in sovereignty, defense and technology. The appeal politicizes monetary policy as French yields soar.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/france-s-le-pen-calls-on-ecb-to-lower-euro-area-borrowing-costs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- France's Le Pen Calls on ECB to Lower Euro-Area Borrowing Costs</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (October 6, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side got a reprieve as oil fell below $100, US yields eased from a 24-year high, Bessent vowed on the debt and Rehn said the energy shock has not reached wages. The bear side owns the structure, with France's pre-election selloff, borrowing costs feeding into corporate America and Mann warning inflation is becoming embedded. The swing factor is Wednesday's FOMC minutes and whether the French OAT selloff stays contained.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Bond Market Turned on France</summary>
+      <p>FT reported Tuesday that the bond market has turned on France, with a pre-election debt selloff that many fear could shake the eurozone, even as Finance Minister Roland Lescure insisted the country is far from needing ECB help. To understand why France has become the acute pain point rather than a peripheral economy, you have to see how a sovereign bond selloff becomes self-reinforcing and why politics is the trigger. Start with the mechanics of a sovereign yield. A government bond yield reflects the market's demand for compensation to hold that country's debt, built from the expected path of policy rates plus a risk premium for the chance the borrower cannot or will not repay on favorable terms. For a euro-area member, the policy-rate piece is set by the ECB for the whole bloc, so when one country's yield rises faster than its neighbors', the gap is almost entirely a risk premium on that specific government. That premium is what widens when the market loses confidence. Now add the French trigger: an election. France has a large structural deficit and a fractured parliament that has repeatedly struggled to pass a budget, and a looming vote raises the odds of a government that either cannot consolidate or actively loosens the purse strings. Marine Le Pen is already calling on the ECB to cut rates to give countries room to spend more, which is exactly the kind of signal that makes bond investors demand a higher premium. Investors sell ahead of the uncertainty rather than wait to find out. The second piece is the feedback loop. As yields rise, the government's interest bill climbs, which worsens the deficit the market was already worried about, which justifies an even higher premium. A country with a heavy debt load and a weak political path can tip from a manageable situation into a spiral purely on expectations, without any single dramatic event. The third piece is the eurozone dimension. French bonds are enormous and widely held across European banks, insurers and pension funds, so a serious repricing does not stay in Paris; it marks down balance sheets across the continent, which is why FT says it could shake the whole bloc. The practical lesson is that sovereign stress is driven by the interaction of debt, politics and the cost of carrying that debt, not by any one of them alone. Watch the French OAT spread over German bunds as the real-time gauge: when it widens into an election, the market is pricing political risk directly, and a finance minister saying everything is fine is the least reliable signal in the room.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/9b252b46-a87c-45e7-a09a-45a39ce077b8?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- The Bond Market Turns on France</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/lescure-says-france-is-far-from-needing-ecb-help-on-debt" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Lescure Says France Is Far From Needing ECB Help on Debt</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">US Treasury yields eased from a 24-year high as oil slid below $100 and Bessent vowed the debt can be tamed, letting the S&P target a record with Goldman still calling a record close, against the bond market turning on France and borrowing costs hitting corporate America. Oil fell as Saudi cut its Asian price and Shell said Mideast flows are near 80% of prewar, even as Vitol warned Western inventories are exhausted and markets stay tight into winter. The AI trade ran hot on Nvidia nearing $6tn and $30bn-plus funding rounds, against the World Bank's concentration warning and Michael Burry dumping his top holding; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above $250, bull confirmed; below $235, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 10/5</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 10/6</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 10/7</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/8</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/9</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin rises above $86,000 as oil prices and bond yields retreat</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin climbed back above $86,000, CoinDesk reported, as oil prices and bond yields retreated and stocks hovered near records. Minutes from the Fed's last meeting come out Wednesday, a key catalyst for the next leg.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/06/live-updates-a-drop-below-usd84-000-could-put-usd80-000-in-play-for-bitcoin" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Updates: Bitcoin Rises Above $86,000 as Oil Prices, Bond Yields Retreat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin keeps getting rejected at $87,000 as stocks hover near records</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin fell back to about $85,600 after sellers turned it away from $87,000 for the third time since September 23, CoinDesk reported, while the Nasdaq closed at a record and Treasury yields kept climbing. The token is range-bound ahead of the FOMC minutes.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/06/bitcoin-keeps-getting-rejected-at-usd87-000-as-stocks-hover-near-records" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Keeps Getting Rejected at $87,000 as Stocks Hover Near Records</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The VIX of bonds is rising but bitcoin and stocks aren't hearing it yet</strong></summary>
+      <div class="deal-body">
+        <p>Bond-market volatility is rising even as bitcoin and equities shrug it off, CoinDesk reported in its day-ahead note. The divergence flags the risk that a further rates shock could jolt risk assets that have stayed calm.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/10/06/the-vix-of-bonds-is-rising-but-bitcoin-and-stocks-aren-t-hearing-it-yet" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- The VIX of Bonds Is Rising but Bitcoin and Stocks Aren't Hearing It Yet</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US scraps a proposed $10,000 reporting rule for crypto to private wallets</strong></summary>
+      <div class="deal-body">
+        <p>FinCEN withdrew two proposals that had hung over self-custody and crypto mixers for years, CoinDesk reported, including a $10,000 reporting rule for crypto sent to private wallets. The move eases a long-standing regulatory overhang on self-custody.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/10/06/u-s-scraps-proposed-usd10-000-reporting-rule-for-for-crypto-sent-to-private-wallets" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US Scraps Proposed $10,000 Reporting Rule for Crypto Sent to Private Wallets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Solana Foundation unveils instant institutional settlement with JPMorgan input</strong></summary>
+      <div class="deal-body">
+        <p>The Solana Foundation launched an open-source program that lets institutions settle trades in seconds rather than days, CoinDesk reported, with JPMorgan providing key inputs. The project pushes blockchain rails deeper into institutional market plumbing.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/06/solana-foundation-unveils-a-program-to-settle-institutional-trades-in-seconds-with-jpmorgan-s-inputs" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Solana Foundation Unveils a Program to Settle Institutional Trades in Seconds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Why bitcoin is down 'just' 32% a year after its record high of $126,000</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin is down just 32% a year after its $126,000 record, CoinDesk reported, a far shallower decline than the 77% to 85% drops seen in past downturns. ETF flows and lighter retail leverage have cushioned this cycle.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/06/from-retail-leverage-to-etf-flows-a-year-after-its-record-high-bitcoin-is-down-just-32" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Why Bitcoin Is Down 'Just' 32% a Year After Its Record High</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Paramount &amp; Warner Bros. Discovery -- Takeover Closes Tuesday</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Paramount's hard-fought takeover of Warner Bros. Discovery closes Tuesday, CNBC reported, after competing bids and an antitrust hurdle. David Ellison and Ynon Kreiz unveiled the Skydance leadership team, including Bari Weiss, Mark Thompson and Casey Bloys.</p>
+        <p><strong>Outlook:</strong> The merged entity reshapes the media landscape with a dual-CEO structure answering a key governance question for Ellison.</p>
+        <p><strong>What it means:</strong> A long-contested megadeal finally crosses the line, consolidating studios and streaming under one roof.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/06/paramount-wbd-deal-timeline.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Paramount's Takeover of Warner Bros. Discovery Closes Tuesday</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Emera &amp; Canadian Utilities -- C$14.3bn All-Stock Power Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Emera agreed to acquire Canadian Utilities in an all-stock deal valued at about C$14.3bn, or $10bn, Bloomberg reported, creating a power and natural gas company with customers from Florida to Alberta.</p>
+        <p><strong>Outlook:</strong> The combination builds scale across regulated utilities as rising power demand, partly AI-driven, lifts the sector.</p>
+        <p><strong>What it means:</strong> Utility M&A is heating up as data-center load growth makes regulated generation a scarce, bid-up asset.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/emera-to-buy-canadian-utilities-in-c-14-3b-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Emera to Buy Canadian Utilities in C$14.3 Billion Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>KKR &amp; Gen II -- Buying a Private-Capital Fund Administrator</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> KKR struck a deal to buy private-capital fund administrator Gen II, WSJ reported, as private-capital funds proliferate while investors seek to reduce reliance on public markets.</p>
+        <p><strong>Outlook:</strong> Owning the back-office plumbing gives KKR a foothold in the fast-growing infrastructure of private markets.</p>
+        <p><strong>What it means:</strong> Alternative managers are buying the pipes, not just the assets, as private capital scales.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/kkr-strikes-deal-to-buy-private-capital-fund-administrator-gen-ii-40b951a5?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- KKR Strikes Deal to Buy Private-Capital Fund Administrator Gen II</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Informa &amp; Clarion -- £2.2bn Events Buy From Blackstone</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Informa agreed to buy Clarion from Blackstone in a deal valued at £2.24bn, or $3bn, including debt, Bloomberg reported, building up its fast-growing events and trade-show business.</p>
+        <p><strong>Outlook:</strong> The purchase doubles down on in-person events as a durable, high-margin revenue stream.</p>
+        <p><strong>What it means:</strong> Blackstone is monetizing an events asset while Informa bets the live-events recovery has further to run.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/informa-to-buy-events-firm-from-blackstone-for-2-2-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Informa to Buy Events Firm from Blackstone for £2.2 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apollo &amp; EasyJet -- £3.5bn Package Favors Aircraft Funding</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Apollo Global Management is set to opt for aircraft financing rather than high-yield bonds for a £3.5bn debt package backing its acquisition of low-cost carrier EasyJet, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> Choosing asset-backed aircraft funding over junk bonds reflects the surge in borrowing costs squeezing the high-yield market.</p>
+        <p><strong>What it means:</strong> With junk spreads under pressure, sponsors are routing around the bond market into secured structures.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/apollo-set-to-favor-aircraft-funding-over-junk-bonds-for-easyjet" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apollo to Favor Aircraft Funding Over Junk Bonds for EasyJet</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Palmer Luckey's Erebor -- Deposits Top $7bn Since Launch</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Erebor, the startup bank for the technology industry, surged to more than $7bn in deposits since launch, FT reported, seeking to fill the void left by the collapse of Silicon Valley Bank.</p>
+        <p><strong>Outlook:</strong> Rapid deposit growth shows demand for a tech-focused lender, though concentration risk echoes SVB's own vulnerability.</p>
+        <p><strong>What it means:</strong> The gap in startup banking is being filled fast, and regulators will watch how sticky those deposits prove.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/42b6fa88-f730-4f8a-a194-8f53d0759aaf?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Palmer Luckey's Erebor Surges to More Than $7bn in Deposits Since Launch</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Goldman Sachs (hedge fund research) -- record S&P before year-end</strong></summary>
+      <div class="deal-body">
+        <p>Stocks are not expensive in a historical context and seasonals are supportive, a Goldman Sachs insider told MarketWatch, with the firm's hedge fund research forecasting a record S&P 500 before year-end despite rate chaos and narrow breadth. A named bull leaning into the rally.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-s-p-500-is-facing-rate-chaos-and-narrow-breadth-why-one-goldman-sachs-insider-is-still-bullish-on-stocks-84a20206?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why One Goldman Sachs Insider Is Still Bullish on Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AMD (Lisa Su) -- very high chip demand for the next few years</strong></summary>
+      <div class="deal-body">
+        <p>AMD CEO Lisa Su predicted very high chip demand continuing for several years, Bloomberg reported, while urging AI firms to cooperate on safety. A named bull reinforcing the sustained-capex read behind the AI complex.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/amd-ceo-sees-very-high-chip-demand-urges-ai-firms-to-cooperate" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AMD Chief Sees Very High Demand, Urges AI Firms to Cooperate</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Heartland Advisors -- shut out the AI hype, buy fires, HVAC and Berkshire</strong></summary>
+      <div class="deal-body">
+        <p>A Heartland Advisors co-portfolio manager urged investors to shut out Wall Street's AI hype, MarketWatch reported, and buy companies that can use the technology as costs come down, from fire safety to HVAC to Berkshire Hathaway. A named skeptic rotating away from the crowded AI trade.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/wall-street-is-hyping-ai-this-fund-manager-is-betting-instead-on-fires-hvac-and-berkshire-hathaway-1b70fbea?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- This Fund Manager Is Betting on Fires, HVAC and Berkshire Hathaway</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Michael Burry -- sold out of his top holding at an 8.5-year low</strong></summary>
+      <div class="deal-body">
+        <p>Michael Burry, the contrarian chronicled in The Big Short, said he sold his top holding at an eight-and-a-half-year low, MarketWatch reported. A named bear move as benchmarks press toward records.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/michael-burry-says-hes-sold-out-of-his-top-holding-for-now-615c9158?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Michael Burry Says He's Sold Out of His Top Holding, For Now</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOE (Catherine Mann) -- inflation is becoming embedded</strong></summary>
+      <div class="deal-body">
+        <p>Bank of England rate-setter Catherine Mann said the labor market is static rather than loose and inflationary pressures are becoming embedded, Bloomberg reported. A named hawk arguing the rate backdrop stays higher for longer.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/boe-s-mann-says-labor-market-isn-t-weak-enough-to-tame-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOE's Mann Says Labor Market Isn't Weak Enough to Tame Inflation</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Oil Below $100 Lets Yields Ease and Stocks Target Records, With Goldman and AMD's Lisa Su Constructive Against Michael Burry Dumping His Top Holding, Heartland Advisors Fading the AI Hype and BOE's Catherine Mann Warning Inflation Is Becoming Embedded</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the rally has room and demand holds):</strong> A Goldman Sachs insider says stocks are not historically expensive and the firm's hedge fund research sees a record S&P before year-end, AMD's Lisa Su projects very high chip demand for years, and oil below $100 has eased yields off a 24-year high. Nvidia is nearing $6tn and the AI funding spigot is wide open with $30bn-plus rounds. Seasonals and falling energy favor the bulls into year-end.</div>
+        <div class="bear"><strong>Bear (the cracks are widening under the surface):</strong> Michael Burry sold out of his top holding at an eight-and-a-half-year low, a Heartland Advisors manager says to shut out the AI hype and buy HVAC and Berkshire instead, and BOE's Catherine Mann warns inflation is becoming embedded. The bond market has turned on France, borrowing costs are hitting corporate America, and the World Bank flags AI concentration risk. Records built on narrow breadth and surging junk costs are fragile.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Nvidia nears $6tn; S&P targets record; oil below $100; Lucid deliveries drop; Musk a trillionaire again</td><td>Bullish</td><td>~38,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Goldman calls record close; bank stocks and 2023 ghosts; Burry sells top holding; Paramount-WBD closes</td><td>Cautiously bullish</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>10Y at 24-year high; France bond selloff; borrowing costs hit corporate America; FOMC minutes Wednesday</td><td>Cautious</td><td>~31,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI concentration risk; OpenAI pricing pressure; Heartland anti-hype call; KKR-Gen II plumbing buy</td><td>Mixed</td><td>~20,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC rejected at $87K; VIX of bonds rising; FinCEN scraps wallet rule; Solana institutional settlement</td><td>Risk-on</td><td>~27,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood leaned risk-on as stocks pressed toward records. r/wallstreetbets was bullish on Nvidia nearing $6tn and oil falling below $100. r/stocks turned cautiously bullish on Goldman's record-close call but noted Michael Burry's exit. r/investing stayed cautious on the 24-year-high 10-year, France's selloff and borrowing costs hitting corporate America. r/SecurityAnalysis was mixed on AI concentration and the Heartland anti-hype call. r/CryptoCurrency went risk-on as bitcoin held $85,000 and FinCEN scrapped the wallet rule. The swing factor is Wednesday's FOMC minutes.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Oil Falling Below $100 Pulls Down Bond Yields</h2>
+    <p>Bloomberg reported Tuesday that US bond yields fell from their highest levels since 2002 as oil prices retreated below $100 a barrel, and that gold reversed losses because the slide in oil eased worries about inflation. At first glance that chain looks indirect: why should the price of a barrel of crude move the yield on a government bond issued years ago with a fixed coupon? Understanding the link reveals one of the most important transmission channels in all of markets, the one that runs from energy to inflation expectations to the term premium investors demand. Start with what a long-term bond yield is actually made of. It is roughly the expected average of future short-term policy rates plus a term premium, the extra compensation investors want for locking up money and bearing inflation risk over many years. The single biggest threat to a long-dated bond is inflation, because inflation erodes the real value of every fixed coupon the bond will ever pay. So anything that changes the market's inflation outlook changes the yield investors demand today. Now bring in oil. Energy is an input into almost everything: transport, manufacturing, food, heating. When crude rises, it feeds through into headline inflation quickly and into core inflation more slowly, so a rising oil price pushes the market's inflation expectations up and bond yields with them. When crude falls, the mechanism runs in reverse. Oil slipping below $100 lowers the expected path of inflation, which reduces the compensation investors need to hold long bonds, so yields fall and bond prices rise. That is exactly what happened Tuesday, and it is why a commodity move showed up in the Treasury market. The second piece is the policy channel. Central banks set short rates to control inflation, so if cheaper oil cools the inflation outlook, the market infers the Fed has less reason to keep rates high, which pulls down the expected-rate portion of the yield too. Both components, expected rates and the inflation-risk premium, move the same way, which is why energy can swing yields more than its direct weight in any price index would suggest. The third piece is the feedback into other assets. Gold reversed its losses on the same news, because gold is an inflation hedge and falling inflation expectations change its appeal in parallel with bonds. Equities rallied because lower yields reduce the discount rate applied to future earnings. One commodity move rippled across three asset classes through a single channel. The practical lesson for a market reader is to treat the oil price as a live input into the bond market, not a separate story. When crude is climbing, expect upward pressure on yields and watch for it to complicate the central-bank path; when crude is falling, expect the opposite relief. The Vitol and Goldman warnings that supply stays tight into 2027 matter precisely because they threaten to reverse the very relief that pulled yields down on Tuesday.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-06/us-yields-fall-from-2002-high-as-oil-dips-bessent-vows-on-debt" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Yields Fall From 2002 High as Oil Dips, Bessent Vows On Debt</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-05/gold-steadies-as-stronger-dollar-and-yields-weigh-on-rate-path" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Reverses Losses With Inflation Fears Easing as Oil Slips</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>FOMC minutes, Wednesday Oct 7.</strong> After the global bond rout pushed the 10-year to a 24-year high, watch the minutes for how divided the committee is and whether the energy-and-inflation worry flagged by BOE's Mann and the diesel risk still dominates.</li>
+      <li><strong>French OAT spreads and the eurozone.</strong> With the bond market turning on France ahead of its election and Le Pen pressing the ECB to cut, watch the OAT-bund spread and whether the selloff stays contained or shakes the bloc.</li>
+      <li><strong>Corporate credit and borrowing costs.</strong> After FT flagged the Treasury selloff feeding through to junk-rated corporate America, watch high-yield spreads and whether the surge in funding costs starts to bite earnings.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Bank earnings season approaches.</strong> With bank stocks haunted by the ghosts of 2023 and the 10-year at a 24-year high, watch how rate and duration risk reshapes the bellwether results.</li>
+      <li><strong>AI-supplier follow-through.</strong> After Nvidia neared $6tn and AMD's Su projected very high demand, watch whether capex guidance validates the bulls or feeds the pricing-pressure and concentration concerns.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Paramount-WBD integration and AI mega-rounds.</strong> With the Warner takeover closing and OpenAI, DeepSeek and Moonshot all chasing billions, watch whether the funding frenzy keeps pulling capital toward a few names.</li>
+      <li><strong>Utility and private-markets M&A.</strong> After Emera's C$14.3bn utilities buy and KKR's Gen II deal, watch whether AI-driven power demand and private-capital scale keep dealmaking busy.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Brazil presidential runoff, Oct 25.</strong> With Bolsonaro now the heavy favorite after the first round, watch Brazilian stocks and the real into the runoff against Lula.</li>
+      <li><strong>Oil supply and the Iran war.</strong> With Vitol warning Western inventories are exhausted, Saudi cutting Asian prices and Yemen fighting near Bab el-Mandeb, watch whether any fresh shock hits a market rebuilding its cushion under fire.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how overseas bond markets like France transmit into US Treasury yields and corporate credit.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Tue Oct 6, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-10-06 07:24 ET); Bloomberg Technology (20 fresh, newest 2026-10-06 07:02 ET); Bloomberg Economics (20 fresh, newest 2026-10-06 07:00 ET); CNBC Top News (8 fresh, newest 2026-10-06 07:07 ET); CNBC Finance (3 fresh, newest 2026-10-06 04:47 ET); CNBC Economy (2 fresh, newest 2026-10-06 00:07 ET); MarketWatch Top Stories (10 fresh, newest 2026-10-06 07:21 ET); WSJ Markets (16 fresh, newest 2026-10-06 07:30 ET); FT Home (10 fresh, newest 2026-10-06 07:30 ET); Matt Levine Money Stuff (1 fresh, newest 2026-10-05 14:11 ET); CoinDesk (25 fresh, newest 2026-10-06 07:30 ET); Stratechery (2 fresh, newest 2026-10-06 06:07 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What helped pull US bond yields down from a 24-year high on Tuesday?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed announced a surprise rate cut</span>
+      <span class="opt" data-opt="B">B. Oil prices retreated below $100 a barrel</span>
+      <span class="opt" data-opt="C">C. Strong payrolls lifted the dollar sharply</span>
+      <span class="opt" data-opt="D">D. France resolved its pre-election debt worries</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg reported yields fell from their highest since 2002 as oil slipped below $100 and Bessent vowed on the debt, easing inflation fears. There was no Fed cut or strong jobs print, and France's selloff was still intensifying.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. What milestone is Nvidia on the verge of reaching?</strong></p>
+      <span class="opt" data-opt="A">A. Its first annual revenue decline</span>
+      <span class="opt" data-opt="B">B. A split from its data-center unit</span>
+      <span class="opt" data-opt="C">C. A buyout of rival chipmaker AMD</span>
+      <span class="opt" data-opt="D">D. A $6 trillion market capitalization</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg reported Nvidia is on the verge of becoming the first company worth $6tn, with the stock up almost 30% this year and back at a record. There was no revenue decline, split or AMD buyout.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What did Vitol's CEO warn about the oil market?</strong></p>
+      <span class="opt" data-opt="A">A. Western inventories have been exhausted</span>
+      <span class="opt" data-opt="B">B. OPEC is planning a surprise output hike</span>
+      <span class="opt" data-opt="C">C. Demand is collapsing across all of Asia</span>
+      <span class="opt" data-opt="D">D. The Strait of Hormuz has fully reopened</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported Vitol CEO Russell Hardy warned Western oil inventories have been exhausted by the Iran war and markets will stay tight into winter. There was no OPEC hike, demand collapse or Hormuz all-clear.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "US Treasury yields retreated from a 24-year high as oil slipped below $100 and Scott Bessent vowed the debt can be tamed, letting the S&P target a record with Goldman still forecasting a record close, even as the bond market turned on France, FT warned the surge in borrowing costs is hitting corporate America and BOE's Catherine Mann said inflation is becoming embedded.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-06/us-yields-fall-from-2002-high-as-oil-dips-bessent-vows-on-debt", "take": "US yields fell from a 2002 high as oil dipped and Bessent vowed on debt." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/the-s-p-500-is-facing-rate-chaos-and-narrow-breadth-why-one-goldman-sachs-insider-is-still-bullish-on-stocks-84a20206?mod=mw_rss_topstories", "take": "Goldman insider sees a record S&P before year-end despite rate chaos." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/9b252b46-a87c-45e7-a09a-45a39ce077b8?syn-25a6b1a6=1", "take": "The bond market turns on France in a pre-election debt selloff." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/7c7ccb82-2973-47af-ad9b-b469c6ea0048?syn-25a6b1a6=1", "take": "The surge in borrowing costs is hitting corporate America." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-06/boe-s-mann-says-labor-market-isn-t-weak-enough-to-tame-inflation", "take": "BOE's Mann says inflation is becoming embedded." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil slid below $100 as Saudi Arabia cut its Asian price, Shell's Wael Sawan said Mideast flows are near 80% of prewar levels and Hormuz transits rose, even as Vitol's Russell Hardy warned Western inventories have been exhausted and markets will stay tight into winter, Yemen retook Mocha port and Goldman saw diesel elevated through 2027.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-05/latest-oil-market-news-and-analysis-for-oct-6", "take": "Oil declined as rising Mideast exports and a Saudi price cut loosened the market." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-06/mideast-oil-flows-are-near-80-of-prewar-levels-shell-ceo-says", "take": "Shell's Sawan says Mideast oil flows are near 80% of prewar levels." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-06/vitol-ceo-says-oil-inventories-in-the-west-have-been-exhausted", "take": "Vitol's Hardy warns Western inventories are exhausted, tight into winter." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/10/06/diesel-oil-refinery-price-capacity-demand.html", "take": "Goldman sees diesel prices elevated through 2027 on tight refining." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-06/asia-s-buffers-too-thin-to-keep-absorbing-oil-shock-world-bank", "take": "World Bank warns Asia's buffers are too thin to keep absorbing the oil shock." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Nvidia neared a $6tn market value and the AI capital spigot opened wider as DeepSeek raised $12bn, OpenAI courted BlackRock and UAE funds for a $30bn round, Moonshot eyed a $50bn IPO and AMD's Lisa Su saw very high demand, even as the World Bank warned of AI concentration risks, big users squeezed OpenAI and Anthropic on price and Michael Burry dumped his top holding.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-06/nvidia-heads-for-6-trillion-value-with-chipmaker-back-at-record", "take": "Nvidia heads for a $6tn value with the chipmaker back at a record." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-06/deepseek-to-raise-at-least-12-billion-in-tencent-backed-funding", "take": "DeepSeek is close to raising over $12bn in a Tencent-backed round." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-06/amd-ceo-sees-very-high-chip-demand-urges-ai-firms-to-cooperate", "take": "AMD's Lisa Su sees very high chip demand for years." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/newsletters/2026-10-06/openai-and-anthropic-face-rising-price-pressure-from-big-ai-users", "take": "OpenAI and Anthropic face rising price pressure from big AI users." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/michael-burry-says-hes-sold-out-of-his-top-holding-for-now-615c9158?mod=mw_rss_topstories", "take": "Michael Burry sold out of his top holding at an 8.5-year low." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["AMD","Nvidia","Seagate","Emera","Lucid","Intel"],
+    "values": [3.5, 2.6, 2.1, -1.5, -6.7, -1.2]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [38000, 29000, 31000, 20000, 27000],
+    "colors": ["bull","bull","neutral","neutral","bull"]
+  },
+  "dealSizes": {
+    "labels": ["OpenAI Round","DeepSeek Raise","Emera-Can Util","Apollo-EasyJet","Informa-Clarion","KKR-Gen II"],
+    "values": [30.0, 12.0, 10.0, 4.7, 3.0, 1.5]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
