@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Oct 7, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20260724"></script>
+<script src="../js/market-feed.js?v=20260724"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20260724">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-10-07</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, October 7, 2026</h1>
+    <div class="meta">
+      <p>Yesterday's relief trade flipped overnight as fresh Iranian tanker attacks in the Strait of Hormuz pushed oil back above $100 and reignited the global bond selloff, lifting the 30-year Treasury yield back to a 2002 high and stalling the S&P 500 one day after a record. FOMC minutes land this afternoon. Ray Dalio calling AI a classic bubble near its bursting point and SpaceX seeking $40bn to buy Nvidia chips frame the day's second thread.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The global bond selloff resumed and oil pushed back above $100 on fresh Hormuz tanker attacks, lifting the 30-year Treasury yield to its highest since 2002 and halting a record-setting stock rally just one session after the S&P 500 hit an all-time high",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Stocks and Bonds Fall as Hormuz Attacks Lift Oil", "angle": "Reads the reversal as a clean risk-off turn, with tanker attacks reviving war-driven inflation fears and dragging both asset classes lower.", "lean": -45, "pull": "A rally in stocks faded and global bonds fell as an escalation in attacks on tankers in the Middle East pushed oil prices higher."},
+        {"outlet": "Financial Times", "headline": "Global Bond Sell-Off Resumes as 30-Year Treasury Yield Hits Highest Since 2002", "angle": "Frames it as a worldwide refinancing problem, with French, Italian and UK bonds all under pressure in volatile trading.", "lean": -55, "pull": "French, Italian and UK government bonds also come under pressure in volatile trading."},
+        {"outlet": "WSJ", "headline": "Whatever Happens to Bonds, Stocks Win", "angle": "Pushes back on the gloom, arguing the AI engine keeps firing even as yields climb and breadth narrows.", "lean": 40, "pull": "Most U.S. stocks are down, but the market's AI engine is firing on all cylinders."},
+        {"outlet": "CNBC", "headline": "A Look at the S&P 500's Remarkable and Defiant Trip to a New Record", "angle": "Celebrates the record as proof stocks can shrug off months of shocks, though energy and yields are turning again.", "lean": 30, "pull": "The S&P 500 returned to an intraday record Tuesday as tech gains, easing oil prices and Treasury yields helped stocks overcome months of market shocks."},
+        {"outlet": "Bloomberg", "headline": "Ray Dalio Warns AI Bubble Is Approaching Burst Point", "angle": "Amplifies the bear case, with Dalio tying a classic bubble to rising rates and the need to turn paper wealth into cash.", "lean": -60, "pull": "Artificial intelligence is a classic bubble that is nearing a bursting point thanks to rising interest rates."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Global Bond Selloff Resumes and the 30-Year Treasury Yield Returns to a 2002 High as Crude Climbs Back Above $100, US Mortgage Rates Jump to 7.49%, France's Turmoil Threatens to Drag the ECB Into a Bond-Market Showdown and India Hikes for the First Time Since 2023, Even as WSJ Argues Stocks Win Whatever Bonds Do, Kevin Mahn Says Investors Are Climbing a Wall of Worry and ECB's Moulin Says France Intervention Isn't Warranted</h3>
+      </div>
+      <p>The one-day reprieve is over. Bloomberg reported US Treasuries resumed their retreat, lifting the 30-year yield back to its highest since 2002 as climbing oil prices raised concern about faster inflation and more central-bank rate increases, and FT said the global bond selloff resumed with French, Italian and UK government bonds all under pressure in volatile trading. The pain is spreading into the real economy: Bloomberg reported US mortgage rates jumped to 7.49%, their highest in nearly three years and a seventh straight weekly climb, while France's multiple crises now threaten to drag the ECB into the kind of faceoff with investors it hasn't seen since the euro-area debt crisis, and the euro slid to a 16-month low against the pound on fiscal and political risk. The tightening is going global: India's RBI raised rates for the first time in nearly four years and signaled more may follow as a weak monsoon, oil at $100 and a softer rupee drive a policy pivot, with HSBC and Goldman expecting another hike in December. The bulls are not gone. WSJ ran a piece arguing that whatever happens to bonds, stocks win, Hennion & Walsh's Kevin Mahn told Bloomberg investors are climbing a proverbial wall of worry even with concentrated S&P gains, and ECB's Emmanuel Moulin said France's bond situation is complicated and serious but does not yet warrant intervention from Frankfurt, with colleague Primoz Dolenc adding the current stance gives flexibility. FOMC minutes this afternoon are the swing factor.</p>
+      <p>The bull read is WSJ saying stocks win regardless of bonds, Mahn's wall-of-worry framing and ECB officials saying France needs no rescue yet. The bear read is the 30-year back at a 2002 high, mortgage rates at 7.49%, France dragging the ECB toward a showdown and India hiking into the squeeze.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the rally can live with higher yields):</strong> WSJ argues stocks win whatever bonds do, with the AI engine firing on all cylinders, and Hennion & Walsh's Kevin Mahn told Bloomberg investors are climbing a wall of worry that tends to resolve higher. ECB's Emmanuel Moulin says France's bond stress does not warrant intervention and Primoz Dolenc says the current stance leaves flexibility to react to shocks. If the yield move is orderly and contained, equities have repeatedly powered through it.</div>
+        <div class="bear"><strong>Bear (the refinancing squeeze is back):</strong> The 30-year Treasury yield returned to a 2002 high, Bloomberg reported, as oil topped $100, and FT says the global selloff has resumed with French, Italian and UK bonds all under pressure. US mortgage rates jumped to 7.49%, France's crises threaten to pull the ECB into a bond-market showdown, the euro hit a 16-month low versus the pound, and India hiked rates for the first time since 2023. Higher-for-longer is tightening everywhere at once.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-07/us-30-year-yields-return-to-2002-high-with-crude-back-above-100" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US 30-Year Yields Return to 2002 High With Crude Back Above $100</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Climbs Back Above $100 as Iranian Attacks on Tankers Crossing the Strait of Hormuz Escalate, Iraq Devalues Its Currency on an Effective Hormuz Closure, Ship Captains Are Paid $100,000 a Month to Make the Transit and Trump Weighs Suspending the Federal Petrol Tax, Even as FT Argues the Iran Shock Has Been Surprisingly Manageable So Far</h3>
+      </div>
+      <p>The supply shock is back in control of the tape. Bloomberg reported crude climbed back above $100 as an escalation in Iranian attacks on tankers crossing the Strait of Hormuz revived war-driven inflation fears, dragging stocks and bonds lower together and sending gold down as energy prices rose. The strain is now visible at the sovereign level: Bloomberg said Iraq devalued its currency by about 13% against the dollar as the effective closure of Hormuz hits its oil exports, while FT reported ship captains are being paid $100,000 a month in salaries and bonuses to risk the perilous transit. The political pressure is building in Washington, where FT said Trump is considering suspending the federal petrol tax as surging fuel prices heap pressure on Republicans four weeks before the midterms, and Bloomberg Economics flagged that farmers facing high diesel prices threaten a new wave of food inflation. Emerging-market stocks halted their advance as Hormuz tensions came back into focus, lifting the oil price and the dollar. The counterweight is a measured one. FT's big read asked how much longer the world can absorb the Iran shock and concluded the disruption to oil supply, prices and the world economy has been surprisingly manageable so far, a reminder the market has repeatedly found workarounds. But the buffer is thin, and each fresh attack tests it.</p>
+      <p>The bull read is FT arguing the shock has been surprisingly manageable so far, with the global economy adapting better than feared. The bear read is oil back above $100, Iraq devaluing on a Hormuz closure, captains paid $100,000 a month and Trump reaching for an emergency petrol-tax cut.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the world keeps absorbing it):</strong> FT's analysis argues the disruption to oil supply, prices and the world economy from the Iran war has been surprisingly manageable so far, with trade and shipping repeatedly routing around the chokepoint. Trump weighing a federal petrol-tax suspension would cushion US consumers directly. Markets have adapted to a long run of shocks, and a price spike that fades leaves the inflation path intact. The system has proven more resilient than the headlines suggest.</div>
+        <div class="bear"><strong>Bear (the chokepoint keeps biting):</strong> Oil climbed back above $100 as Iranian attacks on Hormuz tankers escalated, Bloomberg reported, dragging stocks and bonds down together. Iraq devalued its currency about 13% as an effective Hormuz closure hit exports, FT says captains now earn $100,000 a month to run the gauntlet, and farmers facing costly diesel threaten a new wave of food inflation. Emerging-market stocks stalled as the dollar and oil rose. Each attack reprices the whole complex higher.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-06/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks and Bonds Fall as Hormuz Attacks Lift Oil</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Capital Spigot Opens Even Wider as SpaceX Seeks $40bn to Buy Nvidia Chips, CoreWeave Teams With AdaniConneX for Its First India Data Centers, AMD's Lisa Su Plans to Invest Tens of Billions and Dan Ives Says Investors Underestimate the Spending Wave, Even as Ray Dalio Warns the AI Bubble Is Near Its Burst Point, Temasek's CIO Flags an AI Reversal as 2027's Top Risk and the World Bank Warns of Concentration</h3>
+      </div>
+      <p>The spending wave keeps breaking bigger. Bloomberg and FT reported SpaceX is in talks with banks and investors, including Pimco, to raise $40bn to buy Nvidia chips, a debt deal roughly the size of the company's annual revenue and the latest sign of the vast borrowing underpinning AI. The buildout is going global: Bloomberg said CoreWeave is teeing up its first India data centers through a venture with Adani Group's AdaniConneX, AMD's Lisa Su is touring Taiwan and South Korea with plans to invest tens of billions to ease supply-chain chokepoints, and FT reported robust AI spending has set investors up for another bumper US earnings season with S&P 500 profits forecast to rise 27%. Longtime bull Dan Ives told MarketWatch investors are underestimating the scale and scope of the spending and laid out his top five plays into 2027, and ServiceNow's Amit Zavery cited strong enterprise demand. The bears got louder too. Bloomberg reported Ray Dalio called AI a classic bubble nearing its bursting point thanks to rising interest rates and the need to turn wealth into cash, and Temasek's CIO flagged an AI-trade reversal and inflation pushing bond rates to a breaking point as the top market risks for 2027. The World Bank warned of AI concentration risks even as it lifted East Asia growth, and WSJ noted the S&P's record was powered by tech and not much else.</p>
+      <p>The bull read is SpaceX's $40bn chip deal, CoreWeave's India push, AMD's tens of billions, FT's 27% earnings forecast and Dan Ives saying the wave is underestimated. The bear read is Ray Dalio calling it a classic bubble near bursting, Temasek flagging an AI reversal and the World Bank's concentration warning.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the capital keeps compounding):</strong> SpaceX is raising $40bn to buy Nvidia chips, Bloomberg and FT reported, CoreWeave is building its first India data centers with AdaniConneX, and AMD's Lisa Su is planning tens of billions in investment. FT says robust AI spending sets up another bumper earnings season with S&P profits forecast up 27%, Dan Ives says investors underestimate the scale of the wave, and ServiceNow cites strong enterprise demand. The money and the demand are still accelerating.</div>
+        <div class="bear"><strong>Bear (the bubble talk is getting louder):</strong> Ray Dalio warned AI is a classic bubble nearing its bursting point as rising rates force paper wealth into cash, Bloomberg reported, and Temasek's CIO flags an AI-trade reversal plus inflation-driven yields as 2027's top risks. The World Bank warns of AI concentration, and WSJ says the S&P's record was powered by tech and not much else. When a handful of names carry the whole index and debt funds the chips, the downside is concentrated too.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-07/ray-dalio-warns-ai-bubble-is-approaching-burst-point" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ray Dalio Warns AI Bubble Is Approaching Burst Point</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>S&P 500 and Nasdaq futures retreat after record highs as the bond selloff extends</strong></summary>
+      <div class="deal-body">
+        <p>US stock futures slipped as the bond selloff extended and oil prices rose, WSJ reported, after the S&P 500 and Nasdaq surged to records in the previous session on mega-cap gains. The pullback follows a day of relief that has now reversed.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/stocks-futures-steady-as-bond-selloff-extends-oil-prices-rise-ddd8a40e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. Futures Slip as Bond Selloff Extends, Oil Prices Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The S&P 500's record high was powered by tech and not much else</strong></summary>
+      <div class="deal-body">
+        <p>Most US stocks are down even as the S&P 500 set a fresh record, WSJ reported, with the market's AI engine firing on all cylinders while breadth stays narrow. The concentration leaves the index exposed if the AI leaders wobble.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/the-s-p-500-hits-a-new-record-high-powered-by-techand-not-much-else-66e01705?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The S&P 500 Hits a New Record High, Powered by Tech and Not Much Else</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ray Dalio warns the AI bubble is approaching its burst point</strong></summary>
+      <div class="deal-body">
+        <p>Billionaire Ray Dalio said AI is a classic bubble nearing a bursting point, Bloomberg reported, driven by rising interest rates and the need to turn paper wealth into cash. The warning lands as tech leads the index to records on narrow breadth.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/ray-dalio-warns-ai-bubble-is-approaching-burst-point" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ray Dalio Warns AI Bubble Is Approaching Burst Point</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Intel investors get reassurance from Elon Musk over the Terafab project</strong></summary>
+      <div class="deal-body">
+        <p>Elon Musk and Intel (INTC) CEO Lip-Bu Tan said the chipmaker's involvement in the Terafab chip plant will continue, MarketWatch reported, boosting shares even as Musk ruled out a role for TSMC in running the venture. Intel keeps a foothold in a flagship US chipmaking bet.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/elon-musk-and-intel-ceo-shore-up-chipmakers-role-in-terafab-project-and-heres-what-the-news-is-doing-to-the-stock-315d0974?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Intel Investors Get Reassurance From Elon Musk Over a Major Chip Endeavor</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta stock scores a rare golden cross buy signal as its AI agent surges</strong></summary>
+      <div class="deal-body">
+        <p>Meta Platforms (META) achieved a golden cross as shares thrived since the introduction of its top-charting AI assistant, MarketWatch reported. The technical signal adds momentum to a stock already riding its AI agent launch.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/meta-stock-achieves-a-golden-cross-as-shares-thrive-since-muse-introduction-5ba818d4?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Meta Stock Scores a Rare Golden Cross Buy Signal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stocks are due for a gut check from rates, oil and the dollar</strong></summary>
+      <div class="deal-body">
+        <p>Strategist Jim Paulsen warned history points to a drop of as much as 15% ahead, Bloomberg reported, as rising rates, climbing oil and a firmer dollar line up against a stretched market. The call frames the reversal as the start of a potential correction.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-07/stocks-are-due-for-a-gut-check-from-rates-oil-and-the-dollar" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Are Due for a Gut Check From Rates, Oil and the Dollar</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wall Street bonuses are expected to hit another high this year</strong></summary>
+      <div class="deal-body">
+        <p>New York reports the securities industry is on pace for $90bn in profits this year, WSJ reported, leading to higher compensation and another record bonus pool. The payout underscores how dealmaking and trading have thrived through the volatility.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/wall-street-bonuses-are-expected-to-hit-another-high-this-year-d7dd453f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Wall Street Bonuses Are Expected to Hit Another High This Year</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape turned risk-off as oil climbed back above $100 and the 30-year yield returned to a 2002 high, stalling the S&P one day after a record. The bull case is WSJ arguing stocks win whatever bonds do and the AI engine still firing. The bear case is Ray Dalio's bubble warning, Jim Paulsen flagging a possible 15% drop and WSJ noting the record was powered by tech and not much else. Watch chip and AI leaders, rate-sensitive names and this afternoon's FOMC minutes.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Treasury Selloff Is Pushing Mortgage Rates to a Three-Year High</summary>
+      <p>Bloomberg reported Wednesday that US mortgage rates jumped to 7.49%, their highest in nearly three years and a seventh straight weekly climb, as the Treasury selloff resumed and the 30-year yield returned to a 2002 high. The instinct is that mortgage rates are set by banks or by the Fed, but the real anchor is the bond market, and understanding the chain explains why a rout in government debt lands directly on homebuyers. Start with where a 30-year fixed mortgage rate comes from. It is not pegged to the Fed's overnight rate; it tracks the 10-year Treasury yield plus a spread. The 10-year is the benchmark because a 30-year mortgage, in practice, has an expected life closer to a decade since most people move or refinance before the full term runs. So lenders price the loan off the medium-term risk-free rate that best matches that horizon. When the 10-year yield rises, the floor under mortgage rates rises with it, regardless of what the Fed is doing with short rates. The second piece is the spread, the gap between the mortgage rate and the Treasury yield. That spread compensates investors for two things: the risk that borrowers prepay when rates fall, which cuts off the lender's income, and general uncertainty about where rates are headed. When the bond market is volatile, as it is now with yields lurching to multi-decade highs, that prepayment and volatility risk gets more expensive to bear, so the spread widens on top of the higher base rate, and the two effects compound. That is why mortgage rates can climb faster than the Treasury move alone would suggest. The third piece is the transmission into the real economy. Most mortgages are bundled into mortgage-backed securities and sold to investors who also hold Treasuries, so the two markets move together. When Treasury yields spike, MBS yields have to rise to stay competitive, and the only way that happens is through higher rates charged to new borrowers. The mechanism is nearly automatic. The practical consequence is an affordability squeeze: at 7.49%, the monthly payment on a given loan is far higher than it was a few years ago, which prices buyers out, cools housing demand and slows construction. That matters for the broader economy because housing is a large, rate-sensitive sector that transmits monetary conditions into jobs and spending. The lesson for a market reader is that the Treasury market is not an abstract macro story; it is the pipe through which a bond selloff reaches ordinary households. When you see the 10-year climbing, expect mortgage rates to follow within days, expect housing to feel it within weeks, and watch the MBS spread alongside the yield, because a widening spread tells you the bond market is pricing in not just higher rates but more uncertainty about them.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/us-mortgage-rates-jump-to-7-49-highest-in-nearly-three-years" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Mortgage Rates Jump to 7.49%, Highest in Nearly Three Years</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/u-s-european-government-bond-yields-rise-french-bonds-underperform-on-budget-worries-c068d9ae?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. 30-Year Yield Hits New 24-Year High; French Bonds Underperform</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>SpaceX seeks $40 billion to buy Nvidia chips in a blockbuster AI bet</strong></summary>
+      <div class="deal-body">
+        <p>Elon Musk's SpaceX is in talks with banks and investors to raise $40bn to buy chips from Nvidia (NVDA), Bloomberg and FT reported, with Pimco among the managers looking at the deal. The borrowing roughly matches the company's annual revenue and ranks among the largest signs yet of AI's debt-fueled buildout.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/d3f5928d-f38c-4666-8f7a-8737f9c45f51?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- SpaceX Looks to Raise $40bn to Buy Nvidia Chips</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CoreWeave tees up its first India data centers with an AdaniConneX deal</strong></summary>
+      <div class="deal-body">
+        <p>AI cloud provider CoreWeave (CRWV) is building its first data centers in India, Bloomberg reported, through a venture involving Adani Group's AdaniConneX. The move continues its Asian expansion as AI compute demand spreads into new regions.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/coreweave-tees-up-first-india-data-centers-with-adaniconnex-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CoreWeave Tees Up First India Data Centers With AdaniConneX Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AMD's Lisa Su plans to invest tens of billions as her Asian tour tackles chokepoints</strong></summary>
+      <div class="deal-body">
+        <p>AMD (AMD) CEO Lisa Su is planning to invest tens of billions of dollars, MarketWatch reported, meeting executives in Taiwan and South Korea to address supply-chain chokepoints. The commitment reinforces the sustained-capex read behind the chip complex.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/amds-chief-executive-is-planning-to-invest-tens-of-billions-as-asian-tour-addresses-supply-chain-chokepoints-c6485919?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- AMD's CEO Is Planning to Invest Tens of Billions</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Robust AI spending sets investors up for another bumper US earnings season</strong></summary>
+      <div class="deal-body">
+        <p>S&P 500 earnings are forecast to rise 27% this season, FT reported, with robust AI spending driving the gains against a backdrop of record stocks and elevated long-term borrowing costs. The projection underpins the bull case even as rates climb.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/7c38e8e3-8035-4036-8bc0-5fba2fbf77cb?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Robust AI Spending Sets Investors Up for Another Bumper US Earnings Season</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Temasek's CIO says AI and inflation pose the biggest market risks in 2027</strong></summary>
+      <div class="deal-body">
+        <p>Temasek International's investment chief flagged the potential for the AI trade to reverse and for inflation to push bond rates to a point that ends the equity runup, Bloomberg reported, as the top risks facing global markets next year. The warning adds an institutional voice to the bubble debate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/temasek-cio-says-ai-inflation-pose-biggest-market-risks-in-2027" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Temasek CIO Says AI, Inflation Pose Biggest Market Risks in 2027</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Venture firm behind Groq targets a $10 billion megafund</strong></summary>
+      <div class="deal-body">
+        <p>A little-known Dallas venture firm whose winning bets include chip startup Groq is targeting a $10bn megafund, WSJ reported, vaulting it into a small group of firms raising gigantic vehicles. The raise shows how AI winners are reshaping the venture landscape.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/venture-firm-behind-chip-startup-groq-targets-10-billion-megafund-030ce4a0?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Venture Firm Behind Chip Startup Groq Targets $10 Billion Megafund</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Study finds AI shopping bots quote different prices based on wealth</strong></summary>
+      <div class="deal-body">
+        <p>Research on how Claude and ChatGPT act as shopping assistants found they offer different prices depending on perceived wealth, Bloomberg reported, a finding that could fuel calls for more regulation. The study raises fresh questions about how AI agents will reshape commerce.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-07/study-claude-chatgpt-ai-bots-offer-different-shopping-prices-based-on-wealth" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Study: Claude, ChatGPT AI Bots Offer Different Shopping Prices Based on Wealth</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Wednesday October 7, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is capital and demand, with SpaceX raising $40bn for chips, CoreWeave building in India, AMD committing tens of billions and FT forecasting 27% S&P earnings growth. The counter-signal is Ray Dalio calling it a classic bubble near bursting and Temasek flagging an AI reversal as 2027's top risk. The near-term tell is whether debt-funded chip buying keeps clearing as borrowing costs rise.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>US 30-year yields return to a 2002 high as crude climbs back above $100</strong></summary>
+      <div class="deal-body">
+        <p>US Treasuries resumed their retreat, Bloomberg reported, lifting the 30-year yield back to its highest since 2002 as climbing oil prices raised concern about faster inflation and more central-bank rate increases. The move erased the prior session's relief.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/us-30-year-yields-return-to-2002-high-with-crude-back-above-100" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US 30-Year Yields Return to 2002 High With Crude Back Above $100</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Global bond selloff resumes with French, Italian and UK debt under pressure</strong></summary>
+      <div class="deal-body">
+        <p>The global bond selloff resumed as the 30-year Treasury yield hit its highest since 2002, FT reported, with French, Italian and UK government bonds also coming under pressure in volatile trading. The breadth of the move points to a worldwide refinancing strain.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/33c67aa0-bfdb-457b-84bb-960b4fed94b6?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Global Bond Sell-Off Resumes as 30-Year Treasury Yield Hits Highest Since 2002</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>France turmoil threatens to drag the ECB into a bond-market showdown</strong></summary>
+      <div class="deal-body">
+        <p>France's multiple crises, from street protests to a bond-market rout, are threatening to drag the ECB into a faceoff with investors it hasn't seen since the euro-area debt crisis more than a decade ago, Bloomberg reported. ECB's Emmanuel Moulin said the situation is serious but does not yet warrant intervention.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/france-turmoil-threatens-to-drag-ecb-into-bond-market-showdown-muy1qgr1" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- France Turmoil Threatens to Drag ECB Into Bond Market Showdown</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US mortgage rates jump to 7.49%, the highest in nearly three years</strong></summary>
+      <div class="deal-body">
+        <p>US mortgage rates climbed for a seventh straight week to 7.49%, Bloomberg reported, their highest level in nearly three years and a direct result of the Treasury selloff. The rise compounds the nation's housing affordability problem.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/us-mortgage-rates-jump-to-7-49-highest-in-nearly-three-years" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Mortgage Rates Jump to 7.49%, Highest in Nearly Three Years</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>India's RBI hikes rates for the first time since 2023 as inflation risks build</strong></summary>
+      <div class="deal-body">
+        <p>India's central bank raised interest rates for the first time in nearly four years and signaled more may follow, Bloomberg reported, as a weak monsoon, oil at $100 and a softer rupee drive a policy pivot. HSBC and Goldman expect another hike in December.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/07/india-rbi-interest-rates-inflation.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- India's Central Bank Hikes Rates for the First Time Since 2023</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Iraq devalues its currency as a Hormuz disruption hits oil exports</strong></summary>
+      <div class="deal-body">
+        <p>Iraq devalued its currency by around 13% against the dollar, Bloomberg reported, as the effective closure of the Strait of Hormuz hits its oil exports and strains the economy. The move shows the war premium reaching sovereign balance sheets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/iraq-devalues-currency-as-hormuz-closure-hits-oil-exports" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Iraq Devalues Currency as Hormuz Disruption Hits Oil Exports</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump says he is considering suspending the federal petrol tax</strong></summary>
+      <div class="deal-body">
+        <p>Trump is considering suspending the federal petrol tax, FT reported, as surging fuel prices heap pressure on the president and Republicans four weeks ahead of the midterm elections. The measure would cushion consumers directly as oil tops $100.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/3fd43fc5-4973-4a26-9d9c-47b6361e6217?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Trump Says He Is Considering Suspending Federal Petrol Tax</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (October 7, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bear side is back in control as the 30-year returned to a 2002 high, mortgage rates hit 7.49%, France threatens to drag the ECB into a showdown and India hiked into the squeeze. The bull side points to ECB officials saying France needs no rescue yet and the current stance leaving flexibility. The swing factor is this afternoon's FOMC minutes and whether oil's Hormuz premium holds.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why France Could Drag the ECB Into a Bond-Market Showdown</summary>
+      <p>Bloomberg reported Wednesday that France's multiple crises, from street protests drawing more than 250,000 to a bond-market rout, are threatening to drag the ECB into the kind of faceoff with investors it hasn't seen since the euro-area debt crisis more than a decade ago, even as Governing Council member Emmanuel Moulin insisted the situation is serious but does not yet warrant intervention. To understand why one member's politics can pull the whole central bank into the market, you have to see the tension built into a shared currency. Start with the structure. The euro area has one monetary policy, set by the ECB for 20 countries, but 20 separate national budgets and debt markets. The ECB sets a single policy rate, so when one country's bond yield rises faster than its neighbors', that gap is almost entirely a risk premium the market is charging that specific government. France's premium over Germany has been widening because a fractured parliament keeps failing to pass a credible budget, and an election looming over a large structural deficit raises the odds of a government that either cannot consolidate or chooses to spend more. The second piece is the feedback loop. As French yields rise, the government's interest bill climbs, which worsens the deficit the market already feared, which justifies a still-higher premium. A big, heavily indebted economy can spiral on expectations alone. The third piece is why this lands on the ECB. The central bank has a tool, built after the last crisis, to buy a struggling member's bonds and cap its spread, but using it is politically explosive because it looks like financing one government's deficit, which the ECB is legally barred from doing. So the ECB faces a bind: let the spread blow out and risk contagion across European banks and insurers that hold French debt, or intervene and face accusations it is bailing out a government that will not fix its own budget. That is the showdown. Moulin saying intervention is not warranted is the ECB signaling it wants France to solve this through fiscal discipline, not central-bank rescue, while keeping the option in reserve. The catch is that markets test exactly this kind of reluctance, pushing the spread until the central bank either acts or proves it will not. The practical lesson for a market reader is that in a currency union, sovereign stress is a game of chicken between a government's politics and the central bank's willingness to backstop it, and the real-time scoreboard is the French OAT spread over German bunds. When that spread widens while ECB officials insist no action is needed, the market is pricing the odds the bank will be forced to blink, and a minister or governor saying everything is contained is the least reliable signal in the room.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/france-turmoil-threatens-to-drag-ecb-into-bond-market-showdown-muy1qgr1" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- France Turmoil Threatens to Drag ECB Into Bond Market Showdown</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/ecb-s-moulin-says-conditions-for-france-intervention-aren-t-met" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Moulin Says Conditions for France Intervention Aren't Met</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The global bond selloff resumed as the 30-year Treasury yield returned to a 2002 high, mortgage rates hit 7.49% and France threatened to drag the ECB into a showdown, against WSJ arguing stocks win whatever bonds do and ECB officials saying France needs no rescue yet. Oil climbed back above $100 as Iranian Hormuz attacks escalated and Iraq devalued its currency, even as FT argued the Iran shock has been surprisingly manageable so far. The AI trade stayed loud on SpaceX's $40bn chip raise and CoreWeave's India push, against Ray Dalio calling it a classic bubble near bursting and Temasek flagging an AI reversal; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above $250, bull confirmed; below $235, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 10/5</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 10/6</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 10/7</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/8</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/9</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin dips below $84,000 as oil jumps on Iranian tanker attacks</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin briefly broke under $84,000, CoinDesk reported, the level analysts flagged as the point where sellers take over, as oil and the dollar both climbed on the fresh Hormuz attacks. The risk-off turn in bonds and oil dragged crypto down with it.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/07/bitcoin-dips-below-usd84-000-as-oil-jumps-on-iranian-tanker-attacks" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Dips Below $84,000 as Oil Jumps on Iranian Tanker Attacks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto liquidations jump to $547 million as the oil rally hits the market</strong></summary>
+      <div class="deal-body">
+        <p>A wave of forced selling swept digital-asset venues, Bloomberg and CoinDesk reported, wiping out about $547m in risky bets as bitcoin fell below $84,000 and smaller tokens fell harder. Traders betting on higher prices took the brunt as rates spiked.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/07/liquidations-jump-to-usd547-million-as-oil-rally-drags-bitcoin-below-usd84-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Liquidations Jump to $547 Million as Oil Rally Hits Crypto Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Here's what bitcoin needs to break above $87,000</strong></summary>
+      <div class="deal-body">
+        <p>CoinDesk's day-ahead note laid out the levels bitcoin needs to clear $87,000 after repeated rejections there, with recovery stalling just short of rescuing its last underwater buyer cohort. The token remains range-bound and rate-sensitive.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/10/07/here-s-what-bitcoin-needs-to-break-above-usd87-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Here's What Bitcoin Needs to Break Above $87,000</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Robinhood adds bitcoin worth $25 million to its balance sheet</strong></summary>
+      <div class="deal-body">
+        <p>Robinhood (HOOD) added bitcoin worth $25m to its balance sheet, CoinDesk reported, according to its SVP and GM of crypto. The move joins a growing list of public companies putting the token on their books.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/07/robinhood-adds-bitcoin-worth-usd25-million-to-its-balance-sheet-report" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Robinhood Adds Bitcoin Worth $25 Million to Its Balance Sheet</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Rain seeks a national trust bank charter to bypass third-party banks</strong></summary>
+      <div class="deal-body">
+        <p>Stablecoin payments company Rain is seeking a national trust bank charter, CoinDesk reported, becoming the 12th crypto firm to apply amid community-bank pushback. The proposed New York trust would custody assets, manage reserves and issue dollar-backed tokens.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/07/rain-becomes-12th-crypto-firm-seeking-occ-trust-bank-charter-amid-community-bank-pushback" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Rain Is Seeking a National Trust Bank Charter to Bypass Third-Party Banks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OKX draws investment from StanChart, Circle and Ripple</strong></summary>
+      <div class="deal-body">
+        <p>OKX drew investment from Standard Chartered, Circle and Ripple, CoinDesk reported, as it pushes beyond its crypto-exchange roots toward a global financial-tech platform spanning payments and tokenized assets. The round follows a joint venture with NYSE parent ICE.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/06/okx-draws-investment-from-stanchart-circle-ripple-as-it-pushes-beyond-crypto-exchange-roots" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- OKX Draws Investment From StanChart, Circle, Ripple</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>SpaceX -- Seeking $40bn in Debt to Buy Nvidia Chips</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SpaceX is in talks with banks and investors, including Pimco, to raise $40bn to buy chips from Nvidia, Bloomberg and FT reported, a borrowing haul roughly equal to the company's annual revenue.</p>
+        <p><strong>Outlook:</strong> The blockbuster debt deal is the latest sign of the vast spending on chips and infrastructure underpinning AI, extending the borrowing bonanza to a private rocket maker.</p>
+        <p><strong>What it means:</strong> Debt is now funding chip purchases at hyperscaler scale, deepening the leverage running through the AI buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/coreweave-tees-up-first-india-data-centers-with-adaniconnex-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SpaceX Seeks $40 Billion to Buy Nvidia Chips in AI Bet</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CoreWeave &amp; AdaniConneX -- First India Data Centers</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> CoreWeave is building its first data centers in India, Bloomberg reported, through a venture involving Adani Group's AdaniConneX, continuing its Asian expansion.</p>
+        <p><strong>Outlook:</strong> The push plants AI compute capacity in a fast-growing market as demand spills beyond the US and established hubs.</p>
+        <p><strong>What it means:</strong> The data-center arms race is going global, with local conglomerates partnering to host Western AI cloud providers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/coreweave-tees-up-first-india-data-centers-with-adaniconnex-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CoreWeave Tees Up First India Data Centers With AdaniConneX Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Groq Backer -- Dallas Venture Firm Targets a $10bn Megafund</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A little-known Dallas venture firm behind chip startup Groq is targeting a $10bn megafund, WSJ reported, after winning bets on hot AI startups.</p>
+        <p><strong>Outlook:</strong> The raise vaults the firm into a small group of managers commanding gigantic vehicles, concentrating AI venture capital further.</p>
+        <p><strong>What it means:</strong> AI winners are reshaping the venture hierarchy, letting a handful of firms write ever-larger checks into the next round of startups.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/venture-firm-behind-chip-startup-groq-targets-10-billion-megafund-030ce4a0?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Venture Firm Behind Chip Startup Groq Targets $10 Billion Megafund</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Blue Owl -- Launching a Big Push Into Insurance</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Blue Owl is launching a big push into insurance, FT reported, with the group at the center of recent private-credit turmoil saying it is not managing enough capital.</p>
+        <p><strong>Outlook:</strong> Insurance balance sheets offer a durable, long-dated source of assets to deploy into private credit as the sector scales.</p>
+        <p><strong>What it means:</strong> Alternative managers keep chasing permanent capital, tying insurance liabilities ever tighter to private-credit books.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/47c82e53-aa63-4b0d-95fd-ecc04d81e6ab?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Blue Owl to Launch 'Big Push' Into Insurance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dangote Refinery -- Offers East Africa Almost 20% of Its IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Dangote Petroleum Refinery, owner of Africa's biggest crude-processing facility, is offering East African investors nearly 20% of an IPO that could raise as much as $300.4m, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The listing taps continental demand for a refining asset at a moment when fuel supply and prices are front of mind globally.</p>
+        <p><strong>What it means:</strong> African capital markets are deepening, with a flagship energy project courting regional investors directly.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/dangote-refinery-offers-east-africa-almost-20-of-ipo-shares" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dangote Refinery Offers East Africa Almost 20% of IPO Shares</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Oasis &amp; Nidec -- Activist Urges a Privatization Review</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Oasis Management urged Nidec to evaluate privatization options, Bloomberg reported, as the Japanese manufacturer grapples with an accounting scandal that has put it at risk of delisting.</p>
+        <p><strong>Outlook:</strong> A take-private could shield Nidec from public-market scrutiny while it cleans up its books, though delisting risk cuts both ways.</p>
+        <p><strong>What it means:</strong> Activists are pressing governance fixes on scandal-hit industrials, using the delisting threat as leverage.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/oasis-urges-nidec-to-explore-privatization-on-delisting-risk" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oasis Urges Nidec to Mull Privatization, Brace for Delisting</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Dan Ives (Wedbush) -- investors underestimate the AI spending wave</strong></summary>
+      <div class="deal-body">
+        <p>Longtime tech bull Dan Ives said investors are underestimating the scale and scope of the AI spending wave, MarketWatch reported, laying out five stocks to own into 2027. A named bull leaning hard into the capex trade.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/longtime-tech-bull-dan-ives-says-these-are-his-top-tech-plays-going-into-2027-3796cb9f?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Longtime Tech Bull Dan Ives Says These Are His Top Tech Plays Going Into 2027</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kevin Mahn (Hennion &amp; Walsh) -- investors are climbing a wall of worry</strong></summary>
+      <div class="deal-body">
+        <p>Hennion & Walsh CIO Kevin Mahn told Bloomberg investors are climbing a proverbial wall of worry even with concentrated S&P gains and a loud AI ecosystem. A named bull framing the anxiety as fuel for further upside.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-07/investors-climbing-proverbial-wall-of-worry-mahn-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Investors Climbing Proverbial Wall of Worry: Mahn</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ray Dalio (Bridgewater founder) -- AI is a classic bubble near bursting</strong></summary>
+      <div class="deal-body">
+        <p>Ray Dalio warned that AI is a classic bubble nearing its bursting point, Bloomberg reported, driven by rising interest rates and the need to turn paper wealth into cash. A named bear putting a timeline on the downside.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/ray-dalio-warns-ai-bubble-is-approaching-burst-point" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ray Dalio Warns AI Bubble Is Approaching Burst Point</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Temasek (CIO) -- AI reversal and inflation are 2027's top risks</strong></summary>
+      <div class="deal-body">
+        <p>Temasek International's investment chief flagged the potential for the AI trade to reverse and for inflation-driven yields to end the equity runup, Bloomberg reported, as the top market risks heading into 2027. A named institutional skeptic trimming exposure to the crowd.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/temasek-cio-says-ai-inflation-pose-biggest-market-risks-in-2027" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Temasek CIO Says AI, Inflation Pose Biggest Market Risks in 2027</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jim Paulsen -- stocks are due for a gut check, as much as 15% lower</strong></summary>
+      <div class="deal-body">
+        <p>Strategist Jim Paulsen warned history points to a drop of as much as 15%, Bloomberg reported, as rising rates, climbing oil and a firmer dollar line up against a stretched market. A named bear calling for a correction.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-07/stocks-are-due-for-a-gut-check-from-rates-oil-and-the-dollar" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Are Due for a Gut Check From Rates, Oil and the Dollar</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Oil Back Above $100 Reignites the Bond Selloff and Stalls a Record Rally, With Dan Ives and Kevin Mahn Still Constructive Against Ray Dalio Calling AI a Classic Bubble Near Bursting, Temasek Flagging an AI Reversal as 2027's Top Risk and Jim Paulsen Warning of a 15% Gut Check</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the wave and the earnings hold):</strong> Dan Ives says investors underestimate the scale of the AI spending wave and names five plays into 2027, Hennion & Walsh's Kevin Mahn says the market is climbing a wall of worry that tends to resolve higher, and FT forecasts S&P earnings up 27% this season. SpaceX raising $40bn for chips and AMD committing tens of billions show the capex is real. Falling breadth has not stopped records before.</div>
+        <div class="bear"><strong>Bear (the warnings are stacking up):</strong> Ray Dalio calls AI a classic bubble nearing its burst point as rising rates force wealth into cash, Temasek's CIO names an AI reversal and inflation-driven yields as 2027's top risks, and Jim Paulsen warns of a drop as much as 15% from rates, oil and the dollar. The 30-year is back at a 2002 high and the record was powered by tech and little else. Narrow, leveraged leadership breaks hard.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>SpaceX $40bn chip raise; Meta golden cross; Intel-Terafab pop; oil back above $100; crypto liquidations</td><td>Mixed</td><td>~36,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>S&P record powered by tech only; Dalio AI bubble warning; Paulsen gut-check call; Wall St bonus bonanza</td><td>Cautious</td><td>~30,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>30Y back at 2002 high; mortgage rates 7.49%; France drags ECB; FOMC minutes today; India hikes</td><td>Bearish-cautious</td><td>~33,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI debt-funded capex; Temasek 2027 risks; World Bank concentration; Blue Owl insurance push</td><td>Mixed</td><td>~21,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC below $84K; $547M liquidated on oil spike; Robinhood adds BTC; Rain trust-bank charter</td><td>Risk-off</td><td>~26,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped cautious as oil topped $100 and bonds sold off again. r/wallstreetbets was mixed, torn between SpaceX's $40bn chip raise and oil-driven crypto liquidations. r/stocks turned cautious on Ray Dalio's bubble warning and Jim Paulsen's gut-check call. r/investing leaned bearish on the 30-year at a 2002 high, mortgage rates at 7.49% and France dragging the ECB in. r/SecurityAnalysis was mixed on debt-funded AI capex and Temasek's 2027 risks. r/CryptoCurrency went risk-off as bitcoin broke below $84,000. The swing factor is this afternoon's FOMC minutes.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why an Oil Spike Triggered $547 Million in Crypto Liquidations</h2>
+    <p>CoinDesk and Bloomberg reported Wednesday that bitcoin fell below $84,000 and about $547m in risky crypto bets were wiped out in a wave of forced selling, as oil jumped on Iranian tanker attacks and interest rates spiked. At first glance the chain looks strange: why would a tanker attack in the Strait of Hormuz force the sale of a leveraged bitcoin position? The answer is a mechanism called a liquidation cascade, and it explains why crypto can fall far faster than the underlying news seems to justify. Start with leverage. On crypto derivatives venues, a trader can control a large position while posting only a small amount of collateral, called margin. If you put up $1,000 and borrow to control $10,000 of bitcoin, you are ten times leveraged, which means a 10% drop in price wipes out your entire collateral. To protect itself, the exchange sets a liquidation price: if bitcoin falls to that level, the platform automatically closes your position by selling, so the borrowed money is repaid before your collateral runs out. That forced sale is the liquidation. Now add the macro trigger. When oil spiked and rates jumped, risk assets broadly sold off, and bitcoin, which trades as a high-beta risk asset, fell with them. That initial dip pushed the price down toward the liquidation levels clustered just below the market, where leveraged longs had set their bets. The second piece is the cascade. When those positions get liquidated, the exchange sells them into the market, and that selling pushes the price down further, which triggers the next cluster of liquidation levels below, which forces more selling, and so on. Each wave of forced selling manufactures the very price move that triggers the next wave. This is why a relatively modest initial shock can snowball into hundreds of millions in liquidations within minutes. The third piece is why longs took the brunt. CoinDesk noted traders betting on higher prices bore most of the pain, which tells you positioning was crowded on the long side. When most of the leverage is stacked one way, a move against that crowd has more fuel to burn, because there are more forced sellers lined up below the market than buyers lined up above it. The fourth piece is the feedback into sentiment. A violent liquidation flush scares discretionary buyers away, thins out order books and makes the next move larger for a given amount of selling, which is why volatility tends to cluster. The practical lesson for a market reader is that in leveraged markets, the news is often just the spark, and the size of the fire depends on how much leverage was built up and which way it leaned. When you see a liquidation figure like $547m attached to a modest price drop, read it as a map of where the crowd was positioned, not as a measure of how bad the underlying news was. The same mechanism that amplified the drop can amplify the bounce once the forced selling exhausts itself.</p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/07/liquidations-jump-to-usd547-million-as-oil-rally-drags-bitcoin-below-usd84-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Liquidations Jump to $547 Million as Oil Rally Hits Crypto Market</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-07/bitcoin-btc-falls-as-550-million-in-risky-crypto-bets-wiped-out" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bitcoin Falls as $550 Million in Risky Crypto Bets Wiped Out</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>FOMC minutes, Wednesday Oct 7.</strong> With the 30-year back at a 2002 high and oil above $100, watch the minutes for how divided the committee is and whether the energy-and-inflation worry is dominating the Fed's own debate.</li>
+      <li><strong>French OAT spreads and the ECB.</strong> With France's crises threatening to drag the ECB into a bond-market showdown and officials insisting no intervention is warranted, watch the OAT-bund spread as the live gauge of whether the bank gets forced to act.</li>
+      <li><strong>Mortgage rates and housing.</strong> After US mortgage rates jumped to 7.49%, a seventh straight weekly climb, watch housing data for the affordability squeeze feeding into construction and spending.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Bank earnings season kicks off.</strong> With Wall Street on pace for $90bn in profits and the yield curve lurching, watch how rate and duration risk shapes the big-bank results due in the coming days.</li>
+      <li><strong>AI-supplier and mega-cap follow-through.</strong> With FT forecasting S&P earnings up 27% on AI spending, watch whether capex guidance validates the bulls or feeds Dalio's bubble and Temasek's reversal warnings.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>SpaceX's $40bn chip raise and AI debt.</strong> With SpaceX seeking borrowing roughly equal to its revenue to buy Nvidia chips, watch how credit markets price the growing leverage running through the AI buildout.</li>
+      <li><strong>Venture megafunds and private credit.</strong> After the Groq backer's $10bn target and Blue Owl's insurance push, watch whether capital keeps concentrating in a few giant managers as rates climb.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Hormuz attacks and the oil premium.</strong> With Iranian tanker attacks escalating, Iraq devaluing its currency and captains paid $100,000 a month, watch whether the chokepoint premium holds oil above $100 and keeps pressuring bonds.</li>
+      <li><strong>US petrol-tax politics.</strong> With Trump weighing a federal petrol-tax suspension four weeks before the midterms, watch whether fuel-price relief measures move or just signal the political pressure.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how overseas bond markets like France transmit into US Treasury yields and corporate credit.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Oct 7, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-10-07 07:45 ET); Bloomberg Technology (20 fresh, newest 2026-10-07 07:49 ET); Bloomberg Economics (20 fresh, newest 2026-10-07 07:03 ET); CNBC Top News (3 fresh, newest 2026-10-06 16:02 ET); CNBC Finance (5 fresh, newest 2026-10-07 02:16 ET); CNBC Economy (5 fresh, newest 2026-10-07 07:56 ET); MarketWatch Top Stories (10 fresh, newest 2026-10-07 07:44 ET); WSJ Markets (16 fresh, newest 2026-10-07 07:57 ET); FT Home (10 fresh, newest 2026-10-07 07:42 ET); Matt Levine Money Stuff (1 fresh, newest 2026-10-06 14:36 ET); CoinDesk (25 fresh, newest 2026-10-07 07:59 ET); Stratechery (2 fresh, newest 2026-10-07 06:01 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What pushed oil back above $100 and reignited the bond selloff on Wednesday?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC announced a surprise production cut</span>
+      <span class="opt" data-opt="B">B. A pipeline rupture shut US refineries</span>
+      <span class="opt" data-opt="C">C. Iranian attacks on Hormuz tankers escalated</span>
+      <span class="opt" data-opt="D">D. The dollar collapsed against the euro</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported crude climbed back above $100 as Iranian attacks on tankers crossing the Strait of Hormuz escalated, reviving inflation fears and dragging bonds down. There was no OPEC cut, refinery rupture or dollar collapse; the dollar actually rose.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. How high did US mortgage rates climb, and why?</strong></p>
+      <span class="opt" data-opt="A">A. To 7.49%, as the Treasury selloff lifted yields</span>
+      <span class="opt" data-opt="B">B. To 5.25%, after the Fed cut rates sharply</span>
+      <span class="opt" data-opt="C">C. To 9.00%, because banks tightened lending</span>
+      <span class="opt" data-opt="D">D. To 6.00%, as housing demand suddenly cooled</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported mortgage rates jumped to 7.49%, a seventh straight weekly climb and the highest in nearly three years, as the resumed Treasury selloff lifted the benchmark yields mortgages track. There was no Fed cut, and rates follow the bond market, not bank-by-bank tightening.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What did Ray Dalio say about AI this week?</strong></p>
+      <span class="opt" data-opt="A">A. It will cut inflation across the economy</span>
+      <span class="opt" data-opt="B">B. It is undervalued and poised to rally</span>
+      <span class="opt" data-opt="C">C. It has no effect on interest rates</span>
+      <span class="opt" data-opt="D">D. It is a classic bubble near bursting</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg reported Dalio called AI a classic bubble nearing its bursting point, driven by rising interest rates and the need to turn wealth into cash. He did not call it undervalued, inflation-cutting or rate-neutral; he tied the bubble directly to higher rates.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The global bond selloff resumed and the 30-year Treasury yield returned to a 2002 high as crude climbed back above $100, US mortgage rates jumped to 7.49%, France's turmoil threatened to drag the ECB into a bond-market showdown and India hiked for the first time since 2023, even as WSJ argued stocks win whatever bonds do and ECB's Moulin said France intervention isn't warranted.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-07/us-30-year-yields-return-to-2002-high-with-crude-back-above-100", "take": "US 30-year yields return to a 2002 high with crude back above $100." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/33c67aa0-bfdb-457b-84bb-960b4fed94b6?syn-25a6b1a6=1", "take": "Global bond selloff resumes with French, Italian and UK debt under pressure." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-07/france-turmoil-threatens-to-drag-ecb-into-bond-market-showdown-muy1qgr1", "take": "France turmoil threatens to drag the ECB into a bond-market showdown." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/whatever-happens-to-bonds-stocks-win-d1c95f6f?mod=rss_markets_main", "take": "Whatever happens to bonds, stocks win." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-07/ecb-s-moulin-says-conditions-for-france-intervention-aren-t-met", "take": "ECB's Moulin says conditions for France intervention aren't met." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil climbed back above $100 as Iranian attacks on tankers crossing the Strait of Hormuz escalated, Iraq devalued its currency on an effective Hormuz closure, ship captains are paid $100,000 a month to make the transit and Trump weighs suspending the federal petrol tax, even as FT argues the Iran shock has been surprisingly manageable so far.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-06/stock-market-today-dow-s-p-live-updates", "take": "Stocks and bonds fall as Hormuz attacks lift oil." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-07/iraq-devalues-currency-as-hormuz-closure-hits-oil-exports", "take": "Iraq devalues its currency as a Hormuz disruption hits oil exports." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/0d665e5b-d8c8-4f1e-acf5-bba7193b4e6e?syn-25a6b1a6=1", "take": "Ship captains paid $100,000 a month to transit the Strait of Hormuz." },
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/37e12a42-d473-4b1b-8fc5-4ea5f06d3bfb?syn-25a6b1a6=1", "take": "The Iran shock has been surprisingly manageable so far." },
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/3fd43fc5-4973-4a26-9d9c-47b6361e6217?syn-25a6b1a6=1", "take": "Trump weighs suspending the federal petrol tax to cushion consumers." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI capital spigot opened even wider as SpaceX sought $40bn to buy Nvidia chips, CoreWeave teamed with AdaniConneX for its first India data centers, AMD's Lisa Su planned tens of billions and Dan Ives said investors underestimate the spending wave, even as Ray Dalio warned the AI bubble is near its burst point, Temasek's CIO flagged an AI reversal as 2027's top risk and the World Bank warned of concentration.",
+    "sources": [
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/d3f5928d-f38c-4666-8f7a-8737f9c45f51?syn-25a6b1a6=1", "take": "SpaceX looks to raise $40bn to buy Nvidia chips." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-07/coreweave-tees-up-first-india-data-centers-with-adaniconnex-deal", "take": "CoreWeave tees up its first India data centers with AdaniConneX." },
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/7c38e8e3-8035-4036-8bc0-5fba2fbf77cb?syn-25a6b1a6=1", "take": "Robust AI spending sets up another bumper US earnings season." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-07/ray-dalio-warns-ai-bubble-is-approaching-burst-point", "take": "Ray Dalio warns the AI bubble is approaching its burst point." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-07/temasek-cio-says-ai-inflation-pose-biggest-market-risks-in-2027", "take": "Temasek's CIO says AI and inflation pose the biggest market risks in 2027." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Intel","Meta","AMD","Nvidia","CoreWeave","SK Hynix"],
+    "values": [4.1, 2.3, 1.2, -0.9, 1.8, -2.9]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [36000, 30000, 33000, 21000, 26000],
+    "colors": ["neutral","neutral","bear","neutral","bear"]
+  },
+  "dealSizes": {
+    "labels": ["SpaceX Chips","Groq Megafund","CoreWeave India","Dangote IPO","OKX Round","Robinhood BTC"],
+    "values": [40.0, 10.0, 1.5, 0.3, 0.2, 0.025]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20260724"></script>
+<script src="../js/config.js?v=20260724"></script>
+<script src="../js/repair-dom.js?v=20260724"></script>
+<script src="../js/digest-ui.js?v=20260724"></script>
+<script src="../js/charts-core.js?v=20260724"></script>
+<script src="../js/archive.js?v=20260724"></script>
+<script src="../js/artifact-equities.js?v=20260724"></script>
+<script src="../js/charts-macro.js?v=20260724"></script>
+<script src="../js/artifact-framing.js?v=20260724"></script>
+<script src="../js/verdict-updater.js?v=20260724"></script>
+<script src="../js/digest-init.js?v=20260724"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
