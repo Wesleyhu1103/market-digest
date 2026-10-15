@@ -693,6 +693,10 @@
     return typeof mdMacroFredUrl === 'function' ? mdMacroFredUrl() : '/api/fred-data';
   }
 
+  function staticFredUrl() {
+    return typeof mdSitePath === 'function' ? mdSitePath('fred-data.json') : 'fred-data.json';
+  }
+
   function loadFred(url) {
     return fetch(url, { cache: 'no-store' })
       .then(function(r) { return r.ok ? r.json() : null; })
@@ -705,8 +709,9 @@
     // unreachable (local preview, GitHub Pages, or a Vercel outage).
     return loadFred(macroFredUrl()).then(function(data) {
       if (data) { fredMacro = data; return data; }
-      if (macroFredUrl() === 'fred-data.json') return null;
-      return loadFred('fred-data.json').then(function(fb) {
+      var fallback = staticFredUrl();
+      if (macroFredUrl() === fallback) return null;
+      return loadFred(fallback).then(function(fb) {
         if (fb) fredMacro = fb;
         return fb;
       });
