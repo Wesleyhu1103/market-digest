@@ -3,10 +3,12 @@
 // ============================================================
 (function() {
   function sitePath(rel) {
+    if (typeof mdSitePath === 'function') return mdSitePath(rel);
     var path = window.location.pathname || '/';
-    if (/\.[a-z0-9]+$/i.test(path)) path = path.replace(/[^/]+$/, '');
-    else if (!path.endsWith('/')) path += '/';
-    return path + String(rel || '').replace(/^\//, '');
+    var marker = '/archive/';
+    var idx = path.indexOf(marker);
+    var root = idx >= 0 ? path.slice(0, idx + 1) : path.replace(/[^/]*$/, '');
+    return root + String(rel || '').replace(/^\//, '');
   }
 
   function ensureArchiveSection() {
