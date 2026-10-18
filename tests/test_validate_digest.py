@@ -62,6 +62,37 @@ class ValidateDigestTests(unittest.TestCase):
 
             self.assertEqual(missing, [])
 
+    def test_validate_credential_markers_scans_archives_from_index(self):
+        module = load_validate_digest()
+        with tempfile.TemporaryDirectory() as tmp:
+            docs = Path(tmp) / "docs"
+            archive = docs / "archive"
+            archive.mkdir(parents=True)
+            index_path = docs / "index.html"
+            archive_path = archive / "2026-06-09.html"
+            index_path.write_text("<html><body><main></main></body></html>")
+            archive_path.write_text(
+                """
+                <html><body>
+                  <p><strong>GitHub commit status:</strong>
+                  Publishing with new token (ghp_aBCY...) -- new token verified.</p>
+                </body></html>
+                """
+            )
+
+            hits = module.validate_credential_markers(index_path.read_text(), index_path)
+
+            self.assertTrue(any(str(archive_path) in hit for hit in hits))
+            self.assertTrue(any("GitHub token prefix" in hit for hit in hits))
+
+    def test_validate_credential_markers_allows_normal_github_mentions(self):
+        module = load_validate_digest()
+        html = '<p>Template fetched from GitHub Pages public repo.</p>'
+
+        hits = module.validate_credential_markers(html, None)
+
+        self.assertEqual(hits, [])
+
 
 if __name__ == "__main__":
     unittest.main()

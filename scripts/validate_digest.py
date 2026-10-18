@@ -23,6 +23,13 @@ STATIC_RULES = validate_static_rules()
 RULES = validate_main_rules()
 HTML_ONLY = validate_html_only_descs()
 
+CREDENTIAL_MARKER_PATTERNS = [
+    ("GitHub commit status note", re.compile(r"GitHub commit status", re.I)),
+    ("GitHub PAT mention", re.compile(r"GitHub\s+PAT", re.I)),
+    ("GitHub token prefix", re.compile(r"\bgh[pousr]_[A-Za-z0-9_]{4,}", re.I)),
+    ("token verification note", re.compile(r"new token verified|token may have expired|token renewal", re.I)),
+]
+
 
 def _fetch_text(url: str) -> str:
     req = urllib.request.Request(url, headers={"Cache-Control": "no-cache"})
@@ -61,6 +68,26 @@ def validate_local_assets(html: str, html_path: Optional[Path]) -> list[str]:
         if not fp.is_file():
             missing.append(f"{kind} {ref} -> {fp}")
     return missing
+
+
+def validate_credential_markers(html: str, html_path: Optional[Path]) -> list[str]:
+    """Return credential-status markers in the target file and archived snapshots."""
+    targets: list[tuple[str, str]] = [("input", html)]
+    if html_path:
+        targets[0] = (str(html_path), html)
+        if html_path.name == "index.html":
+            archive_dir = html_path.parent / "archive"
+            if archive_dir.is_dir():
+                for archive_path in sorted(archive_dir.glob("*.html")):
+                    targets.append((str(archive_path), archive_path.read_text()))
+
+    hits: list[str] = []
+    for label, body in targets:
+        for line_no, line in enumerate(body.splitlines(), start=1):
+            for desc, pat in CREDENTIAL_MARKER_PATTERNS:
+                if pat.search(line):
+                    hits.append(f"{label}:{line_no}: {desc}")
+    return hits
 
 
 def collect_js(html: str, html_path: Optional[Path]) -> str:
@@ -114,6 +141,10 @@ def main():
     failures = 0
     for missing in validate_local_assets(html, html_path):
         print(f"FAIL local asset: {missing}")
+        failures += 1
+
+    for hit in validate_credential_markers(html, html_path):
+        print(f"FAIL credential marker: {hit}")
         failures += 1
 
     js_bundle = collect_js(html, html_path)
