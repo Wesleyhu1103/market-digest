@@ -9,6 +9,7 @@ incoming/new-main.html for publish_digest.py to consume in the same run.
 
 Requires ANTHROPIC_API_KEY in the environment.
 """
+import os
 import re
 import sys
 from datetime import datetime
@@ -134,5 +135,40 @@ def main() -> int:
     return 0
 
 
+def _record_failure(reason: str) -> None:
+    """Leave the failure cause where the workflow's flag step can read it.
+
+    The publish workflow posts /tmp/digest-failure-reason.txt to the
+    maintenance board on job failure, so the board names the cause (e.g.
+    "Anthropic API credits exhausted") instead of a bare "run failed".
+    """
+    reason = " ".join(reason.split())[:1000]
+    try:
+        Path(os.environ.get("DIGEST_FAILURE_REASON_FILE", "/tmp/digest-failure-reason.txt")).write_text(reason)
+    except OSError:
+        pass
+    print(f"::error::Digest generation failed: {reason}", file=sys.stderr)
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except SystemExit as e:
+        if isinstance(e.code, str):
+            _record_failure(e.code)
+        elif e.code not in (0, None):
+            _record_failure(f"generate_digest.py exited {e.code}")
+        raise
+    except anthropic.APIStatusError as e:
+        reason = f"Claude API {e.status_code}: {getattr(e, 'message', e)}"
+        if "credit balance is too low" in str(e):
+            reason = (
+                "Anthropic API credits exhausted — the ANTHROPIC_API_KEY account needs a "
+                "top-up at console.anthropic.com -> Plans & Billing before any digest can "
+                f"generate. (API said: {getattr(e, 'message', e)})"
+            )
+        _record_failure(reason)
+        sys.exit(1)
+    except Exception as e:  # noqa: BLE001 — last-resort cause reporting
+        _record_failure(f"{type(e).__name__}: {e}")
+        raise

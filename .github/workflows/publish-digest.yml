@@ -194,6 +194,20 @@ jobs:
           fi
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
+      - name: Flag publish failure on the maintenance board
+        if: failure()
+        env:
+          MAINTENANCE_TOKEN: ${{ secrets.MAINTENANCE_TOKEN }}
+        run: |
+          REASON="$(head -c 400 /tmp/digest-failure-reason.txt 2>/dev/null | tr '\n' ' ' || true)"
+          [ -n "$REASON" ] || REASON="A build step failed before/after generation (apply, FRED refresh, contract, validate, or push); open the run for details."
+          python3 scripts/post_maintenance_flag.py \
+            --source publish-digest --severity critical \
+            --dedupe-key "publish-digest-failed" \
+            --title "Digest publish failing: ${REASON:0:120}" \
+            --detail "publish-digest.yml's build job failed, so the site keeps serving a stale edition until a run goes green. Cause: ${REASON}" \
+            --url "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
   deploy:
     needs: build
     if: needs.build.result == 'success'

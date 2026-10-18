@@ -67,9 +67,12 @@ jobs:
             IFS=$'\t' read -r CONCLUSION URL CREATED <<< "$LATEST"
             echo "${WF} latest: ${CONCLUSION} (${CREATED})"
             if [ "$CONCLUSION" = "failure" ] || [ "$CONCLUSION" = "timed_out" ]; then
+              # Stable key: one flag per workflow that reopens on recurrence
+              # (seen_count++). A dated key minted a fresh flag every day of
+              # an outage — the 10/09–10/16 publish outage flooded the board.
               python3 scripts/post_maintenance_flag.py \
                 --source workflow-monitor --severity "$SEV" \
-                --dedupe-key "wf-failed:${WF}:$(date -u +%F)" \
+                --dedupe-key "wf-failed:${WF}" \
                 --title "Latest '${WF}' run ${CONCLUSION}" \
                 --detail "${WHY} (run started ${CREATED})" \
                 --url "${URL}"
