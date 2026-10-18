@@ -88,6 +88,34 @@ class ValidateDigestTests(unittest.TestCase):
             [],
         )
 
+    def test_static_rules_reject_direct_page_relative_fred_fetches(self):
+        import re
+
+        module = load_validate_digest()
+        rule = next(
+            r
+            for r in module.STATIC_RULES
+            if r[0] == "no page-relative fred-data.json fetch/fallback (use mdSitePath)"
+        )
+        _, pattern, expected, scope = rule
+        self.assertEqual(scope, "js")
+        self.assertEqual(expected, 0)
+
+        for leaked in (
+            "fetch('fred-data.json', { cache: 'no-store' })",
+            'fetch("fred-data.json")',
+            "loadFred('fred-data.json')",
+            "return 'fred-data.json'",
+        ):
+            self.assertTrue(re.findall(pattern, leaked, re.DOTALL | re.I), leaked)
+
+        for safe in (
+            "fetch('../fred-data.json', { cache: 'no-store' })",
+            "loadFred(mdSitePath('fred-data.json'))",
+            "return mdSitePath('fred-data.json')",
+        ):
+            self.assertEqual(re.findall(pattern, safe, re.DOTALL | re.I), [], safe)
+
 
 if __name__ == "__main__":
     unittest.main()
