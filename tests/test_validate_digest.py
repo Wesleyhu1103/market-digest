@@ -62,6 +62,32 @@ class ValidateDigestTests(unittest.TestCase):
 
             self.assertEqual(missing, [])
 
+    def test_static_rules_reject_credential_markers(self):
+        import re
+
+        module = load_validate_digest()
+        rule = next(
+            r for r in module.STATIC_RULES if r[0] == "no credential/env markers in public HTML"
+        )
+        _, pattern, expected, scope = rule
+        self.assertEqual(scope, "html")
+        self.assertEqual(expected, 0)
+        # The shapes that actually leaked onto public June archive pages
+        # (truncated token prefix + status prose), plus env-var names.
+        for leaked in (
+            "<p><strong>GitHub commit status:</strong> publishing with new token (ghp_aBCY...)</p>",
+            "<p>New token verified working (HTTP 200).</p>",
+            "<p>set GITHUB_TOKEN in Vercel production</p>",
+            "<p>github_pat_11ABC is live</p>",
+        ):
+            self.assertTrue(re.findall(pattern, leaked, re.DOTALL | re.I), leaked)
+        self.assertEqual(
+            re.findall(
+                pattern, "<p>Clean note; tokens of appreciation to readers.</p>", re.DOTALL | re.I
+            ),
+            [],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
