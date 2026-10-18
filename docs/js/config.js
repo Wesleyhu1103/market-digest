@@ -7,8 +7,18 @@ function mdApiUrl(path) {
   return mdUsesRemoteApi() ? MD_VERCEL_ORIGIN + path : path;
 }
 function mdMacroFredUrl() {
-  if (/\.github\.io$/i.test(location.hostname)) return 'fred-data.json';
+  if (/\.github\.io$/i.test(location.hostname)) return mdSitePath('fred-data.json');
   return '/api/fred-data';
+}
+
+// Site-root-relative URL for static assets. A plain relative fetch from an
+// archived page (/archive/X.html) resolves under /archive/ and 404s; this
+// maps the archive directory back to the site root while staying correct on
+// project-pages roots (user.github.io/repo/).
+function mdSitePath(rel) {
+  var dir = (location.pathname || '/').replace(/[^/]*$/, '');
+  dir = dir.replace(/(^|\/)archive\/$/, '$1');
+  return dir + String(rel || '').replace(/^\//, '');
 }
 function mdPost(path, body) {
   return fetch(mdApiUrl(path), {
