@@ -12,6 +12,7 @@ Requires ANTHROPIC_API_KEY in the environment.
 import os
 import re
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -75,6 +76,53 @@ def fetch_community_votes_block() -> str:
         return ""
 
 
+def is_transient_generation_error(e: BaseException) -> bool:
+    """Worth a retry: transport drops and retryable API statuses.
+
+    A broken stream surfaces as a RAW httpx error (the SDK retries request
+    setup, never a stream that dies mid-read — 10/20 outage: RemoteProtocolError
+    ~7 min into generation). The SDK vendors httpx under its own name
+    (seen as `httpx2`), so match the exception's module, not an import.
+    Billing/4xx stay fatal so the credits case still fails fast and loud.
+    """
+    mod = type(e).__module__ or ""
+    if mod.startswith("httpx") or mod.startswith("httpcore"):
+        return True
+    if isinstance(e, anthropic.APIConnectionError):
+        return True
+    if isinstance(e, anthropic.APIStatusError):
+        return e.status_code in (408, 409, 429) or e.status_code >= 500
+    return False
+
+
+def generate_message(client, user_content: str, attempts: int = 3, backoff: float = 20.0):
+    """Run the digest generation stream, retrying transient failures.
+
+    Retrying the whole stream is safe: nothing is written to disk until the
+    final message passes validation in main().
+    """
+    for attempt in range(1, attempts + 1):
+        try:
+            with client.messages.stream(
+                model="claude-opus-4-8",
+                max_tokens=64000,
+                thinking={"type": "adaptive"},
+                system=SYSTEM,
+                messages=[{"role": "user", "content": user_content}],
+            ) as stream:
+                return stream.get_final_message()
+        except Exception as e:  # noqa: BLE001 — classified below
+            if not is_transient_generation_error(e) or attempt == attempts:
+                raise
+            wait = backoff * attempt
+            print(
+                f"generation attempt {attempt}/{attempts} failed "
+                f"({type(e).__name__}: {e}); retrying in {wait:.0f}s",
+                flush=True,
+            )
+            time.sleep(wait)
+
+
 def main() -> int:
     sources_text, reports, total_fresh = gather_sources()
     ok_feeds = sum(1 for r in reports if r.status == "ok")
@@ -107,14 +155,7 @@ def main() -> int:
     )
 
     client = anthropic.Anthropic()
-    with client.messages.stream(
-        model="claude-opus-4-8",
-        max_tokens=64000,
-        thinking={"type": "adaptive"},
-        system=SYSTEM,
-        messages=[{"role": "user", "content": user_content}],
-    ) as stream:
-        message = stream.get_final_message()
+    message = generate_message(client, user_content)
 
     text = next((b.text for b in message.content if b.type == "text"), "")
     print(f"stop_reason={message.stop_reason}, output_tokens={message.usage.output_tokens}")
