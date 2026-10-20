@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Oct 19, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-10-19</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, October 19, 2026</h1>
+    <div class="meta">
+      <p>Tech and chip stocks snapped back as dip buyers stepped in after the worst week for the Nasdaq 100 since the April 2025 tariff turmoil, with a China GDP beat and falling oil prices lifting risk appetite into a huge earnings week led by Meta. The rebound rode over clear cracks, though: hedge funds cut tech at the fastest pace in a decade, the weak points in AI-related debt are getting plainer, and French bonds slumped again after violent cost-of-living riots swept the country. CPI reads and the late-October ECB meeting sit just ahead.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Chip and tech stocks rebounded Monday after the worst week for the Nasdaq 100 since April 2025, as dip buyers bet the AI buildout keeps supporting earnings even as hedge funds cut tech at the fastest pace in a decade and the weak points in AI-related debt become clearer",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Nasdaq 100 Climbs on AI Trade Revival After Rout", "angle": "Reads the bounce as conviction returning, with a rebound in giant chipmakers drawing dip buyers back on bets the AI boom keeps earnings solid.", "lean": 40, "pull": "A rebound in chipmakers buoyed the stock market as dip buyers emerged on bets the artificial-intelligence investment boom will continue to support solid earnings."},
+        {"outlet": "WSJ", "headline": "The AI Stock Market Wobble Is a Reminder: This Time Isn't Different", "angle": "Pushes back on the rebound, warning the buildout has not shown it can avoid the overbuild problems of railways and the internet.", "lean": -50, "pull": "The artificial intelligence build-out hasn't shown it can avoid the problems of past massive capital projects, such as railways and the internet."},
+        {"outlet": "MarketWatch", "headline": "Micron and Other Chip Stocks Spring Back to Life After Bruising Selloff", "angle": "Frames it as a key week where Nvidia and Meta set the tone, with chips leading the recovery off the lows.", "lean": 30, "pull": "It's a key week for tech stocks as Nvidia gears up for a European conference and Meta prepares to report earnings."},
+        {"outlet": "CNBC", "headline": "Anthropic Is the AI Trade's Last Big Hope for a Major IPO This Year", "angle": "Reads the primary market as fragile, with OpenAI and others delaying and Anthropic seen as the last marquee listing of 2026.", "lean": -15, "pull": "On Kalshi, Anthropic is seen as the last major IPO in 2026 after OpenAI delayed its public market debut."},
+        {"outlet": "Bloomberg", "headline": "Academy's Tchir Fears AI Debt May Trigger Sharp Selloff", "angle": "Sounds the credit alarm, with a strategist nervous about faux liquidity in AI-related debt markets.", "lean": -45, "pull": "Peter Tchir says he is nervous about a potential selloff of artificial intelligence-related debt as he sees faux liquidity in markets."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasuries Fall as the Tech Rebound Saps Haven Demand While WSJ's Survey of 71 Economists Sees Higher Yields for Longer, French Bonds Slump Again After Violent Cost-of-Living Riots, US Homebuilder Sentiment Drops to a 14-Year Low on 7% Mortgage Rates and Hassett Says CPI Still Needs Work, Even as the Same Survey Flags Firmer Growth and Eventual Inflation Relief, China's Q3 GDP Beats and Canada's Core Inflation Eases</h3>
+      </div>
+      <p>Rates stayed the pressure point even as stocks bounced. Bloomberg reported Treasuries fell Monday as a rebound in US technology shares sapped haven demand for government debt, and WSJ's latest survey of 71 economists now sees higher bond yields for longer, firmer growth and eventual relief on inflation. The fiscal anxiety is loudest in Europe: FT said the French bond selloff intensified after violent protests, with authorities introducing partial curfews and admitting police botched oversight of the riots, while Bloomberg reported more than 500,000 demonstrators hit the streets against surging energy and living costs, driving nearly 2,400 arrests. The domestic data leaned soft. Bloomberg said US homebuilder sentiment dropped to a 14-year low as mortgage rates above 7%, labor shortages and elevated supply costs battered housing, and White House economic adviser Kevin Hassett conceded September CPI shows inflation still needs policy attention even as beef and egg prices fall. The Bundesbank said German inflation risks are clearly tilted to the upside. The bulls point to the other half of the WSJ survey. Economists see firmer growth and eventual inflation relief, China's Q3 GDP beat forecasts at 4.5%, Canada's core inflation measures eased even as the headline ticked to 3.1%, and Germany's Merz said Europe can harness its strength to overcome economic malaise. If growth holds and inflation drifts lower, the yield grind becomes a backdrop rather than a trigger.</p>
+      <p>The bull read is the WSJ survey flagging firmer growth and eventual inflation relief, China's GDP beat and Canada's easing core measures. The bear read is Treasuries falling as haven demand fades, higher yields for longer, French bonds slumping on riots and homebuilder sentiment at a 14-year low.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (growth firms and inflation eventually eases):</strong> WSJ's survey of 71 economists sees firmer growth and eventual relief on inflation even if yields stay higher for longer. China's Q3 GDP beat forecasts at 4.5%, Canada's core inflation measures eased, and Germany's Friedrich Merz says Europe can overcome its malaise. Falling oil takes pressure off the inflation story. If the economy proves resilient, elevated yields are something equities can grow into.</div>
+        <div class="bear"><strong>Bear (the fiscal and rate grind has no ceiling):</strong> Bloomberg says Treasuries fell as the tech rebound sapped haven demand, and WSJ's economists see higher yields for longer. French bonds slumped again after cost-of-living riots, FT reports, with curfews imposed and protests multiplying across Milan, Brussels and beyond. US homebuilder sentiment hit a 14-year low on 7% mortgage rates, Hassett admits CPI still needs work, and the Bundesbank sees German inflation risks tilted up. Higher-for-longer keeps biting housing and sovereigns alike.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/see-what-71-economists-told-us-about-where-growth-and-yields-are-headed-8977cb44?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- See What 71 Economists Told Us About Where Growth and Yields Are Headed</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Retreats From a Five-Month High as Falling Energy Prices and a China GDP Beat Lift Risk Appetite, Even as Saudi Arabia Postpones Its Flagship Davos in the Desert After Houthi Attacks, Violent Cost-of-Living Riots Spread Across France and Europe, Merz Warns Russia Is Destabilizing the Continent and Ukraine-Russia Strikes Make Any Grain-Corridor Deal Unlikely</h3>
+      </div>
+      <p>The war premium eased at the margin, but the geopolitical backdrop stayed ugly. Bloomberg reported oil pulled back after touching a five-month high, with technical resistance tempering a rally sparked by supply risks from a flareup in Middle East fighting, and WSJ said gold rose amid falling oil prices as traders reweighed the Fed path. CoinDesk noted China's stronger-than-expected GDP and the softer crude helped lift risk appetite across Asian stocks and bitcoin. The fear has not gone, though. FT reported Saudi Arabia is postponing its flagship Future Investment Initiative, the Davos in the desert, after Houthi attacks, pushing the event into next year. Europe is the new stress zone: Bloomberg said more than 500,000 people protested surging energy and living costs across France, FT reported looting and clashes spreading to Milan, Brussels, Liege and Tirana, and German Chancellor Friedrich Merz warned in a Bloomberg interview that Russia is on the way to destabilize the entire political order of the continent. The war-and-grain overhang persists. Bloomberg said weekend Russia-Ukraine strikes made any deal to restart Black Sea grain exports increasingly unlikely, even as Zelenskyy opened talks with Turkey, Egypt and India on reopening civil navigation. Each attack keeps the energy and food risk live.</p>
+      <p>The bull read is oil retreating from a five-month high, falling energy prices lifting gold and risk assets, and China's GDP beat improving appetite. The bear read is Saudi postponing its flagship conference after Houthi attacks, riots spreading across Europe and Russia-Ukraine strikes killing the grain-deal hope.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the premium drains as flows normalize):</strong> Bloomberg says oil pulled back from a five-month high as technical resistance capped the supply-risk rally, and WSJ notes gold rose on the falling energy prices. CoinDesk reports China's GDP beat and the cheaper crude lifted risk appetite across Asian stocks and bitcoin. Zelenskyy is in talks with Turkey, Egypt and India on reopening Black Sea navigation. If crude keeps easing, the inflation and risk-off impulse fades.</div>
+        <div class="bear"><strong>Bear (the conflict keeps widening):</strong> Saudi Arabia is postponing its flagship Future Investment Initiative after Houthi attacks, FT reports, a direct hit to confidence in the Gulf. More than 500,000 protested cost-of-living pain across France, with riots spreading to Milan, Brussels and beyond, and Merz warns Russia is destabilizing Europe. Weekend Russia-Ukraine strikes make any grain-corridor deal unlikely, keeping food and energy risk elevated. The premium can snap back on the next escalation.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/75a2ee4e-ead9-4d37-b1ea-6fd759c4691d?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- Saudi Arabia to Postpone Davos in the Desert After Houthi Attacks</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Chip and Tech Stocks Rebound After the Nasdaq's Worst Week Since April 2025 as Goldman and JPMorgan Call CoreWeave's Debt Fears Overdone, Tenstorrent Raises at $6.2 Billion and Dip Buyers Bet the AI Boom Keeps Earnings Solid, Even as Hedge Funds Cut Tech at the Fastest Pace in a Decade, the Weak Points in AI Bonds Get Clearer, Microsoft Pulls Out of Nscale's UK Deal and Academy's Tchir Fears a Sharp AI-Debt Selloff</h3>
+      </div>
+      <p>The dip buyers won the open, but the credit worries did not leave. Bloomberg reported the Nasdaq 100 climbed on an AI trade revival after the worst week since the April 2025 tariff turmoil, as a rebound in giant chipmakers drew buyers betting the buildout keeps earnings solid, and MarketWatch said Micron and other chip stocks sprang back to life ahead of a key week featuring Nvidia and Meta. The upgrades piled in: Bloomberg said Goldman Sachs raised CoreWeave to buy on overblown debt worries, JPMorgan called its business sound despite the debt fears, and JPMorgan also upgraded Intel to neutral after four years of skepticism. AI capital kept flowing, with Bloomberg reporting chip startup Tenstorrent raised $1.5bn at a $6.2bn valuation. The cracks are the counter-story. Bloomberg said hedge funds cut tech at the fastest pace in at least a decade, per Goldman's prime desk, WSJ reported the weak points in AI bonds are becoming clearer as traders flag the biggest pitfalls in AI debt issuance, and Academy Securities' Peter Tchir said he is nervous about a sharp selloff in AI-related debt, citing faux liquidity. The funding setbacks are real too: Bloomberg and CoinDesk reported Microsoft pulled out of a UK data-center deal with Nscale, denting the Nvidia-backed firm's IPO hopes as its grid connection may not be ready until the 2030s, and CNBC said Anthropic is now seen as the AI trade's last big hope for a major IPO this year.</p>
+      <p>The bull read is the chip rebound, Goldman and JPMorgan calling CoreWeave's debt fears overdone, Tenstorrent's $6.2bn raise and dip buyers backing the earnings story. The bear read is hedge funds cutting tech fastest in a decade, AI bond weak points getting clearer, Microsoft walking from Nscale and Tchir warning of an AI-debt selloff.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the buildout and capital still compound):</strong> The Nasdaq 100 rebounded as chipmakers rallied and dip buyers bet the AI boom keeps earnings solid, Bloomberg reported. Goldman upgraded CoreWeave to buy and JPMorgan said its business is sound, calling the debt fears overdone, while Tenstorrent raised $1.5bn at a $6.2bn value. Malaysia's exports surged 55% to a record on AI demand and China's AI supercycle powered its GDP beat. The money and the demand are still accelerating.</div>
+        <div class="bear"><strong>Bear (the credit and funding cracks are widening):</strong> Hedge funds cut tech at the fastest pace in a decade, Goldman's prime desk says, and WSJ reports the weak points in AI bonds are getting clearer. Academy's Peter Tchir fears a sharp AI-debt selloff on faux liquidity, Microsoft pulled out of Nscale's UK data-center deal, and WSJ warns this AI wobble is a reminder that massive capital projects like railways and the internet all overbuilt. When the debt cracks, the equity leadership breaks.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-18/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nasdaq 100 Climbs on AI Trade Revival After Rout</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Tech stocks pull the S&P 500 higher as dip buyers step in after the rout</strong></summary>
+      <div class="deal-body">
+        <p>Chip companies rallied Monday, Bloomberg reported, helping stocks rebound after the worst week for the tech-heavy Nasdaq 100 since the April 2025 tariff turmoil. Dip buyers emerged on bets the AI investment boom will keep supporting solid earnings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/us-futures-climb-with-semiconductor-stocks-rebounding-after-rout" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tech Stocks Pull S&P 500 Higher as Dip Buyers Step in After Rout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wells Fargo says earnings season is off to a weak start as most reports fall short</strong></summary>
+      <div class="deal-body">
+        <p>The US earnings season is off to a poor start, Wells Fargo (WFC) strategists told Bloomberg, with most early reports falling short of estimates. The weak kickoff sets a cautious tone ahead of the megacap tech results due this week.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/wells-fargo-says-earnings-off-to-weak-start-as-most-fall-short" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wells Fargo Says Earnings Off to Weak Start as Most Fall Short</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CoreWeave upgraded to Buy at Goldman on overblown debt worries</strong></summary>
+      <div class="deal-body">
+        <p>CoreWeave (CRWV) was upgraded to buy from neutral at Goldman Sachs, Bloomberg reported, a vote of confidence in the cloud-computing provider after a stretch of heavy volatility tied to its debt. JPMorgan separately called the business sound despite the cash-burn fears.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/coreweave-upgraded-to-buy-at-goldman-on-overblown-debt-worries" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CoreWeave Upgraded to Buy at Goldman on Overblown Debt Worries</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cleveland-Cliffs jumps as steel prices and tariffs lift third-quarter profit</strong></summary>
+      <div class="deal-body">
+        <p>Cleveland-Cliffs (CLF) shares jumped after it reported third-quarter profit that topped estimates, Bloomberg reported, as steel prices rose and Trump administration tariffs eroded US imports. The beat shows tariffs cutting in the domestic producers' favor.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-19/coreweave-gets-stock-upgrade-cleveland-cliffs-earnings-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Cleveland-Cliffs Jumps on Earnings as Steel Prices Rise</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Avis Budget crashes as a 600% short-squeeze rally fully unwinds</strong></summary>
+      <div class="deal-body">
+        <p>Avis Budget (CAR) shares crashed back to earth, Bloomberg reported, ending a chapter that put bearish investors through a punishing 600% short squeeze. The unwind is a reminder of how violently crowded squeeze trades can reverse.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/avis-budget-car-stock-crashes-as-600-short-squeeze-rally-fully-unwinds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Avis Budget Stock Crashes as 600% Short Squeeze Rally Fully Unwinds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A former Intel skeptic drops his negative call after four years</strong></summary>
+      <div class="deal-body">
+        <p>A J.P. Morgan analyst upgraded Intel (INTC) to neutral from underweight, MarketWatch reported, saying the chipmaker's manufacturing and chip design have improved even if the turnaround may take years. The reversal ends a four-year bearish stance on the stock.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/why-a-former-intel-skeptic-is-giving-up-his-negative-call-on-the-stock-after-four-years-47c2fab6?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why a Former Intel Skeptic Is Giving Up His Negative Call on the Stock After Four Years</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Micron and other chip stocks spring back to life after a bruising selloff</strong></summary>
+      <div class="deal-body">
+        <p>Micron (MU) and peers sprang back after last week's rout, MarketWatch reported, in what shapes up as a key week with Nvidia gearing up for a European conference and Meta preparing to report earnings. The chip bounce led the broader tech recovery.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/micron-and-other-chip-stocks-spring-back-to-life-after-bruising-selloff-16486541?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Micron and Other Chip Stocks Spring Back to Life After Bruising Selloff</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape turned risk-on as chipmakers rebounded and oil eased, but the move rode over credit cracks that have not closed. The bull case is Goldman and JPMorgan calling CoreWeave's debt fears overdone, Tenstorrent's $6.2bn raise and dip buyers backing earnings. The bear case is hedge funds cutting tech fastest in a decade, AI bond weak points getting clearer and Wells Fargo flagging a weak earnings start. Watch Meta and the megacap AI guidance, chip leaders and any read on AI debt as the week opens.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Short Squeeze Reverses as Violently as It Rises</summary>
+      <p>Bloomberg reported Monday that Avis Budget shares crashed back to earth, fully unwinding a 600% short-squeeze rally that had punished bearish investors for months. The instinct is that a squeeze is just a stock going up, but the mechanics that drive the spike are the same ones that guarantee the collapse, and understanding them explains why these moves are so symmetric. Start with what short selling is. A short seller borrows shares and sells them, betting the price falls so they can buy back cheaper and pocket the difference. The catch is the position has unlimited loss potential: a stock can only fall to zero, but it can rise without limit, so a rising price inflicts mounting losses on every short. The second piece is the squeeze trigger. When a heavily shorted stock starts climbing, some shorts hit their risk limits or get margin calls from their broker, forcing them to buy shares to close out. That buying itself pushes the price higher, which forces more shorts to cover, which pushes the price higher again. This is a reflexive feedback loop: the buying is not driven by any view on the company's value, but by the mechanical need to stop the bleeding. A stock can run hundreds of percent on this dynamic alone, far past anything fundamentals justify. The third piece is why the top forms. Once the shorts have mostly covered, the mechanical buyer disappears. The float that was being chased is now held by momentum traders and latecomers who bought high, and there is no longer a wall of forced buying underneath the price. The fuel is spent. The fourth piece is the reversal. With the squeeze over, the stock is left trading far above any level fundamentals support, held by weak hands who bought the spike. As the price drifts down, those holders sell to cut losses, which pushes the price lower, which triggers more selling, the mirror image of the squeeze on the way up. New short sellers often pile back in once they see the top is in, adding to the downdraft. The move retraces because nothing underneath it was ever about value. The practical lesson for a market reader is that a parabolic squeeze and its collapse are two halves of the same mechanical event, not a story about the business changing. The tells are a very high short interest as a percentage of float, a thin float that is easy to move, and a price detached from fundamentals. When you see a stock up several hundred percent on forced covering rather than earnings, read the eventual full round trip as the base case, not the surprise. The same leverage and forced flows that launch the rocket bring it back down.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/avis-budget-car-stock-crashes-as-600-short-squeeze-rally-fully-unwinds" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Avis Budget Stock Crashes as 600% Short Squeeze Rally Fully Unwinds</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nasdaq 100 climbs on an AI trade revival after the worst week since April 2025</strong></summary>
+      <div class="deal-body">
+        <p>A rally in giant chipmakers buoyed the market, Bloomberg reported, as dip buyers emerged on bets the AI investment boom keeps earnings solid. The rebound followed the Nasdaq 100's worst week since the April 2025 tariff turmoil.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-19/nasdaq-100-climbs-on-ai-trade-revival-after-rout-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nasdaq 100 Climbs on AI Trade Revival After Rout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hedge funds cut tech at the fastest pace in a decade, Goldman says</strong></summary>
+      <div class="deal-body">
+        <p>Hedge funds retreated from tech stocks at the fastest clip in at least a decade, Bloomberg reported, citing Goldman Sachs' prime desk. The de-grossing undercuts the bullish surface of Monday's rebound and signals wary positioning into earnings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/hedge-funds-cut-tech-at-fastest-pace-in-a-decade-goldman-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hedge Funds Cut Tech at Fastest Pace in a Decade, Goldman Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft withdraws from Nscale's UK data-center deal as power delays stretch to the 2030s</strong></summary>
+      <div class="deal-body">
+        <p>Microsoft (MSFT) pulled out of a UK data-center deal with the Nvidia-backed firm Nscale, CoinDesk and Bloomberg reported, a setback for the neocloud's IPO hopes. Nscale planned to deliver 23,000 AI chips in the UK next year, but its grid connection may not be ready until the 2030s.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/10/19/bitcoin-mining-offshoot-nscale-loses-microsoft-ai-deal-as-power-delay-stretches-into-2030s" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Nscale Loses Microsoft AI Deal as Power Delay Stretches Into 2030s</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chip startup Tenstorrent raises funds at a $6.2 billion valuation</strong></summary>
+      <div class="deal-body">
+        <p>AI chip startup Tenstorrent raised $1.5bn from investors in a round that lifts its valuation to $6.2bn, Bloomberg reported, after attracting takeover interest earlier this year. The raise shows private AI-silicon capital still flowing despite the public-market wobble.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/ai-chip-startup-tenstorrent-raises-funds-at-6-2-billion-value" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chip Startup Tenstorrent Raises Funds at $6.2 Billion Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Apple sets an October 28 event for its first touch-screen MacBook Pro</strong></summary>
+      <div class="deal-body">
+        <p>Apple (AAPL) confirmed a product launch event for October 28, Bloomberg reported, where it plans to debut its first touch-screen MacBook. The event lands as Apple's Siri AI push remains the open question for its ecosystem.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/apple-announces-oct-28-event-for-touch-screen-macbook-pro" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apple Announces Oct. 28 Event for Touch-Screen MacBook Pro</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US moves to bar China's DeepSeek from federal agency systems</strong></summary>
+      <div class="deal-body">
+        <p>The Trump administration barred civilian US agencies from using products or services from Chinese AI startup DeepSeek, Bloomberg reported, citing a national-security threat from its China operations. The move widens the US-China AI decoupling.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/us-moves-to-bar-deepseek-from-federal-agencies-and-contracts" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Moves to Bar China's DeepSeek From Federal Agency Systems</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Amazon and AEP explore a 960-megawatt nuclear project in Indiana</strong></summary>
+      <div class="deal-body">
+        <p>American Electric Power (AEP) is working with Amazon (AMZN) to evaluate a 960-megawatt nuclear plant in Indiana using a new reactor design, Bloomberg reported. The project would rely on unproven technology to feed the AI buildout's hunger for power.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/amazon-and-aep-explore-960-megawatt-nuclear-project-in-indiana" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Amazon and AEP Explore 960-Megawatt Nuclear Project in Indiana</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Monday October 19, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is capital and demand, with Goldman and JPMorgan defending CoreWeave, Tenstorrent raising at $6.2bn and Malaysia's exports up 55% on AI. The counter-signal is hedge funds cutting tech fastest in a decade, the weak points in AI bonds getting clearer and Microsoft walking from Nscale. The near-term tell is whether megacap earnings this week validate the spend or expose the funding strain the credit market is already pricing.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>71 economists tell WSJ to expect higher yields for longer and firmer growth</strong></summary>
+      <div class="deal-body">
+        <p>Economists surveyed by WSJ now see higher bond yields for longer, firmer growth and eventual relief on inflation. The split outlook captures the market's central tension: resilient activity against a sticky rate backdrop.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/see-what-71-economists-told-us-about-where-growth-and-yields-are-headed-8977cb44?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- See What 71 Economists Told Us About Where Growth and Yields Are Headed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US homebuilder sentiment drops to a 14-year low on weak sales</strong></summary>
+      <div class="deal-body">
+        <p>Confidence among US homebuilders slumped to a 14-year low this month, Bloomberg reported, as mortgage rates above 7%, labor shortages and elevated supply costs battered the market. The slump underscores how higher-for-longer is squeezing rate-sensitive housing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/us-homebuilder-sentiment-drops-to-14-year-low-on-depressed-sales" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Homebuilder Sentiment Drops to 14-Year Low on Weak Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>French bond selloff intensifies after violent protests</strong></summary>
+      <div class="deal-body">
+        <p>The French bond selloff intensified after violent cost-of-living protests, FT reported, with authorities introducing partial curfews and admitting police botched oversight of the demonstrations. France remains the bellwether for European fiscal stress.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/cc7e577a-db7a-4e12-9a42-443696b98ec5?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- French Bond Sell-Off Intensifies After Violent Protests</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's Q3 growth beats forecasts, powered by stimulus and an export boom</strong></summary>
+      <div class="deal-body">
+        <p>China nudged third-quarter growth back into Beijing's target range at 4.5%, Bloomberg reported, a surprise rebound powered by factory production and the AI supercycle, even as the strength largely failed to feed domestic demand. Retail sales rose at double the expected pace.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/china-s-growth-rebounds-to-4-5-puts-annual-target-within-reach" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China Puts Growth Back on Target With Stimulus Push, Export Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Canada inflation edges up to 3.1% as core measures ease</strong></summary>
+      <div class="deal-body">
+        <p>Canada's inflation rate ticked up to 3.1% in September as gasoline prices rose, Bloomberg reported, while some gauges of underlying price pressures eased. The mixed read keeps the Bank of Canada's path finely balanced.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/canada-inflation-rate-edges-up-to-3-1-core-measures-ease" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Canada Inflation Rate Edges Up to 3.1%, Core Measures Ease</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasuries fall as the tech rebound weakens haven demand</strong></summary>
+      <div class="deal-body">
+        <p>Treasuries fell Monday, Bloomberg reported, as a rebound in US technology shares sapped haven demand for government debt. The move shows how tightly bonds and the AI-led equity tape are now trading together.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/treasuries-fall-as-tech-shares-rebound-weakening-haven-demand" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Treasuries Fall as Tech Shares Rebound, Weakening Haven Demand</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hassett says September CPI shows inflation still needs work</strong></summary>
+      <div class="deal-body">
+        <p>White House economic adviser Kevin Hassett said prices have been falling for items like beef and eggs, Bloomberg reported, though September consumer-price data shows overall inflation still needs policy attention. The remark keeps the disinflation story from looking complete.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/hassett-says-cpi-data-shows-inflation-needs-some-work" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hassett Says CPI Data Shows Inflation Needs Some Work</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (October 19, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bear side points to Treasuries falling as haven demand fades, higher yields for longer, French bonds slumping on riots and homebuilder sentiment at a 14-year low. The bull side points to the WSJ survey's firmer growth and eventual inflation relief, China's GDP beat and Canada's easing core measures. The swing factor is whether oil keeps retreating and lets the inflation narrative cool before CPI.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Weak Points in AI-Related Debt Are Showing Up First in the Bond Market</summary>
+      <p>WSJ reported Monday that the weak points in AI bonds are becoming clearer, with traders revealing where they see the biggest pitfalls in debt tied to the artificial-intelligence buildout, and Academy Securities' Peter Tchir told Bloomberg he is nervous about a sharp selloff in AI-related debt, citing faux liquidity. The instinct is to watch AI through its stocks, but the bond market often registers strain first, and understanding why explains what a widening in AI credit spreads is actually telling you. Start with how the buildout is financed. Data centers, chips and the power to run them cost enormous sums upfront, long before the revenue arrives, so companies increasingly fund them with debt: corporate bonds, private credit and special-purpose vehicles secured against the facilities and equipment. That debt carries fixed obligations. Unlike equity, which can ride out a bad year, a bond coupon must be paid on schedule or the borrower defaults. The second piece is why bondholders think differently from stockholders. An equity investor buys the upside, so they will pay for a dream of future growth. A bondholder has no upside beyond getting paid back, so their only job is to assess the downside: can this borrower service and repay the debt under stress. That asymmetry makes credit investors the market's natural skeptics, and when they start demanding higher yields to hold AI paper, they are pricing a rising chance the cash flows disappoint. The third piece is the collateral problem. Much AI debt is secured against GPUs and data-center gear, but those assets depreciate fast and can be made obsolete by the next chip generation. If a project stumbles, the collateral backing the loan may be worth far less than the loan itself, so recovery in a default is low. That is exactly the kind of weak point WSJ says traders are now probing. The fourth piece is Tchir's faux liquidity warning. Much of this debt trades thinly or sits in private credit funds that mark it infrequently, so it looks calm until everyone tries to sell at once. In a real scare, the exit is far narrower than the paper on-screen suggests, which is how an orderly repricing can turn into a sharp selloff. The fifth piece is the feedback to equities. If AI borrowers face higher funding costs or a closed debt window, they must slow the buildout, which hits the chip and power names whose revenue depends on that spend. The practical lesson for a market reader is that credit spreads on AI-related debt are a leading indicator for the whole trade, not a sideshow. When bond investors, who only care about getting paid back, start charging more to lend to the buildout, read it as the market pricing the risk that the capex cannot be funded to completion, and watch whether that strain shows up in the bonds before it reaches the stocks.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/the-weak-points-in-ai-bonds-are-becoming-clearer-12f09cc6?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The Weak Points in AI Bonds Are Becoming Clearer</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-19/academy-s-tchir-fears-ai-debt-may-trigger-sharp-selloff-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Academy's Tchir Fears AI Debt May Trigger Sharp Selloff</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Treasuries fell as the tech rebound sapped haven demand and WSJ's survey of 71 economists saw higher yields for longer, French bonds slumped again on riots and homebuilder sentiment hit a 14-year low, against firmer-growth forecasts, a China GDP beat and easing Canadian core inflation. Oil retreated from a five-month high and cheaper energy lifted risk appetite, even as Saudi Arabia postponed its flagship conference after Houthi attacks and riots spread across Europe. Chip and tech stocks rebounded with Goldman and JPMorgan defending CoreWeave and Tenstorrent raising at $6.2bn, against hedge funds cutting tech fastest in a decade, the weak points in AI bonds getting clearer and Microsoft walking from Nscale; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above $250, bull confirmed; below $235, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 10/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 10/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 10/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/22</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/23</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin holds near $82,000 as the Nasdaq rebounds more than 1%</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin extended a bounce above $82,000, CoinDesk reported, rising about 0.8% as China's GDP beat estimates and Nasdaq futures rebounded, while the CoinDesk 80 gained 1.3% and DeFi tokens led altcoin gains. The recovery tracked the broader risk-on turn.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/19/bitcoin-extends-bounce-above-usd82-000-as-stocks-rebound-defi-tokens-lead-altcoin-gains" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Extends Bounce Above $82,000 as Stocks Rebound</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan brings its JPM Coin deposit token to Ethereum</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan is bringing JPM Coin, which represents dollar deposits, to Ethereum, CoinDesk reported, as the lender looks to offer it to a wider set of institutional clients. The move pushes a major bank's tokenized deposits onto a public blockchain.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/19/jpmorgan-s-jpm-coin-representing-dollar-deposits-is-coming-to-ethereum-bloomberg" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- JPMorgan Brings JPM Coin to Ethereum</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The CFTC rebuffs CME's legal stance in a consequential fight over perpetual futures</strong></summary>
+      <div class="deal-body">
+        <p>The future of perpetual futures in the US may be at stake, CoinDesk reported, as the CFTC argues CME has not shown the new policy is hurting it after the agency approved its first bitcoin perp. The dispute could reshape a fast-growing derivatives market.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/10/19/u-s-cftc-rebuffs-cme-legal-stance-in-consequential-fight-over-perpetual-futures" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- U.S. CFTC Rebuffs CME Legal Stance in Fight Over Perpetual Futures</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crypto vault deposits top $10 billion as lending risks draw regulatory scrutiny</strong></summary>
+      <div class="deal-body">
+        <p>Curator-managed crypto lending strategies have attracted more than $10bn in deposits, CoinDesk reported, pulling in institutional capital while exposing depositors to collateral, liquidity and smart-contract risks. The growth is now drawing regulatory attention.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/19/crypto-vault-deposits-top-usd10-billion-as-lending-risks-draw-regulatory-scrutiny" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Vault Deposits Top $10 Billion as Lending Risks Draw Scrutiny</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin's $100,000 year-end hope divides analysts as inflation clouds the outlook</strong></summary>
+      <div class="deal-body">
+        <p>Bitwise sees a potential return above $100,000, CoinDesk reported, while LO:TECH expects a narrower trading range as interest-rate uncertainty weighs on the market. The split read mirrors the broader macro tension between easing growth and sticky inflation.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/18/bitcoin-s-usd100-000-year-end-hope-divides-analysts-as-inflation-clouds-outlook" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin's $100,000 Year-End Hope Divides Analysts as Inflation Clouds Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Deutsche Bank targets Asia crypto custody expansion in 2027 as its German launch nears</strong></summary>
+      <div class="deal-body">
+        <p>Deutsche Bank is targeting an Asia crypto-custody expansion in 2027 as its German launch approaches, CoinDesk reported, initially supporting bitcoin, ether and the stablecoins USDC, EURC and EURAU. The bank will manage clients' wallets and private keys.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/18/deutsche-bank-targets-asia-crypto-custody-expansion-in-2027-as-german-launch-nears" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Deutsche Bank Targets Asia Crypto Custody Expansion in 2027</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Proofpoint &amp; Varonis -- $6.3bn Cybersecurity Tie-Up</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Thoma Bravo-backed Proofpoint agreed to buy Varonis in a deal valued at about $6.3bn, Bloomberg reported, combining email, collaboration and data security into a broader platform.</p>
+        <p><strong>Outlook:</strong> The merger bets that AI agents and rising customer demand will accelerate consolidation across cybersecurity, giving the combined company a wider product suite.</p>
+        <p><strong>What it means:</strong> Private-equity-led roll-ups are reshaping security software just as AI widens the attack surface and the buyer base.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-19/proofpoint-s-6-3-billion-cybersecurity-bet-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Proofpoint's $6.3 Billion Cybersecurity Bet</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kimberly-Clark -- $4.9bn Bond Sale to Fund the Kenvue Takeover</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Kimberly-Clark (KMB) is set to raise $4.9bn from an investment-grade bond sale, Bloomberg reported, to help fund its pending acquisition of Tylenol maker Kenvue (KVUE).</p>
+        <p><strong>Outlook:</strong> Locking in term debt now lets the buyer finance a large consumer-health deal while investment-grade spreads remain accessible.</p>
+        <p><strong>What it means:</strong> The high-grade bond market stays open for big strategic M&A even as the AI debt complex shows cracks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/kimberly-clark-offers-bonds-to-help-fund-tylenol-maker-takeover" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kimberly-Clark Raising $4.9 Billion for Tylenol Maker Takeover</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>H&R REIT -- $4.8bn Breakup Sparks an Investor Revolt</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Canada's H&R Real Estate Investment Trust faces growing opposition to its $4.8bn breakup and sale, Bloomberg reported, with some investors arguing it hands too much value to the CEO's family.</p>
+        <p><strong>Outlook:</strong> The revolt could force revised terms or threaten the deal's approval, putting governance front and center.</p>
+        <p><strong>What it means:</strong> Shareholder pushback on related-party terms is tightening scrutiny of real-estate breakups.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/h-r-s-4-8-billion-deal-sparks-revolt-over-ceo-family-s-share" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- H&R's $4.8 Billion Deal Sparks Revolt Over CEO Family's Share</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tenstorrent -- $1.5bn Raise at a $6.2bn Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> AI chip startup Tenstorrent raised $1.5bn from investors, Bloomberg reported, lifting its valuation to $6.2bn after fielding takeover interest earlier in the year.</p>
+        <p><strong>Outlook:</strong> Fresh capital funds the push to compete in AI silicon, a crowded field dominated by Nvidia.</p>
+        <p><strong>What it means:</strong> Private AI-chip capital is still flowing even as the public-market IPO window tightens.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/ai-chip-startup-tenstorrent-raises-funds-at-6-2-billion-value" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chip Startup Tenstorrent Raises Funds at $6.2 Billion Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan -- $230bn Deployed in Year One of a Security Push</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> JPMorgan deployed $230bn of capital across energy independence, defense and aerospace in the first year of its decade-long plan to plow $1.5tn into US economic-security industries, Bloomberg and WSJ reported.</p>
+        <p><strong>Outlook:</strong> The bank is financing supply chains and defense contractors, with $5bn already going to direct defense-tech and hardware investments.</p>
+        <p><strong>What it means:</strong> Big-bank balance sheets are now a direct funding channel for national-security industrial policy.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/jamie-dimons-national-security-pledge-finances-230-billion-in-first-year-c757faf2?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Jamie Dimon's National-Security Pledge Finances $230 Billion in First Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Walmart -- Second US Bond Sale and a Possible Canadian Debut</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Walmart (WMT) is selling US dollar bonds for a second time this year and sounding out investors for a debut Canadian debt offering, Bloomberg reported, as it diversifies funding amid a spending spree.</p>
+        <p><strong>Outlook:</strong> Tapping a new currency market broadens the retailer's investor base as it funds expansion.</p>
+        <p><strong>What it means:</strong> Even cash-rich blue chips are terming out debt now while high-grade access stays open.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/walmart-sells-us-debt-eyes-canadian-market-as-spending-grows" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Walmart Sells US Debt, Eyes Canada Market as Spending Grows</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Goldman Sachs -- CoreWeave debt worries are overblown, upgraded to Buy</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs upgraded CoreWeave to buy from neutral, Bloomberg reported, calling the debt and cash-burn worries overblown after a stretch of heavy volatility. A named bull backing the AI-infrastructure borrower as expansion-driven rather than distressed.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/coreweave-upgraded-to-buy-at-goldman-on-overblown-debt-worries" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CoreWeave Upgraded to Buy at Goldman on Overblown Debt Worries</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan -- CoreWeave's business is sound despite the debt fears</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan analysts said investor concerns over CoreWeave's mounting debt and rapid cash burn are likely overdone, Bloomberg reported, since rapid expansion is driving its financing needs rather than weak project economics. A named bull on the AI-cloud credit story.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/coreweave-s-business-is-sound-despite-debt-fears-jpmorgan-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CoreWeave's Business Is Sound Despite Debt Fears, JPMorgan Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Peter Tchir (Academy Securities) -- nervous about an AI-debt selloff on faux liquidity</strong></summary>
+      <div class="deal-body">
+        <p>Academy Securities' head of macro strategy said he is nervous about a potential selloff of AI-related debt, Bloomberg reported, citing faux liquidity in markets. A named bear warning the credit side is the trade's fragile point.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-19/academy-s-tchir-fears-ai-debt-may-trigger-sharp-selloff-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Academy's Tchir Fears AI Debt May Trigger Sharp Selloff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman prime desk -- hedge funds cut tech at the fastest pace in a decade</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs' prime desk reported hedge funds retreated from tech stocks at the fastest clip in at least a decade, Bloomberg said. A positioning read showing the fast money de-risking even as the index bounced.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/hedge-funds-cut-tech-at-fastest-pace-in-a-decade-goldman-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hedge Funds Cut Tech at Fastest Pace in a Decade, Goldman Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Mandeep Singh (Bloomberg Intelligence) -- tech earnings could shift the rebound</strong></summary>
+      <div class="deal-body">
+        <p>Bloomberg Intelligence's Mandeep Singh said this week's tech earnings could shift the recent market rebound, Bloomberg reported, amid crosscurrents including financing concerns and volatility in cloud businesses. A named voice flagging the week as the swing test for the trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-19/tech-earnings-spacex-meta-to-test-ai-monetization-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tech Earnings Ahead: SpaceX, Meta to Test AI Monetization</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as Chips Rebound After the Nasdaq's Worst Week Since April 2025, With Goldman and JPMorgan Defending CoreWeave's Debt and Tenstorrent Raising at $6.2 Billion Against Peter Tchir Warning on an AI-Debt Selloff, Goldman's Prime Desk Flagging the Fastest Tech De-Grossing in a Decade and Mandeep Singh Calling Earnings the Swing Test</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the earnings engine still runs):</strong> Goldman upgraded CoreWeave to buy and JPMorgan called its business sound, both arguing the debt fears are overblown and driven by expansion. Tenstorrent raised $1.5bn at a $6.2bn value, Malaysia's exports surged 55% on AI demand and China's GDP beat on the AI supercycle. If megacap earnings this week validate the spend, the dip buyers are right.</div>
+        <div class="bear"><strong>Bear (the warnings are stacking up):</strong> Goldman's prime desk says hedge funds cut tech at the fastest pace in a decade, Academy's Peter Tchir fears a sharp AI-debt selloff on faux liquidity, and WSJ says the weak points in AI bonds are getting clearer. Microsoft walked from Nscale's UK deal, Wells Fargo flagged a weak earnings start, and WSJ warns this wobble is a reminder that massive capital projects overbuild. Narrow, debt-funded leadership breaks when credit cracks.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Chip rebound after the rout; Micron and CoreWeave bounce; Avis Budget squeeze fully unwinds; dip buyers return</td><td>Cautiously bullish</td><td>~36,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Tech snaps back; Goldman and JPM defend CoreWeave; Intel upgrade; Cleveland-Cliffs beats; weak earnings start</td><td>Mixed</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Higher yields for longer; French bonds slump on riots; homebuilder sentiment 14-year low; China GDP beat</td><td>Cautious</td><td>~31,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Weak points in AI bonds; Tchir faux-liquidity warning; hedge funds cut tech fastest in a decade; Nscale setback</td><td>Bearish-cautious</td><td>~23,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds near $82K; JPM Coin to Ethereum; CFTC-CME perps fight; vault deposits top $10bn; $100K year-end debate</td><td>Cautiously bullish</td><td>~26,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned cautiously risk-on as chips rebounded and oil eased. r/wallstreetbets leaned bullish on the Micron and CoreWeave bounce, though the Avis Budget collapse was a sobering reminder. r/stocks was mixed on the CoreWeave upgrades and Intel's reversal against a weak earnings start. r/investing stayed cautious on higher-for-longer, French bond stress and homebuilder sentiment at a 14-year low. r/SecurityAnalysis leaned bearish on the AI-bond cracks and the fastest tech de-grossing in a decade. r/CryptoCurrency was cautiously bullish as bitcoin held $82K. The swing factor is whether megacap earnings validate the rebound.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Hedge Funds Cutting Tech at a Decade-Fast Pace Matters More Than the Index Bouncing</h2>
+    <p>Bloomberg reported Monday that hedge funds retreated from tech stocks at the fastest pace in at least a decade, according to Goldman Sachs' prime brokerage desk, even as the Nasdaq 100 rebounded from its worst week since April 2025. The instinct is that a bouncing index means the worst is over, but positioning data from prime desks often tells a different and earlier story, and understanding why explains how the smart money can be heading for the door while the tape looks green. Start with what a prime desk sees. Large banks lend hedge funds the leverage and shares they use to trade, so the bank's prime brokerage unit has a real-time view of what its clients own, how much they have borrowed and which direction they are moving. Goldman's desk aggregating that flow is one of the market's cleanest reads on what the fast money is actually doing, not what it says in interviews. The second piece is the difference between price and positioning. An index level reflects where the last trades happened, which can be driven by a thin set of dip buyers or retail flow on a single morning. Positioning reflects the stock of exposure across big funds, which moves more slowly and deliberately. When those two diverge, with the price up but hedge funds cutting, the rally is not being led by the players with the most capital and conviction. The third piece is de-grossing. Hedge funds often reduce both their long and short books at once when they want to cut risk, a move called de-grossing. It is not a directional bet that stocks fall; it is a reduction in how much exposure they carry at all, usually triggered by rising volatility, losses or crowded positioning that has turned dangerous. Because tech had become the single most crowded long in the market, it is the first thing sold when funds pull in their horns, which is exactly why the cut shows up there first. The fourth piece is why this matters for what comes next. When leveraged funds reduce exposure, they remove a buyer that had been underpinning the group, so the stock that remains is held by weaker, less-committed hands. That makes the sector more fragile to the next piece of bad news, because the marginal buyer with firepower has stepped aside. A rebound on light positioning can reverse quickly if nothing refills that gap. The practical lesson for a market reader is that positioning and price are two separate signals, and when a prime desk reports the fastest de-grossing in a decade while the index rallies, you should weight the positioning. Watch whether the fast money returns on the dip or keeps selling into strength, because a rally the leveraged community is selling into is a weaker foundation than one it is buying. The tape can look like a recovery while the people with the most skin in the game are quietly reducing their bets.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/hedge-funds-cut-tech-at-fastest-pace-in-a-decade-goldman-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hedge Funds Cut Tech at Fastest Pace in a Decade, Goldman Says</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-18/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nasdaq 100 Climbs on AI Trade Revival After Rout</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>US CPI and inflation reads.</strong> With Hassett admitting September prices still need work and the Bundesbank seeing German inflation risks tilted up, watch the next CPI print for whether oil's earlier spike and tariffs are bleeding into core prices and the Fed's path.</li>
+      <li><strong>French OAT spreads and the late-October ECB meeting.</strong> With the French bond selloff intensifying after riots and curfews imposed, watch the OAT-bund spread as the live gauge of whether the stress spreads across Europe.</li>
+      <li><strong>Treasury yields and the higher-for-longer survey.</strong> After WSJ's 71 economists called for higher yields for longer, watch how auctions clear and whether the tech-equity bounce keeps pulling haven demand out of bonds.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Meta and the megacap tech wave.</strong> After a weak earnings start flagged by Wells Fargo, watch whether Meta and the other giants reporting this week justify AI monetization and capex, the swing test Mandeep Singh flagged.</li>
+      <li><strong>SpaceX and AI-adjacent results.</strong> With financing concerns and cloud volatility in focus, watch whether supplier and platform results validate the dip buyers or confirm the de-grossing.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>The AI debt and IPO window.</strong> After the weak points in AI bonds got clearer and Microsoft walked from Nscale's deal, watch whether AI credit spreads widen and whether Anthropic, now seen as the year's last big hope, keeps its IPO on track.</li>
+      <li><strong>Strategic M&A funding.</strong> After Proofpoint's $6.3bn Varonis deal and Kimberly-Clark's $4.9bn bond for Kenvue, watch whether high-grade issuance stays open for big takeovers even as AI paper wobbles.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Gulf attacks and the oil premium.</strong> With Saudi Arabia postponing its flagship investment conference after Houthi attacks, watch whether fresh strikes reverse oil's retreat from its five-month high.</li>
+      <li><strong>European unrest and Ukraine-Russia.</strong> With cost-of-living riots spreading across France, Italy and Belgium and weekend strikes killing the grain-deal hope, watch whether the instability deepens France's fiscal bind before the midterms.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how overseas bond markets like France transmit into US Treasury yields and corporate credit.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Oct 19, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-10-19 14:01 ET); Bloomberg Technology (20 fresh, newest 2026-10-19 13:30 ET); Bloomberg Economics (19 fresh, newest 2026-10-19 13:44 ET); CNBC Top News (1 fresh, newest 2026-10-19 08:34 ET); CNBC Finance (2 fresh, newest 2026-10-19 12:42 ET); CNBC Economy (2 fresh, newest 2026-10-19 10:20 ET); MarketWatch Top Stories (10 fresh, newest 2026-10-19 13:43 ET); WSJ Markets (15 fresh, newest 2026-10-19 12:31 ET); FT Home (10 fresh, newest 2026-10-19 13:07 ET); CoinDesk (24 fresh, newest 2026-10-19 12:47 ET); Stratechery (1 fresh, newest 2026-10-19 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Stale feeds (no items in window): Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove the tech and chip rebound on Monday?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed announced a surprise rate cut</span>
+      <span class="opt" data-opt="B">B. Oil spiked above $105 on a tanker attack</span>
+      <span class="opt" data-opt="C">C. Dip buyers returned as China GDP beat</span>
+      <span class="opt" data-opt="D">D. Nvidia reported blowout quarterly earnings</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported chipmakers rallied as dip buyers emerged on bets the AI boom keeps earnings solid, helped by a China GDP beat and falling oil. There was no Fed cut or Nvidia report, and oil actually retreated from a five-month high rather than spiking.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did Goldman's prime desk report about hedge funds and tech?</strong></p>
+      <span class="opt" data-opt="A">A. They cut tech at the fastest pace in a decade</span>
+      <span class="opt" data-opt="B">B. They piled into tech at a record clip</span>
+      <span class="opt" data-opt="C">C. They rotated from tech into French bonds</span>
+      <span class="opt" data-opt="D">D. They left tech exposure entirely unchanged</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported Goldman's prime desk saw hedge funds retreat from tech at the fastest clip in at least a decade, a de-grossing that undercut the rebound. They were cutting, not adding; there was no rotation into French bonds, and exposure fell sharply.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. Why did French government bonds slump further on Monday?</strong></p>
+      <span class="opt" data-opt="A">A. France formally defaulted on a bond payment</span>
+      <span class="opt" data-opt="B">B. The ECB sold off its French bond holdings</span>
+      <span class="opt" data-opt="C">C. France announced an exit from the euro area</span>
+      <span class="opt" data-opt="D">D. Violent cost-of-living riots swept the country</span>
+      <div class="feedback"><strong>D is correct.</strong> FT reported the French bond selloff intensified after violent protests, with curfews imposed and police oversight criticized. France has not defaulted, the ECB did not dump its holdings, and there was no euro exit; the trigger was the political and fiscal fallout from the riots.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasuries fell as the tech rebound sapped haven demand while WSJ's survey of 71 economists saw higher yields for longer, French bonds slumped again after violent cost-of-living riots, US homebuilder sentiment dropped to a 14-year low and Hassett said CPI still needs work, even as the same survey flagged firmer growth and eventual inflation relief, China's Q3 GDP beat and Canada's core inflation eased.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-19/treasuries-fall-as-tech-shares-rebound-weakening-haven-demand", "take": "Treasuries fall as tech shares rebound, weakening haven demand." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/see-what-71-economists-told-us-about-where-growth-and-yields-are-headed-8977cb44?mod=rss_markets_main", "take": "71 economists see higher bond yields for longer." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/cc7e577a-db7a-4e12-9a42-443696b98ec5?syn-25a6b1a6=1", "take": "French bond selloff intensifies after violent protests." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-19/china-s-growth-rebounds-to-4-5-puts-annual-target-within-reach", "take": "China's Q3 growth beats forecasts at 4.5%." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-19/canada-inflation-rate-edges-up-to-3-1-core-measures-ease", "take": "Canada core inflation measures ease even as headline ticks up." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil retreated from a five-month high as falling energy prices and a China GDP beat lifted risk appetite, even as Saudi Arabia postponed its flagship Davos in the desert after Houthi attacks, violent cost-of-living riots spread across France and Europe, Merz warned Russia is destabilizing the continent and Ukraine-Russia strikes made any grain-corridor deal unlikely.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-18/latest-oil-market-news-and-analysis-for-oct-19", "take": "Oil pulls back from a five-month high as technical resistance caps the rally." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/commodities-futures/gold-edges-higher-as-traders-weigh-fed-rate-hike-expectations-3517c447?mod=rss_markets_main", "take": "Gold rises amid falling oil prices." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/75a2ee4e-ead9-4d37-b1ea-6fd759c4691d?syn-25a6b1a6=1", "take": "Saudi Arabia to postpone Davos in the desert after Houthi attacks." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/d8df36c2-7e8c-4cfb-ad9e-e6e954fea4b9?syn-25a6b1a6=1", "take": "Violent protests multiply across Europe." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-19/wheat-futures-rise-as-ukraine-russia-strikes-stoke-supply-fears", "take": "Russia-Ukraine strikes make any grain-corridor deal unlikely." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Chip and tech stocks rebounded after the Nasdaq's worst week since April 2025 as Goldman and JPMorgan called CoreWeave's debt fears overdone, Tenstorrent raised at $6.2bn and dip buyers bet the AI boom keeps earnings solid, even as hedge funds cut tech at the fastest pace in a decade, the weak points in AI bonds got clearer, Microsoft pulled out of Nscale's UK deal and Academy's Tchir feared a sharp AI-debt selloff.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-19/coreweave-upgraded-to-buy-at-goldman-on-overblown-debt-worries", "take": "CoreWeave upgraded to buy at Goldman on overblown debt worries." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-19/ai-chip-startup-tenstorrent-raises-funds-at-6-2-billion-value", "take": "Chip startup Tenstorrent raises funds at a $6.2bn value." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-18/stock-market-today-dow-s-p-live-updates", "take": "Nasdaq 100 climbs on AI trade revival after rout." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-19/hedge-funds-cut-tech-at-fastest-pace-in-a-decade-goldman-says", "take": "Hedge funds cut tech at the fastest pace in a decade." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/investing/the-weak-points-in-ai-bonds-are-becoming-clearer-12f09cc6?mod=rss_markets_main", "take": "The weak points in AI bonds are becoming clearer." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Micron","CoreWeave","Intel","Cleveland-Cliffs","Nvidia","Nscale"],
+    "values": [4.2, 6.1, 3.0, 5.4, 2.1, -8.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [36000, 29000, 31000, 23000, 26000],
+    "colors": ["bull","neutral","neutral","bear","bull"]
+  },
+  "dealSizes": {
+    "labels": ["Proofpoint/Varonis","Kimberly-Clark Bond","H&R REIT Breakup","Tenstorrent Raise","JPMorgan Defense"],
+    "values": [6.3, 4.9, 4.8, 1.5, 5.0]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
