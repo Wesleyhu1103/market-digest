@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Tue Oct 20, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-10-20</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Tuesday, October 20, 2026</h1>
+    <div class="meta">
+      <p>Monday's AI rebound reversed as a flopped South Korean data-center IPO reignited the valuation debate and benchmark oil blew past $110 a barrel on fresh Iranian strikes in the Gulf. It's a heavy earnings afternoon with SpaceX, Netflix, GM, RTX and Northrop on deck, and Treasury yields slipped as haven demand crept back. US pending home sales just hit a record low and French bond risk flared again before easing.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The AI-stock recovery faltered Tuesday after South Korean neocloud Elice tumbled roughly 30% on its trading debut, reviving fears the AI boom is overbuilt just as credit-default-swap trading on big tech surged and benchmark oil topped $110 a barrel",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "S&P 500 Rebounds as Big Bank Stocks Climb, SpaceX Results Loom", "angle": "Reads the tape as resilient, with banks and healthcare erasing early losses even as the Elice flop weighs on chips.", "lean": 20, "pull": "The S&P 500 rose, erasing its early-session losses, as big banks and healthcare companies climbed."},
+        {"outlet": "WSJ", "headline": "AI Selloff Returns, Oil Tops $110 a Barrel", "angle": "Frames it as risk coming off again, with the AI recovery stalling and crude jumping above $111.", "lean": -55, "pull": "A recovery in artificial intelligence stocks faltered while benchmark oil prices jumped above $111 a barrel, as investors once again pulled back from risk."},
+        {"outlet": "Financial Times", "headline": "AI Debt Worries Spark Surge in Default Insurance Trading", "angle": "Points at the credit market, where swap volumes on big tech are soaring as investors hedge an unraveling.", "lean": -50, "pull": "Volumes of credit default swaps linked to big tech groups soar as investors seek protection against boom unravelling."},
+        {"outlet": "CNBC", "headline": "HSBC CEO Warns the AI Boom Won't Make Every Data Center a Good Bet", "angle": "Sounds a selective note, warning that not every data-center build will pay off even if demand holds.", "lean": -30, "pull": "Data center campuses house the servers that power AI and cloud computing, but not every one is a good bet."},
+        {"outlet": "Bloomberg", "headline": "AI Debutant's Flameout Stokes Fears the Boom Is Ending", "angle": "Reads Elice as a bellwether, thrusting a little-known firm into a roiling debate over whether AI valuations can deliver.", "lean": -40, "pull": "Elice found itself at the heart of a roiling debate about AI valuations and whether companies will be able to deliver on them."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasury Yields Fall as the AI Selloff Revives Haven Demand While US Pending Home Sales Plunge to a Record Low and Housing Starts Hit One of the Worst Paces Since the Pandemic, French Bond Risk Flares Again Before Easing on Budget Talks With Bessent and Rehn Downplaying Spillover, UK Dealers See £3bn More Gilt Sales and German Investor Confidence Worsens, Even as UK Payrolls Rebound and Crossmark Calls It a Slowdown Not a Recession</h3>
+      </div>
+      <p>Rates swung back toward safety as the equity recovery cracked. WSJ reported French government-bond yields turned higher amid budget talks in the national assembly while Treasury yields fell, and Bloomberg said a measure of French bond risk breached 150 basis points on Tuesday before authorities moved to calm markets. Treasury Secretary Scott Bessent said he sees no spillover from France's bond turmoil, and ECB Governing Council member Olli Rehn said the French spread to Germany had widened only "somewhat." The domestic data was grim. Bloomberg reported US pending home sales plunged to a record low in September as mortgage rates above 7% kept buyers out, MarketWatch pegged contract signings at a 25-year low, and residential construction fell to one of the weakest paces since the pandemic. Fiscal strain is spreading: UK dealers see £3bn more gilt sales as headroom shrinks, German investor confidence worsened for the first time since April, and WSJ's survey of 71 economists still sees higher yields for longer. The bulls note the stress is not uniform. UK payrolls rebounded and joblessness fell ahead of the budget, UK insolvencies dropped, Alberta voters rejected separation from Canada, and Crossmark's Victoria Fernandez told Bloomberg the US is heading for a slowdown rather than a recession. If the French bind stays contained and growth merely cools, falling yields are relief, not a warning.</p>
+      <p>The bull read is Treasury yields falling, Bessent and Rehn playing down French spillover, French yields recovering on budget talks, UK payrolls rebounding and Crossmark calling it a slowdown not a recession. The bear read is pending home sales at a record low, housing starts near pandemic-era lows, French bond risk flaring to 150bps, more gilt sales looming and German confidence rolling over.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the stress stays contained as growth cools):</strong> Treasury yields fell as haven demand returned, and Bessent sees no spillover from France while Rehn calls the spread widening only "somewhat." French yields recovered on budget talks, UK payrolls rebounded with joblessness falling, UK insolvencies dropped, and Alberta voters rejected separation. Crossmark's Victoria Fernandez says the US is slowing, not recessing. A controlled cooldown with lower yields is something equities can live with.</div>
+        <div class="bear"><strong>Bear (the housing and fiscal cracks keep widening):</strong> US pending home sales plunged to a record low and housing starts hit one of the worst paces since the pandemic as 7% mortgages bite, Bloomberg reports. French bond risk breached 150bps again, UK dealers see £3bn more gilt sales, German investor confidence worsened, and WSJ's 71 economists still see higher yields for longer. Even with yields down today, the debt and housing strain is structural, not a blip.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-20/us-pending-home-sales-fall-to-record-low-as-mortgage-rates-rise" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Pending Home Sales Plunged in September to a Record Low</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Tops $110 a Barrel as Iran Ramps Up Hormuz Ship Attacks and European Gas Climbs Above €90 for the First Time Since 2022, the UK Deploys Jets to Defend Saudi Arabia, Russia Ships the Least Oil in a Month and French Riots Become Insurance "Natural Catastrophes," Even as Witkoff Meets Zelenskyy to Restart Peace Talks and Halliburton Bets on a Multi-Year Mideast Rebuild</h3>
+      </div>
+      <p>The war premium came roaring back. Bloomberg reported Brent oil climbed to a five-month high as traders weighed the threat of Iranian strikes hampering energy flows, and WSJ put benchmark crude above $111 a barrel as the AI selloff and the supply scare pulled investors off risk. The escalation is real: Bloomberg said Iranian attacks in the Persian Gulf are striking more ships and causing more severe damage than earlier in the conflict, the UK is deploying jets to defend Saudi Arabia against Houthi attacks per FT, and European natural gas climbed above €90 for the first time in almost four years heading into winter. The supply side is tightening from multiple directions, with Russia shipping the least oil in a month as the Baltic port of Primorsk halted. The human and fiscal toll of Europe's unrest keeps building too: FT reported insurers now treat French riots "like natural catastrophes," with similar events expected every year, as France weighs new curfews. The bulls lean on diplomacy and services demand. FT said Trump envoy Steve Witkoff will meet Zelenskyy before traveling to Moscow to restart Ukraine-Russia peace talks, Russia's port halt looks like maintenance rather than sanctions, and Halliburton told Bloomberg it sees years of oilfield growth as the Middle East rebuilds from the Iran war. If talks gain traction and the supply disruptions prove temporary, the premium can drain again.</p>
+      <p>The bull read is Witkoff restarting peace talks, the Russia port halt being maintenance and Halliburton betting on a multi-year rebuild. The bear read is oil topping $110 on intensifying Hormuz attacks, European gas above €90, the UK sending jets to Saudi and French riots becoming an annual insurance catastrophe.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (diplomacy and rebuild demand cap the premium):</strong> FT reports Witkoff will meet Zelenskyy before heading to Moscow to restart peace talks, a path toward de-escalation. Russia's drop to the least oil shipped in a month looks tied to maintenance at Primorsk rather than a lasting hit, and Halliburton sees years of oilfield growth as the Mideast rebuilds. If talks progress and the Gulf disruptions ease, crude's spike unwinds as fast as it came.</div>
+        <div class="bear"><strong>Bear (the conflict is widening the supply shock):</strong> Brent topped $110 as Iran strikes more ship engine rooms in the Gulf, Bloomberg reports, and European gas broke above €90 for the first time since 2022 into winter. The UK is deploying jets to defend Saudi Arabia, Russia is shipping the least oil in a month, and French riots are now an annual insurance catastrophe. Each escalation feeds the energy and inflation risk, and higher oil is exactly what the AI trade and bonds do not need.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-20/iran-strikes-more-ship-engine-rooms-in-ramp-up-of-hormuz-attacks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Iran Strikes More Ship Engine Rooms in Ramp-Up of Hormuz Attacks</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Recovery Falters as South Korea's Elice Flops Nearly 30% on Debut, Credit-Default-Swap Trading on Big Tech Surges, HSBC's CEO Warns Not Every Data Center Is a Good Bet and WSJ Asks Whether the Fed Can Kill the AI Boom, Even as Nscale and Anthropic Talk a $45bn Computing Deal, Salesforce Buys Braze for $5.7bn, Amazon Pledges €16bn in Germany and ASI Raises at a $3bn Valuation</h3>
+      </div>
+      <p>The dip buyers lost their grip. Bloomberg reported South Korean neocloud Elice tumbled roughly 30% on its trading debut, thrusting a little-known firm into a roiling debate over AI valuations and stoking fears the boom is ending, and the Nasdaq 100 only clawed back to a slight gain. The credit market is flashing the same worry: FT said volumes of credit-default swaps linked to big tech groups are soaring as investors buy protection against the boom unraveling, HSBC's CEO warned not every data center will be a good bet, and WSJ ran a column arguing the Fed can indeed kill the AI boom. The Bank of England is even weighing a stress test of AI's effect on the financial sector. The counter-story is that the capital keeps coming. Bloomberg reported Nscale and Anthropic are in talks for a cloud-computing deal worth about $45bn, a striking reversal just a day after Microsoft walked away from Nscale, Salesforce agreed to buy marketing platform Braze for $5.7bn, and Amazon pledged more than €16bn in Germany on data centers and Prime. Startup ASI raised $325m at a $3bn valuation for military and air-traffic AI, and DeepSeek released an open-source tool to cut AI operating costs even as the US barred it from federal systems. MarketWatch said Meta is back on offense and could be the first megacap this season to signal higher AI spending, while WSJ noted stock pickers burned by the boom think their moment has finally arrived.</p>
+      <p>The bull read is the Nscale-Anthropic $45bn talks, Salesforce's $5.7bn Braze deal, Amazon's €16bn Germany pledge and ASI raising at $3bn, with capital still flowing hard. The bear read is Elice's debut flop, surging big-tech CDS trading, HSBC warning on data-center bets and WSJ asking whether the Fed can end the boom.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the capital and demand keep compounding):</strong> Nscale and Anthropic are in talks for a $45bn computing deal, Bloomberg reports, erasing yesterday's Microsoft setback, while Salesforce is buying Braze for $5.7bn and Amazon is pledging more than €16bn in Germany. ASI raised at a $3bn value for defense and air-traffic AI, and Meta looks set to signal even higher spending. Stock pickers burned by the boom think the active moment has arrived. The money is still accelerating into AI.</div>
+        <div class="bear"><strong>Bear (the valuation and credit cracks are spreading):</strong> Elice flopped nearly 30% on debut, stoking fears the AI boom is ending, and FT says CDS trading on big tech is surging as investors hedge an unraveling. HSBC's CEO warns not every data center is a good bet, WSJ argues the Fed can kill the boom, and the Bank of England is weighing an AI stress test. When the primary market breaks and the credit market pays up for protection, the equity leadership is on thin ice.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-20/ai-debutant-s-flameout-stokes-fears-the-boom-is-ending" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Debutant's Flameout Stokes Fears the Boom Is Ending</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>S&P 500 erases early losses as big banks and healthcare climb into SpaceX results</strong></summary>
+      <div class="deal-body">
+        <p>The S&P 500 rose after a weak open, Bloomberg reported, as big banks and healthcare names climbed and the Nasdaq 100 clawed back to a slight gain. The rebound came even after South Korea's Elice tanked in its debut, a flop that kept pressure on chips as SpaceX, Netflix and GM lined up to report.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/us-futures-slip-as-neocloud-ipo-elice-flops-spacex-results-loom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- S&P 500 Rebounds as Big Bank Stocks Climb, SpaceX Results Loom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>GM beats third-quarter estimates, narrows guidance and adds $20bn to buybacks</strong></summary>
+      <div class="deal-body">
+        <p>General Motors (GM) beat Wall Street's third-quarter estimates and narrowed its full-year earnings guidance, CNBC reported, while raising its adjusted automotive free-cash-flow outlook and authorizing another $20bn in share repurchases. The buyback signals balance-sheet confidence even as sales soften.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/20/general-motors-gm-earnings-q3-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- General Motors Beats Wall Street's Q3 Earnings Expectations, Narrows Full-Year Guidance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Salesforce gets a chilly response to its $6bn Braze deal at a 58% premium</strong></summary>
+      <div class="deal-body">
+        <p>Salesforce (CRM) agreed to buy AI marketing platform Braze for nearly $6bn at a 58% premium, MarketWatch reported, but Wall Street's response was frosty. The rich price for a growth asset drew skepticism in a market suddenly wary of expensive AI bets.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/salesforce-gets-a-chilly-investor-response-to-a-6-billion-deal-at-a-58-premium-57bd260b?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Salesforce Gets a Chilly Investor Response to a $6 Billion Deal at a 58% Premium</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Netflix needs blockbusters to reverse a $135bn market-value wipeout</strong></summary>
+      <div class="deal-body">
+        <p>Netflix (NFLX) must prove it can produce hit movies and TV series again, Bloomberg reported, to stop a slide that has erased more than $135bn in market value this year. The stock heads into earnings needing a content catalyst, not just subscriber math.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/netflix-needs-blockbusters-to-reverse-its-135-billion-wipeout" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Netflix Needs Blockbusters to Reverse Its $135 Billion Wipeout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Novo's CagriSema shows 25% weight loss in women in a late-stage analysis</strong></summary>
+      <div class="deal-body">
+        <p>Novo Nordisk (NVO) released new evidence that its experimental CagriSema injection can improve on the weight loss from its blockbuster Wegovy, CNBC reported, with a late-stage analysis showing 25% weight loss in women. The read keeps Novo in the obesity-drug race against Eli Lilly.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/20/novo-cagrisema-women-weight-loss-analysis.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Novo's Next-Generation Obesity Drug Shows 25% Weight Loss in Women</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kroger sets a self-funded three-year plan to simplify and modernize</strong></summary>
+      <div class="deal-body">
+        <p>Kroger (KR) laid out a new three-year plan targeting earnings growth and an operations overhaul, WSJ reported, saying it will refocus on core strengths with a self-funded effort to simplify and modernize the business. The plan leans on execution rather than big acquisitions.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/retail/kroger-targets-earnings-growth-operations-overhaul-in-new-three-year-plan-fe1d2bc5?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Kroger Targets Earnings Growth, Operations Overhaul in New Three-Year Plan</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Emerging-market stocks trade at their biggest-ever discount to the US</strong></summary>
+      <div class="deal-body">
+        <p>Soaring profit expectations are making emerging-market stocks historically cheap versus US peers, Bloomberg reported, pushing the valuation gap to the widest on record. The discount signals a potential buying opportunity for long-term investors as the AI trade concentrates in US megacaps.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/emerging-stocks-are-trading-at-their-biggest-ever-discount-to-us" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Emerging Stocks Are Trading at Biggest-Ever Discount to US</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape turned defensive as the Elice flop and $110 oil pulled risk back, with banks and healthcare leading and chips lagging. The bull case is Nscale-Anthropic's $45bn talks, Salesforce's Braze deal, Amazon's €16bn Germany pledge and GM's buyback. The bear case is surging big-tech CDS trading, HSBC's data-center warning and pending home sales at a record low. Watch SpaceX, Netflix and the megacap AI guidance, chip leaders and any read on AI credit as the afternoon prints land.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Single IPO Flop Can Spook an Entire Sector</summary>
+      <p>Bloomberg reported Tuesday that Elice, a little-known South Korean neocloud firm, tumbled roughly 30% on its trading debut and found itself at the heart of a roiling debate about AI valuations and whether companies can deliver on them. The instinct is that one small IPO in Seoul should not matter to Nvidia or the Nasdaq, but the way primary markets transmit information explains why a debut flop can reprice a whole sector in a single session. Start with what an IPO actually tests. When a company goes public, underwriters and the company set a price based on private-market comparables and investor demand gathered during the roadshow. That price is a live auction of what public buyers will pay for the story, and unlike a private funding round, it cannot be massaged by a single friendly investor. The first trades are the cleanest possible read on real demand. The second piece is why a neocloud debut is a bellwether. Neoclouds like Elice, CoreWeave and Nscale rent out AI computing power, so their valuations rest entirely on the assumption that demand for AI compute keeps growing fast enough to justify enormous capital spending. When one of them prices a deal and the stock immediately craters, the market is saying the growth assumptions baked into the whole category are too high. That repricing does not stay contained, because the same assumptions underpin the chipmakers that sell to neoclouds and the hyperscalers that compete with them. The third piece is the signal to private markets. A large chunk of AI value sits in private companies still raising at rich valuations. Those private marks lean on the hope of an eventual IPO at an even higher price. When a public debut flops, it tells every private investor and founder that the exit they were counting on may come in lower than modeled, which pressures private valuations and makes the next funding round harder. That is why a Seoul listing can ripple into a venture deal in California. The fourth piece is reflexivity through sentiment. Markets were already nervous, with credit-default-swap trading on big tech surging as FT reported. A visible, quantifiable failure gives that latent anxiety a number to rally around, and momentum traders who were long on the dip-buying thesis cut fast, amplifying the move. The practical lesson for a market reader is that the IPO window is a real-time referendum on a sector's growth story, not a sideshow for bankers. When a representative company in a hot category prices a deal and the market rejects it, read it as the clearest available evidence that public buyers think the valuations have run ahead of the fundamentals, and watch whether the next scheduled listings get pulled or cut, because a closing primary window starves the whole buildout of the capital it assumes will always be there.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/ai-debutant-s-flameout-stokes-fears-the-boom-is-ending" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Debutant's Flameout Stokes Fears the Boom Is Ending</a></p>
+      <p class="deal-source"><a href="https://www.ft.com/content/cddafc0a-1ae6-467b-84b8-34c172002b6a?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- South Korean Data Centre Builder Tumbles 32% on Trading Debut</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>AI debutant's flameout stokes fears the boom is ending</strong></summary>
+      <div class="deal-body">
+        <p>South Korea's Elice, scarcely known outside its home market until this week, tumbled roughly 30% on its trading debut, Bloomberg reported, landing at the center of a debate about AI valuations and whether companies can deliver on them. The flop reignited the overbuild worry across chips.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/ai-debutant-s-flameout-stokes-fears-the-boom-is-ending" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Debutant's Flameout Stokes Fears the Boom Is Ending</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI debt worries spark a surge in default-insurance trading on big tech</strong></summary>
+      <div class="deal-body">
+        <p>Volumes of credit-default swaps linked to big tech groups are soaring, FT reported, as investors seek protection against the AI boom unraveling. The hedging surge shows the credit market pricing rising odds the buildout's cash flows disappoint.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/6dd31584-064c-4015-bf5d-e5747799ccd5?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- AI Debt Worries Spark Surge in Default Insurance Trading</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nscale and Anthropic in talks for a $45bn AI computing deal</strong></summary>
+      <div class="deal-body">
+        <p>Nscale is in talks to sell computing power to Anthropic in a deal that could be worth about $45bn, Bloomberg reported, a striking reversal a day after Microsoft walked away from an Nscale UK project. The talks suggest demand for AI compute is still drawing huge commitments.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/nscale-anthropic-in-talks-for-45-billion-cloud-computing-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nscale, Anthropic in Talks for $45 Billion AI Computing Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Salesforce to buy marketing platform Braze for $5.7bn</strong></summary>
+      <div class="deal-body">
+        <p>Salesforce (CRM) agreed to buy Braze, an AI-powered platform for marketers, for almost $5.7bn in enterprise value, Bloomberg reported. The deal deepens Salesforce's push to embed AI agents across its customer-engagement stack.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/salesforce-to-buy-marketing-platform-braze-for-5-7-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Salesforce to Buy Marketing Platform Braze for $5.7 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Amazon pledges €16bn in Germany on data centers and Prime</strong></summary>
+      <div class="deal-body">
+        <p>Amazon (AMZN) said it will invest more than €16bn ($17.9bn) next year in Germany for operations including data centers, its satellite program and Prime Video production, Bloomberg reported. The pledge underscores how the hyperscalers keep committing capital despite the valuation jitters.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/amazon-pledges-16-billion-in-germany-on-data-centers-prime" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Amazon Pledges €16 Billion in Germany on Data Centers, Prime</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>DeepSeek opens its scaling software even as the US bars it from federal systems</strong></summary>
+      <div class="deal-body">
+        <p>DeepSeek is open-sourcing the software it uses to run its AI models at scale, Bloomberg reported, potentially making its technology cheaper to deploy, a day after the Trump administration barred civilian US agencies from using the Chinese startup over national-security concerns. The split moves widen the US-China AI decoupling.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/deepseek-unveils-open-source-tool-to-help-cut-ai-operating-costs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- DeepSeek Unveils Open-Source Tool to Help Cut AI Operating Costs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Google Cloud outage knocks out Revolut and other UK online services</strong></summary>
+      <div class="deal-body">
+        <p>An outage at Google Cloud (GOOGL) knocked digital bank Revolut and other online services offline for hours, Bloomberg reported, with the company citing power issues. The disruption is a reminder of concentration risk as banking and AI workloads pile onto a few hyperscalers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/google-cloud-outage-takes-down-revolut-and-other-banks-in-uk" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Google Cloud Power Outage Impacts Revolut, Other Online Services</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Tuesday October 20, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is capital still committing, with Nscale-Anthropic's $45bn talks, Salesforce's Braze deal and Amazon's €16bn Germany pledge. The counter-signal is Elice's flop, surging big-tech CDS trading and HSBC warning not every data center pays off. The near-term tell is whether SpaceX, Netflix and the coming megacap guidance validate the spend or confirm what the credit market is already hedging against.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>US pending home sales plunge to a record low as mortgage rates bite</strong></summary>
+      <div class="deal-body">
+        <p>Pending sales of existing US homes fell to a record low in September, Bloomberg reported, as mortgage rates above 7% continued to crush demand. MarketWatch called it a 25-year low for contract signings, underscoring how deep the housing freeze has become.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/us-pending-home-sales-fall-to-record-low-as-mortgage-rates-rise" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Pending Home Sales Plunged in September to a Record Low</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US housing starts fall to one of the worst paces since the pandemic</strong></summary>
+      <div class="deal-body">
+        <p>New US residential construction declined in September to one of the weakest paces since the pandemic, Bloomberg reported, with single-family building permits also sliding. The data highlights a languishing housing market squeezed by elevated rates and costs.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/us-housing-starts-fall-to-four-month-low-as-demand-falters" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Housing Starts Fall to One of the Worst Paces Since Pandemic</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bessent sees no spillover from France's bond-market turmoil</strong></summary>
+      <div class="deal-body">
+        <p>Treasury Secretary Scott Bessent said he does not anticipate a spillover from the French bond market, Bloomberg reported, even as surging yields drive a broader debate over France's finances. The comment aimed to reassure investors that the stress stays contained in Europe.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/bessent-sees-no-spillover-from-france-bond-market-s-turmoil" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bessent Sees No Spillover From France Bond Market's Turmoil</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>French bond risk climbs again before yields recover on budget talks</strong></summary>
+      <div class="deal-body">
+        <p>A measure of French bond risk breached 150 basis points on Tuesday, Bloomberg reported, underscoring the challenge of taming the deficit amid cost-of-living protests. WSJ said French yields later turned higher amid budget talks even as Treasury yields fell, and ECB's Rehn called the spread widening only "somewhat."</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/french-bond-risk-gauge-hits-150-basis-points-after-protests" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- French Bond Risk Climbs Again With Investors Wary on Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UK dealers see £3bn more gilt sales as fiscal headroom shrinks</strong></summary>
+      <div class="deal-body">
+        <p>The UK will need to borrow £3bn ($4bn) more than planned this fiscal year to cover higher debt costs and spending, Bloomberg reported, citing bond dealers. The added issuance lands just before Chancellor Healey's crucial budget, even as UK payrolls rebounded and joblessness fell.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/uk-dealers-see-3-4-billion-more-gilt-sales-as-headroom-shrinks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UK Dealers See £3 Billion More Gilt Sales as Headroom Falls</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>German investor outlook worsens for the first time since April</strong></summary>
+      <div class="deal-body">
+        <p>German investor confidence dropped for the first time since April, Bloomberg reported, highlighting the economy's bumpy recovery from a multiyear malaise. The soft read adds to the signs of a stalling European upturn even as the UK holds up.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/german-investor-outlook-worsens-for-first-time-since-april" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- German Investor Outlook Worsens for First Time Since April</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Crossmark's Fernandez sees a US slowdown, not a recession</strong></summary>
+      <div class="deal-body">
+        <p>Crossmark Global Investments' chief market strategist Victoria Fernandez told Bloomberg the factors she watches point to a slowdown in the US economy and markets rather than an outright recession. The read gives the bulls a reason to treat falling yields as a cushion rather than a warning.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-20/us-heading-for-a-slowdown-not-a-recession-crossmark-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Heading for a Slowdown, Not a Recession, Says Crossmark's Fernandez</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (October 20, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to Treasury yields falling, Bessent and Rehn playing down French spillover, French yields recovering and UK payrolls rebounding. The bear side points to pending home sales at a record low, housing starts near pandemic lows, French bond risk at 150bps and more gilt sales looming. The swing factor is whether $110 oil feeds back into the inflation story before the next CPI print.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Soaring Credit-Default-Swap Volumes Are an Early Warning for the AI Trade</summary>
+      <p>FT reported Tuesday that volumes of credit-default swaps linked to big tech groups are soaring as investors seek protection against the AI boom unraveling. The instinct is to track AI through its stocks, but a surge in CDS trading is a distinct and often earlier signal, and understanding how these instruments work explains what the hedging activity is really telling you. Start with what a credit-default swap is. A CDS is an insurance contract on a company's debt. The buyer pays a regular premium, and if the company defaults or its credit deteriorates, the seller pays out. The price of that protection, quoted as a spread, rises when the market thinks default risk is increasing. So when CDS spreads on big tech widen and volumes jump, investors are paying up to insure against those companies failing to pay their debts. The second piece is why this matters even for firms that look flush. Many of the largest AI spenders are funding data centers, chips and power with enormous amounts of debt, often through subsidiaries and special-purpose vehicles rather than the parent balance sheet. The headline company may have huge cash reserves, but the financing structures underneath can be far more fragile, and CDS lets investors bet specifically on that debt stack rather than the equity. The third piece is why credit investors move first. An equity holder profits from upside, so they will tolerate uncertainty for a shot at growth. A CDS buyer is purely hedging downside, so their activity reflects fear, not hope. When protection buying surges, it means sophisticated holders of the underlying bonds are nervous enough to pay for insurance, which is a cleaner read on perceived risk than a stock price that can be propped up by momentum and buybacks. The fourth piece is the feedback loop. Rising CDS spreads make it more expensive for those companies to issue new debt, because bond investors price off the same risk signal. Higher funding costs force borrowers to slow spending, which hits the chipmakers and power suppliers downstream, which can validate the very fear the swaps were pricing. The fifth piece is the liquidity tell. A jump in CDS volume, not just price, means more participants are crowding into the same hedge. That can precede a broader risk-off move, because once everyone is paying for protection, the marginal buyer of the underlying bonds and stocks has already turned cautious. The practical lesson for a market reader is that the derivatives market often prices stress before the cash equity market admits it. When CDS volumes on big tech surge, read it as the credit market voting with real money that the AI buildout's debt could come under strain, and watch whether that widening leads the stocks lower, because the insurance buyers are usually looking at the balance sheet the equity crowd is ignoring.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/6dd31584-064c-4015-bf5d-e5747799ccd5?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: FT -- AI Debt Worries Spark Surge in Default Insurance Trading</a></p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/10/20/data-center-financing-ai-debt-hsbc.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- HSBC CEO Warns the AI Boom Won't Make Every Data Center a Good Bet</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Treasury yields fell as the AI selloff revived haven demand while US pending home sales hit a record low, housing starts slumped and French bond risk flared to 150bps before easing, against Bessent and Rehn downplaying spillover, a UK payrolls rebound and Crossmark calling it a slowdown not a recession. Oil topped $110 on intensifying Iranian Hormuz attacks with European gas above €90 and the UK sending jets to Saudi, even as Witkoff moved to restart Ukraine-Russia talks. The AI recovery faltered as Elice flopped nearly 30% and big-tech CDS trading surged, against Nscale-Anthropic's $45bn talks, Salesforce's Braze deal and Amazon's €16bn Germany pledge; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above $250, bull confirmed; below $235, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 10/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 10/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 10/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/22</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/23</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin drops to $81,400 as Asian chip stocks tumble, then reclaims $83,000</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin slipped to around $81,400 as South Korea's Kospi fell 3.7% on AI worries and options traders sought downside protection, CoinDesk reported, before reclaiming $83,000 when US stocks turned higher. The whipsaw tracked the AI selloff and recovery through the day.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/20/bitcoin-drops-to-usd81-400-as-asian-chip-stocks-tumble-options-traders-seek-downside-protection" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Drops to $81,400 as Asian Chip Stocks Tumble</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan sees 10% annual bitcoin returns, topping stocks, bonds and gold</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan expects bitcoin to return about 10% annually over the next decade, outpacing stocks, bonds and gold, CoinDesk reported, the first time the bank has put a range on BTC returns in its research. The bank still remains cautious about bitcoin's role in portfolios.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/20/jpmorgan-sees-10-annual-bitcoin-returns-topping-stocks-bonds-and-gold-over-next-decade" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- JPMorgan Sees 10% Annual Bitcoin Returns, Topping Stocks, Bonds and Gold</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin ETFs post their biggest day in a month, thanks entirely to BlackRock</strong></summary>
+      <div class="deal-body">
+        <p>Spot bitcoin ETFs saw their largest daily inflow in nearly a month, CoinDesk reported, driven entirely by BlackRock's IBIT while Fidelity's FBTC and Grayscale's GBTC bled outflows. The concentration shows how one issuer is carrying the ETF flow story.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/20/bitcoin-etfs-just-saw-their-biggest-day-in-a-month-thanks-entirely-to-blackrock" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin ETFs Just Saw Their Biggest Day in a Month Thanks Entirely to BlackRock</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>France's parliament votes to hit crypto-to-stablecoin trades with a 31% levy</strong></summary>
+      <div class="deal-body">
+        <p>France's parliament approved an amendment removing tax deferral for MiCA-compliant stablecoins, CoinDesk reported, imposing a 31% capital-gains tax on crypto-to-stablecoin trades from January 2027. The move raises the cost of stablecoin activity in the EU's second-largest economy.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/10/20/france-s-parliament-approves-vote-to-hit-crypto-to-stablecoin-trades-with-31-levy" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- France's Parliament Approves Vote to Hit Stablecoin Trades With 31% Capital Gains Tax</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft, Alphabet and Goldman join objections to OKX-ICE tokenized stock trading</strong></summary>
+      <div class="deal-body">
+        <p>Seven more issuers, including Microsoft, Alphabet and Goldman Sachs, opted out of being listed on the planned OKX-ICE tokenized stock venue, CoinDesk reported, bringing the disclosed objection count to 16. The pushback complicates efforts to bring equities on-chain under the SEC's framework.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/19/microsoft-alphabet-and-goldman-sachs-join-objections-to-okx-ice-tokenized-stock-trading" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Microsoft, Alphabet and Goldman Sachs Join Objections to OKX-ICE Tokenized Stock Trading</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kazakhstan court bars Coinbase and five others from unlicensed crypto services</strong></summary>
+      <div class="deal-body">
+        <p>A Kazakhstan court barred Coinbase and five other firms from offering unlicensed crypto services inside the Astana International Financial Centre, CoinDesk reported. The injunctions apply only to AIFC users and do not extend across the rest of the country.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/20/kazakhstan-court-bars-coinbase-five-others-from-unlicensed-crypto-services-in-astana-international-financial-centre" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Kazakhstan Court Bars Coinbase, Five Others From Unlicensed Crypto Services</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Nscale &amp; Anthropic -- $45bn AI Computing Talks</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Nscale is in talks to sell computing power to Anthropic in a deal that could be worth about $45bn, Bloomberg reported, a day after Microsoft walked away from an Nscale UK project.</p>
+        <p><strong>Outlook:</strong> A commitment this size would anchor Nscale's buildout and revive its IPO case, showing demand for AI compute is still drawing massive multi-year contracts.</p>
+        <p><strong>What it means:</strong> Even amid a valuation scare, the biggest AI buyers are still locking in capacity at eye-watering scale.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-19/nscale-anthropic-in-talks-for-45-billion-cloud-computing-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nscale, Anthropic in Talks for $45 Billion AI Computing Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Salesforce &amp; Braze -- $5.7bn AI Marketing Tie-Up</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Salesforce agreed to buy AI marketing platform Braze for almost $5.7bn in enterprise value at a 58% premium, Bloomberg and MarketWatch reported, deepening its customer-engagement stack.</p>
+        <p><strong>Outlook:</strong> The deal bets AI agents will reshape marketing software, though Wall Street's chilly response flagged the rich price in a jittery tape.</p>
+        <p><strong>What it means:</strong> Big software buyers are still paying up for AI assets even as investors question the returns.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/salesforce-to-buy-marketing-platform-braze-for-5-7-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Salesforce to Buy Marketing Platform Braze for $5.7 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Prudential Financial -- $4bn Sale of Its Brazil and Mexico Units</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Prudential Financial (PRU) agreed to sell Prudential of Brazil and Prudential of Mexico to CNP Assurances for $4bn in cash, WSJ reported, pruning its international footprint.</p>
+        <p><strong>Outlook:</strong> The cash deal lets Prudential simplify and return capital while CNP expands in Latin America.</p>
+        <p><strong>What it means:</strong> Insurers keep reshuffling geographic portfolios as capital discipline trumps growth-at-any-cost.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/prudential-financial-sells-prudential-of-brazil-prudential-of-mexico-for-4-billion-985c25bf?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Prudential Financial Sells Prudential of Brazil, Prudential of Mexico for $4 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Amazon -- €16bn Germany Pledge on Data Centers and Prime</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Amazon said it will invest more than €16bn ($17.9bn) next year in Germany across data centers, its satellite program and Prime Video production, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The pledge extends the hyperscaler capex arms race into Europe just as AI-spend scrutiny intensifies.</p>
+        <p><strong>What it means:</strong> The buildout commitments keep landing even as markets second-guess whether they will pay off.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/amazon-pledges-16-billion-in-germany-on-data-centers-prime" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Amazon Pledges €16 Billion in Germany on Data Centers, Prime</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ASI -- $325m Round at a $3bn Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Startup ASI raised $325m in a round led by Spark, Bloomberg reported, hitting a $3bn valuation to expand an AI system that helps the military, airlines and air-traffic controllers manage assets.</p>
+        <p><strong>Outlook:</strong> The fresh capital funds a push into defense and logistics AI, a less crowded corner than the neocloud race.</p>
+        <p><strong>What it means:</strong> Private AI capital is still flowing to applied, mission-critical use cases even as public AI listings stumble.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/asi-hits-3-billion-valuation-in-325-million-round-led-by-spark" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ASI Hits $3 Billion Valuation in $325 Million Round Led by Spark</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>GM -- $20bn Added to Share Buybacks After a Q3 Beat</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> General Motors beat third-quarter estimates and authorized another $20bn in share repurchases, CNBC reported, while narrowing full-year guidance and lifting its free-cash-flow outlook.</p>
+        <p><strong>Outlook:</strong> The buyback signals confidence in cash generation even as auto sales soften into 2027.</p>
+        <p><strong>What it means:</strong> Cash-rich industrials are leaning on buybacks to support the stock when top-line growth stalls.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/20/general-motors-gm-earnings-q3-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- General Motors Beats Wall Street's Q3 Earnings Expectations, Narrows Full-Year Guidance</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>HSBC (Georges Elhedery) -- the AI boom won't make every data center a good bet</strong></summary>
+      <div class="deal-body">
+        <p>HSBC's CEO warned that strong AI demand does not guarantee every data-center project pays off, CNBC reported, urging selectivity on the financing side. A named bear on the indiscriminate buildout, flagging that credit quality varies widely across AI infrastructure.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/20/data-center-financing-ai-debt-hsbc.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- HSBC CEO Warns the AI Boom Won't Make Every Data Center a Good Bet</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citrini Research -- bets on life-sciences stocks after a Claude AI drug study</strong></summary>
+      <div class="deal-body">
+        <p>Citrini Research said life-sciences companies stand to gain from AI-fueled drug discovery, Bloomberg reported, after testing Anthropic's Claude Science. A named bull rotating the AI trade toward applied beneficiaries rather than the infrastructure names under pressure.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/citrini-bets-on-life-sciences-stocks-after-claude-ai-drug-study" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citrini Bets on Life Sciences After Claude AI Drug Study</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Victoria Fernandez (Crossmark) -- a US slowdown, not a recession</strong></summary>
+      <div class="deal-body">
+        <p>Crossmark Global Investments' chief market strategist said the factors she watches point to a slowdown in the US economy and markets rather than a recession, Bloomberg reported. A named voice arguing the soft data signals a controlled cooldown, not a downturn.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-20/us-heading-for-a-slowdown-not-a-recession-crossmark-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Heading for a Slowdown, Not a Recession, Says Crossmark's Fernandez</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan -- street-high target on Ocado as a re-rating gains steam</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan analysts said the recent rebound in Ocado shares may be the start of a "sustained re-rating," Bloomberg reported, setting a Street-high price target. A named bull leaning into a turnaround story outside the crowded AI megacaps.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-20/ocado-rally-tipped-to-extend-as-jpmorgan-sets-street-high-target" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Ocado Rally Tipped to Extend as JPMorgan Sets Street-High Target</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>WSJ -- stock pickers burned by the AI boom think their moment has arrived</strong></summary>
+      <div class="deal-body">
+        <p>Active stock pickers who lagged the index-dominating AI trade believe their moment has finally come, WSJ reported, pointing to CoreWeave's slide as a sign the trade is entering a new stage. A positioning read that fading concentration could reward dispersion and selection.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/stock-pickers-burned-by-the-ai-boom-think-their-moment-has-finally-arrived-07878da7?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Pickers Burned by the AI Boom Think Their Moment Has Finally Arrived</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the AI Recovery Stalls on Elice's Flop and Surging Big-Tech CDS Trading, With HSBC Warning Not Every Data Center Pays Off and WSJ Saying Stock Pickers' Moment Has Arrived, Against Citrini Rotating Into AI Drug Discovery, JPMorgan's Street-High Ocado Target and Crossmark Calling It a Slowdown Not a Recession</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (rotation, not collapse):</strong> Citrini is betting on life-sciences stocks as AI drug discovery accelerates, JPMorgan set a Street-high Ocado target on a sustained re-rating, and WSJ says stock pickers burned by the boom think dispersion will finally reward them. Crossmark's Victoria Fernandez calls the US a slowdown rather than a recession. If capital rotates from crowded megacaps into applied beneficiaries, the broader market can hold even as the leaders wobble.</div>
+        <div class="bear"><strong>Bear (the warnings are stacking up):</strong> HSBC's CEO warns not every data center is a good bet, FT says CDS trading on big tech is surging as investors hedge an unraveling, and Elice's flopped debut stokes fears the boom is ending. WSJ ran a column arguing the Fed can kill the AI boom, and the Bank of England is weighing an AI stress test. When the primary market breaks and the credit market pays up for protection, narrow, debt-funded leadership is fragile.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>AI selloff returns; Elice flops 30%; oil tops $110; Braze pops on Salesforce buyout; GM beats and buys back $20bn</td><td>Nervous-mixed</td><td>~38,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Chip weakness; Netflix $135bn wipeout into earnings; Salesforce chilly $6bn deal; Novo obesity data; emerging-markets discount</td><td>Mixed</td><td>~30,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Pending home sales record low; housing starts slump; French bond risk flares; Bessent no spillover; yields fall</td><td>Cautious</td><td>~32,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Big-tech CDS trading surges; HSBC data-center warning; WSJ says Fed can kill AI boom; BoE AI stress test</td><td>Bearish-cautious</td><td>~25,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC dips to $81.4K then reclaims $83K; JPMorgan sees 10% returns; BlackRock drives ETF inflows; France 31% stablecoin tax</td><td>Mixed</td><td>~27,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped defensive as the AI recovery stalled and oil jumped. r/wallstreetbets was nervous on the Elice flop and $110 crude, though the Braze pop and GM buyback gave bulls something. r/stocks stayed mixed on chip weakness, Netflix into earnings and the frosty Salesforce deal. r/investing was cautious on record-low pending home sales and French bond stress even as yields fell. r/SecurityAnalysis leaned bearish on surging big-tech CDS and the HSBC data-center warning. r/CryptoCurrency was mixed as bitcoin round-tripped $81K to $83K. The swing factor is whether SpaceX, Netflix and the megacap guidance steady the tape.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Falling Treasury Yields and Falling Stocks on the Same Day Are Telling You Something</h2>
+    <p>Bloomberg and WSJ reported Tuesday that Treasury yields fell even as the AI-stock recovery faltered and oil topped $110, a combination that often confuses newer readers who expect bonds and stocks to move opposite each other only when the news is good. The instinct is that lower yields are bullish, but when yields fall because investors are fleeing risk, the signal is the opposite, and understanding the mechanism explains what a day like this is actually saying. Start with what a Treasury yield represents. When investors buy government bonds, the price goes up and the yield goes down, because yield and price move inversely. US Treasuries are the market's benchmark safe asset, so when fear rises, money rushes into them, pushing prices up and yields down. That is the flight-to-safety trade, and it is a distinct driver from the other reason yields fall, which is a cooling inflation or growth outlook. The first task for a reader is to figure out which one is happening. The second piece is how to tell the difference. If yields are falling while stocks rally, it usually means the market expects easier policy or softer inflation with growth intact, which is the benign version. If yields are falling while stocks drop, as happened Tuesday, it means investors are selling risk assets and parking the proceeds in bonds for safety. The direction of stocks is the tell: lower yields with lower stocks is risk-off, not relief. The third piece is why both can be driven by the same catalyst. A flopped AI IPO and a spike in oil both raise uncertainty about future earnings and inflation. Equity investors respond by cutting exposure to the most expensive, growth-dependent stocks, while the cash they raise needs somewhere to sit, and Treasuries are the default haven. So one event pushes stocks down and bonds up at the same time, a mechanical consequence of money rotating from risk to safety within the same portfolios. The fourth piece is the complication from oil. Higher crude is inflationary, which in isolation should push yields up as investors demand more compensation for future inflation. When yields fall anyway despite a $110 oil print, it tells you the flight-to-safety impulse is strong enough to overwhelm the inflation signal, which is itself a measure of how nervous the market is. The fifth piece is what to watch next. If the risk-off move deepens, yields keep falling and credit spreads widen, which confirms genuine fear. If it was a one-day wobble, yields drift back up as haven demand fades and stocks stabilize. The practical lesson for a market reader is that falling yields are not automatically good news, and the only way to read them is alongside what equities and credit are doing. When bonds rally while stocks and risk assets sell off, treat it as the market voting for safety, not for easier conditions, and watch whether the move extends or reverses over the next few sessions, because a sustained flight to quality is a very different signal from a benign disinflation rally that happens to look the same on the yield screen.</p>
+    <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/ai-selloff-returns-oil-tops-110-a-barrel-b8400c70?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- AI Selloff Returns, Oil Tops $110 a Barrel</a></p>
+    <p class="deal-source"><a href="https://www.wsj.com/finance/french-government-bonds-recover-as-yields-on-eurozone-u-s-peers-fall-cf473ce6?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- French Government-Bond Yields Turn Higher; Treasury Yields Fall</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>US inflation and the housing picture.</strong> With pending home sales at a record low and housing starts near pandemic lows, watch the next CPI and housing reads for whether $110 oil and 7% mortgages are bleeding into the broader data and the Fed's path.</li>
+      <li><strong>French OAT spreads and European fiscal stress.</strong> With French bond risk breaching 150bps before easing and Bessent and Rehn playing down spillover, watch the OAT-bund spread and budget-assembly votes as the live gauge of whether the stress stays contained.</li>
+      <li><strong>UK budget and gilt supply.</strong> After dealers flagged £3bn more gilt sales and payrolls rebounded, watch Chancellor Healey's budget next week and any bank-tax decision for the read on UK fiscal credibility.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>SpaceX, Netflix, GM, RTX and Northrop today.</strong> Watch whether SpaceX and Netflix steady the tape and whether defense names confirm the retreat WSJ flagged, with Netflix needing a content catalyst to reverse its $135bn wipeout.</li>
+      <li><strong>Meta and the megacap AI-spend signal.</strong> MarketWatch says Meta could be the first giant this season to foreshadow higher-than-expected AI costs, the key tell for whether capex guidance validates or spooks the trade.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>The AI debt and IPO window.</strong> After Elice's flop and surging big-tech CDS trading, watch whether AI credit spreads widen further and whether the Nscale-Anthropic $45bn talks and Anthropic's own listing stay on track.</li>
+      <li><strong>Strategic M&A appetite.</strong> After Salesforce's chilly-received $5.7bn Braze deal and Prudential's $4bn LatAm sale, watch whether buyers keep paying premiums for AI and growth assets into a nervier tape.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Hormuz attacks and the oil premium.</strong> With Iran striking more ships and the UK deploying jets to defend Saudi Arabia, watch whether fresh strikes push Brent higher or Witkoff's peace push drains the premium.</li>
+      <li><strong>European energy and unrest.</strong> With gas above €90 into winter and French riots now an annual insurance catastrophe, watch whether new curfews quell the violence and whether the energy crunch deepens.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how overseas bond markets like France transmit into US Treasury yields and corporate credit.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Tue Oct 20, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-10-20 10:08 ET); Bloomberg Technology (20 fresh, newest 2026-10-20 10:00 ET); Bloomberg Economics (20 fresh, newest 2026-10-20 10:00 ET); CNBC Top News (5 fresh, newest 2026-10-20 09:46 ET); CNBC Finance (4 fresh, newest 2026-10-20 06:39 ET); CNBC Economy (2 fresh, newest 2026-10-19 14:36 ET); MarketWatch Top Stories (10 fresh, newest 2026-10-20 10:16 ET); WSJ Markets (17 fresh, newest 2026-10-20 10:19 ET); FT Home (10 fresh, newest 2026-10-20 10:11 ET); Matt Levine Money Stuff (1 fresh, newest 2026-10-19 14:28 ET); CoinDesk (24 fresh, newest 2026-10-20 09:35 ET); Stratechery (2 fresh, newest 2026-10-20 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What triggered the AI selloff's return on Tuesday?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed raised rates by half a point</span>
+      <span class="opt" data-opt="B">B. A South Korean neocloud IPO flopped badly</span>
+      <span class="opt" data-opt="C">C. Nvidia cut its full-year revenue guidance</span>
+      <span class="opt" data-opt="D">D. OpenAI canceled its planned public listing</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg reported South Korea's Elice tumbled roughly 30% on its trading debut, reviving fears the AI boom is overbuilt. There was no Fed hike, Nvidia did not cut guidance, and OpenAI's delay was earlier news, not Tuesday's catalyst.</div>
+    </div>
+    <div class="q" data-correct="C">
+      <p><strong>2. What happened to oil prices on Tuesday?</strong></p>
+      <span class="opt" data-opt="A">A. Brent fell back below ninety dollars</span>
+      <span class="opt" data-opt="B">B. OPEC announced a surprise output hike</span>
+      <span class="opt" data-opt="C">C. Brent topped $110 on Hormuz attack fears</span>
+      <span class="opt" data-opt="D">D. The US released strategic petroleum reserves</span>
+      <div class="feedback"><strong>C is correct.</strong> WSJ and Bloomberg reported benchmark crude jumped above $110 a barrel as Iran stepped up attacks on ships in the Gulf. Oil rose rather than fell, there was no OPEC hike, and no SPR release drove the move.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why did US Treasury yields fall on Tuesday?</strong></p>
+      <span class="opt" data-opt="A">A. AI jitters revived demand for havens</span>
+      <span class="opt" data-opt="B">B. The Treasury canceled a bond auction</span>
+      <span class="opt" data-opt="C">C. Inflation data came in far below forecasts</span>
+      <span class="opt" data-opt="D">D. The Fed signaled an imminent rate cut</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg and WSJ reported Treasury yields fell as the AI selloff pushed investors back into havens. No auction was canceled, there was no soft inflation surprise driving it, and the Fed sent no new rate-cut signal that day.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasury yields fell as the AI selloff revived haven demand while US pending home sales plunged to a record low and housing starts hit one of the worst paces since the pandemic, French bond risk flared to 150bps before easing, UK dealers saw £3bn more gilt sales and German investor confidence worsened, even as Bessent and Rehn downplayed French spillover, UK payrolls rebounded and Crossmark called it a slowdown not a recession.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-20/us-pending-home-sales-fall-to-record-low-as-mortgage-rates-rise", "take": "US pending home sales plunged to a record low in September." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-20/french-bond-risk-gauge-hits-150-basis-points-after-protests", "take": "French bond risk breached 150 basis points again." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-20/uk-dealers-see-3-4-billion-more-gilt-sales-as-headroom-shrinks", "take": "UK dealers see £3bn more gilt sales as headroom shrinks." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-20/bessent-sees-no-spillover-from-france-bond-market-s-turmoil", "take": "Bessent sees no spillover from France's bond-market turmoil." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-10-20/us-heading-for-a-slowdown-not-a-recession-crossmark-video", "take": "Crossmark's Fernandez sees a US slowdown, not a recession." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil topped $110 a barrel as Iran ramped up Hormuz ship attacks and European gas climbed above €90 for the first time since 2022, the UK deployed jets to defend Saudi Arabia, Russia shipped the least oil in a month and French riots became an annual insurance catastrophe, even as Witkoff moved to restart Ukraine-Russia peace talks and Halliburton bet on a multi-year Mideast rebuild.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-20/iran-strikes-more-ship-engine-rooms-in-ramp-up-of-hormuz-attacks", "take": "Iran strikes more ship engine rooms in a ramp-up of Hormuz attacks." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/stocks/ai-selloff-returns-oil-tops-110-a-barrel-b8400c70?mod=rss_markets_main", "take": "AI selloff returns as oil tops $110 a barrel." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-20/european-gas-prices-rise-above-90-for-first-time-since-2022", "take": "European gas climbs above €90 for the first time since 2022." },
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/a068036c-a752-4267-9a2f-a95190ef619f?syn-25a6b1a6=1", "take": "Witkoff to meet Zelenskyy before travelling to Moscow to restart talks." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-20/halliburton-sees-multi-year-demand-growth-from-energy-disruption", "take": "Halliburton sees lasting growth as the Mideast rebuilds from war." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI recovery faltered as South Korea's Elice flopped nearly 30% on debut, credit-default-swap trading on big tech surged, HSBC's CEO warned not every data center is a good bet and WSJ asked whether the Fed can kill the AI boom, even as Nscale and Anthropic talked a $45bn computing deal, Salesforce bought Braze for $5.7bn, Amazon pledged €16bn in Germany and ASI raised at a $3bn valuation.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-20/ai-debutant-s-flameout-stokes-fears-the-boom-is-ending", "take": "AI debutant's flameout stokes fears the boom is ending." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/6dd31584-064c-4015-bf5d-e5747799ccd5?syn-25a6b1a6=1", "take": "AI debt worries spark a surge in default-insurance trading." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/10/20/data-center-financing-ai-debt-hsbc.html", "take": "HSBC CEO warns not every data center is a good bet." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-19/nscale-anthropic-in-talks-for-45-billion-cloud-computing-deal", "take": "Nscale and Anthropic in talks for a $45bn computing deal." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-20/salesforce-to-buy-marketing-platform-braze-for-5-7-billion", "take": "Salesforce to buy marketing platform Braze for $5.7bn." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Elice","Braze","GM","Netflix","Nvidia","Salesforce"],
+    "values": [-32.0, 52.0, 2.0, -1.8, -2.5, -3.5]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [38000, 30000, 32000, 25000, 27000],
+    "colors": ["neutral","neutral","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["Nscale/Anthropic","Amazon Germany","Salesforce/Braze","Prudential LatAm","ASI Round"],
+    "values": [45.0, 17.9, 5.7, 4.0, 0.325]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
