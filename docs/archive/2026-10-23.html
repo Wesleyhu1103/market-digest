@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Fri Oct 23, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-10-23</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Friday, October 23, 2026</h1>
+    <div class="meta">
+      <p>The AI selloff is pausing at the end of a whiplash week after the Nasdaq's worst day since June, but oil keeps the mood cautious, touching $114 for the first time since May on fresh Houthi attacks and a reported Saudi Aramco headquarters evacuation. Thursday's flight to safety handed Treasury yields their biggest drop since the 2023 banking scare, and Moody's updates its rating on France after the US close. The Fed and BOJ both meet next week.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Global stocks stayed under pressure Friday as Brent oil hit $114 for the first time since May on escalating Houthi attacks and a reported Aramco HQ evacuation, even as the AI-stock rout showed signs of easing, after Thursday's flight to safety drove Treasury yields to their biggest one-day drop since the 2023 banking crisis and left France facing a Moody's rating review after the close",
+      "framings": [
+        {"outlet": "Financial Times", "headline": "Oil Hits $114 for First Time Since May as Global Stocks Knocked by AI Fears", "angle": "Frames markets as facing twin threats from surging crude and doubts about the durability of the AI boom.", "lean": -50, "pull": "Markets face twin threats of surging crude prices and concern over durability of AI boom."},
+        {"outlet": "WSJ", "headline": "Meta's Hunt for AI Capital Strikes a Raw Nerve on Wall Street", "angle": "Ties the Nasdaq's 2.6% drop and the biggest Treasury-yield fall since 2023 to investor unease over how the AI build-out is financed.", "lean": -45, "pull": "The tech-heavy Nasdaq fell 2.6%, while Treasury yields posted their biggest drop since 2023."},
+        {"outlet": "Bloomberg", "headline": "Tech Rout Ebbs With Oil Gains Capping Relief", "angle": "Reads Friday as tentative respite from the AI rout, with rising oil keeping sentiment cautious into the weekend.", "lean": -15, "pull": "A rout in the artificial intelligence trade faded, offering global stock investors some respite, with further gains in oil prices keeping sentiment cautious."},
+        {"outlet": "MarketWatch", "headline": "Treasury Yields Log Biggest Drop Since the 2023 Banking Crisis", "angle": "Casts the bond rally as a take-back trade driven by French turmoil rather than recession panic.", "lean": 10, "pull": "It's a take-back trade, says PGIM's Tipp. Not an all-out fear of recession type of situation."},
+        {"outlet": "CNBC", "headline": "Trump's Approval Rating on Economy Hits All-Time Low as Midterm Looms", "angle": "Reads the souring mood through a poll showing 8 in 10 Americans rate the economy fair or poor.", "lean": -30, "pull": "Eight out of 10 Americans now rate the economy as fair or poor, one of several findings that show why Republican candidates face uphill battles."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasury Yields Post Their Biggest Drop Since the 2023 Banking Crisis as French Debt Turmoil Fuels a Flight to Safety and Moody's Prepares to Review France After the Close, With PGIM Calling It a Take-Back Trade and RLAM Finding Gilts Attractive, Even as Credit Spreads Hit a 17-Month High and the BOJ, ECB and Bank of Canada All Line Up December Hikes</h3>
+      </div>
+      <p>The rate picture whipsawed hard. MarketWatch reported the 10-year Treasury yield logged its biggest daily drop since the collapse of Silicon Valley Bank in 2023, driven not by recession fear but by a flight out of French government bonds, and WSJ said bonds got their mojo back as the yield fell below 5%. The bulls lean into the bond bid. MarketWatch quoted PGIM's Robert Tipp calling it a take-back trade rather than an all-out recession scare, Royal London Asset Management told Bloomberg longer-dated gilts look attractive heading into next week's UK budget, and the WSJ Dollar Index slid for a third straight day as money sought havens. The bears counter that the easing is cosmetic and tightening is still spreading. Bloomberg reported AI-tech fears and geopolitical tension pushed global credit spreads to a 17-month high, the BOJ is said to be keeping rate hikes on a fast track with December in focus, the ECB is set to raise again in December after a pause, and economists say Bank of Canada Governor Macklem has boxed himself into a hike next week. Bill Dudley told Bloomberg he expects the Fed to hold in October with a hike coming in December. Overhanging it all, Moody's updates its France rating after US markets close Friday, and French business activity contracted on budget trouble and unrest. The haven rally is real, but it is a symptom of stress, not a signal of calm.</p>
+      <p>The bull read is the big Treasury-yield drop as a take-back trade, RLAM liking gilts and the dollar softening as havens get bought. The bear read is credit spreads at a 17-month high, the BOJ, ECB and Bank of Canada all lining up December hikes, Dudley flagging a December Fed move and Moody's reviewing France.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the bond bid is doing its job):</strong> Treasury yields fell below 5% in their biggest one-day drop since 2023, WSJ reports, and PGIM's Robert Tipp tells MarketWatch it is a take-back trade, not a recession panic. RLAM sees longer-dated gilts as attractive into next week's UK budget, and the dollar softened for a third session as money flowed into safety. For income buyers, high-quality duration is finally rallying when the equity tape needs it to.</div>
+        <div class="bear"><strong>Bear (tightening keeps spreading and France is the crack):</strong> AI fears and geopolitics pushed global credit spreads to a 17-month high, Bloomberg reports, and the BOJ, ECB and Bank of Canada are all lining up December hikes while Dudley flags a December Fed move. French business activity is contracting on budget unrest and Moody's reviews the rating after the close. A yield drop born of a sovereign scare is not the same as a market at ease.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/treasury-yields-see-extreme-plunge-why-investors-are-ducking-for-cover-60044c66?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Treasury Yields Log Biggest Drop Since the 2023 Banking Crisis</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Hits $114 for the First Time Since May as Houthis Claim Attacks on Saudi Arabia's Yanbu Port, an Oil Field and an Airport and Aramco Is Said to Order a Headquarters Evacuation, Threatening to Widen the War Around the Strait of Hormuz Less Than Two Weeks Before the Midterms, Even as Gulf Exports Recover Toward Prewar Levels and SLB Sees Middle East Oilfield Business Rebuilding</h3>
+      </div>
+      <p>The energy premium ran the tape again. FT reported Brent hit $114 for the first time since May as markets faced the twin threat of surging crude and AI doubts, and Bloomberg said oil is heading for a third straight weekly gain as Iran-backed Houthi militants claimed attacks on the Saudi Red Sea port of Yanbu plus deadly strikes on an oil field and an airport. Bloomberg added Saudi Aramco is said to have ordered a headquarters evacuation, and the flareup threatens to widen hostilities around the Strait of Hormuz. The bulls argue the physical market keeps absorbing the shock. Bloomberg noted crude exports have recovered to near prewar levels, SLB said its Middle East oilfield-services business is rebuilding despite the war, and Bloomberg Economics reported Singapore's core inflation unexpectedly cooled in September as the import-reliant economy largely withstood the oil resurgence. The bears counter that none of that matters if a single drone can take out infrastructure near the world's most important chokepoint. UK consumer confidence fell in a Brexit-sized slump as soaring fuel prices brought the Middle East cost-of-living hit home, Bloomberg reported, and British retail sales dropped 0.4% in September. With Trump's economic approval at an all-time low and the midterms under two weeks out, a fresh oil-driven inflation scare is exactly the wrong headline.</p>
+      <p>The bull read is Gulf exports near prewar levels, SLB seeing the Middle East recover and Singapore's inflation cooling despite the oil run. The bear read is Brent at $114, Houthi strikes on Yanbu and an oil field, Aramco evacuating its HQ and a widening war around the Strait of Hormuz feeding fresh inflation fear.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the physical market keeps absorbing it):</strong> Crude exports have recovered to near prewar levels even as attacks continue, Bloomberg reports, and SLB says its Middle East oilfield business is rebuilding despite disruptions from the Iran war. Singapore's core inflation unexpectedly cooled in September, a sign the import-reliant world can withstand higher crude for now. If supply keeps normalizing, each attack-driven spike should fade faster than the headlines suggest.</div>
+        <div class="bear"><strong>Bear (every strike re-arms the inflation risk):</strong> Brent hit $114 for the first time since May after Houthis claimed attacks on Yanbu, an oil field and an airport, FT and Bloomberg report, and Aramco is said to have ordered an HQ evacuation. The flareup threatens the Strait of Hormuz, UK confidence has slumped on fuel costs, and with the midterms under two weeks away and Trump's economic approval at a record low, this is the last thing the tape wants.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/8948193b-438b-4d71-a0b1-31dff56fc308?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Oil Hits $114 for First Time Since May as Global Stocks Knocked by AI Fears</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Rout Pauses but the Financing Question Takes Over as OpenAI Trims Its Valuation Target to $1.25tn, Calpers Slashes Its Magnificent Seven Holdings, SK Hynix Pulls Solidigm's $10bn IPO and Meta's Muse Hits 10 Million Downloads Without a Clear Payoff, Even as UBS's Bhanu Baweja Says Hyperscalers Will Be Rewarded, Nvidia Backs AI-Video Startup Higgsfield and Bloom Energy Beats by 36%</h3>
+      </div>
+      <p>Thursday's selloff eased without settling anything. Bloomberg reported the AI rout faded Friday, offering some respite, but WSJ said the jitters have shifted from cash flows and profits to how the massive build-out is being financed. The bears have fresh ammunition. FT reported OpenAI trimmed its valuation target to $1.25tn after floating $1.4tn earlier this month, Calpers slashed its Magnificent Seven holdings as doubts grow about valuations and spending, and Bloomberg said SK Hynix scrapped the planned $10bn US listing of its Solidigm unit on regulatory and shareholder pushback, the latest IPO pulled amid AI unease. WSJ noted Meta's Muse assistant hit 10 million downloads in a month but asked where the payoff is, and Bloomberg said Cambricon's sales missed on output constraints while Infosys lowered its forecast as companies curb IT spending. The bulls insist the demand and the financing both hold. Bloomberg reported UBS Investment Bank chief strategist Bhanu Baweja sees no major constraints for hyperscalers and says they will be rewarded, Nvidia and TCV backed AI-video startup Higgsfield, and MarketWatch said fuel-cell maker Bloom Energy beat earnings by 36% on data-center demand. The split tape, with more than 300 S&P names up Thursday even as tech slumped, is the whole debate in one session.</p>
+      <p>The bull read is UBS's Baweja saying hyperscalers get rewarded, Nvidia backing Higgsfield and Bloom Energy's 36% beat. The bear read is OpenAI cutting its valuation target, Calpers dumping the Mag 7, SK Hynix pulling a $10bn IPO and Meta's Muse scaling fast with no clear payoff.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand and financing both hold):</strong> UBS's Bhanu Baweja tells Bloomberg he sees no major constraints for hyperscalers and that they will be rewarded, keeping capex the big 2027 theme. Nvidia and TCV backed AI-video startup Higgsfield, and Bloom Energy beat earnings by 36% on data-center demand. With more than 300 S&P names rising Thursday even as tech fell, the breadth underneath says this is a rotation, not a collapse.</div>
+        <div class="bear"><strong>Bear (the financing question is now the story):</strong> OpenAI trimmed its valuation target to $1.25tn from a $1.4tn pitch, FT reports, Calpers slashed its Magnificent Seven holdings on valuation and spending doubts, and SK Hynix pulled Solidigm's $10bn IPO on pushback. WSJ asks where the payoff is even as Meta's Muse hits 10 million downloads, and Cambricon missed while Infosys cut guidance. When the question shifts from profits to how the build-out gets financed, the tape gets fragile.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/stocks/metas-hunt-for-ai-capital-strikes-a-raw-nerve-on-wall-street-e2de1601?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Meta's Hunt for AI Capital Strikes a Raw Nerve on Wall Street</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Tech rout ebbs with oil gains capping the relief</strong></summary>
+      <div class="deal-body">
+        <p>A rout in the AI trade faded Friday, Bloomberg reported, offering global stock investors some respite in the final session of a volatile week, but further gains in oil kept sentiment cautious. Futures were mixed as megacaps wavered and crude extended its climb.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-22/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tech Rout Ebbs With Oil Gains Capping Relief: Markets Wrap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The stock market is splitting in two as tech slumps and the rest rises</strong></summary>
+      <div class="deal-body">
+        <p>Tech stocks are slumping even as more than 300 S&amp;P 500 constituents rose Thursday and Treasuries rallied, MarketWatch reported, leaving investors with whiplash as the AI trade wobbles. The bifurcation is the central question: trouble ahead, or just a new set of winners emerging under the surface.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-stock-market-is-splitting-in-two-is-that-signaling-trouble-ahead-or-just-a-new-set-of-winners-f51aaeab?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Stock Market Is Splitting in Two. Is That Signaling Trouble Ahead?</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SpaceX's mobile push hits telecom stocks again</strong></summary>
+      <div class="deal-body">
+        <p>Reports that SpaceX is in talks to secure at least 80,000 US cell sites for a new wireless network knocked shares of Verizon (VZ), AT&amp;T (T) and T-Mobile (TMUS), MarketWatch reported, as investors priced in a fourth nationwide carrier. Tower companies rose while the incumbents fell on the threat.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-mobile-ambitions-of-spacex-see-telecom-stocks-get-hit-again-what-the-latest-developments-mean-9a4159b5?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Mobile Ambitions of SpaceX See Telecom Stocks Get Hit Again</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Moderna plunges after a cancer-vaccine data leak despite positive results</strong></summary>
+      <div class="deal-body">
+        <p>Moderna (MRNA) shares plunged after full data on its closely watched cancer vaccine, developed with Merck, leaked ahead of a planned release, CNBC reported, even though the results were positive. The disorderly disclosure, not the science, drove the selling.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/22/moderna-stock-cancer-vaccine-data-leak.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Moderna Shares Plunge After Cancer Vaccine Data Leaks Despite Positive Results</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Elon Musk invests about $1 billion in Skydance</strong></summary>
+      <div class="deal-body">
+        <p>Elon Musk invested roughly $1bn in Skydance, CNBC reported, with David Ellison's father, Oracle co-founder Larry Ellison, long tied to Musk. The move widens Musk's media and entertainment footprint even as his Tesla-SpaceX plans dominate investor attention.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/22/elon-musk-skydance-investment.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Elon Musk Invests About $1 Billion in Skydance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A long-standing Chipotle bull throws in the towel on softening sales</strong></summary>
+      <div class="deal-body">
+        <p>A long-standing Chipotle (CMG) bull moved to the sidelines, Bloomberg reported, citing concern that a slow start to the fourth quarter points to softer sales for the year ahead. The downgrade is another sign of consumer strain showing up in discretionary spending.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/chipotle-s-softening-sales-force-analyst-to-throw-in-the-towel" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Chipotle's Softening Sales Force Analyst to Throw in the Towel</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bloom Energy beats by 36% but its stock stays stuck</strong></summary>
+      <div class="deal-body">
+        <p>Bloom Energy (BE), the fuel-cell maker that has flourished on data-center demand, beat earnings expectations by 36% and revenue by 15%, MarketWatch reported, yet the stock has been in a rut and did not get the usual post-results bump. The muted reaction shows how high the bar now sits for AI-adjacent names.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/this-hot-ai-fueled-stock-has-been-in-a-rut-it-just-beat-earnings-expectations-by-36-4a4188cb?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- This Hot AI-Fueled Stock Has Been in a Rut. It Just Beat Earnings by 36%</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape split as tech slumped, Treasuries rallied and oil hit $114. The bull case is UBS's Baweja saying hyperscalers get rewarded, Nvidia backing Higgsfield and Bloom Energy's big beat. The bear case is OpenAI cutting its valuation target, Calpers dumping the Mag 7 and SK Hynix pulling a $10bn IPO. Watch whether Thursday's broad breadth, with 300-plus S&amp;P names up, marks a rotation into value or just a pause before the AI unwind resumes.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Elon Musk's Sprawling Conglomerate Is a Maze for Investors to Price</summary>
+      <p>WSJ asked again Friday whether SpaceX is a futuristic Berkshire Hathaway or just a mess, and Stratechery ran an interview with Craig Moffett applying dot-com-bubble lessons to today, as Musk's mishmash of businesses, now potentially merging with Tesla, stays the hardest structure on the market to value. The instinct is to marvel at the ambition of combining rockets, satellites, cars, robots, AI compute and now a bid for 80,000 cell sites, but the harder question is how anyone values a structure this tangled, and understanding that explains why conglomerates so often trade at a discount. Start with the core problem, which markets call the conglomerate discount. When several distinct businesses sit inside one company, investors frequently value the whole at less than the sum of the parts would fetch separately. The reason is information. A focused company gives you clean metrics: a car maker's margins, a satellite operator's subscriber growth, a launch provider's backlog. Bundle them and every number blurs, because cash flows, capital spending and risks from very different businesses flow through one income statement. The first mechanism is capital allocation opacity. In a conglomerate, management moves cash from the business generating it to the business consuming it, and outside investors cannot easily see whether that transfer creates value or props up a weak unit. Musk's AI-compute and satellite buildouts are capital-hungry, and a merged entity could quietly funnel Tesla cash into projects a standalone market would never fund on the same terms. The second mechanism is the valuation mismatch. SpaceX is private and thinly traded, while Tesla is public and marked every second. Folding a hard-to-price private business into a public one forces investors to trust a valuation they cannot independently check, and any premium handed to the private side comes straight out of public shareholders' pockets. The third mechanism is risk contagion. In separate companies, a satellite setback does not touch the car business. In one merged entity, a problem in any division can drag the whole share price, so diversification that sounds like safety can actually import volatility from the riskiest unit. The fourth mechanism is the analyst coverage gap. Sell-side analysts specialize, so a company spanning autos, aerospace, telecom and AI rarely gets a single expert who can model all of it, which widens the gap between price and intrinsic value and leaves the stock driven by narrative rather than numbers. The fifth mechanism is the key-person premium and discount at once. Everything here runs through one founder, which can justify a premium when he is winning and a steep discount the moment markets doubt his focus or succession. The practical lesson for a market reader is that bigger and more diversified is not automatically more valuable. When a founder bundles disparate businesses under one roof, watch whether management discloses segment-level economics, whether the private pieces get an independently defensible valuation, and whether the market is paying for synergy or paying a tax for complexity it cannot see through.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/tech/spacex-takes-conglomerate-building-to-sci-fi-extremes-0dd612ab?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- SpaceX: A Futuristic Berkshire Hathaway, or Just a Mess?</a></p>
+      <p class="deal-source"><a href="https://stratechery.com/2026/an-interview-with-craig-moffett-about-spacex-and-bubbles/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- An Interview with Craig Moffett About SpaceX and Bubbles</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Meta's Muse is going gangbusters, but where is the payoff?</strong></summary>
+      <div class="deal-body">
+        <p>Meta's (META) Muse AI agent reached 10 million downloads in a little over a month since launch, WSJ reported, but investors are still waiting on the revenue payoff from a product scaling that fast. The adoption is real; the monetization case is what the market now wants proven after the $825bn spending disclosure.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/metas-muse-is-going-gangbusters-but-where-is-the-payoff-648d310d?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Meta's Muse Is Going Gangbusters. But Where Is the Payoff?</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI trims its valuation target to $1.25tn after pitching higher</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI trimmed its valuation target to $1.25tn after floating a $1.4tn price tag earlier this month, FT reported, citing documents it had seen. The markdown lands as investors sour on stretched AI valuations and the cost of financing the build-out.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/bb564eb1-79d4-4694-aa24-1155202a9abc?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- OpenAI Trims Valuation Target to $1.25tn After Pitching Higher Price</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SK Hynix pulls Solidigm's $10 billion US IPO on regulatory pushback</strong></summary>
+      <div class="deal-body">
+        <p>SK Hynix scrapped plans for a potential $10bn US listing of its Solidigm unit, Bloomberg reported, after strong opposition from regulators and shareholders, becoming the latest firm to pull an IPO as AI-boom unease rocks markets. SK Hynix shares rallied on the decision.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-22/sk-hynix-scraps-solidigm-us-ipo-after-shareholder-concerns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix Pulls Solidigm's $10 Billion IPO on Regulatory Pushback</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Calpers retreats from Big Tech as the AI rally falters</strong></summary>
+      <div class="deal-body">
+        <p>California's Calpers retirement fund slashed its Magnificent Seven holdings, FT reported, as doubts grow about lofty valuations and soaring spending. A move this size by the largest US public pension is a notable institutional vote of caution on the AI trade.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/e842173f-6f9f-4115-9e5f-a0f06f0df18d?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Calpers Retreats From Big Tech as AI Rally Falters</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cambricon's sales miss in a sign of output constraint</strong></summary>
+      <div class="deal-body">
+        <p>Chinese AI chipmaker Cambricon reported slower-than-expected revenue growth, Bloomberg reported, reflecting persistent manufacturing constraints and memory-chip shortages. The miss shows supply bottlenecks are real even where AI demand is strongest.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/ai-chipmaker-cambricon-s-sales-miss-in-sign-of-output-constraint" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Chipmaker Cambricon's Sales Miss in Sign of Output Constraint</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Infosys lowers its sales forecast as companies curb IT spending</strong></summary>
+      <div class="deal-body">
+        <p>Infosys (INFY) lowered its annual sales forecast, Bloomberg reported, a sign companies continue to curb spending on major IT projects. The cut from a bellwether outsourcer points to softer enterprise tech budgets heading into year-end.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/infosys-lowers-sales-forecast-after-companies-curb-it-spending" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Infosys Lowers Sales Forecast After Companies Curb IT Spending</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia and TCV invest in AI-video startup Higgsfield</strong></summary>
+      <div class="deal-body">
+        <p>Higgsfield, an AI-video startup founded by a former Snap executive, said Nvidia (NVDA) and TCV invested in a Series B extension, Bloomberg reported, to fund global infrastructure and hiring amid growing demand. The deal shows Nvidia keeps seeding the demand side of its own ecosystem.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/nvidia-tcv-invest-in-ai-video-startup-higgsfield-in-series-b-extension" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia, TCV Invest in AI Video Startup Higgsfield in Series B Extension</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Friday October 23, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is where demand still pays, with Nvidia seeding Higgsfield, UBS's Baweja backing hyperscalers and Bloom Energy beating by 36%. The counter-signal is OpenAI trimming its valuation, Calpers cutting the Mag 7, SK Hynix pulling a $10bn IPO and Cambricon missing on output limits. The near-term tell is whether the financing question, now the focus per WSJ, forces more pulled listings and markdowns, because the jitters have moved from profits to how the build-out gets paid for.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Treasury yields log their biggest drop since the 2023 banking crisis</strong></summary>
+      <div class="deal-body">
+        <p>The 10-year Treasury yield posted its biggest daily drop since the collapse of Silicon Valley Bank, MarketWatch reported, as French debt turmoil and the AI selloff drove investors to safety. PGIM's Robert Tipp called it a take-back trade rather than an all-out recession fear.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/treasury-yields-see-extreme-plunge-why-investors-are-ducking-for-cover-60044c66?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Treasury Yields Log Biggest Drop Since the 2023 Banking Crisis</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>France faces a Moody's rating review after US markets close</strong></summary>
+      <div class="deal-body">
+        <p>Moody's is set to update its rating on France's debt after US markets close Friday, MarketWatch reported, as the French debt turmoil that helped turn US Treasury yields around spills overseas. A downgrade or negative outlook would keep the eurozone bond stress in focus into next week.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/france-is-getting-its-credit-rating-reviewed-by-moodys-what-to-expect-as-french-debt-turmoil-spills-overseas-e39de111?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- France Is Getting Its Credit Rating Reviewed. What to Expect</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasury yields edge back up as the focus stays on France</strong></summary>
+      <div class="deal-body">
+        <p>Treasury yields rose Friday after sliding sharply on Thursday, WSJ reported, as investors kept their eyes on the turmoil in French government bonds. Eurozone yields fell as money rotated toward core havens, with France the swing factor.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/u-s-treasury-yields-edge-up-bond-market-focus-to-stay-on-france-8b28a326?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury Yields Rise, Eurozone Bond Yields Fall, Focus Stays on France</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI tech fears push global credit spreads to a 17-month high</strong></summary>
+      <div class="deal-body">
+        <p>Metrics across global bond markets are signaling their biggest risk-off sentiment in more than a year, Bloomberg reported, as the AI-stock selloff and geopolitical tension drove investors into safe havens. Global credit spreads hit a 17-month high, a warning the stress is leaking from equities into credit.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/ai-tech-fears-push-global-credit-spreads-to-17-month-high" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Tech Fears Push Global Credit Spreads to 17-Month High</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dudley sees the Fed holding in October with a December hike coming</strong></summary>
+      <div class="deal-body">
+        <p>Former New York Fed President Bill Dudley expects the Fed to hold steady at next week's meeting with a hike coming in December, Bloomberg reported, discussing the troika's messaging and the AI buildout's influence on rates. The call frames the FOMC as a pause before more tightening.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-23/dudley-sees-fed-likely-to-hold-with-a-hike-in-december-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dudley Sees Fed Likely to Hold With a Hike Coming in December</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The BOJ is said to keep rate hikes on a fast track, December in focus</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of Japan may maintain a fast pace of rate hikes given current price trends, Bloomberg reported, with December the next potential move after the Oct 30 meeting. The yen strengthened to a one-year high against the euro on French debt woes, adding to the tightening backdrop.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/boj-is-said-to-keep-rate-hikes-on-fast-track-december-in-focus" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOJ Is Said to Keep Rate Hikes on Fast Track, December in Focus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Macklem is seen boxed into a Bank of Canada hike next week</strong></summary>
+      <div class="deal-body">
+        <p>Economists say Bank of Canada Governor Tiff Macklem may have boxed himself into a rate hike next week, Bloomberg reported, after hawkish commentary convinced traders a hike is all but certain. The move adds Canada to the December-tightening lineup alongside the ECB.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/macklem-ensnared-by-market-pricing-and-will-hike-economists-say" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Macklem Ensnared by Market Pricing and Will Hike, Economists Say</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (October 23, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to Treasury yields' biggest drop since 2023 as a take-back trade per PGIM, RLAM liking gilts and the dollar softening into havens. The bear side points to global credit spreads at a 17-month high, the BOJ, ECB and Bank of Canada lining up December hikes and Dudley flagging a December Fed move. The swing factor is the Moody's France review after Friday's close and whether $114 oil forces the inflation story back ahead of the FOMC.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Treasury Yields Can Plunge Even as Oil Surges</summary>
+      <p>MarketWatch reported Friday that the 10-year Treasury yield just posted its biggest daily drop since the 2023 banking crisis, driven by a flight out of French government bonds, even as Brent oil hit $114 for the first time since May. The instinct is that these two things should not happen together, because higher oil means higher inflation, and higher inflation should push bond yields up, not down. Understanding why the haven trade can overwhelm the inflation signal explains a pattern that confuses a lot of readers. Start with what a bond yield actually reflects. A Treasury yield has two broad components: expectations for future inflation and short-term rates, and a risk-and-demand piece that captures how much investors want to own the bond itself. On most quiet days, inflation expectations dominate, so an oil spike nudges yields higher. But on a risk-off day, the demand piece takes over, and that is exactly what happened. The first mechanism is flight to quality. When investors get scared, whether by a French debt scare, an AI-stock rout or a widening Middle East war, they sell risky assets and buy the safest thing they can find, which for global markets is US Treasuries. That surge of buying pushes bond prices up and yields down, regardless of what oil is doing, because the fear-driven demand simply swamps the inflation math in the short run. The second mechanism is the growth-versus-inflation tug. Higher oil is inflationary, but it is also a tax on consumers and businesses that can slow growth. If markets decide the bigger risk from $114 crude is a demand hit rather than runaway prices, they will price slower growth, which argues for lower yields down the line. That is partly why PGIM's Robert Tipp framed the move as a take-back trade rather than a recession panic: yields are unwinding an earlier rise, not pricing a crash. The third mechanism is relative safety. France's turmoil makes French bonds riskier, so the capital leaving them has to go somewhere, and bunds and Treasuries are the obvious destinations. A crisis in one sovereign can actively lower yields in another through pure substitution, which is why the French-German spread and the US 10-year moved in opposite directions this week. The fourth mechanism is the time horizon. An oil spike feeds into inflation data over months, while a haven stampede happens in hours. On any given day, the fast-moving fear trade can completely mask the slow-moving inflation signal, and only later, if crude stays high, does the inflation worry reassert itself and push yields back up. The practical lesson for a market reader is that yields and oil moving in opposite directions is not a contradiction. It tells you the market is trading fear and safety today, not inflation, and that the signal can reverse quickly. Watch whether the haven bid fades once the immediate scare passes, because that is when the $114 oil and its inflation implication move back to the front of the bond market's mind, especially with the Fed and a Moody's France review both on next week's calendar.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/the-u-s-stock-market-is-fracturing-into-two-camps-and-its-leaving-investors-with-a-brutal-case-of-whiplash-e8580a99?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The US Stock Market Is Fracturing Into Two Camps</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/ai-tech-fears-push-global-credit-spreads-to-17-month-high" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Tech Fears Push Global Credit Spreads to 17-Month High</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Treasury yields posted their biggest drop since the 2023 banking crisis as French debt turmoil fueled a flight to safety and Moody's prepared to review France after the close, against a 17-month high in credit spreads and December hikes lining up at the BOJ, ECB and Bank of Canada. Oil hit $114 for the first time since May after Houthi attacks on Yanbu and a reported Aramco HQ evacuation, even as Gulf exports neared prewar levels and SLB saw the Middle East recover. The AI rout paused but the financing question took over as OpenAI trimmed its valuation to $1.25tn, Calpers slashed the Mag 7 and SK Hynix pulled a $10bn IPO, against UBS's Baweja backing hyperscalers, Nvidia funding Higgsfield and Bloom Energy's 36% beat; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above $250, bull confirmed; below $235, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 10/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 10/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 10/21</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/22</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/23</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin holds above $81,000 as the AI rout fades and oil climbs</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin went quiet after a week of big swings, CoinDesk reported, with tech futures steadying and Brent hitting its highest level since early May. The calm comes ahead of next week's Fed meeting, with oil near $114 keeping inflation risks in focus.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/23/live-updates-bitcoin-holds-above-usd81-000-as-the-ai-rout-fades-and-oil-climbs" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Live Updates: Bitcoin Holds Above $81,000 as the AI Rout Fades and Oil Climbs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin steadies near $81,700 as altcoins rebound and pepe climbs 13%</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin rose 0.5% to around $81,700 since midnight UTC, CoinDesk reported, while the CoinDesk 80 gained 1.4% and memecoins climbed 2.9%, with pepe up 13%. The bounce tracked the broader stabilization in risk after Thursday's rout.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/23/bitcoin-steadies-near-usd81-700-as-altcoins-rebound-pepe-climbs-13" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Steadies Near $81,700 as Altcoins Rebound, Pepe Climbs 13%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>HSBC rolls out its first stablecoin to more than 3 million app users</strong></summary>
+      <div class="deal-body">
+        <p>HSBC began rolling out its first stablecoin to over 3 million everyday app users, CoinDesk reported, after the Standard Chartered-led Anchorpoint received Hong Kong's first stablecoin issuer licenses in April. A major bank putting a stablecoin in front of retail is a step toward mainstream adoption.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/23/hsbc-rolls-out-its-first-stablecoin-to-over-3-million-everyday-app-users" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- HSBC Rolls Out Its First Stablecoin to Over 3 Million Everyday App Users</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin appears to have decoupled from its midterm cycle-bottom history</strong></summary>
+      <div class="deal-body">
+        <p>Previous bitcoin bear-market lows followed US midterms, CoinDesk reported, but this year's recovery raises the possibility that the bottom arrived months earlier, in July. The pattern break complicates the cycle-timing playbook many traders lean on.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/23/bitcoin-approaches-midterms-as-july-low-challenges-historical-cycle-pattern" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Appears to Have Decoupled From Midterm Cycle Bottom History</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fireblocks denies it is in talks to be acquired by Visa</strong></summary>
+      <div class="deal-body">
+        <p>Crypto-custody specialist Fireblocks denied it is in talks to be acquired by Visa, CoinDesk reported, after Axios said the two were discussing a potential $2.5bn deal. Even the rumor shows how aggressively payments giants are eyeing crypto infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/10/22/crypto-custody-specialist-fireblocks-denies-its-in-talks-to-be-acquired-by-visa" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Crypto Custody Specialist Fireblocks Denies It's in Talks to Be Acquired by Visa</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China seeks to seize 61,800 BTC tied to a $5.7bn fraud scheme</strong></summary>
+      <div class="deal-body">
+        <p>Chinese prosecutors are seeking to confiscate more than 61,800 bitcoin tied to a $5.7bn fraud scheme, CoinDesk reported, days after a UK court ruled Chinese law governs victims' claims to the coins. The case is a reminder of how much seized crypto sits in state hands.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/22/china-seeks-to-seize-61-800-btc-tied-to-usd5-7-billion-fraud-scheme" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- China Seeks to Seize 61,800 BTC Tied to $5.7 Billion Fraud Scheme</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>BASF &amp; Evonik -- Chemicals Giant Raises Its Bid to Over €11 Billion</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> BASF (BAS) boosted its takeover offer for German chemicals rival Evonik (EVK) to more than €11bn ($12.3bn), Bloomberg reported, citing people familiar with the matter.</p>
+        <p><strong>Outlook:</strong> The sweetened bid shows BASF is willing to pay up to consolidate a sluggish European chemicals sector squeezed by high energy costs.</p>
+        <p><strong>What it means:</strong> Strategic M&amp;A is still happening in cyclical industries even as higher rates slow broader dealmaking.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/basf-increases-bid-for-chemicals-rival-evonik-to-over-11-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BASF Increases Bid for Chemicals Rival Evonik to Over €11 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SK Hynix &amp; Solidigm -- $10bn US IPO Pulled on Regulatory Pushback</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SK Hynix scrapped a potential $10bn US listing of its Solidigm unit, Bloomberg reported, after strong opposition from regulators and shareholders as AI-boom unease rocks markets.</p>
+        <p><strong>Outlook:</strong> SK Hynix shares rallied on the decision, and the pulled listing joins a run of IPOs shelved amid the AI wobble.</p>
+        <p><strong>What it means:</strong> The primary market is the first place AI-valuation doubt shows up, as issuers choose to wait rather than price into fear.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-22/sk-hynix-scraps-solidigm-us-ipo-after-shareholder-concerns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix Pulls Solidigm's $10 Billion IPO on Regulatory Pushback</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Elon Musk &amp; Skydance -- A Roughly $1bn Investment</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Elon Musk invested about $1bn in Skydance, CNBC reported, deepening ties through David Ellison, whose father Larry Ellison has a long history with Musk.</p>
+        <p><strong>Outlook:</strong> The stake widens Musk's media footprint just as his Tesla-SpaceX plans and mobile ambitions dominate the tape.</p>
+        <p><strong>What it means:</strong> Musk keeps spreading capital across media, telecom and AI, adding to the complexity investors must untangle.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/22/elon-musk-skydance-investment.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Elon Musk Invests About $1 Billion in Skydance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Shoprite &amp; Investec -- South African Grocer Eyes a Fintech Tie-Up</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Shoprite, Africa's largest grocer, is said to be in talks with Investec about a partnership, Bloomberg reported, as it seeks to expand financial services for millions of customers.</p>
+        <p><strong>Outlook:</strong> The tie-up would push a retailer deeper into banking and payments, a model spreading across emerging markets.</p>
+        <p><strong>What it means:</strong> Retail-fintech convergence is a growth lever even where traditional dealmaking is slow.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/shoprite-investec-said-to-discuss-south-african-fintech-tie-up" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Shoprite, Investec Said to Discuss South African Fintech Tie-Up</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zetwerk -- Shares Slide 16% in Mumbai Debut Caught in the Selloff</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Zetwerk erased early gains and fell as much as 16% in its trading debut, Bloomberg reported, caught in a broad selloff in Indian equities after raising 50.12bn rupees ($529m) in its IPO.</p>
+        <p><strong>Outlook:</strong> The rough start, amid an Indian small-cap deleveraging rout, shows how risk-off tape punishes fresh listings.</p>
+        <p><strong>What it means:</strong> Even hot IPO markets like India are not immune when global sentiment turns, echoing the SK Hynix pull.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-23/zetwerk-shares-gain-in-mumbai-debut-after-529-million-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Zetwerk Erases Gains, Slides 16% in Debut Caught in Selloff</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citi -- Regulator Nod for a Wholly Owned Securities Venture in China</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Citi (C) received approval from Chinese regulators to set up a wholly owned securities company in China, WSJ reported, a milestone in its yearslong push to deepen its presence there.</p>
+        <p><strong>Outlook:</strong> Full ownership gives Citi a cleaner platform to capture onshore Chinese capital-markets flow.</p>
+        <p><strong>What it means:</strong> Global banks keep leaning into China's onshore market even amid US-China tech and investment curbs.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/citi-gets-regulator-nod-for-wholly-owned-securities-venture-in-china-ca948d80?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Citi Gets Regulator Nod for Wholly Owned Securities Venture in China</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Bhanu Baweja (UBS) -- hyperscaler capex will be the big 2027 theme and gets rewarded</strong></summary>
+      <div class="deal-body">
+        <p>UBS Investment Bank chief strategist Bhanu Baweja says spending by the largest hyperscalers will remain a major market theme in 2027, Bloomberg reported, adding he does not see major constraints and that the spenders "will be rewarded." A named bull defending the build-out against the financing worry.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-23/hyperscalers-capex-to-be-big-2027-theme-ubs-baweja-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hyperscalers Capex to Be Big 2027 Theme, UBS' Baweja Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Laura Cooper (Nuveen) -- investors are getting more selective on AI and diversifying</strong></summary>
+      <div class="deal-body">
+        <p>Nuveen's Laura Cooper discussed AI jitters, rising oil and the Fed on Bloomberg Brief, Bloomberg reported, explaining why investors are becoming more selective on AI and looking toward broader diversification. A measured read that the trade is narrowing rather than collapsing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-23/laura-cooper-on-ai-jitters-oil-and-the-fed-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Laura Cooper on AI Jitters, Oil and the Fed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Calpers -- slashes its Magnificent Seven holdings as the AI rally falters</strong></summary>
+      <div class="deal-body">
+        <p>California's Calpers retirement fund cut its Magnificent Seven holdings, FT reported, as doubts grow about lofty valuations and soaring spending. The largest US public pension trimming Big Tech is a concrete institutional de-risking signal.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/e842173f-6f9f-4115-9e5f-a0f06f0df18d?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Calpers Retreats From Big Tech as AI Rally Falters</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Robert Tipp (PGIM) -- the Treasury rally is a take-back trade, not recession fear</strong></summary>
+      <div class="deal-body">
+        <p>PGIM's Robert Tipp told MarketWatch the plunge in Treasury yields is a take-back trade rather than an all-out fear-of-recession situation. A named read that the bond bid reflects an unwind of earlier positioning, not a growth scare.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/treasury-yields-see-extreme-plunge-why-investors-are-ducking-for-cover-60044c66?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Treasury Yields Log Biggest Drop Since the 2023 Banking Crisis</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Craig Moffett (MoffettNathanson) -- applies dot-com-bubble lessons to SpaceX and AI</strong></summary>
+      <div class="deal-body">
+        <p>Craig Moffett walked through SpaceX from launch to broadband to mobile and how he is applying the lessons of the dot-com bubble to today's market, Stratechery reported. A named skeptic framing where the current build-out echoes past overbuilds and where it does not.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/an-interview-with-craig-moffett-about-spacex-and-bubbles/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- An Interview with Craig Moffett About SpaceX and Bubbles</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the AI Rout Pauses and the Financing Question Takes Over, With UBS's Bhanu Baweja Saying Hyperscalers Get Rewarded and PGIM's Robert Tipp Calling the Bond Rally a Take-Back Trade, Against Calpers Slashing the Magnificent Seven, Nuveen's Laura Cooper Flagging More Selectivity and Craig Moffett Applying Dot-Com Lessons to the Build-Out</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand holds and the bond bid is orderly):</strong> UBS's Bhanu Baweja says hyperscaler capex stays the big 2027 theme and the spenders will be rewarded, while PGIM's Robert Tipp frames the Treasury rally as a take-back trade, not a recession scare. Nvidia keeps funding demand through Higgsfield, Bloom Energy beat by 36%, and more than 300 S&amp;P names rose Thursday even as tech fell. If this is rotation and not rupture, the bond bid plus broad breadth is the setup for the next leg up.</div>
+        <div class="bear"><strong>Bear (institutions are stepping back and financing is the crack):</strong> Calpers slashed its Magnificent Seven holdings on valuation and spending doubts, and Nuveen's Laura Cooper says investors are getting more selective on AI. OpenAI trimmed its valuation, SK Hynix pulled a $10bn IPO, and Craig Moffett is dusting off dot-com-bubble lessons. With credit spreads at a 17-month high and the jitters shifting from profits to how the build-out is financed, the smart money is trimming, not adding.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Oil hits $114; Moderna plunges on data leak; SpaceX hits telecom stocks; Bloom Energy beats 36% but stuck; Musk buys into Skydance</td><td>Risk-off</td><td>~41,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Market splitting in two, 300 S&amp;P names up as tech slumps; P&amp;G and Comcast beats; Chipotle bull capitulates; American Airlines cuts on fuel</td><td>Mixed-cautious</td><td>~33,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Treasury yields biggest drop since 2023; France faces Moody's review; credit spreads 17-month high; BOJ/ECB/BoC December hikes</td><td>Cautious</td><td>~35,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>OpenAI trims valuation to $1.25tn; Calpers dumps Mag 7; SK Hynix pulls $10bn IPO; Meta Muse scaling with no payoff; Moffett bubble lessons</td><td>Bearish-cautious</td><td>~28,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds above $81K as AI rout fades; pepe +13%; HSBC stablecoin to 3M users; Fireblocks denies Visa talks; midterm cycle decoupling</td><td>Mixed</td><td>~30,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood stayed cautious even as the AI rout paused, with oil's jump to $114 and the biggest Treasury-yield drop since 2023 framing the week. r/wallstreetbets traded the oil run and single-name shocks like Moderna. r/stocks fixated on the market splitting in two, with breadth strong under a weak tech surface. r/investing leaned cautious on the France Moody's review and December hikes stacking up. r/SecurityAnalysis turned bearish on OpenAI's markdown, Calpers' retreat and the pulled SK Hynix IPO. r/CryptoCurrency was mixed as bitcoin steadied above $81K. The swing factor is the Fed and the France review into next week.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Pulled IPO Can Tell You More Than a Market Rally</h2>
+    <p>Bloomberg reported Friday that SK Hynix scrapped a potential $10bn US listing of its Solidigm unit after regulatory and shareholder pushback, becoming the latest firm to pull an IPO as AI-boom unease rocks markets, while FT said OpenAI trimmed its valuation target to $1.25tn from an earlier $1.4tn pitch. The instinct is to treat a pulled IPO as a boring piece of plumbing news, but it is often one of the cleanest signals the market gives you about sentiment, and understanding why explains what the primary market is really telling you. Start with what an IPO is. A company sells new shares to public investors at a price it negotiates with bankers based on demand it gauges beforehand. Unlike a stock already trading, where the price moves every second, an IPO price is set once, which makes the decision to go ahead or to pull a pure read on whether buyers will show up at a number the seller can accept. The first mechanism is the demand test. Issuers and their banks run a book-building process, sounding out big institutions on how many shares they would buy and at what price. When a company pulls a deal, it usually means that process came back weak: the price investors were willing to pay fell below what the seller would accept. That gap is a direct measurement of risk appetite that you cannot get from a trading chart. The second mechanism is the signaling problem. A company that lists into soft demand and then watches its stock sink sends a terrible message, so the rational move is to wait. That is why pulled IPOs cluster at exactly the moments sentiment is turning, and why they often lead the broader market lower, because insiders with the best information are choosing not to sell. The third mechanism is the valuation reset. When OpenAI cuts its target from $1.4tn to $1.25tn, it is repricing the entire private AI complex, because late-stage private valuations anchor off each other and off public comparables. A markdown at the top of the stack ripples down through every startup that benchmarked to it. The fourth mechanism is the financing channel. The primary market is where new capital actually enters a sector. When IPOs and secondary offerings freeze, the flow of fresh money that funds expansion slows, which eventually shows up in capex plans and hiring. A string of pulled deals is an early warning that the financing side of a boom is tightening, which matters enormously for a build-out as capital-hungry as AI. The fifth mechanism is the contrast with index moves. A broad market can rally on a few megacaps even while risk appetite for new issues collapses, so the primary market often tells a more honest story than the headline index. When the S&amp;P holds up but IPOs get pulled and valuations get cut, the divergence is the tell. The practical lesson for a market reader is to watch the primary market as a sentiment gauge, not just the tape. Pulled IPOs, trimmed valuation targets and widening new-issue concessions reveal what sophisticated buyers will actually pay, and when sellers would rather wait than price into weakness, that caution usually shows up in the broader market before long.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-22/sk-hynix-scraps-solidigm-us-ipo-after-shareholder-concerns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix Pulls Solidigm's $10 Billion IPO on Regulatory Pushback</a></p>
+    <p class="deal-source"><a href="https://www.ft.com/content/bb564eb1-79d4-4694-aa24-1155202a9abc?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- OpenAI Trims Valuation Target to $1.25tn After Pitching Higher Price</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>The FOMC decision (Oct 27-28).</strong> After Dudley flagged a likely October hold with a December hike, watch the statement and any signal on how the AI buildout and $114 oil shape the rate path into year-end.</li>
+      <li><strong>Moody's France rating.</strong> With the review landing after Friday's close, watch whether a downgrade or negative outlook re-widens the French-German spread and keeps pulling capital into Treasuries and bunds.</li>
+      <li><strong>Global central-bank cluster.</strong> With the ECB, Bank of Canada and BOJ all meeting, watch whether the December-hike lineup firms up and how the yen's one-year high against the euro plays into it.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>American Express and the consumer read.</strong> After Amex reports, watch spending trends for signals on the health of the US consumer with confidence souring and fuel costs biting.</li>
+      <li><strong>More megacap and chip names.</strong> After Meta's Muse scaled without a clear payoff and Cambricon missed on output, watch whether remaining reports pair the build-out with revenue proof the market now demands.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>The IPO freeze.</strong> After SK Hynix pulled Solidigm's $10bn listing and Zetwerk slid 16% in its debut, watch whether more deals get shelved or repriced as AI-valuation doubt spreads.</li>
+      <li><strong>The BASF-Evonik bid.</strong> After BASF raised its offer above €11bn, watch whether Evonik engages and whether strategic M&amp;A holds up against the higher-rate drag on dealmaking.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Houthi attacks and the oil premium.</strong> With Brent at $114 after strikes on Yanbu and a reported Aramco HQ evacuation, watch whether a widening war around the Strait of Hormuz lifts crude further or recovering Gulf exports drain the premium.</li>
+      <li><strong>The Brazil runoff and the midterms.</strong> With Sunday's too-close-to-call Brazil vote and US midterms under two weeks out, watch how political risk and energy-price politics feed into emerging-market and US positioning.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how overseas bond markets like France transmit into US Treasury yields and corporate credit.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Fri Oct 23, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-10-23 07:52 ET); Bloomberg Technology (20 fresh, newest 2026-10-23 07:52 ET); Bloomberg Economics (20 fresh, newest 2026-10-23 07:00 ET); CNBC Top News (11 fresh, newest 2026-10-22 17:52 ET); CNBC Economy (2 fresh, newest 2026-10-22 12:40 ET); MarketWatch Top Stories (10 fresh, newest 2026-10-23 07:32 ET); WSJ Markets (17 fresh, newest 2026-10-23 07:43 ET); FT Home (11 fresh, newest 2026-10-23 07:05 ET); Matt Levine Money Stuff (1 fresh, newest 2026-10-22 14:30 ET); CoinDesk (25 fresh, newest 2026-10-23 07:22 ET); Stratechery (2 fresh, newest 2026-10-23 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Stale feeds (no items in window): CNBC Finance (25 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. Why did Treasury yields post their biggest drop since 2023?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed delivered a surprise interest-rate cut</span>
+      <span class="opt" data-opt="B">B. Investors fled to safety from French bond turmoil</span>
+      <span class="opt" data-opt="C">C. Inflation data came in far below forecasts</span>
+      <span class="opt" data-opt="D">D. The Treasury cancelled its long-bond auction</span>
+      <div class="feedback"><strong>B is correct.</strong> MarketWatch reported the 10-year yield's biggest daily drop since the 2023 banking crisis came from a flight out of French government bonds and the AI selloff, not recession fear. There was no surprise Fed cut, no soft inflation print that day and no cancelled auction.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>2. What pushed oil to a five-month high on Friday?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC+ extended its deep production cuts</span>
+      <span class="opt" data-opt="B">B. US crude inventories fell unexpectedly hard</span>
+      <span class="opt" data-opt="C">C. A refinery outage hit Gulf Coast supply</span>
+      <span class="opt" data-opt="D">D. Houthi attacks hit Saudi Arabia's oil sites</span>
+      <div class="feedback"><strong>D is correct.</strong> FT and Bloomberg reported Brent hit $114 for the first time since May after Houthis claimed attacks on Yanbu, an oil field and an airport, with Aramco said to order an HQ evacuation. There was no OPEC+ action, no inventory shock and no Gulf Coast refinery outage driving it.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What did SK Hynix do amid the AI jitters?</strong></p>
+      <span class="opt" data-opt="A">A. Pulled Solidigm's $10 billion US IPO</span>
+      <span class="opt" data-opt="B">B. Raised its capital-spending outlook sharply</span>
+      <span class="opt" data-opt="C">C. Acquired a stake in a neocloud operator</span>
+      <span class="opt" data-opt="D">D. Warned of a coming memory-chip glut</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported SK Hynix scrapped the planned $10bn US listing of its Solidigm unit on regulatory and shareholder pushback, and its shares rallied. It did not raise capex guidance, buy a neocloud stake or warn of a memory glut that day.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasury yields posted their biggest drop since the 2023 banking crisis as French debt turmoil fueled a flight to safety and Moody's prepared to review France after the close, with PGIM calling it a take-back trade and RLAM finding gilts attractive, even as credit spreads hit a 17-month high and the BOJ, ECB and Bank of Canada all lined up December hikes.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/treasury-yields-see-extreme-plunge-why-investors-are-ducking-for-cover-60044c66?mod=mw_rss_topstories", "take": "Treasury yields log biggest drop since the 2023 banking crisis." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/france-is-getting-its-credit-rating-reviewed-by-moodys-what-to-expect-as-french-debt-turmoil-spills-overseas-e39de111?mod=mw_rss_topstories", "take": "France faces a Moody's rating review after the US close." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/u-s-treasury-yields-edge-up-bond-market-focus-to-stay-on-france-8b28a326?mod=rss_markets_main", "take": "Treasury yields rise, eurozone yields fall, focus stays on France." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-23/ai-tech-fears-push-global-credit-spreads-to-17-month-high", "take": "AI tech fears push global credit spreads to a 17-month high." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-23/boj-is-said-to-keep-rate-hikes-on-fast-track-december-in-focus", "take": "BOJ is said to keep rate hikes on a fast track, December in focus." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil hit $114 for the first time since May after Houthis claimed attacks on Saudi Arabia's Yanbu port, an oil field and an airport and Aramco was said to order a HQ evacuation, threatening to widen the war around the Strait of Hormuz before the midterms, even as Gulf exports recovered toward prewar levels and SLB saw the Middle East rebuild.",
+    "sources": [
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/8948193b-438b-4d71-a0b1-31dff56fc308?syn-25a6b1a6=1", "take": "Oil hits $114 for first time since May as AI fears knock stocks." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-10-23/oil-climbs-on-threats-of-a-widening-war-in-middle-east-video", "take": "Oil climbs on threats of a widening war in the Middle East." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-23/slb-sees-growth-driven-by-middle-east-oil-field-recovery", "take": "SLB sees growth driven by a Middle East oilfield recovery." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-23/singapore-s-core-inflation-for-september-unexpectedly-cools", "take": "Singapore's core inflation unexpectedly cools despite higher oil." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-10-23/horizons-middle-east-africa-10-23-2026-video", "take": "Saudi Aramco said to order HQ evacuation, oil set for weekly gain." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI rout paused but the financing question took over as OpenAI trimmed its valuation target to $1.25tn, Calpers slashed its Magnificent Seven holdings, SK Hynix pulled Solidigm's $10bn IPO and Meta's Muse hit 10 million downloads without a clear payoff, even as UBS's Bhanu Baweja said hyperscalers will be rewarded, Nvidia backed Higgsfield and Bloom Energy beat by 36%.",
+    "sources": [
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/bb564eb1-79d4-4694-aa24-1155202a9abc?syn-25a6b1a6=1", "take": "OpenAI trims valuation target to $1.25tn after pitching higher." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/e842173f-6f9f-4115-9e5f-a0f06f0df18d?syn-25a6b1a6=1", "take": "Calpers retreats from Big Tech as the AI rally falters." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-22/sk-hynix-scraps-solidigm-us-ipo-after-shareholder-concerns", "take": "SK Hynix pulls Solidigm's $10bn IPO on regulatory pushback." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-10-23/hyperscalers-capex-to-be-big-2027-theme-ubs-baweja-video", "take": "Hyperscaler capex to be the big 2027 theme, UBS' Baweja says." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/stocks/metas-muse-is-going-gangbusters-but-where-is-the-payoff-648d310d?mod=rss_markets_main", "take": "Meta's Muse is going gangbusters, but where is the payoff?" }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Bloom Energy","SK Hynix","P&G","Moderna","Telecom","Volvo"],
+    "values": [3.0, 2.5, 1.5, -8.0, -4.0, -30.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [41000, 33000, 35000, 28000, 30000],
+    "colors": ["bear","neutral","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["BASF-Evonik","SK Hynix IPO","Fireblocks-Visa","Musk-Skydance","Zetwerk IPO"],
+    "values": [12.3, 10.0, 2.5, 1.0, 0.53]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
