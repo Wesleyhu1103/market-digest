@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Oct 26, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-10-26</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, October 26, 2026</h1>
+    <div class="meta">
+      <p>A megacap earnings gauntlet and a Fed decision Wednesday set the tone for the week, and the AI trade is the swing factor after Meta said it will raise up to $95bn to fund its build-out. Oil has retreated from last week's six-month high as Iran hosts regional powers for de-escalation talks, and France dodged a Moody's downgrade over the weekend. Brazil's markets are plunging after Lula's surprise reelection.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Meta said it will raise as much as $95bn through a mix of common and preferred stock to bankroll its AI infrastructure, with chipmakers Nvidia, AMD and Broadcom lined up as cornerstone investors, as Wall Street increasingly fixates on how the capital-hungry build-out gets financed",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Meta Plans Up to $95 Billion in Financing to Power Its AI Growth", "angle": "Frames the raise as the clearest sign yet of how much capital the superintelligence race now demands.", "lean": -10, "pull": "Meta Platforms said it would look to raise up to $95 billion to help fund its massive investments in artificial-intelligence infrastructure and personal superintelligence."},
+        {"outlet": "Financial Times", "headline": "Meta Plans $95bn Stock Offering to Bankroll AI Expansion", "angle": "Leads on the chipmakers acting as cornerstone buyers, reading it as vendors funding their own demand.", "lean": -5, "pull": "Chipmakers Nvidia, AMD and Broadcom will act as cornerstone investors."},
+        {"outlet": "Bloomberg", "headline": "Meta Seeks Up to $95 Billion in Equity to Fund AI Spending", "angle": "Casts the equity sale as Meta tapping investors to stay in the race, with funding angst now the market's wall of worry.", "lean": -20, "pull": "A wall of worry increasingly dominated by artificial intelligence's financing costs needs dealing with before the market can make a run at fresh highs."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>France Dodges a Moody's Downgrade and the Bond Risk Gauge Tumbles Just as the Fed Heads Into Wednesday's Decision With Warsh Needing to Reassure on Inflation and December in Mind, While Germany's Outlook Brightens for a Sixth Month and the ECB Looks Set to Hold, Even as the BOE Turns Its Most Hawkish Since Inflation Was 10%, Pakistan Hikes on the Middle East and Brazil's Bonds Tumble on Lula's Upset</h3>
+      </div>
+      <p>The rate picture turned calmer at the sovereign level but the tightening debate is far from settled. Bloomberg reported a measure of French bond risk tumbled after the nation dodged a downgrade at Moody's, easing the selloff that had roiled domestic assets, and WSJ said Treasury yields turned slightly higher Monday with French government bonds outperforming most eurozone peers. The bulls lean into the easing stress. Germany's business outlook unexpectedly brightened for a sixth straight month, Bloomberg reported, the euro-zone slowdown gives the ECB cover to hold for now, and the French reprieve pulls one tail risk off the table ahead of the Fed. The bears counter that policy is still tilting hawkish almost everywhere. Bloomberg said Bank of England officials are sending their most hawkish signals since inflation was 10%, laying the ground for a hike as soon as next month, Pakistan raised rates Monday as Middle East conflict fans inflation, and the RBA's Sarah Hunter said the bank is not quite yet done. All eyes land on Wednesday, where Bloomberg reported the focus turns to Kevin Warsh's messaging if the Fed holds, since he must reassure investors it is committed to quashing inflation while explaining a pause, with December in mind. Layered on top, Lula's improbable win in Brazil sent the nation's dollar bonds tumbling in London and set an ETF tracking Brazilian stocks down 27%. The haven side got a reprieve, but the hiking bias has not gone away.</p>
+      <p>The bull read is France dodging the Moody's downgrade, the French bond risk gauge tumbling, Germany's outlook brightening a sixth month and the ECB looking set to hold. The bear read is the BOE turning its most hawkish since 10% inflation, Pakistan hiking, the RBA not done, Warsh needing to defend an inflation fight and Brazil's bonds tumbling.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the sovereign stress is draining):</strong> France dodged a Moody's downgrade and its bond risk gauge tumbled, Bloomberg reports, unwinding a selloff that had weighed on European assets into the Fed. Germany's business outlook unexpectedly improved for a sixth straight month, the euro-zone slowdown gives the ECB room to hold, and Treasury yields are steadying rather than spiking. With one tail risk off the table, the rate backdrop into Wednesday is calmer than last week's panic.</div>
+        <div class="bear"><strong>Bear (the hiking bias is still spreading):</strong> The BOE is its most hawkish since inflation was 10% and is set up to hike as soon as next month, Bloomberg reports, Pakistan raised rates Monday on Middle East inflation, and the RBA's Hunter says it is not quite done. Warsh must reassure markets the Fed is still fighting inflation even if it holds, with December live, and Brazil's bonds tumbled on Lula's upset. A French reprieve does not change the direction of global policy.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-26/french-markets-rebound-after-nation-avoids-moody-s-downgrade" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- French Bond Risk Gauge Falls as Moody's Keeps Rating Stable</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Retreats From a Six-Month High as Brent Slides Back Below $110 From $117 and Iran Hosts Security Officials From Saudi Arabia, Pakistan and Turkey in Tehran to Head Off a Renewed Escalation, With the US and Iran Sticking to Familiar Rhetoric, Even as Pakistan Hikes Rates on Middle East Inflation and Gulf Bargains Lure Indian Refiners Away From Russia</h3>
+      </div>
+      <p>The energy premium deflated to start the week. FT reported Brent eased after soaring to $117 late last week, as traders stayed focused on the Middle East conflict but priced in a chance of de-escalation, and Bloomberg said oil retreated as the US and Iran stuck to familiar rhetoric while military leaders from around the region flew to Iran to breathe fresh life into peace talks. FT added that senior security officials from Saudi Arabia, Pakistan and Turkey were set to meet Iranian counterparts in Tehran on Monday. The bulls argue the fever is breaking. Crude slid back below $110 from its six-month high, Bloomberg reported Gulf oil bargains are luring Indian refiners away from Russia as freight costs soar, and the diplomatic push suggests the worst-case Strait of Hormuz scenario is being actively managed. The bears counter that nothing is resolved and the inflation damage is already landing. Pakistan raised its benchmark rate Monday as mounting inflation risks from the Middle East conflict forced tightening even at the cost of growth, Bloomberg reported, Thailand's imports surged at a record pace partly on higher energy costs, and prices remain well above where they sat a month ago. Talks that collapse would send crude straight back toward $117. The retreat is real, but it rests entirely on diplomacy that has failed before.</p>
+      <p>The bull read is Brent sliding below $110 from a six-month high, Iran hosting regional powers for de-escalation talks and Gulf bargains flowing to India. The bear read is the US and Iran stuck on familiar rhetoric, Pakistan hiking rates on Middle East inflation and crude still well above its level a month ago.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (diplomacy is draining the premium):</strong> Brent slid back below $110 from last week's $117 six-month high as Iran hosts security officials from Saudi Arabia, Pakistan and Turkey in Tehran to prevent a renewed escalation, FT and Bloomberg report. Gulf crude bargains are pulling Indian refiners away from Russia as freight costs soar, a sign the physical market is normalizing. If the talks hold, each attack-driven spike should keep fading faster than the headlines imply.</div>
+        <div class="bear"><strong>Bear (nothing is actually resolved):</strong> The US and Iran are still trading familiar rhetoric, Bloomberg reports, and the regional talks are a reaction to how close the conflict came to widening around the Strait of Hormuz. Pakistan hiked rates Monday as Middle East inflation forced its hand, Thailand's import bill surged on energy costs, and crude sits well above where it was a month ago. One failed meeting sends Brent straight back toward $117 and the inflation scare with it.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/97a60042-f7b6-4c87-9387-8572968a7de0?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Oil Price Falls Back as Traders Remain Focused on Middle East Conflict</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The Financing Question Becomes the Whole Trade as Meta Seeks Up to $95bn in Equity With Nvidia, AMD and Broadcom as Cornerstone Investors, SpaceX Closes a $40bn Debt Deal for AI Chips While Musk Warns of a Neocloud Shakeout, a CoreWeave Rout Flashes a Warning and Goldman's Tim Moe Slashes His Kospi Target 25%, Even as Verizon Beats, Germany Brightens and Yardeni Sees a Buying Window</h3>
+      </div>
+      <p>The AI selloff rolled into a new week dominated by one question: how does the build-out get paid for. Bloomberg reported Meta is seeking to raise as much as $95bn from common and preferred stock to fund its AI push, with FT noting Nvidia, AMD and Broadcom lined up as cornerstone investors, and Bloomberg said SpaceX closed a $40bn debt deal for AI chips while Elon Musk warned of a major shakeout among smaller AI cloud providers. The bears have the momentum. Bloomberg reported Wall Street strategists warn the CoreWeave rout in AI cloud names could spill into the broader tech trade and drag stocks toward June lows, MarketWatch said Goldman's Tim Moe cut his Kospi target 25% as the AI growth multiple compresses, and Morgan Stanley flagged that support for semiconductors could sit as much as 15% below current levels. Bloomberg's Taking Stock noted AI funding angst stands in the way of a return to highs, and a Merryn Talks Money episode with Silicon Data's Steve Hou explored a margin squeeze as token prices fall while compute costs rise. The bulls insist the demand and the capital both hold. Meta securing three chip giants as cornerstone buyers is a demand signal, Verizon raised its 2026 forecast on record subscriber adds, Germany's outlook brightened a sixth month, and MarketWatch said Yardeni Research sees four shocks that could hand investors an unexpected buying window. WSJ noted two AI chipmakers alone make up 34% of America's earnings boom, which is either the strength or the fragility, depending on your lean.</p>
+      <p>The bull read is Nvidia, AMD and Broadcom backing Meta's raise, Verizon's beat, Germany's improving outlook and Yardeni flagging a buying window. The bear read is Meta needing $95bn and SpaceX $40bn of debt, the CoreWeave rout warning, Goldman's 25% Kospi cut and Morgan Stanley's semis caution.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the capital is there and so is the demand):</strong> Meta is raising up to $95bn with Nvidia, AMD and Broadcom as cornerstone investors, Bloomberg and FT report, which is the chip giants funding their own demand. Verizon raised its 2026 forecast on its strongest subscriber adds in five years, Germany's business outlook brightened for a sixth month, and Yardeni Research tells MarketWatch four shocks could open a buying window. With two AI chipmakers driving a third of the earnings boom, the engine is still running.</div>
+        <div class="bear"><strong>Bear (the financing strain is now the story):</strong> Meta needs $95bn of fresh equity and SpaceX just closed $40bn of debt for chips, while Musk himself warns of a neocloud shakeout, Bloomberg reports. The CoreWeave rout is flashing a warning that could drag tech toward June lows, Goldman's Tim Moe slashed his Kospi target 25%, and Morgan Stanley sees semi support 15% lower. With token prices falling as compute costs rise, the margin math and the funding math are both getting harder.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/tech/ai/meta-plans-35-billion-stock-offering-to-power-ai-buildout-eyes-95-billion-total-plan-10b8947e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Meta Plans Up to $95 Billion in Financing to Power Its AI Growth</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stocks gain before tech earnings as oil declines</strong></summary>
+      <div class="deal-body">
+        <p>Stocks started the week on a positive note, Bloomberg reported, as crude retreated from a six-month high and investors braced for a busy slate of tech earnings for a read on the AI trade. Futures edged up even as AI jitters persisted into the heart of megacap results season.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-25/us-equity-futures-climb-as-crude-oil-price-dips-markets-wrap" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Gain Before Tech Earnings as Oil Declines: Markets Wrap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Verizon's stock rises as a subscriber surge impresses Wall Street</strong></summary>
+      <div class="deal-body">
+        <p>Verizon (VZ) raised its 2026 forecast after its strongest third-quarter wireless customer additions in five years, more than twice what analysts expected, MarketWatch reported. The beat is an early sign that CEO Dan Schulman's turnaround plan is bearing fruit, and the stock rose on the read.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/verizons-stock-rises-as-subscriber-surge-impresses-wall-street-2be3ef2c?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Verizon's Stock Rises as Subscriber Surge Impresses Wall Street</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CoreWeave rout sends a warning sign to the rest of the market</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street strategists warn that declines in AI cloud-computing providers like CoreWeave (CRWV) will spill into other corners of the tech trade, Bloomberg reported, potentially dragging the US stock market toward its June lows. The neocloud weakness is the clearest crack in the AI leadership so far.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/coreweave-rout-sends-warning-sign-to-rest-of-the-stock-market" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CoreWeave Rout Sends Warning Sign to Rest of the Stock Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lula's upset jolts Brazil as dollar bonds tumble and the ETF drops 27%</strong></summary>
+      <div class="deal-body">
+        <p>Brazil's surprise election result dominated emerging markets, Bloomberg reported, with the nation's dollar bonds tumbling in London and an ETF tracking Brazilian stocks plunging 27% as President Lula pulled off a comeback over the investor-preferred Flavio Bolsonaro. Broader developing-nation stocks and currencies held steady.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/em-stocks-fall-before-key-earnings-brazil-in-focus-as-lula-wins" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Lula Upset Jolts Brazil as Broader Emerging Markets Hold Steady</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Genmab soars as its cancer drug impresses in a late-stage trial</strong></summary>
+      <div class="deal-body">
+        <p>Genmab (GMAB) shares surged the most in more than six years, Bloomberg reported, after its experimental ovarian cancer treatment exceeded analyst expectations in a late-stage trial, boosting confidence in the Danish drugmaker's pipeline. The move shows biotech can still rally hard on clean data even in a risk-off tape.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/genmab-soars-as-cancer-drug-impresses-in-a-late-stage-trial" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Genmab Soars as Cancer Drug Impresses in a Late-Stage Trial</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Two AI chipmakers make up 34% of America's earnings boom</strong></summary>
+      <div class="deal-body">
+        <p>Ten companies, including Nvidia (NVDA), Micron (MU) and other AI giants, account for roughly two-thirds of corporate profit growth, WSJ reported, with two chipmakers alone making up 34% of the earnings boom. The concentration is the strength and the fragility of this market in one statistic.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/the-earnings-boom-is-heavily-reliant-on-just-a-handful-of-stocks-21decb53?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Two AI Chipmakers Make Up 34% of America's Earnings Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Borr Drilling falls 11% after a rig sinks off Gabon</strong></summary>
+      <div class="deal-body">
+        <p>Borr Drilling (BORR) shares fell 11%, Bloomberg reported, after one of its rigs sank off Gabon over the weekend with five people still missing. The operational shock hit the stock hard even as the broader energy complex pulled back with crude.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/borr-drilling-falls-11-after-5-missing-from-rig-sunk-off-gabon" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Borr Drilling Falls 11% After 5 Missing From Rig Sunk Off Gabon</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The week is loaded, with Fed on Wednesday and megacap earnings all week. The bull case is Nvidia, AMD and Broadcom backing Meta's $95bn raise, Verizon's beat and Yardeni flagging a buying window. The bear case is the CoreWeave rout warning, Goldman's 25% Kospi cut and Morgan Stanley seeing semi support 15% lower. Watch whether tech results pair the build-out with revenue the market now demands, or confirm the funding angst Bloomberg says is blocking a return to highs.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Funding a Build-Out With Equity Sends a Different Signal Than Debt</summary>
+      <p>Bloomberg reported Monday that Meta is seeking to raise as much as $95bn through a mix of common and preferred stock to fund its AI infrastructure, while separately SpaceX closed a $40bn debt deal to buy chips. Two of the biggest names in the build-out reached for capital the same week, but they reached in opposite directions, and the choice between equity and debt is one of the most revealing signals a company sends. Understanding why explains what each decision tells you about confidence, risk and who ends up paying. Start with the basic trade-off. A company funding growth can sell new shares, which raises cash without any obligation to pay it back, or it can borrow, which raises cash that must be repaid with interest on a fixed schedule. Equity dilutes existing owners because the profit pie now gets split more ways. Debt does not dilute, but it adds a claim that sits ahead of shareholders and must be serviced in good times and bad. The first mechanism is the signal in the choice itself. Managers tend to issue equity when they think their shares are richly valued, because selling expensive stock is a cheap way to raise money. They tend to borrow when they believe the cash flows are reliable enough to cover interest, which is a bet on predictability. Meta raising $95bn of stock while its shares sit near records can be read as management taking advantage of a high price. The second mechanism is risk placement. Debt concentrates risk on the borrower, because the interest bill does not care whether the AI payoff arrives on schedule. SpaceX borrowing $40bn for chips loads a fixed cost onto a business whose revenue is lumpier, which is why Musk himself is warning of a neocloud shakeout. If returns disappoint, leverage turns a slowdown into a solvency problem. The third mechanism is the cornerstone-investor wrinkle. FT reported Nvidia, AMD and Broadcom are cornerstone buyers in Meta's raise, meaning the chip suppliers are funding the customer that buys their chips. That circularity can support demand in the near term, but it also means the vendors' revenue and their investment returns now move together, which concentrates risk rather than spreading it. The fourth mechanism is the capital-structure limit. Every company has a ceiling on how much debt it can carry before lenders demand higher rates or refuse entirely. Choosing equity preserves that borrowing capacity for later, which matters most when a build-out could run for years and nobody knows how expensive the next phase will be. The fifth mechanism is the dilution-versus-default spectrum. Equity holders can tolerate a disappointing project because they simply earn a lower return. Debt holders cannot, because a missed payment triggers default. The financing choice therefore tells you how much downside the company is braced for. The practical lesson for a market reader is to treat the funding method as information, not plumbing. When a firm sells equity into a high price, it is monetizing optimism others hold. When it loads on debt, it is betting the cash flows will be there. In a capital-hungry boom, watch which names reach for which, because the mix reveals who is confident and who is exposed.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/meta-seeks-up-to-95-billion-in-equity-to-fund-ai-spending" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta Seeks Up to $95 Billion in Equity to Fund AI Spending</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-26/musk-says-40-billion-debt-deal-for-ai-chips-has-closed-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Musk Says $40 Billion Debt Deal for AI Chips Has Closed</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Meta seeks up to $95 billion in equity to fund AI spending</strong></summary>
+      <div class="deal-body">
+        <p>Meta (META) is seeking to raise as much as $95bn from selling common and preferred stock, Bloomberg reported, tapping investors for support in the race to lead AI's development. FT added that Nvidia, AMD and Broadcom will act as cornerstone investors, the vendors effectively funding their own demand.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/meta-seeks-up-to-95-billion-in-equity-to-fund-ai-spending" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta Seeks Up to $95 Billion in Equity to Fund AI Spending</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Musk says SpaceX's $40 billion debt deal for AI chips has closed</strong></summary>
+      <div class="deal-body">
+        <p>Elon Musk said SpaceX has closed a $40bn debt deal to pay for the chips needed to fuel its AI ambitions, Bloomberg reported, though people familiar said pricing talks were still ongoing. On CoinDesk, Musk paired the raise with a warning of a major shakeout among smaller AI cloud providers.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/26/elon-musk-confirms-usd40-billion-spacex-debt-deal-for-ai-chips-warns-of-neocloud-shakeout" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Elon Musk Issues a Warning for AI Neoclouds as SpaceX Borrows $40 Billion for Chips</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SK Hynix shares defy the AI selloff with help from Kioxia gains</strong></summary>
+      <div class="deal-body">
+        <p>SK Hynix shares bucked a broad selloff in AI-related stocks, Bloomberg reported, thanks to the prospect of a hefty dividend tied to its stake in Japan's Kioxia, with a reported $12bn payout in focus. Separately, two leveraged ETFs tied to the chipmaker will be liquidated in the US as AI appetite cools.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-25/sk-hynix-plans-12-billion-dividend-from-kioxia-gains-report" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SK Hynix Shares Defy AI Selloff With Help From Kioxia Gains</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman slashes its Kospi target 25% as the AI growth multiple compresses</strong></summary>
+      <div class="deal-body">
+        <p>The Kospi is the leading indicator for the global AI trade, MarketWatch reported, and Goldman strategist Tim Moe took an axe to his Korean market target, cutting it 25% as investors pay a lower growth multiple for AI stocks and volatility rises. The call frames Korea as the canary for the broader trade.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-kospi-index-is-the-leading-indicator-for-the-global-ai-trade-and-goldman-just-slashed-its-forecast-by-25-ccfe2690?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Goldman Slashes Its Kospi Forecast by 25%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tata commits $450 million to an AI superhighway linking Indian hubs</strong></summary>
+      <div class="deal-body">
+        <p>Tata Communications (TATACOMM) plans to spend as much as $450m building a long-haul fiber-optic network linking India's key AI hubs, Bloomberg reported, expanding the country's infrastructure readiness for the global AI economy. The investment shows the build-out is spreading well beyond US hyperscalers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/tata-commits-450-million-to-ai-superhighway-linking-hubs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tata Commits $450 Million to AI Superhighway Linking Hubs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI bots are transforming bond markets, Barclays warns of volatility risk</strong></summary>
+      <div class="deal-body">
+        <p>AI agents will trade up to 65% of US investment-grade credit over time, Bloomberg reported Barclays saying, with the bank warning the shift carries volatility risk even as it takes work from human traders. The automation is coming for parts of the trading desk, but not all at once.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/ai-agents-seen-taking-credit-trading-work-from-humans-over-time" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Agents Seen Taking Credit Trading Work From Humans Over Time</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Can the AI boom survive a margin squeeze?</strong></summary>
+      <div class="deal-body">
+        <p>Silicon Data's Steve Hou flagged an emerging problem in AI economics on Bloomberg's Merryn Talks Money: token prices are falling while the cost of the compute needed to produce them is rising. The mismatch raises questions for the valuations of OpenAI and Anthropic and whether demand can justify the sums being invested.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-26/can-the-ai-boom-survive-a-margin-squeeze-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Can the AI Boom Survive a Margin Squeeze?</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Monday October 26, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is where capital and demand still line up, with Nvidia, AMD and Broadcom backing Meta's $95bn raise, Tata funding $450m of AI fiber and SK Hynix defying the selloff on Kioxia gains. The counter-signal is Goldman's Tim Moe cutting the Kospi 25%, the CoreWeave rout warning and Silicon Data's margin-squeeze math. The near-term tell is this week's megacap earnings, because the jitters have moved from profits to how the build-out gets financed and whether token economics hold.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>French bond risk gauge falls as Moody's keeps the rating stable</strong></summary>
+      <div class="deal-body">
+        <p>A measure of French bond risk tumbled, Bloomberg reported, after the nation dodged a downgrade at Moody's, easing a selloff that had roiled domestic assets in recent weeks. The reprieve pulls one European tail risk off the table heading into the Fed decision.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/french-markets-rebound-after-nation-avoids-moody-s-downgrade" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- French Bond Risk Gauge Falls as Moody's Keeps Rating Stable</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed focus turns to Warsh messaging with December in mind</strong></summary>
+      <div class="deal-body">
+        <p>Kevin Warsh faces a familiar challenge this week, Bloomberg reported, if the Fed holds rates steady on Wednesday: he must reassure investors the central bank is committed to quashing inflation while explaining why officials chose not to hike, with December live. The messaging matters more than the decision.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/fed-meeting-focus-turns-to-warsh-messaging-with-december-in-mind" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Meeting Focus Turns to Warsh Messaging With December in Mind</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasury yields turn slightly higher as French bonds outperform</strong></summary>
+      <div class="deal-body">
+        <p>Treasury yields turned higher Monday, WSJ reported, tracking rises in most eurozone peers, while French government bonds outperformed after Moody's left its credit rating unchanged. The move partly unwinds last week's flight-to-safety rally.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/economy/central-banking/treasury-yields-turn-slightly-higher-french-bonds-outperform-2fd1aaa0?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury Yields Turn Slightly Higher, French Bonds Outperform</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOE officials are the most hawkish since inflation was 10%</strong></summary>
+      <div class="deal-body">
+        <p>Bank of England officials are sending their most hawkish signals in over three years, Bloomberg reported, citing a model that suggests inflation was last this much of a worry when it ran at 10%. The stance lays the ground for a possible rate hike as early as next month.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/boe-officials-most-hawkish-since-inflation-was-10-model-shows" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOE Officials Most Hawkish Since Inflation Was 10%, Model Shows</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euro-zone slowdown will keep the ECB on hold for now</strong></summary>
+      <div class="deal-body">
+        <p>Waning economic momentum is one reason the ECB will probably hold off from raising rates for the time being, Bloomberg reported, even as the French bond rout overshadows the race to succeed Christine Lagarde. The hold would separate the ECB from the hawkish drift elsewhere.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/euro-zone-slowdown-central-bank-ecb-rates-hold-for-now" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Euro-Zone Slowdown Will Help Keep ECB Rates on Hold for Now</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Germany's business outlook unexpectedly improves for a sixth month</strong></summary>
+      <div class="deal-body">
+        <p>Germany's business outlook brightened for a sixth straight month, Bloomberg reported, underscoring the economy's rebound from a prolonged downturn. The steady improvement is a rare clean positive in a week otherwise dominated by AI funding angst and central-bank caution.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/germany-s-business-outlook-unexpectedly-improves-for-sixth-month" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Germany's Business Outlook Unexpectedly Improves for Sixth Month</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Pakistan raises rates as Middle East conflict fans inflation</strong></summary>
+      <div class="deal-body">
+        <p>Pakistan raised its benchmark rate Monday, Bloomberg reported, as mounting inflation risks from the Middle East conflict forced policymakers to tighten even at the cost of slower growth. The move shows how the oil shock is still rippling into monetary policy across emerging markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/pakistan-hikes-interest-rate-to-curb-inflation-risks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Pakistan Raises Rates as Middle East Conflict Fans Inflation</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (October 26, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to France dodging a Moody's downgrade, its risk gauge tumbling, Germany's sixth-month improvement and the ECB positioned to hold. The bear side points to the BOE's most hawkish stance since 10% inflation, Pakistan hiking on Middle East prices and Warsh having to defend an inflation fight if the Fed pauses. The swing factor is Wednesday's FOMC and how December pricing reacts, plus whether Brazil's Lula upset keeps bleeding into EM risk.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Central Bank Can Hold Rates and Still Spook Markets</summary>
+      <p>Bloomberg reported Monday that the focus of this week's Fed meeting turns to Kevin Warsh's messaging, because if officials hold rates steady he still has to reassure investors the central bank is committed to quashing inflation while explaining why it chose not to hike, with December in mind. The instinct is that a hold is a non-event, since nothing changes. But markets routinely swing hard on meetings where the policy rate does not move, and understanding why explains how expectations, not the decision itself, drive the bond market. Start with what a central-bank meeting actually produces. There is the rate decision, which is often fully priced in advance, and there is the guidance, which is everything officials say and signal about where rates go next. Because asset prices reflect expectations of the future, not just the present, the guidance can matter more than the decision. The first mechanism is the gap between a hold and the reason for it. A central bank can hold because inflation is beaten, which is dovish, or hold because it is waiting for more data before hiking, which is hawkish. The same decision carries opposite meanings, and the statement's language is how the market figures out which one it is. Warsh's problem is that he must deliver a hold that reads as a pause, not a stop. The second mechanism is the dot plot and the path. Markets price a whole curve of future rates, so when officials signal a December hike is live, every forward rate adjusts even though today's rate is unchanged. A hawkish hold can push two-year yields up as traders add tightening further out, while a dovish hold can pull them down. The decision is one point; the guidance moves the entire line. The third mechanism is credibility and the inflation fight. A central bank's main asset is the belief that it will do whatever it takes on inflation. If a pause makes markets doubt that resolve, longer-term inflation expectations can drift up, which paradoxically forces the bank to sound tougher precisely when it is holding. That is the tightrope Warsh walks. The fourth mechanism is the reaction function. Investors are always trying to infer the rule the central bank follows, so each meeting is a chance to update that model. When officials emphasize data dependence, as Warsh has told traders to watch the data, markets test whether the bank truly means it or still telegraphs moves. Bloomberg noted traders still follow the Fed more than the data, which shows how much the guidance anchors expectations. The fifth mechanism is positioning. Going into a known event, traders build positions around the expected outcome, so any surprise in tone forces a scramble to adjust, amplifying the move. A hold that lands more hawkish or dovish than positioned can produce an outsized swing in yields on a day the rate did not change at all. The practical lesson for a market reader is to watch the words, not just the decision. When a hold is widely expected, the action lives in the statement, the projections and the press conference, because that is where the path for December and beyond gets set. A meeting where nothing moves on the surface can still reset the entire curve underneath.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-25/warsh-tells-traders-to-watch-the-data-they-still-follow-the-fed" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Warsh Tells Traders to Watch the Data. They Still Follow the Fed</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/boe-officials-most-hawkish-since-inflation-was-10-model-shows" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOE Officials Most Hawkish Since Inflation Was 10%, Model Shows</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">France dodged a Moody's downgrade and its bond risk gauge tumbled, with Germany's outlook brightening a sixth month and the ECB set to hold, against the BOE's most hawkish stance since 10% inflation, Pakistan hiking and Warsh needing to defend an inflation fight into Wednesday's Fed. Oil retreated below $110 from a $117 six-month high as Iran hosts Saudi, Pakistani and Turkish officials for de-escalation talks, even as the US and Iran stuck to familiar rhetoric. The financing question became the whole AI trade as Meta sought up to $95bn in equity with Nvidia, AMD and Broadcom as cornerstones and SpaceX closed $40bn of chip debt, against the CoreWeave rout, Goldman's 25% Kospi cut and Musk's neocloud warning; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above $250, bull confirmed; below $235, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 10/26</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 10/27</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 10/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/29</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/30</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin holds near $80,000 as oil retreats and the Fed decision looms</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin was little changed near $80,400 since midnight UTC, CoinDesk reported, with the DeFi index the only CoinDesk gauge to gain as the Fed's Wednesday decision approaches. The calm comes as crude pulls back and the AI trade stays under pressure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/26/bitcoin-holds-near-usd80-000-as-oil-retreats-and-the-fed-decision-looms" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Holds Near $80,000 as Oil Retreats and the Fed Decision Looms</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin slips under $80,000 as traders de-risk ahead of the Fed</strong></summary>
+      <div class="deal-body">
+        <p>Ether and XRP led losses among the majors, CoinDesk reported, as the AI trade took another hit in Asia where Goldman cut its Kospi target 25%. The de-risking pushed bitcoin briefly below $80,000 as the Fed meeting drew near.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/26/bitcoin-slips-under-usd80-000-as-traders-de-risk-ahead-of-fed-meeting" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Slips Under $80,000 as Traders De-Risk Ahead of Fed Meeting</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A $68 million bitcoin bet targets a post-midterm breakout to $90,000</strong></summary>
+      <div class="deal-body">
+        <p>A $68m options position is targeting a post-midterm election breakout to $90,000, CoinDesk reported in its day-ahead note. The wager leans on the historical pattern of bitcoin strength following US midterms, even as this cycle's timing has looked unusual.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/daybook-us/2026/10/26/a-usd68-million-bitcoin-bet-is-targeting-a-post-midterm-election-breakout-to-usd90-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- A $68 Million Bitcoin Bet Is Targeting a Post-Midterm Breakout to $90,000</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Over 11 million bitcoin has no known owner</strong></summary>
+      <div class="deal-body">
+        <p>More than 11 million bitcoin sit in wallets that cannot be linked to any known owner even after years of Wall Street buying, CoinDesk reported. Observers read the figure as a sign retail investors have held the market for years, though the interpretation comes with caveats about lost coins.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/26/over-11-million-btc-can-t-be-linked-to-any-known-owner-even-after-wall-street-buying" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Over 11 Million Bitcoin Has No Known Owner. Here's What It Means</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>India's largest crypto exchange absorbs a $16 million loss from a retired wallet</strong></summary>
+      <div class="deal-body">
+        <p>CoinDCX will absorb a $16m loss from an internal process failure tied to a retired wallet, CoinDesk reported, after initially dismissing reports of suspicious outflows as a false alarm. The Mumbai-based exchange's reversal is a reminder of lingering operational risk in crypto infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/26/coindcx-absorbs-usd16-million-loss-from-internal-process-failure-tied-to-retired-wallet" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- India's Largest Crypto Exchange Absorbs $16 Million Loss</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed, ECB and BOJ decisions plus Coinbase earnings headline the crypto week</strong></summary>
+      <div class="deal-body">
+        <p>The week ahead brings interest-rate decisions from the Fed, ECB and BOJ along with Coinbase (COIN) earnings, CoinDesk reported in its week-ahead roundup. The cluster of central-bank events and a major exchange report makes it a pivotal stretch for risk assets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/26/fed-ecb-and-boj-interest-rate-decisions-coinbase-earnings-crypto-week-ahead" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Fed, ECB and BOJ Decisions, Coinbase Earnings: Crypto Week Ahead</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>EQT &amp; Range Resources -- $12.8bn All-Stock Deal Creates the Largest US Gas Producer</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> EQT (EQT) agreed to buy Range Resources (RRC) in an all-stock deal worth about $12.8bn, Bloomberg reported, creating what it says will be the largest and only vertically integrated US natural gas producer.</p>
+        <p><strong>Outlook:</strong> The tie-up bets on surging gas demand from data centers and AI power needs, consolidating Appalachian supply under one roof.</p>
+        <p><strong>What it means:</strong> Energy M&amp;A is scaling to meet the AI build-out's electricity appetite, a growth lever even with rates still high.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/eqt-to-buy-range-resources-in-an-all-stock-transaction" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- EQT to Buy Range Resources, Creating Largest US Gas Producer</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta -- Up to $95bn Equity Raise With Nvidia, AMD and Broadcom as Cornerstones</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Meta (META) will look to raise up to $95bn via common and preferred stock to fund its AI infrastructure, WSJ reported, with FT noting Nvidia, AMD and Broadcom lined up as cornerstone investors.</p>
+        <p><strong>Outlook:</strong> The scale of the raise shows how capital-intensive the superintelligence race has become, and the chipmakers' participation funds their own demand.</p>
+        <p><strong>What it means:</strong> Equity financing at a high price lets Meta preserve borrowing capacity, but the circular funding concentrates risk across the chip complex.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/94e5a0ae-874d-447a-bbfc-cd465a1a7555?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Meta Plans $95bn Stock Offering to Bankroll AI Expansion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SpaceX -- $40bn Debt Deal Closes to Pay for AI Chips</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Elon Musk said SpaceX closed a $40bn debt deal to buy the GPUs needed for its AI ambitions, Bloomberg reported, though people familiar said pricing talks were still ongoing.</p>
+        <p><strong>Outlook:</strong> Loading fixed-cost debt onto a lumpier revenue base is a leveraged bet, and Musk himself warned of a shakeout among smaller AI cloud providers.</p>
+        <p><strong>What it means:</strong> Debt-funded chip buying is a confidence signal on cash flows, but it turns any AI slowdown into a tougher solvency question.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-26/musk-says-40-billion-debt-deal-for-ai-chips-has-closed-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Musk Says $40 Billion Debt Deal for AI Chips Has Closed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Banque du Caire -- Egypt IPO Prices at Top End, Eyes $648 Million</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Banque du Caire priced its IPO at the top end of the marketed range, Bloomberg reported, signaling strong demand for one of Egypt's biggest-ever listings, which could raise around $648m.</p>
+        <p><strong>Outlook:</strong> The top-end pricing shows emerging-market primary demand is holding even as US AI listings get paused.</p>
+        <p><strong>What it means:</strong> Appetite for fresh issues is bifurcating, with frontier bank IPOs clearing while richly valued tech deals stall.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/banque-du-caire-says-ipo-priced-at-top-end-of-range" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Egypt's Banque du Caire Prices IPO at Top End, Eyes $648 Million</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meituan -- Food-Delivery Giant Aims to Raise $1bn in a Dim Sum Bond Sale</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Meituan is seeking to raise about $1bn through an offshore yuan bond offering, Bloomberg reported, joining a growing wave of issuers tapping the dim sum debt market.</p>
+        <p><strong>Outlook:</strong> The deal shows the offshore yuan market reopening as Chinese corporates diversify funding sources.</p>
+        <p><strong>What it means:</strong> Dim sum issuance picking up is a sign of healthier appetite for Chinese credit even amid US-China trade friction.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/food-delivery-firm-meituan-aims-1-billion-bond-sale-dim-sum-debt" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Food-Delivery Firm Meituan Aims to Raise $1 Billion in Bond Sale</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wonder -- Marc Lore's Food Startup Preps for a Potential IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Wonder is leaning into automation and user-built restaurants as founder Marc Lore prepares the startup for a potential IPO, CNBC reported, betting on Texas expansion.</p>
+        <p><strong>Outlook:</strong> The automation-heavy model is pitched as a path to better unit economics ahead of a listing.</p>
+        <p><strong>What it means:</strong> Consumer-tech IPO candidates are still readying deals even as the AI-valuation wobble freezes parts of the primary market.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/25/wonder-ipo-texas-automation.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Marc Lore's Wonder Bets on Texas, Automation as It Mulls IPO</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Tim Moe (Goldman Sachs) -- cuts his Kospi target 25% as the AI growth multiple compresses</strong></summary>
+      <div class="deal-body">
+        <p>Goldman strategist Tim Moe took an axe to his Korean market target, MarketWatch reported, cutting it 25% as investors pay a lower growth multiple for AI stocks and volatility rises. Since the Kospi is widely seen as the leading indicator for the global AI trade, the cut is a pointed bearish read.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-kospi-index-is-the-leading-indicator-for-the-global-ai-trade-and-goldman-just-slashed-its-forecast-by-25-ccfe2690?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Goldman Slashes Its Kospi Forecast by 25%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley -- holds an 8,000 S&amp;P target but sees semi support 15% lower</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley's chief stock-market strategist is sticking with a forecast that the S&amp;P 500 ends the year at 8,000, MarketWatch reported, but growing caution is on display as he flagged that support for the key semiconductor sector could sit as much as 15% below current levels. A constructive index call paired with a near-term chip warning.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/support-for-semiconductor-stocks-could-be-as-much-as-15-lower-than-current-levels-says-morgan-stanley-1f387f16?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Support for Semiconductor Stocks Could Be 15% Lower, Says Morgan Stanley</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Yardeni Research -- four shocks could hand investors an unexpected buying window</strong></summary>
+      <div class="deal-body">
+        <p>Yardeni Research said a surprise Fed decision or increasing constraints in the AI trade could provide valuable entry points, MarketWatch reported. The named bull read frames the current volatility as setting up opportunity rather than signaling a top.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/these-four-shocks-could-hand-investors-an-unexpected-buying-window-strategists-say-5ae7c4db?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- These Four Shocks Could Hand Investors an Unexpected Buying Window</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Calpers -- shifts toward private equity as AI jitters deepen the neocloud sell-off</strong></summary>
+      <div class="deal-body">
+        <p>California's Calpers is pulling back from big tech and shifting toward private equity, CoinDesk reported, as investors question tech valuations and the payoff from soaring AI spending. The largest US public pension rotating away from the Mag 7 is a concrete de-risking signal.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/26/calpers-pulls-back-from-big-tech-as-ai-jitters-deepen-neocloud-sell-off" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Calpers Pulls Back From Big Tech as AI Jitters Deepen Neocloud Sell-Off</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Steve Hou (Silicon Data) -- warns of an AI margin squeeze as token prices fall and compute costs rise</strong></summary>
+      <div class="deal-body">
+        <p>Silicon Data's Steve Hou told Bloomberg's Merryn Talks Money that token prices are falling while compute costs rise, a mismatch that could pressure the valuations of OpenAI and Anthropic. A named skeptic on whether AI unit economics justify the investment sums.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-26/can-the-ai-boom-survive-a-margin-squeeze-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Can the AI Boom Survive a Margin Squeeze?</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned as the Financing Question Takes Over, With Yardeni Research Seeing a Buying Window and Morgan Stanley Holding an 8,000 S&amp;P Target, Against Goldman's Tim Moe Cutting the Kospi 25%, Calpers Rotating Into Private Equity and Silicon Data's Steve Hou Flagging an AI Margin Squeeze</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the volatility is opportunity, not a top):</strong> Yardeni Research says four shocks could open an unexpected buying window, and Morgan Stanley is holding an 8,000 year-end S&amp;P target. Nvidia, AMD and Broadcom are backing Meta's $95bn raise, Verizon beat on record subscriber adds, and Germany's outlook brightened a sixth month. With two chipmakers driving a third of the earnings boom, the engine underneath is still running hard.</div>
+        <div class="bear"><strong>Bear (the smart money is stepping back):</strong> Goldman's Tim Moe slashed his Kospi target 25% on a compressing AI multiple, Calpers is rotating out of big tech and into private equity, and Silicon Data's Steve Hou warns token prices are falling as compute costs rise. The CoreWeave rout could drag tech toward June lows and Morgan Stanley sees semi support 15% lower. When funding angst becomes the wall of worry, the prudent move is trimming, not chasing.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Meta raises $95bn for AI; SpaceX borrows $40bn for chips; CoreWeave rout warning; Verizon beats; Genmab soars; Borr Drilling -11%</td><td>Risk-off</td><td>~43,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Megacap earnings week and Fed Wednesday; two chipmakers 34% of earnings boom; Goldman cuts Kospi 25%; Morgan Stanley semi caution</td><td>Mixed-cautious</td><td>~35,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>France dodges Moody's downgrade; Warsh messaging into FOMC; BOE hawkish; Brazil Lula upset routs bonds; ECB on hold</td><td>Cautious</td><td>~34,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI funding angst; Meta equity vs SpaceX debt; margin squeeze as token prices fall; Calpers into private equity; neocloud shakeout</td><td>Bearish-cautious</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds near $80K then slips as traders de-risk; $68M post-midterm bet to $90K; 11M BTC no known owner; CoinDCX $16M loss</td><td>Mixed</td><td>~31,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood stayed cautious as the AI financing question took over, with Meta's $95bn raise and SpaceX's $40bn debt deal framing the week ahead of Wednesday's Fed and a megacap earnings flood. r/wallstreetbets traded the big capital moves and single-name shocks like Genmab and Borr Drilling. r/stocks fixated on earnings concentration and Goldman's Kospi cut. r/investing leaned cautious on Warsh's messaging and the Brazil upset. r/SecurityAnalysis turned bearish on funding angst and the margin squeeze. r/CryptoCurrency was mixed as bitcoin wobbled around $80K. The swing factor is the Fed and tech earnings.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Vendors Funding Their Own Customers Can Mask Real Demand</h2>
+    <p>FT reported Monday that Nvidia, AMD and Broadcom will act as cornerstone investors in Meta's planned $95bn equity raise to fund its AI build-out, while Bloomberg separately noted SpaceX closed a $40bn debt deal to buy chips. The instinct is to read a chipmaker investing in its biggest customer as a confidence signal, and in part it is. But when suppliers finance the buyers of their own products, they create a loop that can make demand look stronger and more durable than it really is, and understanding that circularity is one of the most important skills for reading a capital-intensive boom. Start with what cornerstone investing normally means. A cornerstone investor commits to buy a large block of a deal before it opens, signaling to the market that a credible name believes in the company. That endorsement usually carries weight precisely because the investor has no other relationship with the issuer, so its only motive is the return. The first mechanism is the conflict that appears when the investor is also a supplier. When Nvidia puts money into Meta, part of that capital can flow straight back to Nvidia as chip purchases. The chipmaker books revenue, the customer books capacity, and both report growth, but the underlying cash partly circled from one balance sheet to the other and back. The demand is real in an accounting sense, yet it is not fully independent. The second mechanism is the amplification of reported growth. If a supplier funds a customer who then buys the supplier's product, the supplier's sales rise, which lifts its valuation, which gives it more capacity to fund more customers. That feedback loop can keep a boom running longer than organic end-demand alone would support, because the financing and the revenue reinforce each other. The third mechanism is the obscured end-demand question. What ultimately matters is whether real users pay for the AI services the chips enable. Vendor financing can bridge a gap between today's build-out and tomorrow's revenue, but it cannot create end-demand that is not there. If the final customers never show up at scale, the circular funding simply pulls forward spending that later has to be written down. The fourth mechanism is concentration of risk. Normally, spreading a company across many independent buyers diversifies its revenue. When a supplier funds its customers, the supplier's investment returns and its sales now move together, so a slowdown hits both lines at once. That is the opposite of diversification, and it is why these loops can unwind faster than they built. The fifth mechanism is the historical echo. Vendor financing was a hallmark of the late-1990s telecom build-out, where equipment makers lent to carriers who bought their gear, and when end-demand disappointed, both sides collapsed together. The pattern is not proof of a bubble, but it is a flashing yellow light worth watching. The practical lesson for a market reader is to trace where the money actually comes from and where it goes. When a supplier is also a financier of its customer, discount the demand signal somewhat and look for evidence of independent end-user revenue. Ask whether the growth would still be there if the vendor stopped writing checks. In a boom this capital-hungry, the cleanest tell is demand that stands on its own, not demand that the sellers are quietly paying for.</p>
+    <p class="deal-source"><a href="https://www.ft.com/content/94e5a0ae-874d-447a-bbfc-cd465a1a7555?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Meta Plans $95bn Stock Offering to Bankroll AI Expansion</a></p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-26/ai-funding-angst-stands-in-way-of-return-to-highs-taking-stock" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Funding Angst Stands in Way of Return to Highs: Taking Stock</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>The FOMC decision (Oct 28).</strong> With a hold widely expected, watch Kevin Warsh's messaging on whether December is live and how he defends the inflation fight while explaining a pause, because the guidance moves the curve more than the decision.</li>
+      <li><strong>The ECB and BOJ decisions.</strong> With the ECB positioned to hold on a euro-zone slowdown and the BOJ in focus, watch whether the December-tightening debate firms and how the French bond reprieve holds after Moody's left the rating stable.</li>
+      <li><strong>Brazil and emerging-market risk.</strong> After Lula's upset routed Brazilian bonds and the stock ETF, watch whether the selloff stays contained or spreads to broader EM positioning.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Megacap tech floodgates.</strong> With the biggest AI names reporting this week, watch whether results pair the capex build-out with revenue proof the market now demands, especially after Meta's $95bn raise put financing front and center.</li>
+      <li><strong>Coinbase and the crypto read.</strong> After bitcoin wobbled around $80K, watch Coinbase earnings for a signal on exchange volumes and retail appetite into the Fed.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>The AI financing wave.</strong> After Meta sought $95bn of equity and SpaceX closed $40bn of debt, watch whether more build-out capital gets raised and how the market absorbs the supply.</li>
+      <li><strong>The EQT-Range gas deal.</strong> After EQT's $12.8bn all-stock bid for Range Resources, watch whether more energy M&amp;A follows the AI-power demand theme.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Iran de-escalation talks.</strong> With Brent back below $110 after Iran hosted Saudi, Pakistani and Turkish officials in Tehran, watch whether the diplomacy holds and drains the premium or collapses and sends crude back toward $117.</li>
+      <li><strong>US midterms and energy politics.</strong> With the midterms approaching and polls showing voters turning from the GOP on affordability, watch how energy prices and the economy feed into positioning.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how overseas bond markets like France transmit into US Treasury yields and corporate credit.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Oct 26, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-10-26 07:37 ET); Bloomberg Technology (20 fresh, newest 2026-10-26 07:12 ET); Bloomberg Economics (16 fresh, newest 2026-10-26 08:00 ET); CNBC Top News (1 fresh, newest 2026-10-25 08:00 ET); MarketWatch Top Stories (10 fresh, newest 2026-10-26 07:37 ET); WSJ Markets (11 fresh, newest 2026-10-26 07:45 ET); FT Home (11 fresh, newest 2026-10-26 07:15 ET); CoinDesk (12 fresh, newest 2026-10-26 07:53 ET); Stratechery (1 fresh, newest 2026-10-26 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Stale feeds (no items in window): CNBC Finance (25 fetched, 0 in last 36h); CNBC Economy (25 fetched, 0 in last 36h); Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. How is Meta funding its AI build-out, per Monday's reports?</strong></p>
+      <span class="opt" data-opt="A">A. A $40 billion debt deal to buy GPUs</span>
+      <span class="opt" data-opt="B">B. By spinning off a unit in a public IPO</span>
+      <span class="opt" data-opt="C">C. Raising up to $95 billion in equity</span>
+      <span class="opt" data-opt="D">D. Selling its data centers to a pension fund</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg, WSJ and FT reported Meta is seeking up to $95bn from common and preferred stock, with Nvidia, AMD and Broadcom as cornerstone investors. The $40bn debt deal was SpaceX's chip financing, not Meta's, and there was no IPO spin-off or data-center sale.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. Why did French bond risk fall on Monday?</strong></p>
+      <span class="opt" data-opt="A">A. France dodged a Moody's downgrade</span>
+      <span class="opt" data-opt="B">B. The ECB delivered a surprise rate hike</span>
+      <span class="opt" data-opt="C">C. France passed its contested national budget</span>
+      <span class="opt" data-opt="D">D. Germany agreed to backstop French debt</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported a measure of French bond risk tumbled after the nation avoided a downgrade at Moody's, easing the recent selloff. There was no surprise ECB hike, no passed budget and no German backstop driving the move.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What did Goldman's Tim Moe do to his Kospi target?</strong></p>
+      <span class="opt" data-opt="A">A. Raised it on strong Korean chip exports</span>
+      <span class="opt" data-opt="B">B. Left it unchanged pending the Fed meeting</span>
+      <span class="opt" data-opt="C">C. Suspended coverage amid volatility</span>
+      <span class="opt" data-opt="D">D. Cut it by 25% on a lower AI multiple</span>
+      <div class="feedback"><strong>D is correct.</strong> MarketWatch reported Goldman's Tim Moe cut his Korean market target 25% as investors pay a lower growth multiple for AI stocks and volatility rises, with the Kospi seen as a leading indicator for the global AI trade. He did not raise, hold or suspend the call.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "France dodged a Moody's downgrade and its bond risk gauge tumbled just as the Fed heads into Wednesday's decision with Warsh needing to reassure on inflation and December in mind, while Germany's outlook brightened a sixth month and the ECB looks set to hold, even as the BOE turned its most hawkish since inflation was 10%, Pakistan hiked and Brazil's bonds tumbled on Lula's upset.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-26/french-markets-rebound-after-nation-avoids-moody-s-downgrade", "take": "French bond risk gauge falls as Moody's keeps the rating stable." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-26/fed-meeting-focus-turns-to-warsh-messaging-with-december-in-mind", "take": "Fed focus turns to Warsh messaging with December in mind." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/economy/central-banking/treasury-yields-turn-slightly-higher-french-bonds-outperform-2fd1aaa0?mod=rss_markets_main", "take": "Treasury yields turn slightly higher as French bonds outperform." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-26/boe-officials-most-hawkish-since-inflation-was-10-model-shows", "take": "BOE officials are the most hawkish since inflation was 10%." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-26/pakistan-hikes-interest-rate-to-curb-inflation-risks", "take": "Pakistan raises rates as Middle East conflict fans inflation." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil retreated from a six-month high as Brent slid back below $110 from $117 and Iran hosted security officials from Saudi Arabia, Pakistan and Turkey in Tehran to head off a renewed escalation, with the US and Iran sticking to familiar rhetoric, even as Pakistan hiked rates on Middle East inflation and Gulf bargains lured Indian refiners away from Russia.",
+    "sources": [
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/97a60042-f7b6-4c87-9387-8572968a7de0?syn-25a6b1a6=1", "take": "Oil price falls back as traders remain focused on Middle East conflict." },
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/7f6943d3-b089-49a7-a0bc-a6f677c09802?syn-25a6b1a6=1", "take": "Iran hosts regional powers for talks to prevent renewed escalation." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-25/latest-oil-market-news-and-analysis-for-oct-26", "take": "Oil retreats as the US and Iran stick to familiar rhetoric." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-26/gulf-oil-bargains-lure-india-away-from-russia-as-freight-soars", "take": "Gulf oil bargains lure India away from Russia as freight soars." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-26/pakistan-hikes-interest-rate-to-curb-inflation-risks", "take": "Pakistan hikes as Middle East conflict fans inflation risks." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The financing question became the whole trade as Meta sought up to $95bn in equity with Nvidia, AMD and Broadcom as cornerstone investors, SpaceX closed a $40bn debt deal for AI chips while Musk warned of a neocloud shakeout, a CoreWeave rout flashed a warning and Goldman's Tim Moe slashed his Kospi target 25%, even as Verizon beat, Germany brightened and Yardeni saw a buying window.",
+    "sources": [
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/tech/ai/meta-plans-35-billion-stock-offering-to-power-ai-buildout-eyes-95-billion-total-plan-10b8947e?mod=rss_markets_main", "take": "Meta plans up to $95bn in financing to power its AI growth." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-26/coreweave-rout-sends-warning-sign-to-rest-of-the-stock-market", "take": "CoreWeave rout sends a warning sign to the rest of the market." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/the-kospi-index-is-the-leading-indicator-for-the-global-ai-trade-and-goldman-just-slashed-its-forecast-by-25-ccfe2690?mod=mw_rss_topstories", "take": "Goldman slashes its Kospi forecast by 25%." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/these-four-shocks-could-hand-investors-an-unexpected-buying-window-strategists-say-5ae7c4db?mod=mw_rss_topstories", "take": "Four shocks could hand investors an unexpected buying window, Yardeni says." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-26/meta-seeks-up-to-95-billion-in-equity-to-fund-ai-spending", "take": "Meta seeks up to $95bn in equity with chipmakers as cornerstones." }
+    ]
+  }
+}</script>
+
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Genmab","Verizon","SK Hynix","Siemens Energy","CoreWeave","Borr Drilling"],
+    "values": [18.0, 3.0, 2.0, 1.5, -8.0, -11.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [43000, 35000, 34000, 29000, 31000],
+    "colors": ["bear","neutral","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["Meta Raise","SpaceX Debt","EQT-Range","Meituan Bond","Banque du Caire"],
+    "values": [95.0, 40.0, 12.8, 1.0, 0.65]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
