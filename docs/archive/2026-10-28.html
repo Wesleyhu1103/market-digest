@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Oct 28, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-10-28</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, October 28, 2026</h1>
+    <div class="meta">
+      <p>Fed decision day, with a hold near-certain and all the weight on Kevin Warsh's post-decision messaging. Microsoft and Alphabet report after the close, and SK Hynix's sevenfold profit surge and $45bn payout pulled traders back into AI stocks overnight. Israel's election looks headed for a stalemate, Q3 GDP lands Thursday, and the UK budget drops this afternoon.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "SK Hynix reported a stronger-than-expected sevenfold jump in quarterly profit and pledged roughly $45bn more in shareholder returns, driving the Kospi up 7% and pulling traders back into AI stocks on renewed confidence the infrastructure build-out will pay off, just as Microsoft and Alphabet prepare to report after the close and the Fed decides rates",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "SK Hynix Profit Surge, $45 Billion Payout Fuel AI Rally", "angle": "Reads the result as proof the AI hardware rollout is resilient, propelling chip demand and a tech rotation.", "lean": 35, "pull": "Traders are rotating back into tech stocks on renewed confidence that AI spending will pay off."},
+        {"outlet": "MarketWatch", "headline": "SK Hynix's Outlook Is What Really Mattered to the AI Trade", "angle": "Zeroes in on guidance that supply constraints will last through 2030, a demand signal for the whole complex.", "lean": 25, "pull": "The memory-chip giant says supply constraints will last through 2030."},
+        {"outlet": "CoinDesk", "headline": "Kospi Surges 7% as SK Hynix Earnings Fuel AI Stock Rebound", "angle": "Treats the Korean rally as the clearest sign risk appetite is back after last week's funding angst.", "lean": 30, "pull": "South Korean chipmakers led a broader AI recovery after a sevenfold profit surge."},
+        {"outlet": "WSJ", "headline": "Tech Rally Continues, Treasurys Weaken Ahead of Fed", "angle": "Pairs the chip-led rally with rising yields, framing a bumper day of earnings and macro as the real test.", "lean": 10, "pull": "Tech stocks extended gains and Treasury yields crept up ahead of a bumper day."},
+        {"outlet": "Bloomberg Opinion", "headline": "Microsoft, Alphabet Have a Lot to Prove to AI Skeptics", "angle": "Steps back to warn the rally rides on megacaps showing the capex drain is actually turning into cash.", "lean": -20, "pull": "The stocks have underperformed the market this year on concerns over spending."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Fed Decides With a Hold Near-Certain and All Eyes on Warsh's 'Discovery Process' Briefing, While Pimco Would Welcome a UK Deficit Near 3.5% and Bond Traders Bet on UK Resilience Into Today's Budget, Even as Bloomberg Warns Bullish Treasury Bets Face Reversal Risk From a Hawkish Fed, Claudia Sahm Argues for a Quarter-Point Hike Today, Asia's Central Banks Keep Blindsiding Markets With the RBA Seen at 4.85% and US-Friendly Nations Slash Treasury Purchases 60%</h3>
+      </div>
+      <p>Rates desks came in with the FOMC circled and yields creeping higher. The bulls lean on the near-certain hold and a steadier fiscal picture abroad. Bloomberg's Fed watchers framed Warsh's post-decision briefing as the next step in a "discovery process," and the market still reads a pause as locked. Pimco's Peder Beck-Friis told Bloomberg Television he would welcome a UK 2027 deficit in the mid-threes as good news for the gilt market, and Bloomberg reported bond traders are betting the UK's newfound resilience survives today's budget. The bears counter that the hawkish risk is real and spreading. Bloomberg warned bullish Treasury bets face a sharp reversal if the Fed turns more aggressive, New Century Advisors' Claudia Sahm said on Bloomberg Surveillance there is a strong economic argument for raising rates a quarter point today, and Asia's central banks keep wrongfooting investors, with Commonwealth Bank now seeing the RBA hiking to 4.85% in November after hot Australian inflation and Governor Bullock flagging upside risks. Layered on top, Bloomberg reported US-friendly nations have slashed Treasury purchases by 60%, led by Asia, so being Washington's partner no longer means reliably funding the deficit. Treasury yields rose into the decision, and the demand side of the market is looking thinner.</p>
+      <p>The bull read is a near-certain Fed hold, Pimco welcoming a tighter UK deficit and bond traders betting on UK resilience. The bear read is Bloomberg's warning that a hawkish Fed could reverse bullish Treasury bets, Sahm's case for a hike today, the RBA seen at 4.85% and foreign buyers cutting Treasury purchases 60%.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the hold holds and the fiscal picture steadies):</strong> The Fed is widely expected to leave rates unchanged Wednesday, and Pimco's Peder Beck-Friis says a UK deficit in the mid-threes would be welcome news for the gilt market. Bond traders are betting the UK's newfound resilience survives today's budget, Bloomberg reports. With the Fed standing pat rather than tightening into an AI wobble, the near-term rate path is steadier than the hawkish chatter abroad suggests.</div>
+        <div class="bear"><strong>Bear (the hawkish risk keeps building):</strong> Bloomberg warns bullish Treasury bets face reversal risk from a hawkish Fed, and New Century Advisors' Claudia Sahm argues for a quarter-point hike today. Asia's central banks keep blindsiding markets, with Commonwealth Bank seeing the RBA at 4.85% after hot inflation, and Bloomberg says US-friendly nations have slashed Treasury purchases 60%. With yields rising and foreign demand thinning, the backdrop is anything but calm.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-27/bullish-treasury-bets-face-reversal-risk-from-hawkish-fed" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bullish Treasury Bets Face Reversal Risk From Hawkish Fed</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Cools Even as Saudi Exports Hold Near Wartime Highs Despite Houthi Attacks and Reported Iranian Strikes on Tankers in the Strait of Hormuz, With Washington Floating Russian Oil Deals for US Majors in Ukraine Peace Talks and Zelenskyy Opening a Door, Yet Israel's Election Points to a Stalemate That Sends Israeli Markets Sliding Across the Board and Leaves No Clear Path to a Government</h3>
+      </div>
+      <p>The energy and geopolitical story is pulled between resilient supply and an election that just got messier. The bulls argue the fever is breaking. WSJ reported oil cooled as tech led markets higher, Bloomberg said Saudi oil exports are holding near wartime highs despite attacks on the kingdom's infrastructure and reported Iranian strikes on tankers in the Strait of Hormuz, which signals the flow is proving durable. FT reported Washington is floating renewed Russian oil deals for US majors as part of Ukraine peace talks, and Zelenskyy has opened the door to security guarantees for Moscow as part of a deal, two threads that point toward de-escalation and more barrels. The bears counter that the political risk is live. FT reported Netanyahu is ahead but there is no clear winner in Israel's election, with neither bloc set for a majority and no simple path to form a government, and Bloomberg said Israeli markets slid across the board on stalemate concern. The Houthi attacks and the Hormuz strikes are a reminder the war is not over, and a disorderly Israeli outcome or a stalled overture sends crude right back up. Supply is holding for now, but the headlines could turn fast.</p>
+      <p>The bull read is oil cooling, Saudi exports near wartime highs and Washington floating Russian oil deals in Ukraine peace talks. The bear read is Israel's election stalemate sliding Israeli markets, Houthi attacks and reported Iranian strikes on tankers in the Strait of Hormuz.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (supply holds and diplomacy inches forward):</strong> Oil cooled as tech led markets higher, WSJ reports, and Bloomberg says Saudi exports are holding near wartime highs even through attacks and Hormuz strikes, proof the flow is durable. FT reports Washington is floating Russian oil deals for US majors in Ukraine peace talks, and Zelenskyy has opened a door on security guarantees. If the diplomacy holds, the premium keeps bleeding out.</div>
+        <div class="bear"><strong>Bear (the election and the attacks still threaten):</strong> FT reports Netanyahu is ahead but there is no clear winner and no simple path to a government, and Bloomberg says Israeli markets slid across the board on stalemate concern. Houthi attacks on Saudi infrastructure and reported Iranian strikes on tankers in the Strait of Hormuz keep the war premium alive. One disorderly outcome sends crude straight back up.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-28/israeli-markets-slide-across-board-on-election-stalemate-concern" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Israeli Markets Slide Across Board on Election Stalemate Concern</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>SK Hynix's Sevenfold Profit Surge and $45bn Payout Fuel an AI Rebound and a 7% Kospi Rally, With ASM Lifting Its 2027 Outlook 24% and Morgan Stanley's Lisa Shalett Calling AI Capex a Mid-Cycle Boom, as Microsoft and Alphabet Report After the Close, Even as Bloomberg Warns Wall Street's AI Debt Machine Is Choking on Supply, NXP Slides on a Tepid Forecast and the Megacaps Have to Prove the Cash-Flow Drain Is Turning Into Profit</h3>
+      </div>
+      <p>The AI trade roared back on one earnings report, but the financing and cash-flow questions did not go away. The bulls read SK Hynix as validation. Bloomberg reported the Korean memory giant's profit surged a stronger-than-expected sevenfold and it pledged about $45bn more in shareholder returns, CoinDesk said that drove the Kospi up 7% and led a broad AI rebound, and MarketWatch noted the real signal was guidance that supply constraints will last through 2030. ASM International lifted its 2027 revenue target about 24%, putting it on track to hit its 2030 goal three years early, Bloomberg reported, and Morgan Stanley Wealth's Lisa Shalett told Bloomberg she expects the tech-earnings growth narrative to stick, calling AI capex a mid-cycle boom. The bears counter that the plumbing is straining and the proof is still owed. Bloomberg reported Wall Street's AI debt machine is starting to choke on supply as the credit market nears the limit of how much more it can absorb, NXP shares slid on a tepid forecast as an auto recovery stalls, and Bloomberg's own newsletter warned Microsoft and Alphabet, reporting after the close, have a lot to prove to AI skeptics worried the capex drain is weighing on bottom lines. The demand signal is loud, but tonight's megacap numbers decide whether it converts.</p>
+      <p>The bull read is SK Hynix's sevenfold profit and $45bn payout, the 7% Kospi rally, ASM's raised outlook and Shalett's mid-cycle-boom call. The bear read is Bloomberg's warning the AI debt machine is choking on supply, NXP's tepid forecast and the megacaps still owing proof the cash-flow drain pays off.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the demand is real and the payoff is coming):</strong> SK Hynix's profit surged sevenfold and it pledged $45bn more to shareholders, Bloomberg reports, driving a 7% Kospi rally per CoinDesk, and MarketWatch notes supply constraints are now seen lasting through 2030. ASM lifted its 2027 target 24%, and Morgan Stanley's Lisa Shalett calls AI capex a mid-cycle boom with the earnings narrative set to stick. The hardware demand is proving resilient.</div>
+        <div class="bear"><strong>Bear (the financing and proof are the real tell):</strong> Bloomberg warns Wall Street's AI debt machine is choking on supply as credit nears its absorption limit, and NXP slid on a tepid forecast as the auto recovery stalls. Microsoft and Alphabet report after the close with a lot to prove to skeptics who worry the capex drain is weighing on cash flow. Until the megacaps show the spending converts, the rebound rests on hope.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-10-28/wall-street-s-ai-debt-machine-is-starting-to-choke-on-supply" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wall Street's AI Debt Machine Is Starting to Choke on Supply</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Tech rally continues as stocks drift into the Fed and megacap earnings</strong></summary>
+      <div class="deal-body">
+        <p>Tech stocks extended gains and Treasury yields crept up, WSJ reported, as investors braced for a bumper day of macro news and big tech earnings. Bloomberg said US futures struggled for traction ahead of Microsoft and Alphabet results and the Fed's rate decision later Wednesday.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/tech-rally-continues-treasurys-weaken-ahead-of-fed-decision-bbc5771d?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Tech Rally Continues, Treasurys Weaken Ahead of Fed Decision</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jio's blockbuster debut makes Reliance India's most valuable group</strong></summary>
+      <div class="deal-body">
+        <p>Jio Platforms surged as much as 23% in its trading debut after raising a record $3.1bn in India's biggest IPO, Bloomberg reported, propelling parent Reliance Industries past Tata as India's largest conglomerate by market value. Mukesh Ambani called the listing a milestone with "blessings from the entire country."</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/jio-s-ipo-surge-ends-tata-s-reign-as-most-valuable-india-group" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jio's IPO Surge Ends Tata's Reign as Most Valuable India Group</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Boring stocks are beautiful again, but can it last</strong></summary>
+      <div class="deal-body">
+        <p>Defensive, cash-generative names have outrun the volatile AI complex this October, WSJ reported, as investors reach for stability into the Fed decision and megacap earnings. The question is whether the rotation holds once the hyperscalers report and the rate picture clears.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/boring-stocks-are-beautiful-again-can-it-last-f484e1da?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Boring Stocks Are Beautiful Again. Can It Last?</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Boeing won't significantly ramp 737 Max output until late 2027</strong></summary>
+      <div class="deal-body">
+        <p>Boeing (BA) said it will not significantly increase 737 Max production until late 2027, CNBC reported, and shares slid on new losses as it briefed investors on its aircraft production outlook. The slower cadence pushes the recovery timeline further out for the jet maker.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/27/-boeing-ba-q3-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Boeing Says It Won't Significantly Ramp Up 737 Max Production Until Late 2027</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Honda warns 50% Canada auto tariffs would be catastrophic</strong></summary>
+      <div class="deal-body">
+        <p>Honda warned that doubling US tariffs on Canadian vehicles and parts to 50% would be catastrophic for the industry, CNBC reported, after President Trump threatened the hike absent a trade deal. The warning underscores how tariff risk is still feeding the inflation debate central banks are watching.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/27/honda-warns-50percent-canada-auto-tariffs-would-be-catastrophic.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Honda Warns 50% Canada Auto Tariffs Would Be Catastrophic for Industry</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Standard Chartered beats and raises guidance as UBS eyes a Swiss exit</strong></summary>
+      <div class="deal-body">
+        <p>Standard Chartered (STAN) boosted its annual income and profitability forecasts after quarterly profit growth beat expectations, WSJ reported. Separately, UBS signaled it could leave Switzerland over proposed capital demands even as wealth-management inflows lifted profit, a fresh flashpoint with its home-country lawmakers.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/banking/standard-chartered-quarterly-net-profit-jumps-raises-income-guidance-22a84a62?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Standard Chartered Posts Net Profit Beat, Raises Guidance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JetBlue surges as its outlook calms investors</strong></summary>
+      <div class="deal-body">
+        <p>JetBlue (JBLU) shares surged after a company outlook calmed investors, CNBC reported, as the carrier works through a plan to cut costs and lift premium revenue. The move stood out on an otherwise macro-dominated tape ahead of the Fed.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/26/jetblue-jblu-3q-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- JetBlue Stock Surges as Company Outlook Calms Investors</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The calendar is loaded, with the Fed deciding Wednesday afternoon and Microsoft and Alphabet reporting after the close. The bull case is SK Hynix's sevenfold profit reviving the AI trade, ASM's raised outlook and defensive names holding. The bear case is Bloomberg's warning the AI debt machine is choking on supply, NXP's tepid forecast and megacaps still owing cash-flow proof. Watch whether the hyperscalers pair the capex build-out with the profit the market now demands.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Boring, Defensive Stocks Outperform When the AI Trade Wobbles</summary>
+      <p>WSJ reported Wednesday that boring stocks are beautiful again, with defensive, cash-generative names outrunning the volatile AI complex this October. The instinct is that in a bull market led by technology, slow-growing consumer and utility names should be dead money. But they periodically snap higher precisely when the glamour trade stumbles, and understanding why reveals how capital actually rotates inside a nervous market. Start with what a defensive stock is. It is a company whose earnings hold up regardless of the economic cycle, think beverages, household goods, utilities and healthcare, because people buy them in good times and bad. That stability is the whole point. The first mechanism is cash-flow certainty. When investors grow anxious about whether a richly valued AI name will ever convert spending into profit, they reprice the uncertainty by demanding a higher return to hold it, which pushes its price down. A defensive name offers a visible, dependable earnings stream, so the same anxiety makes its predictability more valuable, not less. The second mechanism is the discount rate. High-growth stocks are valued mostly on profits expected years out, so when rates rise or the Fed looks hawkish, those distant earnings get discounted harder and the valuation falls further. Defensive names earn most of their cash now, so they are less sensitive to the rate move, which is why they shine when yields climb into a Fed decision. The third mechanism is the dividend. Many defensive companies pay steady, growing dividends, which puts a floor under the stock because income-seeking investors step in when the price drops. That buyer of last resort cushions the downside the AI names lack. The fourth mechanism is positioning and crowding. When a market is heavily crowded into a handful of megacap winners, any wobble forces funds to raise cash, and they sell what has run the most. The proceeds often rotate into the names that lagged, so the defensive bucket catches a bid mechanically, not because anything about the underlying business changed. The fifth mechanism is the narrative switch. A market tells itself one story at a time, and when the AI story cracks even briefly, the competing story of quality, stability and reasonable valuation gets its moment. The practical lesson for a market reader is that a defensive rally is usually a statement about fear, not about fundamentals. Nothing about a beverage company's growth changed this month; what changed is how much investors are willing to pay for certainty versus promise. When you see boring stocks leading, read it as the market hedging its own conviction in the glamour trade, and watch whether the rotation sticks once the thing everyone is afraid of, here the megacap earnings and the Fed, actually arrives and resolves. The defensive bid tends to fade fast when the feared event passes without incident.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/boring-stocks-are-beautiful-again-can-it-last-f484e1da?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Boring Stocks Are Beautiful Again. Can It Last?</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/weaker-euro-boosts-european-exporters-as-earnings-season-peaks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Weaker Euro Boosts Europe Exporters as Earnings Season Peaks</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>SK Hynix profit triples and a $45bn payout fuels the AI rally</strong></summary>
+      <div class="deal-body">
+        <p>SK Hynix unveiled plans to return about $45bn more to shareholders after profit surged a stronger-than-expected sevenfold, Bloomberg reported, reflecting the resilience of an AI infrastructure rollout propelling chip demand. MarketWatch said the outlook mattered most, with the company guiding that supply constraints will last through 2030.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/sk-hynix-delivered-on-third-quarter-results-but-the-outlook-is-what-really-mattered-to-wall-street-and-the-ai-trade-2fde9a57?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- SK Hynix Delivered on Q3, But the Outlook Is What Really Mattered to the AI Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kospi surges 7% as SK Hynix earnings lead a broad AI rebound</strong></summary>
+      <div class="deal-body">
+        <p>South Korean chipmakers led a broader AI recovery, CoinDesk reported, with the Kospi jumping 7% after SK Hynix's sevenfold profit surge and $45bn shareholder-return pledge. The rally reversed last week's funding-angst selloff and spilled into Asian tech broadly.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/28/kospi-surges-7-as-sk-hynix-earnings-fuel-ai-stock-rebound" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Kospi Surges 7% as SK Hynix Earnings Fuel AI Stock Rebound</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ASM lifts its 2027 outlook 24% as the AI buildout fuels tool demand</strong></summary>
+      <div class="deal-body">
+        <p>ASM International (ASM) raised its 2027 revenue target by about 24%, Bloomberg reported, setting the chip-equipment maker up to hit its 2030 goal three years early after a surge in sales tied to AI investment. CEO Hichem M'Saad told Bloomberg the build-out continues to fuel demand for its tools.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-27/asm-lifts-2027-outlook-as-ai-buildout-fuels-demand-for-its-tools" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ASM Lifts 2027 Outlook as AI Buildout Fuels Demand for Its Tools</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>NXP slides as a tepid forecast flags a stalling auto recovery</strong></summary>
+      <div class="deal-body">
+        <p>NXP Semiconductors (NXPI) shares fell after the chipmaker forecast revenue growth that raised concerns a recovery in auto-industry demand is stalling, Bloomberg reported. The miss is a reminder the AI strength is not lifting every corner of the chip complex equally.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-27/nxp-shares-slide-after-chipmaker-gives-tepid-revenue-forecast" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- NXP Shares Slide on Tepid Forecast, Auto Industry Sales</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft and Alphabet earnings put the focus on AI's cash-flow drain</strong></summary>
+      <div class="deal-body">
+        <p>Microsoft (MSFT) and Alphabet (GOOGL) shares have diverged since their last reports, Bloomberg reported, as Wall Street digs into how heavy AI spending is weighing on bottom lines. Bloomberg's newsletter said both have a lot to prove to skeptics with results due after the close.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/microsoft-and-alphabet-earnings-put-focus-on-ai-cash-flow-drain" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Microsoft and Alphabet Earnings Put Focus on AI Cash Flow Drain</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia-backed Zankore syndicates a $3.1bn GPU loan for Asia's AI buildout</strong></summary>
+      <div class="deal-body">
+        <p>Zankore, an Indonesian AI infrastructure platform backed by Nvidia (NVDA), is syndicating a $3.1bn loan to the broader market, Bloomberg reported, adding to a flurry of financing for Asia's AI build-out. The deal underscores how GPU-backed lending is spreading well beyond the US.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/nvidia-backed-firm-launches-3-1-billion-gpu-loan-into-market" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed Firm Launches $3.1 Billion GPU Loan in Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI cybersecurity startup Upwind raises at a $3.8bn valuation</strong></summary>
+      <div class="deal-body">
+        <p>Upwind Security secured $400m in fresh financing at a $3.8bn valuation, Bloomberg reported, offering cybersecurity for AI and cloud applications. The raise shows venture money is still flowing into the AI-adjacent software layer, not just chips and data centers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/ai-cybersecurity-startup-upwind-raises-at-3-8-billion-value" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Cybersecurity Startup Upwind Raises at $3.8 Billion Value</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Wednesday October 28, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal is where demand and capital still line up, with SK Hynix's sevenfold profit, supply seen tight through 2030, ASM's raised outlook and the 7% Kospi rally. The counter-signal is Bloomberg warning the AI debt machine is choking on supply, NXP sliding on a stalled auto recovery and megacaps owing cash-flow proof. The near-term tell is tonight's Microsoft and Alphabet numbers, which show whether the capex is converting to profit.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Fed watchers prep for the next step in the Warsh 'discovery process'</strong></summary>
+      <div class="deal-body">
+        <p>Kevin Warsh's post-decision briefing offers investors another chance to figure out his communications strategy, Bloomberg reported, with a hold widely expected Wednesday. CoinDesk flagged dissent as one of three things to watch, since the vote could reveal how split the committee is on timing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-10-28/fed-watchers-prep-for-next-step-in-the-kevin-warsh-discovery-process" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Watchers Prep for Next Step in the Kevin Warsh 'Discovery Process'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bullish Treasury bets face reversal risk from a hawkish Fed</strong></summary>
+      <div class="deal-body">
+        <p>Bullish bets in US Treasuries are vulnerable to a sharp reversal if the Fed takes a more aggressive stance at this week's meeting, Bloomberg reported. WSJ said global government bond yields rose ahead of the decision and the UK budget, with Treasurys weakening in European trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-27/bullish-treasury-bets-face-reversal-risk-from-hawkish-fed" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bullish Treasury Bets Face Reversal Risk From Hawkish Fed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US-friendly nations slash Treasury purchases by 60%, led by Asia</strong></summary>
+      <div class="deal-body">
+        <p>Being one of Washington's closest partners no longer means reliably funding the US deficit, Bloomberg reported, with US-friendly nations cutting Treasury purchases by 60%, led by Asia. The pullback in foreign demand adds to the deficit angst already pressuring the long end.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/us-friendly-nations-slash-treasury-purchases-by-60-led-by-asia" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US-Friendly Nations Slash Treasury Purchases by 60%, Led by Asia</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Asia's rate calls keep blindsiding markets with more to come</strong></summary>
+      <div class="deal-body">
+        <p>Asia's central banks are on a roll wrongfooting investors, Bloomberg reported, as hot inflation and hawkish rhetoric spread. Commonwealth Bank now sees the RBA hiking to 4.85% in November after Governor Bullock said upside inflation risks are materializing and prices quickened.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/asia-rate-calls-are-blindsiding-markets-and-there-s-more-to-come" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Asia Rate Calls Are Blindsiding Markets and There's More to Come</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>New Zealand unexpectedly holds rates in a split decision</strong></summary>
+      <div class="deal-body">
+        <p>New Zealand's central bank unexpectedly kept its key rate unchanged, Bloomberg reported, citing global uncertainty weighing on domestic demand in a split decision that sent the kiwi tumbling. The surprise hold cuts against the hawkish drift elsewhere in the region.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/new-zealand-unexpectedly-holds-interest-rates-steady-kiwi-falls" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- New Zealand Holds Rate for Third Straight Meeting on Fuel Price</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bond traders bet on the UK's resilience surviving the budget</strong></summary>
+      <div class="deal-body">
+        <p>Investor confidence in UK assets faces a test Wednesday as the new government delivers its first budget, Bloomberg reported, with traders betting on newfound resilience. Pimco's Peder Beck-Friis said a 2027 deficit in the mid-threes would be welcome news for the gilt market.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/bond-traders-brace-for-budget-test-of-uk-s-newfound-resilience" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bond Traders Bet on UK's Newfound Resilience to Survive Budget</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Four reasons to start worrying about inflation, including the end of tariff refunds</strong></summary>
+      <div class="deal-body">
+        <p>22V Research's Dennis DeBusschere argues companies that used tariff refunds to ease cost pressures will increasingly pass those higher costs to consumers, MarketWatch reported. The warning lands as Q3 GDP, due Thursday, is forecast to show the fastest growth in a year.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/four-reasons-to-start-worrying-about-inflation-including-the-end-of-tariff-refunds-978a5cfd?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Four Reasons to Start Worrying About Inflation, Including the End of Tariff Refunds</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (October 28, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to a near-certain Fed hold, Pimco welcoming a tighter UK deficit and bond traders betting on UK resilience. The bear side points to Bloomberg's warning a hawkish Fed could reverse bullish Treasury bets, Claudia Sahm's case for a hike today, the RBA seen at 4.85% and foreign buyers cutting Treasury purchases 60%. The swing factor is Warsh's briefing and Thursday's Q3 GDP print.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Foreign Central Banks Cutting Treasury Purchases Pushes US Yields Higher</summary>
+      <p>Bloomberg reported Wednesday that US-friendly nations have slashed their Treasury purchases by 60%, led by Asia, so being one of Washington's closest partners no longer means reliably funding the US deficit. The instinct is that the US borrows in its own currency and can always find buyers, so a pullback by a few foreign governments should not matter much. But the identity of who buys Treasuries shapes the price at which they clear, and understanding that mechanism explains why fewer foreign bids can lift yields across the whole curve. Start with the basic plumbing. The US runs a large deficit and funds it by auctioning Treasury bonds, and someone has to buy every one of them. For decades foreign central banks and reserve managers, especially in Asia, were reliable, price-insensitive buyers who parked their export earnings in US debt regardless of the yield. The first mechanism is supply and demand at the auction. A bond's yield moves inversely to its price, so when a steady block of demand steps back, the remaining buyers must be coaxed in with a lower price and therefore a higher yield. Fewer foreign bids mean the Treasury has to pay up to clear the same supply. The second mechanism is price insensitivity. Foreign official buyers historically bought for policy reasons, to manage their currencies and reserves, not to chase return, so they absorbed bonds that a profit-seeking investor would only take at a cheaper price. Replacing them with hedge funds, banks and households means the marginal buyer is far more demanding about yield, which structurally lifts the level. The third mechanism is the currency link. When a country buys fewer Treasuries, it is often because it is no longer accumulating as many dollars, which can reflect shifting trade or a deliberate move to diversify reserves. That same shift can weaken demand for the dollar, and a softer dollar makes foreign holders warier still, a feedback loop that compounds the selling. The fourth mechanism is the term premium. The long end of the curve carries an extra yield to compensate for the risk of holding a bond for years, and that premium rises when the pool of committed long-term buyers shrinks. So the pullback bites hardest on 10- and 30-year yields, exactly where the deficit is most exposed. The fifth mechanism is the signal. A visible retreat by close partners tells every other investor that the old backstop is thinner, which raises the yield they demand to step in, amplifying the move beyond the dollars actually withdrawn. The practical lesson for a market reader is that the Treasury market's price depends not just on how much debt is issued but on who absorbs it. When reliable, price-insensitive buyers fade and are replaced by yield-hungry private money, the clearing yield drifts up even if the deficit is unchanged. Watch foreign holdings data alongside the auctions, because a shrinking official bid is a slow, structural force that pushes yields higher well before any single bad print does.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/us-friendly-nations-slash-treasury-purchases-by-60-led-by-asia" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US-Friendly Nations Slash Treasury Purchases by 60%, Led by Asia</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-27/bullish-treasury-bets-face-reversal-risk-from-hawkish-fed" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bullish Treasury Bets Face Reversal Risk From Hawkish Fed</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">A near-certain Fed hold Wednesday and bets on UK resilience into today's budget sit against Bloomberg's warning a hawkish Fed could reverse bullish Treasury bets, Claudia Sahm's case for a quarter-point hike today, the RBA seen at 4.85% and foreign buyers slashing Treasury purchases 60%. Oil cooled as Saudi exports held near wartime highs and Washington floated Russian oil deals in Ukraine talks, even as Israel's election stalemate slid Israeli markets and Houthi and Hormuz attacks kept the premium alive. SK Hynix's sevenfold profit surge and $45bn payout drove a 7% Kospi rally and revived the AI trade, against Bloomberg's warning the AI debt machine is choking on supply and Microsoft and Alphabet owing cash-flow proof after the close; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above $250, bull confirmed; below $235, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 10/26</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 10/27</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 10/28</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 10/29</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 10/30</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin rebounds above $81,000 as the Asian chip rally spills into crypto</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin rose above $81,400 as Asian chip stocks rallied on SK Hynix's earnings, CoinDesk reported, with frog-themed memecoin pepe adding 9% and every top token in the green hours before the Fed decision. The bounce reconnected crypto to the reviving risk-on tape after days of weakness.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/28/bitcoin-rebounds-above-usd81-000-as-asian-chip-rally-spills-into-crypto-pepe-jumps-9" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Rebounds Above $81,000 as Asian Chip Rally Spills Into Crypto, Pepe Jumps 9%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bessent sees crypto as America's next tool for keeping the dollar on top</strong></summary>
+      <div class="deal-body">
+        <p>Speaking at Ripple's conference, Treasury Secretary Bessent said crypto can help keep the US dollar dominant, CoinDesk reported, and that SEC and CFTC action could fill the gap left by the Clarity Act's failure while curbing crypto debanking. The comments frame stablecoins as a strategic asset for Washington.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/10/27/treasury-s-bessent-sees-crypto-as-america-s-next-tool-for-keeping-the-u-s-dollar-on-top" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bessent Sees Crypto as America's Next Tool for Keeping the US Dollar on Top</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Brazil's largest lender becomes the first bank to formalize a crypto brokerage</strong></summary>
+      <div class="deal-body">
+        <p>Itaú Unibanco notified Brazil's central bank of its crypto trading and custody operations, CoinDesk reported, becoming the first bank to formalize a brokerage under new rules ahead of an Oct. 30 deadline. The move lands days after Brazilian firms rushed to stablecoins to dodge the election-day currency crash.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/10/28/brazil-s-largest-lender-becomes-first-bank-to-formalize-crypto-brokerage-under-new-rules" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Brazil's Largest Lender Becomes First Bank to Formalize Crypto Brokerage Under New Rules</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Google to preview a crypto custody security system as AI threats grow</strong></summary>
+      <div class="deal-body">
+        <p>Google Multi-Party Compute is in private preview, CoinDesk reported, with major financial institutions testing it and Alphabet using it to secure its own digital assets on Ethereum and Solana. The launch signals big tech moving directly into institutional custody as AI-driven threats mount.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/10/28/google-to-preview-crypto-custody-security-system-as-ai-threats-grow" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Google to Preview Crypto Custody Security System as AI Threats Grow</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin treasury Datavault AI plunges 50% after saying it can't access its BTC</strong></summary>
+      <div class="deal-body">
+        <p>Datavault AI shares plunged 50% after the firm said it could not withdraw bitcoin held on Biconomy, CoinDesk reported, forcing an accounting correction that cuts reported assets by $92.2m at the end of 2025. The episode is a stark reminder of custody and counterparty risk in treasury strategies.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/10/28/bitcoin-treasury-datavault-ai-plunges-50-after-firm-says-it-can-t-access-its-btc" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Treasury Datavault AI Plunges 50% After Firm Says It Can't Access Its BTC</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bithumb hacked through an employee system as Korean firms face cyberattacks</strong></summary>
+      <div class="deal-body">
+        <p>Bithumb was breached through an internal employee system the exchange says is separate from its trading platform, CoinDesk reported, as South Korean financial firms face a wave of cyberattacks. The exchange is still determining whether customer information was exposed.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/10/28/bithumb-hacked-through-employee-system-as-south-korean-financial-firms-face-cyberattacks" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bithumb Hacked Through Employee System as South Korean Financial Firms Face Cyberattacks</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>GE Vernova -- Agrees to Pay $9bn for Trench Group to Scale Grid Equipment</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> GE Vernova (GEV) agreed to pay $9bn to acquire Trench Group, Bloomberg reported, a deal aimed at expanding its capacity to supply high-voltage grid equipment amid surging electricity demand.</p>
+        <p><strong>Outlook:</strong> WSJ said the acquisition creates scale across GE Vernova's electrification portfolio, positioning it for the power build-out that data centers and AI are driving.</p>
+        <p><strong>What it means:</strong> The AI story is spilling into the grid and electrification supply chain, where demand for transformers and high-voltage gear is a direct second-order play on compute.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/ge-vernova-agrees-to-pay-9-billion-to-acquire-trench-group" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- GE Vernova Agrees to Pay $9 Billion to Acquire Trench Group</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trian -- Nelson Peltz Offers to Buy Wendy's for $1.4bn</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Nelson Peltz's Trian offered to buy Wendy's (WEN) for $1.4bn, WSJ reported, with the burger chain's shares down roughly 70% over the past five years.</p>
+        <p><strong>Outlook:</strong> A take-private by an existing large holder lets Peltz restructure away from public-market scrutiny after a long slide.</p>
+        <p><strong>What it means:</strong> Activist-led take-privates of beaten-down consumer names are a reminder that value, not just AI growth, is still drawing capital in this tape.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/nelson-peltzs-trian-offers-to-buy-wendys-for-1-4-billion-4c8332c1?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nelson Peltz's Trian Offers to Buy Wendy's for $1.4 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jio Platforms -- India's Biggest IPO Raises a Record $3.1bn</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Jio Platforms raised a record $3.1bn in India's biggest IPO, Bloomberg reported, and surged as much as 23% in its debut, lifting parent Reliance past Tata as India's most valuable conglomerate.</p>
+        <p><strong>Outlook:</strong> The listing puts Jio on track to become India's second-most valuable listed company and signals robust appetite for marquee emerging-market tech deals.</p>
+        <p><strong>What it means:</strong> Primary markets outside the US are clearing briskly, a counterpoint to the scrutiny facing richly valued Western AI listings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/jio-s-ipo-surge-ends-tata-s-reign-as-most-valuable-india-group" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jio's IPO Surge Ends Tata's Reign as Most Valuable India Group</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Zankore -- Nvidia-Backed Firm Syndicates a $3.1bn GPU Loan</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Zankore, an Indonesian AI infrastructure platform backed by Nvidia, is syndicating a $3.1bn loan to the broader market, Bloomberg reported, adding to a flurry of financing for Asia's AI build-out.</p>
+        <p><strong>Outlook:</strong> GPU-collateralized lending is spreading internationally just as Bloomberg warns the credit market is nearing the limit of how much AI debt it can absorb.</p>
+        <p><strong>What it means:</strong> The same chip-backed financing straining US credit is now scaling across Asia, concentrating exposure to GPU depreciation risk globally.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/nvidia-backed-firm-launches-3-1-billion-gpu-loan-into-market" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed Firm Launches $3.1 Billion GPU Loan in Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Upwind Security -- Raises $400m at a $3.8bn Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Upwind Security secured $400m in fresh financing at a $3.8bn valuation, Bloomberg reported, offering cybersecurity for AI and cloud applications.</p>
+        <p><strong>Outlook:</strong> Venture money continues flowing into the AI-adjacent software layer even as debt markets tighten around hardware financing.</p>
+        <p><strong>What it means:</strong> Equity appetite for AI security startups shows the private market is still funding the ecosystem's picks-and-shovels beyond chips.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/ai-cybersecurity-startup-upwind-raises-at-3-8-billion-value" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Cybersecurity Startup Upwind Raises at $3.8 Billion Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Broadcom / Anthropic -- $63bn Chip-Leasing Vehicle Headlines the AI Debt Wave</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A coalition of banks and Blackstone is assembling a $63bn vehicle to buy Broadcom chips and lease them to Anthropic, WSJ reported, the biggest financing ever raised for AI infrastructure, with Broadcom's CEO personally intervening to seal it.</p>
+        <p><strong>Outlook:</strong> Routing the debt through a separate vehicle keeps leverage off Anthropic's balance sheet as it targets a mid-November IPO.</p>
+        <p><strong>What it means:</strong> This structure is now the template Bloomberg warns is straining credit, with the obligations and chip-depreciation risk sitting one step removed from the headline numbers.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/broadcom-ceo-intervened-to-seal-63-billion-anthropic-debt-deal-c807754f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Broadcom CEO Intervened to Seal $63 Billion Anthropic Debt Deal</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Lisa Shalett (Morgan Stanley Wealth) -- calls AI capex a mid-cycle boom</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley Wealth Management's CIO told Bloomberg she expects the tech-earnings growth narrative to stick and hold, calling AI capex a mid-cycle boom. She did flag that bottlenecks are shifting within the spending, which could raise real questions for investors down the line.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-28/ai-capex-in-mid-cycle-boom-morgan-stanley-s-shalett-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Capex in Mid-Cycle Boom, Says Morgan Stanley's Shalett</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ajay Banga (World Bank) -- says capital availability is 'not really an issue'</strong></summary>
+      <div class="deal-body">
+        <p>World Bank President Ajay Banga told CNBC's Squawk Box that the availability of capital is not really an issue even as AI demand drives up borrowing costs. The constructive read frames the funding squeeze as a pricing story, not a scarcity one.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/10/27/world-bank-president-ajay-banga.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- World Bank's Banga: Availability of Capital 'Not Really an Issue' as AI Demand Drives Up Borrowing Costs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dennis DeBusschere (22V Research) -- flags four reasons to worry about inflation</strong></summary>
+      <div class="deal-body">
+        <p>Companies that used tariff refunds to ease cost pressures will increasingly pass higher costs to consumers, 22V Research's Dennis DeBusschere told MarketWatch. The warning is a pointed bearish read on the disinflation story just as Q3 GDP looms.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/four-reasons-to-start-worrying-about-inflation-including-the-end-of-tariff-refunds-978a5cfd?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Four Reasons to Start Worrying About Inflation, Including the End of Tariff Refunds</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Claudia Sahm (New Century Advisors) -- argues for a quarter-point hike today</strong></summary>
+      <div class="deal-body">
+        <p>New Century Advisors chief economist Claudia Sahm told Bloomberg Surveillance there is a strong economic argument for raising rates a quarter point today, while noting the Fed's communication has gotten confusing. A named hawk against the consensus for a pause.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-10-28/fed-communication-has-gotten-confusing-economist-sahm-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Communication Has Gotten Confusing, Economist Sahm Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bill Ackman (Pershing Square) -- lays out his rule for picking a winner</strong></summary>
+      <div class="deal-body">
+        <p>Bill Ackman owns only a handful of stocks and favors simple characteristics of a great company, MarketWatch reported. The concentrated, quality-first approach is a reminder that some of the largest allocators are sidestepping the AI frenzy entirely.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/bill-ackman-owns-only-a-handful-of-stocks-here-is-his-rule-for-picking-a-winner-82a0ee98?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Bill Ackman Owns Only a Handful of Stocks. Here Is His Rule for Picking a Winner.</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned Into the Fed and Megacap Earnings, With Morgan Stanley's Lisa Shalett Calling AI Capex a Mid-Cycle Boom and the World Bank's Ajay Banga Saying Capital Is Plentiful, Against 22V's Dennis DeBusschere Flagging Four Inflation Risks, Claudia Sahm Arguing for a Hike Today and Bill Ackman Sticking to a Handful of Quality Names</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the boom has room to run):</strong> Morgan Stanley's Lisa Shalett calls AI capex a mid-cycle boom and expects the tech-earnings growth narrative to stick, and the World Bank's Ajay Banga says capital availability is not really an issue even as borrowing costs rise. SK Hynix's sevenfold profit and ASM's raised outlook back the demand story, and the Kospi ripped 7%. With funding plentiful and earnings resilient, the dips look like entry points.</div>
+        <div class="bear"><strong>Bear (the risks are stacking up):</strong> 22V Research's Dennis DeBusschere flags four reasons to worry about inflation as tariff refunds end and costs pass through, and New Century Advisors' Claudia Sahm argues for a quarter-point hike today. Bill Ackman stays concentrated in a handful of quality names, sidestepping the frenzy, while Bloomberg warns the AI debt machine is choking on supply. When the careful money narrows its exposure, caution is the signal.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>SK Hynix triples profit; Kospi +7%; retail buys the chip dip; MSFT and GOOGL earnings tonight; JetBlue surges; Boeing slides</td><td>Risk-on</td><td>~47,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Megacap earnings day; ASM lifts outlook; NXP slides on auto weakness; boring defensive stocks outrun tech; Jio IPO pops</td><td>Mixed-bullish</td><td>~37,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Fed decision and Warsh briefing; hawkish reversal risk; foreign buyers slash Treasuries 60%; UK budget; Q3 GDP Thursday</td><td>Cautious</td><td>~35,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI debt machine choking on supply; who pays for compute; Anthropic adjusted-profit game; Zankore $3.1bn GPU loan</td><td>Bearish-cautious</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC rebounds above $81K on chip rally; Bessent backs crypto for the dollar; Datavault plunges 50%; Bithumb hacked</td><td>Mixed</td><td>~31,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood flipped risk-on as SK Hynix's profit surge revived the AI trade and crypto joined in this time. r/wallstreetbets bought the chip dip and set up for tonight's MSFT and GOOGL prints. r/stocks weighed the rebound against NXP's weak auto read and the defensive rotation. r/investing stayed cautious on the Fed, Warsh and foreign buyers cutting Treasuries. r/SecurityAnalysis leaned bearish on the AI debt strain and the who-pays question. r/CryptoCurrency was mixed as bitcoin rebounded but custody scares hit Datavault and Bithumb. The swing factor is Warsh's briefing and the megacap earnings flood.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why the Credit Market Can Run Out of Room to Absorb AI Debt</h2>
+    <p>Bloomberg reported Wednesday that Wall Street's AI debt machine is starting to choke on supply, with early signs the credit market is approaching the limit of how much more it can absorb to bankroll data centers and chips. The instinct is that a financial market has no fixed capacity, since money is abstract and a good borrower can always find a lender. But credit markets do hit practical ceilings, and understanding why reveals how a boom funded on borrowing can seize up well before anyone defaults. Start with what absorbing debt actually means. Every bond or loan a company issues has to be bought and held by someone, typically pension funds, insurers, credit funds and banks, each operating with limited capital and strict rules about how much of one sector or one credit quality they can own. The first mechanism is portfolio concentration limits. A credit fund that is already heavy in AI-linked data-center bonds cannot keep buying every new deal without breaching its own diversification rules, so each incremental offering meets a thinner pool of willing buyers. The second mechanism is price, which is the market's release valve. When supply outruns the available demand, new deals have to offer higher yields and wider spreads to clear, so borrowing gets more expensive for everyone in the sector, exactly the strain JPMorgan flagged when it warned an AI label alone no longer wins lenders. The third mechanism is the quality squeeze. As the easy money gets deployed, lenders grow pickier and start demanding real evidence a borrower can service the debt and eventually generate cash, which is why weaker AI names get shut out first while the strongest still raise. The fourth mechanism is the feedback loop through collateral. Much of this debt is secured by GPUs that depreciate fast, so if lenders worry the resale value of the chips is falling, they pull back further, tightening supply of credit precisely when borrowers need it most. The fifth mechanism is crowding out. A finite pool of credit capital means dollars flowing into AI infrastructure are dollars not available to other borrowers, so a sector that absorbs too much starts lifting costs across the whole corporate bond market, which draws scrutiny and eventually resistance. The sixth mechanism is sentiment and reflexivity. Credit markets run on confidence, and once investors sense the sector is overextended, they demand more yield to compensate for the risk of being last in, which raises costs and can stall new issuance in a self-reinforcing way. The practical lesson for a market reader is that a borrowing boom has a natural governor, and it shows up in spreads and deal terms long before it shows up in defaults. When you see record issuance paired with widening spreads, pickier lenders and deals getting pulled or repriced, that is the credit market signaling it is near its absorption limit. Watch the cost and the terms of new AI financing, not just the headline sizes, because the market tightening its own supply is often the first real warning that the build-out is outrunning the money available to fund it.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-10-28/wall-street-s-ai-debt-machine-is-starting-to-choke-on-supply" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wall Street's AI Debt Machine Is Starting to Choke on Supply</a></p>
+    <p class="deal-source"><a href="https://www.wsj.com/finance/banking/ai-boom-drives-a-jump-in-lending-but-bankers-still-sound-cautious-78bd7a58?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- AI Boom Drives a Jump in Lending, but Bankers Still Sound Cautious</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>The FOMC decision and Warsh briefing (Oct 28).</strong> With a hold near-certain, watch the post-decision briefing and any dissent for how Warsh signals whether December is live, because the guidance moves the curve more than the decision.</li>
+      <li><strong>Q3 GDP (Oct 29).</strong> Economists expect the fastest growth in a year, and AI spending is woven across categories. Watch whether a hot print strengthens the hawkish case Claudia Sahm is making.</li>
+      <li><strong>The UK budget and the RBA.</strong> With Pimco watching the UK deficit forecast and Commonwealth Bank seeing the RBA at 4.85% in November, watch whether fiscal and hawkish surprises ripple into global yields.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Microsoft and Alphabet (Oct 28, after close).</strong> Watch whether the hyperscalers show the capex build-out is converting into cash flow, since Bloomberg says both have a lot to prove to AI skeptics.</li>
+      <li><strong>Amazon and Apple later this week.</strong> After the megacap flood opens, watch whether the cloud, warehouse and device numbers confirm or undercut the AI spending thesis.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>The Anthropic IPO.</strong> With a mid-November pricing targeted on Nasdaq as ANT, watch whether the deal cements or shakes confidence after the $63bn chip-leasing vehicle and the $417bn spending disclosure.</li>
+      <li><strong>The AI financing wave.</strong> After Zankore's $3.1bn GPU loan and the AI debt machine straining, watch how much more build-out capital clears and at what spread.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Israel's election aftermath.</strong> With no clear winner and markets sliding, watch whether coalition math produces a government or a prolonged stalemate that keeps the war premium alive.</li>
+      <li><strong>Ukraine peace talks and oil.</strong> With Washington floating Russian oil deals for US majors and Zelenskyy opening a door, watch whether the diplomacy adds barrels or stalls.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how overseas bond markets and foreign Treasury demand transmit into US yields and corporate credit.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Oct 28, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-10-28 07:59 ET); Bloomberg Technology (20 fresh, newest 2026-10-28 07:45 ET); Bloomberg Economics (20 fresh, newest 2026-10-28 07:02 ET); CNBC Top News (8 fresh, newest 2026-10-27 16:32 ET); CNBC Economy (2 fresh, newest 2026-10-27 12:15 ET); MarketWatch Top Stories (10 fresh, newest 2026-10-28 07:25 ET); WSJ Markets (21 fresh, newest 2026-10-28 08:00 ET); FT Home (10 fresh, newest 2026-10-28 07:45 ET); Matt Levine Money Stuff (1 fresh, newest 2026-10-27 14:22 ET); CoinDesk (25 fresh, newest 2026-10-28 07:57 ET); Stratechery (2 fresh, newest 2026-10-28 06:06 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Stale feeds (no items in window): CNBC Finance (25 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove the AI stock rebound overnight?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed signaled a surprise rate cut was coming</span>
+      <span class="opt" data-opt="B">B. Anthropic priced its IPO above the expected range</span>
+      <span class="opt" data-opt="C">C. SK Hynix's profit surged sevenfold with a big payout</span>
+      <span class="opt" data-opt="D">D. Nvidia reported earnings that beat every estimate</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported SK Hynix's profit jumped a stronger-than-expected sevenfold, with a $45bn shareholder-return pledge, and CoinDesk said that drove the Kospi up 7%. The Fed had not yet decided, Anthropic has not priced, and Nvidia was not the catalyst.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What is happening to foreign demand for US Treasuries?</strong></p>
+      <span class="opt" data-opt="A">A. US-friendly nations cut purchases by 60%, led by Asia</span>
+      <span class="opt" data-opt="B">B. Asian buyers doubled their Treasury holdings this year</span>
+      <span class="opt" data-opt="C">C. The Fed is buying bonds to cap rising long yields</span>
+      <span class="opt" data-opt="D">D. Foreign central banks swapped Treasuries for gold</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported US-friendly nations have slashed Treasury purchases by 60%, led by Asia, so being Washington's partner no longer means funding the deficit. Holdings fell rather than doubled, the Fed is not buying, and the story is about reduced purchases, not a gold swap.</div>
+    </div>
+    <div class="q" data-correct="D">
+      <p><strong>3. What did Bloomberg warn about Wall Street's AI debt machine?</strong></p>
+      <span class="opt" data-opt="A">A. Regulators are about to ban GPU-backed lending</span>
+      <span class="opt" data-opt="B">B. Default rates on AI loans already topped 10%</span>
+      <span class="opt" data-opt="C">C. Banks are refusing to lend to any AI companies</span>
+      <span class="opt" data-opt="D">D. The credit market is nearing its absorption limit</span>
+      <div class="feedback"><strong>D is correct.</strong> Bloomberg reported early signs that the credit market is approaching the limit of how much more AI debt it can absorb. There is no ban, defaults have not topped 10%, and banks are still lending, just more selectively, as JPMorgan noted.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The Fed decides with a hold near-certain and all eyes on Warsh's post-decision briefing, while Pimco would welcome a UK deficit near 3.5% and bond traders bet on UK resilience into today's budget, even as Bloomberg warns bullish Treasury bets face reversal risk from a hawkish Fed, Claudia Sahm argues for a quarter-point hike today, the RBA is seen hiking to 4.85% and US-friendly nations slash Treasury purchases 60%.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-10-28/fed-watchers-prep-for-next-step-in-the-kevin-warsh-discovery-process", "take": "Fed watchers prep for the next step in the Warsh discovery process." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-28/bond-traders-brace-for-budget-test-of-uk-s-newfound-resilience", "take": "Bond traders bet on the UK's newfound resilience to survive the budget." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-27/bullish-treasury-bets-face-reversal-risk-from-hawkish-fed", "take": "Bullish Treasury bets face reversal risk from a hawkish Fed." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-10-28/fed-communication-has-gotten-confusing-economist-sahm-video", "take": "Claudia Sahm argues there is a strong case for a quarter-point hike today." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-28/us-friendly-nations-slash-treasury-purchases-by-60-led-by-asia", "take": "US-friendly nations slash Treasury purchases by 60%, led by Asia." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil cools even as Saudi exports hold near wartime highs despite Houthi attacks and reported Iranian strikes on tankers in the Strait of Hormuz, with Washington floating Russian oil deals for US majors in Ukraine peace talks, yet Israel's election points to a stalemate that slides Israeli markets across the board with no clear path to a government.",
+    "sources": [
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/tech-stocks-power-higher-oil-cools-724e6a63?mod=rss_markets_main", "take": "Tech stocks power higher as oil cools." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-28/saudi-oil-exports-near-wartime-high-as-houthis-mount-attacks", "take": "Saudi oil exports hold near wartime highs despite attacks." },
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/d703aaae-f607-4b30-9830-ac2a25472d44?syn-25a6b1a6=1", "take": "Washington discusses Russian deals for US oil majors in Ukraine peace talks." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/6dab34da-a039-46e6-9547-0c7213a00001?syn-25a6b1a6=1", "take": "Netanyahu ahead but no clear winner in the Israeli election." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-28/israeli-markets-slide-across-board-on-election-stalemate-concern", "take": "Israeli markets slide across the board on election stalemate concern." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "SK Hynix's sevenfold profit surge and $45bn payout fuel an AI rebound and a 7% Kospi rally, with ASM lifting its 2027 outlook 24% and Morgan Stanley's Lisa Shalett calling AI capex a mid-cycle boom, as Microsoft and Alphabet report after the close, even as Bloomberg warns Wall Street's AI debt machine is choking on supply, NXP slides on a tepid forecast and the megacaps have to prove the cash-flow drain pays off.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/sk-hynix-delivered-on-third-quarter-results-but-the-outlook-is-what-really-mattered-to-wall-street-and-the-ai-trade-2fde9a57?mod=mw_rss_topstories", "take": "SK Hynix's outlook, with supply tight through 2030, is what mattered." },
+      { "name": "CoinDesk", "lean": "bull", "url": "https://www.coindesk.com/markets/2026/10/28/kospi-surges-7-as-sk-hynix-earnings-fuel-ai-stock-rebound", "take": "Kospi surges 7% as SK Hynix earnings fuel an AI rebound." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-10-27/asm-lifts-2027-outlook-as-ai-buildout-fuels-demand-for-its-tools", "take": "ASM lifts its 2027 outlook 24% as the AI buildout fuels tool demand." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-28/wall-street-s-ai-debt-machine-is-starting-to-choke-on-supply", "take": "Wall Street's AI debt machine is starting to choke on supply." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-10-28/microsoft-and-alphabet-earnings-put-focus-on-ai-cash-flow-drain", "take": "Microsoft and Alphabet earnings put the focus on AI's cash-flow drain." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Moore Threads","SK Hynix","ASM Intl","Nvidia","NXP","Adyen"],
+    "values": [8.0, 7.0, 5.0, 2.0, -5.0, -6.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [47000, 37000, 35000, 29000, 31000],
+    "colors": ["bull","neutral","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["GE Vernova-Trench","Jio IPO","Zankore GPU Loan","Trian-Wendy's","Upwind"],
+    "values": [9.0, 3.1, 3.1, 1.4, 0.4]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
