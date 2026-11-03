@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Nov 2, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-11-02</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, November 2, 2026</h1>
+    <div class="meta">
+      <p>November opens with Tuesday's US midterms looming over a market trying to steady after the Nasdaq's worst month in over a year. Oil slid on a report that Trump wants to give Iran diplomacy more time, pulling Treasury yields lower and lifting stock futures. The week also brings the Treasury's quarterly refunding, the October jobs report, Apple earnings after tonight's bell and expected rate hikes from the BOE and Australia's RBA.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "A global AI sell-off eased to start November as a slump in oil prices, driven by a report that Trump wants to give Iran diplomacy more time, buoyed sentiment and let US stock futures recover from the Nasdaq's worst month in over a year ahead of Tuesday's midterms",
+      "framings": [
+        {"outlet": "Financial Times", "headline": "Global AI Sell-Off Eases After Nasdaq's Worst Month in Over a Year", "angle": "Reads the bounce as a tentative stabilization rather than an all-clear, with US tech set to start the week higher after a bruising rout.", "lean": 15, "pull": "US tech stocks set to start the week higher following a bruising rout."},
+        {"outlet": "WSJ", "headline": "Stock Futures Higher, Oil Lower as Investors Return to Risk", "angle": "Ties the risk-on turn directly to falling crude and easing Treasury yields after last week's tech selloff.", "lean": 20, "pull": "Falling oil prices encouraged investors to make a cautious return to risk."},
+        {"outlet": "Bloomberg", "headline": "US Stock Futures Rise as Oil Slump Buoys Sentiment", "angle": "Frames the oil drop as the catalyst halting a bruising selloff in the AI trade at the start of the month.", "lean": 25, "pull": "US equity futures advanced to halt a bruising selloff in the artificial intelligence trade."},
+        {"outlet": "MarketWatch", "headline": "Tech Stocks Have Made Big V-Shaped Rebounds Five Times, and Deutsche Bank Forecasts Another", "angle": "Argues positioning is washed out and the risk-reward now favors going overweight tech again.", "lean": 45, "pull": "It's time to go overweight once again as the risk-reward favors a sector suddenly out of fashion."},
+        {"outlet": "Financial Times", "headline": "AI Mania Can't Survive Higher Interest Rates", "angle": "Warns the price of money is the pin that deflates bubbles, cautioning against reading the bounce as a floor.", "lean": -50, "pull": "The price of money is the pin that deflates market bubbles."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasury Yields Fall as the Oil Slump Eases Inflation Fears and Indian Bonds Rally the Most in Six Months, Even as the BOE Is Set to Hike Thursday for the First Time Since 2023, Australia Readies a Fifth Hike, the ECB's Kazimir Warns Markets Underestimate the Tightening Still Needed, and Wall Street Braces for the Biggest Treasury Refunding Overhaul in Years With Midterms and Jobs Day Ahead</h3>
+      </div>
+      <p>Rates desks start the week with the oil move doing the heavy lifting. The bulls lean on falling crude. WSJ reported Treasury and European bond yields fell as oil prices dropped, with investors focused on Tuesday's midterms, the Treasury's quarterly refunding and Friday's jobs report. Bloomberg said Indian bonds rallied the most in six months as crude extended losses and eased inflation concerns for the fuel importer, while gold clawed back from a one-year low as lower oil offered respite from inflationary pressure. Yardeni Research's Ed Yardeni told Bloomberg the slowdown in the AI trade is a good thing for both stocks and bonds, arguing bond vigilantes are allocating credit properly. The bears counter that the global policy drift is still toward tightening. Bloomberg's survey of 35 economists sees the Bank of England hiking Thursday for the first time since 2023, Australia's RBA is poised for a fifth hike Tuesday, and ECB Governing Council member Peter Kazimir said markets may not be pricing enough tightening with the energy shock showing no sign of fading. Bloomberg also reported Wall Street is bracing for the biggest revamp of Treasury issuance guidance since 2024 after Secretary Scott Bessent signaled willingness to intervene to drive yields down. The near-term relief is real; the structural pull is still higher.</p>
+      <p>The bull read is the oil slump pulling yields down, Indian bonds rallying and gold recovering as inflation fear fades. The bear read is the BOE hiking Thursday, Australia's fifth hike, Kazimir warning of more ECB tightening and a Treasury refunding overhaul landing into midterms and jobs day.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (falling oil pulls yields down):</strong> WSJ says Treasury and European yields fell as crude dropped, Bloomberg reports Indian bonds rallied the most in six months and gold recovered from a one-year low as inflation fears eased. Yardeni argues the cooling AI trade helps both stocks and bonds and the bond vigilantes are doing their job. For now the oil relief outweighs the hawkish central-bank noise.</div>
+        <div class="bear"><strong>Bear (the policy drift is still tightening):</strong> Bloomberg's survey sees the BOE hiking Thursday for the first time since 2023, Australia's RBA readying a fifth hike, and the ECB's Kazimir warning markets underestimate what's needed with the energy shock persisting. Add a Treasury refunding overhaul and Bessent's intervention talk into midterms and jobs day, and the supply-and-policy backdrop argues against chasing bonds.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/investing/treasury-yields-little-changed-in-asian-trade-ahead-of-midterms-key-data-this-week-c5a1fdb3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- US Treasury, European Bond Yields Fall as Oil Prices Drop</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Sinks as Trump Signals He Wants to Give Iran Diplomacy More Time Before Resuming Strikes, Lifting Risk Assets and Pulling Petrol Off Record Highs, Even as Goldman Sachs Sees Crude Averaging $130 Next Year, Jeff Currie Flags a Permanent Regime Shift, Ukraine Sets a Major Russian Oil Hub Ablaze and the Gulf Braces for Fiercer Escalation</h3>
+      </div>
+      <p>The energy tape flipped bullish for risk overnight as the war premium leaked out. The bulls argue diplomacy caps the squeeze. Bloomberg reported oil sank after a report that Trump wants to give diplomacy with Iran more time before resuming strikes that could stymie a recovery in regional energy flows, and WSJ said the slide in crude encouraged a cautious return to risk. Gold steadied and Indian bonds rallied as the inflationary impulse eased. The bears say the structural story points higher. MarketWatch reported Goldman Sachs sees Brent averaging $130 a barrel next year and reaching $140 if Middle East tensions worsen, and Real Macro's Jeff Currie told Bloomberg at Adipec that physical oil is pricing a permanent regime shift toward system-wide energy security, keeping long-dated Brent near $99. Bloomberg said a major Russian crude-pumping hub in the Volga region may be on fire after Ukraine resumed strikes on Moscow's oil assets, FT reported the Gulf is braced for an escalation that diplomats warn would be even more damaging than prior rounds, and FT noted US petrol prices are set to hit a record high on the eve of the midterms. One headline cooled the panic; the fundamentals stay tight.</p>
+      <p>The bull read is Trump giving Iran diplomacy more room, oil sinking and the inflation impulse easing across bonds and gold. The bear read is Goldman's $130 call, Currie's regime-shift thesis, Ukraine torching a Russian oil hub, the Gulf bracing for escalation and US petrol at record highs.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (diplomacy caps the squeeze):</strong> Bloomberg says oil sank on a report Trump wants to give Iran diplomacy more time before resuming strikes, and WSJ says the drop in crude let investors return to risk. With gold off its lows and Indian bonds rallying on the eased inflation outlook, a pause in the strike cycle takes the sharpest tail off the oil trade.</div>
+        <div class="bear"><strong>Bear (the regime shift is structural):</strong> MarketWatch reports Goldman sees Brent averaging $130 next year and $140 if tensions worsen, and Jeff Currie calls it a permanent regime shift toward energy security. Ukraine just set a major Russian oil hub ablaze, the Gulf is bracing for fiercer escalation, and FT says US petrol is hitting record highs. The diplomacy headline is a reprieve, not a resolution.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-01/latest-oil-market-news-and-analysis-for-nov-2" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oil Sinks as Trump Wants to Give Iran Diplomacy More Time</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Sell-Off Eases and Deutsche Bank Calls for Another V-Shaped Bounce While UBS Says the Trade Is Still Robust, Even as Howard Marks Says the Stumbles Have Burst the Aura of Infallibility, Citi Throws in the Towel on Hyperscalers, Alphabet Pays Up to Sell Euro Bonds in a Test of AI Appetite and Kioxia Sinks as Memory Demand Levels Off Ahead of Apple's Make-or-Break Earnings</h3>
+      </div>
+      <p>The AI reckoning took a breather, but the debate only sharpened. The bulls say the washout is a setup. MarketWatch reported Deutsche Bank sees another V-shaped rebound after five such bounces in 30 months and is going overweight tech again as positioning implies far slower earnings than the sector is delivering. UBS strategist Gerry Fowler told Bloomberg the AI trade is still quite robust and that memory makers are pricing an incredibly short AI cycle that his team thinks runs longer, while Morgan Stanley's Mike Wilson framed the midterms as a classic clearing event and says any post-vote selloff should be short-lived. FT noted the global sell-off eased with US tech set to start the week higher. The bears say the skepticism is now structural. Bloomberg reported Oaktree's Howard Marks said recent AI stumbles have burst the bubble of infallibility around the sector, MarketWatch said Citi threw in the towel on its hyperscaler trade after it misfired, and Bloomberg said Alphabet is paying considerably higher yields to sell its second euro bond this year, a direct test of AI credit appetite after a spending-driven selloff. Kioxia shares sank the most in three months after its outlook showed demand leveling off. Apple reports after tonight's bell with a $1tn rally leaving no room for error. The bounce is here; conviction is not.</p>
+      <p>The bull read is Deutsche Bank's V-shaped-bounce call, UBS seeing a robust trade and a longer memory cycle, and Wilson's clearing-event framing. The bear read is Howard Marks's skepticism, Citi capitulating on hyperscalers, Alphabet paying up to borrow and Kioxia's demand leveling off.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the washout is a setup):</strong> MarketWatch says Deutsche Bank is going overweight tech on a sixth V-shaped bounce call, UBS's Gerry Fowler calls the trade still robust and the memory cycle longer than the tape implies, and Morgan Stanley's Mike Wilson sees any post-midterm dip as short-lived. With positioning washed out and futures recovering, the buyers see a floor forming.</div>
+        <div class="bear"><strong>Bear (the aura is gone):</strong> Oaktree's Howard Marks says the stumbles burst the sector's air of infallibility, Citi threw in the towel on hyperscalers after the trade misfired, and Alphabet has to pay up to sell euro bonds in a test of AI credit appetite. Kioxia sank as memory demand levels off, and Apple's $1tn rally leaves no margin for error tonight. The skepticism is compounding.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-02/oaktree-s-howard-marks-says-ai-stumbles-have-boosted-skepticism" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oaktree's Howard Marks Says AI Stumbles Boosted Skepticism</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Apple's $1tn rally leaves no room for error as it reports after the bell</strong></summary>
+      <div class="deal-body">
+        <p>Apple (AAPL) reports after today's close with its recent runup leaving little margin for disappointment, Bloomberg reported, as roughly $1tn of added market value raises the bar on iPhone demand and services growth. On a tape still hunting for an AI winner, Apple's guide is the week's single biggest megacap catalyst.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/apple-s-1-trillion-rally-leaves-no-room-for-error-on-earnings" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apple's $1 Trillion Rally Leaves No Room for Error on Earnings</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Reliance adds a record $19bn in market value on a profit beat</strong></summary>
+      <div class="deal-body">
+        <p>Reliance Industries shares surged almost 12%, adding more than $19bn in market value in a record single-day gain for an Indian company, Bloomberg reported, after quarterly profit beat expectations. The move showed the risk-on bid extending into emerging markets as oil eased and global tech stabilized.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/reliance-industries-surges-most-in-nine-months-on-earnings-beat" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Reliance Adds Record $19 Billion in Market Value on Profit Beat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alstom plunges 28% after a second profit warning under new CEO</strong></summary>
+      <div class="deal-body">
+        <p>Alstom shares tumbled 28% after the French train maker cut its profit forecast, FT reported, in the second major warning under new chief Martin Sion, who also set out a plan to cut 2bn euros in debt. The drop was a reminder the earnings pain is not confined to tech as industrial names reset guidance.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/95723b31-c35b-4d68-9abe-9e082e95e362?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Alstom Shares Tumble 28% After Train Maker Cuts Profit Forecast</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Netflix needs viewing hours, not just subscribers, to feed its ad push</strong></summary>
+      <div class="deal-body">
+        <p>Netflix (NFLX) faces a growing problem that its advertising ambitions depend on viewing hours, which have stalled, WSJ reported. The streamer can keep collecting subscription fees, but the ad business only scales if engagement rises, framing viewer time as the key metric for the next leg of growth.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/media/netflix-needs-you-to-watch-not-just-pay-f3d90b73?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Netflix Needs You to Watch, Not Just Pay</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alphabet pays up to sell euro bonds in a test of AI credit appetite</strong></summary>
+      <div class="deal-body">
+        <p>Alphabet (GOOGL) is raising funds in the euro bond market for the second time this year, Bloomberg reported, offering considerably higher yields than its May sale after concerns over the pace of AI spending drove a credit-market selloff. The seven-part deal spans two-to-19-year maturities and gauges how much investors will still lend to the AI build-out.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/alphabet-kicks-off-sale-of-its-second-euro-bond-this-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet Is Paying Up for Euro Bonds in Test of AI Appetite</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Citi throws in the towel on hyperscalers after a market bet misfires</strong></summary>
+      <div class="deal-body">
+        <p>Citi gave up on its big-tech hyperscaler trade after a key market bet misfired, MarketWatch reported, with hyperscalers and growth plays underperforming amid a sharp rotation. The capitulation signaled how quickly Street positioning has turned against the names that led the rally.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-latest-market-wobble-sees-citi-giving-up-on-this-big-tech-trade-181b0dea?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Citi Throws in the Towel on Hyperscalers After a Key Market Bet Misfires</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump family-linked mining venture aims to go public in a $2bn deal</strong></summary>
+      <div class="deal-body">
+        <p>The firm set to become Kaz Resources is aiming to go public in a roughly $2bn deal, WSJ reported, having secured letters of interest for up to $1.6bn in US funding and drawing scrutiny from Senator Elizabeth Warren. The Trump family-linked venture ties the critical-minerals push to a politically charged listing days before the midterms.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/trump-family-linked-mining-venture-aims-to-go-public-in-2-billion-deal-38d85946?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Trump Family-Linked Mining Venture Aims to Go Public in $2 Billion Deal</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> Futures recovered to start November as oil slid and the AI trade stabilized, but conviction is thin with midterms Tuesday and Apple reporting tonight. The bull case is Deutsche Bank's V-shaped-bounce call, Reliance's record gain and a washed-out tech setup. The bear case is Citi capitulating on hyperscalers, Alphabet paying up to borrow, Alstom's 28% plunge and Apple's no-margin-for-error print. Watch whether the bounce holds through the election and the jobs report or fades back into the AI-spending doubt.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Company Pays Higher Yields When Markets Doubt Its Spending</summary>
+      <p>Alphabet returned to the euro bond market this week and had to offer considerably higher yields than it did just six months ago, even though it is one of the most cash-rich companies on earth. The instinct is that a borrower with hundreds of billions in cash should always borrow cheaply, and most of the time a top-rated issuer does. But a bond yield is not just a reflection of a company's balance sheet today; it is the market's price for the risk of lending into an uncertain future, and when investors start doubting the payoff on a company's spending, they demand more to hold its debt. Start with what a corporate bond yield represents. It is the base risk-free rate plus a credit spread, the extra compensation investors want for the chance they are not repaid in full or that the bond loses value before maturity. The first mechanism is the spread repricing. When concerns over the pace of AI spending drove a broad credit-market selloff, investors marked up the spread on the whole cohort of heavy AI spenders, so Alphabet pays more not because its finances cracked but because the sector's risk premium widened. The second mechanism is supply. The hyperscalers are all tapping debt markets at once to fund data centers, and a flood of new bonds competes for the same pool of buyers, who extract higher yields to absorb the issuance. The third mechanism is duration risk. Alphabet's deal spans maturities out to 19 years, and the longer the bond, the more exposed the holder is to rising rates and to the chance the AI thesis disappoints over a decade, so long tranches carry a steeper yield. The fourth mechanism is the feedback into equity. Higher borrowing costs raise the hurdle rate on every data-center project, because the spending only pays off if returns clear the cost of the capital funding it, so a wider spread quietly tightens the math on the whole build-out. The fifth mechanism is signaling. A successful sale at a modest premium tells the market AI credit appetite is intact, while a deal that has to lurch wider warns that bond investors, who sit ahead of shareholders in the capital structure, are getting nervous first. The practical lesson for a market reader is that credit markets often flash caution before equities do, because lenders care about getting paid back, not about upside. When you see a cash-rich giant pay up to borrow, do not dismiss it as a rounding error; read the spread as the bond market pricing the risk that the spending it funds may not pay off on schedule.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/alphabet-kicks-off-sale-of-its-second-euro-bond-this-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet Is Paying Up for Euro Bonds in Test of AI Appetite</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/tech/the-tangled-web-of-ai-bets-is-reason-to-fear-tech-stocks-905bde86?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The Tangled Web of AI Bets Is Reason to Fear Tech Stocks</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Global AI sell-off eases after the Nasdaq's worst month in over a year</strong></summary>
+      <div class="deal-body">
+        <p>US tech stocks were set to start the week higher as the global AI sell-off eased following the Nasdaq's worst month in over a year, FT reported. The bounce came as oil slumped and futures recovered, though the move looked more like a pause than a decisive turn after a bruising October.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/d7fe99f8-d292-4cb5-a8fd-45be0f8cc2b3?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Global AI Sell-Off Eases After Nasdaq's Worst Month in Over a Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kioxia sinks the most in three months as memory demand levels off</strong></summary>
+      <div class="deal-body">
+        <p>Kioxia Holdings shares fell by their most in three months, Bloomberg reported, after the Japanese memory maker's cautious outlook inflamed concerns that the explosive AI-driven growth may be leveling off. The guide fed the market's worry that the memory cycle is maturing even as UBS argues the pullback overprices a short cycle.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/kioxia-shares-tumble-after-outlook-suggests-demand-leveling-off" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kioxia Shares Sink After Outlook Shows Demand Leveling Off</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI's Altman signs energy and investment deals across the UAE</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI signed deals to deploy its technology across energy companies, investment firms and government agencies in the United Arab Emirates, Bloomberg reported, deepening ties as it seeks billions in funding from the country's state-backed investors. Altman told the Adipec conference that AI will transform the economics of the energy world.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/openai-s-altman-travels-to-uae-to-sign-energy-investment-deals" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI's Altman Signs Energy, Investment Deals in the UAE</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Norway's cabinet allies seek a data-center halt on power worries</strong></summary>
+      <div class="deal-body">
+        <p>Norway's minority government is under pressure from its parliamentary allies and the opposition to freeze data-center development amid warnings of looming power shortages, Bloomberg reported. The push is a fresh sign that grid constraints and local politics are becoming a real brake on AI infrastructure.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/norway-government-allies-seek-data-center-halt-on-power-worries" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Norway Cabinet Allies Seek Data Center Halt on Power Worry</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>South Korea targets the world's highest-performance sovereign AI model</strong></summary>
+      <div class="deal-body">
+        <p>South Korea's 2027 budget will rise 12.8% to 820.9 trillion won and include a 21.3 trillion won investment in semiconductors, physical AI and AI data centers, CNBC reported, as Seoul chases the world's highest-performance sovereign AI model. The record spend shows governments joining the capex race even as private markets wobble.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/02/south-korea-ai-spending-budget.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- South Korea Targets World's Highest Performance Sovereign AI Model in Record Budget</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Google's earnings miss carries Facebook echoes, Stratechery argues</strong></summary>
+      <div class="deal-body">
+        <p>Google's (GOOGL) earnings miss looks a lot like Facebook's earlier reset, Stratechery wrote, framing the heavy spending as evidence the company is being more aggressive on its agent and AI pivot than it gets credit for. The take reads the capex worry as a long-term bet rather than a red flag.</p>
+        <p class="deal-source"><a href="https://stratechery.com/2026/google-earnings-facebook-deja-vu-the-agent-play/" target="_blank" rel="noopener noreferrer">Source: Stratechery -- Google Earnings, Facebook Deja Vu, The Agent Play</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>AI is making employees work longer days, new data shows</strong></summary>
+      <div class="deal-body">
+        <p>AI was supposed to shorten the work week but is instead lengthening the workday, Bloomberg's newsletter reported, citing new data that undercuts the productivity-utopia pitch. The finding complicates the bull case that AI deployment quickly translates into labor savings and margin gains.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-11-02/ai-is-making-employees-work-longer-days-new-data-shows" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Is Making Employees Work Longer Days, New Data Shows</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Monday November 2, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal that the boom endures is OpenAI's UAE energy deals, South Korea's record AI budget and UBS's view that the trade is still robust. The counter-signal is Kioxia's leveling-off demand, Citi's capitulation on hyperscalers and Norway's move to halt data centers on power worries. The near-term tell is whether the easing sell-off holds through Apple's print tonight or whether the memory and credit cracks reassert themselves.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Treasury and European yields fall as oil prices drop</strong></summary>
+      <div class="deal-body">
+        <p>US Treasury and European bond yields eased as oil prices dropped, WSJ reported, with investors focused this week on Tuesday's midterms, the Treasury's quarterly refunding and Friday's monthly jobs report. The pullback in crude took some inflation pressure out of the curve after last week's turmoil.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/treasury-yields-little-changed-in-asian-trade-ahead-of-midterms-key-data-this-week-c5a1fdb3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- US Treasury, European Bond Yields Fall as Oil Prices Drop</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOE set to hike Thursday for the first time since 2023</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of England is expected to deliver its first rate hike in over three years on Thursday, Bloomberg reported, citing a survey of 35 economists. WSJ noted the BOE would join the Fed, ECB and BOJ, each of which has raised rates at least once since the start of the US-Iran war, underscoring a synchronized tightening turn.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/boe-to-raise-rates-for-first-time-since-2023-survey-shows" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOE to Raise Rates for First Time Since 2023, Survey Shows</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB's Kazimir says markets may underestimate the tightening needed</strong></summary>
+      <div class="deal-body">
+        <p>Investors may not be pricing enough ECB tightening, with the energy shock showing no sign of fading and inflation picking up again, Governing Council member Peter Kazimir told Bloomberg. The comments reinforced the hawkish lean among European policymakers even as oil eased on Monday.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/ecb-s-kazimir-says-markets-may-underestimate-what-s-needed" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Kazimir Says Markets May Underestimate What's Needed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Australia poised for a fifth rate hike as the inflation fight intensifies</strong></summary>
+      <div class="deal-body">
+        <p>Australia's central bank is poised to raise rates for a fifth time this year on Tuesday, Bloomberg reported, intensifying efforts to control inflation that is among the strongest in the developed world. The RBA's move adds another data point to the global tightening story landing the same week as the US midterms.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-01/australia-set-for-fifth-rate-hike-as-inflation-fight-intensifies" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Australia Set for Fifth Rate Hike as Inflation Fight Intensifies</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wall Street braces for the biggest Treasury sales overhaul in years</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street is girding for the biggest revamp of Treasury issuance guidance since early 2024, Bloomberg reported, after Secretary Scott Bessent surprised dealers with his willingness to intervene in the bond market to drive down yields. The quarterly refunding announcement this week could reshape the supply outlook across the curve.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-01/wall-street-braces-for-biggest-treasury-sales-overhaul-in-years" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Wall Street Eyes Biggest Treasury Sales Overhaul in Years</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's economy stumbles as exports weaken in a risk to growth</strong></summary>
+      <div class="deal-body">
+        <p>China's economy got off to a poor start in the fourth quarter with an unexpectedly weak showing by exporters, Bloomberg reported, a sector that has become increasingly important to sustaining growth. The setback adds to the case that Beijing may need bolder stimulus, as Primavera's Fred Hu urged much bolder action.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/china-factory-activity-expands-but-ends-streak-of-faster-growth" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Economy Dealt Surprise Setbacks in Risk to Growth Pillar</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Food and housing eat a 15-year-high share of US household spending</strong></summary>
+      <div class="deal-body">
+        <p>The share of Americans' expenses going to food and housing rose to a 15-year high, Bloomberg's newsletter reported, with families spending $1,988 more on housing and groceries combined last year than in 2024. The affordability squeeze sits at the center of Trump's economic populism as voters head to the polls Tuesday.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-11-02/food-housing-share-of-americans-expenses-rise-to-15-year-high" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Food, Housing Share of Americans' Expenses Rise to 15-Year High</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (November 2, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to the oil slump pulling Treasury and European yields lower, Indian bonds rallying and gold steadying as inflation fear eases. The bear side points to the BOE hiking Thursday, Australia's fifth hike, Kazimir warning of more ECB tightening and a Treasury refunding overhaul. The swing factor is whether the oil relief and a cautious Fed path survive Tuesday's midterms and Friday's jobs report.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Falling Oil Can Rally Stocks and Bonds at the Same Time</summary>
+      <p>Monday's tape showed oil sinking, Treasury yields falling and stock futures rising all at once, a combination that can look contradictory. The instinct is that stocks and bonds usually move in opposite directions, because money flows between risky equities and safe bonds, so a day when both rally feels like the market disagreeing with itself. But both can climb together when a single driver, in this case the price of oil, improves the outlook for inflation and growth simultaneously, and understanding the channel reveals why energy prices sit upstream of almost everything. Start with how oil feeds inflation. Crude is an input into fuel, transport, plastics, fertilizer and shipping, so when it falls the cost of producing and moving nearly everything eases, which lowers the expected path of consumer prices. The first mechanism is the inflation-expectations channel. Bond yields contain compensation for expected inflation, so when oil drops and traders mark down the inflation they need to be paid for, the inflation premium in yields shrinks and bond prices rise, which is exactly what let Indian bonds rally the most in six months on Monday. The second mechanism is the policy-path channel. Central banks react to inflation, so cheaper oil lowers the odds of further hikes and can pull forward expected cuts, dragging down the front end of the curve and lifting bonds across maturities. The third mechanism is the real-income channel for equities. Lower fuel and energy costs leave households and companies with more to spend and higher margins, which supports earnings, so stocks can rise on the same news that rallies bonds. The fourth mechanism is the discount-rate link. Equities are valued by discounting future profits at a rate tied to bond yields, so when falling oil pushes yields down, the present value of those future profits rises, giving stocks a second tailwind on top of the earnings boost. The fifth mechanism is risk appetite. A sharp move lower in oil that reflects easing geopolitical tension, like a report that strikes on Iran may be delayed, removes a tail risk, so investors rotate back into risk assets and out of pure havens, lifting equities without forcing bonds down because the inflation relief props bonds up too. The sixth mechanism is the currency and import channel for energy importers, whose trade balances and inflation both improve when crude falls. The practical lesson for a market reader is that oil is not just an energy story; it is an inflation story, a policy story and a growth story at once. When you see stocks and bonds rally together, look for a common upstream driver like crude, and remember the move can reverse just as fast if the geopolitical premium snaps back, because the same barrel that eased three markets can tighten them all again.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/stock-futures-higher-oil-lower-as-investors-return-to-risk-17e79294?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Futures Higher, Oil Lower as Investors Return to Risk</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/indian-bonds-rally-as-oil-falls-higher-yields-attract-buyers" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Indian Bonds Rally as Oil Falls, Higher Yields Attract Buyers</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Treasury yields fell as the oil slump eased inflation fears and Indian bonds rallied, against a global tightening drift with the BOE set to hike Thursday, Australia's fifth hike and the ECB's Kazimir warning of more. Oil sank on a report Trump wants to give Iran diplomacy more time, against Goldman's $130 call, Currie's regime-shift thesis and Ukraine torching a Russian oil hub. The AI sell-off eased on Deutsche Bank's V-shaped-bounce call and UBS's robust read, against Howard Marks's skepticism, Citi's hyperscaler capitulation and Alphabet paying up to borrow; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above $250, bull confirmed; below $235, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 11/02</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 11/03</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 11/04</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 11/05</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 11/06</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Binance outflows hit $4.7bn after the record North Korea hack</strong></summary>
+      <div class="deal-body">
+        <p>Traders have pulled billions from Binance since late last week, when the exchange suffered the largest cyber theft in history, Bloomberg reported. The outflows show the fallout from the $6.3bn breach continuing to ripple even after Binance moved to reassure users, with rival venues attracting deposits.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/binance-outflows-hit-4-7-billion-after-record-north-korea-hack" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Binance Outflows Reach $4.7 Billion After North Korea Hack</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Binance resumes withdrawals and says it has replaced 95% of stolen assets</strong></summary>
+      <div class="deal-body">
+        <p>Binance resumed withdrawals after the biggest-ever crypto hack, WSJ reported, saying it has replaced roughly 95% of the stolen assets so far. CoinDesk said the reopening came after a 45-hour freeze, with customers pulling about $3.64bn once access returned, net outflows of around 4% of total holdings.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/currencies/binance-resumes-withdrawals-after-suffering-biggest-ever-crypto-hack-11d1900f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Binance Resumes Withdrawals After Suffering Biggest-Ever Crypto Hack</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin eases toward $78,000 as ETFs bleed $643m</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin fell about 0.4% to around $77,900 as Binance customers pulled a net $3.64bn after withdrawals reopened, CoinDesk reported, after earlier clawing back toward $79,000. US bitcoin ETFs lost $643m on Friday, the biggest outflow since June, leaving 2026 barely in the green.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/02/bitcoin-eases-to-usd77-900-as-binance-customers-pull-usd3-6-billion-after-withdrawals-reopen" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Eases to $77,900 as Binance Customers Pull $3.6 Billion After Withdrawals Reopen</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>FBI confirms North Korea's role in the $6bn Binance hack</strong></summary>
+      <div class="deal-body">
+        <p>The FBI confirmed North Korea's role in the $6bn Binance hack and asked the DeFi community to block listed BTC, ETH and SOL addresses, CoinDesk reported. Chainalysis said the attackers have already used thousands of addresses, a number it expects to keep growing as the funds are laundered.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- FBI Confirms North Korea's Role in $6 Billion Binance Hack</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BTCPay tells users to switch off servers after drained-wallet reports</strong></summary>
+      <div class="deal-body">
+        <p>BTCPay, an open-source bitcoin payment tool, told users to switch off their servers after reports of drained wallets, CoinDesk reported. The project said it is still investigating, has not given a loss figure, and that the reports appear to involve versions older than 2.4.2, adding to a jittery week for crypto infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/11/02/btcpay-a-bitcoin-payment-tool-tells-users-to-switch-off-their-servers-after-reports-of-drained-wallets" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- BTCPay Tells Users to Switch Off Their Servers After Reports of Drained Wallets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's Communist Party calls for a crackdown on crypto-enabled corruption</strong></summary>
+      <div class="deal-body">
+        <p>China's Communist Party named virtual currency and blockchain in a new anti-corruption call, CoinDesk reported, pressing for a crackdown on graft that uses crypto. The move reinforces Beijing's hostile stance toward digital assets even as the rest of the world debates post-midterm crypto policy.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/02/china-s-communist-party-calls-for-a-crackdown-on-corruption-that-uses-crypto-and-blockchain" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- China's Communist Party Calls for a Crackdown on Corruption That Uses Crypto</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Blackstone -- Leads a $3.1bn Investment in Mitsubishi's LNG Canada Stake</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A Blackstone-led group has agreed to invest $3.1bn in Mitsubishi Corp.'s interest in the LNG Canada liquefaction project, WSJ reported, adding exposure to long-life gas export infrastructure.</p>
+        <p><strong>Outlook:</strong> The deal gives Blackstone a stake in a flagship Canadian LNG asset at a moment when energy security is driving capital back into the sector.</p>
+        <p><strong>What it means:</strong> Private capital is leaning into gas infrastructure as the war premium keeps energy a core allocation theme.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/blackstone-leads-3-1-billion-investment-in-mitsubishis-stake-in-lng-canada-96379858?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Blackstone Leads $3.1 Billion Investment in Mitsubishi's Stake in LNG Canada</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kaz Resources -- Trump Family-Linked Mining Venture Eyes a $2bn Public Debut</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> The firm set to become Kaz Resources aims to go public in a roughly $2bn deal, WSJ reported, with letters of interest for up to $1.6bn in US funding.</p>
+        <p><strong>Outlook:</strong> The critical-minerals listing carries political heat, drawing scrutiny from Senator Elizabeth Warren over its Trump family ties days before the midterms.</p>
+        <p><strong>What it means:</strong> Government-backed resource nationalism is becoming an equity story, blurring the line between policy and capital markets.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/trump-family-linked-mining-venture-aims-to-go-public-in-2-billion-deal-38d85946?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Trump Family-Linked Mining Venture Aims to Go Public in $2 Billion Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OPay -- Halts Its New York IPO to Respond to a Regulatory Inquiry</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Nigeria-focused payments platform OPay halted its NYSE IPO amid a regulatory inquiry, Bloomberg reported, after shares failed to begin trading as expected despite the SoftBank-backed fintech raising $304m.</p>
+        <p><strong>Outlook:</strong> The pause leaves one of the year's marquee emerging-market fintech listings in limbo as regulators probe the structure.</p>
+        <p><strong>What it means:</strong> Even priced deals can stall late, a reminder the IPO window stays fragile for complex cross-border names.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-02/opay-halts-ipo-to-respond-to-regulatory-inquiry-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OPay Halts IPO to Respond to Regulatory Inquiry</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alphabet -- Opens a Seven-Part Euro Bond Sale to Fund the AI Build-Out</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Alphabet opened the books on a seven-part euro bond offering spanning two-to-19-year maturities, Bloomberg reported, its second euro sale this year.</p>
+        <p><strong>Outlook:</strong> The deal comes at considerably higher yields than May, a live test of how much bond investors will fund hyperscaler capex after a credit selloff.</p>
+        <p><strong>What it means:</strong> The pricing of this deal is a cleaner read on AI credit appetite than the equity bounce, and a widening spread would flash caution first.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/alphabet-kicks-off-sale-of-its-second-euro-bond-this-year" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alphabet Is Paying Up for Euro Bonds in Test of AI Appetite</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Romania -- Returns to Eurobond Markets After a New Government Takes Office</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Romania is selling bonds on the international market for the first time after approving a new government to end more than five months of political turmoil, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The sale tests investor appetite for the sovereign after prolonged instability and amid an unsettled emerging-market backdrop.</p>
+        <p><strong>What it means:</strong> Political resolution can quickly reopen funding access, but the deal lands as EM currencies trade on edge ahead of the US vote.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/romania-is-offering-eurobonds-after-new-government-takes-office" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Romania Is Offering Eurobonds After New Government Takes Office</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Mike Wilson (Morgan Stanley) -- calls the midterms a clearing event and sees a post-vote bounce</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley's chief US equity strategist Mike Wilson said the midterms are a classic clearing event whose outcome at this point does not really matter, MarketWatch reported, and told Bloomberg any post-vote selloff is likely to be short-lived. The call frames election risk as noise and leans into a bounce.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-election-will-be-good-news-regardless-of-outcome-says-morgan-stanleys-chief-stock-market-strategist-ffa320ed?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Election Will Be Good News Regardless of Outcome, Says Morgan Stanley's Wilson</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Deutsche Bank -- goes overweight tech on a sixth V-shaped bounce call</strong></summary>
+      <div class="deal-body">
+        <p>Deutsche Bank told clients tech stocks have made big V-shaped rebounds five times in 30 months and forecasts another, MarketWatch reported. With positioning consistent with far slower earnings than the sector is delivering, the bank says it is time to go overweight again as the risk-reward favors a group suddenly out of fashion.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/tech-stocks-have-made-big-v-shaped-rebounds-five-times-in-30-months-and-now-deutsche-bank-forecasts-another-bounce-0a552a62?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Deutsche Bank Forecasts Another Tech Bounce</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Howard Marks (Oaktree) -- says AI stumbles have burst the aura of infallibility</strong></summary>
+      <div class="deal-body">
+        <p>Oaktree co-chair Howard Marks told Bloomberg that recent AI-related market stumbles have somewhat burst the bubble of infallibility around the sector, boosting skepticism. The cautious read from a veteran credit investor lands against the bounce calls from Deutsche Bank and UBS.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/oaktree-s-howard-marks-says-ai-stumbles-have-boosted-skepticism" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Oaktree's Howard Marks Says AI Stumbles Boosted Skepticism</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jeff Currie (Real Macro) -- sees a permanent regime shift in the oil market</strong></summary>
+      <div class="deal-body">
+        <p>Real Macro CEO Jeff Currie told Bloomberg at Adipec that physical oil is pricing a permanent regime shift in energy markets, with long-dated Brent near $99 driven not by near-term conflict but by an aggressive push toward system-wide energy security and redundancy. The thesis argues the war premium has become structural.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-02/currie-sees-permanent-regime-shift-in-oil-market-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Currie Sees Permanent Regime Shift in Oil Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Derek Halpenny (MUFG) -- warns US GDP and the dollar are very exposed to an AI pullback</strong></summary>
+      <div class="deal-body">
+        <p>MUFG's global markets research head Derek Halpenny told Bloomberg that AI is everywhere in US GDP data and that the economy is very dependent on the continuation of the positive AI story, leaving the dollar vulnerable too. The view ties the macro and currency outlook directly to the AI trade's health.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-02/us-gdp-dollar-very-exposed-to-ai-pullback-mufg-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US GDP, Dollar 'Very Exposed' to AI Pullback, MUFG Says</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned Into Midterms and Apple Earnings as the AI Sell-Off Eases, With Morgan Stanley's Mike Wilson Calling the Vote a Clearing Event, Deutsche Bank and UBS Leaning Into a Bounce and Ed Yardeni Welcoming the Cooling, Against Howard Marks Flagging Burst Infallibility, Jeff Currie Seeing a Structural Oil Regime Shift and MUFG Warning US GDP and the Dollar Hang on the AI Story</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (buy the washout):</strong> Morgan Stanley's Mike Wilson calls the midterms a clearing event and sees any dip as short-lived, Deutsche Bank is going overweight tech on a sixth V-shaped bounce, UBS's Gerry Fowler says the AI trade is still robust, and Yardeni frames the cooling as healthy for both stocks and bonds. For the buyers, washed-out positioning plus a falling oil tailwind is a setup, not a warning.</div>
+        <div class="bear"><strong>Bear (the cracks are structural):</strong> Oaktree's Howard Marks says the AI stumbles burst the sector's aura of infallibility, Jeff Currie warns of a permanent oil regime shift that keeps the inflation tail alive, and MUFG's Derek Halpenny says US GDP and the dollar hang on the AI story continuing. With Citi capitulating on hyperscalers and Alphabet paying up to borrow, the skeptics see fragility under the bounce.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Futures bounce on oil slump; Apple earnings tonight; Alstom -28%; Reliance +12%; Citi dumps hyperscalers</td><td>Cautiously bullish</td><td>~46,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>AI sell-off eases; Deutsche Bank V-shaped bounce vs Howard Marks skepticism; Alphabet pays up for bonds; Netflix ad push</td><td>Mixed</td><td>~37,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Yields fall as oil drops; midterms Tuesday; BOE and RBA hikes; Treasury refunding; food/housing at 15-year high</td><td>Cautious</td><td>~33,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>AI credit appetite and vendor financing; Alphabet euro bond; Kioxia demand leveling off; Google-Facebook deja vu</td><td>Bearish-mixed</td><td>~29,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>Binance outflows $4.7bn; BTC near $78K; ETFs lose $643m; FBI confirms North Korea; BTCPay drained-wallet scare</td><td>Bearish</td><td>~44,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned cautiously constructive as the oil slump buoyed futures and the AI sell-off eased, but conviction stayed thin into the midterms. r/wallstreetbets leaned into the bounce and Reliance's record gain while eyeing Apple tonight and Alstom's 28% plunge. r/stocks weighed Deutsche Bank's V-shaped-bounce call against Howard Marks's skepticism and Alphabet paying up to borrow. r/investing stayed cautious on falling yields, global rate hikes and a refunding overhaul landing with the vote. r/SecurityAnalysis parsed AI credit appetite and vendor financing. r/CryptoCurrency stayed bearish as Binance outflows hit $4.7bn and bitcoin hovered near $78K. The swing factor is whether the bounce survives the election and Friday's jobs report.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Run on One Exchange Keeps Draining Even After It Reopens</h2>
+    <p>Binance reopened withdrawals over the weekend after a 45-hour freeze and said it had replaced roughly 95% of the $6.3bn stolen in the record North Korea hack, yet by Monday customers had still pulled a net $3.64bn and total outflows reached $4.7bn, with US bitcoin ETFs bleeding $643m in a single Friday. The instinct is that once an exchange makes users whole and reopens, the panic should end, because the money is back and access is restored. But a run on a financial institution is driven by confidence, not just solvency, and reopening the gates can actually trigger more withdrawals before it restores calm, which is exactly what the data showed. Start with why people withdraw. In a fractional or custodial system, customer assets are pooled and the institution promises to return them on demand, so the moment users doubt whether everyone can be paid in full, the rational move is to withdraw first, before the queue forms. The first mechanism is the released-pressure effect. During the 45-hour freeze, every user who wanted out was trapped, so reopening did not calm them; it handed them the exit they had been waiting for, and the backlog flooded out at once. The second mechanism is first-mover advantage. Even if an exchange is fully backed, no one wants to be last in line if confidence cracks again, so a reopening sets off a race to withdraw that is individually rational even when collectively unnecessary. The third mechanism is the signal in the replacement itself. Binance covering 95% of losses reassures, but the gap and the need to backfill at all remind users the reserves were drained, so some read the rescue as confirmation of fragility rather than strength. The fourth mechanism is competitive pull. CoinDesk reported rival exchanges attracted deposits as Binance customers regained access, so the outflow is not only fear but a flight to perceived safety, and every venue advertising its security accelerates the drift. The fifth mechanism is the linked-product channel. The hack hit sentiment across crypto, so spot ETFs saw their biggest outflow since June as holders de-risked the whole asset class, not just the exchange, spreading the withdrawal impulse into regulated wrappers. The sixth mechanism is reflexivity in price. Outflows and ETF selling push the token lower, which deepens doubt and invites more selling, a loop that keeps bitcoin pinned near $78,000 even as headlines insist the worst is over. The practical lesson for a market reader is that reopening is the start of the test, not the end of it. When a hacked institution lifts a freeze, watch the net flow in the days after, because steady or slowing outflows signal confidence returning, while accelerating ones signal a slow-motion run, and the distinction, not the reassuring press release, is what tells you whether the damage is contained.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-02/binance-outflows-hit-4-7-billion-after-record-north-korea-hack" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Binance Outflows Reach $4.7 Billion After North Korea Hack</a></p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/02/bitcoin-etfs-lost-usd643-million-in-outflows-friday-and-2026-is-barely-green-now" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin ETFs Lost $643 Million in Outflows Friday</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>US midterm elections (Tue Nov 3).</strong> Bloomberg says Wall Street broadly expects Democrats to gain ground, with Morgan Stanley's Wilson calling it a clearing event. Watch for a gridlock reaction across stocks, bonds and the dollar.</li>
+      <li><strong>Treasury quarterly refunding (this week).</strong> Bloomberg says Wall Street is bracing for the biggest issuance-guidance overhaul since 2024 after Bessent signaled willingness to intervene. Watch the tilt between short and long tenors.</li>
+      <li><strong>October jobs report (Fri Nov 6).</strong> With oil easing but global central banks hiking, watch whether the labor data reinforces the haven bid or revives inflation worries.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Apple (tonight).</strong> A $1tn rally leaves no margin for error, Bloomberg says. Watch iPhone demand and services guidance as the week's biggest megacap catalyst.</li>
+      <li><strong>Back half of tech.</strong> After Kioxia's demand warning and Citi's hyperscaler capitulation, watch whether software and chip names confirm or ease the spending doubt.</li>
+    </ul>
+    <h3>Central Banks</h3>
+    <ul>
+      <li><strong>RBA (Tue) and BOE (Thu).</strong> Australia readies a fifth hike and the BOE is set to tighten for the first time since 2023. Watch the guidance for how synchronized the global hiking turn really is.</li>
+      <li><strong>ECB speakers.</strong> With Kazimir warning markets underprice tightening, watch officials for how firmly December is penciled in.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Iran strike timing and Russian refinery attacks.</strong> With Trump reportedly giving diplomacy more time and Ukraine torching a Volga oil hub, watch whether the war premium stays capped or snaps back.</li>
+      <li><strong>Binance recovery and crypto contagion.</strong> With withdrawals reopened and outflows at $4.7bn, watch whether net flows stabilize or the run accelerates across exchanges.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how hyperscaler capex and bond issuance feed into the AI credit and spread picture.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Nov 2, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-11-02 06:49 ET); Bloomberg Technology (20 fresh, newest 2026-11-02 06:37 ET); Bloomberg Economics (18 fresh, newest 2026-11-02 07:00 ET); CNBC Economy (1 fresh, newest 2026-11-02 01:02 ET); MarketWatch Top Stories (10 fresh, newest 2026-11-02 06:14 ET); WSJ Markets (16 fresh, newest 2026-11-02 07:00 ET); FT Home (11 fresh, newest 2026-11-02 04:49 ET); CoinDesk (19 fresh, newest 2026-11-02 06:57 ET); Stratechery (1 fresh, newest 2026-11-02 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Stale feeds (no items in window): CNBC Top News (25 fetched, 0 in last 36h); CNBC Finance (25 fetched, 0 in last 36h); Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What drove the bounce in stock futures to start November?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed surprised markets with an emergency rate cut</span>
+      <span class="opt" data-opt="B">B. Amazon and Intel reversed their prior earnings misses</span>
+      <span class="opt" data-opt="C">C. Oil slumped on a report of delayed Iran strikes</span>
+      <span class="opt" data-opt="D">D. China announced a large new stimulus package</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg and WSJ reported oil sank after a report that Trump wants to give Iran diplomacy more time, easing inflation fears and letting futures recover. The Fed did not cut, no megacap reversed its miss, and China's data actually disappointed.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>2. What is the Bank of England expected to do Thursday?</strong></p>
+      <span class="opt" data-opt="A">A. Hold rates and signal cuts are coming next year</span>
+      <span class="opt" data-opt="B">B. Raise rates for the first time since 2023</span>
+      <span class="opt" data-opt="C">C. Restart quantitative easing to support gilts</span>
+      <span class="opt" data-opt="D">D. Cut rates to counter a sharp growth slowdown</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg's survey of 35 economists sees the BOE hiking for the first time in over three years, joining the Fed, ECB and BOJ in tightening since the US-Iran war began. It is not holding, cutting or restarting QE.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What happened at Binance after it reopened withdrawals?</strong></p>
+      <span class="opt" data-opt="A">A. Customers pulled billions, with outflows reaching $4.7bn</span>
+      <span class="opt" data-opt="B">B. Deposits surged as users regained full confidence</span>
+      <span class="opt" data-opt="C">C. The exchange failed to return any stolen funds</span>
+      <span class="opt" data-opt="D">D. Regulators forced it to shut down permanently</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported outflows reached $4.7bn and CoinDesk said customers pulled a net $3.64bn once access returned, even after Binance said it replaced about 95% of stolen assets. Deposits did not surge, funds were largely replaced, and it was not shut down.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasury yields fall as the oil slump eases inflation fears and Indian bonds rally the most in six months, even as the BOE is set to hike Thursday for the first time since 2023, Australia readies a fifth hike, the ECB's Kazimir warns markets underestimate the tightening needed, and Wall Street braces for the biggest Treasury refunding overhaul in years with midterms and jobs day ahead.",
+    "sources": [
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/treasury-yields-little-changed-in-asian-trade-ahead-of-midterms-key-data-this-week-c5a1fdb3?mod=rss_markets_main", "take": "US Treasury and European yields fall as oil prices drop." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-02/indian-bonds-rally-as-oil-falls-higher-yields-attract-buyers", "take": "Indian bonds rally the most in six months as oil falls." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-02/boe-to-raise-rates-for-first-time-since-2023-survey-shows", "take": "BOE is set to hike Thursday for the first time since 2023." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-02/ecb-s-kazimir-says-markets-may-underestimate-what-s-needed", "take": "ECB's Kazimir says markets may underestimate the tightening needed." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-01/wall-street-braces-for-biggest-treasury-sales-overhaul-in-years", "take": "Wall Street braces for the biggest Treasury sales overhaul in years." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil sinks as Trump signals he wants to give Iran diplomacy more time before resuming strikes, lifting risk assets and pulling petrol off record highs, even as Goldman Sachs sees crude averaging $130 next year, Jeff Currie flags a permanent regime shift, Ukraine sets a major Russian oil hub ablaze and the Gulf braces for fiercer escalation.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-01/latest-oil-market-news-and-analysis-for-nov-2", "take": "Oil sank on a report Trump wants to give Iran diplomacy more time." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/stock-futures-higher-oil-lower-as-investors-return-to-risk-17e79294?mod=rss_markets_main", "take": "Falling oil prices let investors make a cautious return to risk." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/how-oil-prices-could-average-130-per-barrel-next-year-according-to-goldman-sachs-235ce32b?mod=mw_rss_topstories", "take": "Goldman sees Brent averaging $130 next year, $140 if tensions worsen." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-02/major-russian-oil-hub-on-fire-after-strike-nasa-data-show", "take": "A major Russian oil hub may be on fire after Ukraine resumed strikes." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/efaa2962-1acb-45cf-afb4-d0088f0a1046?syn-25a6b1a6=1", "take": "The Gulf is braced for a fiercer escalation of the US-Iran war." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI sell-off eases and Deutsche Bank calls for another V-shaped bounce while UBS says the trade is still robust, even as Howard Marks says the stumbles have burst the aura of infallibility, Citi throws in the towel on hyperscalers, Alphabet pays up to sell euro bonds in a test of AI appetite and Kioxia sinks as memory demand levels off ahead of Apple's earnings.",
+    "sources": [
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/tech-stocks-have-made-big-v-shaped-rebounds-five-times-in-30-months-and-now-deutsche-bank-forecasts-another-bounce-0a552a62?mod=mw_rss_topstories", "take": "Deutsche Bank goes overweight tech on another V-shaped bounce call." },
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/d7fe99f8-d292-4cb5-a8fd-45be0f8cc2b3?syn-25a6b1a6=1", "take": "Global AI sell-off eases with US tech set to start the week higher." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-02/oaktree-s-howard-marks-says-ai-stumbles-have-boosted-skepticism", "take": "Howard Marks says AI stumbles have burst the aura of infallibility." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/the-latest-market-wobble-sees-citi-giving-up-on-this-big-tech-trade-181b0dea?mod=mw_rss_topstories", "take": "Citi throws in the towel on hyperscalers after a bet misfires." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-02/kioxia-shares-tumble-after-outlook-suggests-demand-leveling-off", "take": "Kioxia sinks as its outlook shows memory demand leveling off." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Alstom","Kioxia","Nvidia","Apple","Amazon","Reliance"],
+    "values": [-28.0, -8.0, 2.0, 0.5, 2.0, 12.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [46000, 37000, 33000, 29000, 44000],
+    "colors": ["bull","neutral","neutral","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Blackstone-LNG Canada","Kaz Resources IPO","Binance Outflows","OPay IPO Raised"],
+    "values": [3.1, 2.0, 4.7, 0.3]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
