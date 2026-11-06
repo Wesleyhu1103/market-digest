@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Nov 5, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-11-05</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, November 5, 2026</h1>
+    <div class="meta">
+      <p>The post-sweep moves ran a second day, with the AI trade still selling off as money rotated into value and cyclicals, European stocks pushing to a record and Treasuries rallying to eight-week-low yields on hopes a divided government curbs bond supply. The Bank of England is set to deliver its first rate hike in three years today, with Norway already holding and the ECB's Ante Zigman flagging a December move. Oil is steadying near a two-month low after plunging almost 9%, and Friday's October jobs report still looms.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Markets extended their post-sweep moves for a second day, with the AI trade selling off and capital rotating into value and economically sensitive stocks as European equities hit a record, Treasuries rallying to eight-week-low yields on hopes a divided government curbs bond supply, oil holding near a two-month low after plunging almost 9% on bets the sweep speeds an end to the Iran war, and the BOE preparing for its first rate hike in three years",
+      "framings": [
+        {"outlet": "Financial Times", "headline": "European Stocks Approach All-Time High on Democratic Sweep", "angle": "Treats the sweep as a positive for Europe, with investors betting a Republican defeat restrains White House policymaking that had weighed on markets.", "lean": 40, "pull": "Investors bet the scale of the Republican defeat will restrain White House policymaking."},
+        {"outlet": "Bloomberg", "headline": "Big Tech Stocks Surge as Democrats Threaten to Slow AI Spending", "angle": "Frames hyperscalers as winners from a buildout shakeout even as the policy risk rises.", "lean": 30, "pull": "Not all AI companies fared well, but hyperscalers did."},
+        {"outlet": "WSJ", "headline": "AI Selloff Extends, Treasurys Gain as Blue Wave Reverberates", "angle": "Leans on the two-sided tape, with AI weakening globally while bonds cheer the prospect of fiscal restraint.", "lean": 0, "pull": "AI stocks continued to weaken globally as investors digested the sweep."},
+        {"outlet": "CNBC", "headline": "The Democrats Have One Chance to Extract Concessions. Markets Will Hate It", "angle": "Warns the next debt-ceiling confrontation could bring volatility and a damaging default.", "lean": -30, "pull": "The next debt-ceiling confrontation could raise the possibility of a damaging default."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Treasuries Rally for a Second Day to Eight-Week-Low Yields as the Democratic Sweep Fuels Hopes a Divided Government Curbs Bond Supply and Bloomberg Says the Rout Gives Fed Chair Warsh More Room on Rates, Even as Europe Keeps Tightening With the BOE Poised for Its First Hike in Three Years Today, the ECB's Ante Zigman Seeing a Rather Big Chance of a December Move and Czech and Chile Rate-Hike Bets Building</h3>
+      </div>
+      <p>Rates desks kept the haven and supply bid running. The bulls lean on tumbling yields and fiscal restraint. Bloomberg reported Treasuries headed for a second day of gains as the sweep fueled expectations the Trump administration's tax and spending plans will be contained, and WSJ said Treasury and European yields tumbled to eight-week lows as bond markets cheered the prospect of gridlock with a Republican president and a Democrat-controlled Congress. Bloomberg added that Trump's trouncing gives Fed Chair Kevin Warsh more room to focus on bringing inflation to heel with less political distraction. The bears counter that Europe is still tightening into sticky inflation. Bloomberg's decision guide says the BOE looks ready to raise its rate a quarter point to 4%, its first hike in more than three years, ECB Governing Council member Ante Zigman sees a rather big chance of a December increase, the third since the Iran war began, the Czech central bank is set to hike for a second time this year and Chile investors are rapidly bringing forward bets on a first hike since 2022. Norway held with the option to hike again. The one dovish crack is Sweden, where core inflation unexpectedly slowed to a six-month low, denting the Riksbank's case for more. The near-term bid favors Treasuries; the global policy drift still tilts up.</p>
+      <p>The bull read is Treasuries rallying a second day, yields at eight-week lows, gridlock capping the deficit and Warsh getting more room. The bear read is the BOE's first hike in three years, Zigman flagging December, Czech and Chile hikes building and Norway keeping its hiking option open.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (gridlock and the supply read pull yields down):</strong> Bloomberg says Treasuries gained a second day as the sweep fuels hopes of curbing bond supply, WSJ reports yields tumbled to eight-week lows on bets a divided government forces fiscal restraint, and Bloomberg argues Trump's rebuke gives Warsh more room to fight inflation. With issuance expectations flattening and the haven bid intact, the case for lower yields is holding.</div>
+        <div class="bear"><strong>Bear (Europe keeps tightening):</strong> The BOE is poised for its first hike in three years to 4%, ECB's Ante Zigman sees a rather big chance of a December move, the Czechs are set to hike again and Chile rate-hike bets are building. Norway held but kept the door open, and only Sweden's slowing inflation cuts the other way. The global policy backdrop is still turning up.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-05/treasuries-gain-as-us-vote-fuels-hopes-for-curbing-bond-supply" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Treasuries Gain as US Vote Fuels Hopes for Curbing Bond Supply</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Holds Near a Two-Month Low After Tumbling Almost 9% as Traders Bet the Democratic Sweep Accelerates an End to the Iran War, With the FT Saying the Midterms Herald Upheaval in Middle East Policy, Even as BNY's Alicia Levine Warns a Prolonged War Is the Market's Real Black Swan That Investors Have Not Priced</h3>
+      </div>
+      <p>The war premium kept bleeding out as the politics shifted. The bulls say de-escalation just got more likely. Bloomberg reported Brent rose from a two-month low after tumbling almost 9% in the prior session as investors bet the sweep could accelerate efforts to end the war in the Middle East, and FT wrote the midterm results herald upheaval in Middle East policy, with American voters, including Vice President JD Vance, wanting an end to Trump's Iran war and Washington's proximity to Israel. The plunge rippled out, with Bloomberg noting Indian stocks and bonds rallied as the crude slide eased inflation risks for the oil importer. The bears say the market is leaning too hard on a quick peace. MarketWatch reported BNY wealth management's Alicia Levine calling a prolonged war in Iran the market's real black swan, arguing investors have not priced the possibility of the conflict lasting a long time. The ECB keeps tying euro-zone inflation to the Iran war's energy shock, and Zigman's December lean rests on it. One camp sees the barrel drifting lower as peace odds firm; the other sees a pause that could snap back violently if talks stall.</p>
+      <p>The bull read is crude's near 9% plunge, FT flagging a Middle East policy turn and the oil slide easing inflation pressure abroad. The bear read is Alicia Levine warning a long war is unpriced, the ECB still blaming the war for energy inflation and the risk a pause is not a settlement.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (peace odds cap crude):</strong> Bloomberg says Brent plunged almost 9% as traders bet the sweep accelerates an end to the Iran war, and FT reports the midterms herald a Middle East policy turn with voters, including JD Vance, wanting the war over. The crude slide is already easing inflation risk abroad, with Indian stocks and bonds rallying, and the war premium keeps draining out.</div>
+        <div class="bear"><strong>Bear (the war could still drag):</strong> BNY's Alicia Levine warns a prolonged war in Iran is the market's real black swan, and says investors have not priced a conflict that lasts a long time. The ECB still blames the war's energy shock for euro-zone inflation, Zigman's December lean rests on it, and a one-day plunge on an election bet is not a signed peace with the chokepoint risk unresolved.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.marketwatch.com/story/a-prolonged-war-in-iran-is-the-markets-real-black-swan-says-this-strategist-65d105c7?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- A Prolonged War in Iran Is the Market's Real Black Swan, Says This Strategist</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Sells Off a Second Day as Capital Rotates Into Value and Cyclicals, Lifting European Stocks to a Record and Hong Kong Back to Life, With Bloomberg Saying Hyperscalers Surged on a Shakeout and Nuveen's Laura Cooper Seeing Opportunity in AI Credit, Even as MarketWatch Research Declares the End of the AI Trade as We Know It, Qualcomm Disappoints and the BOE Questions Risky Data-Center Loans</h3>
+      </div>
+      <p>The rotation out of AI deepened and the leadership flipped. The bulls say the shakeout rewards the strong. Bloomberg reported a rotation trade entered a second day, with previously unfavored markets and economically sensitive stocks outperforming at the expense of chipmakers, European stocks briefly surpassing their record and Hong Kong roaring back as investors moved from AI hardware into discounted Chinese internet platforms. Bloomberg said Big Tech stocks surged even as Democrats threaten to slow AI spending, because hyperscalers like Amazon and Microsoft stand to benefit from a buildout shakeout, a read WSJ echoed, Nvidia partner Hon Hai posted a 46% jump in October sales on AI server demand, and Nuveen's Laura Cooper told Bloomberg she sees attractive opportunities in AI credit tied to hyperscalers. The bears say the regime has changed. MarketWatch reported a research firm declaring the end of the AI trade as we know it, with Asian tech reflecting the shift, Qualcomm's earnings disappointed, the Bank of England is questioning lenders about data-center projects financed without a tenant in place, Micron paused a $4.5bn Taiwan plant, and Stratechery's Ben Thompson wrote that data centers were on the ballot and lost in a major way. The earnings still flow; the valuation and policy re-rating is the story.</p>
+      <p>The bull read is the rotation lifting Europe to a record, hyperscalers surging on a shakeout, Hon Hai's 46% sales jump and Nuveen seeing AI credit value. The bear read is MarketWatch's end-of-the-trade call, Qualcomm's disappointment, the BOE probing data-center loans and Stratechery's read that data centers lost.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the shakeout rewards the strong):</strong> Bloomberg says Big Tech stocks surged even as the sweep threatens AI spending because hyperscalers benefit from a shakeout, WSJ agrees giants like Amazon and Microsoft gain from the backlash, Hon Hai's sales jumped 46% on AI demand and Nuveen's Laura Cooper sees value in AI credit. The rotation lifting Europe to a record looks like a broadening, not a bust.</div>
+        <div class="bear"><strong>Bear (the regime has turned):</strong> A MarketWatch research firm declares the end of the AI trade as we know it, Qualcomm disappointed, the BOE is probing data-center loans made without tenants, Micron paused a $4.5bn Taiwan plant and Stratechery's Ben Thompson says data centers lost at the ballot. The de-rating risk has shifted from valuation to policy and financing.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/newsletters/2026-11-05/big-tech-stocks-surge-as-democrats-threaten-to-slow-ai-spending" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Big Tech Stocks Surge as Democrats Threaten to Slow AI Spending</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Dow scores its best day in 18 months in a broad relief rally</strong></summary>
+      <div class="deal-body">
+        <p>Stocks surged, oil prices plunged and bond yields fell Wednesday on optimism around a quicker end to the Iran war after Democrats clinched control of Congress, MarketWatch reported, handing the Dow its best day in 18 months. WSJ framed the move as a bet that divided government would be good for business even as AI unease lingered.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/dow-scores-its-best-day-in-18-months-in-a-broad-relief-rally-after-democrats-sweep-to-power-in-congress-d7348fc0?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Dow Scores Its Best Day in 18 Months in a Broad Relief Rally</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CVS to split off its drugstore business, shares fall 10%</strong></summary>
+      <div class="deal-body">
+        <p>CVS Health (CVS) will split off its drugstore business in a major breakup, CNBC reported, a move that would reverse its $78bn Aetna acquisition and dismantle the vertically integrated conglomerate it built in 2018. Shares fell 10% as analysts said the retail pharmacy and other units may finally be strong enough to stand alone.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/04/cvs-to-split-off-drugstore-business.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- CVS to Split Off Drugstore Business in Major Breakup; Shares Fall 10%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Qualcomm earnings disappoint as the AI selloff rolls into chips</strong></summary>
+      <div class="deal-body">
+        <p>Qualcomm's (QCOM) results disappointed, WSJ reported, adding pressure to a chip complex that led the second-day rotation lower as investors moved into other trades. The miss landed as AI stocks weakened globally and economically sensitive names outperformed at the expense of semiconductors.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-05-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Market Today: AI Stocks Under Pressure as Investors Rotate</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>McDonald's rises as earnings beat and US restaurants improve</strong></summary>
+      <div class="deal-body">
+        <p>McDonald's (MCD) stock rose after earnings beat and US restaurants showed improvement, CNBC reported, as the chain's lean into discounts drew budget-conscious diners. The result offered a steadier read on the consumer than the softening-demand narrative running through earnings season.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/04/mcdonalds-is-about-to-report-earnings-heres-what-to-expect.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- McDonald's Stock Rises as Earnings Beat, US Restaurants Show Improvement</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>E.l.f. Beauty posts a 51% sales jump and raises guidance</strong></summary>
+      <div class="deal-body">
+        <p>E.l.f. Beauty (ELF) posted stronger-than-expected quarterly results with a 51% sales increase and raised its full-year guidance, CNBC reported, citing broad-based growth across its portfolio. The print stood out as a rare high-growth beat in a cautious consumer tape.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/04/elf-beauty-elf-q2-2027-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- E.l.f. Beauty Posts 51% Sales Increase, Raises Full-Year Guidance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cigna tops Wall Street views and boosts its full-year outlook</strong></summary>
+      <div class="deal-body">
+        <p>Cigna Group (CI) reported third-quarter profit just above estimates and lifted its outlook for the year, Bloomberg reported, the latest positive result from a large health insurer. The beat on insurance and care services offered a counterweight to the breakup drama at rival CVS.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/cigna-profit-tops-wall-street-views-on-insurance-care-services" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Cigna Profit Tops Wall Street Views on Insurance, Care Services</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Rheinmetall cuts its 2026 sales guidance and shares plunge</strong></summary>
+      <div class="deal-body">
+        <p>German defense firm Rheinmetall cut its 2026 sales target for the second time, citing delays with the Boxer armored vehicle program, Bloomberg reported, and shares plunged. WSJ said European defense stocks were under broader pressure after mixed earnings and midterm results that cast doubt on US military spending.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-05/rheinmetall-cuts-2026-sales-guidance-shares-plunge-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Rheinmetall Cuts 2026 Sales Guidance, Shares Plunge</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The Dow logged its best day in 18 months in a broad relief rally, but day two flipped the leadership, with chipmakers losing ground as money rotated into value and cyclicals and European stocks touched a record. The bull case is the rotation broadening the market, McDonald's and E.l.f. beats and Cigna's raise. The bear case is Qualcomm's miss, Rheinmetall's cut and CVS's 10% drop. Watch whether the rotation holds breadth into Friday's jobs report.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the Index Can Hit a Record While Its Biggest Winners Fall</summary>
+      <p>European stocks touched an all-time high even as the AI leaders that had driven the rally sold off hard, and the US tape saw the Dow surge while chipmakers dragged, a split that looks contradictory until you see what is happening underneath. The instinct is that an index is the market, so if the index rises the leaders must be rising too, and if the biggest names fall the index should fall with them. But an index is a weighted average of many stocks, and a rotation can push the average up even as the former leaders drop, because the money leaving one group has to land somewhere, and where it lands is the whole story. Start with what an index measures. A broad index is a basket, often capitalization weighted, so the largest companies carry the most influence, which is why a handful of mega-cap AI names can move the whole gauge. The first mechanism is rotation itself. When investors decide a crowded trade has run too far, they sell the winners and buy the laggards, so capital flows from AI hardware into value, cyclicals and previously unloved markets, and the buying in the second group can outweigh the selling in the first. The second mechanism is breadth. A rally led by a few names is narrow, and when the leadership broadens to many stocks, more of the basket rises at once, lifting the average even if the old leaders fall, which is exactly what let European and Hong Kong indices climb while chips slid. The third mechanism is the valuation spread. After a long run, the leaders trade at rich multiples and the laggards at cheap ones, so a shift in sentiment compresses that gap, with cheap stocks rerating up faster than expensive ones rerate down. The fourth mechanism is the regional composition. Europe and Hong Kong hold far less AI-hardware weight and far more banks, miners, industrials and internet platforms, so a rotation out of US chips can mechanically favor those indices, which is why they printed records as US semis fell. The fifth mechanism is the macro tailwind underneath, where falling yields and a softer dollar raise the present value of the cheaper, longer-duration cyclical cash flows that had been left behind. The sixth mechanism is positioning unwind, where funds crowded into the AI trade are forced to trim winners to fund the new leadership, amplifying both the drop in chips and the lift in the rotation targets. The practical lesson for a market reader is to separate the index level from its internals. When the gauge hits a record while the old leaders fall, do not read it as the same rally continuing; read the breadth, the sector mix and the valuation spread, because a rotation and a melt-up can look identical at the index level and mean very different things for what you own.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/european-stocks-hit-fresh-record-as-ai-unwind-boosts-region" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Global AI Trade Unwind Propels European Stocks to Record High</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/hong-kong-stocks-roar-back-as-investors-rotate-away-from-ai" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hong Kong Stocks Roar Back as Value Rotation Boosts China Tech</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Stock rotation rolls on as chipmakers lose ground</strong></summary>
+      <div class="deal-body">
+        <p>A rotation trade fueled by the midterms entered a second day, Bloomberg reported, with previously unfavored markets and economically sensitive stocks outperforming at the expense of chipmakers. WSJ said the AI selloff extended globally as investors digested the implications of the Democratic sweep.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/ai-selloff-extends-treasurys-gain-as-blue-wave-reverberates-2d60fa21?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- AI Selloff Extends, Treasurys Gain as Blue Wave Reverberates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia partner Hon Hai's sales rise 46% on AI demand</strong></summary>
+      <div class="deal-body">
+        <p>Hon Hai Precision Industry (Foxconn) reported a 46% jump in October sales, Bloomberg reported, reflecting resilient demand for the Nvidia (NVDA) servers central to the global AI build-out. The figure cut against the regulatory gloom, signaling underlying hardware demand is still running hot.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/nvidia-partner-hon-hai-s-sales-rise-46-thanks-to-ai-demand" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Partner Hon Hai's Sales Rise 46% Thanks to AI Demand</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Micron pauses work on a $4.5bn Taiwan plant after a labor spat</strong></summary>
+      <div class="deal-body">
+        <p>Micron Technology (MU) suspended plans for a memory-chip plant in Taiwan due to a protracted labor dispute, Bloomberg reported, throwing into question the fate of a major production base for crucial AI components. The pause adds a supply wrinkle to an already stretched memory market.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/micron-pauses-work-on-4-5-billion-taiwan-plant-after-labor-spat" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Micron Pauses Work on $4.5 Billion Taiwan Plant After Labor Spat</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China blocks SoftBank's $5.4bn ABB robot-unit takeover</strong></summary>
+      <div class="deal-body">
+        <p>China blocked the sale of ABB's robotics unit to SoftBank Group, Bloomberg reported, dealing a blow to the Japanese firm's plan to expand into physical AI. The decision underscores how cross-border robotics and AI deals are now hostage to geopolitics.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/china-blocks-softbank-s-acquisition-of-abb-industrial-robot-unit" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China Blocks SoftBank's $5.4 Billion ABB Robot Unit Takeover</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta raises €9bn in a euro bond debut that drew record demand</strong></summary>
+      <div class="deal-body">
+        <p>Meta Platforms (META) raised €9bn in its debut euro bond sale, Bloomberg reported, drawing a record of more than €62bn of orders, the most for any corporate deal in Europe, after offering yields even AI skeptics found hard to pass up. The bonds rose above face value on their first day of trading.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-04/meta-starts-debut-euro-bond-sale-after-15-billion-dollar-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta Raises €9 Billion as Euro Bond Debut Draws Record Demand</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>OpenAI to change how it handles data-center deals after outcry</strong></summary>
+      <div class="deal-body">
+        <p>OpenAI said it will avoid nondisclosure agreements when negotiating data-center deals and ensure residents do not pay for the electricity to power the projects, Bloomberg reported, part of a framework it wants written into AI expansion laws. The move is a direct response to the voter backlash the sweep crystallized.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/openai-to-change-how-it-handles-data-center-efforts-after-outcry" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- OpenAI to Change How It Handles Data Center Efforts After Outcry</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Agility Robotics goes public, a first for US humanoid makers</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia-backed Agility Robotics is set to become the first dedicated humanoid company to go public in the US, Bloomberg reported, trading on Nasdaq under AGLT after merging with Churchill Capital Corp. XI with about $465m on hand. A Foxconn-led $201m PIPE backs the debut of the still-unproven category.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/nvidia-backed-humanoid-maker-agility-goes-public-in-first-for-the-us" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed Humanoid Maker Agility Goes Public in First for the US</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Thursday November 5, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal that demand endures is Hon Hai's 46% sales jump, hyperscalers surging on a shakeout and Nuveen's Laura Cooper seeing AI credit value. The counter-signal is Qualcomm's miss, MarketWatch's end-of-the-trade call, the BOE probing data-center loans and Micron pausing a $4.5bn Taiwan plant. The near-term tell is whether the rotation broadens the market or the AI unwind drags the whole gauge lower.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Treasuries gain a second day as the vote fuels bond-supply hopes</strong></summary>
+      <div class="deal-body">
+        <p>US Treasuries headed for a second day of gains, Bloomberg reported, after the Democratic sweep fueled expectations the Trump administration's tax and spending plans will be contained. WSJ said Treasury and European yields tumbled to eight-week lows as bond markets cheered the prospect of fiscal restraint under divided government.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/u-s-treasury-yields-fall-to-eight-week-lows-as-markets-digest-midterm-results-7effce3e?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Treasury, European Bond Yields Tumble as Markets Lifted by Democrats' Victory</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOE poised for its first rate hike in three years</strong></summary>
+      <div class="deal-body">
+        <p>The Bank of England looks ready to raise interest rates by a quarter point to 4%, Bloomberg reported, its first hike in more than three years. A gauge of pound strength rose to its highest since the 2016 Brexit vote on resilient UK data and hike expectations ahead of the decision.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/boe-poised-for-first-rate-hike-in-three-years-decision-guide" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOE Poised for First Rate Hike in Three Years: Decision Guide</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Norway keeps rates steady with the option of hiking again</strong></summary>
+      <div class="deal-body">
+        <p>Norway's central bank kept borrowing costs steady as expected, Bloomberg reported, and reiterated the option of raising them again if needed to curb inflation. The hold leaves Norway alongside a global pack still leaning hawkish rather than cutting.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/norway-keeps-rate-steady-with-option-of-another-hike-if-needed" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Norway Keeps Rate Steady With Option of Hiking If Needed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB's Zigman sees a rather big chance of a December hike</strong></summary>
+      <div class="deal-body">
+        <p>ECB Governing Council member Ante Zigman said the bank is likely to raise borrowing costs next month, Bloomberg reported, for the third time since the Iran war began. The comments reinforce the hawkish line with euro-zone inflation at 4% and energy still feeding prices.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/ecb-s-zigman-sees-rather-big-chance-of-december-rate-hike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Zigman Sees 'Rather Big Chance' of December Rate Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US firms announce the fewest October job cuts in three years</strong></summary>
+      <div class="deal-body">
+        <p>US employers announced the fewest job cuts for any October since 2023, Bloomberg reported, while hiring plans picked up ahead of the holiday-shopping season. CNBC added that ADP showed private companies added 86,000 jobs in October, slightly above expectations, firming the labor read into Friday's payrolls.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/us-companies-announce-fewest-october-job-cuts-in-three-years" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Companies Announce Fewest October Job Cuts in Three Years</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump's trouncing gives Warsh more room to maneuver on rates</strong></summary>
+      <div class="deal-body">
+        <p>The sweeping voter rebuke of Trump could lift a shadow from Fed Chair Kevin Warsh, Bloomberg reported, letting him focus on bringing inflation to heel with less political distraction. The read supports the bond market's bet that a less pressured Fed keeps policy credible.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/trump-s-trouncing-gives-warsh-more-room-for-maneuver-on-rates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Trump's Trouncing Gives Warsh More Room for Maneuver on Rates</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Midterms set the stage for a debt-ceiling clash</strong></summary>
+      <div class="deal-body">
+        <p>The sweep sets up a debt-ceiling confrontation that could reverse Washington's traditional roles, CNBC reported, raising the possibility of spending concessions, market volatility and a damaging default. WSJ flagged the same clash as the next political risk markets must price.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/04/democrats-trump-debt-ceiling-fight.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- The Democrats Have One Chance to Extract Concessions From Trump. Markets Will Hate It</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (November 5, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to Treasuries gaining a second day, yields at eight-week lows, gridlock expected to cap supply and Warsh gaining room. The bear side points to the BOE's first hike in three years, Zigman flagging December, Czech and Chile hikes building and Norway keeping its hiking option. The swing factor is whether Friday's payrolls, after firm ADP and the fewest October job cuts since 2023, revive inflation worry or reinforce the supply-driven bid.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Oil Can Plunge 9% on an Election With No Change in Barrels</summary>
+      <p>Brent tumbled almost 9% in a single session as traders bet the Democratic sweep would speed an end to the Iran war, even though not a single extra barrel of crude actually moved that day. The instinct is that oil prices reflect supply and demand for physical oil, so a price that drops 9% should mean a lot more oil suddenly hit the market or demand collapsed. But a large, fast move like this is mostly about the risk premium embedded in the price, not the barrels changing hands today, and understanding that premium explains why a political headline can swing crude more than an inventory report. Start with what an oil price contains. A barrel's price is the expected future spot price plus or minus a premium for the risk that supply gets disrupted, and when a war threatens a major producer or a chokepoint, traders bid that premium up to insure against a shock. The first mechanism is the geopolitical premium itself. The Iran war had loaded a fear premium into Brent, pricing the chance that strikes, retaliation or a closed strait would cut supply, and that premium sits in the price every day whether or not a disruption happens. The second mechanism is the repricing of odds. When an election result raises the perceived probability that the war ends soon, traders cut the chance of a supply shock, and the premium they were paying to insure against it deflates fast, dragging the whole curve down. The third mechanism is positioning. Funds long oil as a war hedge rush to unwind when the catalyst for that hedge fades, and the selling feeds on itself in thin conditions, which is how a shift in expectations becomes a 9% single-day move. The fourth mechanism is the forward curve. A falling fear premium hits near-dated contracts hardest because the disruption risk was most acute in the near term, so the front of the curve can drop more than the back, flattening the structure. The fifth mechanism is the second-order read, visible in India, where Bloomberg reported stocks and bonds rallied as the crude slide eased inflation and external-finance pressure for the oil importer, showing how an oil move ripples into rates and currencies. The sixth mechanism is the reversal risk, which is why strategists like BNY's Alicia Levine warn the move can snap back; if talks stall and the war drags, the premium the market just stripped out rebuilds just as fast. The practical lesson for a market reader is that a violent oil move on a political headline is usually the risk premium repricing, not the physical balance shifting. When crude plunges on news of possible peace, ask whether the barrels actually changed or only the odds of a disruption did, because a premium that deflates on hope can reinflate on the next setback.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-04/latest-oil-market-news-and-analysis-for-nov-5" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for Nov. 5</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/indian-bonds-rupee-rally-as-sliding-oil-eases-inflation-risks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- India Stocks, Bonds Surge as Oil Plunge Eases Inflation Risks</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Treasuries gained a second day to eight-week-low yields on hopes a divided government curbs bond supply, with Warsh gaining room, against the BOE's first hike in three years, Zigman flagging a December ECB move and Czech and Chile hikes building. Oil held near a two-month low after plunging almost 9% on bets the sweep speeds an end to the Iran war, against BNY's warning a prolonged war is unpriced. The AI trade sold off a second day as money rotated into value and European stocks hit a record, with hyperscalers surging on a shakeout, against a research firm calling the end of the AI trade and the BOE probing data-center loans; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above $250, bull confirmed; below $235, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 11/02</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 11/03</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 11/04</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 11/05</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 11/06</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin holds above $80,000 in a post-election rebound as ether jumps</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held above $80,000 after Wednesday's jump, CoinDesk reported, with spot ETFs ending a three-day outflow streak as markets rallied following the Democratic sweep. Ether rose 4% to 8% and crypto ETFs drew fresh money as falling oil and a weaker dollar helped the recovery.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/05/bitcoin-holds-above-usd80-000-after-wednesday-s-jump-as-injective-rallies-on-staked-etf-listing" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Holds Above $80,000 After Wednesday's Jump as Injective Rallies</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Democratic sweep could be the final nail in the Clarity Act's coffin</strong></summary>
+      <div class="deal-body">
+        <p>Industry experts warn the Clarity Act is likely dead in its current form, CoinDesk reported, as incoming Democratic majorities eye tighter scrutiny of crypto markets and tokenized stocks. The crypto super PAC Fairshake also suffered a costly setback, with more than a third of its spending missing the mark.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/11/04/u-s-democratic-sweep-could-be-the-final-nail-in-the-clarity-act-s-coffin" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US Democratic Sweep Could Be the Final Nail in the Clarity Act's Coffin</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Circle beats earnings on strong revenue but cuts 5% of its workforce</strong></summary>
+      <div class="deal-body">
+        <p>Circle (CRCL) beat earnings and revenue estimates on soaring USDC transaction volume, CoinDesk reported, with net income from continuing operations of $226m, up 5% year-over-year. The stablecoin issuer still cut 5% of its staff, a sign the sector is trimming costs even as volumes grow.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/11/04/circle-beats-earnings-and-revenue-estimates-on-soaring-usdc-transaction-volume" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Circle Beats Earnings Expectations on Strong Revenue, but Cuts 5% of Workforce</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin miners are oversold after a 35% October rout, VanEck says</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin miners are oversold following a 35% October rout, VanEck told CoinDesk, as investors dumped AI infrastructure providers across the board and treated very different sectors as one monolithic trade. The call frames the selloff as indiscriminate rather than fundamental.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/05/bitcoin-miners-are-oversold-following-35-october-rout-says-vaneck" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Miners Are Oversold Following 35% October Rout, VanEck Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin miner Riot could pay Anthropic 12% interest under a $28bn AI deal</strong></summary>
+      <div class="deal-body">
+        <p>Riot Platforms (RIOT) could pay Anthropic 12% interest under a $28bn AI deal, CoinDesk reported, giving the AI firm a way to finance part of the data-center build and collect interest through rent deductions. Riot has sold most of its bitcoin to fund its pivot into data centers.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/11/05/bitcoin-miner-riot-could-pay-anthropic-12-interest-under-usd28-billion-ai-deal" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Miner Riot Could Pay Anthropic 12% Interest Under $28 Billion AI Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tokenization and stablecoins may weather the Democrats' sweep</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street's push to bring finance onto blockchain rails may continue under existing laws even as broader crypto rules face uncertainty, CoinDesk reported. The SEC and CFTC face tougher oversight, but tokenization and stablecoins look insulated, while Grayscale and BlackRock still see growth ahead.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/11/04/tokenization-and-stablecoins-may-weather-democrats-sweep-as-broader-crypto-rules-face-uncertainty" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Tokenization and Stablecoins May Weather Democrats' Sweep as Broader Rules Face Uncertainty</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Riot and Anthropic -- Strike a $28bn AI Data-Center Financing Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Riot Platforms could pay Anthropic 12% interest under a $28bn AI deal, CoinDesk reported, with Anthropic financing part of the data-center build and collecting interest through rent deductions.</p>
+        <p><strong>Outlook:</strong> The structure shows AI tenants increasingly funding the infrastructure they will rent, blurring the line between customer and lender.</p>
+        <p><strong>What it means:</strong> As bank and bond financing tightens, creative tenant-funded deals are becoming a core way to lever up the AI buildout.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/11/05/bitcoin-miner-riot-could-pay-anthropic-12-interest-under-usd28-billion-ai-deal" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Miner Riot Could Pay Anthropic 12% Interest Under $28 Billion AI Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Meta -- Raises €9bn in a Record-Demand Euro Bond Debut</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Meta Platforms raised €9bn in its first euro bond sale, Bloomberg reported, drawing more than €62bn of orders, the most for any corporate deal in Europe, after offering generous yields.</p>
+        <p><strong>Outlook:</strong> The bonds rose above face value on day one, signaling deep investor appetite to fund AI even among boom skeptics.</p>
+        <p><strong>What it means:</strong> Hyperscalers are tapping new currency pools to finance trillions in AI capex, and demand is still there at the right price.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/meta-s-euro-bonds-jump-on-first-day-of-trading-after-record-sale" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Meta's Euro Bonds Rise on First Day of Trading After Record Bids</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SoftBank and ABB -- China Blocks the $5.4bn Robot-Unit Takeover</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> China blocked SoftBank's acquisition of ABB's robotics unit, Bloomberg reported, dealing a blow to the Japanese firm's plan to expand into physical AI.</p>
+        <p><strong>Outlook:</strong> The decision shows robotics and AI M&amp;A is now squarely in the crosshairs of geopolitical regulators.</p>
+        <p><strong>What it means:</strong> Cross-border deals in strategic AI hardware face a higher bar, raising execution risk for would-be acquirers.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/china-blocks-softbank-s-acquisition-of-abb-industrial-robot-unit" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China Blocks SoftBank's $5.4 Billion ABB Robot Unit Takeover</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kraft Heinz -- Divests Its North American Coffee Business for $650m</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Kraft Heinz will divest its North American coffee business to private equity firm One Rock Capital Partners in a $650m deal, CNBC reported, as CEO Steve Cahillane works to revive the company.</p>
+        <p><strong>Outlook:</strong> The sale continues the pruning of underperforming brands to sharpen the portfolio.</p>
+        <p><strong>What it means:</strong> Packaged-food giants keep shedding slow-growth units as private capital snaps up carve-outs.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/04/kraft-heinz-coffee-business-one-rock-deal.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Kraft Heinz to Divest Its North American Coffee Business in $650 Million Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Carlyle -- Beats as Deal Exits Mitigate a Dip in Fee-Related Earnings</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Carlyle Group posted third-quarter earnings that topped estimates, Bloomberg reported, as profits from asset sales offset a decline in fee-related earnings.</p>
+        <p><strong>Outlook:</strong> The beat signals exit markets are reopening even as fundraising fees soften.</p>
+        <p><strong>What it means:</strong> Private-equity realizations are picking up, a sign the deal and IPO pipeline is thawing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/carlyle-beats-as-deal-exits-mitigate-dip-in-fee-related-earnings" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Carlyle Beats as Deal Exits Mitigate Dip in Fee-Related Earnings</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Laura Cooper (Nuveen) -- sees attractive opportunities in AI credit tied to hyperscalers</strong></summary>
+      <div class="deal-body">
+        <p>Nuveen's global investment strategist and macro credit head Laura Cooper told Bloomberg Television she sees attractive opportunities in being exposed to hyperscalers through the surge in AI-buildout financing. The call frames the credit side of the boom as a place to earn yield even as equity volatility rises.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-05/nuveen-sees-attractive-opportunities-in-ai-credit-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nuveen's Cooper Sees Attractive Opportunities in AI Credit</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alicia Levine (BNY) -- says a prolonged Iran war is the market's real black swan</strong></summary>
+      <div class="deal-body">
+        <p>BNY wealth management's Alicia Levine told MarketWatch that markets have not priced the possibility of the war in Iran lasting a long time, calling a prolonged conflict the market's real black swan. The read cautions that the oil plunge on peace hopes leaves a large unpriced tail risk.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/a-prolonged-war-in-iran-is-the-markets-real-black-swan-says-this-strategist-65d105c7?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- A Prolonged War in Iran Is the Market's Real Black Swan, Says This Strategist</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ante Zigman (ECB) -- sees a rather big chance of a December rate hike</strong></summary>
+      <div class="deal-body">
+        <p>ECB Governing Council member Ante Zigman told Bloomberg the bank is likely to raise borrowing costs next month, the third hike since the Iran war began. With euro-zone inflation at 4%, the comments stake out a clearly hawkish line into the December meeting.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/ecb-s-zigman-sees-rather-big-chance-of-december-rate-hike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Zigman Sees 'Rather Big Chance' of December Rate Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Uday Kotak -- says an AI correction could boost foreign flows into India</strong></summary>
+      <div class="deal-body">
+        <p>Uday Kotak, Asia's richest banker, told Bloomberg that India could emerge as a beneficiary of foreign flows if the global AI investment boom unwinds, as investors seek markets offering more attractive valuations. The call reframes the AI rotation as a potential tailwind for emerging markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-05/asia-s-richest-banker-uday-kotak-sees-ai-correction-boosting-flows-to-india" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Asia's Richest Banker Uday Kotak Sees AI Correction Boosting Flows to India</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MarketWatch strategist -- draws an 1980s parallel to argue bipartisanship could power a bull stampede</strong></summary>
+      <div class="deal-body">
+        <p>A strategist told MarketWatch that the current setup echoes the 1980s, when a Republican president, a Democrat Speaker and an inflation-fighting Fed chair powered a stock rally. The historical parallel argues forced bipartisanship under divided government could underpin a year-end bull run.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/a-strategist-draws-a-1980s-parallel-to-argue-bipartisanship-could-power-a-bull-stampede-609ddc9b?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- A Strategist Draws an 1980s Parallel to Argue Bipartisanship Could Power a Bull Stampede</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned on Day Two of the Rotation, With Nuveen's Laura Cooper Seeing Value in AI Credit, Uday Kotak Flagging India as a Winner From an AI Unwind and a Strategist Drawing an 1980s Bull-Stampede Parallel, Against BNY's Alicia Levine Warning of an Unpriced Prolonged Iran War and ECB's Ante Zigman Pointing to a December Hike</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the rotation broadens the rally):</strong> Nuveen's Laura Cooper sees value in AI credit tied to hyperscalers, Uday Kotak says an AI unwind could channel flows into India, and a MarketWatch strategist draws an 1980s parallel to argue bipartisanship could power a bull stampede. With European and Hong Kong indices at or near records, the buyers read the shakeout as a broadening, not a bust.</div>
+        <div class="bear"><strong>Bear (the tails are unpriced):</strong> BNY's Alicia Levine warns a prolonged Iran war is the market's real black swan that investors have not priced, and ECB's Ante Zigman points to a December hike as euro-zone inflation holds at 4%. With a research firm declaring the end of the AI trade and the BOE probing data-center loans, the macro and policy tails argue the all-clear is premature.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Dow best day in 18 months; AI selloff day two; Qualcomm miss; CVS split drops 10%; chip rotation</td><td>Mixed</td><td>~50,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Rotation into value and cyclicals; European stocks record; McDonald's and E.l.f. beats; Rheinmetall plunge</td><td>Bullish-mixed</td><td>~42,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Treasuries rally, yields at 8-week lows; BOE hike; oil plunges 9%; debt-ceiling clash ahead</td><td>Cautiously bullish</td><td>~36,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>End of the AI trade call; BOE probes data-center loans; Meta euro bond; hyperscaler shakeout read</td><td>Bearish-mixed</td><td>~28,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC holds above $80k; ether jumps; Clarity Act likely dead; Circle beats but cuts staff; miners oversold</td><td>Bullish</td><td>~45,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood split along the rotation. r/wallstreetbets cheered the Dow's best day in 18 months but watched Qualcomm miss and CVS drop 10%. r/stocks leaned bullish on the broadening into value, McDonald's and E.l.f. beats and European records. r/investing stayed cautiously bullish as Treasuries rallied to eight-week-low yields and oil plunged, while eyeing the looming debt-ceiling clash. r/SecurityAnalysis turned cautious on the end-of-the-AI-trade call and the BOE's data-center loan probe. r/CryptoCurrency rallied as bitcoin held above $80,000 and ether jumped, even with the Clarity Act likely dead. The swing factor is whether the rotation keeps breadth into Friday's jobs report.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Buildout Backlash Can Help the Biggest Tech Companies</h2>
+    <p>The Democratic sweep landed as a threat to AI data-center spending, yet Bloomberg reported Big Tech stocks surged and WSJ argued giants like Amazon and Microsoft stand to benefit from the shakeout, a result that seems backwards until you trace who actually bears the cost of a building backlash. The instinct is that if voters and regulators turn against data centers, the companies most dependent on data centers should suffer most, so the hyperscalers at the center of the boom ought to be the biggest losers. But a constraint on building hits the smallest and most leveraged players hardest while the largest incumbents can absorb or even exploit it, which is why a policy cloud over the sector can split the trade into winners and losers rather than sinking it uniformly. Start with what the backlash does. New scrutiny of power use, land and permitting raises the cost and slows the pace of new data centers, and it makes capacity scarcer and more valuable wherever it already exists or is already approved. The first mechanism is the incumbency advantage. Hyperscalers already own vast approved and operating capacity, so a freeze on new permits raises the value of what they hold while blocking the challengers trying to catch up. The second mechanism is the balance-sheet gap. The biggest firms fund capex from enormous cash flows and cheap debt, as Meta's record-demand euro bond showed, while smaller operators and miners-turned-AI-landlords depend on fragile financing that a backlash can choke off, which is why Wall Street cut bitcoin-miner price targets on the same news. The third mechanism is the regulatory moat. Compliance with new disclosure, electricity-cost and siting rules is a fixed cost that large firms spread over huge revenue, so tougher rules raise the barrier to entry and entrench the incumbents, a classic case of regulation favoring scale. The fourth mechanism is the scarcity premium. If supply of new capacity is constrained while AI demand keeps growing, the owners of existing capacity gain pricing power, so the backlash can actually lift the economics of the assets already in the ground. The fifth mechanism is the self-policing response, visible in OpenAI pledging to drop nondisclosure agreements and shield residents from power costs, because the players with resources can adapt their practices to defuse opposition while smaller ones cannot. The sixth mechanism is the capital rotation, where investors fleeing the speculative edge of the trade, the miners and the unproven builders, often rotate toward the cash-rich incumbents, concentrating the surviving flows. The practical lesson for a market reader is that a sector backlash is rarely uniform; it redistributes value from the weak to the strong. When a policy turns against an industry, do not assume the biggest names are the most exposed; ask who holds approved capacity, who can fund through the squeeze and who the new rules quietly protect, because a constraint on building can be a moat for those who already built.</p>
+    <p class="deal-source"><a href="https://www.wsj.com/tech/ai/how-the-data-center-backlash-could-play-into-the-hands-of-big-tech-a37dfb29?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- How the Data Center Backlash Could Play Into the Hands of Big Tech</a></p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/04/wall-street-cuts-bitcoin-miner-price-targets-after-democrats-texas-win-threatens-ai-data-center-boom" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Wall Street Rethinks AI Data Center Boom as Texas Election Raises New Risks</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>October jobs report (Fri Nov 6).</strong> After firm ADP at 86,000 and the fewest October job cuts since 2023, watch whether payrolls reinforce the supply-driven bond bid or revive inflation worry.</li>
+      <li><strong>Debt-ceiling setup.</strong> CNBC and WSJ flag a looming debt-ceiling clash under divided government. Watch for any early positioning signal that moves the long end or stirs volatility.</li>
+      <li><strong>Rotation breadth (Thu-Fri).</strong> With chipmakers lagging and value, cyclicals and Europe leading, watch whether the rotation keeps breadth or the AI unwind drags the whole gauge lower.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Qualcomm fallout.</strong> After the disappointing print, watch whether remaining chip and hardware names confirm or break the AI-demand story the market is repricing.</li>
+      <li><strong>Consumer read.</strong> After McDonald's, E.l.f. and Wayfair beats and a Visa survey showing solid holiday spending, watch the broader consumer tape into the shopping season.</li>
+    </ul>
+    <h3>Central Banks</h3>
+    <ul>
+      <li><strong>BOE (today).</strong> The first hike in three years to 4% looks near-certain. Watch the vote split and guidance on how many more follow, with the pound at a post-Brexit-vote high.</li>
+      <li><strong>ECB into December.</strong> Zigman sees a rather big chance of a December move. Watch whether other Council members line up as euro-zone inflation holds at 4%.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Iran de-escalation.</strong> After crude plunged almost 9% on peace bets, watch whether the slide extends or BNY's warned prolonged-war tail risk snaps the premium back.</li>
+      <li><strong>Crypto policy reset.</strong> With the Clarity Act likely dead, watch whether tokenization and stablecoins proceed under existing law while broader rules stall.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how hyperscaler capex, debt issuance and tenant-funded deals feed the AI credit and spread picture.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Nov 5, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-11-05 06:25 ET); Bloomberg Technology (20 fresh, newest 2026-11-05 07:00 ET); Bloomberg Economics (20 fresh, newest 2026-11-05 06:00 ET); CNBC Top News (9 fresh, newest 2026-11-05 06:00 ET); CNBC Finance (2 fresh, newest 2026-11-05 01:54 ET); CNBC Economy (4 fresh, newest 2026-11-04 23:13 ET); MarketWatch Top Stories (10 fresh, newest 2026-11-05 06:56 ET); WSJ Markets (14 fresh, newest 2026-11-05 06:56 ET); FT Home (13 fresh, newest 2026-11-05 06:29 ET); Matt Levine Money Stuff (1 fresh, newest 2026-11-04 13:54 ET); CoinDesk (25 fresh, newest 2026-11-05 06:49 ET); Stratechery (2 fresh, newest 2026-11-05 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. How did markets trade a day after the Democratic sweep?</strong></p>
+      <span class="opt" data-opt="A">A. Chipmakers led a broad rally back to record highs</span>
+      <span class="opt" data-opt="B">B. AI stocks fell as money rotated into value and cyclicals</span>
+      <span class="opt" data-opt="C">C. Bonds sold off as yields jumped to eight-week highs</span>
+      <span class="opt" data-opt="D">D. The dollar rallied while European stocks dropped sharply</span>
+      <div class="feedback"><strong>B is correct.</strong> The rotation entered a second day, with chipmakers losing ground while value and economically sensitive stocks outperformed, lifting European equities to a record. Treasuries rallied rather than sold off, yields fell to eight-week lows, and European stocks rose instead of dropping.</div>
+    </div>
+    <div class="q" data-correct="C">
+      <p><strong>2. What drove Brent crude's near 9% plunge?</strong></p>
+      <span class="opt" data-opt="A">A. A surprise OPEC+ decision to raise output quotas</span>
+      <span class="opt" data-opt="B">B. A stronger dollar pushing down commodity prices</span>
+      <span class="opt" data-opt="C">C. Bets the Democratic sweep speeds an end to the Iran war</span>
+      <span class="opt" data-opt="D">D. New US shale supply flooding the global market</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported Brent tumbled almost 9% as traders bet the sweep could accelerate efforts to end the war in the Middle East. There was no OPEC+ quota change or shale glut, and the dollar actually weakened, which would support rather than depress crude.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What is the Bank of England expected to do today?</strong></p>
+      <span class="opt" data-opt="A">A. Raise its rate a quarter point to 4%, a first in three years</span>
+      <span class="opt" data-opt="B">B. Cut rates to support a weakening UK labor market</span>
+      <span class="opt" data-opt="C">C. Hold rates while signaling cuts early next year</span>
+      <span class="opt" data-opt="D">D. Launch new bond purchases to ease financial conditions</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg's decision guide says the BOE looks ready to raise rates a quarter point to 4%, its first hike in more than three years, with research saying UK rates are still too low. The bank is tightening, not cutting, holding or easing.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasuries rally for a second day to eight-week-low yields as the Democratic sweep fuels hopes a divided government curbs bond supply and Bloomberg says the rout gives Fed Chair Warsh more room on rates, even as Europe keeps tightening with the BOE poised for its first hike in three years today, the ECB's Ante Zigman seeing a rather big chance of a December move and Czech and Chile rate-hike bets building.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-05/treasuries-gain-as-us-vote-fuels-hopes-for-curbing-bond-supply", "take": "Treasuries gain a second day as the vote fuels bond-supply hopes." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/u-s-treasury-yields-fall-to-eight-week-lows-as-markets-digest-midterm-results-7effce3e?mod=rss_markets_main", "take": "Treasury and European yields tumble to eight-week lows on fiscal-restraint hopes." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-05/trump-s-trouncing-gives-warsh-more-room-for-maneuver-on-rates", "take": "Trump's trouncing gives Warsh more room to maneuver on rates." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-05/boe-poised-for-first-rate-hike-in-three-years-decision-guide", "take": "BOE poised for its first rate hike in three years to 4%." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-05/ecb-s-zigman-sees-rather-big-chance-of-december-rate-hike", "take": "ECB's Zigman sees a rather big chance of a December hike." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil holds near a two-month low after tumbling almost 9% as traders bet the Democratic sweep accelerates an end to the Iran war, with the FT saying the midterms herald upheaval in Middle East policy, even as BNY's Alicia Levine warns a prolonged war is the market's real black swan that investors have not priced.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-04/latest-oil-market-news-and-analysis-for-nov-5", "take": "Brent rose from a two-month low after tumbling almost 9% on de-escalation bets." },
+      { "name": "Financial Times", "lean": "bull", "url": "https://www.ft.com/content/3dee82bf-3bbe-4075-8bfd-4001ddb689ae?syn-25a6b1a6=1", "take": "US midterm results herald upheaval in Middle East policy." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-05/indian-bonds-rupee-rally-as-sliding-oil-eases-inflation-risks", "take": "India stocks and bonds surge as the oil plunge eases inflation risks." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/a-prolonged-war-in-iran-is-the-markets-real-black-swan-says-this-strategist-65d105c7?mod=mw_rss_topstories", "take": "BNY's Alicia Levine says a prolonged Iran war is the market's real black swan." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-05/ecb-s-zigman-sees-rather-big-chance-of-december-rate-hike", "take": "ECB keeps tying inflation to the Iran war's energy shock." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade sells off a second day as capital rotates into value and cyclicals, lifting European stocks to a record and Hong Kong back to life, with Bloomberg saying hyperscalers surged on a shakeout and Nuveen's Laura Cooper seeing opportunity in AI credit, even as MarketWatch research declares the end of the AI trade as we know it, Qualcomm disappoints and the BOE questions risky data-center loans.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/newsletters/2026-11-05/big-tech-stocks-surge-as-democrats-threaten-to-slow-ai-spending", "take": "Big Tech stocks surge as Democrats threaten to slow AI spending." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-05/nvidia-partner-hon-hai-s-sales-rise-46-thanks-to-ai-demand", "take": "Nvidia partner Hon Hai's sales rise 46% on AI demand." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/research-firm-declares-end-of-the-ai-trade-as-we-know-it-and-asian-tech-stocks-reflect-the-shift-25ac8e8f?mod=mw_rss_topstories", "take": "Research firm declares the end of the AI trade as we know it." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/stocks/ai-selloff-extends-treasurys-gain-as-blue-wave-reverberates-2d60fa21?mod=rss_markets_main", "take": "AI selloff extends as the blue wave reverberates." },
+      { "name": "Stratechery", "lean": "bear", "url": "https://stratechery.com/2026/ai-on-the-ballot/", "take": "Data centers were on the ballot and lost in a major way." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Qualcomm","Nvidia","Micron","Microsoft","Amazon","Meta"],
+    "values": [-8.0, -4.0, -3.0, 3.0, 2.0, 1.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [50000, 42000, 36000, 28000, 45000],
+    "colors": ["neutral","bull","neutral","bear","bull"]
+  },
+  "dealSizes": {
+    "labels": ["Riot-Anthropic","Meta Euro Bond","SoftBank-ABB","Kraft Heinz Coffee"],
+    "values": [28.0, 10.0, 5.4, 0.65]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
