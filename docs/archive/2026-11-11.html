@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Nov 11, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-11-11</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, November 11, 2026</h1>
+    <div class="meta">
+      <p>It's Veterans Day, so the Treasury market is closed and bond traders get a breather after Tuesday's inflation-fueled selloff, but equities stay open. October CPI came in hot at 0.4% headline and 0.3% core, cementing bets on a December Fed hike that now sit near 90%, with Waller, Logan and Goolsbee all leaning harder. Oil bounced off a two-day slide on mixed Iran signals even as US pump prices dropped below $4 for the first time since July.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The AI trade roared back after CoreWeave's strong quarter and $9 billion in planned prepayments eased debt fears, and Anthropic's mega IPO drew surging demand with bankers weighing a $1.5 trillion valuation, reviving optimism one day after a hot CPI print and hawkish Fed talk had revived rate-hike fears",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Tech Stocks Poised to Rise After CoreWeave Earnings", "angle": "Treats CoreWeave's beat as the all-clear that the cloud provider at the center of AI jitters found a workaround to capital constraints.", "lean": 45, "pull": "Cloud provider has been at center of AI jitters, and its workaround buys time."},
+        {"outlet": "MarketWatch", "headline": "CoreWeave's Stock Pops as New Financing Playbook Eases Debt Concerns", "angle": "Credits a revenue beat and $9 billion of planned prepayments with restoring investor confidence in a debt-heavy model.", "lean": 35, "pull": "A revenue beat and $9 billion in planned prepayments gave investors renewed confidence."},
+        {"outlet": "Bloomberg", "headline": "AI Doubts Collide With Anthropic's Mega IPO", "angle": "Frames the listing as a tug-of-war where the trade's friends and foes find support on the same day.", "lean": 0, "pull": "The AI trade is so massive that its friends and foes increasingly find support on the same day."},
+        {"outlet": "Financial Times", "headline": "Anthropic's IPO Is Too Important to Fail", "angle": "Warns that huge demand masks shadow insider sales and circular supply-chain backing that could cause after-market indigestion.", "lean": -20, "pull": "Shadow insider sales and circular supply-chain backing may cause after-market indigestion."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Hot October CPI Cements December Hike Bets and Drives a Treasury Selloff, With Waller Open to a Half-Point, Dallas Fed's Lorie Logan Favoring at Least Two More Hikes at a Quicker Pace and Chicago's Austan Goolsbee Calling the Print Borderline Disturbing, Even as a Veterans Day Bond Holiday Pauses the Rout and Philadelphia's Anna Paulson Still Favors Gradual Tightening</h3>
+      </div>
+      <p>Tuesday's print flipped the rate story back to the bears, and today's holiday only pauses it. CNBC reported consumer prices rose 0.4% in October, more than expected, with core up 0.3%, and CoinDesk said a December rate hike now looks all but assured with odds near 90%. The hawks ran with it. Bloomberg said US Treasury futures kept retreating as markets price more aggressive Fed hikes, Dallas Fed President Lorie Logan said she sees the need for at least two more quarter-point increases and that the pace may have to quicken, Chicago's Austan Goolsbee called the CPI report borderline disturbing, and MarketWatch said Goldman Sachs now pencils in additional Fed tightening after the data. Bloomberg added that officials from the UK, US and eurozone gathered in London laid the groundwork for further hikes, with a leading think tank warning the BOE may have to go to 5%. The doves are a thin minority. Philadelphia Fed President Anna Paulson said gradual tightening still seems appropriate and that wage pressures have been limited with inflation expectations anchored, and WSJ noted Treasuries get a breather on the Veterans Day holiday after the selloff. The relief is a calendar quirk; the direction is higher yields.</p>
+      <p>The bull read is Paulson favoring a gradual pace with anchored expectations and the bond holiday pausing the rout. The bear read is the 0.4% CPI, Waller's half-point door, Logan wanting two more hikes faster, Goolsbee's disturbing read, Goldman adding tightening and central banks signaling more worldwide.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the pace stays measured):</strong> Philadelphia Fed President Anna Paulson says gradual tightening still seems appropriate, with wage pressures limited and inflation expectations anchored near 2%, and the Veterans Day bond holiday pauses Tuesday's selloff. One hot month doesn't force a half-point.</div>
+        <div class="bear"><strong>Bear (the data forces more tightening):</strong> October CPI ran 0.4% with core at 0.3%, Waller left a half-point on the table, Dallas Fed's Logan wants at least two more hikes at a quicker pace, Goolsbee called the print borderline disturbing, Goldman added tightening to its forecast and London central bankers signaled more hikes with the BOE eyed at 5%.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-11/falling-us-bond-futures-offer-no-relief-as-fed-hike-bets-grow" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Treasury Futures Retreat as Markets See More Fed Hikes</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Climbs Off a Two-Day Slide on Mixed Iran Signals Even as US Pump Prices Drop Below $4 for the First Time Since July, With Bloomberg Noting Traders Weighing the Prospects for a Conclusion to the Iran War Against Gulf States Deepening Military Coordination Amid Hormuz Risks, While Ukraine and Russia Hold a Second Day of US-Led Peace Talks in Abu Dhabi</h3>
+      </div>
+      <p>The war premium drained enough to reach consumers, then crude found a floor. The bulls say the de-escalation path is still intact. CNBC reported US gas prices fell below $4 for the first time since July, a direct relief to households, and Bloomberg's oil desk said crude had posted a two-day decline on hopes for a conclusion to the Iran war. On the diplomatic front, Bloomberg noted Ukraine and Russia started a second day of US-led peace talks in Abu Dhabi after President Zelenskyy called the first round constructive and substantive, broadening the sense that geopolitical risk is easing. The bears say the floor held for a reason. Bloomberg reported oil climbed after the two-day drop as traders weighed mixed signals on whether the war actually ends, and its Gulf coverage flagged that Gulf states are deepening military coordination as Iran diplomacy runs up against Strait of Hormuz risks. A bounce off the lows and live chokepoint risk say the premium has not been fully priced out. One camp sees the barrel capped by peace odds; the other sees a fragile truce that can snap.</p>
+      <p>The bull read is pump prices below $4, the two-day crude decline and Ukraine-Russia talks adding to the de-escalation mood. The bear read is oil bouncing on mixed Iran signals and Gulf states deepening military coordination with Hormuz risk still live.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (de-escalation caps crude):</strong> CNBC says US gas fell below $4 for the first time since July, Bloomberg's oil desk notes a two-day crude decline on hopes the Iran war concludes, and Ukraine and Russia are into a second day of US-led peace talks in Abu Dhabi. The geopolitical risk premium keeps bleeding out.</div>
+        <div class="bear"><strong>Bear (the premium can snap back):</strong> Bloomberg says oil climbed off the lows as traders weigh mixed signals on whether the war ends, and Gulf states are deepening military coordination as Iran diplomacy collides with Strait of Hormuz risks. A bounce and live chokepoint risk mean the premium isn't fully gone.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-10/latest-oil-market-news-and-analysis-for-nov-11" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Latest Oil Market News and Analysis for Nov. 11</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Roars Back After CoreWeave's Strong Quarter and $9 Billion of Planned Prepayments Ease Debt Fears and Anthropic's Mega IPO Draws Surging Demand Toward a $1.5 Trillion Valuation, With Citi's Olaolu Aganga and Cohere's Aidan Gomez Pushing Back on Overbuild Worries, Against Copper Sky's Jack Selby Warning of a Correction, UBS's Sonja Laud Flagging a Web of Debt and Kai-Fu Lee Questioning Trillion-Dollar Valuations</h3>
+      </div>
+      <p>Last week's de-rating gave way to a sharp relief rally, but the skeptics got louder too. The bulls say demand and financing both held. Bloomberg reported CoreWeave (CRWV) quieted doubts over its debt-laden business with an upbeat outlook, and MarketWatch said the stock popped on a revenue beat and $9 billion in planned prepayments that eased debt concerns, with WSJ calling it a workaround to capital constraints. Bloomberg said US stock futures and European chip stocks rallied on the results, Anthropic's IPO demand surged with bankers weighing a $1.5 trillion valuation, Citi's Olaolu Aganga said strong earnings and attractive valuations still support US stocks, and Nvidia-backed Cohere's Aidan Gomez pushed back on overbuilding fears, saying his startup fights daily to secure computing power. The bears say the rebound is built on leverage and circularity. UBS Asset Management's Sonja Laud said the boom has shifted from an equity story to a balance-sheet story driven by an interconnected web of debt that markets underestimate, Copper Sky's Jack Selby warned the Anthropic IPO could be the catalyst for a major AI reversal once lockups expire, Kai-Fu Lee questioned whether trillion-dollar valuations and circular funding can be justified, Fed Governor Michelle Bowman warned of a stock correction if AI bets fall short, and FT said Anthropic's IPO is too important to fail given shadow insider sales and circular supply-chain backing. The demand is real; so is the leverage underneath it.</p>
+      <p>The bull read is CoreWeave's beat and prepayment playbook, Anthropic's surging demand, Aganga backing the earnings and Gomez saying compute is scarce. The bear read is Laud's web of debt, Selby's correction warning, Kai-Fu Lee's valuation doubts, Bowman's correction risk and FT's circular-backing flag.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (demand and financing hold):</strong> CoreWeave eased debt fears with a revenue beat and $9 billion of planned prepayments, European chip stocks and Nasdaq futures rallied, Anthropic's IPO demand surged toward a $1.5 trillion valuation, Citi's Aganga says earnings and valuations support stocks, and Cohere's Gomez says compute is still scarce, not overbuilt.</div>
+        <div class="bear"><strong>Bear (the leverage is the story):</strong> UBS's Sonja Laud warns of an underpriced web of debt across public and private markets, Copper Sky's Jack Selby says the Anthropic IPO could trigger an AI correction, Kai-Fu Lee questions trillion-dollar valuations and circular funding, Fed's Bowman warns of a correction if returns disappoint, and FT flags Anthropic's shadow insider sales and circular backing.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-10/coreweave-boosts-annual-forecast-easing-concerns-about-slowdown" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- CoreWeave Quiets Doubts Over AI Business With Upbeat Outlook</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>AI stocks rally as CoreWeave earnings offer relief and Anthropic draws heavy demand</strong></summary>
+      <div class="deal-body">
+        <p>Traders piled back into the AI trade, Bloomberg reported, lifting US stock futures after strong results from beaten-down neocloud firm CoreWeave (CRWV) and robust demand for Anthropic's IPO. Nasdaq futures led the recovery from the revival of Fed rate-hike concerns on Tuesday.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-10/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Stocks Rally as CoreWeave Earnings Offer Relief: Markets Wrap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia's bull case now hinges on Huang surviving the China spy probe</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia's (NVDA) investigation of CEO Jensen Huang's alleged affair with a suspected Chinese spy is raising questions about the company's future, Bloomberg reported, and sending the stock into a tailspin. The bull case increasingly rests on whether Huang keeps his job through the inquiry.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-10/nvidia-s-bull-case-hinges-on-ceo-huang-surviving-china-spy-probe" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia's Bull Case Hinges on Huang Surviving China Spy Probe</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hospital stocks are feeling blue, in a good way</strong></summary>
+      <div class="deal-body">
+        <p>Hospital stocks are catching a bid, WSJ reported, a defensive pocket drawing money as investors rethink the AI tape, CoreWeave sends a mixed signal and OpenAI's losses mount. The move extends the rotation into healthcare that defined the recent reset.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/hospital-stocks-are-feeling-blue-in-a-good-way-f4d73ed2?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Hospital Stocks Are Feeling Blue, in a Good Way</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fossil says its turnaround is ahead of plan as sales return to growth</strong></summary>
+      <div class="deal-body">
+        <p>Watchmaker Fossil (FOSL) said it is returning to profit and sales growth, CNBC reported, the first signs that its turnaround strategy is working. Management said the recovery is running ahead of plan after a long stretch of declining sales.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/10/fossil-fosl-q3-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fossil CEO Says Turnaround Is Ahead of Plan as Sales Return to Growth</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Rivian's CEO calls 2027 an inflection year on the R2 SUV and autonomy</strong></summary>
+      <div class="deal-body">
+        <p>Rivian (RIVN) CEO RJ Scaringe said 2027 will be an inflection year, CNBC reported, as the EV maker scales its new R2 SUV and invests in autonomy, five years after its IPO. The push is meant to lift volumes and move the company toward profitability.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/10/rivian-r2-autonomy-2027-rj-scaringe.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Rivian CEO Says New R2 SUV, Autonomy Make 2027 an Inflection Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The Children's Place files for bankruptcy as birth rates and debt bite</strong></summary>
+      <div class="deal-body">
+        <p>The Children's Place is filing for bankruptcy, MarketWatch reported, weighed down by falling birth rates, cautious consumers, stiff competition and $881 million in debt. The filing underscores the strain on discretionary retail even as the broad tape rebounds.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/one-reason-the-childrens-place-is-going-bankrupt-not-enough-children-b275eab0?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- One Reason Children's Place Is Filing for Bankruptcy? Not Enough Children</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Wall Street pay set to climb as volatile markets and IPOs fuel bank profits</strong></summary>
+      <div class="deal-body">
+        <p>Wall Street pay is set to climb, WSJ reported, after volatile markets and a wave of IPOs fueled bank profits. Traders and investment bankers are in line for among the biggest bumps in bonuses, a counterpoint to the layoffs hitting consumer and industrial names.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/wall-street-pay-set-to-climb-after-volatile-markets-and-ipos-fuel-bank-profits-94fd9137?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Wall Street Pay Set to Climb After Volatile Markets and IPOs Fuel Bank Profits</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape swung back to risk-on as CoreWeave's beat and Anthropic's demand overrode Tuesday's rate scare. The bull case is the AI rebound, European chips climbing and hospital defensives holding. The bear case is the hot CPI, Waller's half-point door and the leverage under the AI trade. Watch whether the AI rally has legs or fades once the bond market reopens Thursday to the higher-yield reality.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Stocks Can Rally the Same Day Inflation Fears Deepen</summary>
+      <p>Tuesday's CPI ran hot at 0.4%, Fed officials leaned harder toward a December hike, and bond yields jumped, yet on Wednesday US equity futures rallied led by the Nasdaq. The instinct is that higher rates are bad for stocks, so a hawkish inflation surprise should push equities down too, and a rally into the teeth of worse rate news looks like the market ignoring the data. But stock prices and bond prices answer to different questions, and when a sector-specific earnings story is strong enough it can override the macro, which is how yields and equities move in opposite directions on the same morning. Start with what each market trades on. Bonds price the expected path of policy rates and inflation almost mechanically, so a hot CPI lifts yields because it raises the odds and size of hikes. Equities price future cash flows discounted by those rates, but they also price the growth of those cash flows, and when a growth story improves it can swamp the discount-rate drag. The first mechanism is the earnings override, where CoreWeave's revenue beat and $9 billion of planned prepayments told the market that AI demand and financing are intact, lifting the whole complex more than the rate move hurt it. The second mechanism is sector dispersion, where rate-sensitive long-duration tech and defensives respond to different forces, so a day can be bad for rates but good for the specific names driving the index. The third mechanism is the sentiment reset, where a trade that sold off hard the prior week had bad news already priced, so a single good print produces an outsized bounce as shorts cover and dip-buyers return. The fourth mechanism is the holiday overlay, since the bond market was closed for Veterans Day, so the yield signal was frozen while equity traders acted on the fresh earnings, briefly decoupling the two. The fifth mechanism is the relative-value pull, where even with higher rates, investors who sold tech struggle to find somewhere better to go, so capital rotates back toward the leaders on any sign the growth thesis survives. The sixth mechanism is the time-horizon gap, where a December hike is a near-term cost but a frontier-AI buildout is a multi-year revenue story, and long-horizon buyers weight the latter. The practical lesson for a market reader is that a hawkish macro day and a stock rally are not a contradiction. When equities climb as yields rise, ask what changed in the earnings or growth outlook, which sectors are actually leading, and whether the bond market is even open to send its signal, because a strong company-level catalyst can override the rate story for a session or two before the two markets reconcile.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/commodities-futures/nasdaq-futures-rally-as-ai-optimism-returns-af100e62?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nasdaq Futures Rally as AI Optimism Returns</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/investing/u-s-treasurys-pause-on-market-holiday-after-inflation-fueled-selloff-7ff76731?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. Treasurys Pause on Market Holiday After Inflation-Fueled Selloff</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>CoreWeave quiets doubts with an upbeat outlook and a $9 billion prepayment playbook</strong></summary>
+      <div class="deal-body">
+        <p>CoreWeave (CRWV) eased fears about its debt-laden business during a high-stakes report, Bloomberg said, signaling that sales growth remains strong despite data-center industry challenges. MarketWatch said the stock popped on a revenue beat and $9 billion of planned prepayments, which WSJ called a workaround to capital constraints that still needs cooperative capital markets.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/coreweaves-stock-pops-as-new-financing-playbook-eases-debt-concerns-70241525?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- CoreWeave's Stock Pops as New Financing Playbook Eases Debt Concerns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Anthropic weighs a $1.5 trillion valuation as IPO demand surges</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic's bankers are weighing plans to raise the company's IPO valuation to $1.5 trillion or more, Bloomberg reported, citing an FT report and a sign of robust investor demand. The Claude maker is marketing a listing that would be the first frontier AI lab to go public and could top SpaceX's record debut.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-10/anthropic-targets-64-4-billion-ipo-nearing-spacex-s-record" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Anthropic IPO: Claude Maker Seeks Up to $1.5 Trillion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Anthropic aims to raise $3 billion to $3.5 billion from Japanese investors</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic is seeking to raise $3 billion to $3.5 billion from Japanese investors as part of its IPO, Bloomberg reported, keeping the Japan target intact after formally beginning to market the deal. The breadth of the roadshow underscores how global demand for the listing has become.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/anthropic-aims-for-3-billion-to-3-5-billion-in-japan-offering" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Anthropic Aims for $3 Billion to $3.5 Billion in Japan Offering</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alibaba plans to list T-Head, its Nvidia chip rival, in Hong Kong</strong></summary>
+      <div class="deal-body">
+        <p>Alibaba (BABA) announced plans to list its chip unit T-Head, CNBC reported, noting it had already filed confidentially on Sept. 11 for a Hong Kong Stock Exchange debut. The spinoff would put a dedicated domestic challenger to Nvidia into public markets.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/11/alibaba-pr.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Alibaba Announces Plans to List T-Head, Its Nvidia Chip Rival</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kai-Fu Lee questions soaring AI valuations and circular funding</strong></summary>
+      <div class="deal-body">
+        <p>AI pioneer Kai-Fu Lee questioned whether trillion-dollar AI valuations can be justified, Bloomberg reported, citing the risks of circular funding and the impact of cheaper Chinese and open-source models. The Sinovation and 01.AI chief said Europe's biggest opportunity may be in AI applications rather than foundation models.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-11/kai-fu-lee-questions-soaring-ai-valuations-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kai-Fu Lee Questions Soaring AI Valuations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ByteDance preps a Muse-like AI agent in a push to close the gap</strong></summary>
+      <div class="deal-body">
+        <p>ByteDance plans to release a Muse-like AI assistant in the coming weeks, Bloomberg reported, to augment its lead in AI video and close the gap with top US labs within three years. The move intensifies the agent race just as the AI trade recovers its footing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/bytedance-prepares-muse-like-agent-in-push-to-close-ai-gap" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ByteDance Prepares Muse-Like Agent in Push to Close AI Gap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia-backed Cohere says it is in a daily fight to secure compute</strong></summary>
+      <div class="deal-body">
+        <p>Cohere CEO Aidan Gomez pushed back on concerns about overbuilding AI capacity, Bloomberg reported, saying his startup faces a daily struggle to procure the power it needs to run operations. The comment is a demand-side counter to the glut worries hanging over the buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/nvidia-backed-cohere-in-a-fight-to-secure-ai-computing-power" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed Cohere in a Fight to Secure AI Computing Power</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Wednesday November 11, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal of demand intact is CoreWeave's beat and prepayment playbook, Anthropic's surging IPO demand, European chips climbing and Cohere fighting for compute. The counter-signal is UBS's web-of-debt warning, Selby's correction call, Kai-Fu Lee's valuation doubts and FT's circular-backing flag. The near-term tell is whether Anthropic's roadshow firms at a $1.5 trillion valuation or the lockup worries that Selby flagged start to bite.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>October CPI rose 0.4%, more than expected, complicating the Fed's fight</strong></summary>
+      <div class="deal-body">
+        <p>Consumer prices rose 0.4% in October, more than expected, CNBC reported, with the report landing at a critical juncture as the Fed weighs its next move. CoinDesk said core prices rose 0.3% and that a December hike now looks all but assured, with Waller suggesting even a half-point could be appropriate.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/10/cpi-inflation-report-october-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Consumer Prices Rose 0.4% in October, More Than Expected, Complicating Fed's Inflation Fight</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dallas Fed's Logan wants at least two more hikes, says the pace could quicken</strong></summary>
+      <div class="deal-body">
+        <p>Dallas Fed President Lorie Logan said she still sees the need for at least two more quarter-point rate increases, Bloomberg reported, and that the pace of those hikes may need to be quicker than the Fed is moving this fall. The remark reinforced the hawkish turn after the hot CPI.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-10/fed-s-logan-favors-at-least-two-hikes-says-pace-could-quicken" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Logan Says Two More Hikes Needed, Pace Could Quicken</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Goolsbee calls the October CPI report borderline disturbing</strong></summary>
+      <div class="deal-body">
+        <p>Chicago Fed President Austan Goolsbee said officials have to address elevated inflation, Bloomberg reported, calling the October consumer price report borderline disturbing. The comment from a usually dovish voice underscored how the print shifted the internal debate.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/fed-s-goolsbee-says-october-cpi-report-borderline-disturbing-mwbel9qz" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Goolsbee Says October CPI Report Borderline Disturbing</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs now pencils in additional Fed tightening after the CPI</strong></summary>
+      <div class="deal-body">
+        <p>Following Tuesday's hot CPI data, Goldman Sachs is now penciling in additional Fed tightening, MarketWatch reported, changing its interest-rate forecast. The revision adds a major bank's voice to a market that has moved rapidly toward a December hike.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/why-goldman-sachs-is-now-changing-its-federal-reserve-interest-rate-forecast-3753f968?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why Goldman Sachs Is Now Changing Its Federal Reserve Interest-Rate Forecast</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Officials from major central banks signal more rate increases</strong></summary>
+      <div class="deal-body">
+        <p>Policymakers from the UK, US and eurozone gathered in London laid the groundwork for further rate hikes, Bloomberg reported, as a leading think tank warned the Bank of England may have to raise borrowing costs to 5%. The read deepens a synchronized hawkish drift across developed markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/officials-from-major-central-banks-signal-more-rate-increases" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Officials From Major Central Banks Signal More Rate Increases</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Paulson says gradual tightening seems appropriate for now</strong></summary>
+      <div class="deal-body">
+        <p>Philadelphia Fed President Anna Paulson said she favors a gradual pace for rate increases, Bloomberg reported, adding that wage pressures have been limited and inflation expectations remain consistent with the 2% target. The view is the clearest dovish counterweight to the hawkish chorus.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-10/fed-s-paulson-says-gradual-tightening-seems-appropriate-for-now" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Paulson Says Gradual Tightening Seems Appropriate for Now</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US gas prices fall below $4 for the first time since July</strong></summary>
+      <div class="deal-body">
+        <p>US gas prices fell below $4 for the first time since July, CNBC reported, offering households some relief at the pump as crude eased. The drop is a direct channel through which lower oil feeds into near-term consumer inflation.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/10/us-gas-prices-below-four-dollars.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- U.S. Gas Prices Fall Below $4 for the First Time Since July</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (November 11, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to Paulson favoring a gradual pace, anchored expectations and the Veterans Day holiday pausing the selloff. The bear side points to the 0.4% CPI, Logan's two-hikes-faster call, Goolsbee's disturbing read, Goldman adding tightening and London central bankers signaling more. The swing factor is Thursday's reopen, when frozen yields reconcile with the hawkish turn.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Hot Inflation Print Pushes Yields Up Before the Fed Even Meets</summary>
+      <p>Tuesday's CPI came in at 0.4%, and before any Fed official cast a vote, Treasury yields jumped and futures priced near-90% odds of a December hike. The instinct is that interest rates are set by the Fed, so yields should only move when the central bank acts at a meeting. But market yields are forward-looking, so they move the instant new data changes what the Fed is expected to do, which is why a single inflation release can reprice the whole curve weeks before the committee gathers. Start with what a bond yield represents. A Treasury yield is roughly the average of expected short-term policy rates over the life of the bond, plus a term premium for uncertainty. When a hot CPI raises the odds and size of coming hikes, the expected path of policy shifts up, and the yield follows immediately. The first mechanism is the expectations channel, where traders revise the forecast for the December and subsequent meetings, and the two-year note, most sensitive to policy, repriced first. The second mechanism is the reaction-function read, where officials like Logan and Goolsbee speaking hawkishly after the print confirm that the committee is likely to respond to the data, tightening the link between the number and the rate path. The third mechanism is the credibility premium, where a Fed that has let inflation run hot must show resolve, so markets assume it leans toward acting rather than waiting, pushing yields higher still. The fourth mechanism is the term-premium adjustment, where a surprise that increases uncertainty about the inflation path leads investors to demand more compensation for holding longer bonds, lifting the long end. The fifth mechanism is the global spillover, visible in WSJ's note that Asian bond yields rose on the same expectations, since a higher expected US rate path pulls foreign yields and currencies with it. The sixth mechanism is the holiday pause, where the Veterans Day close froze cash Treasury trading for a day, so the repricing showed up in futures first and the cash market will catch up on the reopen. The practical lesson for a market reader is that the Fed sets the overnight rate, but the market sets everything else, and it does so continuously. When a data point lands, do not wait for the meeting to gauge the impact. Watch the front of the curve and futures-implied odds, because they tell you in real time how the data changed the expected policy path, and that expectation is what actually moves borrowing costs across the economy long before the committee votes.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/asian-bond-yields-rise-on-growing-expectations-for-fed-rate-hike-a2491a28?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Asian Bond Yields Rise on Growing Expectations for Fed Rate Hike</a></p>
+      <p class="deal-source"><a href="https://www.cnbc.com/2026/11/10/fed-governor-waller-sees-december-hike-likely.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed Governor Waller Sees December Hike Likely, Opens Door to Possible Half-Point Increase</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">A hot October CPI cemented December hike bets and drove a Treasury selloff, with Logan wanting two more hikes faster, Goolsbee calling the print disturbing and Goldman adding tightening, against Paulson favoring a gradual pace and a Veterans Day bond holiday pausing the rout. Oil climbed off a two-day slide on mixed Iran signals even as US gas fell below $4, against Gulf states deepening military coordination amid Hormuz risks. The AI trade roared back on CoreWeave's beat and Anthropic's surging IPO demand, against UBS's web-of-debt warning, Selby's correction call and FT's circular-backing flag; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above the prior close, bull confirmed; a further drop of 3% or more, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 11/09</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 11/10</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 11/11</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 11/12</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 11/13</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin sits out the stock rebound as ETF outflows extend to a fourth day</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held near $74,000 and sat out the equity rebound, CoinDesk reported, as Tuesday's hot inflation print lifted December hike odds to around 90%. Spot ETF outflows extended to a fourth day and liquidations jumped, keeping the mood cautious.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/11/bitcoin-sits-out-stock-rebound-as-etf-outflows-extend-to-fourth-day" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Sits Out Stock Rebound as ETF Outflows Extend to Fourth Day</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin holds steady as CoreWeave earnings revive the AI outlook</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin was little changed over 24 hours, CoinDesk reported, even as CoreWeave's revenue surge lifted AI infrastructure stocks and Nasdaq futures and Anthropic weighed a higher IPO valuation. The split showed crypto lagging the risk-on turn in equities.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/11/coreweave-earnings-revive-ai-outlook-as-anthropic-weighs-higher-ipo-valuation" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Holds Steady as CoreWeave Earnings Revive AI Outlook</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kraken's xStocks adds 200 UK and EU shares as assets top $1.1 billion</strong></summary>
+      <div class="deal-body">
+        <p>Payward's xStocks added more than 200 UK and European shares, CoinDesk reported, with holdings topping $1.1 billion. Each token is backed by a share but gives no ownership of the underlying company, WSJ noted of the Nasdaq-backed firm's tokenized push.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/11/11/kraken-s-xstocks-adds-200-uk-and-eu-shares-as-its-assets-top-usd1-1-billion" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Kraken's xStocks Adds 200 UK and EU Shares as Its Assets Top $1.1 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs and Citi among banks committing $270 million to a stablecoin venture</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs, Citi and other banks are committing $270 million to a stablecoin venture known as Project Faro, CoinDesk reported. The effort plans to issue a dollar-denominated stablecoin and is expected to be incorporated in the US, a sign of big banks moving onto crypto's turf.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/11/10/goldman-sachs-citi-among-banks-said-to-commit-usd270-million-to-stablecoin-venture" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Goldman Sachs, Citi Among Banks Said to Commit $270 Million to Stablecoin Venture</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin miner MARA sold 13,597 BTC for $1.1 billion in six weeks</strong></summary>
+      <div class="deal-body">
+        <p>MARA sold 13,597 bitcoin for $1.1 billion in six weeks and plans to sell more, CoinDesk reported. The miner paid off every loan backed by its bitcoin and says the rest of its coins can fund AI data centers, folding the compute race into treasury strategy.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/10/bitcoin-miner-mara-sold-13-597-btc-for-usd1-1-billion-in-six-weeks-plans-to-sell-more" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Miner MARA Sold 13,597 BTC for $1.1 Billion in Six Weeks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Coinbase, Kalshi and Kraken's parent back the CFTC in a jurisdiction fight</strong></summary>
+      <div class="deal-body">
+        <p>The Capital Markets Alliance, backed by Coinbase (COIN), Kalshi and Kraken's parent, is supporting the CFTC in a legal fight over stock perpetual futures, CoinDesk reported. The group argues the products fall under CFTC rather than SEC jurisdiction, a turf battle with big implications for tokenized markets.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/11/10/coinbase-kalshi-kraken-parent-back-cftc-in-legal-fight-over-stock-perpetual-futures" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Coinbase, Kalshi, Kraken Parent Back CFTC in Legal Fight Over Stock Perpetual Futures</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Anthropic -- Bankers Weigh a $1.5 Trillion Valuation as IPO Demand Surges</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Anthropic's bankers are weighing plans to raise the IPO valuation to $1.5 trillion or more, Bloomberg reported citing the FT, a sign of robust demand, and the lab is seeking $3 billion to $3.5 billion from Japanese investors alone.</p>
+        <p><strong>Outlook:</strong> A clean debut would be the first frontier AI lab to go public and could exceed SpaceX's record, but FT warns shadow insider sales and circular supply-chain backing could cause after-market indigestion.</p>
+        <p><strong>What it means:</strong> The offering is the clearest test of whether public investors still pay up for frontier AI, and Copper Sky's Jack Selby says a lockup unwind could become the catalyst for a broader reversal.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-10/anthropic-targets-64-4-billion-ipo-nearing-spacex-s-record" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Anthropic IPO: Claude Maker Seeks Up to $1.5 Trillion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Unilever-McCormick -- $44.8bn Deal Faces a Deeper UK Antitrust Probe</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Unilever and spice maker McCormick's $44.8 billion deal faces an in-depth UK investigation unless the firms offer remedies to allay the watchdog's competition concerns, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> A Phase 2 review can run months and force divestitures, adding timing and execution risk to one of the year's largest consumer tie-ups.</p>
+        <p><strong>What it means:</strong> Regulators are still willing to slow mega-mergers in staples even as deal volumes recover across markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/unilever-mccormick-deal-facing-in-depth-review-from-uk-watchdog" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Unilever-McCormick Deal Faces Deeper UK Antitrust Probe</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>KKR and RWE -- Invest $16 Billion in UK Offshore Wind Projects</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> KKR and Germany's RWE will invest $16 billion in UK wind-power projects, WSJ reported, jointly developing, constructing and operating the Vanguard West and East projects in the British North Sea.</p>
+        <p><strong>Outlook:</strong> The projects rank among the UK's largest offshore-wind developments, a sign that infrastructure capital keeps flowing toward power generation feeding electrified demand.</p>
+        <p><strong>What it means:</strong> Private capital is backing the energy buildout that the AI data-center boom will increasingly rely on.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/rwe-kkr-join-forces-on-16-billion-of-u-k-wind-power-projects-4b489bce?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- KKR, Germany's RWE Invest $16 Billion in U.K. Wind-Power Projects</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dubai's DIP Holding -- Climbs on Debut, Ending the UAE's Listings Drought</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Dubai's DIP Holding shares jumped as much as 7% on debut, Bloomberg reported, after a $529 million IPO that marked the UAE's first listing of the year and first since the Iran war.</p>
+        <p><strong>Outlook:</strong> A strong first-day pop signals returning risk appetite in Gulf capital markets after months of war-driven caution.</p>
+        <p><strong>What it means:</strong> The IPO window is reopening in the Gulf, a complement to the mega listings grabbing headlines in the US.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/dubai-s-dip-rises-as-much-as-6-after-uae-s-first-post-war-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dubai's DIP Climbs on Debut, Ending UAE's Listings Drought</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Cinven -- Weighs a Sale of UK Wealth Manager True Potential</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Cinven is exploring a sale of True Potential, Bloomberg reported, potentially adding to a string of deals in the UK wealth-management sector.</p>
+        <p><strong>Outlook:</strong> A sale would ride strong buyer appetite for scale wealth platforms with recurring fee income, an asset class insulated from the AI re-rating.</p>
+        <p><strong>What it means:</strong> Private-equity money keeps rotating toward durable, fee-generating financials.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/cinven-weighs-sale-of-uk-wealth-manager-true-potential" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Cinven Weighs Sale of UK Wealth Manager True Potential</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Sonja Laud (UBS Asset Management) -- sees underpriced risk in AI's web of debt</strong></summary>
+      <div class="deal-body">
+        <p>UBS Asset Management co-head of investments Sonja Laud said the AI boom has shifted from an equity story to a balance-sheet story driven by debt, Bloomberg reported, creating an interconnected web of risk markets are underestimating. "To me, it is the web of debt across public-private debt and equity," she said, doubting the returns will match expectations.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-11/ubs-laud-sees-underpriced-risk-in-ai-s-web-of-debt-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- UBS' Laud Sees Underpriced Risk in AI's Web of Debt</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Olaolu Aganga (Citi) -- says strong earnings and valuations still support US stocks</strong></summary>
+      <div class="deal-body">
+        <p>Citi's Olaolu Aganga said strong earnings and attractive valuations continue to support US stocks despite recent volatility, Bloomberg reported. She sees a long-term AI investment cycle with productivity gains still ahead, but warned inflation could run hotter than expected, favoring shorter-duration fixed income and gold.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-11/citi-s-aganga-on-ai-markets-and-inflation-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Citi's Aganga on AI, Markets and Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jack Selby (Copper Sky Capital) -- warns the Anthropic IPO could trigger an AI correction</strong></summary>
+      <div class="deal-body">
+        <p>Venture investor Jack Selby, who runs Copper Sky, said Anthropic's blockbuster IPO may become the catalyst for a major reversal in the AI trade, Bloomberg reported. He flagged lockup risk, where a wave of insider selling after the debut could tip a jittery market.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/anthropic-ipo-lockup-risks-triggering-ai-correction-selby-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Anthropic IPO Risks Causing AI Market Correction, Selby Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Kai-Fu Lee (Sinovation Ventures, 01.AI) -- questions whether trillion-dollar valuations hold</strong></summary>
+      <div class="deal-body">
+        <p>AI pioneer Kai-Fu Lee questioned whether trillion-dollar AI valuations can be justified, Bloomberg reported, citing circular-funding risk and the impact of cheaper Chinese and open-source models. He argued businesses need to reinvent around AI and that Europe's edge may lie in applications, not foundation models.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-11/kai-fu-lee-questions-soaring-ai-valuations-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Kai-Fu Lee Questions Soaring AI Valuations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Aidan Gomez (Cohere) -- pushes back on overbuild fears, says compute is scarce</strong></summary>
+      <div class="deal-body">
+        <p>Cohere CEO Aidan Gomez dismissed concerns about overbuilding AI capacity, Bloomberg reported, saying his startup faces a daily struggle to procure the power it needs. The demand-side read counters the glut narrative weighing on sentiment toward the buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-11/nvidia-backed-cohere-in-a-fight-to-secure-ai-computing-power" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia-Backed Cohere in a Fight to Secure AI Computing Power</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned After the Hot CPI and the AI Rebound, With Citi's Olaolu Aganga Backing Earnings and Valuations and Cohere's Aidan Gomez Saying Compute Is Still Scarce, Against UBS's Sonja Laud Flagging an Underpriced Web of Debt, Copper Sky's Jack Selby Warning the Anthropic IPO Could Trigger a Reversal and Kai-Fu Lee Doubting Trillion-Dollar Valuations</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (earnings and demand carry the trade):</strong> Citi's Olaolu Aganga says strong earnings and attractive valuations still support US stocks through a long AI cycle, and Cohere's Aidan Gomez says compute is scarce, not overbuilt. CoreWeave's beat and Anthropic's surging demand back the thesis.</div>
+        <div class="bear"><strong>Bear (leverage and valuations are the risk):</strong> UBS's Sonja Laud warns of an underpriced web of debt across public and private markets, Copper Sky's Jack Selby says the Anthropic IPO could catalyze a reversal once lockups unwind, and Kai-Fu Lee doubts trillion-dollar valuations amid circular funding. The rebound rides on fragile financing.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>CoreWeave pops on $9B prepayments; Anthropic IPO demand surges toward $1.5T; AI trade roars back</td><td>Bullish</td><td>~59,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Hot CPI at 0.4% cements December hike; CoreWeave beat; Children's Place bankruptcy; hospital defensives</td><td>Mixed</td><td>~45,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Treasury selloff on CPI; Logan wants two faster hikes; Goldman adds tightening; Veterans Day bond holiday</td><td>Cautious</td><td>~37,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>UBS web-of-debt warning; Anthropic circular backing; OpenAI mounting losses; Selby correction call</td><td>Bearish</td><td>~33,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC near $74k sits out rebound; ETF outflows fourth day; 90% hike odds; MARA sells more coins</td><td>Bearish</td><td>~40,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood split along the macro-versus-AI line. r/wallstreetbets flipped bullish as CoreWeave popped and Anthropic drew heavy demand. r/stocks stayed mixed on the hot CPI, the December hike and Children's Place's bankruptcy against the AI bounce. r/investing turned cautious on the Treasury selloff and Goldman adding tightening while the bond holiday paused it. r/SecurityAnalysis leaned bearish on UBS's web-of-debt warning and Anthropic's circular backing. r/CryptoCurrency was bearish as bitcoin sat out the rebound near $74,000 with ETFs bleeding a fourth day. The swing factor is Thursday's bond reopen and whether the AI rally survives the higher-yield reality.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why Circular AI Financing Both Funds the Boom and Concentrates the Risk</h2>
+    <p>CoreWeave's stock popped after it outlined $9 billion in planned prepayments, which WSJ called a workaround to capital constraints, and FT warned that Anthropic's IPO carries shadow insider sales and circular supply-chain backing. UBS's Sonja Laud put it most bluntly, saying the AI boom has shifted from an equity story to a balance-sheet story driven by an interconnected web of debt that markets underestimate. The instinct is that financing is just plumbing, so as long as the money keeps flowing the buildout is fine. But the structure of how AI gets funded, where chipmakers, cloud providers, model labs and lenders all backstop one another, means the same links that unlock capital also transmit stress, which is why circular financing can look robust in good times and fragile all at once. Start with what circular means here. A chip vendor invests in a cloud provider, the cloud provider buys the vendor's chips, a model lab prepays the cloud provider for capacity, and lenders finance all of it against contracts that assume the others keep paying. The first mechanism is demand manufacturing, where a vendor funding its own customers creates revenue that looks like external demand but is partly recycled capital, flattering growth. The second mechanism is prepayment financing, visible in CoreWeave's playbook, where a customer pays upfront to give the provider cash to build, shifting risk onto whether that customer's own economics hold. The third mechanism is collateral stacking, where loans are secured against chips, contracts and equity stakes that are themselves tied to the same handful of AI names, so one impairment can cascade across the structure. The fourth mechanism is the balance-sheet shift Laud flags, where the story moves from equity, which absorbs losses, to debt, which must be serviced on a schedule regardless of whether returns show up. The fifth mechanism is the lockup and insider-sale overlay FT raised, where a blockbuster IPO lets early backers and suppliers cash out, testing whether outside demand is deep enough to absorb the selling once restrictions lift. The sixth mechanism is the correlation trap, where diversification is an illusion because the public debt, private credit and equity are all exposures to the same bet, so they fall together if AI returns disappoint. The practical lesson for a market reader is that in a capital-intensive boom, you have to follow the money, not just the demand. When you see prepayments, vendor financing and cross-investments celebrated as proof of strength, ask who is ultimately funding whom, whether the revenue is external or recycled, and how much of the structure rests on debt that must be paid on time. Circular financing can carry a boom a long way, but it also means the next drawdown may not stay contained to equities.</p>
+    <p class="deal-source"><a href="https://www.wsj.com/business/energy-oil/coreweave-finds-a-workaround-to-capital-constraintsfor-now-1f548211?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- CoreWeave Finds a Workaround to Capital Constraints -- for Now</a></p>
+    <p class="deal-source"><a href="https://www.ft.com/content/26fd23df-830e-481b-a3bc-19bcab48c5f6" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Anthropic's IPO Is Too Important to Fail</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Bond market reopen (Thursday).</strong> After the Veterans Day holiday froze cash Treasuries, watch whether the reopen confirms Tuesday's selloff or fades it as the AI rebound lifts risk appetite.</li>
+      <li><strong>Fed December path.</strong> With CPI at 0.4%, Logan wanting two faster hikes and Goldman adding tightening, watch remaining Fed speakers and futures odds for whether a half-point gains traction.</li>
+      <li><strong>Consumer and labor follow-through.</strong> NY Fed showed household delinquencies rising; watch upcoming data for whether the consumer is cracking under higher costs even as inflation stays sticky.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>AI-infrastructure reads.</strong> After CoreWeave's beat, watch whether other data-center, chip and neocloud names confirm demand or expose more financing strain.</li>
+      <li><strong>Consumer and retail.</strong> With Children's Place in bankruptcy and PepsiCo cutting jobs, watch staples and discretionary prints for signs of softer spending.</li>
+    </ul>
+    <h3>Central Banks</h3>
+    <ul>
+      <li><strong>Synchronized hawkish drift.</strong> London officials signaled more hikes and a think tank eyed the BOE at 5%. Watch whether the Fed, ECB and BOE firm into coordinated December tightening.</li>
+      <li><strong>Doves versus hawks.</strong> Paulson favors a gradual pace against Waller and Logan. Watch which camp the data pushes the committee toward.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Iran and Hormuz.</strong> Oil bounced off a two-day slide on mixed signals as Gulf states deepen military coordination. Watch whether diplomacy extends the slide or a flare-up snaps the premium back.</li>
+      <li><strong>Anthropic IPO pricing.</strong> The Claude maker is marketing a listing weighed at $1.5 trillion. Watch whether demand firms the valuation or Selby's lockup warning starts to bite after the debut.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how hyperscaler capex, prepayments and circular supplier backing feed the AI credit and spread picture.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Nov 11, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-11-11 06:38 ET); Bloomberg Technology (20 fresh, newest 2026-11-11 06:38 ET); Bloomberg Economics (20 fresh, newest 2026-11-11 06:00 ET); CNBC Top News (4 fresh, newest 2026-11-11 07:00 ET); CNBC Finance (4 fresh, newest 2026-11-11 02:47 ET); CNBC Economy (2 fresh, newest 2026-11-10 18:53 ET); MarketWatch Top Stories (10 fresh, newest 2026-11-11 06:27 ET); WSJ Markets (17 fresh, newest 2026-11-11 06:57 ET); FT Home (10 fresh, newest 2026-11-11 06:34 ET); Matt Levine Money Stuff (1 fresh, newest 2026-11-10 14:31 ET); CoinDesk (21 fresh, newest 2026-11-11 06:37 ET); Stratechery (2 fresh, newest 2026-11-11 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. What did the October CPI report show?</strong></p>
+      <span class="opt" data-opt="A">A. Prices fell 0.1%, easing the Fed's inflation fight</span>
+      <span class="opt" data-opt="B">B. Prices rose 0.4%, hotter than economists expected</span>
+      <span class="opt" data-opt="C">C. Prices matched the 0.2% consensus forecast exactly</span>
+      <span class="opt" data-opt="D">D. Prices rose 0.4% but core inflation cooled sharply</span>
+      <div class="feedback"><strong>B is correct.</strong> CNBC reported headline CPI rose 0.4% in October, more than expected, with CoinDesk noting core up 0.3%, which cemented December hike bets near 90%. Prices did not fall, match a 0.2% consensus, or show core cooling.</div>
+    </div>
+    <div class="q" data-correct="C">
+      <p><strong>2. What happened in CoreWeave's quarterly report?</strong></p>
+      <span class="opt" data-opt="A">A. It cut its annual forecast on a data-center slowdown</span>
+      <span class="opt" data-opt="B">B. It missed revenue and warned on its debt covenants</span>
+      <span class="opt" data-opt="C">C. It beat revenue and outlined $9 billion in prepayments</span>
+      <span class="opt" data-opt="D">D. It paused expansion to conserve capital-markets access</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg and MarketWatch reported CoreWeave beat on revenue and detailed $9 billion of planned prepayments, easing debt concerns and reviving the AI trade. It did not cut guidance, miss on revenue, or pause expansion.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. Why were Treasuries barely trading on Wednesday?</strong></p>
+      <span class="opt" data-opt="A">A. A Veterans Day holiday closed the bond market</span>
+      <span class="opt" data-opt="B">B. The Fed imposed an emergency trading halt</span>
+      <span class="opt" data-opt="C">C. An auction settlement froze secondary trading</span>
+      <span class="opt" data-opt="D">D. Record volume tripped a circuit breaker on yields</span>
+      <div class="feedback"><strong>A is correct.</strong> WSJ reported the Treasury market paused on the Veterans Day holiday after Tuesday's inflation-fueled selloff. It was not a Fed halt, an auction settlement, or a circuit breaker.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "A hot October CPI at 0.4% cemented December hike bets and drove a Treasury selloff, with Dallas Fed's Logan wanting at least two more hikes at a quicker pace, Chicago's Goolsbee calling the print borderline disturbing and Goldman adding tightening to its forecast, even as Philadelphia's Paulson still favored a gradual pace and a Veterans Day bond holiday paused the rout.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-11/falling-us-bond-futures-offer-no-relief-as-fed-hike-bets-grow", "take": "US Treasury futures retreat as markets see more Fed hikes." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-10/fed-s-logan-favors-at-least-two-hikes-says-pace-could-quicken", "take": "Dallas Fed's Logan wants two more hikes and a quicker pace." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/why-goldman-sachs-is-now-changing-its-federal-reserve-interest-rate-forecast-3753f968?mod=mw_rss_topstories", "take": "Goldman now pencils in additional Fed tightening." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-10/fed-s-paulson-says-gradual-tightening-seems-appropriate-for-now", "take": "Philadelphia's Paulson still favors a gradual pace with anchored expectations." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/u-s-treasurys-pause-on-market-holiday-after-inflation-fueled-selloff-7ff76731?mod=rss_markets_main", "take": "Treasuries pause on the Veterans Day holiday after the selloff." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil climbed off a two-day slide on mixed Iran signals even as US pump prices dropped below $4 for the first time since July, with Bloomberg noting traders weighing a conclusion to the war against Gulf states deepening military coordination amid Hormuz risks, while Ukraine and Russia held a second day of US-led peace talks in Abu Dhabi.",
+    "sources": [
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/11/10/us-gas-prices-below-four-dollars.html", "take": "US gas prices fall below $4 for the first time since July." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-11-11/the-pulse-with-francine-lacqua-11-11-2026-video", "take": "Ukraine and Russia hold a second day of US-led peace talks in Abu Dhabi." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-10/latest-oil-market-news-and-analysis-for-nov-11", "take": "Oil climbs off the lows on mixed signals over the Iran war." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-11-11/horizons-middle-east-africa-11-11-2026-video", "take": "Gulf states deepen military coordination as Iran diplomacy faces Hormuz risks." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade roared back after CoreWeave's strong quarter and $9 billion of planned prepayments eased debt fears and Anthropic's IPO demand surged toward a $1.5 trillion valuation, with Citi's Aganga backing earnings and Cohere's Gomez saying compute is scarce, against UBS's Laud flagging a web of debt, Copper Sky's Selby warning of a correction and FT flagging circular supply-chain backing.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-10/coreweave-boosts-annual-forecast-easing-concerns-about-slowdown", "take": "CoreWeave quiets doubts over its debt-laden business with an upbeat outlook." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/coreweaves-stock-pops-as-new-financing-playbook-eases-debt-concerns-70241525?mod=mw_rss_topstories", "take": "CoreWeave's stock pops as a new financing playbook eases debt concerns." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-11-11/ubs-laud-sees-underpriced-risk-in-ai-s-web-of-debt-video", "take": "UBS's Laud sees underpriced risk in AI's web of debt." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-11/anthropic-ipo-lockup-risks-triggering-ai-correction-selby-says", "take": "Copper Sky's Selby warns the Anthropic IPO could trigger an AI correction." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/26fd23df-830e-481b-a3bc-19bcab48c5f6", "take": "Anthropic's IPO carries shadow insider sales and circular supply-chain backing." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["CoreWeave","Nvidia","AMD","Broadcom","TSMC","Intel"],
+    "values": [18.0, 2.5, 3.2, 2.8, 2.2, 1.5]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [59000, 45000, 37000, 33000, 40000],
+    "colors": ["bull","neutral","neutral","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Anthropic IPO","Unilever-McCormick","KKR-RWE Wind","Dubai DIP IPO","GS-Citi Stablecoin"],
+    "values": [90.4, 44.8, 16.0, 0.53, 0.27]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
