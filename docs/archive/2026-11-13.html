@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Fri Nov 13, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-11-13</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Friday, November 13, 2026</h1>
+    <div class="meta">
+      <p>It's inflation data day, and the October print caps a brutal week that saw Fed rate-hike bets soar and Jensen Huang pushed out at Nvidia with CFO Colette Kress now in charge. Treasury yields surged to their worst week since Trump's liberation day as Williams and Daly leaned hawkish, briefly erasing Thursday's haven bid. A global Microsoft outage snarled traders and email, and bitcoin cracked below $70,000.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Jensen Huang was ousted as Nvidia CEO by the board after reports of multiple affairs including one with a woman suspected of spying for China, with CFO Colette Kress installed as interim chief and veteran Harvey Jones as chair, leaving the market to decide whether the AI franchise is worth more or less without the founder who personally stitched together its chips and financing",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Nvidia Shareholders Won't Miss Jensen Huang for Long", "angle": "Argues steadier management could suit the company as it enters a new, more mature phase.", "lean": 40, "pull": "Steadier hands could be better suited to enriching shareholders as the AI chip company enters a new phase."},
+        {"outlet": "Financial Times", "headline": "Value Nvidia, Not Huang", "angle": "Separates the franchise from the founder and says the business case still stands on its own.", "lean": 25, "pull": "The downfall of Jensen Huang is a cautionary tale, but the chips still sell themselves."},
+        {"outlet": "Bloomberg", "headline": "Jensen Huang, Face of the AI Boom, Ousted by Nvidia Board", "angle": "Treats the removal as a shock to the company at the center of the entire buildout.", "lean": -20, "pull": "The preeminent face of the AI infrastructure boom was ousted after reports of three affairs."},
+        {"outlet": "CNBC", "headline": "Nvidia's Leadership Crisis Tests Its Role as the Central Bank of AI", "angle": "Zooms out to systemic risk from the web of ties Huang built across the ecosystem.", "lean": -45, "pull": "The tech giant's web of ties to other companies raises the possibility of far-reaching damage."},
+        {"outlet": "MarketWatch", "headline": "Who Can Replace Jensen Huang? Four Names Are Buzzing in AI Circles", "angle": "Frames succession as the open question, needing rare tech vision plus business savvy.", "lean": -10, "pull": "That person will need a rare balance of tech vision and business savvy."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>The Brief Treasury Haven Bid Reverses Hard as Surging Yields Deliver the Worst Week Since Liberation Day, With New York's John Williams Calling Inflation Far Too High, San Francisco's Mary Daly Flagging More Hikes and a Hot CPI Test Looming, Against Goldman Seeing Cheap Hyperscaler Valuations and Dip Buyers Betting the Surge Has Overshot</h3>
+      </div>
+      <p>Thursday's flight to duration did not survive the night. Bloomberg reported investors warn the bond rout is not over after a week of soaring yields, as the haven bid that pulled long Treasuries higher on the Nvidia reopen gave way to a fresh selloff. FT said US Treasuries are set for their worst week since Trump's liberation day, stung by higher-than-expected inflation and hawkish Fed remarks that undercut bets a global bond rout was over. The hawkish chorus hardened overnight. Bloomberg reported New York Fed President John Williams said inflation remains far too high with work still to do, and San Francisco's Mary Daly said further rate increases will likely be needed as businesses increasingly contemplate raising prices. MarketWatch flagged that bond yields saw their biggest surge since 2022 as hike expectations grew, with Fed Chair Warsh's quiet communication style adding to the volatility. The calmer read leans on value and resilience. Bloomberg's Goldman desk sees the S&P 500 rising 14% into 2027 on historically cheap hyperscaler valuations, an implied soft-landing case, and some rates buyers argue the yield surge has overshot ahead of the CPI print that caps the week. The front end is pricing hikes hard; the long end is now selling off with it.</p>
+      <p>The bull read is dip buyers betting the surge overshot, Thursday's haven bid proving duration still works as insurance and Goldman's constructive risk view implying no hard landing. The bear read is the rout resuming, Williams calling inflation far too high, Daly flagging more hikes and the biggest yield surge since 2022.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the surge overshot):</strong> Thursday's haven bid showed long Treasuries still work as insurance when risk wobbles, Goldman sees the S&P rising 14% on cheap hyperscaler valuations in a soft-landing case, and some rates buyers argue the move has run too far into the CPI print. If growth cracks, duration rallies again.</div>
+        <div class="bear"><strong>Bear (the rout is not over):</strong> Bloomberg warns the bond rout has further to run, FT calls it the worst week since liberation day, Williams says inflation is far too high, Daly flags more hikes as firms plan price increases, and MarketWatch notes the biggest yield surge since 2022. The front and long end are selling off together.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-13/treasury-yield-surge-shatters-hopes-worst-of-bond-rout-is-over" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Investors Warn Bond Rout Isn't Over After Week of Soaring Yields</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Global Oil Markets Swing to Their First Surplus Since the Iran War Began as Gulf Exports Rebound and Iraq's October Output Hits the Highest Since 2019, With the IEA Flagging Months to Rebuild Stockpiles, Against Trump Saying the US Can Forgo an Iran Deal Because We've Got Their Strait and Russia's Economy Slowing Under Ukrainian Refinery Attacks</h3>
+      </div>
+      <p>The supply side just tipped the balance. Bloomberg reported the global oil market will swing to a supply surplus for the first time since the start of the Iran war as Persian Gulf exports recover despite the ongoing conflict, the IEA said, with Iraq's October output surging to its highest since 2019 and the UAE holding near record flows. FT added the IEA warned it will take months to rebuild stockpiles depleted by the conflict, but the direction of travel is clear and European equity indexes turned positive Friday as oil dropped. The bears say the war premium can snap back fast. CNBC reported oil rose Thursday after President Trump said the US could forgo a deal with Iran, telling reporters "we've got their Strait," dimming hopes for a quick breakthrough and keeping shipping risk live. Bloomberg's economics desk noted Russia's economy is losing steam as Ukrainian attacks knock out industrial facilities and disrupt logistics, a reminder the conflict keeps feeding supply and inflation shocks. One camp sees a market finally flipping to surplus as Gulf barrels flood back; the other sees a president ruling out diplomacy over a waterway that can reprice crude overnight.</p>
+      <p>The bull read is the IEA's surplus call, Iraq's output at a six-year high and Gulf exports rebounding to drag crude lower. The bear read is Trump forgoing an Iran deal over the Strait, live shipping disruption and Ukrainian attacks squeezing Russian supply.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (surplus caps crude):</strong> The IEA says global oil swings to its first surplus since the war began as Gulf exports rebound, Iraq's October output hit the highest since 2019, and European stocks turned positive Friday as oil fell. More barrels are overwhelming the war premium.</div>
+        <div class="bear"><strong>Bear (the premium can snap back):</strong> Trump says the US can forgo an Iran deal because "we've got their Strait," dimming hopes for a quick end, Hormuz shipping risk stays live, and Ukrainian refinery attacks are slowing Russia's economy and disrupting supply. One headline can reprice crude.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-13/global-oil-market-swings-to-surplus-on-gulf-exports-iea-says" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Global Oil Market Swings to Surplus on Gulf Exports, IEA Says</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Jensen Huang Is Out and CFO Colette Kress Runs Nvidia, Splitting the AI Trade Into Names That Needed Huang's Patronage and Those That Didn't, With Yorkville's Dan Ives Staying Bullish and JPMorgan's Nataliia Lipikhina Backing Hyperscalers, Against Callosum's Dan Akarca Seeing Nvidia's Chip Share Shrink and the FT Calling His Fall an Indictment of Founder Mode</h3>
+      </div>
+      <p>The leadership question is now settled, and the market has to reprice around it. Bloomberg reported Huang, the preeminent face of the AI boom, was ousted by Nvidia's (NVDA) board after reports of three affairs, with CFO Colette Kress installed as interim CEO and Harvey Jones as chair. WSJ framed the exit as a test of AI's great-man theory, splitting the trade between companies dependent on Huang's patronage and those that never needed his chips or financing. The bulls say the franchise is bigger than the founder. Yorkville Ives & Co's Dan Ives cut his price target but stayed bullish, saying Nvidia without Huang "evens the playing field," while JPMorgan Private Bank's Nataliia Lipikhina called hyperscalers her strongest tech conviction as money rotates out of semis, and Bloomberg's Goldman desk sees the S&P up 14% on cheap big-tech valuations. The bears say the moat was partly the man. Callosum's Dan Akarca said Nvidia will stay dominant near term but its share is likely to shrink as specialized chips emerge, FT called Huang's fall an indictment of founder mode at Big Tech, and Bloomberg reported his exit removes the industry's top opponent of US chip curbs, setting up a US-China showdown that threatens Southeast Asia's AI boom. The demand is intact; the question is who captures it.</p>
+      <p>The bull read is Ives staying bullish post-Huang, JPMorgan's Lipikhina backing hyperscalers and Goldman's 14% S&P call on cheap valuations. The bear read is Akarca seeing Nvidia's share shrink, FT's founder-mode indictment and a looming US-China chip-curb showdown.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the franchise outlives the founder):</strong> Yorkville's Dan Ives stays bullish and says Huang's exit evens the playing field, JPMorgan's Nataliia Lipikhina calls hyperscalers her strongest conviction, Goldman sees the S&P up 14% on cheap big-tech valuations, and EM tech rebounded on bets the AI industry weathers the upheaval.</div>
+        <div class="bear"><strong>Bear (the moat was partly the man):</strong> Callosum's Dan Akarca sees Nvidia's chip share shrinking as specialized rivals emerge, FT calls Huang's fall an indictment of founder mode, SocGen's Manish Kabra flags the semi trade's yo-yo cyclicality, and his exit removes the top opponent of US chip curbs, setting up a China showdown.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-12/jensen-huang-face-of-the-ai-boom-ousted-by-nvidia-board-as-ceo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jensen Huang, Face of the AI Boom, Ousted by Nvidia Board as CEO</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stock futures fall as Nvidia fallout and a bond selloff meet CPI day</strong></summary>
+      <div class="deal-body">
+        <p>Stock futures fell, WSJ reported, as the fallout from Nvidia's (NVDA) leadership change hung over markets and longer-dated Treasuries kept selling off ahead of key US inflation data. The October CPI caps a dramatic week of mounting Fed rate-hike bets and Huang's exit.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/stock-futures-lower-as-investors-look-to-u-s-inflation-data-5b1b5988?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Futures Lower as Investors Look to U.S. Inflation Data</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia shares set to recoup some losses as investors eye the fallout</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) was set to recoup some of its slide, WSJ reported, as investors weighed life under new CEO Colette Kress. The AI trade now faces two major tests next week with the chip giant's earnings and Anthropic's blockbuster IPO both on the calendar.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-13-2026?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nvidia Shares Set to Recoup Some Losses as Investors Eye Fallout</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman sees the S&P 500 rising 14% on cheap hyperscaler valuations</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs strategists are bullish on US stocks for 2027, Bloomberg reported, predicting the S&P 500 will advance 14% after a selloff in the biggest tech names left their valuations historically cheap. The call is an explicit bet that the AI reset is a buying opportunity, not a top.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/goldman-sees-s-p-500-rising-14-on-cheap-hyperscaler-valuations" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Goldman Sees S&P 500 Rising 14% on Cheap Hyperscaler Valuations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>A Microsoft outage forces traders back to phones and fax machines</strong></summary>
+      <div class="deal-body">
+        <p>A worldwide outage of Microsoft (MSFT) software crippled communications, Bloomberg reported, forcing traders to do business by phone, WhatsApp and even fax as email and chat services went dark at exchanges and businesses. It ranks among the firm's most severe disruptions in recent memory.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/microsoft-outage-gums-up-markets-forces-traders-to-use-phones" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Microsoft Outage Sends Traders Back to Phones and Fax</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>European stocks head for their biggest weekly advance since July</strong></summary>
+      <div class="deal-body">
+        <p>European stocks were little changed after a four-day rally to record highs, Bloomberg reported, but still headed for their biggest weekly advance since July as oil producers and banks offset declines in industrials. The tech-light continent benefited from the rotation away from AI names.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/european-shares-pull-back-from-record-high-after-four-day-rally" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- European Stocks Head for Biggest Weekly Advance Since July</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CVS weighs a breakup that may not satisfy Washington but could work for Wall Street</strong></summary>
+      <div class="deal-body">
+        <p>Spinning off its drugstores will not quiet CVS's (CVS) critics in Washington, WSJ reported, but it could leave shareholders with a more valuable company. The breakup debate puts a healthcare conglomerate's sum-of-parts case back in front of investors hunting for value.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/health/healthcare/cvs-breakup-wont-satisfy-washington-it-could-still-work-for-wall-street-1b5004e3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- CVS Breakup Won't Satisfy Washington. It Could Still Work for Wall Street.</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Scout Motors holds 212,000 reservations as its $2 billion plant nears completion</strong></summary>
+      <div class="deal-body">
+        <p>Scout Motors has roughly 212,000 reservations for its Terra pickup and Traveler SUV, CNBC reported, citing CEO Scott Keogh, as its $2 billion South Carolina plant nears completion. The backlog is an early read on demand for the Volkswagen-backed EV brand.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/12/scout-motors-reservations-south-carolina-plant.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Scout Motors Has 212,000 Vehicle Reservations as South Carolina Plant Nears Completion</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape is caught between a resolved Nvidia leadership question and a fresh inflation test. The bull case is Goldman's cheap-valuation call, Nvidia steadying under Kress and European value rotating higher. The bear case is the bond selloff, a hot CPI and the Microsoft outage underscoring tech's fragility. Watch whether the inflation print steepens the rout or lets the AI rebound resume into Nvidia earnings next week.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Founder's Exit Splits a Sector Into Winners and Losers</summary>
+      <p>Nvidia's board removed Jensen Huang and installed CFO Colette Kress, and the market did not treat the news as one uniform shock. WSJ framed it as a test of AI's great-man theory, splitting the trade between firms that leaned on Huang's patronage and those that never needed his chips or financing deals. The instinct is that a scandal at the dominant supplier should drag everything in its orbit down together. But when a sector is bound by one person's relationships, his removal sorts the field, rewarding companies that stand on their own economics and punishing those whose value depended on his favor, which is why a single exit can lift some names while it sinks others. Start with the structure Huang built. He did not just sell chips, he invested in some of the clouds and labs that bought them and backed vendor arrangements that recycled Nvidia's capital into apparent external demand. The first mechanism is dependency sorting, where investors re-underwrite each counterparty by asking whether its order book survives without Huang personally championing it, so firms with independent demand hold up while patronage plays wobble. The second mechanism is competitive repricing, where rivals like AMD and Broadcom gain because a less combative Nvidia, in Dan Ives's phrase, evens the playing field, and Callosum's Dan Akarca argues specialized chips chip away at share over time. The third mechanism is the policy swing, since Bloomberg reported Huang was the industry's top opponent of US chip curbs, so his exit raises the odds of tighter export controls that help some domestic names and threaten Southeast Asia's AI boom. The fourth mechanism is the rotation channel, where JPMorgan's Nataliia Lipikhina says money leaving semis flows toward hyperscalers, moving the winners one layer up the stack toward the firms that use AI rather than build the hardware. The fifth mechanism is the valuation reset, where Goldman argues the selloff left big-tech multiples historically cheap, so the sorting happens against a backdrop where survivors can rerate higher. The sixth mechanism is the confidence overlay, where resolving the leadership question, even badly, removes an overhang that had frozen dip buyers, letting capital re-enter selectively. The practical lesson for a market reader is that a dominant firm's shock is rarely a sector-wide verdict. When one name anchors a theme, a leadership change acts like a stress test that separates businesses with durable demand from those riding a personal relationship. Ask which companies owned their customers and which were handed them, because that distinction is what the market prices when the patron leaves.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/jensen-huangs-exit-will-test-ais-stocks-and-great-man-theory-3c4cd404?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Jensen Huang's Exit Will Test AI's Stocks, and Great-Man Theory</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/jensen-huang-exit-sets-up-us-china-showdown-over-ai-chip-curbs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jensen Huang Exit Sets Up US-China Showdown Over AI Chip Curbs</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nvidia ousts Jensen Huang and names CFO Colette Kress interim CEO</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia's (NVDA) board removed Jensen Huang after reports of three affairs, including one with a woman suspected of spying for China, Bloomberg reported, appointing CFO Colette Kress as interim CEO and veteran Harvey Jones as chair. The move ends a 33-year run by the founder who built the company into the world's most valuable.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-12/jensen-huang-face-of-the-ai-boom-ousted-by-nvidia-board-as-ceo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jensen Huang, Face of the AI Boom, Ousted by Nvidia Board as CEO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Who can replace Huang? Four names are buzzing in AI circles</strong></summary>
+      <div class="deal-body">
+        <p>As Nvidia's board seeks a permanent CEO, MarketWatch reported, experts say the person will need a rare balance of tech vision and business savvy, with four candidates circulating in AI circles. FT noted contenders range from rival chief executives to Huang's own children.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/who-can-replace-jensen-huang-as-nvidia-ceo-these-four-names-are-buzzing-in-ai-circles-66c31ec2?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Who Can Replace Jensen Huang as Nvidia CEO? These Four Names Are Buzzing in AI Circles</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dan Ives cuts his Nvidia price target but stays bullish post-Huang</strong></summary>
+      <div class="deal-body">
+        <p>Yorkville Ives & Co's Dan Ives cut his Nvidia (NVDA) price target but stayed bullish, Bloomberg reported, saying a post-Huang Nvidia "evens the playing field" in AI. He expects the next CEO to come from outside the company and flagged the challenges a successor will face.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-13/ives-cuts-nvidia-price-target-stays-bullish-post-huang-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dan Ives Cuts Nvidia Price Target, But Stays Bullish Post-Huang</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Callosum's Akarca says Nvidia's AI chip share is set to shrink</strong></summary>
+      <div class="deal-body">
+        <p>Callosum co-founder Dan Akarca said Nvidia (NVDA) will stay dominant near term but its market share is likely to decline as specialized AI chips emerge, Bloomberg reported. His firm's software routes AI tasks to the best-suited processors, potentially cutting costs and energy use.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-13/nvidia-s-ai-chip-share-set-to-shrink-akarca-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia's AI Chip Share Set to Shrink: Akarca</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Microsoft races to restore services after one of its longest outages</strong></summary>
+      <div class="deal-body">
+        <p>Microsoft (MSFT) is racing to restore access to Outlook, Teams and Copilot, FT reported, half a day into a global outage that paralyzed government offices, traders and businesses. The company said the issue was not caused by malicious or cyber activity.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/025b2769-bca8-4a74-b9f5-5d7ad7da32c7?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Microsoft Races to Restore Services After Global Outage</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SpaceX-Tesla merger talks advance toward a possible December deal</strong></summary>
+      <div class="deal-body">
+        <p>SpaceX and Tesla (TSLA) are progressing in merger negotiations, Bloomberg reported, setting the stage for a combination that could be announced as soon as December. Elon Musk's two largest companies could form what would be the biggest-ever deal, redefining the limits of global dealmaking.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-13/talks-on-spacex-tesla-deal-said-to-advance-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Talks on SpaceX-Tesla Deal Said to Advance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Banned Nvidia chips found at a China data center linked to Alice Huang</strong></summary>
+      <div class="deal-body">
+        <p>A Chinese company founded by Alice Huang, the woman at the center of the controversy dogging Nvidia (NVDA), procured smuggled AI chips installed at a Shanghai data center with ties to Megaspeed, Bloomberg reported. Some servers were originally sold to an official Nvidia cloud partner in Singapore.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/banned-nvidia-chips-installed-at-china-data-center-linked-to-alice-huang" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Banned Nvidia Chips Installed at China Data Center Linked to Alice Huang</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Friday November 13, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal of demand intact is Ives staying bullish, JPMorgan backing hyperscalers and Nvidia set to recoup losses under Kress. The counter-signal is Akarca's shrinking-share call, the Megaspeed and Alice Huang chip-smuggling threads and a looming US-China curb showdown. The near-term tell is whether next week's Nvidia earnings and the Anthropic IPO confirm order books or expose the financing strain.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Investors warn the bond rout is not over after a week of soaring yields</strong></summary>
+      <div class="deal-body">
+        <p>Just when global bond investors started to believe the worst of the year's rout was over, Bloomberg reported, surging Treasury yields are making them think again. Thursday's haven bid reversed, and the surge is forcing a rethink of positioning into the CPI print.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/treasury-yield-surge-shatters-hopes-worst-of-bond-rout-is-over" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Investors Warn Bond Rout Isn't Over After Week of Soaring Yields</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US Treasuries set for their worst week since Trump's liberation day</strong></summary>
+      <div class="deal-body">
+        <p>US Treasuries are headed for their worst week since Trump's liberation day, FT reported, as higher-than-expected inflation and hawkish Fed remarks stung investors who had bet the global bond rout was over. The move hit long-dated debt hardest.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/7bebace2-dc87-410a-ae29-ffd9f3176def?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- US Treasuries Set for Worst Week Since Trump's Liberation Day</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Williams says inflation is far too high with work still to do</strong></summary>
+      <div class="deal-body">
+        <p>New York Fed President John Williams said US inflation remains far too high and policymakers have to take further action to contain price pressures, Bloomberg reported. The comment adds an influential voice to the hawkish turn reshaping the December path.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/fed-s-williams-says-inflation-far-too-high-still-work-to-do" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Williams Says Inflation 'Far Too High,' Work to Do</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>The Fed expected cuts this year. Now it's bracing for another inflation fight</strong></summary>
+      <div class="deal-body">
+        <p>The Fed that expected rate cuts this year is now bracing for another inflation fight, CNBC reported, after October CPI came in at 0.4% for the month, higher than expected. The shift reframes the policy debate from easing to whether more hikes are needed.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/13/us-inflation-outlook-federal-reserve-rate-hike.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- The Fed Expected Rate Cuts This Year. Now It's Bracing for Another Inflation Fight</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bond yields see their biggest surge since 2022 on more Fed hike bets</strong></summary>
+      <div class="deal-body">
+        <p>Bond yields just saw their biggest surge since 2022, MarketWatch reported, as expectations grow for more Fed rate hikes. The piece notes Fed Chair Warsh's quiet communication style has led to more volatile markets as traders fill the information vacuum.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/bond-yields-just-saw-their-biggest-surge-since-2022-as-expectations-grow-for-more-fed-rate-hikes-d0a4f195?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Bond Yields Just Saw Their Biggest Surge Since 2022</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Euro-zone shows solid growth as the ECB weighs another hike</strong></summary>
+      <div class="deal-body">
+        <p>The euro-area economy confirmed its resilience to headwinds like the Iran war, Bloomberg reported, giving the ECB leeway to raise rates further to stem inflation. The read adds Europe to the synchronized global tightening drift already running from Peru to Japan.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/euro-zone-shows-solid-growth-as-ecb-weighs-another-rate-hike" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Euro-Zone Shows Solid Growth as ECB Weighs Another Rate Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Japan's Katayama warns on FX as the yen stays near 160</strong></summary>
+      <div class="deal-body">
+        <p>Finance Minister Satsuki Katayama said Japan will work with Washington to take appropriate action against one-sided, rapid currency moves, Bloomberg reported, after the yen briefly fell below a key threshold. A NY Fed report confirmed the US spent about $500 million of euros in the July intervention.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/japan-s-katayama-warns-of-fx-steps-after-one-sided-rapid-moves" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Japan's Katayama Warns of FX Steps as Yen Stays Near 160</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (November 13, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to Thursday's haven bid showing duration still works and Goldman's constructive soft-landing view implying the surge overshot. The bear side points to the rout resuming, Williams calling inflation far too high, Daly flagging more hikes and the biggest yield surge since 2022. The swing factor is today's CPI: a hot print confirms the global tightening drift, a cool one lets dip buyers re-anchor the long end.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why the AI Trade Can Hijack the Treasury Market</summary>
+      <p>WSJ described how the AI trade hijacked the Treasury market for a month, and this week showed the link in reverse: a haven bid into long bonds on the Nvidia reopen, then a violent selloff as inflation and hawkish Fed talk took over. The instinct is that stocks and bonds live in separate worlds, with equities reacting to earnings and Treasuries to the Fed. But when one theme dominates risk appetite and sucks in enormous financing, the equity story and the bond market become joined, which is why an AI shock can move yields and why rates can turn around and move AI. Start with the flow. The AI buildout runs on capital, and hyperscalers, clouds and chipmakers have tapped bond markets heavily to fund data centers, so AI is now a large and growing source of new fixed-income supply. The first mechanism is the supply channel, where a wave of AI-related issuance raises the quantity of bonds the market must absorb, pushing yields up unless demand keeps pace. The second mechanism is the haven flow, where an equity scare like Huang's ouster sends money into Treasuries for safety, pulling long yields down even as the Fed story argues the other way, so the curve whipsaws. The third mechanism is the growth signal, where a threat to the AI engine lowers expected future growth, which drags down the neutral rate embedded in long yields. The fourth mechanism is the inflation override, where a hot CPI and officials like Williams and Daly insisting more hikes are needed overwhelm the haven bid, because persistent inflation forces the market to price higher policy rates regardless of risk sentiment. The fifth mechanism is the real-rate read, where bonds and gold both fall together, telling you the move is about higher real yields, not a simple growth or inflation scare in isolation. The sixth mechanism is the feedback loop, where rising yields raise the cost of the very financing the AI buildout depends on, which can slow issuance and cool the equity theme, closing the circle between the two markets. The practical lesson for a market reader is to stop treating AI and rates as separate trades. When a single theme both drives risk appetite and floods the bond market with supply, the two become one system, and a shock to either side ripples across. This week, a haven bid that lasted barely a day got buried under an inflation-driven rout, a reminder that when the Fed is fighting inflation, the policy anchor usually wins the tug-of-war over the safety bid. Watch issuance calendars and CPI prints together, because the AI trade and the Treasury market now move each other.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/how-the-ai-trade-hijacked-the-treasury-market-for-a-month-3fa26a9f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- How the AI Trade Hijacked the Treasury Market for a Month</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-12/fed-s-daly-says-more-rate-hikes-likely-needed-to-cool-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Daly Says More Rate Hikes Needed to Cool Inflation</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">The brief haven bid in Treasuries reversed hard into the worst week since liberation day, with Williams calling inflation far too high and Daly flagging more hikes against Goldman's view the yield surge overshot and dip buyers eyeing the CPI test. Oil swung to its first surplus since the Iran war began as Gulf exports rebounded and Iraq output hit a six-year high, against Trump forgoing an Iran deal over the Strait and Ukrainian attacks squeezing Russian supply. Jensen Huang is out and Colette Kress runs Nvidia, splitting the AI trade with Ives staying bullish and JPMorgan backing hyperscalers against Akarca's shrinking-share call and FT's founder-mode indictment; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above the prior close, bull confirmed; a further drop of 3% or more, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 11/09</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 11/10</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 11/11</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 11/12</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 11/13</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin hits a 12-week low as the dollar rallies and liquidations top $1.6 billion</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin fell below $70,000 for the first time since August, CoinDesk reported, down 3.5% on the day as the dollar climbed on the interest-rate outlook and liquidations topped $1.6 billion. The slide briefly took bitcoin below its 200-week moving average as risk assets buckled.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/13/bitcoin-hits-12-week-low-as-dollar-rallies-on-interest-rate-outlook-liquidations-top-usd1-6-billion" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Hits 12-Week Low as Dollar Rallies, Liquidations Top $1.6 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin ETFs are now down over $1.5 billion in net outflows for the year</strong></summary>
+      <div class="deal-body">
+        <p>US spot bitcoin ETFs are now down over $1.5 billion in net outflows for the year, CoinDesk reported, with rapid recent redemptions explaining the market swoon. The spot price fell below $70,000 on Friday, its lowest since August, as the hawkish rate repricing hit crypto hardest.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/13/bitcoin-etfs-are-now-down-over-usd1-5-billion-in-net-outflows-for-the-year" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin ETFs Are Now Down Over $1.5 Billion in Net Outflows for the Year</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin firm Nakamoto owes Kraken $165 million, more than its market value</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin treasury firm Nakamoto owes Kraken $165 million, more than its entire market value, CoinDesk reported, with about 70% of its coins pledged to the exchange. The coins were bought at roughly $118,000 each, and bitcoin now trades under $69,000, deep underwater.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/13/bitcoin-firm-nakamoto-owes-kraken-usd165-million-more-than-its-entire-market-value" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Firm Nakamoto Owes Kraken $165 Million, More Than Its Entire Market Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasury firm BTCS sells ether at a loss to keep a $64 million Aave loan healthy</strong></summary>
+      <div class="deal-body">
+        <p>Nasdaq-listed BTCS sold ether at a loss to keep a $64 million Aave loan healthy, CoinDesk reported, with 46,676 ETH backing its borrowings. The loan could become eligible for liquidation if ether slides toward $1,700, exposing the leverage stress across crypto treasuries.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/13/ethereum-treasury-firm-btcs-sold-ether-at-a-loss-to-keep-usd64-million-aave-loan-healthy" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Ethereum Treasury Firm BTCS Sold Ether at a Loss to Keep $64 Million Aave Loan Healthy</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>SpaceX-Tesla merger talks put 30,000 bitcoin back in focus</strong></summary>
+      <div class="deal-body">
+        <p>A SpaceX-Tesla deal that could be announced as soon as December would put 30,000 bitcoin, roughly $2.1 billion, under one roof, CoinDesk reported. That stash is a sliver of the combined group's worth but would make the new entity a notable corporate holder.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/13/spacex-tesla-merger-talks-put-30-000-bitcoin-back-in-focus" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- SpaceX-Tesla Merger Talks Put 30,000 Bitcoin Back in Focus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump names CFTC and SEC nominees for the first time in a year</strong></summary>
+      <div class="deal-body">
+        <p>President Trump named two potential commissioners each to the SEC and CFTC, CoinDesk reported, the first such picks in a year. The appointments give the crypto industry a fresh read on how the agencies that write digital-asset rules will be staffed.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/11/12/u-s-president-names-cftc-sec-nominees-for-first-time-in-a-year" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Trump Names CFTC, SEC Nominees for First Time in a Year</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>SpaceX-Tesla -- Musk's Two Largest Companies Advance Toward the Biggest-Ever Deal</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> SpaceX and Tesla (TSLA) are progressing in merger negotiations, Bloomberg reported, with a combination that could be announced as soon as December and rank as the biggest deal ever struck.</p>
+        <p><strong>Outlook:</strong> A tie-up would fuse Musk's rocket and auto empires, concentrating enormous value and raising governance and valuation questions for Tesla shareholders.</p>
+        <p><strong>What it means:</strong> Mega-scale dealmaking is back at the top of the tape, and the combined entity would also become a notable corporate bitcoin holder.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-13/talks-on-spacex-tesla-deal-said-to-advance-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Talks on SpaceX-Tesla Deal Said to Advance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dangote Refinery -- Africa's Top Pension Funds Ask for About $1 Billion in the IPO</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Africa's biggest money manager and Nigerian pension-fund administrators applied for almost $1 billion of shares in Dangote Petroleum Refinery, Bloomberg reported, citing people familiar.</p>
+        <p><strong>Outlook:</strong> Strong institutional demand signals appetite for a landmark African energy listing even as global oil swings to surplus.</p>
+        <p><strong>What it means:</strong> The emerging-market IPO pipeline is drawing real domestic capital, broadening the range of deals beyond the AI and tech complex.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/africa-s-top-pension-funds-ask-for-about-1-billion-in-dangote-s-refinery-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Africa's Top Pension Funds Ask for About $1 Billion in Dangote's Refinery IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CVS Health -- Weighs a Drugstore Spinoff That Could Work for Wall Street</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Spinning off its drugstores will not satisfy CVS's (CVS) critics in Washington, WSJ reported, but it could leave shareholders with a more valuable company.</p>
+        <p><strong>Outlook:</strong> A breakup would unlock a cleaner sum-of-parts story, though political and regulatory scrutiny of the integrated model stays intense.</p>
+        <p><strong>What it means:</strong> Conglomerate simplification is a live value theme in healthcare, giving investors a defensive idea away from the AI trade.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/health/healthcare/cvs-breakup-wont-satisfy-washington-it-could-still-work-for-wall-street-1b5004e3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- CVS Breakup Won't Satisfy Washington. It Could Still Work for Wall Street.</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>DeepX -- South Korean Startup Bets $100 Million on an AI Chip Using Samsung 2nm</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> DeepX plans to spend more than $100 million developing a next-generation AI chip using Samsung's advanced 2-nanometer process, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> A funded challenger building on Samsung's leading-edge node feeds the thesis that specialized chips chip away at Nvidia's dominance over time.</p>
+        <p><strong>What it means:</strong> Capital keeps flowing into Nvidia alternatives just as the leader absorbs a leadership shock, broadening the hardware field.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-13/deepx-bets-100-million-on-new-ai-chip-using-samsung-technology" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- DeepX Bets $100 Million on New AI Chip Using Samsung Technology</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Griffin -- UK Bank Raises $20 Million to Expand Into Stablecoin Payments</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> London-based bank Griffin raised $20 million in a Series B led by Octagon Partners, CoinDesk reported, valuing the company at more than $100 million.</p>
+        <p><strong>Outlook:</strong> A licensed bank pushing into stablecoin rails positions itself for the regulated payments wave, though adoption is still early.</p>
+        <p><strong>What it means:</strong> Even as crypto prices fall, infrastructure for stablecoin payments keeps attracting capital, a split between asset prices and plumbing.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/11/12/uk-bank-griffin-raises-usd20-million-to-expand-into-stablecoin-payments" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- UK Bank Griffin Raises $20 Million to Expand Into Stablecoin Payments</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Dan Ives (Yorkville Ives & Co) -- stays bullish on Nvidia post-Huang, cuts price target</strong></summary>
+      <div class="deal-body">
+        <p>Yorkville Ives & Co's Dan Ives cut his Nvidia (NVDA) price target but stayed bullish, Bloomberg reported, saying a post-Huang Nvidia evens the playing field in AI. He expects the next CEO from outside the company and sees demand intact despite the leadership shock.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-13/ives-cuts-nvidia-price-target-stays-bullish-post-huang-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Dan Ives Cuts Nvidia Price Target, But Stays Bullish Post-Huang</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nataliia Lipikhina (JPMorgan Private Bank) -- calls hyperscalers her strongest tech conviction</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan Private Bank's head of EMEA equity strategy Nataliia Lipikhina said hyperscalers are her strongest tech conviction as money rotates out of semiconductors, Bloomberg reported. She also flagged European equities and banks as attractive, a one-layer-up tilt in the AI trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-13/hyperscalers-are-strongest-tech-conviction-jpmorgan-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Hyperscalers Are Strongest Tech Conviction: JPMorgan Strategist</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Goldman Sachs strategists -- see the bull market surviving even as earnings growth halves</strong></summary>
+      <div class="deal-body">
+        <p>Goldman Sachs sees the S&P 500 rising 14% into 2027, MarketWatch reported, arguing earnings growth will nearly halve but stocks have already discounted much of the deceleration. The firm recommends focusing on companies still delivering strong growth as that becomes a scarce commodity.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/earnings-growth-is-set-to-peter-out-but-not-the-bull-market-says-goldman-sachs-heres-what-the-firm-recommends-bf409a6d?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Earnings Growth Is Set to Peter Out, But Not the Bull Market, Says Goldman Sachs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Manish Kabra (Societe Generale) -- favors AI users over builders on semi cyclicality</strong></summary>
+      <div class="deal-body">
+        <p>SocGen CIB chief US equity strategist Manish Kabra said he will focus on companies using AI rather than building it in 2027, Bloomberg reported, pointing to the yo-yo cyclicality of the semiconductor trade. His view routes capital toward adopters whose demand feeds back into the capex cycle.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-13/socgen-s-kabra-on-semiconductor-trade-ai-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- SocGen's Kabra: Semi Trade's Cyclicality Supports AI Users, Not Builders</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Dan Akarca (Callosum) -- sees Nvidia's AI chip share shrinking as rivals emerge</strong></summary>
+      <div class="deal-body">
+        <p>Callosum co-founder Dan Akarca said Nvidia (NVDA) stays dominant near term but its share is likely to decline as specialized AI chips emerge, Bloomberg reported. His firm's software routes tasks to the best-suited processors, a bet that the hardware monopoly erodes over time.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-13/nvidia-s-ai-chip-share-set-to-shrink-akarca-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia's AI Chip Share Set to Shrink: Akarca</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned After Huang's Exit, With Yorkville's Dan Ives Staying Bullish on Nvidia, JPMorgan's Nataliia Lipikhina Backing Hyperscalers and Goldman Seeing the S&P Up 14% on Cheap Valuations, Against SocGen's Manish Kabra Rotating to AI Users on Semi Cyclicality and Callosum's Dan Akarca Seeing Nvidia's Share Shrink</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the buildout outlives the founder):</strong> Yorkville's Dan Ives stays bullish and says Huang's exit evens the playing field, JPMorgan's Nataliia Lipikhina calls hyperscalers her strongest conviction, and Goldman sees the S&P up 14% on historically cheap big-tech valuations. Demand and financing engines keep running.</div>
+        <div class="bear"><strong>Bear (position for the share shift):</strong> SocGen's Manish Kabra rotates toward AI users over builders on the semi trade's yo-yo cyclicality, Callosum's Dan Akarca sees Nvidia's chip share shrinking as rivals emerge, and the leadership shock plus a looming US-China curb showdown widen the range of outcomes. The moat is being re-underwritten.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Huang ousted, Kress takes Nvidia; SpaceX-Tesla merger talks; AI rebound fades into CPI</td><td>Mixed</td><td>~71,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Bond rout, worst week since liberation day; Microsoft global outage; Goldman S&P +14% call</td><td>Cautious</td><td>~52,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Yields surge, biggest since 2022; Williams says inflation far too high; CPI test; Fed hike bets</td><td>Bearish</td><td>~44,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Nvidia founder-mode risk; Megaspeed and Alice Huang chip smuggling; US-China curb showdown</td><td>Bearish</td><td>~33,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC below $70k, 12-week low; $1.6B liquidations; ETF outflows; Nakamoto owes Kraken $165M</td><td>Bearish</td><td>~48,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood is defensive with pockets of hope. r/wallstreetbets split between the Huang shock and a possible SpaceX-Tesla megadeal as the AI rebound faded. r/stocks turned cautious on the bond rout, the Microsoft outage and Goldman's bullish 2027 call. r/investing leaned bearish on the biggest yield surge since 2022 and Williams calling inflation far too high. r/SecurityAnalysis stayed bearish on founder-mode risk and the widening chip-smuggling threads. r/CryptoCurrency was bearish as bitcoin broke $70,000 and leveraged treasuries buckled. The swing factor is today's CPI print and whether it steepens the rout or lets risk steady.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Strong Dollar and Rising Rates Drain Crypto and Leveraged Treasuries First</h2>
+    <p>Bitcoin cracked below $70,000 to a 12-week low as the dollar hit a 19-month high, CoinDesk reported, with liquidations topping $1.6 billion and treasury firms like Nakamoto and BTCS scrambling to keep loans healthy. The instinct is that crypto has its own narrative, so a bond-market selloff and a Fed inflation fight should not dictate where bitcoin trades. But when the dollar rallies and real rates rise, the most speculative and most leveraged assets drain first, which is why a Treasury rout can hit crypto harder than it hits stocks, and why levered holders get forced out before anyone else. Start with the discount rate. An asset with no cash flow, like bitcoin, derives its value entirely from expected future demand, so when risk-free yields rise, the opportunity cost of holding something that pays nothing goes up, pushing its price down. The first mechanism is the real-rate channel, where hawkish Fed talk from Williams and Daly lifts real yields, making cash and short Treasuries more attractive versus zero-yield speculative assets. The second mechanism is the dollar channel, where a stronger dollar, here at a 19-month high, raises the cost of dollar-denominated risk globally and pulls capital back toward US money markets, draining liquidity from the riskiest corners. The third mechanism is leverage, where treasury firms borrowed against their coins, so Nakamoto owing Kraken more than its market value and BTCS selling ether to protect a $64 million Aave loan show how falling prices trigger margin pressure that forces more selling. The fourth mechanism is the liquidation cascade, where futures positions get force-closed as prices drop, and $1.6 billion of liquidations feed a reflexive spiral that overshoots fundamentals. The fifth mechanism is the correlation regime, where in a risk-off tape driven by rates, bitcoin trades like a high-beta tech proxy rather than a hedge, so it falls with the AI selloff instead of offsetting it. The sixth mechanism is the flow channel, where ETF outflows, now over $1.5 billion for the year, remove a steady bid and amplify the downdraft as redemptions force sales into a thin market. The practical lesson for a market reader is that the macro backdrop sets the tide for the most speculative assets. When the dollar is rising and the Fed is fighting inflation, assets that depend purely on sentiment and are held with borrowed money are the first to be sold, because they offer no yield to cushion the rate move and their leverage magnifies every decline. Watch the dollar index and real yields alongside crypto prices, not just the coin charts, because in a rates-driven selloff the funding conditions, not the blockchain, decide the direction. The same logic flags which levered players are closest to the edge when the tide goes out.</p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/13/bitcoin-hits-12-week-low-as-dollar-rallies-on-interest-rate-outlook-liquidations-top-usd1-6-billion" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Hits 12-Week Low as Dollar Rallies, Liquidations Top $1.6 Billion</a></p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/13/bitcoin-firm-nakamoto-owes-kraken-usd165-million-more-than-its-entire-market-value" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Firm Nakamoto Owes Kraken $165 Million, More Than Its Entire Market Value</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck Next Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>CPI follow-through.</strong> After today's print caps the week, watch whether follow-up inflation and spending data confirm the hawkish turn or give dip buyers a reason to re-anchor the long end.</li>
+      <li><strong>Treasury rout.</strong> With yields posting their worst week since liberation day, watch whether issuance pressure and more Fed speakers extend the selloff or the move exhausts itself.</li>
+      <li><strong>Dollar and crypto.</strong> The dollar hit a 19-month high as bitcoin broke $70,000. Watch whether a strong dollar keeps draining speculative and leveraged assets.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Nvidia earnings.</strong> The chip giant reports next week in its first print under Colette Kress. Watch whether order books confirm demand or the leadership shock shows up in guidance.</li>
+      <li><strong>Consumer and retail.</strong> With spending softening, watch staples and discretionary prints for whether the consumer is pulling back under high prices.</li>
+    </ul>
+    <h3>Central Banks</h3>
+    <ul>
+      <li><strong>Global hawkish drift.</strong> Peru hiked, the ECB is weighing another move and the Fed leans toward more tightening. Watch whether the drift firms into coordinated action.</li>
+      <li><strong>BOJ and the yen.</strong> With the yen near 160 and Katayama warning on FX, watch for intervention signals and whether the BOJ lines up a December hike.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Trump-Xi summit.</strong> Huang's exit removes the top opponent of chip curbs ahead of the summit. Watch whether the meeting hardens or eases export controls.</li>
+      <li><strong>Oil surplus and the Strait.</strong> The IEA flagged the first surplus since the war began as Trump ruled out an Iran deal. Watch whether Gulf supply or shipping risk sets the price.</li>
+      <li><strong>Anthropic IPO.</strong> The blockbuster listing is the AI trade's second big test next week. Watch whether demand holds with Nvidia in transition.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how hyperscaler capex, prepayments and circular supplier backing feed the AI credit and spread picture.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Fri Nov 13, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-11-13 06:26 ET); Bloomberg Technology (20 fresh, newest 2026-11-13 06:46 ET); Bloomberg Economics (20 fresh, newest 2026-11-13 06:35 ET); CNBC Top News (2 fresh, newest 2026-11-12 17:17 ET); CNBC Finance (4 fresh, newest 2026-11-12 21:56 ET); CNBC Economy (3 fresh, newest 2026-11-13 06:31 ET); MarketWatch Top Stories (10 fresh, newest 2026-11-13 06:41 ET); WSJ Markets (18 fresh, newest 2026-11-13 06:27 ET); FT Home (11 fresh, newest 2026-11-13 06:33 ET); Matt Levine Money Stuff (1 fresh, newest 2026-11-12 13:35 ET); CoinDesk (25 fresh, newest 2026-11-13 06:52 ET); Stratechery (2 fresh, newest 2026-11-12 22:47 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. Who took over running Nvidia after Jensen Huang was ousted?</strong></p>
+      <span class="opt" data-opt="A">A. Lisa Su was poached from rival chipmaker AMD</span>
+      <span class="opt" data-opt="B">B. CFO Colette Kress stepped in as interim chief</span>
+      <span class="opt" data-opt="C">C. The board named an outside turnaround veteran</span>
+      <span class="opt" data-opt="D">D. Co-founder Chris Malachowsky returned to lead</span>
+      <div class="feedback"><strong>B is correct.</strong> Bloomberg reported the board installed CFO Colette Kress as interim CEO and Harvey Jones as chair after removing Huang. It was not an AMD poach, an outside hire, or a co-founder returning.</div>
+    </div>
+    <div class="q" data-correct="C">
+      <p><strong>2. Why did Treasury yields surge to their worst week since liberation day?</strong></p>
+      <span class="opt" data-opt="A">A. The Fed cut rates and signaled more easing ahead</span>
+      <span class="opt" data-opt="B">B. A failed Treasury auction froze the long end</span>
+      <span class="opt" data-opt="C">C. Hot inflation and hawkish Fed remarks lifted yields</span>
+      <span class="opt" data-opt="D">D. Foreign central banks dumped their dollar reserves</span>
+      <div class="feedback"><strong>C is correct.</strong> FT and Bloomberg reported higher-than-expected inflation and hawkish Fed remarks from Williams and Daly stung investors who bet the rout was over. It was not a cut, an auction failure, or reserve dumping.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What did the IEA say about the global oil market?</strong></p>
+      <span class="opt" data-opt="A">A. It swung to surplus as Gulf exports rebounded</span>
+      <span class="opt" data-opt="B">B. OPEC agreed deep production cuts for winter</span>
+      <span class="opt" data-opt="C">C. Hormuz shipping halted all Gulf crude exports</span>
+      <span class="opt" data-opt="D">D. US shale output collapsed on weak prices</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg and FT reported the IEA sees the first supply surplus since the Iran war began as Gulf exports recover, with Iraq's output at a six-year high. It was not an OPEC cut, a Hormuz halt, or a shale collapse.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "The brief Treasury haven bid reversed hard into the worst week since liberation day, with New York's John Williams calling inflation far too high, San Francisco's Mary Daly flagging more hikes and a hot CPI test looming, against Goldman seeing cheap hyperscaler valuations and dip buyers betting the surge overshot.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-13/treasury-yield-surge-shatters-hopes-worst-of-bond-rout-is-over", "take": "Investors warn the bond rout is not over after a week of soaring yields." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/7bebace2-dc87-410a-ae29-ffd9f3176def?syn-25a6b1a6=1", "take": "US Treasuries set for their worst week since Trump's liberation day." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-13/fed-s-williams-says-inflation-far-too-high-still-work-to-do", "take": "Williams says inflation remains far too high with work still to do." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/bond-yields-just-saw-their-biggest-surge-since-2022-as-expectations-grow-for-more-fed-rate-hikes-d0a4f195?mod=mw_rss_topstories", "take": "Bond yields see their biggest surge since 2022 on more hike bets." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-13/goldman-sees-s-p-500-rising-14-on-cheap-hyperscaler-valuations", "take": "Goldman sees cheap valuations supporting risk, an implied soft landing." }
+    ]
+  },
+  "iran": {
+    "diverge": "Global oil markets swung to their first surplus since the Iran war began as Gulf exports rebounded and Iraq's October output hit the highest since 2019, against Trump saying the US can forgo an Iran deal over the Strait and Ukrainian attacks squeezing Russian supply.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-13/global-oil-market-swings-to-surplus-on-gulf-exports-iea-says", "take": "Global oil market swings to surplus on Gulf exports, IEA says." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-13/iraq-october-oil-output-jumps-to-highest-since-2019-iea-says", "take": "Iraq's October oil output jumps to the highest since 2019." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/11/12/oil-prices-jump-after-trump-says-no-iran-deal-needed-weve-got-their-strait.html", "take": "Oil rises after Trump says no Iran deal needed: we've got their Strait." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-13/russia-s-economy-slows-as-ukrainian-attacks-damage-industry", "take": "Russia's economy slows as Ukrainian attacks damage industry and supply." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Jensen Huang is out and CFO Colette Kress runs Nvidia, splitting the AI trade into names that needed Huang's patronage and those that didn't, with Yorkville's Dan Ives staying bullish and JPMorgan's Nataliia Lipikhina backing hyperscalers, against Callosum's Dan Akarca seeing Nvidia's chip share shrink and FT calling his fall an indictment of founder mode.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-11-13/ives-cuts-nvidia-price-target-stays-bullish-post-huang-video", "take": "Dan Ives stays bullish post-Huang, says the exit evens the playing field." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-11-13/hyperscalers-are-strongest-tech-conviction-jpmorgan-video", "take": "JPMorgan's Lipikhina calls hyperscalers her strongest tech conviction." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/stocks/nvidia-shareholders-wont-miss-jensen-huang-for-long-13429e31?mod=rss_markets_main", "take": "Nvidia shareholders won't miss Jensen Huang for long." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-11-13/nvidia-s-ai-chip-share-set-to-shrink-akarca-video", "take": "Callosum's Akarca sees Nvidia's AI chip share set to shrink." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/83051c3a-cab4-4c66-89fc-ae7149047a25?syn-25a6b1a6=1", "take": "Huang's fall is an indictment of founder mode at Big Tech." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Nvidia","AMD","Broadcom","Microsoft","Tesla","TSMC"],
+    "values": [1.5, 1.0, 0.8, -2.0, 5.0, 1.5]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [71000, 52000, 44000, 33000, 48000],
+    "colors": ["neutral","neutral","bear","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["SpaceX-Tesla BTC","Dangote IPO Bids","Nakamoto Debt","DeepX Chip","Griffin Raise"],
+    "values": [2.1, 1.0, 0.165, 0.1, 0.02]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
