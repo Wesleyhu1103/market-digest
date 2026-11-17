@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Mon Nov 16, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-11-16</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Monday, November 16, 2026</h1>
+    <div class="meta">
+      <p>It's the start of a make-or-break week for the AI trade, with Nvidia earnings Tuesday and Anthropic's mega-IPO pricing Wednesday to trade Thursday. Tech stocks slid into the open as Treasury Secretary Bessent demanded a dramatic Nvidia shakeup and the FT reported Jensen Huang is quietly discussing a comeback. Bond traders eye this week's Fedspeak and FOMC minutes after the worst yield week since liberation day, while Goldman warns of a sizable 2027 oil surplus.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "The AI trade enters a pivotal week fragile and under pressure, with Nvidia set to report earnings Tuesday under interim CEO Colette Kress, Anthropic's blockbuster IPO pricing midweek, Treasury Secretary Scott Bessent demanding a dramatic leadership shakeup and ousted founder Jensen Huang reportedly weighing a comeback, leaving the market to decide whether the capex cycle is intact or a bubble is quietly deflating",
+      "framings": [
+        {"outlet": "Bloomberg", "headline": "Morgan Stanley Is Max Overweight Global Stocks on Intact AI Cycle", "angle": "Treats the selloff as a buying chance, calling 2027 the year to embrace risk.", "lean": 60, "pull": "The AI spending boom will make 2027 the year to embrace risk."},
+        {"outlet": "WSJ", "headline": "The Month That Rocked the AI Trade and Rewired Wall Street", "angle": "Frames an election U-turn and spy scandal as the end of the no-brainer investing era.", "lean": -30, "pull": "A frenetic stretch of trading halted the no-brainer investing era."},
+        {"outlet": "Financial Times", "headline": "Jensen Huang Discusses Comeback as Nvidia CEO With Allies", "angle": "Reports supporters lobbying the board to reinstate the founder, underscoring the leadership chaos.", "lean": -10, "pull": "Tech supporters lobby the chipmaker's board to reinstate its former head."},
+        {"outlet": "The Economist", "headline": "How Much the Market Falls If AI Is a Bubble That Bursts", "angle": "Cites Jason Furman's view that a pop most likely means a 25% broad-market drop.", "lean": -50, "pull": "If AI is a bubble that pops, the most likely scenario is a 25% drop."},
+        {"outlet": "CNBC", "headline": "Anthropic IPO Holds the Key to the Future of the AI Trade", "angle": "Casts the listing as the test of whether AI models can justify rich valuations.", "lean": -5, "pull": "The IPO is expected to price Wednesday and start trading Thursday."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Roughed-Up Bond Traders Catch a Small Bid Monday but Stay Braced for an Extended Hiking Cycle Into This Week's Fedspeak and FOMC Minutes, With Kansas City's Jeff Schmid Calling Inflation Too Hot and the Dollar Firm Against a 17 Rand, Versus Morgan Stanley Going Max Overweight on an Implied Soft Landing and Dip Buyers Fading Last Week's Surge</h3>
+      </div>
+      <p>After the worst Treasury week since liberation day, the long end caught a breather but not a reversal. WSJ reported US Treasury yields declined Monday while Fed rate-hike prospects stayed squarely in focus, with euro-zone bonds struggling for direction after last week's inflation-driven jump. Bloomberg said roughed-up bond traders fresh off a bruising week are looking to a slew of Fed speeches and the central bank's latest meeting minutes for clues, after the market ramped up bets on an extended cycle of hikes. The hawkish chorus kept building over the weekend. Bloomberg reported Kansas City Fed President Jeff Schmid said inflation is running too hot and policymakers have more work to do, echoing the Williams and Daly line that pushed yields up. The firm dollar is the pressure valve: Bloomberg noted South Africa's rand tested 17 per dollar as December hike expectations bolstered the greenback. The calmer read leans on positioning. Morgan Stanley strategists recommended a max overweight in global stocks, citing an intact AI capex cycle that extends resilient growth and earnings into 2027, an implied soft-landing case that argues last week's surge overshot. Monday's dip in yields gave fast money a small window to fade the move ahead of the minutes.</p>
+      <p>The bull read is yields pulling back Monday, dip buyers fading the surge and Morgan Stanley's max-overweight call implying no hard landing. The bear read is Schmid calling inflation too hot, the market pricing an extended hiking cycle and a firm dollar pressuring risk into the FOMC minutes.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the surge overshot):</strong> US yields declined Monday after last week's jump, dip buyers are fading the move into the FOMC minutes, and Morgan Stanley's max-overweight call bets an intact AI capex cycle keeps growth resilient. If the minutes read less hawkish than Fedspeak, the long end re-anchors.</div>
+        <div class="bear"><strong>Bear (position for more hikes):</strong> Schmid says inflation is running too hot with more work to do, the market has ramped up bets on an extended hiking cycle, and a firm dollar drove the rand toward 17. Roughed-up traders are bracing, not buying, into the Fedspeak and minutes.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-15/roughed-up-bond-traders-look-to-fedspeak-minutes-for-next-move" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Roughed-Up Bond Traders Eye Fedspeak, Minutes for Next Move</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Goldman Warns of a Sizable 2027 Oil Surplus That Drags Brent to $88 Next Year and $78 by Year-End as Physical Barrels Stay Well Supplied, Against Iran Striking a US Air Defense Site at Bahrain's Riffa Base for the Second Time in Three Days and Ukraine Hitting the Crimean Bridge in a Record Drone Attack</h3>
+      </div>
+      <p>The supply story keeps gaining weight even as the war premium refuses to disappear. Bloomberg reported Goldman Sachs warned the oil market faces a sizable surplus next year that will drag prices lower even as supply risks remain, with Brent futures expected to average $88 a barrel in 2027 and ease to $78 by year-end as the risk premium gradually normalizes. Bloomberg's oil desk noted crude fluctuated amid clear signs the physical market is well supplied, even with Middle East tensions threatening regional exports. The bears say one strike can reprice the barrel. Bloomberg reported Iran targeted Bahrain for the second time in three days, with the Revolutionary Guard launching six drones at the radar of a US air defense site at the Riffa base, while reiterating that a path to ending its conflict with the US remains open. The FT added Ukraine struck the Crimean Bridge in a record drone attack, with Russia's defense ministry claiming its largest interception since the war began, a reminder the conflict keeps feeding supply and inflation shocks. Japan's economy underlined the cost: CNBC reported it unexpectedly contracted in the third quarter as household energy subsidies lapsed and Iran-war oil prices bit. One camp sees surplus barrels capping crude; the other sees live shipping and refinery risk ready to snap the premium back.</p>
+      <p>The bull read is Goldman's sizable surplus call, Brent sliding toward $78 and physical barrels well supplied. The bear read is Iran hitting the Riffa base twice in three days, Ukraine's record drone strike on the Crimean Bridge and energy costs shrinking Japan's economy.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (surplus caps crude):</strong> Goldman sees a sizable 2027 surplus dragging Brent to an $88 average and $78 by year-end, the physical market is already well supplied, and falling oil is drawing global investors back into Indian stocks. Supply is overwhelming the war premium.</div>
+        <div class="bear"><strong>Bear (the premium can snap back):</strong> Iran hit the US radar at Bahrain's Riffa base for the second time in three days, Ukraine struck the Crimean Bridge in a record drone attack, and Japan's economy shrank as Iran-war energy costs bit. One headline can reprice the barrel overnight.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/videos/2026-11-16/goldman-warns-oil-market-faces-sizable-2027-surplus-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Goldman Warns Oil Market Faces Sizable 2027 Surplus</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>The AI Trade Enters a Pivotal Week Fragile and Under Pressure, With Nvidia Reporting Tuesday Under Interim CEO Colette Kress, Anthropic's IPO Pricing Midweek, Bessent Demanding a Dramatic Shakeup and Huang Weighing a Comeback, as Morgan Stanley Goes Max Overweight and JPMorgan Calls Nvidia Attractive, Against BlackRock's Jean Boivin Flagging a Buildout Slowdown and Jason Furman Warning of a 25% Crash</h3>
+      </div>
+      <p>The leadership mess is far from settled, and the week forces the market to reprice around it. Bloomberg reported a selloff in technology stocks carried into the new week as traders shunned risky bets ahead of Nvidia's (NVDA) high-stakes earnings Tuesday and Anthropic's expected debut, with emerging-market stocks plunging the most in over a week. Bloomberg said Treasury Secretary Scott Bessent urged Nvidia to make a dramatic leadership shakeup and come clean about its compliance with export controls, and hours later the FT reported ousted founder Jensen Huang is discussing a return with allies lobbying the board. The bulls say the capex cycle is intact. Morgan Stanley strategists went max overweight on global stocks, calling 2027 the year to embrace risk, and MarketWatch noted JPMorgan Asset Management still sees Nvidia attractive long term with a $280 median target well above the current price. The bears say the air is leaking out. Bloomberg reported BlackRock Investment Institute's Jean Boivin warned a slowdown in the buildout would have material real-economy impact, MarketWatch cited Jason Furman's view that a bursting AI bubble most likely means a 25% broad-market drop, and Stratechery ran an obituary arguing Huang's demise marked the end of Nvidia's long-term prospects and the AI bubble. The demand question gets answered Tuesday.</p>
+      <p>The bull read is Morgan Stanley's max-overweight call, JPMorgan's $280 Nvidia target and an intact capex cycle. The bear read is Boivin flagging a buildout slowdown, Furman's 25% crash scenario and the leadership chaos as Huang eyes a comeback.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the cycle is intact):</strong> Morgan Stanley went max overweight calling 2027 the year to embrace risk, JPMorgan Asset Management keeps a $280 Nvidia target far above spot, and global banks back AI-linked Asian currencies on sustained investment. Demand and financing engines keep running into earnings.</div>
+        <div class="bear"><strong>Bear (the air is leaking out):</strong> BlackRock's Jean Boivin warns a buildout slowdown would hit growth materially, Jason Furman sees a 25% market drop if the bubble pops, Stratechery calls Huang's fall the end of Nvidia's long-term prospects, and the founder is lobbying for a comeback amid a chip-curb showdown.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-16/morgan-stanley-max-overweight-global-stocks-on-intact-ai-cycle" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Morgan Stanley Is Max Overweight Global Stocks on AI Cycle</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Tech stocks slide and futures slip ahead of a pivotal week for the AI trade</strong></summary>
+      <div class="deal-body">
+        <p>A selloff in technology stocks carried into the new week, Bloomberg reported, as traders shunned risky bets ahead of Nvidia's (NVDA) earnings and Anthropic's expected debut. WSJ said stock futures slipped after fresh weakness in Asian AI stocks, with the chip giant down about 2% premarket.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-15/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tech Stocks Slide as Nvidia, Anthropic Tests Await</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>When Nvidia stumbled, equal-weight funds delivered the outperformance</strong></summary>
+      <div class="deal-body">
+        <p>The Nvidia (NVDA) slide handed equal-weight funds a rare win over cap-weighted indexes, WSJ reported, as the concentration that juiced returns on the way up became a liability on the way down. MarketWatch noted a big chunk of the average 401(k) is now invested in the single chipmaker.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/when-nvidia-stumbled-equal-weight-funds-delivered-96451c8f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- When Nvidia Stumbled, Equal-Weight Funds Delivered</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Morgan Stanley goes max overweight global stocks on an intact AI cycle</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley strategists recommended a max overweight position in global stocks, Bloomberg reported, calling 2027 the year to embrace risk on an AI spending boom that extends resilient growth. The call is one of the most bullish year-ahead outlooks so far and treats the selloff as a buying chance.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/why-morgan-stanley-says-its-time-to-go-max-overweight-on-stocks-bd33b103?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why Morgan Stanley Says It's Time to Go Max Overweight on Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Emerging-market stocks plunge the most in over a week before Nvidia results</strong></summary>
+      <div class="deal-body">
+        <p>Emerging-market stocks dropped the most in more than a week, Bloomberg reported, ahead of Nvidia's (NVDA) earnings as a rout in the firm's shares roiled the global AI trade. WSJ added Asian equities fell as the US chip selloff spilled over, with Taiwan's Taiex leading regional markets lower.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/emerging-market-stocks-currencies-ai-concerns" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Emerging Stocks Extend Slide as Tech Drops Before Nvidia Results</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Activist pushes Invitation Homes to sell houses one at a time</strong></summary>
+      <div class="deal-body">
+        <p>Land & Buildings is calling on single-family landlord Invitation Homes (INVH) to sell houses one at a time and buy back shares, WSJ reported, after a ban on large investors buying single-family homes threatens to cap its growth. The activist case puts a slow, retail-by-retail breakup in front of shareholders.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/business/deals/activist-calls-on-landlord-invitation-homes-to-sell-houses-one-at-a-time-a11169a1?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Activist Calls on Landlord Invitation Homes to Sell Houses One at a Time</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jaguar Land Rover parent posts its biggest drop since 2022 on an outlook cut</strong></summary>
+      <div class="deal-body">
+        <p>Shares of Tata Motors Passenger Vehicles posted their biggest one-day decline in more than four years, Bloomberg reported, after Jaguar Land Rover cut its profitability outlook and warned of a free-cash outflow for the year. The warning adds to signs of strain across weak luxury and auto demand.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/jaguar-parent-sees-biggest-drop-since-2022-after-outlook-cut" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Jaguar Parent Sees Biggest Drop Since 2022 After Outlook Cut</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Global investors return to Indian stocks as oil falls and AI trades crowd</strong></summary>
+      <div class="deal-body">
+        <p>Foreign investors are pouring funds back into Indian stocks, Bloomberg reported, as oil prices fall, earnings improve and money rotates out of crowded global AI trades. The flows are an early read on where capital hides when the mega-cap AI complex wobbles.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-16/global-investors-return-to-indian-stocks-after-ai-trade-woes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Global Investors Return to Indian Stocks After AI Trade Woes</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape hangs on two events that land this week. The bull case is Morgan Stanley's max-overweight call, JPMorgan's $280 Nvidia target and rotation into cheap non-AI value like India and equal-weight. The bear case is the tech selloff spilling across Asia, the Huang comeback chaos and Furman's 25% crash scenario. Watch whether Tuesday's Nvidia print and the Anthropic IPO confirm demand or expose the strain.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Single Stock's Stumble Hands Equal-Weight Funds the Win</summary>
+      <p>WSJ reported that when Nvidia stumbled, equal-weight funds suddenly outran the cap-weighted indexes that had crushed them for years, and MarketWatch noted a big chunk of the average 401(k) is now tied to that one chipmaker. The instinct is that a diversified index fund spreads your risk across hundreds of companies, so no single name should dictate your returns. But when one stock swells to a huge share of a cap-weighted index, the fund stops being diversified in any meaningful sense, which is why a stumble at the top can drag the whole market down and why an equal-weight version holds up better. Start with how the index is built. A cap-weighted fund like the S&P 500 holds each company in proportion to its market value, so as Nvidia ballooned toward the top by market cap, it came to represent an outsized slice of every dollar in the fund. The first mechanism is concentration, where the biggest winners automatically become the biggest positions, so the index quietly morphs into a bet on a handful of mega-caps rather than the broad economy. The second mechanism is the leverage to a single name, where a 10% move in a 7% index weight moves the whole fund about 0.7% on its own, before anything else trades. The third mechanism is the momentum loop, where inflows into index funds get allocated by weight, so money keeps buying the largest names and pushing their share even higher, amplifying the concentration until something breaks. The fourth mechanism is the reversal, where that same loop runs backward on the way down, as a stumble in the top name forces proportional selling and the concentration that juiced gains now magnifies losses. The fifth mechanism is the equal-weight contrast, where a fund that holds every company at the same weight has only a tiny stake in any one name, so a crash at the top barely dents it and the other 499 companies can carry the load. The sixth mechanism is the breadth signal, where equal-weight outperforming cap-weight tells you the rally had narrowed to a few names, and a broadening or a top-heavy break is underway. The practical lesson for a market reader is that a cap-weighted index fund is only as diversified as its concentration allows. When one stock dominates, you are running a concentrated bet whether you meant to or not, and the quiet risk shows up only when the leader falls. Check the top-five weight of any index you own, because that number tells you how much of your supposed diversification is actually a wager on a few giants. When equal-weight starts winning, the market is telling you leadership is cracking.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/when-nvidia-stumbled-equal-weight-funds-delivered-96451c8f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- When Nvidia Stumbled, Equal-Weight Funds Delivered</a></p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/the-scandal-at-nvidia-is-exactly-whats-wrong-with-the-s-p-500-7307457e?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- A Big Chunk of Your 401(k) Is Likely Invested in Nvidia</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Bessent says Nvidia's leadership needs a dramatic shakeup</strong></summary>
+      <div class="deal-body">
+        <p>Treasury Secretary Scott Bessent urged Nvidia (NVDA) to make a dramatic leadership shakeup and come clean about its compliance with export controls on its prized AI chips, Bloomberg reported. The pressure lands days after the board ousted Jensen Huang and just before the company's high-stakes earnings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-16/bessent-says-nvidia-leadership-needs-dramatic-shakeup-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bessent Says Nvidia Leadership Needs 'Dramatic Shakeup'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jensen Huang discusses a comeback as Nvidia CEO with allies</strong></summary>
+      <div class="deal-body">
+        <p>Ousted founder Jensen Huang has been discussing a return to Nvidia (NVDA) with allies, the FT reported, as tech supporters lobby the chipmaker's board to reinstate him after he resigned following an affair with an alleged Chinese spy. The twist keeps the leadership question wide open heading into earnings.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/45383d86-33c4-4d99-86e5-5e058d3567c1?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Jensen Huang Discusses Comeback as Nvidia CEO With Allies</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Anthropic IPO tests whether AI models can rival Nvidia's rich valuation</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic's IPO is expected to price Wednesday and start trading Thursday, Bloomberg reported, testing whether a pure AI-model company can command valuations as rich as Nvidia's (NVDA). WSJ said the offering is drawing FOMO-driven retail interest even as some investors stay cool on the AI complex.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/newsletters/2026-11-16/anthropic-ipo-tests-whether-ai-models-can-rival-nvidia-s-rich-valuation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Anthropic IPO Tests Whether AI Models Can Rival Nvidia's Rich Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BlackRock's Boivin warns an AI buildout slowdown would hit US growth</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock Investment Institute head Jean Boivin said uncertainty about AI adoption and its eventual payoff is becoming harder to set aside, Bloomberg reported, warning that any slowdown in the buildout would have material real-economy impact. Markets and the economy, he said, move quite closely together.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-16/blackrock-sees-risk-of-ai-slowdown-impacting-us-growth-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BlackRock Sees Risk of AI Buildout Slowdown Impacting US Growth</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Barr warns AI agents could fuel future bank runs</strong></summary>
+      <div class="deal-body">
+        <p>Fed Governor Michael Barr warned that autonomous AI agents could speed destabilizing stampedes out of banks, Bloomberg reported, potentially accelerating runs that unfold in seconds. He noted major banks are already detecting AI agents attempting unauthorized actions in retail accounts.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/fed-s-barr-says-ai-agents-could-fuel-future-bank-runs" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed's Barr Says AI Agents Could Fuel Future Bank Runs</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US reportedly eyeing tougher curbs on China's chip access</strong></summary>
+      <div class="deal-body">
+        <p>The US is weighing tougher export curbs on China's access to AI chips, Bloomberg reported, a move that gains momentum now that Huang, the industry's top opponent of such controls, is gone. Separately, the WSJ reported Washington plans to name Nvidia (NVDA) and OpenAI as AI national champions to expand overseas.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-16/the-china-show-11-16-2026-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Reportedly Eyeing Tougher Curbs on China Chip Access</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Baidu posts a sixth straight sales drop as the AI drag persists</strong></summary>
+      <div class="deal-body">
+        <p>Baidu (BIDU) posted its sixth consecutive quarterly revenue decline, Bloomberg reported, underscoring the urgency of commercializing AI to offset a faltering legacy search business. The result is a reminder that AI spending does not automatically translate into top-line growth.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/baidu-posts-sixth-straight-sales-drop-after-ai-drag-persists" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Baidu Posts Sixth Straight Sales Drop After AI Drag Persists</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Monday November 16, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal of demand intact is Morgan Stanley's max-overweight call and JPMorgan's $280 Nvidia target. The counter-signal is Boivin's buildout-slowdown warning, Baidu's sixth sales drop, the CoreWeave premarket slide and Bessent's demand for a shakeup. The near-term tell is whether Tuesday's Nvidia print and the Anthropic IPO confirm order books or expose the financing strain beneath the AI complex.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Roughed-up bond traders look to Fedspeak and minutes for the next move</strong></summary>
+      <div class="deal-body">
+        <p>Bond traders fresh off a bruising week will look to a slew of Fed speeches and the central bank's latest meeting minutes for clues, Bloomberg reported, after the market ramped up expectations for an extended cycle of hikes. The week sets up as a test of whether the hawkish repricing sticks.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-15/roughed-up-bond-traders-look-to-fedspeak-minutes-for-next-move" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Roughed-Up Bond Traders Eye Fedspeak, Minutes for Next Move</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US Treasury yields decline but Fed rate-hike prospects stay in focus</strong></summary>
+      <div class="deal-body">
+        <p>US Treasury yields fell Monday following last week's significant increases, WSJ reported, while euro-zone government bonds struggled for direction. The pullback offered dip buyers a window, but the hawkish Fed repricing from inflation data and official comments still dominates the outlook.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/u-s-treasury-yields-decline-but-fed-rate-hike-prospects-in-focus-1257629b?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- U.S. Treasury Yields Decline but Fed Rate-Hike Prospects in Focus</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Schmid says inflation is too hot with more work to do</strong></summary>
+      <div class="deal-body">
+        <p>Kansas City Fed President Jeff Schmid said inflation is running too hot and policymakers have more work to do, Bloomberg reported. The comment adds another hawkish voice behind the market's shift toward pricing an extended hiking cycle rather than the cuts expected earlier this year.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-15/schmid-says-fed-has-more-work-to-do-to-bring-down-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Schmid Says Fed Has More Work to Do to Bring Down Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>China's slowdown deepens in October as output, sales and investment miss</strong></summary>
+      <div class="deal-body">
+        <p>China's growth weakened across the board in October, Bloomberg reported, as investment unexpectedly worsened while consumption and industrial output undershot estimates. CNBC noted a deepening reliance on external demand leaves China more exposed to shocks abroad as its latest stimulus has yet to feed through.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/16/china-retail-sales-october-industrial-output-investment.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- China's Slowdown Deepens in October as Output, Sales, Investment Miss</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Japan's economy unexpectedly contracts as energy costs bite</strong></summary>
+      <div class="deal-body">
+        <p>Japan's economy shrank for the first time in a year, Bloomberg reported, as bad weather and lapsed household energy subsidies weighed on consumption. CNBC noted the subsidy expiry exposed the economy to the higher energy prices brought on by the Iran war, highlighting fragile domestic demand.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/16/japan-q3-gdp-energy-oil-prices.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Japan's Economy Unexpectedly Contracts in Third Quarter as Energy Costs Bite</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB's Vujcic warns AI and high debt threaten financial stability</strong></summary>
+      <div class="deal-body">
+        <p>ECB Vice President Boris Vujcic said rapid AI expansion and elevated public debt pose the biggest risks to euro-zone financial stability, Bloomberg reported. He added that market bets on an ECB hike in 2027 do not seem unreasonable, extending the global hawkish drift into Europe.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/ecb-s-vujcic-warns-ai-and-high-debt-threaten-financial-stability" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Vujcic Warns AI and High Debt Threaten Financial Stability</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BOJ's leading hawk calls for a nimble approach to raising rates</strong></summary>
+      <div class="deal-body">
+        <p>The BOJ's most hawkish board member, Hajime Takata, said authorities must be nimble in responding to economic conditions, Bloomberg reported, adjusting the scale and pace of rate increases now that the economy is normalizing. Swiss forecasters also brought forward SNB hike bets to mid-2027.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/boj-leading-hawk-hajime-takata-nimble-approach-raising-key-rate" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BOJ's Leading Hawk Calls for Nimble Approach to Raising Key Rate</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (November 16, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to yields declining Monday and Morgan Stanley's max-overweight soft-landing view implying last week's surge overshot. The bear side points to Schmid calling inflation too hot, the market pricing an extended hiking cycle and a firm dollar. The swing factor is this week's Fedspeak and FOMC minutes: a hawkish read extends the global tightening drift, a softer one lets dip buyers re-anchor the long end.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Weak China and a Shrinking Japan Still Point to Higher Global Rates</summary>
+      <p>China's growth weakened across the board in October and Japan's economy unexpectedly contracted, yet the global rates story is still about hikes, not cuts. The instinct is that soft data from the world's second and fourth-largest economies should pull yields down everywhere, because weak demand usually means lower inflation and easier policy. But this cycle is splitting along two axes, growth and inflation, and when the inflation side dominates, central banks keep tightening even as parts of the global economy sag, which is why a weak China and a shrinking Japan can coexist with a hawkish Fed and rising yields. Start with what is driving the weakness. Bloomberg reported China's investment worsened and consumption undershot despite Beijing's stimulus, while CNBC noted Japan's contraction came largely from lapsed energy subsidies that exposed households to Iran-war oil prices. The first mechanism is the supply-shock channel, where higher energy costs act like a tax that both slows growth and lifts inflation, so the data looks weak on output but hot on prices, and central banks respond to the prices. The second mechanism is the policy divergence, where China's PBOC is draining medium-term funds to warn off easing bets even as growth slows, prioritizing financial stability over stimulus. The third mechanism is the inflation stickiness abroad, where the Fed's Schmid, the ECB's Vujcic and the BOJ's Takata all signal more tightening because their inflation fights are not finished, regardless of a soft patch elsewhere. The fourth mechanism is the currency feedback, where a firm dollar on hike expectations pressures emerging currencies like the rand toward 17, importing inflation into those economies and forcing their central banks to stay tight too. The fifth mechanism is the capital rotation, where money leaving a weak China and crowded AI trades flows into markets like India, as Bloomberg reported, rather than into global duration. The sixth mechanism is the term-premium effect, where elevated public debt that Vujcic flagged keeps long yields high no matter the growth signal, because investors demand compensation for the supply of bonds. The practical lesson for a market reader is to separate growth from inflation when you read global data. Weak output abroad is not automatically dovish for rates when a supply shock is lifting prices and central banks are still fighting inflation. Watch what officials say about prices, not just what the GDP prints show, because in a supply-driven cycle the inflation mandate overrides the growth wobble, and yields follow the mandate.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/china-s-economy-weakens-more-than-forecast-despite-stimulus-push" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- China's Economy Disappoints With New Stimulus Yet to Kick In</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-15/schmid-says-fed-has-more-work-to-do-to-bring-down-inflation" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Schmid Says Fed Has More Work to Do to Bring Down Inflation</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Treasury yields pulled back Monday after the worst week since liberation day, but bond traders stay braced for an extended hiking cycle with Schmid calling inflation too hot, against Morgan Stanley's max-overweight call and dip buyers fading the surge into the FOMC minutes. Goldman warns of a sizable 2027 oil surplus dragging Brent toward $78 as physical barrels stay well supplied, against Iran hitting Bahrain's Riffa base twice in three days and Ukraine's record strike on the Crimean Bridge. The AI trade enters a pivotal week fragile, with Nvidia reporting Tuesday under Kress, Anthropic's IPO midweek and Huang eyeing a comeback, as Morgan Stanley and JPMorgan stay bullish against BlackRock's Boivin and Furman's 25% crash warning; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above the prior close, bull confirmed; a further drop of 3% or more, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 11/16</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 11/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 11/18</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 11/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 11/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin slips after rebounding from a July low that triggered $2 billion in liquidations</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin was down 1.6% at around $64,300, CoinDesk reported, after falling to $62,100 on Sunday, its lowest since July 14, as a weekend flush wiped out roughly $2 billion in leveraged positions. Traders are now waiting on Nvidia's earnings and the FOMC minutes for direction.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/16/bitcoin-slips-to-usd64-000-after-usd2-billion-weekend-flush" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Slips After Rebounding From July 14 Low That Triggered $2 Billion of Liquidations</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin posts a sixth straight weekly loss as tech and metals slide</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin posted its sixth consecutive weekly loss, CoinDesk reported, as a strong dollar and elevated Treasury yields pressured risk assets. Treasury firms Strategy and Strive fell sharply in premarket trading, extending the leverage stress running through crypto proxies.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/11/16/live-news-bitcoin-posts-sixth-weekly-loss-as-tech-stocks-and-metals-slide" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Posts Sixth Weekly Loss as Tech Stocks and Metals Slide</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin's biggest options bet is now a drop below $60,000</strong></summary>
+      <div class="deal-body">
+        <p>The $60,000 put has replaced the $100,000 call as bitcoin's biggest options bet on Deribit, CoinDesk reported, with $900 million in open interest after the recent slide. The shift in positioning shows traders bracing for more downside rather than a fresh rally.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/16/bitcoin-s-biggest-bet-is-now-a-drop-below-usd60-000-not-a-rally-above-usd100-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin's Biggest Bet Is Now a Drop Below $60,000, Not a Rally Above $100,000</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>XRP crashes to its lowest since November 2024 as money leaves crypto</strong></summary>
+      <div class="deal-body">
+        <p>XRP tanked to its lowest level since November 2024, CoinDesk reported, as ETF outflows and shrinking stablecoin supply added to pressure across crypto markets. The move underscores how the rates-driven risk-off tape is draining the most speculative corners first.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/15/xrp-crashes-to-its-lowest-since-november-2024-as-money-leaves-crypto" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- XRP Crashes to Its Lowest Since November 2024 as Money Leaves Crypto</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin miners were hijacked and their block rewards redirected to an attacker</strong></summary>
+      <div class="deal-body">
+        <p>Mining firm Luxor said just over a dozen customers had their machines hijacked and BTC rewards redirected to an attacker's pool, CoinDesk reported, and will be reimbursed. The incident highlights operational security risk beyond the price swings hitting the sector.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/tech/2026/11/16/bitcoin-miners-were-hijacked-and-their-btc-rewards-redirected-to-an-attacker" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Miners Were Hijacked and Their BTC Rewards Redirected to an Attacker</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Trump administration to name Nvidia, OpenAI and others as AI national champions</strong></summary>
+      <div class="deal-body">
+        <p>The Trump administration plans to name Nvidia (NVDA), OpenAI and several others as US AI national champions, CoinDesk reported, citing the WSJ, in a move meant to help them expand overseas and compete with global rivals. Nothing has been confirmed, and the list ties into the broader chip-curb showdown.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/16/trump-administration-to-name-nvidia-openai-and-several-others-as-u-s-ai-national-champions" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Trump Administration to Name Nvidia, OpenAI and Several Others as AI National Champions</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Anthropic -- Mega-IPO Set to Price Wednesday and Trade Thursday in a Test of AI Valuations</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Anthropic's IPO is expected to price Wednesday and start trading Thursday, Bloomberg reported, in a test of whether a pure AI-model company can command valuations as rich as Nvidia's.</p>
+        <p><strong>Outlook:</strong> WSJ said venture firms, top tech companies and sovereign-wealth funds are poised for windfalls, with FOMO-driven retail demand meeting cooler institutional caution.</p>
+        <p><strong>What it means:</strong> The listing is the AI trade's second big test this week, and a soft print would amplify FT data showing this year's ten biggest IPOs down more than 20% on average.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/investing/the-investors-set-to-win-big-in-anthropics-ipo-a2fc795c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- The Investors Set to Win Big in Anthropic's IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Canadian Natural -- Buys Advantage Energy for C$2.255 Billion Amid an Oil Deal Boom</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Canadian Natural Resources (CNQ) agreed to acquire Advantage Energy for C$2.255 billion, about $1.6 billion, Bloomberg reported, adding to a string of deals in Canada's oil and gas industry.</p>
+        <p><strong>Outlook:</strong> Middle East and Ukraine conflicts are boosting demand for alternative supplies, supporting a wave of consolidation across Alberta assets.</p>
+        <p><strong>What it means:</strong> Energy M&A is firming up even as Goldman warns of a 2027 surplus, a bet that scale and reserves pay off through the cycle.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/canadian-natural-buys-advantage-energy-to-boost-alberta-assets" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Canadian Natural to Buy Advantage Energy Amid Oil Price Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MTN / Telkom -- Africa's Biggest Carrier Revives Talks to Buy South Africa's Telkom</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Telkom SA surged to a seven-year high after saying it is in talks with MTN Group that may result in Africa's biggest wireless carrier buying all its shares, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> A cash-and-share deal would reshape South Africa's telecom landscape, though regulatory review of a combined dominant carrier looms.</p>
+        <p><strong>What it means:</strong> Emerging-market consolidation keeps drawing capital outside the AI complex, broadening the deal pipeline beyond tech.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/mtn-holds-talks-to-buy-south-africa-s-telkom-in-cash-share-deal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Telkom Surges to Seven-Year High as MTN Revives Buyout Talks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Pure Data Centres -- GIC and Saudi Telecom Among Final Bidders for a UK Stake</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Singapore's GIC and Saudi Telecom are among the final bidders competing for a stake in UK developer Pure Data Centres Group, Bloomberg reported, citing people familiar.</p>
+        <p><strong>Outlook:</strong> Sovereign and strategic capital keeps chasing data-center assets even as AI equities wobble, treating the physical buildout as a longer-horizon bet.</p>
+        <p><strong>What it means:</strong> The split between falling AI stock prices and steady infrastructure demand is widening, with private money still underwriting the plumbing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/singapore-wealth-fund-saudi-telecom-bid-for-uk-s-pure-data-centres-stake" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Singapore Wealth Fund, Saudi Telecom Bid for UK's Pure Data Centres Stake</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Actis Data Center -- $488 Million Malaysian Loan Syndication Paused in a Rare Delay</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> A $488 million loan for a Malaysian data-center project backed by private equity firm Actis has been delayed while being marketed to other lenders, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The rare pause hints that financing conditions for AI infrastructure are tightening as rates stay high and lenders grow selective.</p>
+        <p><strong>What it means:</strong> It is an early sign that the capital feeding the buildout may not be as frictionless as the demand story implies.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/asian-data-center-loan-syndication-is-delayed-in-rare-deal-pause" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Asian Data Center Loan Syndication Is Delayed in Rare Deal Pause</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Morgan Stanley strategists -- go max overweight global stocks on an intact AI cycle</strong></summary>
+      <div class="deal-body">
+        <p>Morgan Stanley strategists recommended a max overweight position in global stocks, Bloomberg reported, calling 2027 the year to embrace risk on an AI spending boom that extends resilient growth and earnings. It is one of the most bullish year-ahead outlooks on the Street so far.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-16/morgan-stanley-max-overweight-global-stocks-on-intact-ai-cycle" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Morgan Stanley Is Max Overweight Global Stocks on AI Cycle</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan Asset Management -- says Nvidia stays attractive with a $280 median target</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan Asset Management argues Nvidia (NVDA) can avoid the fate of most stocks that peaked by market cap, MarketWatch reported, with a median analyst target of $280 well above the current price. The firm points to cashflow and a debt profile that are the envy of all AI companies.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/why-nvidia-can-avoid-the-fate-of-most-stocks-that-reached-the-apex-by-market-cap-according-to-one-strategist-461e33be?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Why Nvidia Can Avoid the Fate of Most Stocks That Reached the Apex by Market Cap</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jean Boivin (BlackRock Investment Institute) -- warns a buildout slowdown would hit growth</strong></summary>
+      <div class="deal-body">
+        <p>BlackRock Investment Institute head Jean Boivin said uncertainty about AI adoption and its payoff is getting harder to ignore, Bloomberg reported, warning any slowdown in the buildout would have material real-economy impact. Markets and the economy, he said, move quite closely together.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-16/blackrock-sees-risk-of-ai-slowdown-impacting-us-growth-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BlackRock Sees Risk of AI Buildout Slowdown Impacting US Growth</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Jason Furman (former White House economist) -- sees a 25% market drop if AI is a bubble</strong></summary>
+      <div class="deal-body">
+        <p>Former White House economist Jason Furman said that if AI is a bubble that pops, the most likely scenario is a 25% drop in the broader market, MarketWatch reported. The estimate frames the downside investors are weighing against the bulls' intact-cycle case.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/heres-how-much-the-stock-market-could-crumble-if-ai-is-a-bubble-that-bursts-according-to-former-white-house-economist-3a4c15e1?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- How Much the Stock Market Could Crumble if AI Is a Bubble That Bursts</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>James Anderson (Lingotto) -- warns success and fame undermine tech leaders</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia and Tesla investor James Anderson of Lingotto said the superstar status of executives affects tech founders' personal lives and their companies, the FT reported. His comment reads as a caution on founder-mode risk after Huang's fall, even as he stays invested in the names.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/5b39e975-b9f5-4ff9-a7d2-ce6a30c4fdbd?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- 'Success and Fame' Undermine Tech Leaders, Warns Nvidia and Tesla Investor</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Is Positioned Into Nvidia Earnings and the Anthropic IPO, With Morgan Stanley Max Overweight and JPMorgan Asset Management Backing a $280 Nvidia Target, Against BlackRock's Jean Boivin Flagging a Buildout Slowdown, Jason Furman Modeling a 25% Crash and Lingotto's James Anderson Warning on Founder-Mode Risk</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the cycle is intact):</strong> Morgan Stanley went max overweight calling 2027 the year to embrace risk, JPMorgan Asset Management keeps a $280 Nvidia target citing enviable cashflow, and global banks back AI-linked Asian currencies. The buildout and financing engines keep running into earnings.</div>
+        <div class="bear"><strong>Bear (position for the air leaking out):</strong> BlackRock's Jean Boivin warns a buildout slowdown would hit growth materially, Jason Furman models a 25% market drop if the bubble pops, and Lingotto's James Anderson flags founder-mode risk as Huang lobbies for a comeback. The range of outcomes is widening fast.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Nvidia earnings Tuesday; Huang comeback talks; Anthropic IPO FOMO; tech selloff into the week</td><td>Mixed</td><td>~74,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Morgan Stanley max overweight vs. Furman's 25% crash; equal-weight funds outperform; Nvidia in 401(k)s</td><td>Cautious</td><td>~55,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Bond traders eye Fedspeak and FOMC minutes; Schmid says inflation too hot; firm dollar</td><td>Bearish</td><td>~46,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>Bessent demands Nvidia shakeup; BlackRock buildout-slowdown risk; Baidu sixth sales drop</td><td>Bearish</td><td>~34,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC to $62k, sixth weekly loss; $2B weekend flush; $60k put biggest bet; XRP two-year low</td><td>Bearish</td><td>~51,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood is defensive heading into two binary events. r/wallstreetbets split between Nvidia earnings, the Huang comeback soap opera and Anthropic IPO FOMO. r/stocks turned cautious on Morgan Stanley's max-overweight call clashing with Furman's crash scenario and the equal-weight outperformance. r/investing leaned bearish on the hawkish Fedspeak and firm dollar. r/SecurityAnalysis stayed bearish on Bessent's demand and the buildout-slowdown warnings. r/CryptoCurrency was bearish as bitcoin posted a sixth weekly loss and XRP hit a two-year low. The swing factor is Tuesday's Nvidia print and whether Anthropic's IPO holds.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Strong Dollar and Rising Yields Drain Crypto and Leveraged Treasuries First</h2>
+    <p>Bitcoin fell to $62,100 on Sunday, its lowest since July, CoinDesk reported, as a strong dollar and elevated Treasury yields pressured risk assets, a weekend flush wiped out $2 billion of leveraged bets, and treasury proxies Strategy and Strive slid in premarket. The instinct is that crypto has its own narrative, so a bond-market selloff and a hawkish Fed should not dictate where bitcoin trades. But when the dollar rallies and real yields rise, the most speculative and most leveraged assets drain first, which is why a rates shock can hit crypto harder than it hits stocks, and why levered holders get forced out before anyone else. Start with the discount rate. An asset with no cash flow, like bitcoin, derives its value entirely from expected future demand, so when risk-free yields rise, the opportunity cost of holding something that pays nothing goes up, pushing its price down. The first mechanism is the real-rate channel, where hawkish Fed talk from Schmid and the market pricing an extended hiking cycle lift real yields, making cash and short Treasuries more attractive versus zero-yield speculative assets. The second mechanism is the dollar channel, where a firm dollar, here driving the rand toward 17, raises the cost of dollar-denominated risk globally and pulls capital back toward US money markets, draining liquidity from the riskiest corners. The third mechanism is leverage, where traders and treasury firms borrow against their coins, so a weekend flush that liquidates $2 billion of positions shows how falling prices trigger margin calls that force more selling. The fourth mechanism is the liquidation cascade, where futures positions get force-closed as prices drop, feeding a reflexive spiral that overshoots fundamentals, which is why bitcoin briefly touched $62,100 before bouncing. The fifth mechanism is the correlation regime, where in a risk-off tape driven by rates, bitcoin trades like a high-beta tech proxy rather than a hedge, so it falls alongside the AI selloff instead of offsetting it. The sixth mechanism is the flow channel, where ETF outflows and shrinking stablecoin supply, the same forces dragging XRP to a two-year low, remove a steady bid and amplify the downdraft as redemptions force sales into a thin market. The practical lesson for a market reader is that the macro backdrop sets the tide for the most speculative assets. When the dollar is rising and the Fed is fighting inflation, assets that depend purely on sentiment and are held with borrowed money are the first to be sold, because they offer no yield to cushion the rate move and their leverage magnifies every decline. Watch the dollar index and real yields alongside crypto prices, not just the coin charts, because in a rates-driven selloff the funding conditions, not the blockchain, decide the direction. The options market agrees: the $60,000 put is now the biggest bet on Deribit, replacing the $100,000 call.</p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/16/bitcoin-slips-to-usd64-000-after-usd2-billion-weekend-flush" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Slips After Rebounding From July 14 Low That Triggered $2 Billion of Liquidations</a></p>
+    <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/16/bitcoin-s-biggest-bet-is-now-a-drop-below-usd60-000-not-a-rally-above-usd100-000" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin's Biggest Bet Is Now a Drop Below $60,000, Not a Rally Above $100,000</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck This Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>FOMC minutes.</strong> With bond traders braced for an extended hiking cycle, watch whether the minutes read as hawkish as recent Fedspeak or give dip buyers a reason to re-anchor the long end.</li>
+      <li><strong>Fedspeak flood.</strong> After Schmid, Williams and Daly leaned hawkish, watch the week's slate of Fed speakers for whether a December hike hardens into consensus.</li>
+      <li><strong>Dollar and crypto.</strong> The dollar stayed firm as bitcoin posted a sixth weekly loss and XRP hit a two-year low. Watch whether a strong dollar keeps draining speculative and leveraged assets.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Nvidia earnings Tuesday.</strong> The first print under interim CEO Colette Kress, amid a Huang comeback saga and Bessent's shakeup demand. Watch whether order books confirm demand or guidance shows the strain.</li>
+      <li><strong>AI read-through.</strong> With Baidu posting a sixth sales drop and BlackRock flagging a buildout slowdown, watch any hyperscaler commentary on capex pace and payoff.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Anthropic IPO.</strong> Pricing Wednesday, trading Thursday, the AI trade's second big test. Watch whether demand holds given this year's ten biggest IPOs are down over 20% on average.</li>
+      <li><strong>Energy M&A.</strong> Canadian Natural's Advantage deal and MTN-Telkom talks keep non-AI dealmaking alive. Watch whether the pipeline broadens as AI valuations wobble.</li>
+    </ul>
+    <h3>Central Banks</h3>
+    <ul>
+      <li><strong>Global hawkish drift.</strong> The ECB's Vujcic called 2027 hike bets reasonable and SNB forecasters moved up their call. Watch whether the drift firms into coordinated tightening.</li>
+      <li><strong>BOJ and the yen.</strong> With Takata urging a nimble approach and Japan's economy contracting, watch for signals on a December hike.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Trump-Xi-Putin diplomacy.</strong> A high-stakes week of Asian summits with chip curbs in focus as Washington weighs tougher China controls. Watch whether export policy hardens or eases.</li>
+      <li><strong>Iran and the Strait.</strong> Tehran hit Bahrain's Riffa base twice in three days while staying open to a deal. Watch whether shipping risk or Goldman's surplus call sets the oil price.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how hyperscaler capex, data-center financing and circular supplier backing feed the AI credit and spread picture.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Mon Nov 16, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-11-16 06:38 ET); Bloomberg Technology (19 fresh, newest 2026-11-16 06:51 ET); Bloomberg Economics (19 fresh, newest 2026-11-16 07:00 ET); CNBC Top News (2 fresh, newest 2026-11-16 07:00 ET); CNBC Finance (2 fresh, newest 2026-11-15 22:53 ET); CNBC Economy (1 fresh, newest 2026-11-15 21:56 ET); MarketWatch Top Stories (10 fresh, newest 2026-11-16 06:15 ET); WSJ Markets (14 fresh, newest 2026-11-16 06:25 ET); FT Home (12 fresh, newest 2026-11-16 06:47 ET); CoinDesk (14 fresh, newest 2026-11-16 06:47 ET); Stratechery (1 fresh, newest 2026-11-16 06:02 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Stale feeds (no items in window): Matt Levine Money Stuff (20 fetched, 0 in last 36h) Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. What did Goldman Sachs say about the oil market for 2027?</strong></p>
+      <span class="opt" data-opt="A">A. OPEC would deepen cuts to defend $100 crude</span>
+      <span class="opt" data-opt="B">B. Supply risks would push Brent above $110</span>
+      <span class="opt" data-opt="C">C. A sizable surplus would drag Brent toward $78</span>
+      <span class="opt" data-opt="D">D. Demand would outstrip supply through year-end</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported Goldman sees a sizable 2027 surplus, with Brent averaging $88 and easing to $78 by year-end as the risk premium normalizes. It was not an OPEC cut, a surge above $110, or a demand squeeze.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did Treasury Secretary Scott Bessent demand of Nvidia?</strong></p>
+      <span class="opt" data-opt="A">A. A dramatic shakeup and export-control transparency</span>
+      <span class="opt" data-opt="B">B. An immediate halt to all China chip sales</span>
+      <span class="opt" data-opt="C">C. The reinstatement of founder Jensen Huang</span>
+      <span class="opt" data-opt="D">D. A spinoff of its data-center financing arm</span>
+      <div class="feedback"><strong>A is correct.</strong> Bloomberg reported Bessent urged Nvidia to make a dramatic leadership shakeup and come clean on export-control compliance. He did not demand a China sales halt, Huang's return, or a spinoff.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>3. Why did equal-weight funds outperform when Nvidia stumbled?</strong></p>
+      <span class="opt" data-opt="A">A. They held more bonds to cushion the equity drop</span>
+      <span class="opt" data-opt="B">B. They hold each company at a smaller fixed weight</span>
+      <span class="opt" data-opt="C">C. They had shorted the chipmaker before the slide</span>
+      <span class="opt" data-opt="D">D. They avoided technology stocks almost entirely</span>
+      <div class="feedback"><strong>B is correct.</strong> WSJ reported equal-weight funds hold each company at the same small weight, so a stumble in one mega-cap barely dents them. They did not add bonds, short Nvidia, or avoid tech altogether.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Treasury yields pulled back Monday after the worst week since liberation day, but bond traders stay braced for an extended hiking cycle into this week's Fedspeak and FOMC minutes, with Kansas City's Jeff Schmid calling inflation too hot and the dollar firm, against Morgan Stanley going max overweight on an implied soft landing and dip buyers fading the surge.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-15/roughed-up-bond-traders-look-to-fedspeak-minutes-for-next-move", "take": "Roughed-up bond traders eye Fedspeak and minutes after ramping up hike bets." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-15/schmid-says-fed-has-more-work-to-do-to-bring-down-inflation", "take": "Schmid says inflation is too hot with more work to do." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/u-s-treasury-yields-decline-but-fed-rate-hike-prospects-in-focus-1257629b?mod=rss_markets_main", "take": "US Treasury yields decline Monday after last week's jump." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-16/south-africa-s-rand-tests-17-per-dollar-as-political-risks-rise", "take": "Rand tests 17 per dollar as December hike bets bolster the dollar." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-16/morgan-stanley-max-overweight-global-stocks-on-intact-ai-cycle", "take": "Morgan Stanley max overweight implies a soft landing and resilient growth." }
+    ]
+  },
+  "iran": {
+    "diverge": "Goldman warns of a sizable 2027 oil surplus that drags Brent to $88 next year and $78 by year-end as physical barrels stay well supplied, against Iran striking a US air defense site at Bahrain's Riffa base for the second time in three days and Ukraine hitting the Crimean Bridge in a record drone attack.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-11-16/goldman-warns-oil-market-faces-sizable-2027-surplus-video", "take": "Goldman warns the oil market faces a sizable 2027 surplus." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-15/latest-oil-market-news-and-analysis-for-nov-16", "take": "Crude fluctuates amid signs the physical market is well supplied." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-11-16/iran-targets-bahrain-base-but-stays-open-to-us-deal-video", "take": "Iran targets Bahrain's Riffa base for the second time in three days." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/cf57a196-bcbc-4605-a977-73fa0498aeed?syn-25a6b1a6=1", "take": "Ukraine strikes the Crimean Bridge in a record drone attack." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "The AI trade enters a pivotal week fragile and under pressure, with Nvidia reporting Tuesday under interim CEO Colette Kress, Anthropic's IPO pricing midweek, Bessent demanding a dramatic shakeup and Huang weighing a comeback, as Morgan Stanley goes max overweight and JPMorgan calls Nvidia attractive, against BlackRock's Jean Boivin flagging a buildout slowdown and Jason Furman warning of a 25% crash.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-16/morgan-stanley-max-overweight-global-stocks-on-intact-ai-cycle", "take": "Morgan Stanley is max overweight global stocks on an intact AI cycle." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/why-nvidia-can-avoid-the-fate-of-most-stocks-that-reached-the-apex-by-market-cap-according-to-one-strategist-461e33be?mod=mw_rss_topstories", "take": "JPMorgan sees Nvidia attractive with a $280 median target." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-11-16/blackrock-sees-risk-of-ai-slowdown-impacting-us-growth-video", "take": "BlackRock's Boivin warns a buildout slowdown would hit growth." },
+      { "name": "MarketWatch", "lean": "bear", "url": "https://www.marketwatch.com/story/heres-how-much-the-stock-market-could-crumble-if-ai-is-a-bubble-that-bursts-according-to-former-white-house-economist-3a4c15e1?mod=mw_rss_topstories", "take": "Furman sees a 25% market drop if the AI bubble pops." },
+      { "name": "Financial Times", "lean": "bear", "url": "https://www.ft.com/content/45383d86-33c4-4d99-86e5-5e058d3567c1?syn-25a6b1a6=1", "take": "Jensen Huang discusses a comeback as allies lobby the board." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Nvidia","CoreWeave","AMD","Broadcom","TSMC","Microsoft"],
+    "values": [-2.1, -5.9, -3.0, -2.5, -4.0, -1.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [74000, 55000, 46000, 34000, 51000],
+    "colors": ["neutral","neutral","bear","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["CNRL-Advantage","GIC/STC Pure DC","MTN-Telkom","Actis DC Loan","Anthropic IPO"],
+    "values": [1.6, 1.5, 1.0, 0.488, 25.0]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
