@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Wed Nov 18, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-11-18</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Wednesday, November 18, 2026</h1>
+    <div class="meta">
+      <p>Nvidia delivered a beat-and-raise after the close in its first report without Jensen Huang, steadying a bruised AI trade and lifting tech futures from Tokyo to Frankfurt. Trump, Xi and Putin meet in Shenzhen today in an unprecedented trilateral as new US chip curbs strain a fragile trade truce. Gold slumped below $3,800 as Fed officials led by St. Louis's Alberto Musalem argued for more hikes, and Anthropic prices its IPO into strong demand.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Nvidia reported its first earnings without ousted founder Jensen Huang and delivered a beat-and-raise with a $150 billion buyback top-up, insisting it can thrive without him and soothing a dayslong AI selloff, leaving the market to decide whether the strong print re-anchors the trade or papers over a wider credit and buildout strain the ECB now likens to subprime",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Nvidia's Strong Fundamentals Give New CEO a Much-Needed Tailwind", "angle": "Frames the beat as handing interim leadership real momentum despite the problems inherited from Huang.", "lean": 45, "pull": "The company inherits problems from Jensen Huang, and advantages."},
+        {"outlet": "Financial Times", "headline": "Nvidia Has a Chance to Trade Drama for Durability", "angle": "Argues the clean print lets the chip group swap founder theatrics for a steadier story.", "lean": 30, "pull": "Chip group reports first results without its flamboyant co-founder."},
+        {"outlet": "Bloomberg", "headline": "Nvidia Raises Outlook, Says It Can Thrive Without Huang", "angle": "Reads the results as a clear message that Huang is not coming back and the company will be fine.", "lean": 35, "pull": "He's not coming back, and the company will be fine without him."},
+        {"outlet": "CNBC", "headline": "Wall Street Sees More Volatility Even After the Beat-and-Raise", "angle": "Notes JPMorgan flags more near-term swings even as shares jumped premarket.", "lean": 10, "pull": "There is likely more volatility to come in the near-term."},
+        {"outlet": "The Atlantic", "headline": "Nvidia Earnings Were Boring, and That's the Point", "angle": "Stratechery reads the dull print as the clearest sign Huang probably is not coming back.", "lean": -35, "pull": "Nvidia's earnings were boring, and also a statement."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Fed Officials Led by St. Louis's Alberto Musalem Press for Several More Hikes and Drive Gold Below $3,800 to a 14-Month Low as UK Inflation Hits a One-Year High and Indonesia Surprises With a Hike, Against Treasuries Rallying for a Third Day on Speculation Most Hikes Are Already Priced, Gilt Yields Falling on Soft UK Services Data and Macro Tourist's Kevin Muir Buying Bonds Into the Weakness</h3>
+      </div>
+      <p>The hawkish repricing kept running on the policy side even as the bond market started to fade it. Bloomberg reported gold dropped below $3,800 an ounce for the first time since September 2025 after Fed officials made the case for more rate hikes to tackle stubborn inflation, and CNBC said St. Louis Fed President Alberto Musalem argued four more hikes may be needed in coming months, one of the most hawkish views on the committee. The inflation drumbeat stayed loud abroad, with CNBC noting UK inflation hit a one-year high of 3.6% on record diesel and energy costs, and Bloomberg reporting Indonesia unexpectedly resumed hiking to defend the rupiah. The counterweight is in the curve. Bloomberg said benchmark Treasuries edged higher for a third day, supported by subdued risk appetite and speculation that most of the Fed's upcoming hikes may already be in the price, while WSJ reported gilt yields fell after UK services inflation undershot the BOE's forecast. MarketWatch added Macro Tourist commentator Kevin Muir is using the renewed bond weakness to buy, arguing a tightening Fed into a slowing economy is the perfect setup for Treasuries. One camp sees Musalem's four hikes and a 14-month low in gold as proof the cycle has further to run; the other sees a third day of Treasury gains and a Davidson Kempner "fear factor" in credit as the market pricing the tightening out ahead of time.</p>
+      <p>The bull read is Treasuries rallying a third day on the view most hikes are priced, gilt yields falling on soft UK services data and Kevin Muir buying bonds into the weakness. The bear read is Musalem flagging four more hikes, gold slumping below $3,800, UK inflation at a one-year high and Indonesia surprising with a hike.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the hikes are mostly priced):</strong> Treasuries edged higher a third straight day on speculation most of the Fed's upcoming moves are already in the price, gilt yields fell after soft UK services inflation, and Macro Tourist's Kevin Muir is buying bonds into the weakness. A tightening Fed into a slowing economy is the classic setup for a rally in the long end.</div>
+        <div class="bear"><strong>Bear (the cycle has more to run):</strong> Musalem says four more hikes may be needed, gold fell below $3,800 to a 14-month low as officials made the case for more tightening, UK inflation hit a one-year high on fuel costs, and Indonesia surprised with a hike. The policy tape is still hardening, not softening.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.cnbc.com/2026/11/17/alberto-musalem-fed-interest-rates.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- St. Louis Fed's Musalem Says Four More Rate Hikes May Be Needed</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Oil Inches Lower as Risk Appetite Wanes Despite Bullish Middle East Headlines, Even as the Iran War Drives UK Energy Bills Toward a 26% Jump and Trump, Xi and Putin Meet in an Unprecedented Shenzhen Trilateral Where New Chip Curbs Strain a Fragile Trade Truce and Putin Pushes a Eurasian Order Against the West</h3>
+      </div>
+      <p>The supply story kept oil contained, but the geopolitical calendar just got dense. Bloomberg reported crude inched lower despite bullish headlines from the Middle East as broad risk appetite waned, keeping a lid on the barrel even with flareups still on the tape. The relief is uneven downstream: Bloomberg Economics said UK households face another jump in energy bills in January, as much as 26% and the biggest since 2022, as the Iran war drives up wholesale gas and electricity, and CNBC noted record diesel prices pushed UK inflation to a one-year high. The diplomacy comes to a head today. The FT reported Xi greeted Trump with a hug at Shenzhen airport ahead of a historic trilateral alongside Putin, while CNBC said the three leaders meet on the sidelines of APEC as fresh US restrictions on China's access to advanced AI chips strain a fragile trade truce. Bloomberg added Putin used his address to global CEOs to push a "Eurasian" order and claim Russian economic resilience despite sanctions, and the FT said he lashed out at western powers. One camp sees waning risk appetite and recovering supply capping crude into year-end; the other sees an Iran war still feeding European energy bills and a three-way summit that can reset trade and export policy overnight.</p>
+      <p>The bull read is oil inching lower as risk appetite wanes despite bullish Mideast headlines, with supply still outpacing a softening demand picture. The bear read is the Iran war driving UK energy bills toward a 26% jump, record diesel lifting inflation and a Trump-Xi-Putin summit where chip curbs strain the truce.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (supply and soft demand cap crude):</strong> Oil inched lower despite bullish Middle East headlines as risk appetite waned, with supply still running ahead of demand. A contained barrel keeps a lid on the energy-led inflation impulse that has rattled the rate market.</div>
+        <div class="bear"><strong>Bear (the war premium still bites):</strong> The Iran war is driving UK energy bills toward a 26% January jump, record diesel pushed UK inflation to a one-year high, and Trump, Xi and Putin meet in Shenzhen as new chip curbs strain the trade truce. Any hardening on export policy or supply can reprice the barrel fast.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.cnbc.com/2026/11/18/apec-trump-xi-putin-shenzhen.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Three Things to Watch as Trump, Xi and Putin Meet in China</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Nvidia's Beat-and-Raise Under New Leadership Soothes the AI Selloff and Lifts Global Tech, With WSJ Citing Strong Fundamentals, Chairman Harvey Jones Ruling Out Huang's Return and Yardeni Calling the Trade Alive and Well, Against an ECB Warning the AI Borrowing Binge Echoes Subprime, Copper Plunging as the AI Trade Unravels in Metals and Stratechery Calling the Print Boring</h3>
+      </div>
+      <p>The event everyone waited for landed on the bullish side, and the relief rippled across markets. Bloomberg reported a dayslong tech selloff came to a halt after Nvidia's (NVDA) strong outlook soothed fears over the AI trade's durability, with the chipmaker raising next year's forecasts, doubling revenue last quarter and adding $150 billion to its buyback authorization, and CoinDesk noted Chairman Harvey Jones said the board has no intention of reinstating Huang. WSJ said Nvidia's strong fundamentals give the new CEO a much-needed tailwind, European chip stocks rose and futures rallied, while Yardeni Research's Edward Yardeni called the AI trade "alive and well," just in transition toward the Anthropic IPO. The bears say the print does not fix the plumbing. The FT reported the ECB warned the AI borrowing binge has "historic parallels" with the subprime bubble, flagging trillions in off-balance-sheet hyperscaler commitments, Bloomberg said copper and tin plunged as bullish AI bets unraveled on the LME, and Apax's Roxana Mirica described a growing bifurcation in credit between AI-exposed and resilient borrowers. Bloomberg added Nvidia has stopped shipping Hopper chips to China despite US approval, US banks are seeking chip-curb clauses on data-center loans, and Stratechery called the earnings boring, reading the dull print as the clearest sign Huang is not coming back. The quarter reassured; the buildout's financing still has to clear.</p>
+      <p>The bull read is Nvidia's beat-and-raise and $150 billion buyback, WSJ's strong-fundamentals case and Yardeni calling the trade alive and well. The bear read is the ECB's subprime warning, copper plunging as the AI trade unravels in metals and Apax flagging a widening credit split.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the print re-anchors the trade):</strong> Nvidia beat and raised, doubled revenue and topped up its buyback by $150 billion, Chairman Harvey Jones ruled out a Huang return, and WSJ says strong fundamentals hand the new CEO a tailwind. Yardeni calls the AI trade alive and well, and European chip stocks and futures rallied on the result.</div>
+        <div class="bear"><strong>Bear (the financing strain remains):</strong> The ECB likened the AI borrowing binge to subprime, copper and tin plunged as AI bets unraveled on the LME, and Apax sees a widening credit split between AI-exposed and resilient borrowers. Nvidia stopped shipping to China, banks want chip-curb clauses on data-center loans, and Stratechery read the print as proof Huang is gone.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/d16475ce-efce-4dc1-b5a3-2f7c79e9dea9?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- AI Borrowing Binge Has 'Historic Parallels' With Subprime Bubble, Says ECB</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Tech stocks set to rise after Nvidia earnings soothe AI jitters</strong></summary>
+      <div class="deal-body">
+        <p>A dayslong selloff in technology stocks came to a halt after Nvidia's (NVDA) strong outlook soothed fears over the AI trade, Bloomberg reported, and WSJ said futures rallied across the globe as the beat steadied sentiment. European chip stocks edged higher, though JPMorgan told clients more near-term volatility is likely.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/commodities-futures/stock-futures-rally-as-nvidia-earnings-calm-ai-trade-fears-96f51546?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Futures Rally as Nvidia Earnings Calm AI Trade Fears</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Target posts best sales growth in five years and raises guidance</strong></summary>
+      <div class="deal-body">
+        <p>Target (TGT) beat third-quarter sales expectations and raised its guidance as its turnaround effort gains traction, CNBC reported. MarketWatch noted the revival still leans on fixing shoes and women's apparel, but the print is a steadier read on discretionary demand heading into the holidays.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/target-tgt-q3-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Target Posts Best Sales Growth in Five Years, Raises Guidance</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lowe's raises outlook on strong online sales despite a slow housing market</strong></summary>
+      <div class="deal-body">
+        <p>Lowe's (LOW) said strength in online sales during the quarter contributed to a full-year guidance raise, CNBC reported, even with the housing market still sluggish. The result adds to a steadier big-box read alongside Target and gives another data point on resilient consumer spending.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/lowes-low-q3-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Lowe's Posts Strong Online Sales, Raises Outlook Despite Slow Housing Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Walmart pairs thrifty shoppers with wary AI investors as a defensive bet</strong></summary>
+      <div class="deal-body">
+        <p>Walmart (WMT) is drawing a winning combination of thrifty shoppers trading down and investors wary of the AI trade, WSJ reported, as the retailer heads into earnings. The piece frames the stock as a haven as money rotates from crowded tech toward defensive, cash-generative names.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/walmarts-winning-combo-thrifty-shoppers-and-wary-ai-investors-183184e3?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Walmart's Winning Combo: Thrifty Shoppers and Wary AI Investors</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Copper and tin plunge as the AI trade unravels in metals markets</strong></summary>
+      <div class="deal-body">
+        <p>Copper plunged during a heavy selloff on the London Metal Exchange, Bloomberg reported, as bullish investors bailed on AI-linked bets and others turned outright bearish even amid extreme squeezes. Stanley Druckenmiller said he is short copper and warned of economic weakness in 2027.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/copper-prices-industrial-metal-dollar-lme" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Copper and Tin Plunge as AI Trade Unravels in Metals Markets</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Deutsche Bank shares drop after leaks spotlight its troubled past</strong></summary>
+      <div class="deal-body">
+        <p>Deutsche Bank shares fell after a media consortium reported failings in its handling of high-risk customers including Russian oligarchs and Jeffrey Epstein, WSJ reported. The FT detailed how dealings with a Qatari royal blurred the lines between investor, client and counterparty, reviving questions over the bank's controls.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/deutsche-bank-shares-drop-after-wide-ranging-whistleblower-leaks-bc550948?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Deutsche Bank Shares Drop After Leaks Put Spotlight on Troubled Past</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nike lays out financial goals ahead of its first investor day in nine years</strong></summary>
+      <div class="deal-body">
+        <p>Nike (NKE) laid out financial goals at its Oregon headquarters for its first investor day in nine years, CNBC reported, as CEO Elliott Hill tries to prove the turnaround is working. The event is a test of whether the brand can rightsize inventory and reignite growth.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/17/nike-investor-day-elliott-hill.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Nike Lays Out Financial Goals Ahead of First Investor Day in 9 Years</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape got its catalyst, and Nvidia delivered. The bull case is the beat-and-raise plus a $150 billion buyback top-up, steadier retail from Target, Lowe's and Walmart, and European chip stocks rallying. The bear case is copper and tin plunging as AI bets unwind, the ECB's subprime warning on AI borrowing and the Deutsche Bank leak reviving financial-sector risk. Watch whether the relief holds through today's session or fades as the summit and Fed hawkishness reassert themselves.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Breaking the 200-Day Moving Average Does Not Always Mean More Downside</summary>
+      <p>MarketWatch reported that the S&P 500 just broke below its 200-day moving average, a level technicians read as a bearish signal, but Bespoke Investment Group argued history suggests that may not mean what traders assume this time, while a separate MarketWatch piece said Truist strategists want investors to start asking "what could go right" after tech's 42% valuation reset. The instinct is that a close under the 200-day line is a sell signal, proof the trend has turned and more losses are coming. But a moving average is a lagging summary of the past year of prices, not a forecast, so the question is always what regime you are breaking it in, which is why the same line that confirms a bear market in one setup can mark a washout low in another. Start with what the average actually is. The 200-day line is simply the average closing price over the prior roughly 10 months, so it drifts slowly and tells you where the medium-term trend has been, not where it is going. The first mechanism is the trend-filter logic, where price above the line means the medium-term uptrend is intact and price below it means that trend has stalled, which is why systematic funds and trend followers cut exposure on the break and add selling pressure mechanically. The second mechanism is the base-rate problem, where breaks of the 200-day happen far more often than actual sustained downturns, so the signal fires many false alarms for every real one, and acting on every break means selling into most dips. The third mechanism is the context filter, where a break during a recession or earnings collapse behaves very differently from a break during a valuation reset with earnings still rising, as Bespoke notes, so the same event resolves bullishly or bearishly depending on the backdrop. The fourth mechanism is the sentiment washout, where a sharp high-volume break can mark the point of maximum fear and capitulation, after which forced sellers are done and the path of least resistance flips higher, the "what could go right" setup Truist describes. The fifth mechanism is the reflexivity, where so many traders watch the same line that the break becomes self-fulfilling in the short run but self-exhausting over weeks, as the selling it triggers runs out of fuel. The sixth mechanism is the confirmation discipline, where seasoned readers wait for a second confirming signal, a failed retest or a weekly close, rather than trading the first touch, because a single daily break is noisy. The practical lesson for a market reader is that the 200-day moving average is a context tool, not a verdict. A break tells you the medium-term trend has stalled and that trend sellers will lean in, but whether it marks a top or a bottom depends on earnings, positioning and sentiment around it. Watch what the break happens into, because a valuation reset with rising profits and a capitulation washout is a very different animal from a trend break into a recession.</p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/the-s-p-500-just-broke-a-crucial-support-level-heres-what-history-shows-may-happen-now-776f6da2?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The S&P 500 Just Broke a Crucial Support Level. Here's What History Shows.</a></p>
+      <p class="deal-source"><a href="https://www.marketwatch.com/story/strategists-say-investors-should-start-asking-what-could-go-right-after-techs-42-valuation-reset-279a640a?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Strategists Say Investors Should Start Asking 'What Could Go Right'</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Nvidia raises outlook and says it can thrive without Huang</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) delivered a clear message in its first earnings update since Huang's departure, Bloomberg reported: he is not coming back and the company will be fine without him. The chipmaker raised next year's forecasts, doubled revenue last quarter and, per CoinDesk, added $150 billion to its buyback authorization.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-17/nvidia-delivers-solid-outlook-in-first-post-huang-earnings" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Raises Outlook, Says It Can Thrive Without Huang</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Nvidia stops selling AI chips to China despite US approval</strong></summary>
+      <div class="deal-body">
+        <p>Nvidia (NVDA) is no longer shipping Hopper data-center chips to China, Bloomberg reported, despite winning Washington's blessing last year to sell a version of that model there. The interim CEO's confirmation underscores how far the commercial relationship has frayed as export policy hardens.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/interim-nvidia-ceo-says-it-s-no-longer-sending-ai-chips-to-china" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Nvidia Stops Selling AI Chips to China Despite US Approval</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Anthropic plans to raise its IPO price after strong demand</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic plans to raise its IPO price after strong demand, WSJ reported, pitching investors through market tumult and Huang's shock resignation. The FT added a group of low-profile VCs is on track for a windfall worth up to $100 billion as the AI group prepares to price its shares Wednesday.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/anthropic-plans-to-raise-ipo-price-after-strong-demand-1a6b0af1?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Anthropic Plans to Raise IPO Price After Strong Demand</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US banks seek a chip-curbs clause on a loan to a Bain data-center firm</strong></summary>
+      <div class="deal-body">
+        <p>US banks asked for extra protection to expand financing for a data-center operator that previously sold compute to Megaspeed, a neocloud under US investigation for smuggling chips into China, Bloomberg reported. The clause shows lenders pricing export-control risk directly into new AI infrastructure debt.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/us-banks-seek-chip-curbs-clause-on-loan-to-bain-data-center-firm" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Banks Seek Chip-Curbs Clause on Loan to Bain Data Center Firm</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tencent's AI spending squeezes profit while revenue disappoints</strong></summary>
+      <div class="deal-body">
+        <p>Tencent's aggressive AI spending has begun to stall profit growth, Bloomberg reported, with revenue missing estimates and heightening pressure on China's most valuable company to commercialize the technology. The result shows the capex-versus-return tension playing out across the biggest AI spenders.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/tencent-s-sales-miss-estimates-in-setback-for-founder-s-ai-push" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Tencent's AI Spending Squeezes Profit While Revenue Disappoints</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Pony AI's sales beat estimates as its robotaxi business expands</strong></summary>
+      <div class="deal-body">
+        <p>Pony AI (PONY) topped third-quarter revenue estimates as its rapid expansion of high-margin robotaxi services continued, Bloomberg reported, though growth in that segment slowed from prior quarters. The beat shows autonomous-driving demand holding up even as the broader AI trade swings.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/pony-ai-s-sales-beat-estimates-as-robotaxi-business-expands" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Pony AI's Sales Beat Estimates as Robotaxi Business Expands</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>JPMorgan builds AI agent transactions that cut humans out of the loop</strong></summary>
+      <div class="deal-body">
+        <p>JPMorgan and Hyundai Card are looking to expand AI agents in financial transactions that do not involve humans, CNBC reported, with CoinDesk adding Hyundai is testing agent commerce on JPMorgan's Kinexys blockchain. The push shows banks racing to productize agentic payments even as regulators flag the risks.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/jpmorgan-hyundai-card-ai-agents-payments.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- JPMorgan Is Working on AI Agent Transactions That Don't Involve Humans</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Wednesday November 18, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal of demand holding is Nvidia's beat-and-raise, Pony AI's robotaxi beat and Anthropic's IPO drawing enough demand to raise the price. The counter-signal is Tencent's AI spending stalling profit, Nvidia halting China shipments, banks pricing chip-curb clauses into data-center loans and the ECB's subprime comparison. The near-term tell is whether the post-earnings relief broadens into a rotation back toward chips or fades into the Shenzhen summit and the hawkish Fed tape.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Gold slumps below $3,800 as Fed officials signal more rate hikes</strong></summary>
+      <div class="deal-body">
+        <p>Gold dropped below $3,800 an ounce for the first time since September 2025, Bloomberg reported, after Fed officials made the case for more rate hikes to tackle stubborn inflation. The move marks a 14-month low and shows the hawkish repricing still draining non-yielding assets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-17/gold-steadies-near-14-month-low-as-rate-hike-pressure-mounts" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Slumps Below $3,800 as Fed Officials Signal More Rate Hikes</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>St. Louis Fed's Musalem says four more hikes may be needed</strong></summary>
+      <div class="deal-body">
+        <p>St. Louis Fed President Alberto Musalem said four more rate hikes may be needed in coming months, CNBC reported, one of the most hawkish views among policymakers. The forecast hardens the case for an extended tightening cycle and keeps a December move firmly in play.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/17/alberto-musalem-fed-interest-rates.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- St. Louis Fed's Musalem Says Four More Rate Hikes May Be Needed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Treasuries edge higher a third day as risk appetite falters</strong></summary>
+      <div class="deal-body">
+        <p>Benchmark US Treasuries edged higher for a third straight session, Bloomberg reported, supported by subdued risk sentiment and speculation that most of the Fed's upcoming hikes may already be in the price. The rally shows the bond market quietly fading the hawkish Fedspeak.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/treasuries-ust-bond-yields-risk-appetite-falters" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Treasuries Edge Higher for a Third Day as Risk Appetite Falters</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>UK inflation hits a one-year high of 3.6% on fuel and energy costs</strong></summary>
+      <div class="deal-body">
+        <p>UK inflation accelerated to its highest in a year, CNBC and Bloomberg reported, driven by record diesel prices and a surge in energy bills tied to the Iran war. WSJ added gilt yields still fell after services inflation undershot the BOE's forecast, splitting the headline and core signals.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/uk-inflation-cpi-fuel-prices.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Record Diesel Prices Drive UK Inflation to 1-Year High of 3.6%</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Indonesia surprises with a hike to defend the rupiah</strong></summary>
+      <div class="deal-body">
+        <p>Indonesia's central bank unexpectedly resumed raising interest rates to support the rupiah, Bloomberg reported, surprising most economists and unveiling more incentives for investors to hold Asia's worst-performing currency this year. The move adds to a global drift back toward tightening as the Fed cycle extends.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/indonesia-hikes-key-rate-after-rupiah-slide-surprising-most-economists" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Indonesia Hikes Key Rate After Rupiah Slide, Surprising Most Economists</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Credit chiefs warn of a 'fear factor' as debt reprices all at once</strong></summary>
+      <div class="deal-body">
+        <p>A sharp repricing across fixed-income markets is likely to continue as rates stay elevated, Bloomberg reported from the Global Credit Forum, causing a shakeout among weaker borrowers. Davidson Kempner's Chris Krishanthan said "there's a real fear factor that developed" in credit markets.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/credit-chiefs-warn-of-fear-factor-as-debt-reprices-all-at-once" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Credit Chiefs Warn of 'Fear Factor' as Debt Reprices All at Once</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US labor market shows signs of revival as job postings rise</strong></summary>
+      <div class="deal-body">
+        <p>A broadening swathe of the US is seeing growth in job openings, Bloomberg reported, citing a Glassdoor and Indeed report that suggests the labor market could break free next year from the low-hire environment that has frustrated job seekers. A firmer jobs read supports the hawkish Fed case.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/us-labor-market-shows-signs-of-revival-as-job-postings-rise" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Labor Market Shows Signs of Revival as Job Postings Rise</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (November 18, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to Treasuries rallying a third day on the view most hikes are priced, gilt yields falling on soft UK services data and a firmer jobs read that still has not spooked the long end. The bear side points to Musalem flagging four more hikes, gold slumping below $3,800, UK inflation at a one-year high and Indonesia surprising with a hike. The swing factor is the FOMC minutes and the week's Fedspeak: a softer tone lets dip buyers re-anchor the long end, a hawkish one extends the global tightening drift.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Off-Balance-Sheet AI Commitments Draw a Subprime Comparison</summary>
+      <p>The FT reported that the ECB warned the AI borrowing binge has "historic parallels" with the subprime bubble, flagging that hyperscalers are building up trillions of dollars in off-balance-sheet commitments through contracts with other tech groups, while Bloomberg said copper and tin plunged as AI bets unraveled and Apax's Roxana Mirica described a widening split in credit between AI-exposed and resilient borrowers. The instinct is that the AI boom is cash-funded by profitable giants, so comparing it to subprime feels like scaremongering. But the subprime echo is not about the quality of any single borrower, it is about where the obligations sit and how they chain together, which is why a regulator looks at off-balance-sheet contracts and sees the same hidden leverage that made 2008 hard to map in real time. Start with what off-balance-sheet means. When a hyperscaler signs a multiyear contract to buy compute, power or chips from another company, the future payment is a real obligation but it may not appear as debt on the balance sheet, so the headline leverage ratio understates the commitment. The first mechanism is the hidden liability, where investors underwriting the equity see clean books while the actual future cash obligations sit in contracts and special-purpose vehicles, exactly the opacity that masked subprime exposure. The second mechanism is the chaining, where company A's revenue is company B's contracted spending, so the same dollar of expected AI demand is counted as an asset in several places at once, inflating the apparent health of the whole web. The third mechanism is the circularity, where chipmakers, cloud providers and model labs invest in and buy from each other, so a slowdown in end demand ripples through every link rather than hitting one isolated borrower. The fourth mechanism is the collateral fragility, where the chips and data centers backing the financing lose value fast if utilization disappoints or export rules cut off customers, the dynamic banks are now pricing into chip-curb loan clauses. The fifth mechanism is the correlation that Apax flags, where credits exposed to AI disruption move together and separate sharply from resilient cash flows, so a shock does not stay contained. The sixth mechanism is the confidence trigger, where the whole structure holds as long as everyone believes the contracted demand is real, and reprices violently the moment one large counterparty wobbles, just as subprime held until the first defaults forced a mark. The practical lesson for a market reader is that leverage you cannot see is the dangerous kind. A strong Nvidia print says demand is real today, but the ECB is pointing at the plumbing beneath it: trillions in interlocking contractual promises that do not show up as debt until something forces them to. Watch off-balance-sheet commitments, utilization rates and the credit split Apax describes, because that is where an AI slowdown would show up as financial stress long before it reaches the equity headlines.</p>
+      <p class="deal-source"><a href="https://www.ft.com/content/d16475ce-efce-4dc1-b5a3-2f7c79e9dea9?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- AI Borrowing Binge Has 'Historic Parallels' With Subprime Bubble, Says ECB</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-18/apax-sees-growing-split-in-credit-markets-from-ai-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apax Sees Growing Split in Credit Markets From AI</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Fed officials led by Musalem press for several more hikes and drove gold below $3,800 to a 14-month low, with UK inflation at a one-year high and Indonesia surprising with a hike, against Treasuries rallying a third day on the view most hikes are priced and gilt yields falling on soft UK services data. Oil inched lower as risk appetite waned despite bullish Mideast headlines, against the Iran war driving UK energy bills toward a 26% jump and a Trump-Xi-Putin summit in Shenzhen where chip curbs strain the truce. Nvidia's beat-and-raise and $150 billion buyback soothed the AI selloff, with WSJ's strong-fundamentals case and Yardeni calling the trade alive and well against the ECB's subprime warning and copper plunging as the AI trade unravels; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above the prior close, bull confirmed; a further drop of 3% or more, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 11/16</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 11/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 11/18</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 11/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 11/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin drops as Nvidia earnings drive stock futures higher</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin was down 1.1% at around $64,100, CoinDesk reported, failing to keep pace with rising stock index futures after Nvidia (NVDA) beat earnings. The divergence shows crypto still trading heavy as the broader AI relief rally passed it by.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/18/bitcoin-drops-as-nvidia-earnings-report-drives-stock-index-futures-higher" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Drops as Nvidia Earnings Report Drives Stock Index Futures Higher</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin outpaces gold even as both tumble ahead of a likely Fed hike</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin held near $64,000 as gold fell 2%, CoinDesk reported, lifting the bitcoin-to-gold ratio above its 200-day moving average and extending a series of higher lows since March. The relative strength comes even as both assets drop into an expected Fed rate hike.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/18/bitcoin-outpaces-gold-even-as-both-assets-tumble-ahead-of-a-likely-fed-rate-hike" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Outpaces Gold Even as Both Assets Tumble Ahead of a Likely Fed Rate Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Strategy stock could plunge 76% to $23, chart analyst warns</strong></summary>
+      <div class="deal-body">
+        <p>Strategy (MSTR) could crash 76% to $23, CoinDesk reported, citing chart analyst Aksel Kibar's call on a still-active head-and-shoulders pattern on the daily chart. The warning underscores how the bitcoin-proxy trade amplifies downside when the token itself stalls.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/18/strategy-stock-could-crash-76-to-usd23-chart-analyst-warns" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Strategy Stock Could Plunge 76% to $23, Chart Analyst Warns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Coinbase CEO says AI agents will account for 99.9% of transactions within a decade</strong></summary>
+      <div class="deal-body">
+        <p>Brian Armstrong said Coinbase (COIN) is building payment tools for AI agents and expects them to handle 99.9% of transactions within a decade, CoinDesk reported, adding he believes bitcoin has hit bottom despite the selloff. The call ties crypto rails to the agentic-finance push.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/17/coinbase-ceo-says-ai-agents-will-account-for-99-9-of-transactions-within-a-decade" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Coinbase CEO Says AI Agents Will Account for '99.9%' of Transactions Within a Decade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US judge says Ethereum has 'no terms of use,' clears MIT brothers of $25 million fraud</strong></summary>
+      <div class="deal-body">
+        <p>A federal judge acquitted Anton and James Peraire-Bueno, CoinDesk reported, ruling their 2023 trade against Ethereum bots involved no lie anyone relied on and closing the government's first criminal MEV case. The decision reshapes how prosecutors can treat on-chain exploitation.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/policy/2026/11/18/u-s-judge-says-ethereum-has-no-terms-of-use-clears-mit-brothers-of-usd25-million-fraud" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- US Judge Says Ethereum Has 'No Terms of Use,' Clears MIT Brothers of $25 Million Fraud</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Hyundai tests AI agent commerce on JPMorgan's Kinexys blockchain</strong></summary>
+      <div class="deal-body">
+        <p>Hyundai is testing AI agent commerce on JPMorgan's Kinexys blockchain, CoinDesk reported, building on a recent stablecoin-based cross-border remittance pilot. The experiment shows a major bank and automaker pushing agentic, blockchain-settled payments into production testing.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/11/18/hyundai-tests-ai-agent-commerce-on-jpmorgan-s-kinexys-blockchain" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Hyundai Tests AI Agent Commerce on JPMorgan's Kinexys Blockchain</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Anthropic -- Raises IPO Price on Strong Demand as Low-Profile VCs Eye a $100 Billion Windfall</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Anthropic plans to raise its IPO price after strong demand, WSJ reported, having pitched investors through market tumult and Huang's shock resignation as it prices its shares Wednesday.</p>
+        <p><strong>Outlook:</strong> The FT said a group of lesser-known VCs is on track for returns worth up to $100 billion, and SoftBank's Masayoshi Son called passing on the company a "mistake."</p>
+        <p><strong>What it means:</strong> A hot AI listing into a bruised tape shows private-market conviction still outruns the public equity panic, widening the gap between the two.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/anthropic-plans-to-raise-ipo-price-after-strong-demand-1a6b0af1?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Anthropic Plans to Raise IPO Price After Strong Demand</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ramp -- Corporate-Card Startup Raising Funds at a $70 Billion Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Corporate-card startup Ramp is raising funds at a $70 billion valuation, WSJ reported, its third fundraise in a year as the fast-growing fintech keeps scaling.</p>
+        <p><strong>Outlook:</strong> The rapid re-rate shows investors still paying up for AI-enabled finance software that automates back-office work.</p>
+        <p><strong>What it means:</strong> Capital keeps flowing to fintech automation even amid the broader tech selloff, a different bet than the chip-and-data-center trade.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/corporate-card-startup-ramp-raising-funds-at-70-billion-valuation-631b071a?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Corporate-Card Startup Ramp Raising Funds at $70 Billion Valuation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Payhawk -- Goldman Backs the Fintech Startup at a $2 Billion Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Payhawk, which helps businesses manage expenses, raised fresh financing led by Goldman Sachs Alternatives' growth equity arm at a $2 billion valuation, Bloomberg reported.</p>
+        <p><strong>Outlook:</strong> The round deepens Goldman's bet on European expense-management software as demand for automated finance tools holds up.</p>
+        <p><strong>What it means:</strong> A marquee backer pricing a European fintech shows capital rotating toward recurring-revenue software away from crowded AI infrastructure.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/goldman-backs-fintech-startup-payhawk-at-2-billion-value" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Goldman Backs Fintech Startup Payhawk at $2 Billion Value</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>BASF / Evonik -- Chemicals Consolidation Bid Poses a Test for a Potential Merz Successor</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> BASF's bid to consolidate Germany's struggling chemicals industry through a takeover of Evonik is taking shape, Bloomberg reported, joining a wave of politically charged European deals.</p>
+        <p><strong>Outlook:</strong> The deal tests the appetite for industrial consolidation at home and the politics around it, with national-champion sensitivities in play.</p>
+        <p><strong>What it means:</strong> Old-economy M&amp;A keeps the European pipeline alive even as the AI trade dominates headlines, a sign capital is spreading across sectors.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/basf-s-evonik-chase-poses-test-for-potential-merz-successor" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- BASF's Evonik Chase Poses Test for Potential Merz Successor</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Edward Yardeni (Yardeni Research) -- says the AI trade is 'alive and well,' just in transition</strong></summary>
+      <div class="deal-body">
+        <p>Yardeni Research president Edward Yardeni told Bloomberg the AI trade is "alive and well" and "in transition," as the market moves past Nvidia's (NVDA) earnings and CEO search toward the Anthropic IPO. His read backs the demand case even as leadership and financing questions linger.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-18/ai-trade-is-alive-and-well-yardeni-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- AI Trade Is 'Alive and Well,' Yardeni Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Stanley Druckenmiller -- short copper, warns of economic weakness in 2027</strong></summary>
+      <div class="deal-body">
+        <p>Stanley Druckenmiller said he is short copper and warned of economic weakness in 2027, CoinDesk reported, prioritizing capital preservation and shifting his AI focus from infrastructure to applications. The call read alongside the LME metals plunge sharpens the bear case on the buildout.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/11/17/druckenmiller-says-he-is-short-copper-warns-of-economic-weakness-in-2027" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Druckenmiller Says He Is Short Copper, Warns of Economic Weakness in 2027</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Chris Krishanthan (Davidson Kempner) -- warns of a credit-market 'fear factor'</strong></summary>
+      <div class="deal-body">
+        <p>Davidson Kempner global credit co-manager Chris Krishanthan said "there's a real fear factor that developed" in fixed income, Bloomberg reported from the Global Credit Forum. His read captures the shakeout among weaker borrowers as debt reprices all at once in a higher-rate world.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-18/davidson-kempner-warns-of-credit-markets-fear-factor-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Davidson Kempner Warns of Credit Markets 'Fear Factor'</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Diego De Giorgi (Apollo) -- focused on investment grade and the largest capex cycle in history</strong></summary>
+      <div class="deal-body">
+        <p>Apollo EMEA head Diego De Giorgi said the firm is focused on investment grade and the short end of the curve, Bloomberg reported, expecting a higher-rate 2027 alongside what he called the largest capex cycle in history. The stance pairs caution on duration with conviction on the buildout.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-18/apollo-is-focused-on-investment-grade-de-giorgi-says-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Apollo Is Focused on Investment Grade, De Giorgi Says</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Truist Advisory Services -- says investors should ask 'what could go right' after tech's reset</strong></summary>
+      <div class="deal-body">
+        <p>Strategists at Truist Advisory Services recommended investors use the industry's current weakness to add exposure, MarketWatch reported, arguing they should start asking "what could go right" after tech's 42% valuation reset. The call frames the drawdown as an entry point, not a trend.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/strategists-say-investors-should-start-asking-what-could-go-right-after-techs-42-valuation-reset-279a640a?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- Strategists Say Investors Should Start Asking 'What Could Go Right'</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Reads Nvidia's Beat-and-Raise in Its First Quarter Without Huang, With Yardeni Calling the AI Trade Alive and Well, Truist Urging Investors to Buy the 42% Reset and Apollo's De Giorgi Betting on the Largest Capex Cycle in History, Against Druckenmiller Shorting Copper, Davidson Kempner Flagging a Credit Fear Factor and the ECB Warning of a Subprime Echo</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the print re-anchors the trade):</strong> Yardeni calls the AI trade alive and well, Truist wants investors to buy the 42% valuation reset, and Apollo's De Giorgi is positioning for the largest capex cycle in history. Nvidia's beat-and-raise and $150 billion buyback top-up hand the new leadership a real tailwind.</div>
+        <div class="bear"><strong>Bear (the financing strain remains):</strong> Druckenmiller is short copper and warns of 2027 weakness, Davidson Kempner's Krishanthan flags a credit fear factor as debt reprices, and the ECB likens the AI borrowing binge to subprime. A strong quarter does not clear the off-balance-sheet leverage beneath the buildout.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Nvidia beat-and-raise; $150B buyback; chips rally; copper plunge; Druckenmiller short copper</td><td>Bullish</td><td>~84,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Target and Lowe's beats; Walmart defensive bet; S&amp;P breaks 200-day; Truist says buy the reset</td><td>Mixed</td><td>~58,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Gold below $3,800; Musalem flags four more hikes; Treasuries rally; UK inflation 1-year high</td><td>Cautious</td><td>~46,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>ECB subprime warning; off-balance-sheet AI commitments; credit fear factor; Deutsche Bank leak</td><td>Bearish</td><td>~35,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC near $64k lagging stocks; MSTR crash call; MEV acquittal; Coinbase AI agents</td><td>Bearish</td><td>~51,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned less fearful after Nvidia's beat. r/wallstreetbets leaned bullish on the print and buyback top-up, though the copper plunge and Druckenmiller's short tempered the celebration. r/stocks was mixed as Target and Lowe's beats and Truist's buy-the-reset call clashed with the S&amp;P breaking its 200-day line. r/investing stayed cautious on gold below $3,800 and Musalem's four-hike warning, with some comfort in the Treasury rally. r/SecurityAnalysis stayed bearish on the ECB subprime parallel and the credit fear factor. r/CryptoCurrency was bearish as bitcoin lagged the stock rally and a chartist called for a 76% MSTR drop. The swing factor is whether today's rally holds through the Shenzhen summit and the FOMC minutes.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Strong Earnings Beat Can Steady a Stock but Not the Trade Around It</h2>
+    <p>Nvidia delivered a beat-and-raise and a $150 billion buyback top-up, Bloomberg reported, and WSJ said futures rallied as the AI jitters eased, yet Bloomberg also noted Asian stocks wavered and looked past the result, copper plunged as AI bets unraveled, and the ECB warned the AI borrowing binge echoes subprime. The instinct is that a clean beat from the most important AI company should settle the whole debate and send the trade higher. But a single company's quarter answers a narrow question about that company's demand, while the trade around it is pricing a web of financing, policy and positioning risks the earnings release never touches, which is why a stock can pop while the broader theme stays shaky. Start with what an earnings report actually tells you. A quarter reports backward-looking revenue and a forward guide for one firm, so a beat-and-raise confirms that this company saw strong demand and expects more. The first mechanism is the scope gap, where the print validates Nvidia's order book but says nothing about whether its customers can keep funding their purchases, which is the question copper and the ECB are flagging. The second mechanism is the positioning unwind, where funds that cut tech hard into the event may use strength to sell rather than chase, so good news meets supply and the rally fades, exactly the "waver" Asian markets showed. The third mechanism is the priced-in problem, where a widely expected beat is already embedded in the stock, so even strong numbers move price less than the surprise would suggest, and attention shifts straight to the next worry. The fourth mechanism is the correlation breakdown, where one firm's result does not fix the whole complex if the risk is systemic, so a chip-curb shock, a credit fear factor and off-balance-sheet leverage remain live even after the quarter clears. The fifth mechanism is the second-order read, where traders ask what the strong guide implies about capex commitments elsewhere, and a bigger buildout can actually deepen the financing concern the ECB raised rather than soothe it. The sixth mechanism is the regime filter, where in a risk-off tape driven by rate hikes and a strong dollar, even a great print trades inside a market that wants to sell rallies, so the macro backdrop caps the upside. The practical lesson for a market reader is that an earnings beat and the theme around it are different trades. Nvidia's quarter tells you its demand is real today, but the AI trade is also a bet on financing, export policy and positioning that no single company can resolve. Watch how the stock holds the day after the beat, whether the strength broadens to peers or fades, and whether the credit and policy worries ease alongside it, because a durable turn needs the whole web to settle, not just one number.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-17/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Stocks Bounce as Nvidia Outlook Tempers AI Fears: Markets Wrap</a></p>
+    <p class="deal-source"><a href="https://www.ft.com/content/d16475ce-efce-4dc1-b5a3-2f7c79e9dea9?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- AI Borrowing Binge Has 'Historic Parallels' With Subprime Bubble, Says ECB</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck This Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>FOMC minutes.</strong> With gold at a 14-month low and Musalem flagging four more hikes, watch whether the minutes read as hawkish as recent Fedspeak or give the Treasury rally room to extend.</li>
+      <li><strong>Fedspeak flood.</strong> After Musalem's four-hike call, watch the week's speakers for whether a December move hardens into committee consensus or splinters.</li>
+      <li><strong>Jobs and consumer reads.</strong> With job postings rising and retail earnings steadier, watch whether the labor data supports or undercuts the hawkish tape.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Nvidia aftermath.</strong> The beat-and-raise is in. Watch whether the relief broadens to chip peers and hyperscalers or fades as copper weakness and the ECB subprime warning reassert themselves.</li>
+      <li><strong>Retail reads.</strong> After Target, Lowe's and Nike's investor day, watch Walmart and others for consumer and cost-discipline signals into the holidays.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Anthropic IPO prices.</strong> The AI lab prices into strong demand with VCs eyeing a $100 billion windfall. Watch whether the debut re-rates the private AI complex or marks a top.</li>
+      <li><strong>Data-center credit.</strong> With banks seeking chip-curb clauses and the ECB flagging subprime parallels, watch data-center spreads and private-credit exposure for stress.</li>
+    </ul>
+    <h3>Central Banks</h3>
+    <ul>
+      <li><strong>Global tightening drift.</strong> Indonesia surprised with a hike and Iceland held at 8%. Watch whether the drift back toward restrictive policy firms as the Fed cycle extends.</li>
+      <li><strong>ECB leadership.</strong> Germany nominated Brunnermeier as chief economist, clearing de Cos for the presidency. Watch for signals on the 2027 rate path.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Trump-Xi-Putin in Shenzhen.</strong> The unprecedented trilateral meets today as new chip curbs strain the trade truce and Putin pushes a Eurasian order. Watch whether export policy hardens or eases.</li>
+      <li><strong>Iran and energy.</strong> The war is driving UK energy bills toward a 26% January jump. Watch whether energy costs or waning risk appetite set the oil price into year-end.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how hyperscaler capex, off-balance-sheet commitments and chip-curb shocks feed the AI credit and spread picture.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Wed Nov 18, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-11-18 06:29 ET); Bloomberg Technology (20 fresh, newest 2026-11-18 06:50 ET); Bloomberg Economics (20 fresh, newest 2026-11-18 06:42 ET); CNBC Top News (9 fresh, newest 2026-11-18 06:50 ET); CNBC Finance (4 fresh, newest 2026-11-18 03:29 ET); CNBC Economy (5 fresh, newest 2026-11-18 03:09 ET); MarketWatch Top Stories (10 fresh, newest 2026-11-18 06:38 ET); WSJ Markets (18 fresh, newest 2026-11-18 06:34 ET); FT Home (12 fresh, newest 2026-11-18 05:05 ET); Matt Levine Money Stuff (1 fresh, newest 2026-11-17 14:29 ET); CoinDesk (25 fresh, newest 2026-11-18 06:42 ET); Stratechery (2 fresh, newest 2026-11-18 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="C">
+      <p><strong>1. How did Nvidia's first earnings without Huang land?</strong></p>
+      <span class="opt" data-opt="A">A. It missed on revenue and cut next year's forecast</span>
+      <span class="opt" data-opt="B">B. It met estimates but suspended its buyback program</span>
+      <span class="opt" data-opt="C">C. It beat and raised, adding $150 billion to buybacks</span>
+      <span class="opt" data-opt="D">D. It delayed results after the leadership upheaval</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported Nvidia raised next year's forecasts, doubled revenue last quarter and added $150 billion to its buyback authorization, soothing the AI selloff. It did not miss, suspend buybacks or delay the report.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>2. What did St. Louis Fed President Musalem signal on rates?</strong></p>
+      <span class="opt" data-opt="A">A. Four more hikes may be needed in coming months</span>
+      <span class="opt" data-opt="B">B. The Fed should pause and assess incoming data</span>
+      <span class="opt" data-opt="C">C. Rate cuts should begin before next spring</span>
+      <span class="opt" data-opt="D">D. The tightening cycle has effectively ended</span>
+      <div class="feedback"><strong>A is correct.</strong> CNBC reported Musalem said four more hikes may be needed in coming months, one of the most hawkish views on the committee, helping push gold below $3,800. He did not call for a pause, cuts or an end to the cycle.</div>
+    </div>
+    <div class="q" data-correct="B">
+      <p><strong>3. Why did the ECB compare the AI borrowing binge to subprime?</strong></p>
+      <span class="opt" data-opt="A">A. Hyperscalers are defaulting on bank loans en masse</span>
+      <span class="opt" data-opt="B">B. Trillions in off-balance-sheet commitments are building up</span>
+      <span class="opt" data-opt="C">C. AI firms are packaging mortgages into new securities</span>
+      <span class="opt" data-opt="D">D. Chip buyers are using subprime consumer credit</span>
+      <div class="feedback"><strong>B is correct.</strong> The FT reported the ECB flagged trillions of dollars in off-balance-sheet commitments hyperscalers are building through contracts with other tech groups, echoing subprime's hidden leverage. There are no mass defaults, no mortgage packaging and no consumer subprime link.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Fed officials led by St. Louis's Alberto Musalem press for several more hikes and drove gold below $3,800 to a 14-month low as UK inflation hit a one-year high and Indonesia surprised with a hike, against Treasuries rallying a third day on speculation most hikes are already priced and gilt yields falling on soft UK services data.",
+    "sources": [
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/11/17/alberto-musalem-fed-interest-rates.html", "take": "Musalem says four more hikes may be needed in coming months." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-17/gold-steadies-near-14-month-low-as-rate-hike-pressure-mounts", "take": "Gold slumps below $3,800 as Fed officials signal more hikes." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-18/treasuries-ust-bond-yields-risk-appetite-falters", "take": "Treasuries edge higher a third day on view most hikes are priced." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/jgbs-edge-lower-ahead-of-20-year-auction-91707090?mod=rss_markets_main", "take": "Gilt yields fall after UK services inflation undershoots the BOE." },
+      { "name": "MarketWatch", "lean": "bull", "url": "https://www.marketwatch.com/story/the-fed-is-tightening-the-economy-is-slowing-and-thats-the-perfect-setup-to-buy-bonds-this-trader-argues-b1c88b23?mod=mw_rss_topstories", "take": "Kevin Muir buys bonds into the renewed weakness." }
+    ]
+  },
+  "iran": {
+    "diverge": "Oil inched lower as risk appetite waned despite bullish Middle East headlines, even as the Iran war drives UK energy bills toward a 26% jump and Trump, Xi and Putin meet in an unprecedented Shenzhen trilateral where new chip curbs strain a fragile trade truce.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-17/latest-oil-market-news-and-analysis-for-nov-18", "take": "Oil inched lower despite bullish Mideast headlines as risk appetite waned." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/11/18/apec-trump-xi-putin-shenzhen.html", "take": "Trump, Xi and Putin meet in Shenzhen as chip curbs strain the truce." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-18/uk-energy-bills-seen-rising-26-biggest-hike-since-2022", "take": "Iran war drives UK energy bills toward a 26% January jump." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/ef5dab0d-7335-4dc6-9e44-254bdd9cdc06?syn-25a6b1a6=1", "take": "Putin pushes a Eurasian order and lashes out at the West." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Nvidia's beat-and-raise under new leadership soothes the AI selloff and lifts global tech, with WSJ citing strong fundamentals and Yardeni calling the trade alive and well, against an ECB warning the AI borrowing binge echoes subprime, copper plunging as the AI trade unravels in metals and Stratechery calling the print boring.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-17/nvidia-delivers-solid-outlook-in-first-post-huang-earnings", "take": "Nvidia raises outlook and says it can thrive without Huang." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/business/nvidias-strong-fundamentals-give-new-ceo-a-much-needed-tailwind-65859856?mod=rss_markets_main", "take": "Strong fundamentals give the new CEO a much-needed tailwind." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/videos/2026-11-18/ai-trade-is-alive-and-well-yardeni-says-video", "take": "Yardeni says the AI trade is alive and well, just in transition." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/d16475ce-efce-4dc1-b5a3-2f7c79e9dea9?syn-25a6b1a6=1", "take": "ECB warns the AI borrowing binge echoes the subprime bubble." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-18/copper-prices-industrial-metal-dollar-lme", "take": "Copper and tin plunge as the AI trade unravels in metals markets." }
+    ]
+  }
+}</script>
+
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Nvidia","Broadcom","TSMC","Micron","AMD","Microsoft"],
+    "values": [3.4, 2.6, 2.1, 1.9, 1.5, 1.0]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [84000, 58000, 46000, 35000, 51000],
+    "colors": ["bull","neutral","neutral","bear","bear"]
+  },
+  "dealSizes": {
+    "labels": ["Anthropic VC windfall","Ramp (valuation)","EU insurance pool target","Payhawk (valuation)"],
+    "values": [100.0, 70.0, 80.0, 2.0]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
