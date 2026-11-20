@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Market Digest — Thu Nov 19, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="../js/site-config.js?v=20261018"></script>
+<script src="../js/market-feed.js?v=20261018"></script>
+<link rel="stylesheet" href="../css/digest.css?v=20261018">
+</head>
+<body>
+<div class="page">
+<nav class="toc" id="toc">
+  <h2>Sections</h2>
+  <div class="toc-links">
+  <a href="#framing"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>5 Desks</a>
+  <a href="#narratives"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>Dominant Narratives</a>
+  <a href="#equities"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>US Equities</a>
+  <a href="#tech"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>Tech & Growth</a>
+  <a href="#macro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>Macro & Rates</a>
+  <a href="#verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Narrative Verdict</a>
+  <a href="#crypto"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 8v8h4.5a2.5 2.5 0 0 0 0-5H9m0 0h4a2.5 2.5 0 0 0 0-5H9"/></svg>Crypto</a>
+  <a href="#deals"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 13l3-3 4 4"/><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M16 17l3 3 3-3"/><line x1="19" y1="14" x2="19" y2="20"/></svg>Deals & Capital Markets</a>
+  <a href="#buyside"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><line x1="9" y1="21" x2="9" y2="13"/><line x1="15" y1="21" x2="15" y2="13"/><line x1="3" y1="13" x2="21" y2="13"/></svg>Buy-Side</a>
+  <a href="#sentiment"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Reddit Sentiment</a>
+  <a href="#learn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>Learning Opportunity</a>
+  <a href="#ondeck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>On Deck Tomorrow</a>
+  <a href="#sources"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>Source Coverage</a>
+  <a href="#quiz"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz</a>
+  <a href="#feedback"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Feedback</a>
+  <a href="#community-votes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Community Votes</a>
+  <a href="#archive"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>Archive</a>
+  </div>
+  <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-th="light" class="active" title="The Economist">Econ</button>
+        <button type="button" data-th="newsprint" title="The Wall Street Journal">WSJ</button>
+        <button type="button" data-th="sepia" title="Financial Times">FT</button>
+        <button type="button" data-th="dark" title="Bloomberg">BBG</button>
+  </div>
+  <div class="threads-rail">
+    <h2>Narrative Threads <button class="tr-expand" id="trExpand" type="button">Expand &rarr;</button></h2>
+    <div id="trList"></div>
+  </div>
+</nav>
+<div class="content">
+<main>
+<div style="background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 22px;margin:0 0 18px;font-size:14px;"><strong>Archived — 2026-11-19</strong> · <a href="../index.html" style="color:var(--accent);">← back to today</a></div>
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="kicker">Market Digest</div>
+    <h1>Thursday, November 19, 2026</h1>
+    <div class="meta">
+      <p>Anthropic begins trading midday in the biggest IPO ever, pricing at $83 a share for a $1.5 trillion valuation and a record $107.3 billion raise, reviving an AI trade that spent three days selling off. Fed minutes showed almost all officials expect more hikes, and Governor Waller floated a half-point move, keeping gold near a 14-month low. Trump, Xi and Putin held their unprecedented Shenzhen trilateral, and a Houthi strike hit Saudi Arabia's sovereign wealth fund headquarters.</p>
+    </div>
+  </header>
+
+  <!-- FRAMING COMPARE -->
+  <section id="framing">
+    <div id="framing-mount"></div>
+    <script type="application/json" id="framingData">{
+      "storyTitle": "Anthropic priced the largest IPO in history at $83 a share, raising a record $107.3 billion for a $1.5 trillion fully diluted valuation and topping SpaceX's debut, rekindling the AI trade after a three-day tech selloff and leaving the market to decide whether the listing marks a year-end bottom or the top of a bubble the IMF says still has further to correct",
+      "framings": [
+        {"outlet": "WSJ", "headline": "Anthropic Raises $81 Billion in Biggest IPO Ever", "angle": "Frames the upsized deal priced above range as proof public demand for AI still runs hot.", "lean": 45, "pull": "The AI giant sold more shares than planned and priced above the targeted range."},
+        {"outlet": "Financial Times", "headline": "Anthropic to List on Wall Street in Biggest IPO Ever", "angle": "Notes the record raise while flagging the group activated part of its responsible-scaling policy on safety fears.", "lean": 15, "pull": "Shares in maker of Claude to begin trading after raising a total of $107bn."},
+        {"outlet": "Bloomberg", "headline": "US Futures Rally as Anthropic Fuels AI Enthusiasm", "angle": "Reads the blockbuster pricing as the catalyst dip buyers had waited for into year-end.", "lean": 50, "pull": "The IPO might be the moment dip buyers have been waiting for."},
+        {"outlet": "CNBC", "headline": "Fed Minutes and AI Doubts Keep a Lid on the Relief", "angle": "Pairs the IPO pop with minutes showing nearly all officials expect more hikes and worry AI lifts inflation.", "lean": -5, "pull": "Fed officials expect more rate hikes, worry about AI impact on inflation."},
+        {"outlet": "The Economist", "headline": "A Record Listing Into a Correction the IMF Says Isn't Over", "angle": "Georgieva warns of a little bit more AI correction to come even as the record deal clears.", "lean": -30, "pull": "I expect perhaps a little bit more correction in AI-related markets."}
+      ]
+    }</script>
+  </section>
+
+  <!-- NARRATIVES -->
+  <section id="narratives">
+    <h2>Dominant Narratives</h2>
+
+    <div class="narrative" data-nar="bonds">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 1</span>
+        <h3>Fed Minutes Show Almost All Officials Expect More Hikes and Governor Waller Wants to 'Shock People' With a Half-Point Move as Gold Hovers Near a 14-Month Low and ECB's Nagel Pushes a December Hike, Against Eurozone Yields Falling, CoinDesk Analysts Calling the Hike Push a Mistake on Backward-Looking Data and Australia's Jobless Jump Pricing Rate Cuts</h3>
+      </div>
+      <p>The policy tape hardened again while the bond market kept leaning the other way. Bloomberg reported October minutes showed nearly all Fed officials expect to raise rates in the months ahead to return inflation to 2%, and CNBC noted the minutes also flagged worry that AI spending lifts inflation. Governor Christopher Waller told CNBC the Fed may need to "shock people" with a half-point hike, while San Francisco's Mary Daly urged a measured path of further increases, per Bloomberg. Gold wavered near a 14-month low on the hawkish signal, Bloomberg said, and ECB's Joachim Nagel argued a December hike would send a clear message in Europe. The counterweight sits in the curve and the data. WSJ reported eurozone government bond yields fell, shrugging off hike expectations and heavy supply, CoinDesk said analysts argue the Fed is leaning on backward-looking data as gasoline and energy prices slide, and Bloomberg reported Australia's jobless rate jumped to a five-year high, pushing traders to price RBA cuts. One camp sees the minutes, Waller and Nagel as a tightening drumbeat with gold confirming it; the other sees falling yields, easing gas prices and a cracking Australian labor market as the real-time signal the hawks are missing.</p>
+      <p>The bull read is eurozone yields falling despite the hawkish minutes, CoinDesk analysts calling the hike push a mistake on stale data and Australia's jobless jump pricing cuts. The bear read is almost all Fed officials expecting more hikes, Waller floating a half-point move, Nagel pushing a December hike and gold near a 14-month low.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the data is turning before the Fed):</strong> Eurozone yields fell even against hike expectations and heavy supply, analysts argue the Fed is reading backward-looking inflation while gasoline and energy prices slide, and Australia's jobless rate hit a five-year high. The real-time signal points at easing, not more tightening.</div>
+        <div class="bear"><strong>Bear (the hiking drumbeat is loud):</strong> October minutes show almost all officials expect more hikes, Waller wants to shock markets with a half-point, Daly backs a measured path higher, and Nagel pushes a December ECB hike. Gold hovering near a 14-month low says the tightening repricing is still draining assets.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.bloomberg.com/news/articles/2026-11-18/fed-minutes-show-almost-all-officials-expect-more-rate-hikes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Fed Minutes Show Almost All Officials Expect More Rate Hikes</a></div>
+    </div>
+
+    <div class="narrative" data-nar="iran">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 2</span>
+        <h3>Trump, Xi and Putin Stage an Unprecedented Shenzhen Trilateral With Trump Calling Putin 'My Friend' and the Leaders Talking Nuclear De-escalation and Oil Easing, Against a Houthi Strike Hitting Saudi Arabia's Sovereign Wealth Fund Headquarters and New US Chip Curbs Threatening Southeast Asia's Data-Center Pipeline</h3>
+      </div>
+      <p>The diplomacy delivered a show of de-escalation even as the Middle East flared. The FT reported Trump, Putin and Xi held a historic trilateral in Shenzhen, and Bloomberg said Xi called the round-table meeting "groundbreaking" and warned major-power rivalry breeds instability, with the leaders discussing how to prevent nuclear war and resolve conflicts in Ukraine and Iran. CNBC noted Trump praised a "great relationship" with Putin after their first in-person meeting in over a year, and Bloomberg Economics said South Africa's central bank sees oil prices easing with few signs the recent energy surge is lasting. The bearish side of the ledger is the live conflict. The FT reported a Houthi air strike hit the headquarters of Saudi Arabia's Public Investment Fund, following near-daily barrages on the kingdom, and CNBC said new US rules force Southeast Asian data centers to seek approval to buy advanced AI chips, threatening a build-out heavily fueled by Chinese demand. Trump also argued against global AI regulation even as Washington tightens export curbs, Bloomberg noted. One camp sees easing oil and a leaders' summit lowering the geopolitical temperature; the other sees a strike on the Gulf's marquee investor and chip curbs that can reprice supply chains overnight.</p>
+      <p>The bull read is a Shenzhen trilateral talking nuclear de-escalation and Ukraine, Trump warming to Putin and oil prices easing. The bear read is a Houthi strike on Saudi Arabia's PIF headquarters and new US chip curbs threatening Southeast Asia's data-center pipeline.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the summit lowers the temperature):</strong> Trump, Xi and Putin met face to face in Shenzhen to talk nuclear de-escalation and Ukraine, Trump called Putin a friend, and South Africa's central bank sees oil easing with no lasting energy-price impact. A calmer top-level backdrop keeps a lid on the geopolitical risk premium.</div>
+        <div class="bear"><strong>Bear (the conflict is still live):</strong> A Houthi air strike hit Saudi Arabia's Public Investment Fund headquarters amid near-daily barrages, and new US chip curbs threaten Southeast Asia's data-center pipeline built on Chinese demand. A strike on the Gulf's flagship investor and hardening export rules can reprice supply and chips fast.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.ft.com/content/fcf6d27b-a04c-4cef-8b03-ce2423566f1f" target="_blank" rel="noopener noreferrer">Source: Financial Times -- Trump, Putin and Xi Stage Historic Trilateral Meeting</a></div>
+    </div>
+
+    <div class="narrative" data-nar="aicapex">
+      <div class="nar-header">
+        <span class="nar-label">Narrative 3</span>
+        <h3>Anthropic's Record $107.3 Billion IPO Revives the AI Trade and European Stocks Snap a Three-Day Slide, With Bloomberg Seeing a Clearer Path to a Year-End Rally, Against the IMF's Georgieva Warning of More Correction, WSJ Flagging a $500 Billion Nvidia Pledge With Not a Dollar Deployed and Amundi's Mortier Shifting 2027 Away From Big Tech</h3>
+      </div>
+      <p>The catalyst landed on the bullish side, and the relief rippled worldwide. Bloomberg reported US futures rallied and European stocks snapped a three-day decline as Anthropic priced a record-breaking $107.3 billion IPO at $83 a share for a $1.5 trillion valuation, topping SpaceX's debut, with gray-market shares indicated more than 20% higher. Bloomberg said the path to a year-end rally looks clearer now that the risk events that forced investors to cut exposure are clearing, and South Korea's exports topped $1 trillion for the first time on the AI-driven chip boom. The bears say the plumbing still worries them. Bloomberg reported IMF chief Kristalina Georgieva expects "perhaps a little bit more" AI correction, WSJ said Wall Street pledged $500 billion to help Nvidia's customers keep buying chips but has not deployed a dollar, and a separate WSJ piece called Nvidia the "central bank" to AI's circular economy after 293 deals and a $100 billion-plus investment portfolio. Bloomberg added Amundi CIO Vincent Mortier is reshaping 2027 away from cap-weighted tech, Lenovo posted its first operating loss since 2017, and MarketWatch noted Alibaba's thriving cloud profits are fully offset by AI-lab losses. The listing reassured; the financing and valuation math still has to clear.</p>
+      <p>The bull read is Anthropic's record IPO reviving the trade, European stocks rebounding and Bloomberg seeing a clearer path to a year-end rally. The bear read is the IMF's Georgieva flagging more correction, WSJ's undeployed $500 billion Nvidia pledge and Amundi shifting away from big tech.</p>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the listing re-anchors the trade):</strong> Anthropic priced the biggest IPO ever at a $1.5 trillion valuation with gray-market shares indicated over 20% higher, European stocks snapped a three-day slide, and Bloomberg sees a clearer path to a year-end rally. South Korea's $1 trillion export milestone shows the AI chip demand is real.</div>
+        <div class="bear"><strong>Bear (the financing math is unproven):</strong> The IMF's Georgieva expects a little bit more AI correction, WSJ says a pledged $500 billion to fund Nvidia's customers has not deployed a dollar, and Nvidia sits at the center of a circular economy of its own deals. Amundi is cutting tech for 2027, and Lenovo just posted its first operating loss since 2017.</div>
+      </div>
+      <div class="dive-deeper"><a href="https://www.wsj.com/finance/wall-street-pledged-to-mobilize-500-billion-for-nvidiabut-hasnt-put-up-a-dime-1e41f276?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Wall Street Pledged to Mobilize $500 Billion for Nvidia, but Hasn't Put Up a Dime</a></div>
+    </div>
+  </section>
+
+  <!-- EQUITIES -->
+  <section id="equities">
+    <h2>US Equities</h2>
+    <details class="deal">
+      <summary><strong>Stock futures rise as Anthropic prices its IPO above expectations</strong></summary>
+      <div class="deal-body">
+        <p>Nasdaq futures jumped premarket after Anthropic priced its IPO above expectations at an implied $1.5 trillion valuation, WSJ reported, as optimism improved ahead of its midday trading debut. Bloomberg said the record raise rekindled AI enthusiasm and left bulls eyeing a year-end rally.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/stock-futures-rise-as-optimism-improves-ahead-of-anthropic-trading-debut-ecdfbb2f?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Stock Futures Rise as Optimism Improves Ahead of Anthropic Trading Debut</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Walmart raises sales and earnings outlook as e-commerce jumps again</strong></summary>
+      <div class="deal-body">
+        <p>Walmart (WMT) raised its sales and earnings guidance after another jump in e-commerce, CNBC reported, citing strength in store-fulfilled pickup and delivery in its fiscal third quarter. The print extends a steadier big-box read and underlines the defensive-consumer bet as money rotates from crowded tech.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/19/walmart-wmt-q3-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Walmart Raises Sales and Earnings Outlook as E-Commerce Sales Jump Again</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Target shares rise 7% on best sales growth in five years</strong></summary>
+      <div class="deal-body">
+        <p>Target (TGT) shares rose 7% after it beat third-quarter sales expectations and raised guidance, CNBC reported, posting its best sales growth in five years as its turnaround gains traction. The result gives another firm read on discretionary demand heading into the holidays.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/target-tgt-q3-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Target Shares Rise 7% as Retailer Posts Best Sales Growth in Five Years</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lowe's raises outlook on strong online sales despite slow housing</strong></summary>
+      <div class="deal-body">
+        <p>Lowe's (LOW) said online-sales strength during the quarter contributed to a full-year guidance raise, CNBC reported, even with the housing market still sluggish. The result adds to a steadier big-box picture alongside Target and Walmart and another data point on resilient spending.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/lowes-low-q3-2026-earnings.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Lowe's Posts Strong Online Sales, Raises Outlook Despite Slow Housing Market</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>US stocks end mixed as Nvidia falls again ahead of Anthropic's debut</strong></summary>
+      <div class="deal-body">
+        <p>US stocks closed mixed Wednesday as Nvidia (NVDA) slid again, WSJ reported, with efforts to close the chapter on Jensen Huang's exit failing to stabilize the stock or quell fears about its "neocloud" customers. The wobble set up Thursday's Anthropic listing as the next sentiment test.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/u-s-stocks-mixed-nvidia-falls-ahead-of-anthropic-ipo-c7de4692?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- US Stocks Mixed, Nvidia Down Again Ahead of Anthropic IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Ford starts US battery-cell production using Chinese CATL tech</strong></summary>
+      <div class="deal-body">
+        <p>Ford (F) has begun US production and shipments of battery cells for its next-generation EVs using technology licensed from Chinese giant CATL, CNBC reported, amid geopolitical tensions over the arrangement. The move tests whether licensed foreign tech can survive the tightening export and trade backdrop.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/ford-us-battery-cells-catl-tech.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Ford Starts US Battery Cell Production Using Chinese Tech</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Tech falls behind in the biggest market shake-up in a generation</strong></summary>
+      <div class="deal-body">
+        <p>The stock market is being rocked by its biggest shake-up in a generation as tech falls behind, MarketWatch reported, with tech stocks screening cheap while defensive sectors like consumer staples look expensive. The rotation frames the Anthropic pop against a deeper leadership change under way.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/the-stock-market-is-being-rocked-by-the-biggest-shake-up-in-a-generation-as-tech-falls-behind-66c1f281?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- The Stock Market Is Being Rocked by the Biggest Shake-Up in a Generation</a></p>
+      </div>
+    </details>
+    <div class="anchor knowledge">
+      <strong>Key level to watch:</strong> The tape got its catalyst in Anthropic's record listing, and futures popped. The bull case is the IPO reviving the AI trade, European stocks snapping a three-day slide and Walmart, Target and Lowe's all raising guidance. The bear case is Nvidia falling again on neocloud worries, the IMF warning of more correction and a generational rotation out of tech into defensives. Watch whether Anthropic's debut holds its gray-market premium through the session or fades into the hawkish Fed minutes.
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why a Record IPO Can Reset Sentiment Across a Whole Sector</summary>
+      <p>Bloomberg reported US futures rallied and European stocks snapped a three-day decline as Anthropic priced a record $107.3 billion IPO, with one strategist calling it the moment dip buyers had waited for, even as the IMF's Georgieva warned of more AI correction to come and WSJ flagged a pledged $500 billion to fund Nvidia's customers that has not deployed a dollar. The instinct is that one company's listing is just one data point and should not move an entire sector. But a marquee IPO is a live price-discovery event that resolves a specific uncertainty hanging over the whole complex, which is why a single pricing can reset sentiment far beyond the issuer. Start with what an IPO actually reveals. When a company prices, the market observes exactly what large institutions will pay for a slice of the theme in real money, not in survey opinions, so the clearing price becomes a hard read on demand. The first mechanism is the information transfer, where a strong, upsized, above-range print says sophisticated buyers still want AI exposure, and that read bleeds into every comparable name because they share the same end-market story. The second mechanism is the removal of overhang, where a looming mega-listing makes investors hoard cash and cut exposure to fund it, so once it clears, that mechanical selling pressure lifts and the broader tape can breathe, the "path clears" dynamic Bloomberg described. The third mechanism is the anchoring, where a fresh, enormous valuation gives traders a new reference point for the sector's addressable upside, re-rating peers against it. The fourth mechanism is the reflexivity, where a successful debut improves financing conditions for the entire ecosystem, letting more AI buildout get funded, which in turn supports the demand story the valuation rests on. The fifth mechanism is the sentiment signal, where a crowded, heavily oversubscribed book tells wary investors the theme is not dead, flipping positioning from defense to offense quickly. The sixth mechanism is the fragility of that signal, where the same reflexivity runs in reverse if the stock breaks its issue price, turning a confidence boost into a confirmation of the bears, which is why the first days of trading matter more than the pricing. The practical lesson for a market reader is that a landmark IPO is a sentiment pivot, not just a corporate event. Anthropic's clearing price tells you what real money will pay for frontier AI today, and that resolves an overhang the whole sector carried, but the durability depends on whether the stock holds its premium and whether the financing it signals actually gets deployed. Watch the aftermarket, the peer re-rate and whether the undeployed capital WSJ flagged starts to move, because a sentiment reset needs follow-through to become a trend.</p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/the-path-to-a-year-end-rally-looks-clearer-taking-stock" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Path to a Year-End Stock Rally Looks Clearer After Anthropic</a></p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/nvidia-is-the-central-bank-to-ais-circular-economy-see-where-the-money-goes-da480b61?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Nvidia Is the Central Bank to AI's Circular Economy</a></p>
+    </details>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <h2>Tech &amp; Growth</h2>
+    <details class="deal">
+      <summary><strong>Anthropic raises a record $107.3 billion to top SpaceX's debut</strong></summary>
+      <div class="deal-body">
+        <p>Anthropic (ANTH) and its seven co-founders raised a record $107.3 billion in an upsized IPO and private placement, Bloomberg reported, becoming the first frontier AI lab to tap public markets. WSJ said it sold more shares than planned and priced above range, implying a $1.5 trillion valuation.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/anthropic-is-said-to-price-ipo-at-83-per-share" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Anthropic Raises $107.3 Billion to Top SpaceX's Record Debut</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>European stocks rebound as the Anthropic IPO revives the AI trade</strong></summary>
+      <div class="deal-body">
+        <p>European stocks rose and snapped a three-day decline, Bloomberg reported, as Anthropic's blockbuster IPO restored confidence in the AI trade after a tech selloff. WSJ added European indexes largely rallied at the open as tech sentiment rebounded and industrial stocks gained.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/european-stocks-rebound-as-anthropic-ipo-revives-the-ai-trade" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- European Stocks Rebound as Anthropic IPO Revives the AI Trade</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Anthropic discloses it activated part of its 'responsible scaling policy'</strong></summary>
+      <div class="deal-body">
+        <p>AI advances triggered new safety fears on the eve of Anthropic's market debut, the FT reported, as the group disclosed it had activated part of the responsible-scaling policy built to ensure its AI did not develop so fast it caused "catastrophic risks." The disclosure lands as the stock begins trading.</p>
+        <p class="deal-source"><a href="https://www.ft.com/content/d8be4655-211c-49a8-bfe4-18a00b8e8619?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- AI Advances Trigger New Safety Fears on Eve of Market Debut</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Alibaba spends big on AI hardware to drive a 10% revenue climb</strong></summary>
+      <div class="deal-body">
+        <p>Alibaba (BABA) posted a stronger-than-projected 10% rise in revenue, Bloomberg reported, reflecting its pivotal role in supplying compute for China's AI boom. MarketWatch noted the thriving cloud business is completely offset by losses from its AI-labs unit, sharpening the capex-versus-return tension.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/alibaba-s-revenue-beats-estimates-during-china-s-ai-boom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Alibaba Spends Big on AI Hardware to Drive 10% Revenue Climb</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Lenovo shares tank after its first operating loss since 2017</strong></summary>
+      <div class="deal-body">
+        <p>Lenovo (LNVGY) shares slid more than 5% after reporting a far larger-than-anticipated loss for the September quarter, Bloomberg reported, reflecting accounting charges and the mounting cost of PC components. Solid AI-hardware demand lifted sales but could not offset the squeeze on margins.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/lenovo-sales-beat-estimate-due-to-solid-ai-hardware-demand" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Lenovo Shares Tank After First Operating Loss Since 2017</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>South Korea's exports top $1 trillion for the first time on the AI boom</strong></summary>
+      <div class="deal-body">
+        <p>South Korea's annual exports surpassed $1 trillion for the first time, Bloomberg reported, as the global AI boom stoked record semiconductor shipments. The milestone is a hard read on physical AI demand even as valuation and financing worries swirl around the trade.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/south-korea-s-exports-top-1-trillion-for-first-time-on-ai-boom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- South Korea's Exports Top $1 Trillion for First Time on AI Boom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>MAS warns AI agents could move money faster and raise stability risks</strong></summary>
+      <div class="deal-body">
+        <p>Singapore's central bank warned that AI agents could move deposits and other funds more quickly, Bloomberg reported, raising new liquidity and financial-stability risks. The caution lands as JPMorgan and Hyundai Card build agent transactions that cut humans out of the loop entirely.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/mas-warns-ai-agents-could-move-money-faster-raise-finance-risks" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- MAS Sees AI Agents Moving Money Faster as New Risk</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Tech &amp; Rate-Sensitive Movers -- Thursday November 19, 2026 (%)</h4>
+      <div style="position:relative;height:320px;width:100%"><canvas id="techMovers"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Signal versus noise in the AI trade:</strong> The signal of demand holding is Anthropic's record, oversubscribed IPO, European stocks rebounding and South Korea's $1 trillion export milestone on record chip shipments. The counter-signal is Lenovo's first operating loss since 2017, Alibaba's AI-lab losses offsetting cloud profits, the IMF warning of more correction and MAS flagging agent-driven liquidity risk. The near-term tell is whether Anthropic holds its premium and the rebound broadens to chip peers, or fades into the hawkish Fed minutes and the generational rotation out of tech.
+    </div>
+  </section>
+
+  <!-- MACRO -->
+  <section id="macro">
+    <h2>Macro &amp; Rates</h2>
+    <details class="deal">
+      <summary><strong>Fed minutes show almost all officials expect more rate hikes</strong></summary>
+      <div class="deal-body">
+        <p>Nearly all Fed officials agreed in October they would likely have to raise rates in the months ahead to return inflation to 2% in a timely manner, Bloomberg reported. CNBC added the minutes also showed officials worried that AI investment could add to inflation pressure.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/fed-minutes-october-2026.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed Officials Expect More Rate Hikes, Worry About AI Impact on Inflation</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Fed's Waller says the bank may need to 'shock people' with a half-point hike</strong></summary>
+      <div class="deal-body">
+        <p>Governor Christopher Waller said the central bank may need to "shock people" with a half-point rate hike, CNBC reported, as inflation persistently above the 2% target pushes officials into a more aggressive stance. The comment hardens the hawkish signal from the minutes.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/federal-reserve-governor-christopher-waller.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed's Waller Says Central Bank May Need to 'Shock People' With Half-Point Rate Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Gold wavers near a 14-month low as the market tracks a hawkish Fed</strong></summary>
+      <div class="deal-body">
+        <p>Gold wavered near a 14-month low, Bloomberg reported, after Fed officials signaled rate hikes are likely to stretch into next year. The FT added the metal long touted as a diversifier has not offered protection during the recent tech-stock fall, denting its haven case.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/gold-steadies-near-14-month-low-as-fed-signals-more-rate-hikes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Gold Wavers Near 14-Month Low as Market Tracks Hawkish Fed</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Analysts argue the Fed's hike push leans on backward-looking data</strong></summary>
+      <div class="deal-body">
+        <p>The Fed's push for more rate hikes may be a mistake, CoinDesk reported, with analysts arguing it is reading the wrong data as falling gasoline and energy prices suggest inflation pressure is already easing. The call captures the bond market's quiet fade of the hawkish Fedspeak.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/19/fed-s-push-for-more-rate-hikes-leans-on-backward-looking-data-as-gas-prices-slide-analysts-argue" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Fed's Rate Hike Push May Be a Mistake. Here's Why</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>ECB's Nagel says a December rate hike would send a clear signal</strong></summary>
+      <div class="deal-body">
+        <p>Another ECB hike in December would send a firm message on policymakers' determination to control inflation, Bundesbank President Joachim Nagel told Bloomberg. The comment extends the global tightening drift as WSJ noted eurozone bond yields fell anyway, shrugging off the hike expectations.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/ecb-s-nagel-says-december-rate-hike-would-send-clear-signal" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- ECB's Nagel Says December Rate Hike Would Send Clear Signal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Australia's jobless jump to a five-year high prompts rate-cut bets</strong></summary>
+      <div class="deal-body">
+        <p>Australian unemployment climbed to a five-year high of 4.9% in October as the economy unexpectedly shed jobs, Bloomberg reported, sending the currency lower and boosting bets the RBA will pivot to cuts next year. The data cuts against the global hiking drumbeat.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/australian-unemployment-jumps-to-4-9-following-rba-rate-hikes" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Australia's Jobless Jump Prompts Traders to Price Rate Cuts</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>French risks have traders betting the euro's slide is far from over</strong></summary>
+      <div class="deal-body">
+        <p>The euro's tumble to an 18-month low against the dollar shows few signs of easing, Bloomberg reported, as traders bet next year's French election in a fiscally stressed country keeps weighing on the currency. Amundi's Mortier said the firm is not seeing panic selling in French debt despite the yield jump.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/french-risks-traders-betting-euro-slide-currency" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- French Risks Have Traders Betting Euro Fall Is Far From Over</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>US Treasury Yield Curve (November 19, 2026)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="treasuryYields"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Brent Crude -- Recent Path ($/barrel)</h4>
+      <div style="position:relative;height:280px;width:100%"><canvas id="brentChart"></canvas></div>
+    </div>
+    <div class="anchor knowledge">
+      <strong>Two forces pulling on rates:</strong> The bull side points to eurozone yields falling despite hike expectations, analysts arguing the Fed is reading stale data as gas prices slide, and Australia's jobless jump pricing RBA cuts. The bear side points to October minutes showing almost all officials expect more hikes, Waller floating a half-point move, Nagel pushing a December ECB hike and gold near a 14-month low. The swing factor is the incoming inflation and labor data: a softening read lets the bond bulls press the real-time case, a firmer one hands the hawks their half-point.
+    </div>
+    <div class="chart-card">
+      <h4>Credit Spreads -- IG vs. HY OAS (bps)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="creditChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4>Market Stress Indicators</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="stressChart"></canvas></div>
+    </div>
+    <details class="dive">
+      <summary>Deeper: Why Wall Street Can Pledge $500 Billion for AI and Deploy None of It</summary>
+      <p>WSJ reported that a wave of money supposed to help Nvidia's customers keep buying chips, pledged at roughly $500 billion, has not put up a single dollar, while a separate WSJ piece called Nvidia the "central bank" to AI's circular economy after 293 deals and a $100 billion-plus investment portfolio, and the IMF's Kristalina Georgieva warned of a little bit more AI correction to come. The instinct is that a pledge is money, so a half-trillion-dollar commitment should be fueling the buildout right now. But a pledge is a conditional intention, not committed capital, and the gap between the two is exactly where financing risk lives, which is why a market reader has to distinguish a headline number from deployed dollars. Start with what a pledge actually is. When banks and funds announce they will "mobilize" capital for AI infrastructure, they are signaling appetite subject to terms, due diligence and demand that still has to show up, so nothing moves until a specific deal clears every condition. The first mechanism is the conditionality, where the money only flows once a borrower has signed contracts, collateral and cash flows a lender will underwrite, and much of the AI buildout does not yet meet that bar. The second mechanism is the circularity WSJ highlights, where Nvidia invests in the customers who then buy its chips, so demand can look self-sustaining while actually leaning on one vendor's balance sheet rather than outside capital. The third mechanism is the collateral problem, where chips and data centers depreciate fast and face export-rule risk, making lenders hesitate to deploy against assets they cannot confidently value. The fourth mechanism is the sequencing, where pledges are announced to signal confidence and attract more participants, but the actual draws wait for utilization and revenue to prove out, so the headline leads the cash by many months. The fifth mechanism is the reflexivity, where a buoyant equity tape and a record IPO make the pledged money more likely to deploy, while a correction like the one Georgieva flags makes lenders pull back and the pledge evaporate quietly. The sixth mechanism is the confidence dependency, where the whole structure holds only as long as everyone believes the contracted demand is real, and reprices fast the moment a large buyer wobbles. The practical lesson for a market reader is that announced capital and deployed capital are different things. A $500 billion pledge tells you intent exists, but the AI buildout is funded only when that money actually moves against real contracts, and the fact that none has yet is a sign the financing is waiting on proof the demand holds. Watch deployed dollars, utilization rates and whether vendor financing like Nvidia's keeps substituting for outside lenders, because that gap is where an AI slowdown would show up first.</p>
+      <p class="deal-source"><a href="https://www.wsj.com/finance/wall-street-pledged-to-mobilize-500-billion-for-nvidiabut-hasnt-put-up-a-dime-1e41f276?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Wall Street Pledged to Mobilize $500 Billion for Nvidia, but Hasn't Put Up a Dime</a></p>
+      <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/imf-s-chief-is-warning-ai-correction-has-little-bit-more-to-go" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- IMF's Chief Is Warning AI Correction Has 'Little Bit More' to Go</a></p>
+    </details>
+  </section>
+
+  <!-- VERDICT -->
+  <section id="verdict" class="verdict-section">
+    <h2>Today's Verdict</h2>
+    <div class="verdict-aggregate">
+      <div id="vaHeadline">Pending market close</div>
+      <div id="vaSub">Fed minutes show almost all officials expect more hikes and Waller floats a half-point move with gold near a 14-month low, against eurozone yields falling, analysts calling the hike push a mistake on stale data and Australia's jobless jump pricing cuts. Trump, Xi and Putin stage a Shenzhen trilateral talking de-escalation and oil eases, against a Houthi strike on Saudi Arabia's PIF headquarters and chip curbs threatening Southeast Asia's data centers. Anthropic's record $107.3 billion IPO revives the AI trade and European stocks rebound, against the IMF warning of more correction, WSJ's undeployed $500 billion Nvidia pledge and Amundi shifting away from big tech; verdicts populate after the close…</div>
+    </div>
+    <details class="logic-explainer">
+      <summary>How verdicts are scored</summary>
+      <p>Each narrative gets Bull / Bear / Mixed based on the day's close. Bonds/Rates: if 10Y closes above 4.90%, bear confirmed; below 4.65%, bull confirmed. Iran/Oil: if Brent closes above $105, bear confirmed; below $95, bull confirmed. AI Capex: if NVDA closes above the prior close, bull confirmed; a further drop of 3% or more, bear confirmed. Mixed if between thresholds. Verdicts populate after the close.</p>
+    </details>
+    <div class="verdict-grid">
+      <div class="narrative-stack" data-narrative="bonds">
+        <h4>Bonds / Rates</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="iran-oil">
+        <h4>Iran / Geopolitical</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+      <div class="narrative-stack" data-narrative="ai-capex">
+        <h4>AI Capex / Rotation</h4>
+        <div class="stack-cell pending"><span class="cell-name">1 · Open</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">2 · Momentum</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">3 · Catalyst</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">4 · Close</span><span class="cell-val">pending</span></div>
+        <div class="stack-cell pending"><span class="cell-name">5 · AH</span><span class="cell-val">pending</span></div>
+        <div class="ns-verdict pending">Verdict: Pending</div>
+      </div>
+    </div>
+    <div class="week-scoreboard">
+      <h4>Week Scoreboard</h4>
+      <table>
+        <thead><tr><th>Day</th><th>Bonds/Fed</th><th>Iran/Geo</th><th>AI Capex</th></tr></thead>
+        <tbody id="weekTbody">
+          <tr>
+            <td>Mon 11/16</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Tue 11/17</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Wed 11/18</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Thu 11/19</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+          <tr>
+            <td>Fri 11/20</td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+            <td><span style="color:var(--muted);font-weight:700;">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="score-summary">
+        This week: <span id="ssRight">0</span> bull confirmed &nbsp;·&nbsp;
+        <span id="ssWrong">0</span> bear confirmed &nbsp;·&nbsp;
+        <span id="ssMixed">0</span> mixed &nbsp;·&nbsp;
+        Bear rate: <span id="ssRate">0%</span>
+      </div>
+    </div>
+    <div class="feedback-mini">
+      <label for="verdictFb">Post-close verdict notes:</label>
+      <textarea id="verdictFb" rows="3" placeholder="Add your own read after market close..."></textarea>
+      <button onclick="saveVerdictFeedback()">Save Notes</button>
+      <span id="vfSaved" style="display:none;color:var(--bull);">Saved ✓</span>
+    </div>
+  </section>
+
+  <!-- CRYPTO -->
+  <section id="crypto">
+    <h2>Crypto</h2>
+    <details class="deal">
+      <summary><strong>Bitcoin bounces back into the green ahead of Anthropic's IPO</strong></summary>
+      <div class="deal-body">
+        <p>Bitcoin bounced off its weekly low as crypto markets turned positive, Bloomberg reported, lifting as risk sentiment improved ahead of Anthropic's debut. CoinDesk noted Nasdaq futures jumped nearly 2% with Anthropic shares indicated as much as 24% higher, and one analyst said IPO money could flow back into crypto.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/bitcoin-bounces-back-into-green-ahead-of-anthropic-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Bitcoin Bounces Back Into Green Ahead of Anthropic IPO</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>CZ says tokenized Anthropic is coming to BNB Chain on IPO day</strong></summary>
+      <div class="deal-body">
+        <p>Changpeng Zhao said Anthropic-linked tokens from bStocks, Ondo and xStocks will hit BNB Chain on day one of the Nasdaq debut, CoinDesk reported, following a $500 million pre-IPO rush that comes with notable fine print. The push shows tokenized equities racing to front-run the listing.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/19/cz-says-tokenized-anthropic-is-coming-to-bnb-chain-on-ipo-day" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- CZ Says Tokenized Anthropic Is Coming to BNB Chain on IPO Day</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>North Korean hackers used Sky's stablecoin system, putting billions at freeze risk</strong></summary>
+      <div class="deal-body">
+        <p>A blockchain investigation traced $518 million in illicit-linked activity, including the 2025 Bybit hack, through a key reserve backing DAI and USDS, CoinDesk reported. The finding puts Sky's institutional ambitions and open design on a collision course and raises freeze-risk questions for holders.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/11/19/north-korean-hackers-used-sky-s-stablecoin-system-putting-billions-at-freeze-risk" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- North Korean Hackers Used Sky's Stablecoin System, Putting Billions at Freeze Risk</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bitcoin miner that sold its last BTC warns it may run short for a $1.2 billion AI deal</strong></summary>
+      <div class="deal-body">
+        <p>Hyperscale Data needs another $74.8 million to complete its Michigan data-center project, CoinDesk reported, even after selling its remaining bitcoin and raising fresh debt. The warning shows how far miners are stretching to pivot into AI infrastructure as the token stalls.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/19/bitcoin-miner-that-sold-its-last-btc-warns-it-may-run-short-of-cash-for-usd1-2-billion-ai-deal" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Bitcoin Miner That Sold Its Last BTC Warns It May Run Short of Cash for $1.2 Billion AI Deal</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Strategy stock could plunge 76% to $23, chart analyst warns</strong></summary>
+      <div class="deal-body">
+        <p>Strategy (MSTR) could crash 76% to $23, CoinDesk reported, citing chart analyst Aksel Kibar's call on a still-active head-and-shoulders pattern on the daily chart. The warning underscores how the bitcoin-proxy trade amplifies downside when the token itself stalls.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/markets/2026/11/18/strategy-stock-could-crash-76-to-usd23-chart-analyst-warns" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Strategy Stock Could Plunge 76% to $23, Chart Analyst Warns</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Singapore settles a $77.5 million tokenized bill sale in its local CBDC</strong></summary>
+      <div class="deal-body">
+        <p>Singapore's central bank settled a $77.5 million tokenized bill sale in its local CBDC, CoinDesk reported, aiming to expand the digital settlement network and test wider collateral use in 2027. The pilot shows tokenized government debt moving from experiment toward infrastructure.</p>
+        <p class="deal-source"><a href="https://www.coindesk.com/business/2026/11/19/singapore-settles-usd77-5-million-tokenized-bill-sale-in-local-cbdc" target="_blank" rel="noopener noreferrer">Source: CoinDesk -- Singapore Settles $77.5 Million Tokenized Bill Sale in Local CBDC</a></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- DEALS -->
+  <section id="deals">
+    <h2>Deals &amp; Capital Markets</h2>
+    <details class="deal">
+      <summary><strong>Anthropic -- Prices the Biggest IPO Ever at $83 a Share for a $1.5 Trillion Valuation</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Anthropic sold more shares than planned and priced above range, WSJ reported, raising a record $107.3 billion across its IPO and private placement, per Bloomberg, and topping SpaceX's debut as the first frontier AI lab to go public.</p>
+        <p><strong>Outlook:</strong> Gray-market shares were indicated more than 20% higher, Bloomberg said, and $1.1 billion of stock was sold to European retail investors, though the FT flagged a safety disclosure and WSJ debated whether the group is worth $1.1 trillion or $1.5 trillion.</p>
+        <p><strong>What it means:</strong> A record listing clearing into a bruised tape resets AI sentiment, but the aftermarket and the valuation math will decide whether it marks a bottom or a top.</p>
+        <p class="deal-source"><a href="https://www.wsj.com/finance/stocks/anthropic-prices-ipo-at-83-a-share-0290494c?mod=rss_markets_main" target="_blank" rel="noopener noreferrer">Source: WSJ -- Anthropic Raises $81 Billion in Biggest IPO Ever</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Koenigsegg -- Temasek-Owned PE Firm Buys a Stake Valuing the Hyper-Car Maker at €1.3 Billion</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Koenigsegg sold a minority stake to a private equity firm owned by Temasek, Bloomberg reported, valuing the Swedish maker of multimillion-dollar track cars at about €1.3 billion as it weighs going public.</p>
+        <p><strong>Outlook:</strong> The deal gives the hyper-car maker growth capital and a path toward an eventual listing, with a sovereign-linked backer anchoring the valuation.</p>
+        <p><strong>What it means:</strong> Capital keeps finding niche luxury-industrial assets even as the AI trade dominates, a sign dealmaking is spreading across sectors.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/koenigsegg-stake-sale-values-hyper-car-maker-at-1-3-billion" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Koenigsegg Stake Sale Values Hyper-Car Maker at €1.3 Billion</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Advent / Boardroom -- PE Firm in Exclusive Talks to Buy the Singapore Services Provider</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Advent entered exclusive talks to buy Singapore-based corporate services provider Boardroom, Bloomberg reported, deepening private equity's push into recurring-revenue business services.</p>
+        <p><strong>Outlook:</strong> The deal would hand Advent a scaled Asian platform in corporate administration, a steady cash-flow niche insulated from the AI cycle.</p>
+        <p><strong>What it means:</strong> Sponsors keep paying for predictable services revenue, a different bet than the chip-and-data-center trade dominating headlines.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/advent-is-said-in-talks-to-buy-business-services-firm-boardroom" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Advent Is Said in Talks to Buy Business Services Firm Boardroom</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Laprophan / Sify Infinit -- Emerging-Market IPO Pipeline Revives as Sentiment Improves</strong></summary>
+      <div class="deal-body">
+        <p><strong>Why:</strong> Laprophan raised $223 million in Africa's largest pharma IPO on the Casablanca exchange, Bloomberg reported, while Sify Infinit is reviving a $396 million India listing as sentiment improves.</p>
+        <p><strong>Outlook:</strong> A growing list of companies is returning to market, Bloomberg said, suggesting the IPO window is reopening beyond the megacap AI headline.</p>
+        <p><strong>What it means:</strong> Emerging-market issuers are testing demand again, a breadth signal that capital markets are thawing past the US tech story.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/laprophan-raises-223-million-in-africa-s-largest-pharma-ipo" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Laprophan Raises $223 Million in Africa's Largest Pharma IPO</a></p>
+      </div>
+    </details>
+    <div class="chart-card">
+      <h4>Major Deal &amp; Capital-Markets Figures ($B USD equivalent)</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="dealSizes"></canvas></div>
+    </div>
+  </section>
+
+  <!-- BUYSIDE -->
+  <section id="buyside">
+    <h2>Buyside Positioning</h2>
+    <details class="deal">
+      <summary><strong>Kristalina Georgieva (IMF) -- expects 'a little bit more' AI correction to come</strong></summary>
+      <div class="deal-body">
+        <p>IMF chief Kristalina Georgieva told Bloomberg she expects "perhaps a little bit more" correction in AI-related markets amid concerns the boom has been overdone and as the US cracks down on chip smuggling to China. Her read tempers the relief from Anthropic's record listing.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/imf-s-chief-is-warning-ai-correction-has-little-bit-more-to-go" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- IMF's Chief Is Warning AI Correction Has 'Little Bit More' to Go</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Vincent Mortier (Amundi) -- shifting 2027 strategy away from big tech</strong></summary>
+      <div class="deal-body">
+        <p>Amundi CIO Vincent Mortier told Bloomberg the firm is reshaping 2027 risk by moving away from cap-weighted benchmarks, adding commodities and gold, diversifying into emerging markets and value, and running an underweight in broadly defined tech amid doubts over long-term AI monetization.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/videos/2026-11-19/amundi-s-mortier-shifts-2027-strategy-away-from-big-tech-video" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Amundi CIO Mortier Shifts 2027 Strategy Away From Big Tech</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Joachim Klement (Panmure Liberum) -- sold his entire personal stock portfolio</strong></summary>
+      <div class="deal-body">
+        <p>Panmure Liberum strategist and widely followed commentator Joachim Klement has effectively sold all the stocks in his personal retirement portfolio, MarketWatch reported, after years of being fully invested. The move is a stark positioning signal from a closely watched voice into the rotation.</p>
+        <p class="deal-source"><a href="https://www.marketwatch.com/story/this-closely-watched-guru-just-sold-everything-474b4389?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Source: MarketWatch -- This Closely Watched Investing Guru Just Sold All of His Stocks</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Christopher Waller (Federal Reserve) -- may need to 'shock people' with a half-point hike</strong></summary>
+      <div class="deal-body">
+        <p>Fed Governor Christopher Waller said the central bank may need to "shock people" with a half-point hike, CNBC reported, as inflation above target pushes officials into a more aggressive stance. The call read alongside the October minutes sharpens the hawkish case on rates.</p>
+        <p class="deal-source"><a href="https://www.cnbc.com/2026/11/18/federal-reserve-governor-christopher-waller.html" target="_blank" rel="noopener noreferrer">Source: CNBC -- Fed's Waller Says Central Bank May Need to 'Shock People' With Half-Point Hike</a></p>
+      </div>
+    </details>
+    <details class="deal">
+      <summary><strong>Bloomberg 'Taking Stock' desk -- sees a clearer path to a year-end rally after Anthropic</strong></summary>
+      <div class="deal-body">
+        <p>Optimism is growing for a year-end rally now that the series of major risk events that prompted investors to slash exposure is done, Bloomberg's Taking Stock desk reported. The read frames Anthropic's clean pricing as the overhang-clearing event dip buyers had waited for.</p>
+        <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-19/the-path-to-a-year-end-rally-looks-clearer-taking-stock" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- Path to a Year-End Stock Rally Looks Clearer After Anthropic</a></p>
+      </div>
+    </details>
+    <div class="buyside-summary">
+      <div class="nar-header">
+        <span class="nar-label">Aggregate Read</span>
+        <h3>How the Street Reads Anthropic's Record IPO and the Revived AI Trade, With Bloomberg's Desk Seeing a Clearer Path to a Year-End Rally, Against the IMF's Georgieva Warning of More Correction, Amundi's Mortier Cutting Tech for 2027, Panmure Liberum's Klement Selling His Entire Portfolio and Fed's Waller Floating a Half-Point Hike</h3>
+      </div>
+      <div class="toggles">
+        <button class="bull on" data-side="bull">Bull</button>
+        <button class="bear" data-side="bear">Bear</button>
+        <button data-side="both">Both</button>
+      </div>
+      <div class="bullbear show-bull">
+        <div class="bull"><strong>Bull (the overhang clears):</strong> Bloomberg's desk sees a clearer path to a year-end rally now that the big risk events are done, Anthropic priced the largest IPO ever above range, and European stocks snapped a three-day slide. A clean record listing removes the overhang that forced investors to cut exposure.</div>
+        <div class="bear"><strong>Bear (the correction is unfinished):</strong> The IMF's Georgieva expects a little bit more AI correction, Amundi's Mortier is underweight tech for 2027 and adding gold and value, Panmure Liberum's Klement sold his whole portfolio, and Fed's Waller floats a half-point hike. The positioning signals point to defense, not offense.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENTIMENT -->
+  <section id="sentiment">
+    <h2>Reddit &amp; Retail Sentiment</h2>
+    <div class="sentiment-table">
+      <table>
+        <thead><tr><th>Subreddit</th><th>Top Theme</th><th>Sentiment</th><th>Upvotes (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>r/wallstreetbets</td><td>Anthropic record IPO; gray-market pop; AI trade revives; Nvidia down again; leveraged ETF race</td><td>Bullish</td><td>~88,000 (est.)</td></tr>
+          <tr><td>r/stocks</td><td>Walmart, Target and Lowe's beats; tech falls behind in generational rotation; year-end rally hopes</td><td>Mixed</td><td>~60,000 (est.)</td></tr>
+          <tr><td>r/investing</td><td>Fed minutes expect more hikes; Waller half-point; gold near 14-month low; Australia jobless jump</td><td>Cautious</td><td>~47,000 (est.)</td></tr>
+          <tr><td>r/SecurityAnalysis</td><td>WSJ $500B Nvidia pledge undeployed; Nvidia circular economy; IMF more correction; Klement sells all</td><td>Bearish</td><td>~37,000 (est.)</td></tr>
+          <tr><td>r/CryptoCurrency</td><td>BTC bounces near $64k on IPO lift; tokenized Anthropic on BNB; MSTR crash call; Sky stablecoin risk</td><td>Mixed</td><td>~52,000 (est.)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8em;color:var(--muted);margin-top:4px;">&#x26A0; Reddit API blocked. Estimates derived from web search and price action analysis.</p>
+    </div>
+    <div class="chart-card">
+      <h4>Reddit Estimated Engagement by Subreddit</h4>
+      <div style="position:relative;height:240px;width:100%"><canvas id="redditSentiment"></canvas></div>
+    </div>
+    <div class="anchor aggregate-read">
+      <strong>Aggregate read:</strong> The mood turned more hopeful on Anthropic's record pricing. r/wallstreetbets leaned bullish on the gray-market pop and revived AI trade, though Nvidia falling again tempered it. r/stocks was mixed as Walmart, Target and Lowe's beats clashed with a generational rotation that has tech falling behind. r/investing stayed cautious on the Fed minutes, Waller's half-point talk and gold near a 14-month low, with some comfort in the Australian jobs data. r/SecurityAnalysis stayed bearish on the undeployed $500 billion Nvidia pledge, the circular-economy critique and Klement selling everything. r/CryptoCurrency was mixed as bitcoin bounced on the IPO lift but a chartist called for a 76% MSTR drop. The swing factor is whether Anthropic holds its premium through the session and the hawkish minutes.
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section id="learn">
+    <h2>Learning Opportunity: Why a Blockbuster IPO Can Lift Peers Even While the Issuer's Own Risks Pile Up</h2>
+    <p>Anthropic priced the biggest IPO ever and futures rallied worldwide, Bloomberg reported, with European stocks snapping a three-day slide, yet the FT noted the group disclosed it had activated part of its "responsible scaling policy" on catastrophic-risk fears, WSJ debated whether it is worth $1.1 trillion or $1.5 trillion, and the IMF's Georgieva warned the AI correction is not over. The instinct is that a strong IPO should settle the whole debate and send the trade cleanly higher. But a landmark listing answers a narrow question about demand for one asset while leaving the issuer's own risks and the sector's financing questions wide open, which is why peers can rally even as the new name carries real caveats. Start with what a hot IPO actually transmits. When a mega-deal prices above range and trades at a premium, it broadcasts that large institutions will pay up for the theme, and that read spreads to every comparable name because they share the same end-market story. The first mechanism is the sentiment transfer, where the clearing price re-rates the whole complex regardless of the single issuer's idiosyncratic problems, so chip and cloud peers catch a bid off a lab's debut. The second mechanism is the overhang removal, where a looming mega-listing makes investors hoard cash to fund it, so once it clears, that mechanical drag lifts and the broader tape breathes. The third mechanism is the valuation decoupling, where enthusiasm anchors on the headline price and glosses over the confusing math WSJ flagged, so the market can celebrate a number it cannot fully justify. The fourth mechanism is the risk compartmentalization, where traders treat the issuer's own disclosures, like the responsible-scaling activation, as company-specific noise rather than a sector signal, so the peer rally ignores them. The fifth mechanism is the financing reflexivity, where a successful debut improves funding conditions across the ecosystem, which supports the demand story even before the issuer's own cash flows prove out. The sixth mechanism is the fragility of all of it, where the same transfer runs in reverse if the stock breaks its issue price, flipping a confidence boost into confirmation that the bears, including the IMF, were right. The practical lesson for a market reader is that a blockbuster IPO is a sentiment event for the sector and a risk event for the issuer, and the two do not have to agree. Anthropic's pricing tells you real money still wants frontier AI, and that lifts peers by clearing an overhang, but the safety disclosure, the valuation ambiguity and the warning of more correction are separate risks the pop does not resolve. Watch whether the stock holds its premium, whether the peer rally survives the first days of trading, and whether the issuer's own caveats start to matter, because a durable turn needs the sector enthusiasm and the specific risks to converge, not just one loud print.</p>
+    <p class="deal-source"><a href="https://www.bloomberg.com/news/articles/2026-11-18/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener noreferrer">Source: Bloomberg -- US Futures Rally as Anthropic Fuels AI Enthusiasm: Markets Wrap</a></p>
+    <p class="deal-source"><a href="https://www.ft.com/content/d8be4655-211c-49a8-bfe4-18a00b8e8619?syn-25a6b1a6=1" target="_blank" rel="noopener noreferrer">Source: Financial Times -- AI Advances Trigger New Safety Fears on Eve of Market Debut</a></p>
+  </section>
+
+  <!-- ON DECK -->
+  <section id="ondeck">
+    <h2>On Deck This Week</h2>
+    <h3>Macro / Data</h3>
+    <ul>
+      <li><strong>Post-minutes Fedspeak.</strong> With the October minutes showing almost all officials expect more hikes and Waller floating a half-point, watch the week's speakers for whether a December move hardens into consensus or splinters.</li>
+      <li><strong>Inflation and labor reads.</strong> With analysts arguing gas prices are easing and Australia's jobless rate jumping, watch US data for whether it supports the real-time easing case or the hawks.</li>
+      <li><strong>Gold and the dollar.</strong> With gold near a 14-month low and the euro at an 18-month low on French risk, watch whether the hawkish repricing keeps draining havens.</li>
+    </ul>
+    <h3>Earnings</h3>
+    <ul>
+      <li><strong>Retail reads.</strong> After Walmart, Target and Lowe's all raised guidance, watch remaining retailers for consumer resilience and cost discipline into the holidays.</li>
+      <li><strong>AI aftermath.</strong> With Lenovo posting its first operating loss since 2017 and Alibaba's AI labs offsetting cloud profits, watch whether the capex-versus-return tension spreads to other spenders.</li>
+    </ul>
+    <h3>Capital Markets</h3>
+    <ul>
+      <li><strong>Anthropic debut.</strong> The AI lab begins trading midday after the biggest IPO ever. Watch whether it holds its 20%-plus gray-market premium or breaks issue price and reverses the sentiment lift.</li>
+      <li><strong>IPO window.</strong> With Laprophan and Sify Infinit reviving listings, watch whether a successful Anthropic debut reopens the pipeline more broadly.</li>
+    </ul>
+    <h3>Central Banks</h3>
+    <ul>
+      <li><strong>ECB December.</strong> Nagel says a December hike would send a clear signal. Watch whether the hawks consolidate ahead of the meeting even as eurozone yields fall.</li>
+      <li><strong>Global drift.</strong> BOJ's Ueda stays open to a hike and the RBNZ flags fuel-cost spillover, while Australia prices cuts. Watch whether the tightening drift firms or cracks.</li>
+    </ul>
+    <h3>Geopolitical</h3>
+    <ul>
+      <li><strong>Shenzhen aftermath.</strong> The Trump-Xi-Putin trilateral is done. Watch whether chip-export policy eases or hardens and what follows on Ukraine and Iran de-escalation.</li>
+      <li><strong>Gulf and energy.</strong> A Houthi strike hit Saudi Arabia's PIF headquarters. Watch whether escalation or easing supply sets the oil price into year-end.</li>
+    </ul>
+    <h3>Reader requests</h3>
+    <ul>
+      <li>A running tracker of named strategist calls on where the 10-year and 30-year yields peak.</li>
+      <li>More on how vendor financing, undeployed capital pledges and the AI circular economy feed credit and spread risk.</li>
+    </ul>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="source-note">
+      <h4>Sources &amp; Data Notes (Thu Nov 19, 2026)</h4>
+      <p><strong>Worked:</strong> Bloomberg Markets (20 fresh, newest 2026-11-19 06:37 ET); Bloomberg Technology (20 fresh, newest 2026-11-19 06:31 ET); Bloomberg Economics (20 fresh, newest 2026-11-19 06:00 ET); CNBC Top News (7 fresh, newest 2026-11-19 07:00 ET); CNBC Finance (8 fresh, newest 2026-11-19 04:02 ET); CNBC Economy (3 fresh, newest 2026-11-18 09:09 ET); MarketWatch Top Stories (10 fresh, newest 2026-11-19 06:54 ET); WSJ Markets (17 fresh, newest 2026-11-19 06:38 ET); FT Home (10 fresh, newest 2026-11-19 06:44 ET); Matt Levine Money Stuff (1 fresh, newest 2026-11-18 14:05 ET); CoinDesk (25 fresh, newest 2026-11-19 06:30 ET); Stratechery (2 fresh, newest 2026-11-19 06:00 ET)</p>
+      <p><strong>Failed / Blocked:</strong> Failed feeds: Yahoo Finance: HTTP Error 404: Not Found Reddit sentiment is estimated from headlines (no Reddit API in automated runs). Gmail newsletters unavailable in automated runs (WSJ/NYT/Morning Brew not pulled).</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz">
+    <h2>Quick Quiz</h2>
+    <div class="q" data-correct="B">
+      <p><strong>1. How did Anthropic's record IPO price?</strong></p>
+      <span class="opt" data-opt="A">A. Below range, raising less than planned</span>
+      <span class="opt" data-opt="B">B. Above range at $83, raising a record $107.3 billion</span>
+      <span class="opt" data-opt="C">C. At the midpoint, matching SpaceX's prior debut</span>
+      <span class="opt" data-opt="D">D. It postponed the listing on safety concerns</span>
+      <div class="feedback"><strong>B is correct.</strong> WSJ and Bloomberg reported Anthropic sold more shares than planned and priced above range at $83, raising a record $107.3 billion for a $1.5 trillion valuation and topping SpaceX. It did not price low, hit the midpoint or postpone.</div>
+    </div>
+    <div class="q" data-correct="C">
+      <p><strong>2. What did the October Fed minutes reveal?</strong></p>
+      <span class="opt" data-opt="A">A. Officials leaned toward cutting rates by spring</span>
+      <span class="opt" data-opt="B">B. The committee voted to pause indefinitely</span>
+      <span class="opt" data-opt="C">C. Almost all officials expect more rate hikes ahead</span>
+      <span class="opt" data-opt="D">D. Members saw AI as clearly disinflationary</span>
+      <div class="feedback"><strong>C is correct.</strong> Bloomberg reported nearly all officials expect to raise rates in the months ahead, and CNBC noted they worried AI spending could add to inflation, not reduce it. There was no cut signal, no indefinite pause and no disinflation read on AI.</div>
+    </div>
+    <div class="q" data-correct="A">
+      <p><strong>3. What did WSJ report about the pledged $500 billion for Nvidia?</strong></p>
+      <span class="opt" data-opt="A">A. Not a single dollar of it has been deployed yet</span>
+      <span class="opt" data-opt="B">B. It was fully deployed into data centers last quarter</span>
+      <span class="opt" data-opt="C">C. Regulators blocked the entire financing package</span>
+      <span class="opt" data-opt="D">D. Nvidia repaid the pledge from its own cash</span>
+      <div class="feedback"><strong>A is correct.</strong> WSJ reported the wave of money pledged to help Nvidia's customers keep buying chips has not put up a dollar, highlighting the gap between announced intent and deployed capital. It was not fully deployed, blocked by regulators or repaid by Nvidia.</div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <form id="fb-form" class="fb">
+      <label for="fb-missing">What did we miss today?</label>
+      <textarea id="fb-missing" name="missing" rows="3" placeholder="Stories, data, or context we should have covered..."></textarea>
+      <label for="fb-open">Open feedback:</label>
+      <textarea id="fb-open" name="open" rows="3" placeholder="Anything else -- formatting, depth, sources..."></textarea>
+      <button type="submit">Submit Feedback</button>
+      <div id="fb-success" class="fb-success">Thanks -- feedback saved!</div>
+    </form>
+  </section>
+
+  <!-- COMMUNITY VOTES -->
+  <section id="community-votes">
+    <h2>Community Votes</h2>
+    <p class="cv-lede">Vote on reader-suggested changes for future editions. Top requests feed into On Deck planning.</p>
+    <div id="cv-board" class="cv-board">
+      <p class="cv-empty">Loading community votes…</p>
+    </div>
+  </section>
+
+<script type="application/json" id="consensusData">{
+  "bonds": {
+    "diverge": "Fed minutes show almost all officials expect more hikes and Governor Waller wants to shock markets with a half-point move as gold hovers near a 14-month low and ECB's Nagel pushes a December hike, against eurozone yields falling, analysts calling the hike push a mistake on backward-looking data and Australia's jobless jump pricing cuts.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-18/fed-minutes-show-almost-all-officials-expect-more-rate-hikes", "take": "Fed minutes show almost all officials expect more hikes ahead." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/11/18/federal-reserve-governor-christopher-waller.html", "take": "Waller says the Fed may need to shock people with a half-point hike." },
+      { "name": "WSJ", "lean": "bull", "url": "https://www.wsj.com/finance/investing/jgbs-edge-higher-amid-mixed-developments-c690e1af?mod=rss_markets_main", "take": "Eurozone yields fall, shrugging off hike expectations and heavy supply." },
+      { "name": "CoinDesk", "lean": "bull", "url": "https://www.coindesk.com/markets/2026/11/19/fed-s-push-for-more-rate-hikes-leans-on-backward-looking-data-as-gas-prices-slide-analysts-argue", "take": "Analysts argue the hike push leans on backward-looking data as gas slides." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-19/australian-unemployment-jumps-to-4-9-following-rba-rate-hikes", "take": "Australia's jobless jump to a five-year high prompts rate-cut bets." }
+    ]
+  },
+  "iran": {
+    "diverge": "Trump, Xi and Putin stage an unprecedented Shenzhen trilateral talking nuclear de-escalation as oil eases, against a Houthi strike hitting Saudi Arabia's sovereign wealth fund headquarters and new US chip curbs threatening Southeast Asia's data-center pipeline.",
+    "sources": [
+      { "name": "FT", "lean": "bull", "url": "https://www.ft.com/content/fcf6d27b-a04c-4cef-8b03-ce2423566f1f", "take": "Trump, Putin and Xi stage a historic trilateral in Shenzhen." },
+      { "name": "CNBC", "lean": "bull", "url": "https://www.cnbc.com/2026/11/19/trump-xi-putin-china-apec-.html", "take": "Trump praises a great relationship with Putin after their meeting." },
+      { "name": "FT", "lean": "bear", "url": "https://www.ft.com/content/05ed47a5-7cc1-402f-ad0d-826ba09a05c8?syn-25a6b1a6=1", "take": "A Houthi air strike hits Saudi Arabia's Public Investment Fund headquarters." },
+      { "name": "CNBC", "lean": "bear", "url": "https://www.cnbc.com/2026/11/18/nvidia-us-ai-chip-export-controls-data-centers-.html", "take": "New US chip rules put Southeast Asia's data-center pipeline at risk." }
+    ]
+  },
+  "aicapex": {
+    "diverge": "Anthropic's record $107.3 billion IPO revives the AI trade and European stocks snap a three-day slide, with Bloomberg seeing a clearer path to a year-end rally, against the IMF's Georgieva warning of more correction, WSJ flagging a $500 billion Nvidia pledge with not a dollar deployed and Amundi's Mortier shifting 2027 away from big tech.",
+    "sources": [
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-18/anthropic-is-said-to-price-ipo-at-83-per-share", "take": "Anthropic raises a record $107.3 billion to top SpaceX's debut." },
+      { "name": "Bloomberg", "lean": "bull", "url": "https://www.bloomberg.com/news/articles/2026-11-19/european-stocks-rebound-as-anthropic-ipo-revives-the-ai-trade", "take": "European stocks rebound as the Anthropic IPO revives the AI trade." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/articles/2026-11-19/imf-s-chief-is-warning-ai-correction-has-little-bit-more-to-go", "take": "IMF's Georgieva expects a little bit more AI correction to come." },
+      { "name": "WSJ", "lean": "bear", "url": "https://www.wsj.com/finance/wall-street-pledged-to-mobilize-500-billion-for-nvidiabut-hasnt-put-up-a-dime-1e41f276?mod=rss_markets_main", "take": "A pledged $500 billion for Nvidia's customers has not deployed a dollar." },
+      { "name": "Bloomberg", "lean": "bear", "url": "https://www.bloomberg.com/news/videos/2026-11-19/amundi-s-mortier-shifts-2027-strategy-away-from-big-tech-video", "take": "Amundi's Mortier shifts 2027 strategy away from big tech." }
+    ]
+  }
+}</script>
+
+
+<script type="application/json" id="chartData">{
+  "techMovers": {
+    "labels": ["Anthropic (indic.)","Alibaba","Broadcom","TSMC","Nvidia","Lenovo"],
+    "values": [24.0, 3.1, 2.4, 1.8, 0.6, -5.2]
+  },
+  "redditSentiment": {
+    "labels": ["r/WSB","r/stocks","r/investing","r/SecAnalysis","r/Crypto"],
+    "values": [88000, 60000, 47000, 37000, 52000],
+    "colors": ["bull","neutral","neutral","bear","neutral"]
+  },
+  "dealSizes": {
+    "labels": ["Anthropic (raise)","Koenigsegg (value)","Sify Infinit IPO","Laprophan IPO"],
+    "values": [107.3, 1.4, 0.396, 0.223]
+  }
+}</script>
+</main>
+
+  <section id="archive">
+    <h2>Archive</h2>
+    <div id="archive-mount"><p style="font-size:14px;color:var(--muted);">Loading archive…</p></div>
+  </section>
+</div>
+
+</div>
+
+<!-- NARRATIVE TIMELINE DRAWER -->
+<div class="tl-scrim" id="tlScrim" hidden aria-hidden="true"></div>
+<div class="tl-drawer" id="tlDrawer" role="dialog" aria-modal="true" aria-labelledby="tlTitle" hidden>
+  <div class="tl-drawer-head">
+    <div>
+      <div class="kicker">Narrative Threads</div>
+      <h2 id="tlTitle">How the week's theses built</h2>
+    </div>
+    <button class="tl-close" id="tlClose" type="button" aria-label="Close timeline">&times;</button>
+  </div>
+  <div class="tl-tabs" id="tlTabs"></div>
+  <div class="tl-track" id="tlTrack"></div>
+</div>
+
+<script src="../js/digest-date.js?v=20261018"></script>
+<script src="../js/config.js?v=20261018"></script>
+<script src="../js/repair-dom.js?v=20261018"></script>
+<script src="../js/digest-ui.js?v=20261018"></script>
+<script src="../js/charts-core.js?v=20261018"></script>
+<script src="../js/archive.js?v=20261018"></script>
+<script src="../js/artifact-equities.js?v=20261018"></script>
+<script src="../js/charts-macro.js?v=20261018"></script>
+<script src="../js/artifact-framing.js?v=20261018"></script>
+<script src="../js/verdict-updater.js?v=20261018"></script>
+<script src="../js/digest-init.js?v=20261018"></script>
+<script>
+// Vercel Web Analytics — static-site integration. The /_vercel/insights
+// endpoint only exists when served from Vercel, so skip GitHub Pages and
+// local preview (same host split as mdUsesRemoteApi in config.js).
+(function () {
+  var h = location.hostname;
+  if (/\.github\.io$/i.test(h) || h === 'localhost' || h === '127.0.0.1') return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = '/_vercel/insights/script.js';
+  document.head.appendChild(s);
+})();
+</script>
+
+</body>
+</html>
